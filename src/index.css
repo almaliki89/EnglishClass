@@ -1,0 +1,285 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "IBM Plex Sans Arabic", "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Space Grotesk", "Manrope", "IBM Plex Sans Arabic", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* Swiss Editorial x Soft Brutalism Palette */
+  --color-warm-ivory: #F7F5EF;
+  --color-pure-white: #FFFFFF;
+  --color-soft-grey: #EEECE6;
+  --color-deep-ink: #202124;
+  --color-secondary-grey: #777873;
+
+  /* Accents */
+  --color-royal-blue: #405DE6;
+  --color-muted-lavender: #DCD8FA;
+  --color-soft-mint: #D7E9DA;
+  --color-warm-coral: #F2A18E;
+  --color-butter-yellow: #F3E6A5;
+
+  /* Legacy aliases for component backward compatibility */
+  --color-warm-paper: #F7F5EF;
+  --color-electric-cobalt: #405DE6;
+  --color-retro-vermilion: #F2A18E;
+  --color-acid-yellow: #F3E6A5;
+  --color-soft-sky: #DCD8FA;
+  --color-paper-white: #FFFFFF;
+}
+
+*, ::before, ::after {
+  box-sizing: border-box;
+}
+
+img, video, canvas, svg, iframe {
+  max-width: 100%;
+}
+
+html, body, #root {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow-x: hidden !important;
+  position: relative;
+  background-color: #F7F5EF;
+  color: #202124;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: #F7F5EF;
+  color: #202124;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+/* Hide scrollbar while keeping scroll functionality */
+.no-scrollbar::-webkit-scrollbar,
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar,
+.scrollbar-none {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* ========================================================
+   SWISS EDITORIAL × SOFT BRUTALISM UTILITY SYSTEM
+   ======================================================== */
+
+.paper-canvas {
+  background-color: #F7F5EF;
+  background-image: radial-gradient(#202124 0.6px, transparent 0.6px);
+  background-size: 28px 28px;
+}
+
+/* Soft Brutalist Cards with Swiss Grid Precision */
+.brutal-card {
+  background-color: #FFFFFF;
+  color: #202124;
+  border: 2px solid #202124;
+  box-shadow: 3.5px 3.5px 0px #202124;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.brutal-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px #202124;
+}
+
+.brutal-card-lg {
+  background-color: #FFFFFF;
+  color: #202124;
+  border: 2.5px solid #202124;
+  box-shadow: 5px 5px 0px #202124;
+}
+
+.brutal-card-yellow {
+  background-color: #F3E6A5;
+  color: #202124;
+  border: 2px solid #202124;
+  box-shadow: 3.5px 3.5px 0px #202124;
+}
+
+.brutal-card-cobalt {
+  background-color: #405DE6;
+  color: #FFFFFF;
+  border: 2px solid #202124;
+  box-shadow: 3.5px 3.5px 0px #202124;
+}
+
+.brutal-card-vermilion {
+  background-color: #F2A18E;
+  color: #202124;
+  border: 2px solid #202124;
+  box-shadow: 3.5px 3.5px 0px #202124;
+}
+
+.brutal-card-sky {
+  background-color: #DCD8FA;
+  color: #202124;
+  border: 2px solid #202124;
+  box-shadow: 3.5px 3.5px 0px #202124;
+}
+
+.brutal-card-mint {
+  background-color: #D7E9DA;
+  color: #202124;
+  border: 2px solid #202124;
+  box-shadow: 3.5px 3.5px 0px #202124;
+}
+
+/* Push-Down Action Buttons */
+.brutal-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border: 2px solid #202124;
+  box-shadow: 3px 3px 0px #202124;
+  font-weight: 700;
+  cursor: pointer;
+  user-select: none;
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.12s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.brutal-btn:hover {
+  transform: translate(-0.5px, -0.5px);
+  box-shadow: 4px 4px 0px #202124;
+}
+.brutal-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px #202124;
+}
+
+.brutal-btn-cobalt {
+  background-color: #405DE6;
+  color: #FFFFFF;
+}
+.brutal-btn-cobalt:hover {
+  background-color: #344ec7;
+}
+
+.brutal-btn-yellow {
+  background-color: #F3E6A5;
+  color: #202124;
+}
+.brutal-btn-yellow:hover {
+  background-color: #e5d792;
+}
+
+.brutal-btn-vermilion {
+  background-color: #F2A18E;
+  color: #202124;
+}
+.brutal-btn-vermilion:hover {
+  background-color: #e38f7c;
+}
+
+.brutal-btn-white {
+  background-color: #FFFFFF;
+  color: #202124;
+}
+.brutal-btn-white:hover {
+  background-color: #F7F5EF;
+}
+
+.brutal-btn-sky {
+  background-color: #DCD8FA;
+  color: #202124;
+}
+.brutal-btn-sky:hover {
+  background-color: #cbaff8;
+}
+
+/* Badges & Editorial Tags */
+.brutal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.2rem 0.6rem;
+  border: 1.5px solid #202124;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  box-shadow: 1.5px 1.5px 0px #202124;
+}
+
+.editorial-tag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #777873;
+}
+
+/* Input Fields */
+.brutal-input {
+  background-color: #FFFFFF;
+  color: #202124;
+  border: 2px solid #202124;
+  box-shadow: 2.5px 2.5px 0px #202124;
+  outline: none;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  transition: all 0.12s ease;
+}
+.brutal-input:focus {
+  box-shadow: 3.5px 3.5px 0px #405DE6;
+  border-color: #202124;
+}
+
+/* BiDi Precision & Dual-Language */
+.dir-ltr,
+[dir="ltr"] {
+  direction: ltr !important;
+}
+
+.dir-rtl,
+[dir="rtl"] {
+  direction: rtl !important;
+}
+
+.bidi-en {
+  direction: ltr;
+  display: inline-block;
+  unicode-bidi: isolate;
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+}
+
+.bidi-ar {
+  direction: rtl;
+  display: inline-block;
+  unicode-bidi: isolate;
+  font-family: var(--font-sans);
+}
+
+.en-sentence,
+.en-block {
+  direction: ltr !important;
+  text-align: left !important;
+  unicode-bidi: isolate;
+  font-family: var(--font-mono);
+}
+
+/* Headings with Swiss Precision */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #202124;
+}
+

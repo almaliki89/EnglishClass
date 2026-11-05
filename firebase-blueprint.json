@@ -1,0 +1,112 @@
+{
+  "entities": {
+    "students": {
+      "title": "Students",
+      "description": "Student user profiles, progress, XP, completed lessons and bookmarks",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "name": { "type": "string" },
+        "email": { "type": "string" },
+        "xp": { "type": "number" },
+        "selectedGrade": { "type": "string", "enum": ["sixth-preparatory", "third-intermediate"] },
+        "completedLessonIds": { "type": "array", "items": { "type": "string" } },
+        "bookmarkedQuestionIds": { "type": "array", "items": { "type": "string" } },
+        "totalQuestionsAttempted": { "type": "number" },
+        "totalQuestionsCorrect": { "type": "number" },
+        "streakDays": { "type": "number" },
+        "lastActiveDate": { "type": "string" },
+        "lastVisitedLessonId": { "type": "string" },
+        "unlockedBadges": { "type": "array", "items": { "type": "string" } },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["uid", "name", "email", "xp"]
+    },
+    "exam_results": {
+      "title": "ExamResults",
+      "description": "Historical timed exam submission records and performance analytics",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "examTitle": { "type": "string" },
+        "grade": { "type": "string" },
+        "score": { "type": "number" },
+        "totalQuestions": { "type": "number" },
+        "correctCount": { "type": "number" },
+        "wrongCount": { "type": "number" },
+        "unansweredCount": { "type": "number" },
+        "percentage": { "type": "number" },
+        "timeSpentSeconds": { "type": "number" },
+        "timestamp": { "type": "string" }
+      },
+      "required": ["id", "score", "totalQuestions", "percentage", "timestamp"]
+    },
+    "notes": {
+      "title": "StudentNotes",
+      "description": "Personal student study notes attached to lessons or ministerial questions",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "lessonId": { "type": "string" },
+        "lessonTitle": { "type": "string" },
+        "content": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "content", "createdAt"]
+    },
+    "bookmarks": {
+      "title": "Bookmarks",
+      "description": "Saved questions and topics for revision",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "questionId": { "type": "string" },
+        "topic": { "type": "string" },
+        "savedAt": { "type": "string" }
+      },
+      "required": ["id", "questionId", "savedAt"]
+    },
+    "curriculum_sources": {
+      "title": "CurriculumSources",
+      "description": "Verified textbook sources and audited curriculum drafts with cryptographic SHA-256 signatures",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "gradeId": { "type": "string" },
+        "subjectId": { "type": "string" },
+        "academicYear": { "type": "string" },
+        "curriculumEdition": { "type": "string" },
+        "sourceType": { "type": "string" },
+        "title": { "type": "string" },
+        "fileSha256": { "type": "string" },
+        "status": { "type": "string" },
+        "verificationStatus": { "type": "string" },
+        "updatedAt": { "type": "string" }
+      },
+      "required": ["id", "gradeId", "subjectId", "title", "fileSha256", "status"]
+    }
+  },
+  "firestore": {
+    "/students/{studentId}": {
+      "schema": "students",
+      "description": "Root private student document"
+    },
+    "/students/{studentId}/exam_results/{resultId}": {
+      "schema": "exam_results",
+      "description": "Private subcollection for student exam attempts"
+    },
+    "/students/{studentId}/notes/{noteId}": {
+      "schema": "notes",
+      "description": "Private subcollection for personal revision notes"
+    },
+    "/students/{studentId}/bookmarks/{bookmarkId}": {
+      "schema": "bookmarks",
+      "description": "Private subcollection for bookmarked questions"
+    },
+    "/curriculum_sources/{sourceId}": {
+      "schema": "curriculum_sources",
+      "description": "Published official curriculum sources and verified textbook references"
+    }
+  }
+}
