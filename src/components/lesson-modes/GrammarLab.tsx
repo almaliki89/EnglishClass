@@ -256,7 +256,7 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
         <div className="flex items-center gap-4">
           <div className="relative overflow-hidden border-2 border-[#202124] shadow-[3px_3px_0px_#202124] w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-[#F7F5EF]">
             <img 
-              src="/src/assets/images/grammar_lab_3d_1793868639624.jpg" 
+              src="/assets/images/grammar_lab_3d_1793868639624.jpg" 
               alt="Grammar Lab 3D" 
               referrerPolicy="no-referrer"
               className="w-full h-full object-cover"

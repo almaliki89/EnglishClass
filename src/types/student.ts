@@ -36,6 +36,7 @@ export interface StudentProgress {
   streakDays: number;
   lastActiveDate: string;
   lastVisitedLessonId?: string;
+  gradeLastVisitedLessonMap?: Record<EducationalGrade, string>;
   completedLessonIds: string[];
   lessonProgressMap: Record<string, LessonProgressItem>;
   totalQuestionsAttempted: number;

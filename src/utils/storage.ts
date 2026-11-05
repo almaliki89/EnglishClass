@@ -1,7 +1,7 @@
 import { StudentState, Badge } from '../types';
 import confetti from 'canvas-confetti';
 
-const STORAGE_KEY = 'mustafa_turki_curriculum_student_state_2027';
+const STORAGE_KEY = 'iraqi_english_student_state_v3';
 
 export const INITIAL_BADGES: Badge[] = [
   {
@@ -70,8 +70,9 @@ export const INITIAL_BADGES: Badge[] = [
 ];
 
 export const INITIAL_STUDENT_STATE: StudentState = {
-  name: 'طالب السادس المتفوق',
+  name: 'طالب العراق المتفوق',
   xp: 150,
+  selectedGrade: 'sixth-preparatory',
   completedLessonIds: [],
   bookmarkedQuestionIds: [],
   answeredExercises: {},
@@ -79,10 +80,16 @@ export const INITIAL_STUDENT_STATE: StudentState = {
   totalQuestionsCorrect: 0,
   streakDays: 3,
   lastActiveDate: new Date().toISOString().split('T')[0],
-  lastVisitedLessonId: 'u1-l1',
+  lastVisitedLessonId: '1-1',
+  gradeLastVisitedLessonMap: {
+    'third-intermediate': 'lesson-3-1',
+    'fourth-preparatory': 'lesson-4-1',
+    'fifth-preparatory': 'lesson-5-1',
+    'sixth-preparatory': '1-1'
+  },
   unlockedBadges: [],
-  examResults: [],
-  notes: []
+  notes: [],
+  bookmarks: []
 };
 
 export function loadStudentState(): StudentState {
@@ -105,7 +112,14 @@ export function loadStudentState(): StudentState {
         parsed.lastActiveDate = today;
       }
 
-      return { ...INITIAL_STUDENT_STATE, ...parsed };
+      return { 
+        ...INITIAL_STUDENT_STATE, 
+        ...parsed,
+        gradeLastVisitedLessonMap: {
+          ...INITIAL_STUDENT_STATE.gradeLastVisitedLessonMap,
+          ...(parsed.gradeLastVisitedLessonMap || {})
+        }
+      };
     }
   } catch (e) {
     console.error("Failed to load student state from localStorage", e);

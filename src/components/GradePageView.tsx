@@ -382,7 +382,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
               size="sm"
               onClick={() => {
                 onSelectGrade(validGrade);
-                onNavigateTab('mock');
+                navigate(`/grade/${validGrade}/mock`);
               }}
             >
               بدء المحاكي الآن
@@ -407,7 +407,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
               size="sm"
               onClick={() => {
                 onSelectGrade(validGrade);
-                onNavigateTab('exam');
+                navigate(`/grade/${validGrade}/exam`);
               }}
             >
               دخول بنك الأسئلة
@@ -432,7 +432,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
               size="sm"
               onClick={() => {
                 onSelectGrade(validGrade);
-                onNavigateTab('literature');
+                navigate(`/grade/${validGrade}/literature`);
               }}
             >
               استعراض القصص
@@ -455,7 +455,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
               size="sm"
               onClick={() => {
                 onSelectGrade(validGrade);
-                onNavigateTab('essays');
+                navigate(`/grade/${validGrade}/essays`);
               }}
             >
               استعراض الإنشاءات

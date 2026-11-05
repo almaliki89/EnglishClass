@@ -201,6 +201,7 @@ export interface StudentState {
   streakDays: number;
   lastActiveDate: string;
   lastVisitedLessonId?: string;
+  gradeLastVisitedLessonMap?: Record<EducationalGrade, string>;
   unlockedBadges: string[];
   uploadedMalzamas?: UploadedMalzama[];
   notes?: StudentNote[];

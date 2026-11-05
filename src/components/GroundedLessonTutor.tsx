@@ -4,6 +4,7 @@ import {
   BookOpen, RefreshCw, Bot, User, Quote, ChevronDown, ChevronUp
 } from 'lucide-react';
 import { Lesson, Unit } from '../types';
+import { getAuthHeaders } from '../utils/apiAuth';
 
 interface GroundedLessonTutorProps {
   unit: Unit;
@@ -63,9 +64,10 @@ export const GroundedLessonTutor: React.FC<GroundedLessonTutorProps> = ({
 ${lesson.examples?.map(ex => `- ${ex.en} => ${ex.ar} (${ex.note || ''})`).join('\n')}
       `.trim();
 
+      const authHeaders = await getAuthHeaders();
       const response = await fetch('/api/ai/grounded-qa', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders,
         body: JSON.stringify({
           question: userText,
           grade: gradeTitle,

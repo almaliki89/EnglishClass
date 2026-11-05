@@ -14,6 +14,13 @@ export const APP_ROUTES = {
   unit: (gradeId: string, unitId: string | number) => `/grade/${gradeId}/unit/${unitId}`,
   gradeLesson: (gradeId: string, unitId: string | number, lessonId: string) =>
     `/grade/${gradeId}/unit/${unitId}/lesson/${lessonId}`,
+  gradeExam: (gradeId: string) => `/grade/${gradeId}/exam`,
+  gradeMock: (gradeId: string) => `/grade/${gradeId}/mock`,
+  gradeReview: (gradeId: string) => `/grade/${gradeId}/review`,
+  gradeLiterature: (gradeId: string) => `/grade/${gradeId}/literature`,
+  gradeEssays: (gradeId: string) => `/grade/${gradeId}/essays`,
+  gradeVocab: (gradeId: string) => `/grade/${gradeId}/vocab`,
+  gradeVerbs: (gradeId: string) => `/grade/${gradeId}/verbs`,
   subjects: '/subjects',
   subject: (id: SubjectId | string) => `/subject/${id}`,
   lesson: (lessonId: string) => `/lesson/${lessonId}`,

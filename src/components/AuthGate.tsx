@@ -182,7 +182,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                 </div>
                 <h4 className="text-xs font-black text-[#171717]">كافة المراحل</h4>
               </div>
-              <p className="text-[11px] text-[#171717]/70 font-bold">من الأول متوسط إلى السادس الإعدادي</p>
+              <p className="text-[11px] text-[#171717]/70 font-bold">من الثالث متوسط إلى السادس الإعدادي</p>
             </div>
           </div>
 

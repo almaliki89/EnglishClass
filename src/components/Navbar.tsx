@@ -65,27 +65,27 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navItems: NavItem[] = [
     { id: 'dashboard', path: homePath, label: 'الرئيسية', icon: Home },
-    { id: 'review', path: APP_ROUTES.review, label: 'المراجعة المركزة', icon: Target },
+    { id: 'review', path: APP_ROUTES.gradeReview(selectedGrade), label: 'المراجعة المركزة', icon: Target },
     {
       id: 'mock',
-      path: APP_ROUTES.mock,
+      path: APP_ROUTES.gradeMock(selectedGrade),
       label: isMinisterial ? 'محاكي الوزاري 100د' : 'محاكي الامتحان النهائي 100د',
       highlight: true,
       icon: Award,
     },
     {
       id: 'exam',
-      path: APP_ROUTES.exam,
+      path: APP_ROUTES.gradeExam(selectedGrade),
       label: isMinisterial ? 'بنك الوزاريات' : 'بنك الأسئلة والتمارين',
       icon: HelpCircle,
     },
-    { id: 'literature', path: APP_ROUTES.literature, label: litLabel, icon: BookOpen },
-    { id: 'essays', path: APP_ROUTES.essays, label: 'الإنشاءات', icon: FileText },
-    { id: 'vocab', path: APP_ROUTES.vocab, label: 'المفردات والتوصيل', icon: Layers },
+    { id: 'literature', path: APP_ROUTES.gradeLiterature(selectedGrade), label: litLabel, icon: BookOpen },
+    { id: 'essays', path: APP_ROUTES.gradeEssays(selectedGrade), label: 'الإنشاءات', icon: FileText },
+    { id: 'vocab', path: APP_ROUTES.gradeVocab(selectedGrade), label: 'المفردات والتوصيل', icon: Layers },
     ...(selectedGrade === 'sixth-preparatory' ||
     selectedGrade === 'fifth-preparatory' ||
     selectedGrade === 'fourth-preparatory'
-      ? [{ id: 'verbs', path: APP_ROUTES.verbs, label: 'الأفعال الشاذة', icon: Zap }]
+      ? [{ id: 'verbs', path: APP_ROUTES.gradeVerbs(selectedGrade), label: 'الأفعال الشاذة', icon: Zap }]
       : []),
   ];
 

@@ -211,24 +211,7 @@ function LessonRouteWrapper({
     }
   }
 
-  // Strict isolation rule: only fall back across all grades if this is a bare legacy route
-  // (/lesson/:lessonId) without gradeId or unitId in URL!
-  if (!foundLesson && !isExplicitGrade && !unitId) {
-    for (const g of ORDERED_GRADES) {
-      const gUnits = getUnitsForGrade(g);
-      for (const unit of gUnits) {
-        const l = unit.lessons.find((item: Lesson) => item.id === lessonId);
-        if (l) {
-          foundUnit = unit;
-          foundLesson = l;
-          resolvedGrade = g;
-          break;
-        }
-      }
-      if (foundLesson) break;
-    }
-  }
-
+  // Strict isolation: No cross-grade lookup fallback. If not in target grade, return NotFound.
   if (!foundUnit || !foundLesson) {
     return <NotFound />;
   }

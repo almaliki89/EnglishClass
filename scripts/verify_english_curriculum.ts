@@ -148,6 +148,51 @@ assert(serverCode.includes('sha256'), 'server.ts must calculate SHA-256 signatur
 const firestoreRules = fs.readFileSync(path.resolve('firestore.rules'), 'utf8');
 assert(firestoreRules.includes('match /curriculum_sources/{sourceId}'), 'firestore.rules must secure curriculum_sources collection');
 assert(firestoreRules.includes('isOwner(studentId)'), 'firestore.rules must enforce student data privacy');
+assert(firestoreRules.includes('match /curriculum_drafts/{draftId}'), 'firestore.rules must isolate curriculum_drafts');
+assert(firestoreRules.includes('function isTeacherOrAdmin()'), 'firestore.rules must define isTeacherOrAdmin function');
+
+// 12. No Obsolete Grade References in Active Routes
+const routesCode = fs.readFileSync(path.resolve('src/routes.ts'), 'utf8');
+assert(!routesCode.includes('first-intermediate') && !routesCode.includes('second-intermediate'), 'routes.ts must not reference obsolete grades');
+const appCode = fs.readFileSync(path.resolve('src/App.tsx'), 'utf8');
+assert(!appCode.includes('first-intermediate') && !appCode.includes('second-intermediate'), 'App.tsx must not reference obsolete grades');
+
+// 13. No Legacy Cross-Grade Lesson Lookup Fallback in App.tsx
+assert(!appCode.includes('for (const otherGrade of ORDERED_GRADES)'), 'App.tsx must eliminate cross-grade lookup fallback');
+
+// 14. Global Cross-Grade Lesson ID Uniqueness
+const allLessonIds = new Map<string, string>();
+ORDERED_GRADES.forEach(g => {
+  const units = getUnitsForGrade(g);
+  units.forEach(u => {
+    u.lessons.forEach(l => {
+      assert(!allLessonIds.has(l.id), `Lesson ID collision across grades: ${l.id} exists in ${allLessonIds.get(l.id)} and ${g}`);
+      allLessonIds.set(l.id, g);
+    });
+  });
+});
+
+// 15. Independent Resume State Map Validation
+const storageCode = fs.readFileSync(path.resolve('src/utils/storage.ts'), 'utf8');
+assert(storageCode.includes('gradeLastVisitedLessonMap'), 'storage.ts must initialize gradeLastVisitedLessonMap');
+const authContextCode = fs.readFileSync(path.resolve('src/context/AuthContext.tsx'), 'utf8');
+assert(authContextCode.includes('gradeLastVisitedLessonMap'), 'AuthContext.tsx must synchronize gradeLastVisitedLessonMap');
+
+// 16. Production Asset Availability Check
+const requiredPublicAssets = [
+  'public/assets/images/grade_3rd_intermediate_3d_1793868636685.jpg',
+  'public/assets/images/grade_4th_preparatory_3d_1793868637872.jpg',
+  'public/assets/images/grade_5th_preparatory_3d_1793868637510.jpg',
+  'public/assets/images/grade_6th_preparatory_3d_1793868638311.jpg',
+];
+requiredPublicAssets.forEach(p => {
+  assert(fs.existsSync(path.resolve(p)), `Production asset must exist: ${p}`);
+});
+
+// 17. Complete Document Processing & Chunking Verification
+assert(serverCode.includes('chunkDocumentByPages'), 'server.ts must implement chunkDocumentByPages');
+assert(serverCode.includes('SlidingWindowRateLimiter'), 'server.ts must implement SlidingWindowRateLimiter');
+assert(serverCode.includes('requireAdminOrTeacher'), 'server.ts must enforce requireAdminOrTeacher');
 
 console.log('--------------------------------------------------------');
 console.log(`Results: ${passed} assertions passed, ${failed} failed.`);

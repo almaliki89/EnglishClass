@@ -23,18 +23,62 @@ service cloud.firestore {
       return isAuthenticated() && isValidId(studentId) && (request.auth.uid == studentId);
     }
 
-    // Student profile, settings and overall progress (strict owner-only privacy)
+    // Trusted Admin/Teacher Check via explicit admin document existence or verified claims
+    function isAdmin() {
+      return isAuthenticated() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        request.auth.token.admin == true ||
+        request.auth.token.role == 'admin' ||
+        (request.auth.token.email_verified == true && request.auth.token.email in ['alnukhbazubair@gmail.com', 'admin@almaliki.edu.iq'])
+      );
+    }
+
+    function isTeacherOrAdmin() {
+      return isAuthenticated() && (
+        isAdmin() ||
+        exists(/databases/$(database)/documents/teachers/$(request.auth.uid)) ||
+        request.auth.token.role == 'teacher'
+      );
+    }
+
+    // Student profile field-level validator for create & update
+    function isValidStudent(data) {
+      return data.uid is string && data.uid == request.auth.uid &&
+             data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
+             (!('email' in data) || data.email is string) &&
+             (!('xp' in data) || (data.xp is number && data.xp >= 0 && data.xp <= 1000000)) &&
+             (!('selectedGrade' in data) || (data.selectedGrade in ['third-intermediate', 'fourth-preparatory', 'fifth-preparatory', 'sixth-preparatory'])) &&
+             (!('completedLessonIds' in data) || (data.completedLessonIds is list && data.completedLessonIds.size() <= 500)) &&
+             (!('bookmarkedQuestionIds' in data) || (data.bookmarkedQuestionIds is list && data.bookmarkedQuestionIds.size() <= 500)) &&
+             (!('totalQuestionsAttempted' in data) || (data.totalQuestionsAttempted is number && data.totalQuestionsAttempted >= 0)) &&
+             (!('totalQuestionsCorrect' in data) || (data.totalQuestionsCorrect is number && data.totalQuestionsCorrect >= 0)) &&
+             (!('streakDays' in data) || (data.streakDays is number && data.streakDays >= 0 && data.streakDays <= 3650)) &&
+             (!('unlockedBadges' in data) || (data.unlockedBadges is list && data.unlockedBadges.size() <= 100)) &&
+             (!('role' in data) || isAdmin()) &&
+             (!('isAdmin' in data) || isAdmin()) &&
+             (!('verificationStatus' in data) || isAdmin());
+    }
+
+    // Student profile, settings and overall progress (strict owner-only privacy & validation)
     match /students/{studentId} {
-      allow read: if isOwner(studentId);
-      allow create: if isOwner(studentId) && request.resource.data.uid == request.auth.uid;
-      allow update: if isOwner(studentId) && request.resource.data.uid == request.auth.uid;
-      allow delete: if false;
+      allow read: if isOwner(studentId) || isAdmin();
+      allow create: if isOwner(studentId) && isValidStudent(request.resource.data);
+      allow update: if isOwner(studentId) && isValidStudent(request.resource.data) &&
+                      request.resource.data.uid == resource.data.uid &&
+                      // Prevent unauthorized client manipulation of administrative fields
+                      (!('role' in request.resource.data) || ('role' in resource.data && request.resource.data.role == resource.data.role)) &&
+                      (!('isAdmin' in request.resource.data) || ('isAdmin' in resource.data && request.resource.data.isAdmin == resource.data.isAdmin));
+      allow delete: if isAdmin();
 
       // Student sub-collections: exam results
       match /exam_results/{resultId} {
-        allow read: if isOwner(studentId);
-        allow create, update: if isOwner(studentId) && isValidId(resultId);
-        allow delete: if false;
+        allow read: if isOwner(studentId) || isAdmin();
+        allow create, update: if isOwner(studentId) && isValidId(resultId) &&
+                                request.resource.data.score is number &&
+                                request.resource.data.percentage is number &&
+                                request.resource.data.percentage >= 0 &&
+                                request.resource.data.percentage <= 100;
+        allow delete: if isAdmin();
       }
 
       // Student sub-collections: notes
@@ -50,27 +94,39 @@ service cloud.firestore {
       }
     }
 
+    // Admin directory (admin write only)
+    match /admins/{adminId} {
+      allow read: if isAuthenticated() && isValidId(adminId);
+      allow write: if isAdmin() && isValidId(adminId);
+    }
+
+    // Teacher directory (admin write only)
+    match /teachers/{teacherId} {
+      allow read: if isAuthenticated() && isValidId(teacherId);
+      allow write: if isAdmin() && isValidId(teacherId);
+    }
+
     // Global leaderboards / public statistics (read-only for clients, writes secured)
     match /leaderboard/{entry} {
       allow read: if true;
-      allow write: if false;
+      allow write: if isAdmin();
     }
 
     // Shared curriculum or malzama drafts (read-only for clients, writes secured)
     match /curriculum_shared/{docId} {
       allow read: if true;
-      allow write: if false;
+      allow write: if isAdmin();
     }
 
-    // Published official curriculum sources (public read for students, supervisor-only write)
+    // Published official curriculum sources (public read for students, supervisor/admin-only write)
     match /curriculum_sources/{sourceId} {
       allow read: if isValidId(sourceId);
-      allow write: if isAuthenticated() && isValidId(sourceId) && (request.auth.token.role == 'admin' || request.auth.token.role == 'teacher' || request.auth.token.email.matches('.*@(admin|edu|almaliki)\\..*'));
+      allow write: if isTeacherOrAdmin() && isValidId(sourceId);
     }
 
-    // Curriculum drafts under supervisor review
+    // Curriculum drafts under supervisor review (strictly restricted to authorized teachers & admins)
     match /curriculum_drafts/{draftId} {
-      allow read, write: if isAuthenticated() && isValidId(draftId);
+      allow read, write: if isTeacherOrAdmin() && isValidId(draftId);
     }
   }
 }

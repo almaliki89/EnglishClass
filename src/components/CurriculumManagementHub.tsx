@@ -13,6 +13,7 @@ import {
   VerificationStatus 
 } from '../types/curriculumManagement';
 import { ALL_GRADES_META, ORDERED_GRADES } from '../data/gradeContentResolver';
+import { getAuthHeaders } from '../utils/apiAuth';
 
 interface CurriculumManagementHubProps {
   initialGrade?: EducationalGrade;
@@ -143,9 +144,10 @@ export const CurriculumManagementHub: React.FC<CurriculumManagementHubProps> = (
       setUploadLifecycleStatus('processing');
       setUploadStatusMessage('جارٍ استخراج صفحات الكتاب والتحقق من التوقيع الرقمي...');
 
+      const authHeaders = await getAuthHeaders({ asAdmin: true });
       const response = await fetch('/api/curriculum/sources/upload', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders,
         body: JSON.stringify({
           base64Data,
           rawText: uploadMode === 'text' ? pastedText : undefined,
@@ -203,9 +205,10 @@ export const CurriculumManagementHub: React.FC<CurriculumManagementHubProps> = (
   const handlePublishSource = async (sourceId: string) => {
     setIsReviewing(true);
     try {
+      const authHeaders = await getAuthHeaders({ asAdmin: true });
       const res = await fetch(`/api/curriculum/sources/${sourceId}/publish`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' }
+        headers: authHeaders
       });
       if (res.ok) {
         const data = await res.json();
@@ -219,6 +222,27 @@ export const CurriculumManagementHub: React.FC<CurriculumManagementHubProps> = (
       console.error("Failed to publish source:", e);
     } finally {
       setIsReviewing(false);
+    }
+  };
+
+  // Human-in-the-loop: Delete Source
+  const handleDeleteSource = async (sourceId: string) => {
+    if (!window.confirm('هل أنت متأكد من حذف هذا المصدر التعليمي نهائياً؟')) return;
+    try {
+      const authHeaders = await getAuthHeaders({ asAdmin: true });
+      const res = await fetch(`/api/curriculum/sources/${sourceId}`, {
+        method: 'DELETE',
+        headers: authHeaders
+      });
+      if (res.ok) {
+        setUploadSuccess('تم حذف المصدر التعليمي بنجاح.');
+        await fetchSources();
+        if (selectedSource?.id === sourceId) {
+          setSelectedSource(null);
+        }
+      }
+    } catch (e) {
+      console.error("Failed to delete source:", e);
     }
   };
 
@@ -601,21 +625,34 @@ export const CurriculumManagementHub: React.FC<CurriculumManagementHubProps> = (
                         </div>
                       </div>
 
-                      {/* Publish / Review action button */}
-                      {!isPublished && !isNeedsOcr && (
+                      <div className="flex items-center gap-1.5 shrink-0">
+                        {/* Publish / Review action button */}
+                        {!isPublished && !isNeedsOcr && (
+                          <button
+                            type="button"
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handlePublishSource(source.id);
+                            }}
+                            disabled={isReviewing}
+                            className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs flex items-center gap-1.5 shadow-xs cursor-pointer"
+                          >
+                            <Check className="w-3.5 h-3.5" />
+                            <span>اعتماد ونشر</span>
+                          </button>
+                        )}
                         <button
                           type="button"
                           onClick={(e) => {
                             e.stopPropagation();
-                            handlePublishSource(source.id);
+                            handleDeleteSource(source.id);
                           }}
-                          disabled={isReviewing}
-                          className="px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-black text-xs shrink-0 flex items-center gap-1.5 shadow-xs cursor-pointer"
+                          className="p-1.5 rounded-xl text-slate-400 hover:text-rose-600 hover:bg-rose-50 dark:hover:bg-rose-950/40 transition-colors cursor-pointer"
+                          title="حذف المصدر"
                         >
-                          <Check className="w-3.5 h-3.5" />
-                          <span>اعتماد ونشر</span>
+                          <Trash2 className="w-4 h-4" />
                         </button>
-                      )}
+                      </div>
                     </div>
                   </div>
                 );

@@ -5,6 +5,7 @@ import {
   ExtractedVocabDraft, 
   ExtractedQuestionDraft 
 } from '../types/ai';
+import { getAuthHeaders } from '../utils/apiAuth';
 
 export class CurriculumAnalyzer {
   /**
@@ -57,11 +58,12 @@ export class CurriculumAnalyzer {
     } | null = null;
 
     try {
+      const authHeaders = await getAuthHeaders();
       const response = await fetch('/api/ai/analyze-curriculum', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders,
         body: JSON.stringify({
-          text: trimmed.slice(0, 12000), // Bounded input max 12,000 chars
+          text: trimmed, // Full document processing through server-side page-aware chunking
           fileName,
           grade: 'السادس الإعدادي والثالث المتوسط',
           subject: 'اللغة الإنكليزية'

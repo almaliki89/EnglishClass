@@ -21,25 +21,25 @@ const GRADE_VISUALS: Record<EducationalGrade, { emoji: string; accentBg: string;
     emoji: '🏆', 
     accentBg: 'bg-[#F2A18E]', 
     tag: 'وزاري معتمد 100%',
-    image3d: '/src/assets/images/grade_3rd_intermediate_3d_1793868636685.jpg'
+    image3d: '/assets/images/grade_3rd_intermediate_3d_1793868636685.jpg'
   },
   'fourth-preparatory': { 
     emoji: '🚀', 
     accentBg: 'bg-[#DCD8FA]', 
     tag: 'المرحلة الإعدادية',
-    image3d: '/src/assets/images/grade_4th_preparatory_3d_1793868637872.jpg'
+    image3d: '/assets/images/grade_4th_preparatory_3d_1793868637872.jpg'
   },
   'fifth-preparatory': { 
     emoji: '💎', 
     accentBg: 'bg-[#F3E6A5]', 
     tag: 'الإعدادي المتقدم',
-    image3d: '/src/assets/images/grade_5th_preparatory_3d_1793868637510.jpg'
+    image3d: '/assets/images/grade_5th_preparatory_3d_1793868637510.jpg'
   },
   'sixth-preparatory': { 
     emoji: '👑', 
     accentBg: 'bg-[#405DE6]', 
     tag: 'البكالوريا الوزارية 100%',
-    image3d: '/src/assets/images/grade_6th_preparatory_3d_1793868638311.jpg'
+    image3d: '/assets/images/grade_6th_preparatory_3d_1793868638311.jpg'
   },
 };
 
