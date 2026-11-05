@@ -194,6 +194,11 @@ assert(serverCode.includes('chunkDocumentByPages'), 'server.ts must implement ch
 assert(serverCode.includes('SlidingWindowRateLimiter'), 'server.ts must implement SlidingWindowRateLimiter');
 assert(serverCode.includes('requireAdminOrTeacher'), 'server.ts must enforce requireAdminOrTeacher');
 
+// 18. Cryptographic Firebase Token Verification & DTO Sanitization
+assert(serverCode.includes('verifyIdToken(token, true)'), 'server.ts must verify ID tokens cryptographically with checkRevoked=true');
+assert(serverCode.includes('sanitizePublicSourceDTO'), 'server.ts must sanitize public DTOs');
+assert(serverCode.includes('/api/curriculum/sources/admin/all'), 'server.ts must provide secured admin sources endpoint');
+
 console.log('--------------------------------------------------------');
 console.log(`Results: ${passed} assertions passed, ${failed} failed.`);
 console.log('========================================================');

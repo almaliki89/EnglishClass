@@ -63,7 +63,10 @@ export const CurriculumManagementHub: React.FC<CurriculumManagementHubProps> = (
   const fetchSources = async () => {
     setIsLoading(true);
     try {
-      const res = await fetch(`/api/curriculum/sources?gradeId=${selectedGrade}`);
+      const authHeaders = await getAuthHeaders({ asAdmin: true });
+      const res = await fetch(`/api/curriculum/sources/admin/all?gradeId=${selectedGrade}`, {
+        headers: authHeaders
+      });
       if (res.ok) {
         const data = await res.json();
         setSources(data.sources || []);

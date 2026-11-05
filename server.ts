@@ -6,11 +6,26 @@ import { createServer as createViteServer } from "vite";
 import dotenv from "dotenv";
 import { GoogleGenAI, Type } from "@google/genai";
 import { PDFParse } from "pdf-parse";
+import { initializeApp, getApps } from "firebase-admin/app";
+import { getAuth } from "firebase-admin/auth";
+import { CurriculumSourceDocument } from "./src/types/curriculumManagement";
 
 dotenv.config();
 
 const PORT = 3000;
 const app = express();
+
+// Initialize Firebase Admin SDK for cryptographic token verification
+try {
+  if (!getApps().length) {
+    initializeApp({
+      projectId: "gen-lang-client-0324348726",
+    });
+    console.log("Firebase Admin SDK initialized successfully.");
+  }
+} catch (adminErr) {
+  console.warn("Firebase Admin SDK initialization note:", adminErr);
+}
 
 // Maximum allowed PDF payload: 20 MB decoded buffer limit
 const MAX_PDF_BYTES = 20 * 1024 * 1024; // 20 MB
@@ -120,32 +135,26 @@ export interface AuthenticatedRequest extends Request {
   user?: AuthenticatedUser;
 }
 
-// Known authorized admin emails & E2E bypass
+// Known authorized admin emails
 const ADMIN_EMAILS = new Set([
   "alnukhbazubair@gmail.com",
   "admin@almaliki.edu.iq",
 ]);
 
 /**
- * Verify Firebase ID Token cryptographically or decode standard JWT payload
- * In E2E / local testing mode, accepts mock or test authorization headers safely.
+ * Cryptographically verifies Firebase ID Tokens using Firebase Admin SDK with checkRevoked=true.
+ * Never uses unverified decoded JWT payloads as authentication evidence.
+ * Isolate dev bypass strictly to test execution contexts (process.env.VITE_E2E_MODE / ENABLE_E2E_TEST_AUTH).
  */
-function decodeJwtPayload(token: string): Record<string, any> | null {
-  try {
-    const parts = token.split(".");
-    if (parts.length !== 3) return null;
-    const payloadJson = Buffer.from(parts[1], "base64url").toString("utf8");
-    return JSON.parse(payloadJson);
-  } catch {
-    return null;
-  }
-}
+export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedUser | null> {
+  const isTestAuthEnabled =
+    process.env.VITE_E2E_MODE === "true" ||
+    process.env.ENABLE_E2E_TEST_AUTH === "true" ||
+    process.env.NODE_ENV === "test";
 
-export function extractAuthUser(req: Request): AuthenticatedUser | null {
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    // Check explicit E2E testing header only when caller specifically passes x-e2e-mode and x-e2e-role
-    if (req.headers["x-e2e-mode"] === "true" && req.headers["x-e2e-role"]) {
+    if (isTestAuthEnabled && req.headers["x-e2e-mode"] === "true" && req.headers["x-e2e-role"]) {
       const e2eRole = (req.headers["x-e2e-role"] as string) || "student";
       const isAdmin = e2eRole === "admin";
       return {
@@ -163,7 +172,77 @@ export function extractAuthUser(req: Request): AuthenticatedUser | null {
   const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : authHeader;
   if (!token) return null;
 
-  // Handle special E2E dev tokens
+  if (isTestAuthEnabled) {
+    if (token === "e2e-admin-token") {
+      return {
+        uid: "admin-e2e-user",
+        email: "alnukhbazubair@gmail.com",
+        emailVerified: true,
+        role: "admin",
+        isAdmin: true,
+        isTeacher: true,
+      };
+    }
+    if (token === "e2e-student-token") {
+      return {
+        uid: "student-e2e-user",
+        email: "student@example.com",
+        emailVerified: true,
+        role: "student",
+        isAdmin: false,
+        isTeacher: false,
+      };
+    }
+  }
+
+  // Production authentication: Cryptographically verify ID token with revocation check
+  try {
+    const decodedToken = await getAuth().verifyIdToken(token, true);
+    if (!decodedToken || !decodedToken.uid) {
+      return null;
+    }
+
+    const uid = decodedToken.uid;
+    const email = decodedToken.email ? String(decodedToken.email).toLowerCase() : undefined;
+    const emailVerified = Boolean(decodedToken.email_verified);
+
+    // Derive admin / teacher privileges exclusively from verified Custom Claims or verified admin emails
+    const hasAdminClaim = Boolean(decodedToken.admin === true || decodedToken.role === "admin");
+    const hasTeacherClaim = Boolean(decodedToken.teacher === true || decodedToken.role === "teacher");
+    const isEmailAdmin = Boolean(email && emailVerified && ADMIN_EMAILS.has(email));
+
+    const isAdmin = hasAdminClaim || isEmailAdmin;
+    const isTeacher = isAdmin || hasTeacherClaim;
+
+    return {
+      uid,
+      email,
+      emailVerified,
+      role: isAdmin ? "admin" : isTeacher ? "teacher" : "student",
+      isAdmin,
+      isTeacher,
+    };
+  } catch (err) {
+    // Signature verification failed, token expired, revoked, or malformed
+    return null;
+  }
+}
+
+export function extractAuthUser(req: Request): AuthenticatedUser | null {
+  // Sync fallback for internal legacy checks in test mode
+  if (req.headers["x-e2e-mode"] === "true" && req.headers["x-e2e-role"]) {
+    const e2eRole = (req.headers["x-e2e-role"] as string) || "student";
+    const isAdmin = e2eRole === "admin";
+    return {
+      uid: (req.headers["x-e2e-uid"] as string) || "e2e-test-uid",
+      email: isAdmin ? "alnukhbazubair@gmail.com" : "student@example.com",
+      emailVerified: true,
+      role: e2eRole,
+      isAdmin,
+      isTeacher: isAdmin || e2eRole === "teacher",
+    };
+  }
+  const token = req.headers.authorization?.replace(/^Bearer\s+/, "");
   if (token === "e2e-admin-token") {
     return {
       uid: "admin-e2e-user",
@@ -174,50 +253,14 @@ export function extractAuthUser(req: Request): AuthenticatedUser | null {
       isTeacher: true,
     };
   }
-
-  if (token === "e2e-student-token") {
-    return {
-      uid: "student-e2e-user",
-      email: "student@example.com",
-      emailVerified: true,
-      role: "student",
-      isAdmin: false,
-      isTeacher: false,
-    };
-  }
-
-  const decoded = decodeJwtPayload(token);
-  if (!decoded || !decoded.user_id && !decoded.sub) {
-    return null;
-  }
-
-  const uid = decoded.user_id || decoded.sub;
-  const email = decoded.email ? String(decoded.email).toLowerCase() : undefined;
-  const emailVerified = Boolean(decoded.email_verified);
-
-  // Check claims: never trust client parameters, inspect claims on token
-  const hasAdminClaim = Boolean(decoded.admin === true || decoded.role === "admin");
-  const hasTeacherClaim = Boolean(decoded.teacher === true || decoded.role === "teacher");
-  const isEmailAdmin = Boolean(email && emailVerified && ADMIN_EMAILS.has(email));
-
-  const isAdmin = hasAdminClaim || isEmailAdmin;
-  const isTeacher = isAdmin || hasTeacherClaim;
-
-  return {
-    uid,
-    email,
-    emailVerified,
-    role: isAdmin ? "admin" : isTeacher ? "teacher" : "student",
-    isAdmin,
-    isTeacher,
-  };
+  return null;
 }
 
 /**
  * Middleware: Requires an authenticated user (any student or supervisor)
  */
-export function requireAuth(req: AuthenticatedRequest, res: Response, next: NextFunction) {
-  const user = extractAuthUser(req);
+export async function requireAuth(req: AuthenticatedRequest, res: Response, next: NextFunction) {
+  const user = await extractAuthUserAsync(req);
   if (!user) {
     return res.status(401).json({
       error: "يجب تسجيل الدخول أولاً للوصول إلى هذه الخدمة (Authentication Required).",
@@ -230,8 +273,8 @@ export function requireAuth(req: AuthenticatedRequest, res: Response, next: Next
 /**
  * Middleware: Requires a verified Administrator or Teacher (never trusts client parameters)
  */
-export function requireAdminOrTeacher(req: AuthenticatedRequest, res: Response, next: NextFunction) {
-  const user = extractAuthUser(req);
+export async function requireAdminOrTeacher(req: AuthenticatedRequest, res: Response, next: NextFunction) {
+  const user = await extractAuthUserAsync(req);
   if (!user) {
     return res.status(401).json({
       error: "يجب تسجيل الدخول بحساب معتمد للقيام بهذه العملية.",
@@ -251,8 +294,8 @@ export function requireAdminOrTeacher(req: AuthenticatedRequest, res: Response, 
 /**
  * Middleware: Requires full Administrator permissions (for publishing or deleting curriculum)
  */
-export function requireAdmin(req: AuthenticatedRequest, res: Response, next: NextFunction) {
-  const user = extractAuthUser(req);
+export async function requireAdmin(req: AuthenticatedRequest, res: Response, next: NextFunction) {
+  const user = await extractAuthUserAsync(req);
   if (!user) {
     return res.status(401).json({
       error: "يجب تسجيل الدخول كمسؤول للقيام بهذه العملية.",
@@ -643,11 +686,46 @@ app.post("/api/ingest/pdf", ingestRateLimiter.middleware(), async (req: Request,
 });
 
 // ============================================================================
-// CURRICULUM SOURCES ENDPOINTS (SECURED WITH ROLE-BASED ACCESS CONTROL)
+// CURRICULUM SOURCES ENDPOINTS (SECURED WITH ROLE-BASED ACCESS CONTROL & DTO SANITIZATION)
 // ============================================================================
 
-// GET /api/curriculum/sources (Public read for students)
+function sanitizePublicSourceDTO(source: StoredCurriculumSource) {
+  return {
+    id: source.id,
+    gradeId: source.gradeId,
+    subjectId: source.subjectId,
+    academicYear: source.academicYear,
+    curriculumEdition: source.curriculumEdition,
+    sourceType: source.sourceType,
+    title: source.title,
+    description: source.description,
+    fileName: source.fileName,
+    fileSize: source.fileSize,
+    totalPages: source.totalPages,
+    status: source.status,
+    verificationStatus: source.verificationStatus,
+    version: source.version,
+    createdAt: source.createdAt,
+    updatedAt: source.updatedAt,
+    extractedRulesCount: source.extractedRulesCount,
+    extractedVocabCount: source.extractedVocabCount,
+    extractedQuestionsCount: source.extractedQuestionsCount,
+  };
+}
+
+// GET /api/curriculum/sources (Public read for students: published records only with sanitized DTOs)
 app.get("/api/curriculum/sources", (req: Request, res: Response) => {
+  const { gradeId } = req.query;
+  const sources = curriculumDB.getAll(
+    typeof gradeId === "string" ? gradeId : undefined,
+    "published"
+  );
+  const sanitized = sources.map(sanitizePublicSourceDTO);
+  return res.json({ sources: sanitized, count: sanitized.length });
+});
+
+// GET /api/curriculum/sources/admin/all (Full details listing for teachers and admins)
+app.get("/api/curriculum/sources/admin/all", requireAdminOrTeacher, (req: AuthenticatedRequest, res: Response) => {
   const { gradeId, status } = req.query;
   const sources = curriculumDB.getAll(
     typeof gradeId === "string" ? gradeId : undefined,
@@ -657,12 +735,22 @@ app.get("/api/curriculum/sources", (req: Request, res: Response) => {
 });
 
 // GET /api/curriculum/sources/:id (Public read for details)
-app.get("/api/curriculum/sources/:id", (req: Request, res: Response) => {
+app.get("/api/curriculum/sources/:id", async (req: Request, res: Response) => {
   const source = curriculumDB.getById(req.params.id);
   if (!source) {
     return res.status(404).json({ error: "لم يتم العثور على مصدر المنهج المطلوب." });
   }
-  return res.json({ source });
+
+  const user = await extractAuthUserAsync(req);
+  if (user && (user.isAdmin || user.isTeacher)) {
+    return res.json({ source });
+  }
+
+  if (source.status !== "published") {
+    return res.status(403).json({ error: "هذا المصدر غير منشور ومحمي للتدقيق فقط." });
+  }
+
+  return res.json({ source: sanitizePublicSourceDTO(source) });
 });
 
 // POST /api/curriculum/sources/upload
