@@ -174,8 +174,14 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
   });
 
   test('7. Curriculum persistence across server operations', async ({ request }) => {
-    // Fetch all sources for sixth-preparatory
-    const listRes = await request.get('/api/curriculum/sources?gradeId=sixth-preparatory');
+    // Fetch all sources for sixth-preparatory from admin endpoint
+    const listRes = await request.get('/api/curriculum/sources/admin/all?gradeId=sixth-preparatory', {
+      headers: {
+        Authorization: 'Bearer e2e-admin-token',
+        'x-e2e-mode': 'true',
+        'x-e2e-role': 'admin',
+      },
+    });
     expect(listRes.status()).toBe(200);
     const data = await listRes.json();
     expect(Array.isArray(data.sources)).toBe(true);
@@ -184,7 +190,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     const found = data.sources.find((s: any) => s.title === 'E2E Test Iraqi Heritage Source');
     expect(found).toBeDefined();
     expect(found.fileSha256).toBeDefined();
-    expect(found.status).toBe('structured');
+    expect(found.status).toBe('pending_review');
   });
 
 });

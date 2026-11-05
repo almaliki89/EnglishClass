@@ -144,17 +144,14 @@ const ADMIN_EMAILS = new Set([
 /**
  * Cryptographically verifies Firebase ID Tokens using Firebase Admin SDK with checkRevoked=true.
  * Never uses unverified decoded JWT payloads as authentication evidence.
- * Isolate dev bypass strictly to test execution contexts (process.env.VITE_E2E_MODE / ENABLE_E2E_TEST_AUTH).
+ * Test authentication bypass is strictly enabled ONLY when process.env.NODE_ENV === "test".
  */
 export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedUser | null> {
-  const isTestAuthEnabled =
-    process.env.VITE_E2E_MODE === "true" ||
-    process.env.ENABLE_E2E_TEST_AUTH === "true" ||
-    process.env.NODE_ENV === "test";
+  const isTestMode = process.env.NODE_ENV === "test";
 
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    if (isTestAuthEnabled && req.headers["x-e2e-mode"] === "true" && req.headers["x-e2e-role"]) {
+    if (isTestMode && req.headers["x-e2e-mode"] === "true" && req.headers["x-e2e-role"]) {
       const e2eRole = (req.headers["x-e2e-role"] as string) || "student";
       const isAdmin = e2eRole === "admin";
       return {
@@ -172,7 +169,7 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
   const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : authHeader;
   if (!token) return null;
 
-  if (isTestAuthEnabled) {
+  if (isTestMode) {
     if (token === "e2e-admin-token") {
       return {
         uid: "admin-e2e-user",
@@ -229,8 +226,7 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
 }
 
 export function extractAuthUser(req: Request): AuthenticatedUser | null {
-  // Sync fallback for internal legacy checks in test mode
-  if (req.headers["x-e2e-mode"] === "true" && req.headers["x-e2e-role"]) {
+  if (process.env.NODE_ENV === "test" && req.headers["x-e2e-mode"] === "true" && req.headers["x-e2e-role"]) {
     const e2eRole = (req.headers["x-e2e-role"] as string) || "student";
     const isAdmin = e2eRole === "admin";
     return {
@@ -240,17 +236,6 @@ export function extractAuthUser(req: Request): AuthenticatedUser | null {
       role: e2eRole,
       isAdmin,
       isTeacher: isAdmin || e2eRole === "teacher",
-    };
-  }
-  const token = req.headers.authorization?.replace(/^Bearer\s+/, "");
-  if (token === "e2e-admin-token") {
-    return {
-      uid: "admin-e2e-user",
-      email: "alnukhbazubair@gmail.com",
-      emailVerified: true,
-      role: "admin",
-      isAdmin: true,
-      isTeacher: true,
     };
   }
   return null;
@@ -900,9 +885,9 @@ app.post(
         extractedRules: [],
         extractedVocab: [],
         extractedQuestions: [],
-        extractedRulesCount: Math.min(25, Math.floor(totalChars / 400)),
-        extractedVocabCount: Math.min(50, Math.floor(totalChars / 250)),
-        extractedQuestionsCount: Math.min(20, Math.floor(totalChars / 600)),
+        extractedRulesCount: 0,
+        extractedVocabCount: 0,
+        extractedQuestionsCount: 0,
         version: 1,
         createdAt: new Date().toISOString(),
         updatedAt: new Date().toISOString(),
@@ -1062,7 +1047,7 @@ app.post(
 
       if (apiKey) {
         try {
-          for (let bIdx = 0; bIdx < Math.min(batches.length, 5); bIdx++) {
+          for (let bIdx = 0; bIdx < batches.length; bIdx++) {
             const batch = batches[bIdx];
             const delimitedDoc = wrapUntrustedDocument(batch.text);
 
