@@ -31,12 +31,6 @@ export async function getAuthHeaders(options: { asAdmin?: boolean } = {}): Promi
       if (token) {
         headers['Authorization'] = `Bearer ${token}`;
       }
-    } else {
-      // In development or preview mode, allow authorized admin header if admin mode set
-      const devAdmin = typeof window !== 'undefined' ? localStorage.getItem('almaliki_admin_mode') : null;
-      if (devAdmin === 'true') {
-        headers['Authorization'] = 'Bearer e2e-admin-token';
-      }
     }
   } catch (err) {
     console.warn('Could not retrieve Firebase auth token for API request:', err);

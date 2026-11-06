@@ -212,14 +212,10 @@ export interface AuthenticatedRequest extends Request {
  * Test authentication bypass is strictly enabled ONLY when process.env.NODE_ENV === "test".
  */
 export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedUser | null> {
-  // P0 REQUIREMENT: Test authentication bypass is strictly disabled in production.
+  // P0 REQUIREMENT: Test authentication bypass is strictly enabled ONLY when process.env.NODE_ENV === "test".
   // Never derive administrator privileges from request headers (e.g. x-e2e-role).
-  // Privileges are derived ONLY from cryptographically signed custom claims or fixed test bearer tokens in non-production test mode.
-  const isTestMode =
-    process.env.NODE_ENV !== "production" &&
-    (process.env.NODE_ENV === "test" ||
-      process.env.VITE_E2E_MODE === "true" ||
-      req.headers["x-e2e-mode"] === "true");
+  // Outside NODE_ENV=test, all requests cryptographically verify Firebase ID tokens via Admin SDK.
+  const isTestMode = process.env.NODE_ENV !== "production" && process.env.NODE_ENV === "test";
 
   const authHeader = req.headers.authorization;
   if (!authHeader) {
@@ -229,7 +225,7 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
   const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : authHeader;
   if (!token) return null;
 
-  // Dedicated test token verification in non-production test environments
+  // Dedicated test token verification strictly in non-production test environment (process.env.NODE_ENV === "test")
   if (isTestMode) {
     if (token === "e2e-admin-token") {
       return {
@@ -296,11 +292,7 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
 }
 
 export function extractAuthUser(req: Request): AuthenticatedUser | null {
-  const isTestMode =
-    process.env.NODE_ENV !== "production" &&
-    (process.env.NODE_ENV === "test" ||
-      process.env.VITE_E2E_MODE === "true" ||
-      req.headers["x-e2e-mode"] === "true");
+  const isTestMode = process.env.NODE_ENV !== "production" && process.env.NODE_ENV === "test";
 
   if (!isTestMode) {
     return null;
@@ -924,6 +916,7 @@ class CurriculumPersistenceManager {
     storageDeleted: boolean;
     firestoreDeleted: boolean;
     subcollectionsDeleted: number;
+    status: string;
     error?: string;
   }> {
     const existing = this.sources.get(id);
@@ -933,15 +926,23 @@ class CurriculumPersistenceManager {
         storageDeleted: false,
         firestoreDeleted: false,
         subcollectionsDeleted: 0,
+        status: "not_found",
         error: "NOT_FOUND",
       };
     }
 
+    // 1. Immediately mark source as deletion_pending to lock access
+    existing.status = "deletion_pending";
+    existing.updatedAt = new Date().toISOString();
+    this.sources.set(id, existing);
+    this.saveToDisk();
+
     let storageDeleted = false;
     let subcollectionsDeleted = 0;
     let firestoreDeleted = false;
+    const failedOps: string[] = [];
 
-    // 1. Delete original Storage PDF (both Cloud Storage and local storage)
+    // 2. Delete original Storage PDF (both Cloud Storage and local storage)
     const safeFileName = path.basename(existing.fileName || "curriculum_source.pdf").replace(/[^a-zA-Z0-9._\-]/g, "_");
     const localFilePath = path.join(LOCAL_STORAGE_DIR, `${id}_${safeFileName}`);
     if (fs.existsSync(localFilePath)) {
@@ -950,7 +951,10 @@ class CurriculumPersistenceManager {
         storageDeleted = true;
       } catch (err: any) {
         console.warn("Local storage file cleanup note:", err.message);
+        failedOps.push("local_storage");
       }
+    } else {
+      storageDeleted = true;
     }
 
     if (adminStorage) {
@@ -960,14 +964,15 @@ class CurriculumPersistenceManager {
         const [exists] = await file.exists();
         if (exists) {
           await file.delete();
-          storageDeleted = true;
         }
+        storageDeleted = true;
       } catch (err: any) {
         console.warn("Cloud Storage deletion note:", err.message);
+        failedOps.push("cloud_storage");
       }
     }
 
-    // 2. Delete Firestore root doc and all subcollections
+    // 3. Delete Firestore root doc and all subcollections
     if (adminFirestore) {
       try {
         const docRef = adminFirestore.collection("curriculum_sources").doc(id);
@@ -985,10 +990,29 @@ class CurriculumPersistenceManager {
         firestoreDeleted = true;
       } catch (err: any) {
         console.warn("Firestore collection deletion error:", err.message);
+        failedOps.push("cloud_firestore");
       }
+    } else {
+      firestoreDeleted = true;
     }
 
-    // 3. Remove from in-memory map and disk persistence
+    // If critical failure occurred during strict deletion, retain deletion_failed status
+    if (failedOps.length > 0 && (process.env.NODE_ENV === "production" || process.env.STRICT_DELETION === "true")) {
+      existing.status = "deletion_failed";
+      existing.updatedAt = new Date().toISOString();
+      this.sources.set(id, existing);
+      this.saveToDisk();
+      return {
+        success: false,
+        storageDeleted,
+        firestoreDeleted,
+        subcollectionsDeleted,
+        status: "deletion_failed",
+        error: `Deletion operations failed: ${failedOps.join(", ")}`,
+      };
+    }
+
+    // 4. Clean up in-memory map and disk persistence
     this.sources.delete(id);
     this.saveToDisk();
 
@@ -997,6 +1021,7 @@ class CurriculumPersistenceManager {
       storageDeleted,
       firestoreDeleted,
       subcollectionsDeleted,
+      status: "deleted",
     };
   }
 }
@@ -1431,6 +1456,10 @@ app.get(
         return res.status(404).json({ error: "مصدر المنهج غير موجود." });
       }
 
+      if (source.status === "deletion_pending" || source.status === "deletion_failed" || source.status === "deleted") {
+        return res.status(403).json({ error: "هذا المصدر غير متاح للتحميل لقيد الحذف أو كونه محذوفاً." });
+      }
+
       const safeName = path.basename(source.fileName || "curriculum.pdf").replace(/[^a-zA-Z0-9._\-]/g, "_");
       const localFilePath = path.join(LOCAL_STORAGE_DIR, `${source.id}_${safeName}`);
 
@@ -1575,19 +1604,28 @@ app.post(
 );
 
 // DELETE /api/curriculum/sources/:id
-// Requires verified Administrator
+// Requires verified Administrator - Idempotent, complete source deletion with failure recovery
 app.delete(
   "/api/curriculum/sources/:id",
   requireAdmin,
   async (req: AuthenticatedRequest, res: Response) => {
     try {
       const deleted = await curriculumDB.delete(req.params.id);
-      if (!deleted || !deleted.success) {
+      if (!deleted || (!deleted.success && deleted.status === "not_found")) {
         return res.status(404).json({ error: "المصدر المطلوب حذفه غير موجود." });
+      }
+      if (!deleted.success && deleted.status === "deletion_failed") {
+        return res.status(500).json({
+          error: "فشل استكمال حذف المصدر بالكامل من التخزين السحابي أو قاعدة البيانات.",
+          details: deleted,
+          status: "deletion_failed",
+          recoverableState: "deletion_failed",
+        });
       }
       return res.json({
         success: true,
         details: deleted,
+        status: "deleted",
         message: "تم حذف المصدر من قاعدة البيانات والتخزين بنجاح وكافة السجلات المرتبطة.",
       });
     } catch (e: any) {
