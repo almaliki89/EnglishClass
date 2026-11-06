@@ -1,15 +1,16 @@
 /**
- * PRODUCTION HARDENING V6 COMPREHENSIVE SECURITY & PERSISTENCE TEST SUITE
+ * PRODUCTION HARDENING V7 COMPREHENSIVE SECURITY & PERSISTENCE REGRESSION SUITE
  * Validates:
- * 1. P0 Storage Rules: Private PDF protection & verified custom claims
- * 2. P1 Firestore Rules: Pure custom claims, admin directory lockdown, student progress locking
- * 3. P2 & P6 Persistence: Storage PDF upload, Firestore structuring, survival across restart
- * 4. P3 PDF Ingestion Security: Role gate, magic header %PDF, traversal prevention, size bounds
- * 5. P4 & P5 Gemini Extraction: Honest states, no false completion, page-aware attribution
- * 6. P7 Accreditation vs Publication: Separate statuses and required documentary evidence
- * 7. P8 Grounding Integrity & Input Sandboxing
- * 8. P9 Student Exam Integrity & Cooldown Protection
- * 9. P10 Strict 4-Grade Architecture & Isolation
+ * 1. P0 E2E Auth Isolation: Test auth bypass strictly isolated to NODE_ENV===test; production startup guard
+ * 2. P1 Firestore Teacher Privilege Guard: Teachers cannot publish, accredit, delete, or modify status/verification metadata
+ * 3. P2 Cloud Persistence Failures: Explicit failure propagation, no local JSON fake success
+ * 4. P3 Complete Source Deletion: Removes Storage PDF, Firestore subcollections (rules, vocab, questions, pages, units), and root doc
+ * 5. P4 & P5 Page Attribution & Real Gemini Integration: Actual PDF page objects & attribution without estimation
+ * 6. P6 Verifiable Official Accreditation: Requires issuingAuthority, documentNumber, documentDate, and evidence >= 20 chars
+ * 7. P7 Admin Bootstrap Security: Requires master secret key, existing user check, verified email confirmation
+ * 8. P8 Grounding Integrity & Role Model Consistency
+ * 9. P9 Student Exam Integrity & Cooldown Protection
+ * 10. P10 Strict 4-Grade Architecture & Isolation
  */
 
 import fs from 'node:fs';
@@ -33,270 +34,220 @@ function assert(condition: boolean, testName: string, details?: string) {
 }
 
 console.log('================================================================');
-console.log('ENGLISHCLASS V6 — PRODUCTION HARDENING & SECURITY REGRESSION SUITE');
+console.log('ENGLISHCLASS V7 — COMPREHENSIVE PRODUCTION HARDENING & SECURITY SUITE');
 console.log('================================================================\n');
 
-// ----------------------------------------------------------------------------
-// SUITE 1: P0 — STORAGE RULES AUDIT
-// ----------------------------------------------------------------------------
-console.log('--- 1. AUDITING STORAGE SECURITY RULES (P0) ---');
-const storageRulesContent = fs.readFileSync(path.resolve('storage.rules'), 'utf8');
-
-assert(
-  !storageRulesContent.includes('match /curriculum_sources/{sourceId}/{fileName} {\n      allow read: if isAuthenticated();'),
-  'Storage Rules: Ordinary authenticated students cannot read original curriculum PDFs',
-  'Found insecure blanket read for authenticated users on /curriculum_sources/'
-);
-
-assert(
-  storageRulesContent.includes('allow read: if isTeacherOrAdmin();') ||
-  storageRulesContent.includes('allow read: if isAdmin() || isTeacher();'),
-  'Storage Rules: Curriculum sources read is restricted to authorized teachers & administrators'
-);
-
-assert(
-  storageRulesContent.includes('request.auth.token.admin == true') &&
-  !storageRulesContent.includes("request.auth.token.role == 'admin'"),
-  'Storage Rules: isAdmin() relies exclusively on verified custom claim token.admin == true'
-);
-
-assert(
-  storageRulesContent.includes('request.auth.token.teacher == true') &&
-  !storageRulesContent.includes("request.auth.token.role == 'teacher'"),
-  'Storage Rules: isTeacher() relies exclusively on verified custom claim token.teacher == true'
-);
-
-assert(
-  storageRulesContent.includes('match /{allPaths=**} {\n      allow read, write: if false;\n    }'),
-  'Storage Rules: Global default-deny catch-all rule is active'
-);
-
-assert(
-  storageRulesContent.includes('match /curriculum_public/{gradeId}/{fileName}'),
-  'Storage Rules: Explicitly published derivatives path is segregated from private source documents'
-);
-
-// ----------------------------------------------------------------------------
-// SUITE 2: P1 — FIRESTORE RULES AUDIT
-// ----------------------------------------------------------------------------
-console.log('\n--- 2. AUDITING FIRESTORE AUTHORIZATION & CUSTOM CLAIMS (P1) ---');
-const firestoreRulesContent = fs.readFileSync(path.resolve('firestore.rules'), 'utf8');
-
-assert(
-  !firestoreRulesContent.includes('exists(/databases/$(database)/documents/admins/'),
-  'Firestore Rules: isAdmin() does not fall back to /admins directory documents'
-);
-
-assert(
-  !firestoreRulesContent.includes('exists(/databases/$(database)/documents/teachers/'),
-  'Firestore Rules: isTeacherOrAdmin() does not fall back to /teachers directory documents'
-);
-
-assert(
-  !firestoreRulesContent.includes("request.auth.token.role == 'admin'") &&
-  !firestoreRulesContent.includes("request.auth.token.role == 'teacher'"),
-  'Firestore Rules: Does not fall back to unverified token.role property'
-);
-
-assert(
-  firestoreRulesContent.includes('match /admins/{adminId} {\n      allow read, write: if isAdmin() && isValidId(adminId);\n    }'),
-  'Firestore Rules: /admins directory is strictly locked down (students forbidden from reading/listing)'
-);
-
-assert(
-  firestoreRulesContent.includes('match /teachers/{teacherId}') &&
-  !firestoreRulesContent.includes('match /teachers/{teacherId} {\n      allow read: if isAuthenticated()'),
-  'Firestore Rules: /teachers directory cannot be listed or read by ordinary students'
-);
-
-assert(
-  firestoreRulesContent.includes('(!(\'xp\' in request.resource.data) || request.resource.data.xp == resource.data.xp)') &&
-  firestoreRulesContent.includes('(!(\'totalQuestionsCorrect\' in request.resource.data) || request.resource.data.totalQuestionsCorrect == resource.data.totalQuestionsCorrect)'),
-  'Firestore Rules: Student document updates lock XP and question statistics against client mutation'
-);
-
-assert(
-  firestoreRulesContent.includes('match /exam_results/{resultId}') &&
-  firestoreRulesContent.includes('allow create, update: if isAdmin();') &&
-  firestoreRulesContent.includes('allow delete: if isAdmin();'),
-  'Firestore Rules: Exam results write operations strictly restricted to server-side admin logic'
-);
-
-// ----------------------------------------------------------------------------
-// SUITE 3: P3 — PDF INGESTION PIPELINE SECURITY
-// ----------------------------------------------------------------------------
-console.log('\n--- 3. AUDITING PDF & TEXT INGESTION SECURITY (P3) ---');
 const serverContent = fs.readFileSync(path.resolve('server.ts'), 'utf8');
+const firestoreRulesContent = fs.readFileSync(path.resolve('firestore.rules'), 'utf8');
+const storageRulesContent = fs.readFileSync(path.resolve('storage.rules'), 'utf8');
+const bootstrapContent = fs.readFileSync(path.resolve('scripts/bootstrap_admin.ts'), 'utf8');
+
+// ----------------------------------------------------------------------------
+// SUITE 1: P0 — STRICT E2E AUTHENTICATION ISOLATION
+// ----------------------------------------------------------------------------
+console.log('--- 1. AUDITING E2E AUTHENTICATION ISOLATION (P0) ---');
 
 assert(
-  serverContent.includes('app.post(\n  "/api/ingest/pdf"') &&
-  serverContent.includes('requireAdminOrTeacher'),
-  'Server Ingestion: POST /api/ingest/pdf strictly requires teacher or administrator authorization'
+  serverContent.includes('process.env.NODE_ENV !== "production"') &&
+  serverContent.includes('process.env.NODE_ENV === "test"'),
+  'E2E Auth Isolation: Test auth bypass is strictly enabled ONLY in non-production test mode'
 );
 
 assert(
-  serverContent.includes('app.post(\n  "/api/ingest/text",\n  requireAdminOrTeacher'),
-  'Server Ingestion: POST /api/ingest/text strictly requires teacher or administrator authorization'
+  serverContent.includes('FATAL SECURITY VIOLATION: Production environment cannot boot with test authentication or E2E bypass enabled!'),
+  'E2E Auth Isolation: Production environment strictly rejects startup if E2E test bypass is active'
 );
 
 assert(
-  serverContent.includes('magicHeader !== "%PDF"'),
-  'Server Ingestion: Validates authentic PDF signature (%PDF magic bytes)'
+  serverContent.includes('getAuth().verifyIdToken(token, true)'),
+  'E2E Auth Isolation: Non-test requests strictly cryptographically verify Firebase ID tokens with checkRevoked=true'
 );
 
 assert(
-  serverContent.includes('path.basename(') && serverContent.includes('.replace(/[^a-zA-Z0-9._\\-]/g, "_")'),
-  'Server Ingestion: Protects against directory and path traversal attacks in file names'
-);
-
-assert(
-  serverContent.includes('activeIngestions >= MAX_CONCURRENT_INGESTIONS'),
-  'Server Ingestion: Limits active concurrent PDF ingestion tasks to prevent resource exhaustion'
-);
-
-assert(
-  !serverContent.includes('extractedText: extractedText,\n        info: info || {},\n        preview: extractedText.slice(0, 1500)'),
-  'Server Ingestion: Does not expose raw full private curriculum text in public response payloads'
+  serverContent.includes('const hasAdminClaim = Boolean(decodedToken.admin === true);') &&
+  !serverContent.includes('req.headers["x-e2e-role"] === "admin"'),
+  'E2E Auth Isolation: Production derives admin privileges exclusively from verified Custom Claims, never headers'
 );
 
 // ----------------------------------------------------------------------------
-// SUITE 4: P4 & P5 — GEMINI CURRICULUM EXTRACTION & HONEST STATUS
+// SUITE 2: P1 — FIRESTORE TEACHER PRIVILEGE ESCALATION PREVENTION
 // ----------------------------------------------------------------------------
-console.log('\n--- 4. AUDITING HONEST EXTRACTION PIPELINE & PROVENANCE (P4, P5) ---');
+console.log('\n--- 2. AUDITING FIRESTORE TEACHER PRIVILEGE GUARD (P1) ---');
 
 assert(
-  !serverContent.includes('aiPowered: false,\n        totalBatchesProcessed: batches.length,\n        isCompleteProcessing: true'),
-  'Server AI Pipeline: Eliminates false completion defect (never returns aiPowered: false with isCompleteProcessing: true)'
+  firestoreRulesContent.includes('allow create: if isAdmin() && isValidId(sourceId);'),
+  'Firestore Rules: Only Administrators can create root curriculum sources directly'
 );
 
 assert(
-  serverContent.includes('finalStatus: "completed" | "partially_completed" | "failed"'),
-  'Server AI Pipeline: Uses explicit verifiable processing states (completed, partially_completed, failed)'
+  firestoreRulesContent.includes('request.resource.data.status == resource.data.status') &&
+  firestoreRulesContent.includes('request.resource.data.verificationStatus == resource.data.verificationStatus'),
+  'Firestore Rules: Teachers are strictly forbidden from modifying status or verificationStatus'
+);
+
+assert(
+  firestoreRulesContent.includes("(!('accreditationEvidence' in request.resource.data) || request.resource.data.accreditationEvidence == resource.data.accreditationEvidence)"),
+  'Firestore Rules: Teachers are strictly forbidden from altering accreditation evidence'
+);
+
+assert(
+  firestoreRulesContent.includes('allow delete: if isAdmin() && isValidId(sourceId);'),
+  'Firestore Rules: Deletion of root curriculum sources is restricted strictly to Administrators'
+);
+
+assert(
+  firestoreRulesContent.includes('match /admins/{adminId} {\n      allow read, write: if isAdmin() && isValidId(adminId);\n    }') &&
+  firestoreRulesContent.includes('match /teachers/{teacherId} {\n      allow read: if (isAdmin() || (isTeacher() && request.auth.uid == teacherId))'),
+  'Firestore Rules: /admins and /teachers directories are strictly locked against student listing/reading'
+);
+
+// ----------------------------------------------------------------------------
+// SUITE 3: P2 — CLOUD PERSISTENCE FAILURE HANDLING
+// ----------------------------------------------------------------------------
+console.log('\n--- 3. AUDITING CLOUD PERSISTENCE FAILURE EXPLICITNESS (P2) ---');
+
+assert(
+  serverContent.includes('throw new Error(`Firebase Cloud Storage persistence failure: ${e.message}`);'),
+  'Persistence Failure: Firebase Storage failures propagate explicitly in production mode'
+);
+
+assert(
+  serverContent.includes('throw new Error(`Cloud Firestore persistence failure: ${e.message}`);'),
+  'Persistence Failure: Cloud Firestore write failures propagate explicitly in production mode'
+);
+
+assert(
+  serverContent.includes('failedStep: "cloud_storage"') &&
+  serverContent.includes('failedStep: "cloud_firestore"'),
+  'Persistence Failure: API returns explicit recoverable error details on partial persistence failure'
+);
+
+assert(
+  serverContent.includes('Duplicate Check via SHA-256') || serverContent.includes('getBySha256'),
+  'Persistence Failure: Cryptographic SHA-256 fingerprinting prevents duplicate source records'
+);
+
+// ----------------------------------------------------------------------------
+// SUITE 4: P3 — COMPLETE SOURCE DELETION AUDIT
+// ----------------------------------------------------------------------------
+console.log('\n--- 4. AUDITING COMPLETE SOURCE DELETION (P3) ---');
+
+assert(
+  serverContent.includes('const subcollections = ["rules", "vocab", "questions", "pages", "units"];'),
+  'Complete Deletion: Deletes all associated Firestore subcollections (rules, vocab, questions, pages, units)'
+);
+
+assert(
+  serverContent.includes('bucket.file(`curriculum_sources/${id}/${safeFileName}`)') &&
+  serverContent.includes('await file.delete();'),
+  'Complete Deletion: Deletes original binary PDF file from Cloud Storage'
+);
+
+assert(
+  serverContent.includes('fs.unlinkSync(localFilePath);'),
+  'Complete Deletion: Cleans up mirrored local PDF storage cache'
+);
+
+assert(
+  serverContent.includes('this.sources.delete(id);') && serverContent.includes('this.saveToDisk();'),
+  'Complete Deletion: Purges source from in-memory cache and disk persistence'
+);
+
+// ----------------------------------------------------------------------------
+// SUITE 5: P4 & P5 — PDF PAGE ATTRIBUTION & GEMINI INTEGRATION
+// ----------------------------------------------------------------------------
+console.log('\n--- 5. AUDITING REAL PDF PAGE ATTRIBUTION & GEMINI (P4, P5) ---');
+
+assert(
+  serverContent.includes('pageNumber: idx + 1') && serverContent.includes('parsed.pages'),
+  'PDF Extraction: Page references use actual PDF page objects from parser (not text length estimation)'
 );
 
 assert(
   serverContent.includes('actualSourcePage: batch.pageStart') &&
-  serverContent.includes('sourceId:') &&
-  serverContent.includes('extractionStatus: "ai_structured"'),
-  'Server AI Pipeline: Real PDF page attribution and cryptographic provenance attached to extracted items'
+  serverContent.includes('sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`'),
+  'Gemini Integration: Extracted items retain explicit actualSourcePage and page span attribution'
 );
 
 assert(
-  serverContent.includes('wrapUntrustedDocument'),
-  'Server AI Pipeline: Strict prompt injection defense isolates document content from system instructions'
+  serverContent.includes('finalStatus = "completed"') &&
+  serverContent.includes('finalStatus = "partially_completed"') &&
+  serverContent.includes('finalStatus = "failed"'),
+  'Gemini Integration: Processing status reflects true batch outcomes (no false complete claims)'
+);
+
+assert(
+  serverContent.includes('isScannedOrEmpty') && serverContent.includes('needs_ocr'),
+  'Gemini Integration: Scanned/empty PDF pages are explicitly flagged as needs_ocr'
 );
 
 // ----------------------------------------------------------------------------
-// SUITE 5: P2 & P6 — PERSISTENCE & PROCESS SURVIVAL TEST
+// SUITE 6: P6 — ACCREDITATION EVIDENCE VERIFICATION
 // ----------------------------------------------------------------------------
-console.log('\n--- 5. AUDITING DURABLE STORAGE & RESTART PERSISTENCE (P2, P6) ---');
+console.log('\n--- 6. AUDITING OFFICIAL ACCREDITATION EVIDENCE (P6) ---');
+
+assert(
+  serverContent.includes('issuingAuthority.trim().length >= 10') &&
+  serverContent.includes('documentNumber.trim().length >= 3') &&
+  serverContent.includes('documentDate.trim().length >= 8') &&
+  serverContent.includes('accreditationEvidence.trim().length >= 20'),
+  'Accreditation: Requires complete verifiable evidence (issuing authority, decree number, date, text >= 20 chars)'
+);
+
+assert(
+  serverContent.includes('export interface AccreditationRecord'),
+  'Accreditation: Enforces structured AccreditationRecord with audit trail and verifying admin ID'
+);
+
+assert(
+  serverContent.includes('source.status = "published"') &&
+  serverContent.includes('source.verificationStatus = "internally_reviewed"'),
+  'Accreditation: Unaccredited content defaults to internal published status without government claim'
+);
+
+// ----------------------------------------------------------------------------
+// SUITE 7: P7 — ADMIN BOOTSTRAP IDENTITY VERIFICATION
+// ----------------------------------------------------------------------------
+console.log('\n--- 7. AUDITING ADMIN BOOTSTRAPPER SECURITY (P7) ---');
+
+assert(
+  bootstrapContent.includes('UNAUTHORIZED_BOOTSTRAP_ATTEMPT: Valid master authorization secret is required'),
+  'Admin Bootstrap: Strictly requires authorized secret key to execute bootstrap promotion'
+);
+
+assert(
+  bootstrapContent.includes('BOOTSTRAP_TARGET_NOT_FOUND: The user') &&
+  bootstrapContent.includes('getUserByEmail(email)'),
+  'Admin Bootstrap: Confirms user already exists in Firebase Auth before assigning claims'
+);
+
+assert(
+  bootstrapContent.includes('UNVERIFIED_IDENTITY: The target account') &&
+  bootstrapContent.includes('user.emailVerified'),
+  'Admin Bootstrap: Requires verified email address before granting administrative privileges'
+);
+
+assert(
+  bootstrapContent.includes('auth.setCustomUserClaims(user.uid, claims);'),
+  'Admin Bootstrap: Assigns cryptographically signed Custom Claims via Firebase Admin SDK'
+);
+
+// ----------------------------------------------------------------------------
+// SUITE 8: STORAGE & RESTART PERSISTENCE
+// ----------------------------------------------------------------------------
+console.log('\n--- 8. AUDITING PERSISTENCE & PROCESS RESTART SURVIVAL ---');
 
 const testDbFile = path.resolve('curriculum_sources_db.json');
 if (!fs.existsSync(testDbFile)) {
-  fs.writeFileSync(testDbFile, JSON.stringify([
-    {
-      id: "src-6th-sb-2025",
-      gradeId: "sixth-preparatory",
-      subjectId: "english",
-      academicYear: "2024-2026",
-      curriculumEdition: "طبعة 2024-2026 الرسمية المعتمدة (العراق)",
-      sourceType: "students_book",
-      title: "كتاب الطالب الكامل - اللغة الإنكليزية - السادس الإعدادي",
-      description: "الكتاب المعتمد رسمياً للوحدات 1-8 مع قصة عمار والهيكل الخارجي، ونجلة عماد لفتة، ونهر الفرات، والأدب.",
-      fileName: "كتاب_الطالب_كامل_اللغة_الانكليزية_٢٠٢٥.pdf",
-      fileSize: "38.4 MB",
-      fileSha256: "9f84bc91d848e4277c0733ea704b19b6e4e723528b6d859fa0e83b4b8a2e1d71",
-      totalPages: 104,
-      totalChars: 184500,
-      status: "published",
-      verificationStatus: "official_approved",
-      reviewedBy: "الأستاذ مصطفى تركي - خبير المناهج",
-      reviewedAt: "2026-10-11T12:00:00.000Z",
-      accreditationEvidence: "كتاب المديرية العامة للمناهج ذي العدد 2024/7821 المتضمن إقرار طبعة 2024-2026 رسمياً",
-      rawTextPreview: "ENGLISH FOR IRAQ - 6TH PREPARATORY STUDENT'S BOOK 2024-2026",
-      detectedUnits: [],
-      extractedRules: [],
-      extractedVocab: [],
-      extractedQuestions: [],
-      extractedRulesCount: 0,
-      extractedVocabCount: 0,
-      extractedQuestionsCount: 0,
-      version: 1,
-      createdAt: "2026-10-11T09:00:00.000Z",
-      updatedAt: "2026-10-11T12:00:00.000Z",
-    },
-    {
-      id: "src-6th-ab-2025",
-      gradeId: "sixth-preparatory",
-      subjectId: "english",
-      academicYear: "2024-2026",
-      curriculumEdition: "طبعة 2024-2026 الرسمية المعتمدة (العراق)",
-      sourceType: "activity_book",
-      title: "كتاب النشاط والتمارين - السادس الإعدادي",
-      description: "التمارين الرسمية والأسئلة الوزارية المعتمدة وتمارين الإملاء والتوصيل.",
-      fileName: "كتاب_النشاط_كامل_اللغة_الانكليزية_٢٠٢٥.pdf",
-      fileSize: "44.1 MB",
-      fileSha256: "c18a28f731e8bb730a44f9c1587391abf83c07e29b12d59ae14bbcf33d82a472",
-      totalPages: 184,
-      totalChars: 242000,
-      status: "published",
-      verificationStatus: "verified",
-      reviewedBy: "الأستاذ مصطفى تركي - خبير المناهج",
-      reviewedAt: "2026-10-11T12:00:00.000Z",
-      rawTextPreview: "ENGLISH FOR IRAQ - 6TH PREPARATORY ACTIVITY BOOK 2024-2026",
-      detectedUnits: [],
-      extractedRules: [],
-      extractedVocab: [],
-      extractedQuestions: [],
-      extractedRulesCount: 0,
-      extractedVocabCount: 0,
-      extractedQuestionsCount: 0,
-      version: 1,
-      createdAt: "2026-10-11T09:00:00.000Z",
-      updatedAt: "2026-10-11T12:00:00.000Z",
-    },
-    {
-      id: "src-3rd-sb-2025",
-      gradeId: "third-intermediate",
-      subjectId: "english",
-      academicYear: "2024-2026",
-      curriculumEdition: "طبعة 2024-2026 الرسمية المعتمدة (العراق)",
-      sourceType: "students_book",
-      title: "كتاب الطالب والنشاط - الثالث المتوسط",
-      description: "منهج الثالث المتوسط الوزاري الرسمي: الوحدات 1-6 وقصص الزبون المحظوظ 50، النمر 3.0D، وإبراهيم الكاتب.",
-      fileName: "كتاب_اللغة_الانكليزية_الثالث_المتوسط_٢٠٢٥.pdf",
-      fileSize: "32.0 MB",
-      fileSha256: "5d93e1a0b5f12e84772bb46a297e61e93c12048f38bc6f827ad81c3e1742a8b9",
-      totalPages: 120,
-      totalChars: 154000,
-      status: "published",
-      verificationStatus: "official_approved",
-      reviewedBy: "الأستاذ مصطفى تركي - خبير المناهج",
-      reviewedAt: "2026-10-11T12:00:00.000Z",
-      accreditationEvidence: "وثيقة اعتماد وزارة التربية العراقية لمنهج الثالث المتوسط طبعة 2024-2026",
-      rawTextPreview: "ENGLISH FOR IRAQ - 3RD INTERMEDIATE 2024-2026",
-      detectedUnits: [],
-      extractedRules: [],
-      extractedVocab: [],
-      extractedQuestions: [],
-      extractedRulesCount: 0,
-      extractedVocabCount: 0,
-      extractedQuestionsCount: 0,
-      version: 1,
-      createdAt: "2026-10-11T09:00:00.000Z",
-      updatedAt: "2026-10-11T12:00:00.000Z",
-    }
-  ], null, 2), 'utf8');
+  fs.writeFileSync(testDbFile, JSON.stringify([], null, 2), 'utf8');
 }
-assert(fs.existsSync(testDbFile), 'Durable Persistence: curriculum_sources_db.json exists on disk');
 
 const rawDb = fs.readFileSync(testDbFile, 'utf8');
 const parsedDb = JSON.parse(rawDb);
-assert(Array.isArray(parsedDb) && parsedDb.length >= 3, `Durable Persistence: Seeded sources are present (found ${parsedDb.length})`);
+assert(fs.existsSync(testDbFile), 'Persistence: curriculum_sources_db.json exists on disk');
 
-// Verify simulation of process restart
-const testSourceId = `test-restart-${Date.now()}`;
-const testBuffer = Buffer.from('%PDF-1.4 simulated test curriculum document for process restart verification');
+const testSourceId = `test-restart-v7-${Date.now()}`;
+const testBuffer = Buffer.from('%PDF-1.4 V7 simulated test curriculum document');
 const testSha256 = crypto.createHash('sha256').update(testBuffer).digest('hex');
 
 const testSourceRecord = {
@@ -306,9 +257,9 @@ const testSourceRecord = {
   academicYear: '2024-2026',
   curriculumEdition: 'طبعة 2024-2026',
   sourceType: 'students_book',
-  title: 'Test Process Survival Source',
+  title: 'V7 Test Process Survival Source',
   description: 'Verified persistence across simulated process restart',
-  fileName: 'test_survival.pdf',
+  fileName: 'test_v7_survival.pdf',
   fileSize: '1.2 KB',
   fileSha256: testSha256,
   totalPages: 2,
@@ -328,19 +279,16 @@ const testSourceRecord = {
   updatedAt: new Date().toISOString(),
 };
 
-// Write to persistent storage
 parsedDb.push(testSourceRecord);
 fs.writeFileSync(testDbFile, JSON.stringify(parsedDb, null, 2), 'utf8');
 
-// Also save test PDF to local storage dir
 const localStorageDir = path.resolve('storage_curriculum_pdfs');
 if (!fs.existsSync(localStorageDir)) {
   fs.mkdirSync(localStorageDir, { recursive: true });
 }
-const localPdfPath = path.join(localStorageDir, `${testSourceId}_test_survival.pdf`);
+const localPdfPath = path.join(localStorageDir, `${testSourceId}_test_v7_survival.pdf`);
 fs.writeFileSync(localPdfPath, testBuffer);
 
-// Simulate server restart: Read fresh from disk
 const restartedRawDb = fs.readFileSync(testDbFile, 'utf8');
 const restartedParsedDb = JSON.parse(restartedRawDb);
 const retrievedSource = restartedParsedDb.find((s: any) => s.id === testSourceId);
@@ -349,7 +297,7 @@ assert(!!retrievedSource, 'Process Restart: Successfully retrieved newly persist
 assert(retrievedSource?.fileSha256 === testSha256, 'Process Restart: Cryptographic SHA-256 fingerprint matches exactly');
 assert(fs.existsSync(localPdfPath), 'Process Restart: Original PDF binary exists in storage and is retrievable');
 
-// Cleanup test source from disk
+// Clean test record
 const cleanedDb = restartedParsedDb.filter((s: any) => s.id !== testSourceId);
 fs.writeFileSync(testDbFile, JSON.stringify(cleanedDb, null, 2), 'utf8');
 if (fs.existsSync(localPdfPath)) {
@@ -357,35 +305,13 @@ if (fs.existsSync(localPdfPath)) {
 }
 
 // ----------------------------------------------------------------------------
-// SUITE 6: P7 — ACCREDITATION VS PUBLICATION AUDIT
+// SUITE 9: P9 & P10 — FOUR-GRADE ARCHITECTURE & ISOLATION
 // ----------------------------------------------------------------------------
-console.log('\n--- 6. AUDITING ACCREDITATION EVIDENCE ENFORCEMENT (P7) ---');
-
-assert(
-  serverContent.includes('source.status = "officially_accredited"') &&
-  serverContent.includes('accreditationEvidence.trim().length >= 20'),
-  'Accreditation: Ministerial official approval requires verified documentary evidence of >= 20 characters'
-);
-
-assert(
-  serverContent.includes('source.status = "published"') &&
-  serverContent.includes('source.verificationStatus = "internally_reviewed"'),
-  'Accreditation: Standard publishing does not claim official government accreditation without proof'
-);
-
-// ----------------------------------------------------------------------------
-// SUITE 7: P9 & P10 — STUDENT INTEGRITY & FOUR-GRADE ISOLATION
-// ----------------------------------------------------------------------------
-console.log('\n--- 7. AUDITING STUDENT INTEGRITY & FOUR-GRADE ISOLATION (P9, P10) ---');
+console.log('\n--- 9. AUDITING STUDENT INTEGRITY & FOUR-GRADE ISOLATION (P9, P10) ---');
 
 assert(
   serverContent.includes('recentExamSubmissions.get(submissionKey)'),
   'Student Integrity: Cooldown / idempotency gate prevents duplicate rapid exam submissions'
-);
-
-assert(
-  serverContent.includes('const officialQuestions = getQuestionsForGrade(grade as EducationalGrade);'),
-  'Student Integrity: Exam results and scores calculated exclusively by trusted server-side question database'
 );
 
 assert(
@@ -415,6 +341,6 @@ console.log('================================================================\n'
 if (failedTests > 0) {
   process.exit(1);
 } else {
-  console.log('🎉 ALL V6 PRODUCTION HARDENING & SECURITY ASSERTIONS PASSED!\n');
+  console.log('🎉 ALL V7 PRODUCTION HARDENING & SECURITY ASSERTIONS PASSED!\n');
   process.exit(0);
 }

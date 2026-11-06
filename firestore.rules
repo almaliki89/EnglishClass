@@ -127,22 +127,37 @@ service cloud.firestore {
       allow read, write: if isTeacherOrAdmin() && isValidId(docId);
     }
 
-    // Published official curriculum sources (public read ONLY for published records, teacher/admin write, admin delete)
+    // Published official curriculum sources (public read ONLY for published records, teacher/admin write with strict field-level bounds, admin-only publish/delete)
     match /curriculum_sources/{sourceId} {
       allow read: if isValidId(sourceId) && (
-        (resource != null && resource.data.status == 'published') ||
+        (resource != null && (resource.data.status == 'published' || resource.data.status == 'officially_accredited')) ||
         isTeacherOrAdmin()
       );
-      allow create, update: if isTeacherOrAdmin() && isValidId(sourceId);
+      // ONLY Administrators can create root curriculum sources directly or publish/accredit/delete them
+      allow create: if isAdmin() && isValidId(sourceId);
+      allow update: if (isAdmin() && isValidId(sourceId)) ||
+                      (isTeacher() && isValidId(sourceId) &&
+                       resource.data.status != 'published' &&
+                       resource.data.status != 'officially_accredited' &&
+                       request.resource.data.status == resource.data.status &&
+                       request.resource.data.verificationStatus == resource.data.verificationStatus &&
+                       (!('accreditationEvidence' in request.resource.data) || request.resource.data.accreditationEvidence == resource.data.accreditationEvidence) &&
+                       (!('isOfficiallyAccredited' in request.resource.data) || request.resource.data.isOfficiallyAccredited == resource.data.isOfficiallyAccredited) &&
+                       (!('reviewedBy' in request.resource.data) || request.resource.data.reviewedBy == resource.data.reviewedBy) &&
+                       (!('reviewedAt' in request.resource.data) || request.resource.data.reviewedAt == resource.data.reviewedAt) &&
+                       (!('approvedByAdminId' in request.resource.data) || request.resource.data.approvedByAdminId == resource.data.approvedByAdminId));
       allow delete: if isAdmin() && isValidId(sourceId);
 
       // Subcollections: structured units, lessons, rules, vocab, questions, pages
       match /{subcollection}/{docId} {
         allow read: if isValidId(sourceId) && isValidId(docId) && (
-          (get(/databases/$(database)/documents/curriculum_sources/$(sourceId)).data.status == 'published') ||
+          (get(/databases/$(database)/documents/curriculum_sources/$(sourceId)).data.status in ['published', 'officially_accredited']) ||
           isTeacherOrAdmin()
         );
-        allow create, update: if isTeacherOrAdmin() && isValidId(sourceId) && isValidId(docId);
+        allow create, update: if isValidId(sourceId) && isValidId(docId) && (
+          isAdmin() ||
+          (isTeacher() && get(/databases/$(database)/documents/curriculum_sources/$(sourceId)).data.status in ['draft', 'pending_review', 'structured', 'needs_ocr'])
+        );
         allow delete: if isAdmin() && isValidId(sourceId) && isValidId(docId);
       }
     }

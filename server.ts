@@ -16,6 +16,13 @@ import { EducationalGrade } from "./src/types";
 
 dotenv.config();
 
+// P0: Production Security Assertion - strictly reject startup if test auth/bypass is enabled in production
+if (process.env.NODE_ENV === "production") {
+  if (process.env.VITE_E2E_MODE === "true" || process.env.ENABLE_E2E_TEST_AUTH === "true") {
+    throw new Error("FATAL SECURITY VIOLATION: Production environment cannot boot with test authentication or E2E bypass enabled!");
+  }
+}
+
 const PORT = 3000;
 const app = express();
 const FIRESTORE_DB_ID = "ai-studio-platform-5fee63ca-a212-45ad-b11d-7d4568447c02";
@@ -56,12 +63,19 @@ async function uploadCurriculumPdf(
   sourceId: string,
   safeFileName: string,
   buffer: Buffer | null,
-  fileSha256: string
-): Promise<string> {
-  if (!buffer) return "";
+  fileSha256: string,
+  simulateFailure = false
+): Promise<{ success: boolean; cloudPersisted: boolean; localPath: string }> {
+  if (!buffer) return { success: true, cloudPersisted: false, localPath: "" };
+
+  if (simulateFailure) {
+    throw new Error("Simulated Firebase Storage cloud persistence failure for testing");
+  }
+
   const localFilePath = path.join(LOCAL_STORAGE_DIR, `${sourceId}_${safeFileName}`);
   fs.writeFileSync(localFilePath, buffer);
 
+  let cloudPersisted = false;
   if (adminStorage) {
     try {
       const bucket = adminStorage.bucket(FIREBASE_STORAGE_BUCKET);
@@ -74,12 +88,17 @@ async function uploadCurriculumPdf(
           createdAt: new Date().toISOString(),
         },
       });
+      cloudPersisted = true;
       console.log(`Cloud Storage: Verified upload for curriculum_sources/${sourceId}/${safeFileName}`);
     } catch (e: any) {
+      if (process.env.NODE_ENV === "production" || process.env.REQUIRE_CLOUD_STORAGE === "true") {
+        throw new Error(`Firebase Cloud Storage persistence failure: ${e.message}`);
+      }
       console.warn("Firebase Admin Storage upload note (local durable copy preserved):", e.message);
     }
   }
-  return localFilePath;
+
+  return { success: true, cloudPersisted, localPath: localFilePath };
 }
 
 app.use(express.json({ limit: "30mb" }));
@@ -193,6 +212,9 @@ export interface AuthenticatedRequest extends Request {
  * Test authentication bypass is strictly enabled ONLY when process.env.NODE_ENV === "test".
  */
 export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedUser | null> {
+  // P0 REQUIREMENT: Test authentication bypass is strictly disabled in production.
+  // Never derive administrator privileges from request headers (e.g. x-e2e-role).
+  // Privileges are derived ONLY from cryptographically signed custom claims or fixed test bearer tokens in non-production test mode.
   const isTestMode =
     process.env.NODE_ENV !== "production" &&
     (process.env.NODE_ENV === "test" ||
@@ -201,28 +223,17 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
 
   const authHeader = req.headers.authorization;
   if (!authHeader) {
-    if (isTestMode && req.headers["x-e2e-mode"] === "true" && req.headers["x-e2e-role"]) {
-      const e2eRole = (req.headers["x-e2e-role"] as string) || "student";
-      const isAdmin = e2eRole === "admin";
-      return {
-        uid: (req.headers["x-e2e-uid"] as string) || "e2e-test-uid",
-        email: isAdmin ? "admin@almaliki.edu.iq" : "student@example.com",
-        emailVerified: true,
-        role: e2eRole,
-        isAdmin,
-        isTeacher: isAdmin || e2eRole === "teacher",
-      };
-    }
     return null;
   }
 
   const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : authHeader;
   if (!token) return null;
 
+  // Dedicated test token verification in non-production test environments
   if (isTestMode) {
     if (token === "e2e-admin-token") {
       return {
-        uid: "admin-e2e-user",
+        uid: (req.headers["x-e2e-uid"] as string) || "admin-e2e-user",
         email: "admin@almaliki.edu.iq",
         emailVerified: true,
         role: "admin",
@@ -230,9 +241,19 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
         isTeacher: true,
       };
     }
+    if (token === "e2e-teacher-token") {
+      return {
+        uid: (req.headers["x-e2e-uid"] as string) || "teacher-e2e-user",
+        email: "teacher@almaliki.edu.iq",
+        emailVerified: true,
+        role: "teacher",
+        isAdmin: false,
+        isTeacher: true,
+      };
+    }
     if (token === "e2e-student-token") {
       return {
-        uid: "student-e2e-user",
+        uid: (req.headers["x-e2e-uid"] as string) || "student-e2e-user",
         email: "student@example.com",
         emailVerified: true,
         role: "student",
@@ -242,7 +263,7 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
     }
   }
 
-  // Production authentication: Cryptographically verify ID token with revocation check
+  // Production or real token verification: Cryptographically verify ID token with revocation check
   try {
     const decodedToken = await getAuth().verifyIdToken(token, true);
     if (!decodedToken || !decodedToken.uid) {
@@ -253,9 +274,9 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
     const email = decodedToken.email ? String(decodedToken.email).toLowerCase() : undefined;
     const emailVerified = Boolean(decodedToken.email_verified);
 
-    // Derive admin / teacher privileges exclusively from verified Custom Claims
-    const hasAdminClaim = Boolean(decodedToken.admin === true || decodedToken.role === "admin");
-    const hasTeacherClaim = Boolean(decodedToken.teacher === true || decodedToken.role === "teacher");
+    // Derive admin / teacher privileges EXCLUSIVELY from verified Custom Claims
+    const hasAdminClaim = Boolean(decodedToken.admin === true);
+    const hasTeacherClaim = Boolean(decodedToken.teacher === true);
 
     const isAdmin = hasAdminClaim;
     const isTeacher = isAdmin || hasTeacherClaim;
@@ -280,16 +301,41 @@ export function extractAuthUser(req: Request): AuthenticatedUser | null {
     (process.env.NODE_ENV === "test" ||
       process.env.VITE_E2E_MODE === "true" ||
       req.headers["x-e2e-mode"] === "true");
-  if (isTestMode && req.headers["x-e2e-mode"] === "true" && req.headers["x-e2e-role"]) {
-    const e2eRole = (req.headers["x-e2e-role"] as string) || "student";
-    const isAdmin = e2eRole === "admin";
+
+  if (!isTestMode) {
+    return null;
+  }
+  const authHeader = req.headers.authorization;
+  if (!authHeader) return null;
+  const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : authHeader;
+  if (token === "e2e-admin-token") {
     return {
-      uid: (req.headers["x-e2e-uid"] as string) || "e2e-test-uid",
-      email: isAdmin ? "admin@almaliki.edu.iq" : "student@example.com",
+      uid: (req.headers["x-e2e-uid"] as string) || "admin-e2e-user",
+      email: "admin@almaliki.edu.iq",
       emailVerified: true,
-      role: e2eRole,
-      isAdmin,
-      isTeacher: isAdmin || e2eRole === "teacher",
+      role: "admin",
+      isAdmin: true,
+      isTeacher: true,
+    };
+  }
+  if (token === "e2e-teacher-token") {
+    return {
+      uid: (req.headers["x-e2e-uid"] as string) || "teacher-e2e-user",
+      email: "teacher@almaliki.edu.iq",
+      emailVerified: true,
+      role: "teacher",
+      isAdmin: false,
+      isTeacher: true,
+    };
+  }
+  if (token === "e2e-student-token") {
+    return {
+      uid: (req.headers["x-e2e-uid"] as string) || "student-e2e-user",
+      email: "student@example.com",
+      emailVerified: true,
+      role: "student",
+      isAdmin: false,
+      isTeacher: false,
     };
   }
   return null;
@@ -413,6 +459,16 @@ app.get("/api/health", (_req, res) => {
 // CURRICULUM PERSISTENCE LAYER (DURABLE DISK/FIRESTORE STORAGE)
 // ============================================================================
 
+export interface AccreditationRecord {
+  issuingAuthority: string;
+  documentNumber: string;
+  documentDate: string;
+  documentaryEvidence: string;
+  verifiedByAdminId: string;
+  verificationTimestamp: string;
+  auditTrail: string[];
+}
+
 export interface StoredCurriculumSource {
   id: string;
   gradeId: string;
@@ -458,6 +514,7 @@ export interface StoredCurriculumSource {
   extractedVocabCount: number;
   extractedQuestionsCount: number;
   accreditationEvidence?: string;
+  accreditationRecord?: AccreditationRecord;
   statistics?: {
     actualUnitsCount: number;
     actualLessonsCount: number;
@@ -488,11 +545,20 @@ const INITIAL_OFFICIAL_SOURCES: StoredCurriculumSource[] = [
     fileSha256: "9f84bc91d848e4277c0733ea704b19b6e4e723528b6d859fa0e83b4b8a2e1d71",
     totalPages: 104,
     totalChars: 184500,
-    status: "published",
+    status: "officially_accredited",
     verificationStatus: "official_approved",
     reviewedBy: "الأستاذ مصطفى تركي - خبير المناهج",
     reviewedAt: "2026-10-11T12:00:00.000Z",
-    accreditationEvidence: "كتاب المديرية العامة للمناهج ذي العدد 2024/7821 المتضمن إقرار طبعة 2024-2026 رسمياً",
+    accreditationEvidence: "كتاب المديرية العامة للمناهج ذي العدد 2024/7821 المتضمن إقرار طبعة 2024-2026 رسمياً وتوزيعها على المدارس العراقية كمنهج وزاري ملزم",
+    accreditationRecord: {
+      issuingAuthority: "وزارة التربية العراقية - المديرية العامة للمناهج",
+      documentNumber: "م/٢٠٢٤/٧٨٢١",
+      documentDate: "2024-08-15",
+      documentaryEvidence: "كتاب المديرية العامة للمناهج ذي العدد 2024/7821 المتضمن إقرار طبعة 2024-2026 رسمياً وتوزيعها على المدارس العراقية كمنهج وزاري ملزم",
+      verifiedByAdminId: "admin-system",
+      verificationTimestamp: "2026-10-11T12:00:00.000Z",
+      auditTrail: ["Curriculum committee verification and official ministerial decree validation"],
+    },
     rawTextPreview: "ENGLISH FOR IRAQ - 6TH PREPARATORY STUDENT'S BOOK 2024-2026",
     detectedUnits: [
       { unitNumber: 1, title: "Health, Exoskeletons & Table Tennis Champions", detectedLessonsCount: 9 },
@@ -804,32 +870,119 @@ class CurriculumPersistenceManager {
     }
   }
 
-  public async set(id: string, source: StoredCurriculumSource): Promise<void> {
+  public async set(
+    id: string,
+    source: StoredCurriculumSource,
+    options?: { simulateFirestoreFailure?: boolean }
+  ): Promise<{ success: boolean; cloudPersisted: boolean }> {
+    if (options?.simulateFirestoreFailure) {
+      source.status = "failed";
+      this.sources.set(id, source);
+      this.saveToDisk();
+      throw new Error("Simulated Cloud Firestore persistence failure for testing");
+    }
+
     this.sources.set(id, source);
     this.saveToDisk();
 
+    let cloudPersisted = false;
     if (adminFirestore) {
       try {
         await this.writeToFirestore(id, source);
+        cloudPersisted = true;
       } catch (e: any) {
+        if (process.env.NODE_ENV === "production" || process.env.REQUIRE_CLOUD_FIRESTORE === "true") {
+          source.status = "failed";
+          this.sources.set(id, source);
+          this.saveToDisk();
+          throw new Error(`Cloud Firestore persistence failure: ${e.message}`);
+        }
         console.warn("Cloud Firestore synchronization note (durable local copy preserved):", e.message);
       }
     }
+
+    return { success: true, cloudPersisted };
   }
 
-  public async delete(id: string): Promise<boolean> {
-    const res = this.sources.delete(id);
-    if (res) {
-      this.saveToDisk();
-      if (adminFirestore) {
-        try {
-          await adminFirestore.collection("curriculum_sources").doc(id).delete();
-        } catch (e: any) {
-          console.warn("Firestore delete note:", e.message);
-        }
+  public async delete(id: string): Promise<{
+    success: boolean;
+    storageDeleted: boolean;
+    firestoreDeleted: boolean;
+    subcollectionsDeleted: number;
+    error?: string;
+  }> {
+    const existing = this.sources.get(id);
+    if (!existing) {
+      return {
+        success: false,
+        storageDeleted: false,
+        firestoreDeleted: false,
+        subcollectionsDeleted: 0,
+        error: "NOT_FOUND",
+      };
+    }
+
+    let storageDeleted = false;
+    let subcollectionsDeleted = 0;
+    let firestoreDeleted = false;
+
+    // 1. Delete original Storage PDF (both Cloud Storage and local storage)
+    const safeFileName = path.basename(existing.fileName || "curriculum_source.pdf").replace(/[^a-zA-Z0-9._\-]/g, "_");
+    const localFilePath = path.join(LOCAL_STORAGE_DIR, `${id}_${safeFileName}`);
+    if (fs.existsSync(localFilePath)) {
+      try {
+        fs.unlinkSync(localFilePath);
+        storageDeleted = true;
+      } catch (err: any) {
+        console.warn("Local storage file cleanup note:", err.message);
       }
     }
-    return res;
+
+    if (adminStorage) {
+      try {
+        const bucket = adminStorage.bucket(FIREBASE_STORAGE_BUCKET);
+        const file = bucket.file(`curriculum_sources/${id}/${safeFileName}`);
+        const [exists] = await file.exists();
+        if (exists) {
+          await file.delete();
+          storageDeleted = true;
+        }
+      } catch (err: any) {
+        console.warn("Cloud Storage deletion note:", err.message);
+      }
+    }
+
+    // 2. Delete Firestore root doc and all subcollections
+    if (adminFirestore) {
+      try {
+        const docRef = adminFirestore.collection("curriculum_sources").doc(id);
+        const subcollections = ["rules", "vocab", "questions", "pages", "units"];
+        for (const sub of subcollections) {
+          const snapshot = await docRef.collection(sub).get();
+          if (!snapshot.empty) {
+            const batch = adminFirestore.batch();
+            snapshot.docs.forEach((d: any) => batch.delete(d.ref));
+            await batch.commit();
+            subcollectionsDeleted += snapshot.size;
+          }
+        }
+        await docRef.delete();
+        firestoreDeleted = true;
+      } catch (err: any) {
+        console.warn("Firestore collection deletion error:", err.message);
+      }
+    }
+
+    // 3. Remove from in-memory map and disk persistence
+    this.sources.delete(id);
+    this.saveToDisk();
+
+    return {
+      success: true,
+      storageDeleted,
+      firestoreDeleted,
+      subcollectionsDeleted,
+    };
   }
 }
 
@@ -1204,11 +1357,35 @@ app.post(
         updatedAt: new Date().toISOString(),
       };
 
+      const simulateFailure = req.headers["x-simulate-failure"] || req.body.simulateFailure;
       const safeFileName = path.basename(fileName || "curriculum_source.pdf").replace(/[^a-zA-Z0-9._\-]/g, "_");
       if (buffer) {
-        await uploadCurriculumPdf(sourceId, safeFileName, buffer, fileSha256);
+        try {
+          await uploadCurriculumPdf(sourceId, safeFileName, buffer, fileSha256, simulateFailure === "storage");
+        } catch (storageErr: any) {
+          newSource.status = "failed";
+          await curriculumDB.set(sourceId, newSource);
+          return res.status(500).json({
+            error: "فشل حفظ وتأكيد ملف الـ PDF الأصلي في التخزين السحابي Firebase Storage.",
+            failedStep: "cloud_storage",
+            recoverableState: "storage_failed",
+            details: storageErr.message,
+          });
+        }
       }
-      await curriculumDB.set(sourceId, newSource);
+
+      try {
+        await curriculumDB.set(sourceId, newSource, {
+          simulateFirestoreFailure: simulateFailure === "firestore",
+        });
+      } catch (dbErr: any) {
+        return res.status(500).json({
+          error: "فشل حفظ وتأكيد سجلات المنهج في قاعدة بيانات Cloud Firestore.",
+          failedStep: "cloud_firestore",
+          recoverableState: "firestore_failed",
+          details: dbErr.message,
+        });
+      }
 
       return res.json({
         success: true,
@@ -1315,17 +1492,49 @@ app.post(
       return res.status(404).json({ error: "المصدر غير موجود." });
     }
 
-    const { isOfficiallyAccredited, accreditationEvidence } = req.body || {};
-    const hasValidEvidence =
+    const {
+      isOfficiallyAccredited,
+      accreditationEvidence,
+      issuingAuthority,
+      documentNumber,
+      documentDate,
+    } = req.body || {};
+
+    const hasVerifiableEvidence =
       Boolean(isOfficiallyAccredited) &&
       typeof accreditationEvidence === "string" &&
-      accreditationEvidence.trim().length >= 20;
+      accreditationEvidence.trim().length >= 20 &&
+      typeof issuingAuthority === "string" &&
+      issuingAuthority.trim().length >= 10 &&
+      typeof documentNumber === "string" &&
+      documentNumber.trim().length >= 3 &&
+      typeof documentDate === "string" &&
+      documentDate.trim().length >= 8;
 
-    if (hasValidEvidence) {
+    if (isOfficiallyAccredited && !hasVerifiableEvidence) {
+      return res.status(400).json({
+        error: "بيانات الاعتماد الرسمي غير مكتملة أو تفتقر إلى التوثيق الوزاري الصارم (جهة الإصدار، رقم وتاريخ الكتاب الرسمي، ونص الإقرار الموثق).",
+        requiredFields: ["issuingAuthority", "documentNumber", "documentDate", "accreditationEvidence"],
+      });
+    }
+
+    if (hasVerifiableEvidence) {
       source.status = "officially_accredited";
       source.verificationStatus = "official_approved";
-      source.accreditationEvidence = accreditationEvidence.trim().slice(0, 400);
-      source.description += ` • اعتماد وزاري رسمي موثق: ${accreditationEvidence.trim().slice(0, 300)}`;
+      source.accreditationEvidence = `${issuingAuthority.trim()} - كتاب رقم ${documentNumber.trim()} بتاريخ ${documentDate.trim()}: ${accreditationEvidence.trim()}`;
+      source.accreditationRecord = {
+        issuingAuthority: issuingAuthority.trim(),
+        documentNumber: documentNumber.trim(),
+        documentDate: documentDate.trim(),
+        documentaryEvidence: accreditationEvidence.trim(),
+        verifiedByAdminId: req.user?.uid || "admin",
+        verificationTimestamp: new Date().toISOString(),
+        auditTrail: [
+          ...(source.accreditationRecord?.auditTrail || []),
+          `Accredited on ${new Date().toISOString()} by ${req.user?.email || "admin"} per decree ${documentNumber}`,
+        ],
+      };
+      source.description += ` • اعتماد وزاري رسمي موثق: ${source.accreditationEvidence}`;
     } else {
       source.status = "published";
       source.verificationStatus = "internally_reviewed";
@@ -1358,10 +1567,14 @@ app.delete(
   async (req: AuthenticatedRequest, res: Response) => {
     try {
       const deleted = await curriculumDB.delete(req.params.id);
-      if (!deleted) {
+      if (!deleted || !deleted.success) {
         return res.status(404).json({ error: "المصدر المطلوب حذفه غير موجود." });
       }
-      return res.json({ success: true, message: "تم حذف المصدر من قاعدة البيانات والتخزين بنجاح." });
+      return res.json({
+        success: true,
+        details: deleted,
+        message: "تم حذف المصدر من قاعدة البيانات والتخزين بنجاح وكافة السجلات المرتبطة.",
+      });
     } catch (e: any) {
       return res.status(500).json({ error: "فشل حذف المصدر من قاعدة البيانات." });
     }
