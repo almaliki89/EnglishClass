@@ -13,8 +13,9 @@
     "lint": "tsc --noEmit",
     "test": "tsx scripts/verify_english_curriculum.ts",
     "test:audit": "tsx scripts/deep_architecture_audit.ts",
+    "test:security": "tsx scripts/verify_security_hardening.ts",
     "test:e2e": "playwright test",
-    "test:acceptance": "npm run lint && npm run test && npm run test:audit && npm run build",
+    "test:acceptance": "npm run lint && npm run test && npm run test:audit && npm run test:security && npm run build",
     "admin:bootstrap": "tsx scripts/bootstrap_admin.ts"
   },
   "dependencies": {

@@ -12,19 +12,17 @@ service firebase.storage {
       return request.auth != null;
     }
 
+    // STRICT CUSTOM CLAIMS ONLY: No fallback to token.role or documents
     function isAdmin() {
-      return isAuthenticated() && (
-        request.auth.token.admin == true ||
-        request.auth.token.role == 'admin'
-      );
+      return isAuthenticated() && request.auth.token.admin == true;
+    }
+
+    function isTeacher() {
+      return isAuthenticated() && request.auth.token.teacher == true;
     }
 
     function isTeacherOrAdmin() {
-      return isAuthenticated() && (
-        isAdmin() ||
-        request.auth.token.teacher == true ||
-        request.auth.token.role == 'teacher'
-      );
+      return isAdmin() || isTeacher();
     }
 
     function isOwner(userId) {
@@ -32,10 +30,10 @@ service firebase.storage {
     }
 
     // Curriculum original PDFs and source files
-    // Write: authorized teachers and administrators only, max 25MB, PDF MIME type
-    // Read: authenticated users
+    // Write: authorized administrators and teachers only (max 25MB, PDF MIME type)
+    // Read: strictly administrators and authorized teachers only (students cannot read/download private original PDFs)
     match /curriculum_sources/{sourceId}/{fileName} {
-      allow read: if isAuthenticated();
+      allow read: if isTeacherOrAdmin();
       allow write: if isTeacherOrAdmin() &&
                      request.resource.size <= 25 * 1024 * 1024 &&
                      (request.resource.contentType == 'application/pdf' || request.resource.contentType == 'application/octet-stream');
@@ -47,6 +45,12 @@ service firebase.storage {
                             request.resource.size <= 25 * 1024 * 1024;
     }
 
+    // Explicitly published educational derivatives (e.g. summaries, public excerpts approved for students)
+    match /curriculum_public/{gradeId}/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isAdmin() && request.resource.size <= 10 * 1024 * 1024;
+    }
+
     // Student private user assets (e.g. avatars, user study notes attachments)
     match /students/{studentId}/{fileName} {
       allow read: if isOwner(studentId) || isTeacherOrAdmin();
@@ -56,3 +60,4 @@ service firebase.storage {
     }
   }
 }
+

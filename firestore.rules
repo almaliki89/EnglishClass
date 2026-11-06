@@ -23,22 +23,18 @@ service cloud.firestore {
       return isAuthenticated() && isValidId(studentId) && (request.auth.uid == studentId);
     }
 
-    // Trusted Admin/Teacher Check via verified custom claims or explicit directory documents
+    // Trusted Admin/Teacher Check via STRICT verified custom claims ONLY
+    // No fallback to documents, unverified token properties, or client metadata
     function isAdmin() {
-      return isAuthenticated() && (
-        request.auth.token.admin == true ||
-        request.auth.token.role == 'admin' ||
-        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
-      );
+      return isAuthenticated() && request.auth.token.admin == true;
+    }
+
+    function isTeacher() {
+      return isAuthenticated() && request.auth.token.teacher == true;
     }
 
     function isTeacherOrAdmin() {
-      return isAuthenticated() && (
-        isAdmin() ||
-        request.auth.token.teacher == true ||
-        request.auth.token.role == 'teacher' ||
-        exists(/databases/$(database)/documents/teachers/$(request.auth.uid))
-      );
+      return isAdmin() || isTeacher();
     }
 
     // Student profile field-level validator for create & update
@@ -109,15 +105,14 @@ service cloud.firestore {
       }
     }
 
-    // Admin directory (admin write only)
+    // Admin directory (strictly accessible only to administrators, students forbidden from listing or reading)
     match /admins/{adminId} {
-      allow read: if isAuthenticated() && isValidId(adminId);
-      allow write: if isAdmin() && isValidId(adminId);
+      allow read, write: if isAdmin() && isValidId(adminId);
     }
 
-    // Teacher directory (admin write only)
+    // Teacher directory (strictly accessible only to administrators and the teacher themselves)
     match /teachers/{teacherId} {
-      allow read: if isAuthenticated() && isValidId(teacherId);
+      allow read: if (isAdmin() || (isTeacher() && request.auth.uid == teacherId)) && isValidId(teacherId);
       allow write: if isAdmin() && isValidId(teacherId);
     }
 
@@ -132,13 +127,24 @@ service cloud.firestore {
       allow read, write: if isTeacherOrAdmin() && isValidId(docId);
     }
 
-    // Published official curriculum sources (public read ONLY for published records, teacher/admin write)
+    // Published official curriculum sources (public read ONLY for published records, teacher/admin write, admin delete)
     match /curriculum_sources/{sourceId} {
       allow read: if isValidId(sourceId) && (
         (resource != null && resource.data.status == 'published') ||
         isTeacherOrAdmin()
       );
-      allow write: if isTeacherOrAdmin() && isValidId(sourceId);
+      allow create, update: if isTeacherOrAdmin() && isValidId(sourceId);
+      allow delete: if isAdmin() && isValidId(sourceId);
+
+      // Subcollections: structured units, lessons, rules, vocab, questions, pages
+      match /{subcollection}/{docId} {
+        allow read: if isValidId(sourceId) && isValidId(docId) && (
+          (get(/databases/$(database)/documents/curriculum_sources/$(sourceId)).data.status == 'published') ||
+          isTeacherOrAdmin()
+        );
+        allow create, update: if isTeacherOrAdmin() && isValidId(sourceId) && isValidId(docId);
+        allow delete: if isAdmin() && isValidId(sourceId) && isValidId(docId);
+      }
     }
 
     // Curriculum drafts under supervisor review (strictly restricted to authorized teachers & admins)

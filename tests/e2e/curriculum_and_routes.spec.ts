@@ -193,4 +193,95 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     expect(found.status).toBe('pending_review');
   });
 
+  test('8. P0 PDF Protection: Students forbidden from ingesting or downloading raw PDFs', async ({ request }) => {
+    // 1. Student attempting PDF ingestion must receive 403 Forbidden
+    const fakePdfBase64 = Buffer.from('%PDF-1.4 test document').toString('base64');
+    const studentIngestRes = await request.post('/api/ingest/pdf', {
+      headers: {
+        Authorization: 'Bearer e2e-student-token',
+        'x-e2e-mode': 'true',
+        'x-e2e-role': 'student',
+      },
+      data: {
+        base64Data: `data:application/pdf;base64,${fakePdfBase64}`,
+        fileName: 'student_attempt.pdf',
+      },
+    });
+    expect(studentIngestRes.status()).toBe(403);
+
+    // 2. Student attempting to download original curriculum PDF must receive 403 Forbidden
+    const studentDownloadRes = await request.get('/api/curriculum/sources/src-6th-sb-2025/download', {
+      headers: {
+        Authorization: 'Bearer e2e-student-token',
+        'x-e2e-mode': 'true',
+        'x-e2e-role': 'student',
+      },
+    });
+    expect(studentDownloadRes.status()).toBe(403);
+
+    // 3. Anonymous user attempting to download must receive 401 Unauthorized
+    const anonDownloadRes = await request.get('/api/curriculum/sources/src-6th-sb-2025/download');
+    expect(anonDownloadRes.status()).toBe(401);
+  });
+
+  test('9. P9 Student Exam Integrity: Server-side grading, XP calculation, and rapid replay protection', async ({ request }) => {
+    // 1. Student submits exam results
+    const examPayload = {
+      examId: 'ministerial-mock-exam-6th',
+      grade: 'sixth-preparatory',
+      answers: {
+        'mq-1': 'knocked',
+        'mq-2': 'frightening',
+      },
+      timeSpentSeconds: 120,
+    };
+
+    const firstSubmitRes = await request.post('/api/student/exam-submit', {
+      headers: {
+        Authorization: 'Bearer e2e-student-token',
+        'x-e2e-mode': 'true',
+        'x-e2e-role': 'student',
+      },
+      data: examPayload,
+    });
+    expect(firstSubmitRes.status()).toBe(200);
+    const submitData = await firstSubmitRes.json();
+    expect(submitData.success).toBe(true);
+    expect(submitData.record.isVerifiedByServer).toBe(true);
+    expect(typeof submitData.earnedXp).toBe('number');
+    expect(submitData.earnedXp).toBeGreaterThan(0);
+
+    // 2. Immediate duplicate submission must be rate-limited (429)
+    const duplicateSubmitRes = await request.post('/api/student/exam-submit', {
+      headers: {
+        Authorization: 'Bearer e2e-student-token',
+        'x-e2e-mode': 'true',
+        'x-e2e-role': 'student',
+      },
+      data: examPayload,
+    });
+    expect(duplicateSubmitRes.status()).toBe(429);
+  });
+
+  test('10. P8 Grounded QA: AI queries enforce authenticated rate limits and provenance citations', async ({ request }) => {
+    const qaRes = await request.post('/api/ai/grounded-qa', {
+      headers: {
+        Authorization: 'Bearer e2e-student-token',
+        'x-e2e-mode': 'true',
+        'x-e2e-role': 'student',
+      },
+      data: {
+        question: 'ما هي قاعدة ربط الماضي البسيط والماضي المستمر باستخدام while؟',
+        grade: 'sixth-preparatory',
+        unitTitle: 'Health & Emergencies',
+        lessonTitle: 'Past Simple vs Past Continuous',
+      },
+    });
+    expect(qaRes.status()).toBe(200);
+    const qaData = await qaRes.json();
+    expect(qaData.isGrounded).toBe(true);
+    expect(qaData.citation).toBeDefined();
+    expect(typeof qaData.answer).toBe('string');
+  });
+
 });

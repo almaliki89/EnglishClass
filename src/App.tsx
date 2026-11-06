@@ -11,22 +11,23 @@ import {
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { Navbar } from './components/Navbar';
 import { Dashboard } from './components/Dashboard';
-import { LessonViewer } from './components/LessonViewer';
-import { ExamEngine } from './components/ExamEngine';
-import { LiteratureSection } from './components/LiteratureSection';
-import { EssaysSection } from './components/EssaysSection';
-import { IrregularVerbsLab } from './components/IrregularVerbsLab';
-import { MinisterialMockSimulator } from './components/MinisterialMockSimulator';
-import { VisualVocabAtlas } from './components/VisualVocabAtlas';
 import { StudentProfileModal } from './components/StudentProfileModal';
-import { SmartReviewSection } from './components/SmartReviewSection';
 import { AuthGate } from './components/AuthGate';
-import { SubjectDetailView } from './components/SubjectDetailView';
-import { GradePageView } from './components/GradePageView';
-import { GradesPortal } from './components/GradesPortal';
-import { UnitDashboardView } from './components/UnitDashboardView';
 import { GradeSelectorBar } from './components/GradeSelectorBar';
 import { NotFound } from './components/NotFound';
+
+const LessonViewer = React.lazy(() => import('./components/LessonViewer').then((m) => ({ default: m.LessonViewer })));
+const ExamEngine = React.lazy(() => import('./components/ExamEngine').then((m) => ({ default: m.ExamEngine })));
+const LiteratureSection = React.lazy(() => import('./components/LiteratureSection').then((m) => ({ default: m.LiteratureSection })));
+const EssaysSection = React.lazy(() => import('./components/EssaysSection').then((m) => ({ default: m.EssaysSection })));
+const IrregularVerbsLab = React.lazy(() => import('./components/IrregularVerbsLab').then((m) => ({ default: m.IrregularVerbsLab })));
+const MinisterialMockSimulator = React.lazy(() => import('./components/MinisterialMockSimulator').then((m) => ({ default: m.MinisterialMockSimulator })));
+const VisualVocabAtlas = React.lazy(() => import('./components/VisualVocabAtlas').then((m) => ({ default: m.VisualVocabAtlas })));
+const SmartReviewSection = React.lazy(() => import('./components/SmartReviewSection').then((m) => ({ default: m.SmartReviewSection })));
+const SubjectDetailView = React.lazy(() => import('./components/SubjectDetailView').then((m) => ({ default: m.SubjectDetailView })));
+const GradePageView = React.lazy(() => import('./components/GradePageView').then((m) => ({ default: m.GradePageView })));
+const GradesPortal = React.lazy(() => import('./components/GradesPortal').then((m) => ({ default: m.GradesPortal })));
+const UnitDashboardView = React.lazy(() => import('./components/UnitDashboardView').then((m) => ({ default: m.UnitDashboardView })));
 
 import { getUnitsForGrade, getGradeMeta, ORDERED_GRADES } from './data/gradeContentResolver';
 import { Unit, Lesson, StudentState, EducationalGrade } from './types';
@@ -272,6 +273,17 @@ function LessonRouteWrapper({
       onToggleComplete={onToggleComplete}
       onAnswerExercise={onAnswerExercise}
     />
+  );
+}
+
+function RouteLoadingFallback() {
+  return (
+    <div className="flex flex-col items-center justify-center min-h-[45vh] p-8 text-center space-y-3">
+      <div className="w-10 h-10 border-2 border-[#202124] bg-[#F3E6A5] shadow-[2px_2px_0px_#202124] flex items-center justify-center">
+        <Loader2 className="w-5 h-5 animate-spin text-[#405DE6]" />
+      </div>
+      <p className="text-xs font-mono font-bold text-[#202124]">جاري تحميل المحتوى التعليمي...</p>
+    </div>
   );
 }
 
@@ -590,7 +602,8 @@ function MainAppContent() {
 
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-6">
-        <Routes>
+        <React.Suspense fallback={<RouteLoadingFallback />}>
+          <Routes>
           {/* Dedicated Grade Selection Portal */}
           <Route
             path="/grades"
@@ -845,6 +858,7 @@ function MainAppContent() {
           {/* 404 Catch-All */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </React.Suspense>
       </main>
 
       {isProfileOpen && (

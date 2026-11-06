@@ -108,6 +108,26 @@
     "/curriculum_sources/{sourceId}": {
       "schema": "curriculum_sources",
       "description": "Published official curriculum sources and verified textbook references"
+    },
+    "/curriculum_sources/{sourceId}/units/{unitId}": {
+      "schema": "curriculum_sources",
+      "description": "Structured curriculum units extracted from official textbook"
+    },
+    "/curriculum_sources/{sourceId}/rules/{ruleId}": {
+      "schema": "curriculum_sources",
+      "description": "Extracted grammar rules with formulas, examples and page provenance"
+    },
+    "/curriculum_sources/{sourceId}/vocab/{vocabId}": {
+      "schema": "curriculum_sources",
+      "description": "Extracted vocabulary items with translations and context sentences"
+    },
+    "/curriculum_sources/{sourceId}/questions/{questionId}": {
+      "schema": "curriculum_sources",
+      "description": "Extracted exercise and ministerial questions with verified answers"
+    },
+    "/curriculum_sources/{sourceId}/pages/{pageNumber}": {
+      "schema": "curriculum_sources",
+      "description": "Page-level extraction metadata and char count metrics"
     }
   }
 }

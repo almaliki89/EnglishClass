@@ -32,6 +32,9 @@ jobs:
       - name: Run Deep Architecture Audit
         run: npx tsx scripts/deep_architecture_audit.ts
 
+      - name: Run V6 Security & Hardening Regression Suite
+        run: npm run test:security
+
       - name: Build Production Bundle
         run: npm run build
 
