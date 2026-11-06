@@ -92,7 +92,7 @@ export const UNIT_1: Unit = {
       unitId: 1,
       lessonNumber: 2,
       titleAr: "الدرس الثاني: الماضي البسيط والماضي المستمر وأدوات الربط",
-      titleEn: "Lesson 2: Past Simple, Continuous & Connectors",
+      titleEn: "Lesson 2: Past Simple vs Past Continuous & Connectors",
       category: "grammar",
       summary: "شرح زمن الماضي البسيط والمستمر، قواعد إضافة ed و ing، ربط الحدثين بأدوات الربط (While, As, When, And)، وأسماء الجمع القياسية والشاذة.",
       grammarRuleFormula: "While / As + Past Continuous [was/were + v-ing] , Past Simple [v-ed/irregular]\nWhen / And + Past Simple [v-ed/irregular] , Past Continuous [was/were + v-ing]",

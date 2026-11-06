@@ -71,7 +71,7 @@ test.describe('Iraqi English Curriculum Platform - Critical Architecture & Secur
     // Click on a specific lesson in 6th Preparatory
     await page.goto('/grade/sixth-preparatory/unit/1/lesson/1-1');
     await page.waitForLoadState('networkidle');
-    await expect(page.locator('text=Past Simple vs Past Continuous')).toBeVisible();
+    await expect(page.locator('text=Past Simple vs Past Continuous').first()).toBeVisible();
 
     // Check localStorage has recorded 6th prep resume lesson
     const storageState = await page.evaluate(() => {
@@ -85,7 +85,7 @@ test.describe('Iraqi English Curriculum Platform - Critical Architecture & Secur
     // Now navigate to 3rd Intermediate lesson
     await page.goto('/grade/third-intermediate/unit/unit-1/lesson/lesson-3-1');
     await page.waitForLoadState('networkidle');
-    await expect(page.locator('text=Giving Reasons')).toBeVisible();
+    await expect(page.locator('text=Giving Reasons').first()).toBeVisible();
 
     // Verify 3rd prep was updated while 6th prep remained 1-1
     const updatedStorageState = await page.evaluate(() => {

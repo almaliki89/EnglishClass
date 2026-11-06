@@ -31,7 +31,8 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
     signInWithEmail, 
     signUpWithEmail, 
     signUpWithPhone, 
-    signInWithPhone 
+    signInWithPhone,
+    signInAsGuest,
   } = useAuth();
 
   // Mode: Register vs Login
@@ -235,7 +236,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               type="button"
               onClick={handleGoogleSignIn}
               disabled={googleLoading || loading}
-              className="w-full py-2.5 px-4 bg-white border-2 border-[#171717] hover:bg-[#F4EFE3] font-black text-[#171717] text-xs sm:text-sm flex items-center justify-center gap-3 transition-transform active:translate-x-0.5 active:translate-y-0.5 shadow-[3px_3px_0px_#171717] mb-4 disabled:opacity-50 cursor-pointer"
+              className="w-full py-2.5 px-4 bg-white border-2 border-[#171717] hover:bg-[#F4EFE3] font-black text-[#171717] text-xs sm:text-sm flex items-center justify-center gap-3 transition-transform active:translate-x-0.5 active:translate-y-0.5 shadow-[3px_3px_0px_#171717] mb-2 disabled:opacity-50 cursor-pointer"
             >
               {googleLoading ? (
                 <Loader2 className="w-5 h-5 animate-spin text-[#304FFE]" />
@@ -250,6 +251,18 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                   <span>الدخول المباشر بحساب Google</span>
                 </>
               )}
+            </button>
+
+            {/* Guest Exploration Mode */}
+            <button
+              type="button"
+              onClick={async () => {
+                await signInAsGuest();
+                if (onSuccessfulAuth) onSuccessfulAuth('طالب زائر', selectedGrade);
+              }}
+              className="w-full py-2 px-3 bg-[#F4EFE3] hover:bg-[#E9FF57] border-2 border-[#171717] font-bold text-[#171717] text-xs flex items-center justify-center gap-2 transition-all shadow-[2px_2px_0px_#171717] mb-4 cursor-pointer"
+            >
+              <span>دخول سريع كزائر (معاينة المنهاج) ←</span>
             </button>
 
             <div className="flex items-center gap-3 mb-4">

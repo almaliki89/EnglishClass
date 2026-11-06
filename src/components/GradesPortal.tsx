@@ -63,10 +63,10 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
           <div className="space-y-3">
             <div className="flex items-center gap-2 flex-wrap">
               <BrutalBadge variant="cobalt" className="text-xs">
-                ACADEMIC PORTAL // دليل الصفوف الدراسية
+                منهاج اللغة الإنكليزية العراقي
               </BrutalBadge>
               <BrutalBadge variant="yellow" className="text-xs">
-                IRAQ ENGLISH CURRICULUM 2026
+                ACADEMIC PORTAL // دليل الصفوف الدراسية 2026
               </BrutalBadge>
             </div>
             <h1 className="text-2xl sm:text-4xl font-extrabold text-[#202124] tracking-tight">
@@ -83,7 +83,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
               ACTIVE GRADE // الصف المعتمد
             </span>
             <span className="text-base font-black text-[#405DE6] block font-display">
-              {studentState.selectedGrade ? getGradeMeta(studentState.selectedGrade).nameAr : 'لم يتم التحديد'}
+              {studentState.selectedGrade ? getGradeMeta(studentState.selectedGrade).shortName : 'لم يتم التحديد'}
             </span>
             {studentState.selectedGrade && (
               <button

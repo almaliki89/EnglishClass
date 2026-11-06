@@ -11,6 +11,7 @@ export const NotFound: React.FC = () => {
         </div>
 
         <div className="space-y-2">
+          <span className="text-5xl font-black text-rose-600 font-mono tracking-wider block">404</span>
           <h1 className="text-3xl font-black text-slate-900 dark:text-white">الصفحة غير موجودة</h1>
           <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
             عذراً، الرابط الذي تحاول الوصول إليه غير متاح أو تم نقله. يمكنك العودة إلى الرئيسية أو تصفح المواد الدراسية.

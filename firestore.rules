@@ -59,10 +59,22 @@ service cloud.firestore {
              (!('verificationStatus' in data) || isAdmin());
     }
 
+    // New student profile validator preventing self-awarded initial progression
+    function isValidNewStudent(data) {
+      return isValidStudent(data) &&
+             (!('xp' in data) || data.xp == 0) &&
+             (!('totalQuestionsAttempted' in data) || data.totalQuestionsAttempted == 0) &&
+             (!('totalQuestionsCorrect' in data) || data.totalQuestionsCorrect == 0) &&
+             (!('streakDays' in data) || data.streakDays <= 1) &&
+             (!('unlockedBadges' in data) || data.unlockedBadges.size() == 0) &&
+             (!('role' in data) || data.role == 'student') &&
+             (!('isAdmin' in data) || data.isAdmin == false);
+    }
+
     // Student profile, settings and overall progress (strict owner-only privacy & validation)
     match /students/{studentId} {
       allow read: if isOwner(studentId) || isAdmin();
-      allow create: if isOwner(studentId) && isValidStudent(request.resource.data);
+      allow create: if isOwner(studentId) && (isAdmin() || isValidNewStudent(request.resource.data));
       allow update: if (isAdmin() && isValidStudent(request.resource.data)) ||
                       (isOwner(studentId) && isValidStudent(request.resource.data) &&
                        request.resource.data.uid == resource.data.uid &&
@@ -77,14 +89,10 @@ service cloud.firestore {
                        (!('verificationStatus' in request.resource.data) || ('verificationStatus' in resource.data && request.resource.data.verificationStatus == resource.data.verificationStatus)));
       allow delete: if isAdmin();
 
-      // Student sub-collections: exam results (read by owner/admin, scores validated)
+      // Student sub-collections: exam results (read by owner/admin; writes strictly secured to server-side admin)
       match /exam_results/{resultId} {
         allow read: if isOwner(studentId) || isAdmin();
-        allow create, update: if isOwner(studentId) && isValidId(resultId) &&
-                                request.resource.data.score is number &&
-                                request.resource.data.percentage is number &&
-                                request.resource.data.percentage >= 0 &&
-                                request.resource.data.percentage <= 100;
+        allow create, update: if isAdmin();
         allow delete: if isAdmin();
       }
 

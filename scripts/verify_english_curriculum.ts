@@ -227,6 +227,24 @@ assert(serverCode.includes('getUnitsForGrade(grade as EducationalGrade)'), 'serv
 assert(serverCode.includes('isOfficiallyAccredited') && serverCode.includes('official_approved'), 'server.ts must distinguish published from officially_accredited');
 assert(serverCode.includes('accreditationEvidence'), 'server.ts must require accreditation evidence for official approval');
 
+// 24. Durable Cloud Firestore Persistence for Curriculum Sources
+assert(serverCode.includes('syncWithFirestore') && serverCode.includes('adminFirestore.collection("curriculum_sources")'), 'server.ts must synchronize curriculum sources with Cloud Firestore as durable source of truth');
+
+// 25. Trusted Server-Side Exam Scoring & Progress Accounting
+assert(serverCode.includes('/api/student/exam-submit'), 'server.ts must expose server-side exam scoring endpoint');
+assert(serverCode.includes('isVerifiedByServer'), 'server.ts must calculate and sign server-verified exam records');
+
+// 26. Student Initial Progression Lockdown in Firestore Rules
+assert(firestoreRules.includes('isValidNewStudent') && firestoreRules.includes('data.xp == 0'), 'firestore.rules must forbid students from creating accounts with self-awarded XP or badges');
+assert(firestoreRules.includes('match /exam_results/{resultId}') && firestoreRules.includes('allow create, update: if isAdmin();'), 'firestore.rules must restrict exam_results writes to server-side admin');
+
+// 27. Honest Curriculum Statistics (No Fabricated Counts)
+assert(!serverCode.includes('title: line.slice(0, 60),\n              detectedLessonsCount: 5'), 'server.ts must not use hardcoded 5 lesson count');
+assert(!serverCode.includes('title || fileName || "الوحدة المستخرجة",\n          detectedLessonsCount: 3'), 'server.ts must not use hardcoded 3 lesson count');
+
+// 28. Secure Admin Bootstrapper
+assert(fs.existsSync(path.resolve('scripts/bootstrap_admin.ts')), 'scripts/bootstrap_admin.ts must exist for secure admin claims assignment');
+
 console.log('--------------------------------------------------------');
 console.log(`Results: ${passed} assertions passed, ${failed} failed.`);
 console.log('========================================================');

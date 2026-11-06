@@ -17,34 +17,53 @@
 
 2. **الخادم ونقاط الـ API (Backend):**
    - Express 4 + Node.js (المنفذ: 3000).
+   - توثيق مشفر عبر Firebase Admin SDK باستخدام `verifyIdToken(token, true)` مع فحص الإبطال الفوري.
+   - التحقق من صلاحيات الإدارة والتدريس حصراً عبر Custom Claims المشفرة، دون الاعتماد على قوائم بريد ثابتة أو بيانات مدخلة من العميل.
    - أمن المدخلات: جدار عزل هيكلي للمستندات غير الموثوقة `<<<UNTRUSTED_CURRICULUM_DOCUMENT_START>>>` لمنع هجمات حقن التوجيهات (Prompt Injection).
    - استخراج وتدقيق صفحات الـ PDF والتحقق من التوقيع الرقمي `%PDF` وحساب بصمة SHA-256 لاكتشاف النسخ المكررة.
-   - كشف الملفات المصورة التي تحتاج OCR وتصنيفها كـ `needs_ocr` دون اختلاق بيانات وهمية.
-   - مساعد ذكي منضبط (Strict Grounded RAG) يستشهد بأرقام الصفحات والوحدات حصراً.
+   - تصحيح الامتحانات واحتساب نقاط الخبرة (XP) والإنجازات مركزياً على الخادم لمنع التلاعب وتزوير الدرجات.
+   - مساعد ذكي منضبط (Strict Grounded RAG) يستشهد بأرقام الصفحات والوحدات من المحتوى المعتمد حصراً.
 
-3. **قاعدة البيانات والأمان (Firebase Firestore & Auth):**
-   - عزل تام لبيانات الطلاب (`/students/{studentId}`) بحيث لا يمكن لأي طالب قراءة أو تعديل بيانات حساب آخر.
-   - إدارة المناهج (`/curriculum_sources`): قراءة عامة للطلاب ومصادر المناهج المعتمدة، مع حظر الكتابة إلا للمشرفين المخولين.
+3. **قاعدة البيانات والأمان (Firebase Firestore, Storage & Auth):**
+   - عزل تام لبيانات الطلاب (`/students/{studentId}`)، مع قفل تام لحقول XP، الدرجات، الإنجازات، وحظر تعديلها من واجهة العميل.
+   - تخزين سحابي دائم للمناهج المعتمدة ومسودات التدقيق في Firestore (`/curriculum_sources`).
+   - ملفات PDF الأصلية والمصادر المعتمدة مؤمنة عبر قواعد Firebase Storage (`storage.rules`).
+   - قواعد أمان صارمة في `firestore.rules` تطبق مبدأ الرفض الافتراضي (Default-Deny).
+
+---
+
+## 🔐 إعداد المشرف وتعيين الصلاحيات (Admin Bootstrap)
+
+لتعيين صلاحيات المدير العام أو المعلم المعتمد عبر Firebase Admin SDK:
+```bash
+# تعيين المشرف العام:
+npx tsx scripts/bootstrap_admin.ts --email=alnukhbazubair@gmail.com --role=admin
+
+# أو تعيين معلم:
+npx tsx scripts/bootstrap_admin.ts --email=teacher@almaliki.edu.iq --role=teacher
+```
 
 ---
 
 ## 🚀 التشغيل والاختبار
 
 ### المتطلبات:
-- Node.js 20+
+- Node.js 22+
+- npm 10+
 
 ### التثبيت والتشغيل:
 ```bash
-npm install
+npm ci
 npm run dev
 ```
 افتح المتصفح على: `http://localhost:3000`
 
-### فحص واختبار المنظومة:
+### فحص واختبار المنظومة بالكامل:
 ```bash
 npm run test:acceptance
 ```
 يشمل:
 - فحص الأنواع الصارم: `tsc --noEmit`
-- جناح اختبارات المناهج والعزل والأمن: `tsx scripts/verify_english_curriculum.ts` (464+ تأكيد نجاح)
-- البناء للإنتاج: `vite build && esbuild server.ts`
+- جناح اختبارات المناهج والعزل والأمن: `npm run test` (830+ تأكيد نجاح)
+- تدقيق بنية المناهج للـ 4 مراحل: `npm run test:audit` (2,668 فحصاً ناجحاً)
+- البناء للإنتاج: `npm run build`

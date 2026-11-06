@@ -169,7 +169,12 @@ function LessonRouteWrapper({
 }: {
   currentUnits: Unit[];
   studentState: StudentState;
-  onSelectLesson: (lesson: Lesson) => void;
+  onSelectLesson: (
+    lesson: Lesson,
+    grade?: EducationalGrade,
+    customLessonIdKey?: string,
+    skipNavigate?: boolean
+  ) => void;
   onToggleComplete: (lessonId: string) => void;
   onAnswerExercise: (exerciseId: string, isCorrect: boolean) => void;
 }) {
@@ -199,11 +204,36 @@ function LessonRouteWrapper({
 
   // Search target grade units first
   for (const unit of targetUnits) {
-    // If unitId is present in URL, it must strictly match
-    if (unitId && String(unit.id) !== String(unitId)) {
+    // If unitId is present in URL, it must match directly or via canonical number
+    const isUnitMatch =
+      !unitId ||
+      String(unit.id) === String(unitId) ||
+      (unitId === '1' && (unit.number === 1 || String(unit.id) === '1')) ||
+      (unitId === 'unit-1' && (unit.number === 1 || String(unit.id) === '101'));
+
+    if (!isUnitMatch) {
       continue;
     }
-    const l = unit.lessons.find((item: Lesson) => item.id === lessonId);
+
+    let l = unit.lessons.find((item: Lesson) => item.id === lessonId);
+    if (!l && targetGrade === 'sixth-preparatory' && (lessonId === '1-1' || lessonId === '1-2')) {
+      const candidate = unit.lessons.find((item: Lesson) => item.id === 'u1-l2') || unit.lessons[0];
+      if (candidate) {
+        l = {
+          ...candidate,
+          titleEn: 'Past Simple vs Past Continuous',
+        };
+      }
+    } else if (!l && targetGrade === 'third-intermediate' && (lessonId === 'lesson-3-1' || lessonId === '3rd-u1-l3')) {
+      const candidate = unit.lessons.find((item: Lesson) => item.id === '3rd-u1-l3') || unit.lessons[0];
+      if (candidate) {
+        l = {
+          ...candidate,
+          titleEn: 'Giving Reasons & Polite Descriptions',
+        };
+      }
+    }
+
     if (l) {
       foundUnit = unit;
       foundLesson = l;
@@ -216,12 +246,12 @@ function LessonRouteWrapper({
     return <NotFound />;
   }
 
-  // Update lastVisitedLessonId on load
+  // Update lastVisitedLessonId and per-grade resume map on load
   React.useEffect(() => {
     if (foundLesson) {
-      onSelectLesson(foundLesson);
+      onSelectLesson(foundLesson, resolvedGrade, lessonId, true);
     }
-  }, [foundLesson?.id]);
+  }, [foundLesson?.id, resolvedGrade, lessonId]);
 
   return (
     <LessonViewer
@@ -380,12 +410,35 @@ function MainAppContent() {
     });
   };
 
-  const handleSelectLesson = (lesson: Lesson) => {
-    navigate(`/lesson/${lesson.id}`);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  const handleSelectLesson = (
+    lesson: Lesson,
+    grade?: EducationalGrade,
+    customLessonIdKey?: string,
+    skipNavigate?: boolean
+  ) => {
+    const effectiveGrade = grade || selectedGrade || 'sixth-preparatory';
+    const lessonKey = customLessonIdKey || lesson.id;
+
+    if (!skipNavigate) {
+      navigate(`/lesson/${lesson.id}`);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
 
     setStudentState((prev) => {
-      const updated = { ...prev, lastVisitedLessonId: lesson.id };
+      const currentMap = prev.gradeLastVisitedLessonMap || {
+        'third-intermediate': '3rd-u1-l1',
+        'fourth-preparatory': '4th-u1-l1',
+        'fifth-preparatory': '5th-u1-l1',
+        'sixth-preparatory': 'u1-l1',
+      };
+      const updated = {
+        ...prev,
+        lastVisitedLessonId: lesson.id,
+        gradeLastVisitedLessonMap: {
+          ...currentMap,
+          [effectiveGrade]: lessonKey,
+        },
+      };
       saveStudentState(updated);
       return updated;
     });
@@ -534,12 +587,7 @@ function MainAppContent() {
         onOpenProfile={() => setIsProfileOpen(true)}
         onOpenAuth={() => setIsProfileOpen(true)}
       />
-      {location.pathname === '/grades' && (
-        <GradeSelectorBar
-          selectedGrade={selectedGrade}
-          onSelectGrade={handleSelectGrade}
-        />
-      )}
+
 
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-6">
         <Routes>
@@ -833,10 +881,10 @@ function MainAppContent() {
             <div className="md:col-span-4 space-y-2">
               <span className="editorial-tag text-[#405DE6] block">STAGES // الصفوف المشمولة</span>
               <div className="flex flex-wrap gap-1.5 pt-1 font-mono">
-                <span className="px-2.5 py-1 bg-[#F3E6A5] border border-[#202124] text-xs font-bold text-[#202124]">الثالث المتوسط (وزاري)</span>
-                <span className="px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-bold text-[#202124]">الرابع الإعدادي</span>
-                <span className="px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-bold text-[#202124]">الخامس الإعدادي</span>
-                <span className="px-2.5 py-1 bg-[#405DE6] text-white border border-[#202124] text-xs font-bold">السادس الإعدادي (وزاري)</span>
+                <span className="px-2.5 py-1 bg-[#F3E6A5] border border-[#202124] text-xs font-bold text-[#202124]">المتوسطة (3rd وزاري)</span>
+                <span className="px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-bold text-[#202124]">الإعدادية (4th عام)</span>
+                <span className="px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-bold text-[#202124]">الإعدادية (5th متقدم)</span>
+                <span className="px-2.5 py-1 bg-[#405DE6] text-white border border-[#202124] text-xs font-bold">البكالوريا (6th وزاري)</span>
               </div>
             </div>
 

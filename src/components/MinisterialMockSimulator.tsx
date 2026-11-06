@@ -371,7 +371,13 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
             <div className="relative z-10 space-y-3 max-w-3xl">
               <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#E9FF57] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-mono font-black">
                 <Sparkles className="w-3.5 h-3.5 text-[#304FFE]" />
-                <span>{currentPaper.session || (gradeMeta.isMinisterial ? 'OFFICIAL MINISTERIAL EXAM // الدور الأول' : 'END-OF-YEAR EXAM // الامتحان النهائي')}</span>
+                <span>
+                  {grade === 'sixth-preparatory'
+                    ? 'الامتحانات الوزارية التجريبية'
+                    : grade === 'third-intermediate'
+                    ? 'الامتحان الوزاري التجريبي الشامل'
+                    : 'نماذج الامتحانات التجريبية'}
+                </span>
               </div>
 
               <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-[#171717] leading-tight">

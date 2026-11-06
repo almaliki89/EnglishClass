@@ -1,7 +1,16 @@
 import { defineConfig, devices } from '@playwright/test';
 
+import fs from 'fs';
+import path from 'path';
+
 if (!process.env.PLAYWRIGHT_BROWSERS_PATH) {
-  process.env.PLAYWRIGHT_BROWSERS_PATH = '/app/applet/.playwright-browsers';
+  if (fs.existsSync('/ms-playwright')) {
+    process.env.PLAYWRIGHT_BROWSERS_PATH = '/ms-playwright';
+  } else if (fs.existsSync('/.playwright-browsers')) {
+    process.env.PLAYWRIGHT_BROWSERS_PATH = '/.playwright-browsers';
+  } else if (fs.existsSync(path.resolve(process.cwd(), '.playwright-browsers'))) {
+    process.env.PLAYWRIGHT_BROWSERS_PATH = path.resolve(process.cwd(), '.playwright-browsers');
+  }
 }
 
 export default defineConfig({
@@ -29,7 +38,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'VITE_E2E_MODE=true npx tsx server.ts',
+    command: 'NODE_ENV=test VITE_E2E_MODE=true npx tsx server.ts',
     url: 'http://127.0.0.1:3000/api/health',
     reuseExistingServer: true,
     timeout: 60000,

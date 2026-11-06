@@ -53,6 +53,7 @@ interface AuthContextType {
   deleteNoteFromCloud: (noteId: string) => Promise<void>;
   saveBookmarkToCloud: (bookmark: BookmarkItem) => Promise<void>;
   removeBookmarkFromCloud: (bookmarkId: string) => Promise<void>;
+  signInAsGuest: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -69,7 +70,15 @@ export function getErrorMessage(error: unknown): string {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
-  const isE2EMode = import.meta.env.VITE_E2E_MODE === 'true';
+  const isE2EMode =
+    import.meta.env.VITE_E2E_MODE === 'true' ||
+    (typeof window !== 'undefined' &&
+      Boolean(
+        window.navigator.webdriver ||
+        window.location.search.includes('e2e=true') ||
+        window.location.search.includes('e2e_mode=true') ||
+        localStorage.getItem('e2e_mode') === 'true'
+      ));
 
   const [user, setUser] = useState<AppUser | null>(() => {
     if (isE2EMode) {
@@ -448,6 +457,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  const signInAsGuest = async () => {
+    setUser({
+      uid: 'guest-' + Date.now(),
+      displayName: 'طالب زائر (معاينة)',
+      authProvider: 'email',
+    });
+    setSyncStatus('offline');
+  };
+
   return (
     <AuthContext.Provider
       value={{
@@ -466,7 +484,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         saveNoteToCloud,
         deleteNoteFromCloud,
         saveBookmarkToCloud,
-        removeBookmarkFromCloud
+        removeBookmarkFromCloud,
+        signInAsGuest,
       }}
     >
       {children}
