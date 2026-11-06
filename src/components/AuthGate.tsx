@@ -124,8 +124,12 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
       await signInWithGoogle();
       if (onSuccessfulAuth) onSuccessfulAuth('', selectedGrade);
     } catch (err: any) {
-      if (err.code !== 'auth/popup-closed-by-user') {
-        setError('تعذر تسجيل الدخول بحساب Google، يرجى المحاولة أو استخدام رقم الهاتف');
+      const errCode = err?.code || '';
+      const errMessage = err?.message || '';
+      if (errCode === 'auth/unauthorized-domain' || errMessage.includes('unauthorized-domain')) {
+        setError('نطاق المعاينة الحالي غير مضاف في قائمة النطاقات المصرح بها لـ Firebase Auth. يمكنك الدخول المباشر برقم الهاتف/البريد الإلكتروني أو الدخول كزائر.');
+      } else if (errCode !== 'auth/popup-closed-by-user') {
+        setError('تعذر تسجيل الدخول بحساب Google. يمكنك استخدام رقم الهاتف، البريد الإلكتروني، أو الدخول كزائر.');
       }
     } finally {
       setGoogleLoading(false);

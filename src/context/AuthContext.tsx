@@ -195,8 +195,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         setSyncStatus('synced');
       }
     } catch (error: unknown) {
-      console.error('Google Sign-in error:', getErrorMessage(error));
-      setSyncStatus('error');
+      const msg = getErrorMessage(error);
+      console.warn('Google Sign-in error:', msg);
+      setSyncStatus('offline');
       throw error;
     }
   };
