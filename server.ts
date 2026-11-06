@@ -9,6 +9,8 @@ import { PDFParse } from "pdf-parse";
 import { initializeApp, getApps } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { CurriculumSourceDocument } from "./src/types/curriculumManagement";
+import { getUnitsForGrade } from "./src/data/gradeContentResolver";
+import { EducationalGrade } from "./src/types";
 
 dotenv.config();
 
@@ -135,15 +137,10 @@ export interface AuthenticatedRequest extends Request {
   user?: AuthenticatedUser;
 }
 
-// Known authorized admin emails
-const ADMIN_EMAILS = new Set([
-  "alnukhbazubair@gmail.com",
-  "admin@almaliki.edu.iq",
-]);
-
 /**
  * Cryptographically verifies Firebase ID Tokens using Firebase Admin SDK with checkRevoked=true.
  * Never uses unverified decoded JWT payloads as authentication evidence.
+ * Derives admin and teacher privileges EXCLUSIVELY from verified Custom Claims.
  * Test authentication bypass is strictly enabled ONLY when process.env.NODE_ENV === "test".
  */
 export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedUser | null> {
@@ -156,7 +153,7 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
       const isAdmin = e2eRole === "admin";
       return {
         uid: (req.headers["x-e2e-uid"] as string) || "e2e-test-uid",
-        email: isAdmin ? "alnukhbazubair@gmail.com" : "student@example.com",
+        email: isAdmin ? "admin@almaliki.edu.iq" : "student@example.com",
         emailVerified: true,
         role: e2eRole,
         isAdmin,
@@ -173,7 +170,7 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
     if (token === "e2e-admin-token") {
       return {
         uid: "admin-e2e-user",
-        email: "alnukhbazubair@gmail.com",
+        email: "admin@almaliki.edu.iq",
         emailVerified: true,
         role: "admin",
         isAdmin: true,
@@ -203,12 +200,11 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
     const email = decodedToken.email ? String(decodedToken.email).toLowerCase() : undefined;
     const emailVerified = Boolean(decodedToken.email_verified);
 
-    // Derive admin / teacher privileges exclusively from verified Custom Claims or verified admin emails
+    // Derive admin / teacher privileges exclusively from verified Custom Claims
     const hasAdminClaim = Boolean(decodedToken.admin === true || decodedToken.role === "admin");
     const hasTeacherClaim = Boolean(decodedToken.teacher === true || decodedToken.role === "teacher");
-    const isEmailAdmin = Boolean(email && emailVerified && ADMIN_EMAILS.has(email));
 
-    const isAdmin = hasAdminClaim || isEmailAdmin;
+    const isAdmin = hasAdminClaim;
     const isTeacher = isAdmin || hasTeacherClaim;
 
     return {
@@ -231,7 +227,7 @@ export function extractAuthUser(req: Request): AuthenticatedUser | null {
     const isAdmin = e2eRole === "admin";
     return {
       uid: (req.headers["x-e2e-uid"] as string) || "e2e-test-uid",
-      email: isAdmin ? "alnukhbazubair@gmail.com" : "student@example.com",
+      email: isAdmin ? "admin@almaliki.edu.iq" : "student@example.com",
       emailVerified: true,
       role: e2eRole,
       isAdmin,
@@ -615,60 +611,95 @@ const curriculumDB = new CurriculumPersistenceManager();
 // PDF & TEXT INGESTION PIPELINE (STRICT VALIDATION, CHUNKING & PAGE AWARENESS)
 // ============================================================================
 
-app.post("/api/ingest/pdf", ingestRateLimiter.middleware(), async (req: Request, res: Response) => {
-  try {
-    const { base64Data, fileName } = req.body;
-
-    if (!base64Data || typeof base64Data !== "string") {
-      return res.status(400).json({ error: "بيانات ملف الـ PDF مفقودة أو غير صالحة." });
-    }
-
-    const cleanBase64 = base64Data.replace(/^data:application\/pdf;base64,/, "");
-    let buffer: Buffer;
+app.post(
+  "/api/ingest/pdf",
+  requireAuth,
+  ingestRateLimiter.middleware(),
+  async (req: AuthenticatedRequest, res: Response) => {
     try {
-      buffer = Buffer.from(cleanBase64, "base64");
-    } catch {
-      return res.status(400).json({ error: "بيانات الملف غير صالحة." });
+      const { base64Data, fileName } = req.body;
+
+      if (!base64Data || typeof base64Data !== "string") {
+        return res.status(400).json({ error: "بيانات ملف الـ PDF مفقودة أو غير صالحة." });
+      }
+
+      const cleanBase64 = base64Data.replace(/^data:application\/pdf;base64,/, "");
+      let buffer: Buffer;
+      try {
+        buffer = Buffer.from(cleanBase64, "base64");
+      } catch {
+        return res.status(400).json({ error: "بيانات الملف غير صالحة." });
+      }
+
+      if (buffer.length === 0) {
+        return res.status(400).json({ error: "ملف الـ PDF فارغ." });
+      }
+
+      if (buffer.length > MAX_PDF_BYTES) {
+        return res.status(400).json({ error: "حجم الملف يتجاوز الحد الأقصى (20 ميغابايت)." });
+      }
+
+      const magicHeader = buffer.subarray(0, 4).toString("ascii");
+      if (magicHeader !== "%PDF") {
+        return res.status(400).json({ error: "ملف غير صالح، يجب أن يكون الملف بصيغة PDF حقيقية تبدأ بـ %PDF." });
+      }
+
+      const parser = new PDFParse({ data: buffer });
+      const pdfData = await parser.getText();
+      const info = await parser.getInfo().catch(() => ({}));
+      await parser.destroy().catch(() => {});
+
+      const extractedText = (pdfData.text || "").trim();
+      const isRealExtraction = extractedText.length > 50;
+
+      return res.json({
+        success: true,
+        fileName: fileName || "uploaded_malzama.pdf",
+        totalPages: pdfData.pages?.length || 1,
+        totalChars: extractedText.length,
+        isRealExtraction,
+        extractedText: extractedText,
+        info: info || {},
+        preview: extractedText.slice(0, 1500),
+      });
+    } catch (error: unknown) {
+      console.error("PDF Ingestion Error:", getErrorMessage(error));
+      return res.status(500).json({
+        error: "فشل استخراج النص من ملف الـ PDF. يرجى التأكد من أن الملف غير تالف.",
+      });
     }
-
-    if (buffer.length === 0) {
-      return res.status(400).json({ error: "ملف الـ PDF فارغ." });
-    }
-
-    if (buffer.length > MAX_PDF_BYTES) {
-      return res.status(400).json({ error: "حجم الملف يتجاوز الحد الأقصى (20 ميغابايت)." });
-    }
-
-    const magicHeader = buffer.subarray(0, 4).toString("ascii");
-    if (magicHeader !== "%PDF") {
-      return res.status(400).json({ error: "ملف غير صالح، يجب أن يكون الملف بصيغة PDF حقيقية تبدأ بـ %PDF." });
-    }
-
-    const parser = new PDFParse({ data: buffer });
-    const pdfData = await parser.getText();
-    const info = await parser.getInfo().catch(() => ({}));
-    await parser.destroy().catch(() => {});
-
-    const extractedText = (pdfData.text || "").trim();
-    const isRealExtraction = extractedText.length > 50;
-
-    return res.json({
-      success: true,
-      fileName: fileName || "uploaded_malzama.pdf",
-      totalPages: pdfData.pages?.length || 1,
-      totalChars: extractedText.length,
-      isRealExtraction,
-      extractedText: extractedText,
-      info: info || {},
-      preview: extractedText.slice(0, 1500),
-    });
-  } catch (error: unknown) {
-    console.error("PDF Ingestion Error:", getErrorMessage(error));
-    return res.status(500).json({
-      error: "فشل استخراج النص من ملف الـ PDF. يرجى التأكد من أن الملف غير تالف.",
-    });
   }
-});
+);
+
+// POST /api/ingest/text (Protected text ingestion)
+app.post(
+  "/api/ingest/text",
+  requireAuth,
+  ingestRateLimiter.middleware(),
+  async (req: AuthenticatedRequest, res: Response) => {
+    try {
+      const { text, fileName } = req.body;
+      if (!text || typeof text !== "string") {
+        return res.status(400).json({ error: "بيانات النص مفقودة أو غير صالحة." });
+      }
+      const sanitized = sanitizePromptInput(text);
+      if (sanitized.length === 0) {
+        return res.status(400).json({ error: "النص فارغ." });
+      }
+      return res.json({
+        success: true,
+        fileName: fileName || "text_document.txt",
+        totalChars: sanitized.length,
+        isRealExtraction: sanitized.length > 50,
+        preview: sanitized.slice(0, 1500),
+        extractedText: sanitized,
+      });
+    } catch (err: unknown) {
+      console.error("Text ingestion error:", getErrorMessage(err));
+      return res.status(500).json({ error: "فشل معالجة النص المرفوع." });
+    }
+  }
+);
 
 // ============================================================================
 // CURRICULUM SOURCES ENDPOINTS (SECURED WITH ROLE-BASED ACCESS CONTROL & DTO SANITIZATION)
@@ -941,7 +972,8 @@ app.post(
 );
 
 // POST /api/curriculum/sources/:id/publish
-// Requires verified Administrator. Promotes status to published & official_approved.
+// Requires verified Administrator. Promotes status to published.
+// Strictly separates 'published' from 'officially_accredited' (which requires ministerial accreditation evidence).
 app.post(
   "/api/curriculum/sources/:id/publish",
   requireAdmin,
@@ -951,8 +983,16 @@ app.post(
       return res.status(404).json({ error: "المصدر غير موجود." });
     }
 
+    const { isOfficiallyAccredited, accreditationEvidence } = req.body || {};
     source.status = "published";
-    source.verificationStatus = "official_approved";
+
+    if (isOfficiallyAccredited && typeof accreditationEvidence === "string" && accreditationEvidence.trim().length > 10) {
+      source.verificationStatus = "official_approved";
+      source.description += ` • اعتماد وزاري رسمي موثق: ${accreditationEvidence.trim().slice(0, 300)}`;
+    } else {
+      source.verificationStatus = "verified";
+    }
+
     source.reviewedBy = req.user?.email || "مدير المنصة الأكاديمي";
     source.reviewedAt = new Date().toISOString();
     source.updatedAt = new Date().toISOString();
@@ -961,7 +1001,9 @@ app.post(
     return res.json({
       success: true,
       source,
-      message: "تم نشر المنهج بنجاح وأصبح متاحاً للطلاب رسمياً.",
+      message: source.verificationStatus === "official_approved"
+        ? "تم نشر المنهج بنجاح وتوثيق اعتماده الرسمي من وزارة التربية."
+        : "تم نشر المنهج وإتاحته للطلاب بنجاح.",
     });
   }
 );
@@ -1026,6 +1068,23 @@ app.post(
 
       if (!text || typeof text !== "string") {
         return res.status(400).json({ error: "النص المطلوب للتحليل مفقود." });
+      }
+
+      // P0: General students may request educational AI assistance but cannot modify curriculum sources.
+      // Curriculum extraction and source modification must require authorized teacher or administrator privileges.
+      if (sourceId) {
+        if (!req.user?.isAdmin && !req.user?.isTeacher) {
+          return res.status(403).json({
+            error: "غير مصرح لك بتعديل أو ربط مصادر المناهج التعليمية. هذه الميزة مخصصة للمشرفين والمعلمين فقط.",
+          });
+        }
+        const existingSource = curriculumDB.getById(sourceId);
+        if (!existingSource) {
+          return res.status(404).json({ error: "مصدر المنهج المطلوب غير موجود." });
+        }
+        if (grade && existingSource.gradeId !== grade) {
+          return res.status(400).json({ error: "المرحلة الدراسية المحددة لا تتطابق مع مصدر المنهج المسجل." });
+        }
       }
 
       const sanitizedText = sanitizePromptInput(text);
@@ -1146,8 +1205,8 @@ ${delimitedDoc}
             }
           }
 
-          // If sourceId was provided and exists, update its structured content
-          if (sourceId) {
+          // If sourceId was provided and exists, update its structured content (Admin or Teacher only)
+          if (sourceId && (req.user?.isAdmin || req.user?.isTeacher)) {
             const src = curriculumDB.getById(sourceId);
             if (src) {
               src.extractedRules = aggregatedRules;
@@ -1208,8 +1267,32 @@ app.post(
       }
 
       const sanitizedQuestion = sanitizePromptInput(question).slice(0, 400);
-      const sanitizedContext = sanitizePromptInput(textbookContext || "").slice(0, 4000);
-      const delimitedContext = wrapUntrustedDocument(sanitizedContext);
+
+      // P9 Grounding Integrity: Resolve trusted server-side textbook context first
+      let trustedTextbookContext = "";
+      if (grade) {
+        try {
+          const units = getUnitsForGrade(grade as EducationalGrade);
+          for (const unit of units) {
+            const unitMatch = !unitTitle || unit.titleAr.includes(unitTitle) || (unit.titleEn && unit.titleEn.includes(unitTitle)) || unit.id === unitTitle;
+            if (unitMatch) {
+              for (const lesson of unit.lessons) {
+                const lessonMatch = !lessonTitle || lesson.titleAr.includes(lessonTitle) || (lesson.titleEn && lesson.titleEn.includes(lessonTitle)) || lesson.id === lessonTitle;
+                  const contentDetails = lesson.detailedContent ? lesson.detailedContent.join("\n") : "";
+                  const notes = lesson.teacherNotes ? lesson.teacherNotes.join("\n") : "";
+                  trustedTextbookContext = `الوحدة المعتمدة: ${unit.titleAr} (${unit.titleEn || ""})\nالدرس المعتمد: ${lesson.titleAr} (${lesson.titleEn})\nشرح الدرس ومحتواه المعتمد:\n${lesson.summary || ""}\n${lesson.grammarRuleFormula ? `القاعدة: ${lesson.grammarRuleFormula}\n` : ""}${contentDetails}\n${notes}`;
+                  break;
+              }
+            }
+            if (trustedTextbookContext) break;
+          }
+        } catch {
+          // ignore lookup errors
+        }
+      }
+
+      const effectiveContext = trustedTextbookContext || sanitizePromptInput(textbookContext || "").slice(0, 4000);
+      const delimitedContext = wrapUntrustedDocument(effectiveContext);
 
       if (apiKey) {
         try {

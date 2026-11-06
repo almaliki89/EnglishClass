@@ -23,21 +23,21 @@ service cloud.firestore {
       return isAuthenticated() && isValidId(studentId) && (request.auth.uid == studentId);
     }
 
-    // Trusted Admin/Teacher Check via explicit admin document existence or verified claims
+    // Trusted Admin/Teacher Check via verified custom claims or explicit directory documents
     function isAdmin() {
       return isAuthenticated() && (
-        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
         request.auth.token.admin == true ||
         request.auth.token.role == 'admin' ||
-        (request.auth.token.email_verified == true && request.auth.token.email in ['alnukhbazubair@gmail.com', 'admin@almaliki.edu.iq'])
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid))
       );
     }
 
     function isTeacherOrAdmin() {
       return isAuthenticated() && (
         isAdmin() ||
-        exists(/databases/$(database)/documents/teachers/$(request.auth.uid)) ||
-        request.auth.token.role == 'teacher'
+        request.auth.token.teacher == true ||
+        request.auth.token.role == 'teacher' ||
+        exists(/databases/$(database)/documents/teachers/$(request.auth.uid))
       );
     }
 
@@ -63,14 +63,21 @@ service cloud.firestore {
     match /students/{studentId} {
       allow read: if isOwner(studentId) || isAdmin();
       allow create: if isOwner(studentId) && isValidStudent(request.resource.data);
-      allow update: if isOwner(studentId) && isValidStudent(request.resource.data) &&
-                      request.resource.data.uid == resource.data.uid &&
-                      // Prevent unauthorized client manipulation of administrative fields
-                      (!('role' in request.resource.data) || ('role' in resource.data && request.resource.data.role == resource.data.role)) &&
-                      (!('isAdmin' in request.resource.data) || ('isAdmin' in resource.data && request.resource.data.isAdmin == resource.data.isAdmin));
+      allow update: if (isAdmin() && isValidStudent(request.resource.data)) ||
+                      (isOwner(studentId) && isValidStudent(request.resource.data) &&
+                       request.resource.data.uid == resource.data.uid &&
+                       // Prevent unauthorized client manipulation of protected progress & achievements
+                       (!('xp' in request.resource.data) || request.resource.data.xp == resource.data.xp) &&
+                       (!('streakDays' in request.resource.data) || request.resource.data.streakDays == resource.data.streakDays) &&
+                       (!('totalQuestionsAttempted' in request.resource.data) || request.resource.data.totalQuestionsAttempted == resource.data.totalQuestionsAttempted) &&
+                       (!('totalQuestionsCorrect' in request.resource.data) || request.resource.data.totalQuestionsCorrect == resource.data.totalQuestionsCorrect) &&
+                       (!('unlockedBadges' in request.resource.data) || request.resource.data.unlockedBadges == resource.data.unlockedBadges) &&
+                       (!('role' in request.resource.data) || ('role' in resource.data && request.resource.data.role == resource.data.role)) &&
+                       (!('isAdmin' in request.resource.data) || ('isAdmin' in resource.data && request.resource.data.isAdmin == resource.data.isAdmin)) &&
+                       (!('verificationStatus' in request.resource.data) || ('verificationStatus' in resource.data && request.resource.data.verificationStatus == resource.data.verificationStatus)));
       allow delete: if isAdmin();
 
-      // Student sub-collections: exam results
+      // Student sub-collections: exam results (read by owner/admin, scores validated)
       match /exam_results/{resultId} {
         allow read: if isOwner(studentId) || isAdmin();
         allow create, update: if isOwner(studentId) && isValidId(resultId) &&
@@ -112,15 +119,17 @@ service cloud.firestore {
       allow write: if isAdmin();
     }
 
-    // Shared curriculum or malzama drafts (read-only for clients, writes secured)
+    // Shared curriculum drafts (strictly restricted to authorized teachers & admins)
     match /curriculum_shared/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
+      allow read, write: if isTeacherOrAdmin() && isValidId(docId);
     }
 
-    // Published official curriculum sources (public read for students, supervisor/admin-only write)
+    // Published official curriculum sources (public read ONLY for published records, teacher/admin write)
     match /curriculum_sources/{sourceId} {
-      allow read: if isValidId(sourceId);
+      allow read: if isValidId(sourceId) && (
+        (resource != null && resource.data.status == 'published') ||
+        isTeacherOrAdmin()
+      );
       allow write: if isTeacherOrAdmin() && isValidId(sourceId);
     }
 

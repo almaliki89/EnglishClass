@@ -6,6 +6,7 @@ import {
 import { UploadedMalzama, EducationalGrade } from '../types';
 import { DEFAULT_PRELOADED_3RD_MALZAMA } from '../data/thirdIntermediateData';
 import { CurriculumAnalyzer } from '../services/curriculumAnalyzer';
+import { getAuthHeaders } from '../utils/apiAuth';
 
 interface MalzamaUploadLabProps {
   onNavigateToUnits?: () => void;
@@ -99,10 +100,14 @@ export const MalzamaUploadLab: React.FC<MalzamaUploadLabProps> = ({
       setProcessingProgress(45);
       setProcessingStep('جارٍ استخراج النصوص الحقيقية والتحقق من التوقيع الرقمي...');
 
-      // 2. Call server-side PDF ingestion endpoint
+      // 2. Call server-side PDF ingestion endpoint with authentication
+      const authHeaders = await getAuthHeaders();
       const response = await fetch('/api/ingest/pdf', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          ...authHeaders,
+          'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ base64Data, fileName })
       });
 

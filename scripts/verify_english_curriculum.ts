@@ -147,9 +147,15 @@ assert(serverCode.includes('sha256'), 'server.ts must calculate SHA-256 signatur
 // 11. Firestore Rules Security & Collection Hardening
 const firestoreRules = fs.readFileSync(path.resolve('firestore.rules'), 'utf8');
 assert(firestoreRules.includes('match /curriculum_sources/{sourceId}'), 'firestore.rules must secure curriculum_sources collection');
+assert(firestoreRules.includes('resource.data.status == \'published\''), 'firestore.rules must require published status for public read');
+assert(firestoreRules.includes('match /curriculum_shared/{docId}'), 'firestore.rules must secure curriculum_shared collection');
+assert(firestoreRules.includes('allow read, write: if isTeacherOrAdmin()'), 'firestore.rules must restrict curriculum_shared to teachers/admins');
 assert(firestoreRules.includes('isOwner(studentId)'), 'firestore.rules must enforce student data privacy');
 assert(firestoreRules.includes('match /curriculum_drafts/{draftId}'), 'firestore.rules must isolate curriculum_drafts');
 assert(firestoreRules.includes('function isTeacherOrAdmin()'), 'firestore.rules must define isTeacherOrAdmin function');
+assert(firestoreRules.includes('request.resource.data.xp == resource.data.xp'), 'firestore.rules must lock client XP modification');
+assert(firestoreRules.includes('request.resource.data.streakDays == resource.data.streakDays'), 'firestore.rules must lock streakDays modification');
+assert(!firestoreRules.includes('alnukhbazubair@gmail.com'), 'firestore.rules must eliminate hardcoded email admin checks');
 
 // 12. No Obsolete Grade References in Active Routes
 const routesCode = fs.readFileSync(path.resolve('src/routes.ts'), 'utf8');
@@ -198,6 +204,28 @@ assert(serverCode.includes('requireAdminOrTeacher'), 'server.ts must enforce req
 assert(serverCode.includes('verifyIdToken(token, true)'), 'server.ts must verify ID tokens cryptographically with checkRevoked=true');
 assert(serverCode.includes('sanitizePublicSourceDTO'), 'server.ts must sanitize public DTOs');
 assert(serverCode.includes('/api/curriculum/sources/admin/all'), 'server.ts must provide secured admin sources endpoint');
+assert(!serverCode.includes('ADMIN_EMAILS.has'), 'server.ts must not use hardcoded email lists for admin authorization');
+
+// 19. Firebase Storage Security Rules
+const storageRules = fs.readFileSync(path.resolve('storage.rules'), 'utf8');
+assert(storageRules.includes('service firebase.storage'), 'storage.rules must define service firebase.storage');
+assert(storageRules.includes('match /curriculum_sources/{sourceId}/{fileName}'), 'storage.rules must secure curriculum_sources path');
+assert(storageRules.includes('isTeacherOrAdmin()'), 'storage.rules must restrict PDF uploads to teachers/admins');
+
+// 20. P0: Prevent Unauthorized Curriculum Source Modification in analyze-curriculum
+assert(serverCode.includes('if (sourceId) {') && serverCode.includes('!req.user?.isAdmin && !req.user?.isTeacher'), 'server.ts must guard sourceId modification in analyze-curriculum');
+assert(serverCode.includes('status(403)'), 'server.ts must return 403 for unauthorized curriculum modification attempts');
+
+// 21. Protected Ingestion Endpoints (PDF & Text)
+assert(serverCode.includes('app.post(\n  "/api/ingest/pdf",\n  requireAuth') || serverCode.includes('"/api/ingest/pdf",\n  requireAuth'), 'server.ts must require authentication for PDF ingestion');
+assert(serverCode.includes('/api/ingest/text'), 'server.ts must provide text ingestion endpoint');
+
+// 22. Server-side Grounded QA Resolution
+assert(serverCode.includes('getUnitsForGrade(grade as EducationalGrade)'), 'server.ts must resolve verified curriculum units in grounded QA');
+
+// 23. Official Accreditation Separation
+assert(serverCode.includes('isOfficiallyAccredited') && serverCode.includes('official_approved'), 'server.ts must distinguish published from officially_accredited');
+assert(serverCode.includes('accreditationEvidence'), 'server.ts must require accreditation evidence for official approval');
 
 console.log('--------------------------------------------------------');
 console.log(`Results: ${passed} assertions passed, ${failed} failed.`);

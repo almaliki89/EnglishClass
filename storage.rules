@@ -1,0 +1,58 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // Default deny catch-all
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return isAuthenticated() && (
+        request.auth.token.admin == true ||
+        request.auth.token.role == 'admin'
+      );
+    }
+
+    function isTeacherOrAdmin() {
+      return isAuthenticated() && (
+        isAdmin() ||
+        request.auth.token.teacher == true ||
+        request.auth.token.role == 'teacher'
+      );
+    }
+
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Curriculum original PDFs and source files
+    // Write: authorized teachers and administrators only, max 25MB, PDF MIME type
+    // Read: authenticated users
+    match /curriculum_sources/{sourceId}/{fileName} {
+      allow read: if isAuthenticated();
+      allow write: if isTeacherOrAdmin() &&
+                     request.resource.size <= 25 * 1024 * 1024 &&
+                     (request.resource.contentType == 'application/pdf' || request.resource.contentType == 'application/octet-stream');
+    }
+
+    // Curriculum drafts under review (restricted to teachers and admins)
+    match /curriculum_drafts/{draftId}/{fileName} {
+      allow read, write: if isTeacherOrAdmin() &&
+                            request.resource.size <= 25 * 1024 * 1024;
+    }
+
+    // Student private user assets (e.g. avatars, user study notes attachments)
+    match /students/{studentId}/{fileName} {
+      allow read: if isOwner(studentId) || isTeacherOrAdmin();
+      allow write: if isOwner(studentId) &&
+                     request.resource.size <= 5 * 1024 * 1024 &&
+                     request.resource.contentType.matches('image/.*');
+    }
+  }
+}
