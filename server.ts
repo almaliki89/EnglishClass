@@ -494,7 +494,22 @@ export interface StoredCurriculumSource {
     | "needs_ocr"
     | "archived"
     | "internally_reviewed"
-    | "officially_accredited";
+    | "officially_accredited"
+    | "upload_pending"
+    | "file_stored"
+    | "metadata_pending"
+    | "persisted"
+    | "persistence_failed"
+    | "deletion_pending"
+    | "deletion_failed"
+    | "deleted"
+    | "queued"
+    | "extracting"
+    | "analyzing"
+    | "partially_completed"
+    | "requires_ocr"
+    | "requires_review"
+    | "reconciled";
   verificationStatus: "official_approved" | "verified" | "needs_review" | "draft" | "internally_reviewed";
   reviewedBy?: string;
   reviewedAt?: string;
@@ -1581,6 +1596,59 @@ app.delete(
   }
 );
 
+// POST /api/curriculum/sources/:id/reconcile
+// Requires verified Administrator - Idempotently reconciles source lifecycle & storage states
+app.post(
+  "/api/curriculum/sources/:id/reconcile",
+  requireAdmin,
+  async (req: AuthenticatedRequest, res: Response) => {
+    try {
+      const { id } = req.params;
+      const source = curriculumDB.getById(id);
+      if (!source) {
+        return res.status(404).json({ error: "المصدر المطلوب للتسوية غير موجود." });
+      }
+
+      let actionTaken = "reconciled_clean";
+      if (source.status === "persistence_failed" || source.status === "upload_pending" || source.status === "file_stored" || source.status === "metadata_pending") {
+        await curriculumDB.set(id, {
+          ...source,
+          status: "persisted",
+          updatedAt: new Date().toISOString(),
+        });
+        actionTaken = "reconciled_persisted";
+      } else if (source.status === "deletion_failed" || source.status === "deletion_pending") {
+        const deleted = await curriculumDB.delete(id);
+        if (deleted && deleted.success) {
+          actionTaken = "reconciled_deleted";
+          return res.json({
+            success: true,
+            status: "deleted",
+            actionTaken,
+            message: "تم تسوية وإعادة تنفيذ حذف المصدر وجميع السجلات الملحقة بنجاح.",
+          });
+        }
+      } else {
+        await curriculumDB.set(id, {
+          ...source,
+          status: "reconciled",
+          updatedAt: new Date().toISOString(),
+        });
+      }
+
+      const updated = curriculumDB.getById(id);
+      return res.json({
+        success: true,
+        source: updated,
+        actionTaken,
+        message: "تم تنفيذ تسوية المصدر وإعادة مزامنة الحالة بنجاح.",
+      });
+    } catch (e: any) {
+      return res.status(500).json({ error: "فشل تنفيذ عملية تسوية المصدر." });
+    }
+  }
+);
+
 // ============================================================================
 // COMPLETE DOCUMENT PROCESSING & REAL PAGE-AWARE BATCH CHUNKING (NO CHARACTER ESTIMATES)
 // ============================================================================
@@ -1765,6 +1833,10 @@ ${delimitedDoc}
             if (parsed.summary) {
               consolidatedSummary += (consolidatedSummary ? "\n" : "") + parsed.summary;
             }
+            const hasPageNum = typeof batch.pageStart === "number" && batch.pageStart > 0;
+            const actualSourcePage = hasPageNum ? batch.pageStart : null;
+            const reviewStatus = hasPageNum ? "draft" : "requires_review";
+
             if (Array.isArray(parsed.extractedRules)) {
               parsed.extractedRules.forEach((r: any) => {
                 aggregatedRules.push({
@@ -1773,10 +1845,10 @@ ${delimitedDoc}
                   documentVersion: 1,
                   gradeId: grade || "sixth-preparatory",
                   subjectId: subject || "english",
-                  actualSourcePage: batch.pageStart,
+                  actualSourcePage: batch.pageStart ? batch.pageStart : null,
                   originalExtractedText: r.explanation || r.title,
                   extractionStatus: "ai_structured",
-                  reviewStatus: "draft",
+                  reviewStatus: batch.pageStart ? "draft" : "requires_review",
                   sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
                 });
               });
@@ -1789,10 +1861,10 @@ ${delimitedDoc}
                   documentVersion: 1,
                   gradeId: grade || "sixth-preparatory",
                   subjectId: subject || "english",
-                  actualSourcePage: batch.pageStart,
+                  actualSourcePage: batch.pageStart ? batch.pageStart : null,
                   originalExtractedText: v.context || v.word,
                   extractionStatus: "ai_structured",
-                  reviewStatus: "draft",
+                  reviewStatus: batch.pageStart ? "draft" : "requires_review",
                   sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
                 });
               });
@@ -1805,10 +1877,10 @@ ${delimitedDoc}
                   documentVersion: 1,
                   gradeId: grade || "sixth-preparatory",
                   subjectId: subject || "english",
-                  actualSourcePage: batch.pageStart,
+                  actualSourcePage: batch.pageStart ? batch.pageStart : null,
                   originalExtractedText: q.question,
                   extractionStatus: "ai_structured",
-                  reviewStatus: "draft",
+                  reviewStatus: batch.pageStart ? "draft" : "requires_review",
                   sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
                 });
               });

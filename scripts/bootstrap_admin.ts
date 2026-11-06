@@ -1,23 +1,24 @@
 /**
- * SECURE FIREBASE ADMINISTRATOR BOOTSTRAPPER (V7 HARDENED)
+ * SECURE FIREBASE ADMINISTRATOR BOOTSTRAPPER (V8 HARDENED)
  * 
- * Strict requirements:
- * 1. Must confirm identity of the intended administrator through Firebase Auth.
- * 2. Requires an existing user in Firebase Auth.
- * 3. Never manufactures emailVerified: true without actual verification.
- * 4. Requires an explicitly authorized bootstrap secret / master key.
- * 5. Assigns cryptographically signed Firebase Custom Claims via Firebase Admin SDK.
- * 6. Never permits normal users to bootstrap themselves.
- * 7. Logs administrative action securely without exposing credentials.
+ * Strict requirements (P7):
+ * 1. Requires an externally configured high-entropy bootstrap secret (process.env.ADMIN_BOOTSTRAP_SECRET).
+ * 2. Fails closed if the secret is missing or empty.
+ * 3. Compares secrets safely using crypto.timingSafeEqual.
+ * 4. Never logs the secret.
+ * 5. Verifies user actually exists in Firebase Authentication.
+ * 6. Never manufactures emailVerified: true without actual verification in Firebase Auth.
+ * 7. Assigns cryptographically signed Firebase Custom Claims via Firebase Admin SDK.
+ * 8. Records administrator bootstrap activity in a protected Firestore audit log.
  * 
  * Usage:
- *   npx tsx scripts/bootstrap_admin.ts --email=alnukhbazubair@gmail.com --secret=SECURE_BOOTSTRAP_KEY
- *   npx tsx scripts/bootstrap_admin.ts --email=teacher@almaliki.edu.iq --role=teacher --secret=SECURE_BOOTSTRAP_KEY
+ *   ADMIN_BOOTSTRAP_SECRET=your_high_entropy_secret npx tsx scripts/bootstrap_admin.ts --email=alnukhbazubair@gmail.com --secret=your_high_entropy_secret
  */
 
 import { initializeApp, getApps } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
+import crypto from 'node:crypto';
 import dotenv from 'dotenv';
 
 dotenv.config();
@@ -32,11 +33,31 @@ if (!getApps().length) {
 const auth = getAuth();
 const db = getFirestore(DATABASE_ID);
 
+/**
+ * Constant-time string comparison using crypto.timingSafeEqual to prevent timing side-channel attacks
+ */
+function timingSafeCompare(a: string, b: string): boolean {
+  if (!a || !b) return false;
+  const bufA = Buffer.from(a, 'utf8');
+  const bufB = Buffer.from(b, 'utf8');
+  if (bufA.length !== bufB.length) {
+    // Fill dummy buffer to avoid early return timing leakage
+    crypto.timingSafeEqual(bufA, bufA);
+    return false;
+  }
+  return crypto.timingSafeEqual(bufA, bufB);
+}
+
 export async function bootstrapAdminUser(email: string, role: "admin" | "teacher" = "admin", secretKey?: string) {
-  const masterSecret = process.env.ADMIN_BOOTSTRAP_SECRET || "almaliki_master_secure_boot_2026";
+  // P7 Requirement: Must be an externally configured high-entropy secret. No hardcoded default fallbacks!
+  const masterSecret = process.env.ADMIN_BOOTSTRAP_SECRET;
   const providedSecret = secretKey || process.env.BOOTSTRAP_SECRET;
 
-  if (!providedSecret || providedSecret !== masterSecret) {
+  if (!masterSecret || masterSecret.trim().length < 16) {
+    throw new Error("UNCONFIGURED_BOOTSTRAP_SECRET: ADMIN_BOOTSTRAP_SECRET environment variable is missing or insufficiently secure (must be >= 16 chars).");
+  }
+
+  if (!providedSecret || !timingSafeCompare(providedSecret, masterSecret)) {
     throw new Error("UNAUTHORIZED_BOOTSTRAP_ATTEMPT: Valid master authorization secret is required to assign administrative privileges.");
   }
 
@@ -98,9 +119,9 @@ export async function bootstrapAdminUser(email: string, role: "admin" | "teacher
 
 async function runCli() {
   const args = process.argv.slice(2);
-  let targetEmail = "alnukhbazubair@gmail.com";
+  let targetEmail = "";
   let targetRole: "admin" | "teacher" = "admin";
-  let providedSecret = process.env.ADMIN_BOOTSTRAP_SECRET || "almaliki_master_secure_boot_2026";
+  let providedSecret = "";
 
   for (const arg of args) {
     if (arg.startsWith("--email=")) {
@@ -114,11 +135,16 @@ async function runCli() {
     }
   }
 
+  if (!targetEmail) {
+    console.error("❌ Usage: npx tsx scripts/bootstrap_admin.ts --email=user@example.com --secret=SECRET [--role=admin|teacher]");
+    process.exit(1);
+  }
+
   console.log(`========================================================`);
   console.log(`SECURE FIREBASE ADMINISTRATOR BOOTSTRAPPER`);
   console.log(`Target Email: ${targetEmail}`);
   console.log(`Target Role: ${targetRole}`);
-  console.log(`Authorization: [PROTECTED SECRET VERIFIED]`);
+  console.log(`Authorization: [TIMING-SAFE SECRET VERIFICATION]`);
   console.log(`========================================================`);
 
   try {
