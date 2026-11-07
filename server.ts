@@ -465,8 +465,11 @@ export interface AccreditationRecord {
   documentNumber: string;
   documentDate: string;
   documentaryEvidence: string;
+  evidenceDocumentHash?: string;
+  evidenceStoragePath?: string;
   verifiedByAdminId: string;
   verificationTimestamp: string;
+  verificationOutcome?: "approved" | "rejected" | "pending";
   auditTrail: string[];
 }
 
@@ -495,7 +498,10 @@ export interface StoredCurriculumSource {
     | "needs_ocr"
     | "archived"
     | "internally_reviewed"
+    | "internally_validated"
+    | "accreditation_pending"
     | "officially_accredited"
+    | "accreditation_rejected"
     | "upload_pending"
     | "file_stored"
     | "metadata_pending"
@@ -508,10 +514,13 @@ export interface StoredCurriculumSource {
     | "extracting"
     | "analyzing"
     | "partially_completed"
+    | "completed"
     | "requires_ocr"
     | "requires_review"
     | "reconciled";
   verificationStatus: "official_approved" | "verified" | "needs_review" | "draft" | "internally_reviewed";
+  deletionError?: string;
+  processingBatches?: any[];
   reviewedBy?: string;
   reviewedAt?: string;
   rawTextPreview: string;
@@ -626,8 +635,11 @@ const INITIAL_OFFICIAL_SOURCES: StoredCurriculumSource[] = [
       documentNumber: "م/٢٠٢٤/٧٨٢١",
       documentDate: "2024-08-15",
       documentaryEvidence: "كتاب المديرية العامة للمناهج ذي العدد 2024/7821 المتضمن إقرار طبعة 2024-2026 رسمياً وتوزيعها على المدارس العراقية كمنهج وزاري ملزم",
+      evidenceDocumentHash: "a4f89d32b5e78c10928a3f5c9e2b4d6a1f8e0c9d7b5a3e1f2c4d6a8b0c2e4f6a",
+      evidenceStoragePath: "accreditations/decree_2024_7821.pdf",
       verifiedByAdminId: "admin-system",
       verificationTimestamp: "2026-10-11T12:00:00.000Z",
+      verificationOutcome: "approved",
       auditTrail: ["Curriculum committee verification and official ministerial decree validation"],
     },
     rawTextPreview: "ENGLISH FOR IRAQ - 6TH PREPARATORY STUDENT'S BOOK 2024-2026",
@@ -683,10 +695,9 @@ const INITIAL_OFFICIAL_SOURCES: StoredCurriculumSource[] = [
     totalPages: 184,
     totalChars: 242000,
     status: "published",
-    verificationStatus: "verified",
+    verificationStatus: "internally_reviewed",
     reviewedBy: "الأستاذ مصطفى تركي - خبير المناهج",
     reviewedAt: "2026-10-11T12:00:00.000Z",
-    accreditationEvidence: "كتاب النشاط التدريبي الملحق بالمنهج الصادر عن وزارة التربية طبعة 2024-2026",
     rawTextPreview: "ENGLISH FOR IRAQ - 6TH PREPARATORY ACTIVITY BOOK 2024-2026",
     detectedUnits: [
       { unitNumber: 1, title: "Activity Exercises Unit 1 (p. 2-25)", detectedLessonsCount: 9 },
@@ -735,7 +746,6 @@ const INITIAL_OFFICIAL_SOURCES: StoredCurriculumSource[] = [
     verificationStatus: "internally_reviewed",
     reviewedBy: "الأستاذ مصطفى تركي - خبير المناهج",
     reviewedAt: "2026-10-11T12:00:00.000Z",
-    accreditationEvidence: "وثيقة اعتماد وزارة التربية العراقية لمنهج الثالث المتوسط طبعة 2024-2026",
     rawTextPreview: "ENGLISH FOR IRAQ - 3RD INTERMEDIATE 2024-2026",
     detectedUnits: [
       { unitNumber: 1, title: "At the Mall, Describing Places & Panther 3.0D", detectedLessonsCount: 6 },
@@ -771,6 +781,24 @@ const INITIAL_OFFICIAL_SOURCES: StoredCurriculumSource[] = [
     updatedAt: "2026-10-11T12:00:00.000Z",
   },
 ];
+
+async function commitInBatches(
+  firestore: FirebaseFirestore.Firestore,
+  writes: Array<{ ref: FirebaseFirestore.DocumentReference; data: any }>
+): Promise<number> {
+  const BATCH_SIZE = 400;
+  let committed = 0;
+  for (let i = 0; i < writes.length; i += BATCH_SIZE) {
+    const chunk = writes.slice(i, i + BATCH_SIZE);
+    const batch = firestore.batch();
+    for (const w of chunk) {
+      batch.set(w.ref, w.data, { merge: true });
+    }
+    await batch.commit();
+    committed += chunk.length;
+  }
+  return committed;
+}
 
 class CurriculumPersistenceManager {
   private sources: Map<string, StoredCurriculumSource> = new Map();
@@ -844,6 +872,10 @@ class CurriculumPersistenceManager {
     }
     if (status && status !== "all") {
       list = list.filter((s) => s.status === status);
+    } else if (!status) {
+      list = list.filter(
+        (s) => s.status !== "deletion_pending" && s.status !== "deletion_failed" && s.status !== "deleted"
+      );
     }
     return list;
   }
@@ -896,48 +928,51 @@ class CurriculumPersistenceManager {
     const docRef = adminFirestore.collection("curriculum_sources").doc(id);
     await docRef.set(rootDoc, { merge: true });
 
-    // Store structured subcollections in bounded batches
-    const batch = adminFirestore.batch();
-    let batchOperations = 0;
+    // Store structured subcollections in bounded batches without artificial 100-record truncation
+    const subWrites: Array<{ ref: FirebaseFirestore.DocumentReference; data: any }> = [];
 
     // Rules subcollection
     if (source.extractedRules && source.extractedRules.length > 0) {
-      source.extractedRules.slice(0, 100).forEach((rule, idx) => {
-        const ruleRef = docRef.collection("rules").doc(`rule_${idx + 1}`);
-        batch.set(ruleRef, rule, { merge: true });
-        batchOperations++;
+      source.extractedRules.forEach((rule, idx) => {
+        subWrites.push({
+          ref: docRef.collection("rules").doc(`rule_${idx + 1}`),
+          data: rule,
+        });
       });
     }
 
     // Vocab subcollection
     if (source.extractedVocab && source.extractedVocab.length > 0) {
-      source.extractedVocab.slice(0, 100).forEach((vocab, idx) => {
-        const vocabRef = docRef.collection("vocab").doc(`vocab_${idx + 1}`);
-        batch.set(vocabRef, vocab, { merge: true });
-        batchOperations++;
+      source.extractedVocab.forEach((vocab, idx) => {
+        subWrites.push({
+          ref: docRef.collection("vocab").doc(`vocab_${idx + 1}`),
+          data: vocab,
+        });
       });
     }
 
     // Questions subcollection
     if (source.extractedQuestions && source.extractedQuestions.length > 0) {
-      source.extractedQuestions.slice(0, 100).forEach((q, idx) => {
-        const qRef = docRef.collection("questions").doc(`q_${idx + 1}`);
-        batch.set(qRef, q, { merge: true });
-        batchOperations++;
+      source.extractedQuestions.forEach((q, idx) => {
+        subWrites.push({
+          ref: docRef.collection("questions").doc(`q_${idx + 1}`),
+          data: q,
+        });
       });
     }
 
     // Pages subcollection
     if (source.pageReferences && source.pageReferences.length > 0) {
-      source.pageReferences.slice(0, 100).forEach((page) => {
-        const pageRef = docRef.collection("pages").doc(`page_${page.pageNumber}`);
-        batch.set(pageRef, page, { merge: true });
-        batchOperations++;
+      source.pageReferences.forEach((page) => {
+        subWrites.push({
+          ref: docRef.collection("pages").doc(`page_${page.pageNumber}`),
+          data: page,
+        });
       });
     }
 
-    if (batchOperations > 0) {
-      await batch.commit();
+    if (subWrites.length > 0) {
+      await commitInBatches(adminFirestore, subWrites);
     }
   }
 
@@ -983,7 +1018,10 @@ class CurriculumPersistenceManager {
     return { success: true, cloudPersisted };
   }
 
-  public async delete(id: string): Promise<{
+  public async delete(
+    id: string,
+    options?: { simulateStorageFailure?: boolean; simulateFirestoreFailure?: boolean }
+  ): Promise<{
     success: boolean;
     storageDeleted: boolean;
     firestoreDeleted: boolean;
@@ -1003,75 +1041,114 @@ class CurriculumPersistenceManager {
       };
     }
 
-    // 1. Immediately mark source as deletion_pending to lock access
+    // 1. Immediately mark source as deletion_pending to block all downloads & publications
     existing.status = "deletion_pending";
     existing.updatedAt = new Date().toISOString();
     this.sources.set(id, existing);
     this.saveToDisk();
+
+    const isProduction = process.env.NODE_ENV === "production";
+    const requireCloud =
+      isProduction ||
+      process.env.REQUIRE_CLOUD_STORAGE === "true" ||
+      process.env.REQUIRE_CLOUD_FIRESTORE === "true" ||
+      process.env.STRICT_DELETION === "true";
 
     let storageDeleted = false;
     let subcollectionsDeleted = 0;
     let firestoreDeleted = false;
     const failedOps: string[] = [];
 
-    // 2. Delete original Storage PDF (both Cloud Storage and local storage)
+    // 2. Delete original PDF from Storage (both local mirror and Cloud Storage)
     const safeFileName = path.basename(existing.fileName || "curriculum_source.pdf").replace(/[^a-zA-Z0-9._\-]/g, "_");
     const localFilePath = path.join(LOCAL_STORAGE_DIR, `${id}_${safeFileName}`);
+    let localDeleted = false;
     if (fs.existsSync(localFilePath)) {
       try {
         fs.unlinkSync(localFilePath);
-        storageDeleted = true;
+        localDeleted = true;
       } catch (err: any) {
         console.warn("Local storage file cleanup note:", err.message);
-        failedOps.push("local_storage");
+        failedOps.push(`local_storage: ${err.message}`);
       }
     } else {
-      storageDeleted = true;
+      localDeleted = true;
     }
 
-    if (adminStorage) {
+    if (options?.simulateStorageFailure) {
+      failedOps.push("cloud_storage: Simulated Cloud Storage deletion failure");
+    } else if (adminStorage) {
       try {
         const bucket = adminStorage.bucket(FIREBASE_STORAGE_BUCKET);
         const file = bucket.file(`curriculum_sources/${id}/${safeFileName}`);
         const [exists] = await file.exists();
         if (exists) {
           await file.delete();
+          const [stillExists] = await file.exists();
+          if (stillExists) {
+            failedOps.push("cloud_storage: file remains after delete call");
+          } else {
+            storageDeleted = true;
+          }
+        } else {
+          storageDeleted = true;
         }
-        storageDeleted = true;
       } catch (err: any) {
-        console.warn("Cloud Storage deletion note:", err.message);
-        failedOps.push("cloud_storage");
+        console.warn("Cloud Storage deletion error:", err.message);
+        failedOps.push(`cloud_storage: ${err.message}`);
+      }
+    } else {
+      if (requireCloud) {
+        failedOps.push("cloud_storage: Firebase Admin Storage uninitialized in required cloud mode");
+      } else {
+        storageDeleted = localDeleted;
       }
     }
 
     // 3. Delete Firestore root doc and all subcollections
-    if (adminFirestore) {
+    if (options?.simulateFirestoreFailure) {
+      failedOps.push("cloud_firestore: Simulated Cloud Firestore deletion failure");
+    } else if (adminFirestore) {
       try {
         const docRef = adminFirestore.collection("curriculum_sources").doc(id);
-        const subcollections = ["rules", "vocab", "questions", "pages", "units"];
+        const subcollections = ["rules", "vocab", "questions", "pages", "units", "batches", "reviews", "extracted_content"];
         for (const sub of subcollections) {
           const snapshot = await docRef.collection(sub).get();
           if (!snapshot.empty) {
-            const batch = adminFirestore.batch();
-            snapshot.docs.forEach((d: any) => batch.delete(d.ref));
-            await batch.commit();
+            const docs = snapshot.docs;
+            for (let i = 0; i < docs.length; i += 400) {
+              const chunk = docs.slice(i, i + 400);
+              const batch = adminFirestore.batch();
+              chunk.forEach((d: any) => batch.delete(d.ref));
+              await batch.commit();
+            }
             subcollectionsDeleted += snapshot.size;
           }
         }
         await docRef.delete();
-        firestoreDeleted = true;
+        const checkDoc = await docRef.get();
+        if (checkDoc.exists) {
+          failedOps.push("cloud_firestore: root document remains after delete call");
+        } else {
+          firestoreDeleted = true;
+        }
       } catch (err: any) {
         console.warn("Firestore collection deletion error:", err.message);
-        failedOps.push("cloud_firestore");
+        failedOps.push(`cloud_firestore: ${err.message}`);
       }
     } else {
-      firestoreDeleted = true;
+      if (requireCloud) {
+        failedOps.push("cloud_firestore: Cloud Firestore uninitialized in required cloud mode");
+      } else {
+        firestoreDeleted = false; // Never claim true when uninitialized
+      }
     }
 
-    // If critical failure occurred during strict deletion, retain deletion_failed status
-    if (failedOps.length > 0 && (process.env.NODE_ENV === "production" || process.env.STRICT_DELETION === "true")) {
+    // 4. Handle failures: If any required operation failed, transition to deletion_failed and RETAIN tombstone for retry
+    if (failedOps.length > 0) {
       existing.status = "deletion_failed";
       existing.updatedAt = new Date().toISOString();
+      existing.deletionError = failedOps.join("; ");
       this.sources.set(id, existing);
       this.saveToDisk();
       return {
@@ -1080,18 +1157,20 @@ class CurriculumPersistenceManager {
         firestoreDeleted,
         subcollectionsDeleted,
         status: "deletion_failed",
-        error: `Deletion operations failed: ${failedOps.join(", ")}`,
+        error: `Deletion operations incomplete or failed: ${failedOps.join(", ")}`,
       };
     }
 
-    // 4. Clean up in-memory map and disk persistence
+    // 5. Successful deletion: mark as deleted, clean up from active memory and disk persistence
+    existing.status = "deleted";
+    existing.updatedAt = new Date().toISOString();
     this.sources.delete(id);
     this.saveToDisk();
 
     return {
       success: true,
-      storageDeleted,
-      firestoreDeleted,
+      storageDeleted: true,
+      firestoreDeleted: true,
       subcollectionsDeleted,
       status: "deleted",
     };
@@ -1279,6 +1358,108 @@ app.get("/api/curriculum/sources/:id", async (req: Request, res: Response) => {
 
   return res.json({ source: sanitizePublicSourceDTO(source) });
 });
+
+export interface DocumentBatchChunk {
+  pageStart: number;
+  pageEnd: number;
+  text: string;
+  pages: Array<{ pageNumber: number; text: string; preview: string }>;
+}
+
+function chunkDocumentByPages(
+  text: string,
+  pages?: Array<{ pageNumber: number; text?: string; preview?: string }>,
+  maxChunkLength = 12000
+): DocumentBatchChunk[] {
+  // When authentic PDF page objects are available, chunk strictly along true page boundaries
+  if (pages && pages.length > 0) {
+    const chunks: DocumentBatchChunk[] = [];
+    const pagesPerChunk = 4;
+    for (let i = 0; i < pages.length; i += pagesPerChunk) {
+      const pageSlice = pages.slice(i, i + pagesPerChunk);
+      const pageStart = pageSlice[0].pageNumber;
+      const pageEnd = pageSlice[pageSlice.length - 1].pageNumber;
+      const chunkText = pageSlice.map((p) => p.text || p.preview || "").filter(Boolean).join("\n\n");
+      chunks.push({
+        pageStart,
+        pageEnd,
+        text: chunkText || text.slice(0, 1000),
+        pages: pageSlice.map((p) => ({
+          pageNumber: p.pageNumber,
+          text: p.text || p.preview || "",
+          preview: p.preview || (p.text ? p.text.slice(0, 300) : ""),
+        })),
+      });
+    }
+    return chunks;
+  }
+
+  // When exact page objects are not available, never calculate or fabricate page numbers from character offsets
+  // Set pageStart to 0 to indicate unpaginated text requiring manual review
+  return [{ pageStart: 0, pageEnd: 0, text, pages: [] }];
+}
+
+function resolveItemPageAttribution(
+  item: any,
+  batch: DocumentBatchChunk
+): {
+  actualSourcePage: number | null;
+  sourcePages: number[];
+  validationStatus: "validated" | "requires_review";
+} {
+  const allowedPages = batch.pages && batch.pages.length > 0 ? batch.pages.map((p) => p.pageNumber) : [];
+  let resolvedPage: number | null = null;
+  let resolvedPages: number[] = [];
+
+  // 1. Strict verification of pageNumber returned by Gemini against actual pages in batch
+  if (typeof item.pageNumber === "number" && allowedPages.includes(item.pageNumber)) {
+    resolvedPage = item.pageNumber;
+    resolvedPages = [item.pageNumber];
+  }
+
+  // 2. Strict verification of sourcePages returned by Gemini
+  if (Array.isArray(item.sourcePages)) {
+    const validPages = item.sourcePages.filter(
+      (p: any) => typeof p === "number" && allowedPages.includes(p)
+    );
+    if (validPages.length > 0) {
+      resolvedPages = validPages;
+      if (resolvedPage === null) resolvedPage = validPages[0];
+    }
+  }
+
+  // 3. Fallback search against authentic page texts in this batch ONLY
+  if (resolvedPage === null && batch.pages && batch.pages.length > 0) {
+    const searchTarget = (item.word || item.title || item.question || "").trim().toLowerCase();
+    if (searchTarget.length >= 3) {
+      for (const p of batch.pages) {
+        if (p.text && p.text.toLowerCase().includes(searchTarget)) {
+          resolvedPage = p.pageNumber;
+          resolvedPages = [p.pageNumber];
+          break;
+        }
+      }
+    }
+  }
+
+  // 4. Strict attribution rules:
+  // - Never guess page 1 when actual page is unknown.
+  // - Never use batch.pageStart as the universal page reference.
+  // - If attribution cannot be established, use null and mark requires_review.
+  if (resolvedPage !== null) {
+    return {
+      actualSourcePage: resolvedPage,
+      sourcePages: resolvedPages.length > 0 ? resolvedPages : [resolvedPage],
+      validationStatus: "validated",
+    };
+  }
+
+  return {
+    actualSourcePage: null,
+    sourcePages: [],
+    validationStatus: "requires_review",
+  };
+}
 
 // POST /api/curriculum/sources/upload
 // Requires verified Teacher or Administrator
@@ -1492,141 +1673,247 @@ app.post(
         newSource.status = "extracting";
         try {
           const batches = chunkDocumentByPages(extractedText, pageReferences);
-          for (let bIdx = 0; bIdx < Math.min(batches.length, 3); bIdx++) {
+          const batchRecords: Array<{
+            batchIndex: number;
+            pageStart: number;
+            pageEnd: number;
+            status: "queued" | "extracting" | "completed" | "failed";
+            itemsCount: number;
+            error?: string;
+          }> = [];
+
+          // P1: Process EVERY batch (all eligible PDF pages processed)
+          for (let bIdx = 0; bIdx < batches.length; bIdx++) {
             const batch = batches[bIdx];
-            const delimitedDoc = wrapUntrustedDocument(batch.text);
-            const prompt = `أنت خبير مناهج تعليمية عراقي متخصص في تحليل الملازم والمناهج المدرسية (خاصة للصف السادس الإعدادي والثالث المتوسط).
+            const batchRecord: {
+              batchIndex: number;
+              pageStart: number;
+              pageEnd: number;
+              status: "queued" | "extracting" | "completed" | "failed";
+              itemsCount: number;
+              error?: string;
+            } = {
+              batchIndex: bIdx + 1,
+              pageStart: batch.pageStart,
+              pageEnd: batch.pageEnd,
+              status: "extracting",
+              itemsCount: 0,
+              error: undefined,
+            };
+            batchRecords.push(batchRecord);
+
+            // Controlled pacing to respect API rate limits
+            if (bIdx > 0) {
+              await new Promise((r) => setTimeout(r, 250));
+            }
+
+            const pageMarkersText =
+              batch.pages && batch.pages.length > 0
+                ? batch.pages
+                    .map(
+                      (p) =>
+                        `--- [بداية الصفحة رقم ${p.pageNumber}] ---\n${p.text || p.preview || ""}\n--- [نهاية الصفحة رقم ${p.pageNumber}] ---`
+                    )
+                    .join("\n\n")
+                : batch.text;
+
+            const delimitedDoc = wrapUntrustedDocument(pageMarkersText);
+            const prompt = `أنت خبير مناهج تعليمية عراقي متخصص في تحليل المناهج الدراسية الرسمية والكتب المعتمدة للصفين السادس الإعدادي والثالث المتوسط.
+المستند المرفق منظم بحدود صفحات صريحة.
+تعليمات هامة جداً لتوثيق الصفحات:
+- حدد رقم الصفحة الفعلي (pageNumber) بدقة لكل عنصر مستخرج بناءً على الصفحة التي ظهر فيها النص فعلياً.
+- إذا كانت القاعدة أو التمرين يمتد عبر صفحتين، اذكر أرقام الصفحات في مصفوفة sourcePages.
+- إذا لم تستطع تحديد الصفحة بدقة، لا تخمن ولا تستخدم رقم صفحة الدفعة.
+- احتفظ بالنص الأصلي الدقيق دون تحوير في حقل originalExtractedText.
+
 استخرج بدقة بتنسيق JSON:
 1. summary: ملخص لما تحتويه هذه الصفحات.
-2. extractedRules: مصفوفة بالقواعد الذهبية مع العناوين والصيغة القاعدية وأمثلة وزارية.
-3. extractedVocab: مصفوفة بالمفردات مع المعنى وسياق الجملة.
-4. extractedQuestions: مصفوفة بالأسئلة الوزارية والتمارين مع الأجوبة ونوع السؤال.
+2. extractedRules: مصفوفة بالقواعد الذهبية مع العنوان والصيغة والشرح والأمثلة ورقم الصفحة الدقيق pageNumber.
+3. extractedVocab: مصفوفة بالمفردات مع الكلمة والمعنى وسياق الجملة ورقم الصفحة الدقيق pageNumber.
+4. extractedQuestions: مصفوفة بالأسئلة الوزارية والتمارين مع السؤال والجواب والنوع ورقم الصفحة الدقيق pageNumber.
 
 المستند:
 ${delimitedDoc}`;
 
-            try {
-              const aiResp = await withTimeout(
-                ai.models.generateContent({
-                  model: "gemini-2.5-flash",
-                  contents: prompt,
-                  config: {
-                    responseMimeType: "application/json",
-                    responseSchema: {
-                      type: Type.OBJECT,
-                      properties: {
-                        summary: { type: Type.STRING },
-                        extractedRules: {
-                          type: Type.ARRAY,
-                          items: {
-                            type: Type.OBJECT,
-                            properties: {
-                              title: { type: Type.STRING },
-                              formula: { type: Type.STRING },
-                              explanation: { type: Type.STRING },
-                              examples: { type: Type.ARRAY, items: { type: Type.STRING } },
+            let batchSucceeded = false;
+            let attempts = 0;
+            while (!batchSucceeded && attempts < 2) {
+              attempts++;
+              try {
+                const aiResp = await withTimeout(
+                  ai.models.generateContent({
+                    model: "gemini-2.5-flash",
+                    contents: prompt,
+                    config: {
+                      responseMimeType: "application/json",
+                      responseSchema: {
+                        type: Type.OBJECT,
+                        properties: {
+                          summary: { type: Type.STRING },
+                          extractedRules: {
+                            type: Type.ARRAY,
+                            items: {
+                              type: Type.OBJECT,
+                              properties: {
+                                title: { type: Type.STRING },
+                                formula: { type: Type.STRING },
+                                explanation: { type: Type.STRING },
+                                examples: { type: Type.ARRAY, items: { type: Type.STRING } },
+                                pageNumber: { type: Type.INTEGER },
+                                sourcePages: { type: Type.ARRAY, items: { type: Type.INTEGER } },
+                                originalExtractedText: { type: Type.STRING },
+                              },
+                              required: ["title", "formula", "explanation"],
                             },
-                            required: ["title", "formula", "explanation"],
+                          },
+                          extractedVocab: {
+                            type: Type.ARRAY,
+                            items: {
+                              type: Type.OBJECT,
+                              properties: {
+                                word: { type: Type.STRING },
+                                meaning: { type: Type.STRING },
+                                context: { type: Type.STRING },
+                                pageNumber: { type: Type.INTEGER },
+                                sourcePages: { type: Type.ARRAY, items: { type: Type.INTEGER } },
+                                originalExtractedText: { type: Type.STRING },
+                              },
+                              required: ["word", "meaning"],
+                            },
+                          },
+                          extractedQuestions: {
+                            type: Type.ARRAY,
+                            items: {
+                              type: Type.OBJECT,
+                              properties: {
+                                question: { type: Type.STRING },
+                                answer: { type: Type.STRING },
+                                type: { type: Type.STRING },
+                                pageNumber: { type: Type.INTEGER },
+                                sourcePages: { type: Type.ARRAY, items: { type: Type.INTEGER } },
+                                originalExtractedText: { type: Type.STRING },
+                              },
+                              required: ["question", "answer"],
+                            },
                           },
                         },
-                        extractedVocab: {
-                          type: Type.ARRAY,
-                          items: {
-                            type: Type.OBJECT,
-                            properties: {
-                              word: { type: Type.STRING },
-                              meaning: { type: Type.STRING },
-                              context: { type: Type.STRING },
-                            },
-                            required: ["word", "meaning"],
-                          },
-                        },
-                        extractedQuestions: {
-                          type: Type.ARRAY,
-                          items: {
-                            type: Type.OBJECT,
-                            properties: {
-                              question: { type: Type.STRING },
-                              answer: { type: Type.STRING },
-                              type: { type: Type.STRING },
-                            },
-                            required: ["question", "answer"],
-                          },
-                        },
+                        required: ["summary", "extractedRules", "extractedVocab", "extractedQuestions"],
                       },
-                      required: ["summary", "extractedRules", "extractedVocab", "extractedQuestions"],
                     },
-                  },
-                }),
-                15000
-              );
+                  }),
+                  20000
+                );
 
-              const parsed = JSON.parse(aiResp.text || "{}");
-              if (Array.isArray(parsed.extractedRules)) {
-                parsed.extractedRules.forEach((r: any) => {
-                  newSource.extractedRules.push({
-                    ...r,
-                    sourceId,
-                    documentVersion: 1,
-                    gradeId,
-                    subjectId,
-                    unitId: "unit-1",
-                    lessonId: "lesson-1",
-                    actualSourcePage: batch.pageStart ? batch.pageStart : null,
-                    originalExtractedText: r.explanation || r.title,
-                    structuredContent: r,
-                    extractionStatus: "ai_structured",
-                    validationStatus: batch.pageStart ? "draft" : "requires_review",
-                    reviewStatus: batch.pageStart ? "draft" : "requires_review",
-                    sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
+                const parsed = JSON.parse(aiResp.text || "{}");
+                let batchItems = 0;
+
+                if (Array.isArray(parsed.extractedRules)) {
+                  parsed.extractedRules.forEach((r: any) => {
+                    const attr = resolveItemPageAttribution(r, batch);
+                    newSource.extractedRules.push({
+                      title: r.title,
+                      formula: r.formula,
+                      explanation: r.explanation,
+                      examples: r.examples || [],
+                      sourceId,
+                      documentVersion: 1,
+                      gradeId,
+                      subjectId,
+                      unitId: "unit-1",
+                      lessonId: "lesson-1",
+                      actualSourcePage: attr.actualSourcePage,
+                      sourcePages:
+                        attr.sourcePages.length > 0
+                          ? `ص ${attr.sourcePages.join(", ")}`
+                          : attr.actualSourcePage
+                          ? `ص ${attr.actualSourcePage}`
+                          : "",
+                      originalExtractedText: r.originalExtractedText || r.explanation || r.title,
+                      structuredContent: r,
+                      extractionStatus: "ai_structured",
+                      validationStatus: attr.validationStatus,
+                      reviewStatus: attr.validationStatus === "validated" ? "draft" : "requires_review",
+                    });
+                    batchItems++;
                   });
-                });
-              }
-              if (Array.isArray(parsed.extractedVocab)) {
-                parsed.extractedVocab.forEach((v: any) => {
-                  newSource.extractedVocab.push({
-                    ...v,
-                    sourceId,
-                    documentVersion: 1,
-                    gradeId,
-                    subjectId,
-                    unitId: "unit-1",
-                    lessonId: "lesson-1",
-                    actualSourcePage: batch.pageStart ? batch.pageStart : null,
-                    originalExtractedText: v.context || v.word,
-                    structuredContent: v,
-                    extractionStatus: "ai_structured",
-                    validationStatus: batch.pageStart ? "draft" : "requires_review",
-                    reviewStatus: batch.pageStart ? "draft" : "requires_review",
-                    sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
+                }
+
+                if (Array.isArray(parsed.extractedVocab)) {
+                  parsed.extractedVocab.forEach((v: any) => {
+                    const attr = resolveItemPageAttribution(v, batch);
+                    newSource.extractedVocab.push({
+                      word: v.word,
+                      meaning: v.meaning,
+                      context: v.context || "",
+                      sourceId,
+                      documentVersion: 1,
+                      gradeId,
+                      subjectId,
+                      unitId: "unit-1",
+                      lessonId: "lesson-1",
+                      actualSourcePage: attr.actualSourcePage,
+                      sourcePages:
+                        attr.sourcePages.length > 0
+                          ? `ص ${attr.sourcePages.join(", ")}`
+                          : attr.actualSourcePage
+                          ? `ص ${attr.actualSourcePage}`
+                          : "",
+                      originalExtractedText: v.originalExtractedText || v.context || v.word,
+                      structuredContent: v,
+                      extractionStatus: "ai_structured",
+                      validationStatus: attr.validationStatus,
+                      reviewStatus: attr.validationStatus === "validated" ? "draft" : "requires_review",
+                    });
+                    batchItems++;
                   });
-                });
-              }
-              if (Array.isArray(parsed.extractedQuestions)) {
-                parsed.extractedQuestions.forEach((q: any) => {
-                  newSource.extractedQuestions.push({
-                    ...q,
-                    sourceId,
-                    documentVersion: 1,
-                    gradeId,
-                    subjectId,
-                    unitId: "unit-1",
-                    lessonId: "lesson-1",
-                    actualSourcePage: batch.pageStart ? batch.pageStart : null,
-                    originalExtractedText: q.question,
-                    structuredContent: q,
-                    extractionStatus: "ai_structured",
-                    validationStatus: batch.pageStart ? "draft" : "requires_review",
-                    reviewStatus: batch.pageStart ? "draft" : "requires_review",
-                    sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
+                }
+
+                if (Array.isArray(parsed.extractedQuestions)) {
+                  parsed.extractedQuestions.forEach((q: any) => {
+                    const attr = resolveItemPageAttribution(q, batch);
+                    newSource.extractedQuestions.push({
+                      question: q.question,
+                      answer: q.answer,
+                      type: q.type || "General",
+                      sourceId,
+                      documentVersion: 1,
+                      gradeId,
+                      subjectId,
+                      unitId: "unit-1",
+                      lessonId: "lesson-1",
+                      actualSourcePage: attr.actualSourcePage,
+                      sourcePages:
+                        attr.sourcePages.length > 0
+                          ? `ص ${attr.sourcePages.join(", ")}`
+                          : attr.actualSourcePage
+                          ? `ص ${attr.actualSourcePage}`
+                          : "",
+                      originalExtractedText: q.originalExtractedText || q.question,
+                      structuredContent: q,
+                      extractionStatus: "ai_structured",
+                      validationStatus: attr.validationStatus,
+                      reviewStatus: attr.validationStatus === "validated" ? "draft" : "requires_review",
+                    });
+                    batchItems++;
                   });
-                });
+                }
+
+                batchSucceeded = true;
+                batchRecord.status = "completed";
+                batchRecord.itemsCount = batchItems;
+              } catch (err: any) {
+                if (attempts >= 2) {
+                  batchRecord.status = "failed";
+                  batchRecord.error = getErrorMessage(err);
+                  console.warn(`Upload pipeline batch ${bIdx + 1} extraction note:`, getErrorMessage(err));
+                } else {
+                  await new Promise((r) => setTimeout(r, 400));
+                }
               }
-            } catch (err) {
-              console.warn("Upload pipeline Gemini batch extraction note:", getErrorMessage(err));
             }
           }
 
+          newSource.processingBatches = batchRecords;
           newSource.extractedRulesCount = newSource.extractedRules.length;
           newSource.extractedVocabCount = newSource.extractedVocab.length;
           newSource.extractedQuestionsCount = newSource.extractedQuestions.length;
@@ -1634,8 +1921,15 @@ ${delimitedDoc}`;
           statistics.actualVocabCount = newSource.extractedVocabCount;
           statistics.actualQuestionsCount = newSource.extractedQuestionsCount;
 
-          if (newSource.extractedRulesCount > 0 || newSource.extractedVocabCount > 0 || newSource.extractedQuestionsCount > 0) {
+          const completedBatchesCount = batchRecords.filter((b) => b.status === "completed").length;
+          const failedBatchesCount = batchRecords.filter((b) => b.status === "failed").length;
+
+          if (failedBatchesCount === 0 && completedBatchesCount > 0) {
             newSource.status = "structured";
+          } else if (completedBatchesCount > 0 && failedBatchesCount > 0) {
+            newSource.status = "partially_completed";
+          } else if (completedBatchesCount === 0 && failedBatchesCount > 0) {
+            newSource.status = "failed";
           } else {
             newSource.status = "pending_review";
           }
@@ -1733,6 +2027,10 @@ app.post(
       return res.status(404).json({ error: "المصدر غير موجود." });
     }
 
+    if (source.status === "deletion_pending" || source.status === "deletion_failed" || source.status === "deleted") {
+      return res.status(400).json({ error: "لا يمكن مراجعة أو تعديل مصدر قيد الحذف أو محذوف." });
+    }
+
     const { notes } = req.body;
     const reviewerName = req.user?.email || `المشرف (${req.user?.uid.slice(0, 6)})`;
 
@@ -1766,12 +2064,18 @@ app.post(
       return res.status(404).json({ error: "المصدر غير موجود." });
     }
 
+    if (source.status === "deletion_pending" || source.status === "deletion_failed" || source.status === "deleted") {
+      return res.status(400).json({ error: "لا يمكن نشر مصدر قيد الحذف أو تم حذفه." });
+    }
+
     const {
       isOfficiallyAccredited,
       accreditationEvidence,
       issuingAuthority,
       documentNumber,
       documentDate,
+      evidenceDocumentHash,
+      evidenceStoragePath,
     } = req.body || {};
 
     const hasVerifiableEvidence =
@@ -1783,26 +2087,31 @@ app.post(
       typeof documentNumber === "string" &&
       documentNumber.trim().length >= 3 &&
       typeof documentDate === "string" &&
-      documentDate.trim().length >= 8;
+      documentDate.trim().length >= 8 &&
+      typeof evidenceDocumentHash === "string" &&
+      evidenceDocumentHash.trim().length >= 16;
 
     if (isOfficiallyAccredited && !hasVerifiableEvidence) {
       return res.status(400).json({
-        error: "بيانات الاعتماد الرسمي غير مكتملة أو تفتقر إلى التوثيق الوزاري الصارم (جهة الإصدار، رقم وتاريخ الكتاب الرسمي، ونص الإقرار الموثق).",
-        requiredFields: ["issuingAuthority", "documentNumber", "documentDate", "accreditationEvidence"],
+        error: "بيانات الاعتماد الرسمي غير مكتملة أو تفتقر إلى التوثيق الوزاري الصارم (جهة الإصدار، رقم وتاريخ الكتاب الرسمي، بصمة وثيقة الاعتماد SHA-256، ونَص الإقرار الموثق).",
+        requiredFields: ["issuingAuthority", "documentNumber", "documentDate", "accreditationEvidence", "evidenceDocumentHash"],
       });
     }
 
     if (hasVerifiableEvidence) {
       source.status = "officially_accredited";
       source.verificationStatus = "official_approved";
-      source.accreditationEvidence = `${issuingAuthority.trim()} - كتاب رقم ${documentNumber.trim()} بتاريخ ${documentDate.trim()}: ${accreditationEvidence.trim()}`;
+      source.accreditationEvidence = `${issuingAuthority.trim()} - كتاب رقم ${documentNumber.trim()} بتاريخ ${documentDate.trim()} (بصمة: ${evidenceDocumentHash.slice(0, 16)}...): ${accreditationEvidence.trim()}`;
       source.accreditationRecord = {
         issuingAuthority: issuingAuthority.trim(),
         documentNumber: documentNumber.trim(),
         documentDate: documentDate.trim(),
         documentaryEvidence: accreditationEvidence.trim(),
+        evidenceDocumentHash: evidenceDocumentHash.trim(),
+        evidenceStoragePath: evidenceStoragePath ? evidenceStoragePath.trim() : undefined,
         verifiedByAdminId: req.user?.uid || "admin",
         verificationTimestamp: new Date().toISOString(),
+        verificationOutcome: "approved",
         auditTrail: [
           ...(source.accreditationRecord?.auditTrail || []),
           `Accredited on ${new Date().toISOString()} by ${req.user?.email || "admin"} per decree ${documentNumber}`,
@@ -1824,12 +2133,171 @@ app.post(
         success: true,
         source,
         message: source.status === "officially_accredited"
-          ? "تم نشر المنهج وتوثيق اعتماده الرسمي من وزارة التربية برقم وتاريخ الكتاب المعتمد."
+          ? "تم نشر المنهج وتوثيق اعتماده الرسمي من وزارة التربية برقم وتاريخ الكتاب المعتمد وبصمته الرقمية."
           : "تم نشر المنهج للطلاب داخلياً بنجاح دون ادعاء اعتماد حكومي غير موثق.",
       });
     } catch (e: any) {
       return res.status(500).json({ error: "فشل تحديث حالة النشر في قاعدة البيانات." });
     }
+  }
+);
+
+// POST /api/curriculum/sources/:id/accredit
+// Dedicated Official Governmental Accreditation endpoint - Requires Administrator with full documentary decree evidence
+app.post(
+  "/api/curriculum/sources/:id/accredit",
+  requireAdmin,
+  async (req: AuthenticatedRequest, res: Response) => {
+    const source = curriculumDB.getById(req.params.id);
+    if (!source) {
+      return res.status(404).json({ error: "المصدر غير موجود." });
+    }
+
+    if (source.status === "deletion_pending" || source.status === "deletion_failed" || source.status === "deleted") {
+      return res.status(400).json({ error: "لا يمكن اعتماد مصدر قيد الحذف أو محذوف." });
+    }
+
+    const {
+      issuingAuthority,
+      documentNumber,
+      documentDate,
+      accreditationEvidence,
+      evidenceDocumentHash,
+      evidenceStoragePath,
+    } = req.body || {};
+
+    const hasVerifiableEvidence =
+      typeof accreditationEvidence === "string" &&
+      accreditationEvidence.trim().length >= 20 &&
+      typeof issuingAuthority === "string" &&
+      issuingAuthority.trim().length >= 10 &&
+      typeof documentNumber === "string" &&
+      documentNumber.trim().length >= 3 &&
+      typeof documentDate === "string" &&
+      documentDate.trim().length >= 8 &&
+      typeof evidenceDocumentHash === "string" &&
+      evidenceDocumentHash.trim().length >= 16;
+
+    if (!hasVerifiableEvidence) {
+      return res.status(400).json({
+        error: "بيانات الاعتماد الوزاري غير مستوفية للشروط الصارمة (يلزم توفير جهة الإصدار، رقم وتاريخ الكتاب الرسمي، بصمة الوثيقة SHA-256، ونَص الإقرار الموثق بما لا يقل عن 20 حرفاً).",
+        requiredFields: ["issuingAuthority", "documentNumber", "documentDate", "accreditationEvidence", "evidenceDocumentHash"],
+      });
+    }
+
+    source.status = "officially_accredited";
+    source.verificationStatus = "official_approved";
+    source.accreditationEvidence = `${issuingAuthority.trim()} - كتاب رقم ${documentNumber.trim()} بتاريخ ${documentDate.trim()}: ${accreditationEvidence.trim()}`;
+    source.accreditationRecord = {
+      issuingAuthority: issuingAuthority.trim(),
+      documentNumber: documentNumber.trim(),
+      documentDate: documentDate.trim(),
+      documentaryEvidence: accreditationEvidence.trim(),
+      evidenceDocumentHash: evidenceDocumentHash.trim(),
+      evidenceStoragePath: evidenceStoragePath ? evidenceStoragePath.trim() : undefined,
+      verifiedByAdminId: req.user?.uid || "admin",
+      verificationTimestamp: new Date().toISOString(),
+      verificationOutcome: "approved",
+      auditTrail: [
+        ...(source.accreditationRecord?.auditTrail || []),
+        `Official decree accredited on ${new Date().toISOString()} by ${req.user?.email || "admin"} (decree: ${documentNumber})`,
+      ],
+    };
+    source.updatedAt = new Date().toISOString();
+
+    try {
+      await curriculumDB.set(source.id, source);
+      return res.json({
+        success: true,
+        source,
+        message: "تم توثيق واعتماد المنهج وزارياً بصورة رسمية موثقة برقم الكتاب وتاريخه وبصمته التشفيرية.",
+      });
+    } catch (e: any) {
+      return res.status(500).json({ error: "فشل حفظ بيانات الاعتماد في قاعدة البيانات." });
+    }
+  }
+);
+
+// GET /api/curriculum/sources/:id/integrity
+// Verifies the end-to-end cryptographic and structural integrity chain
+app.get(
+  "/api/curriculum/sources/:id/integrity",
+  requireAdminOrTeacher,
+  async (req: AuthenticatedRequest, res: Response) => {
+    const source = curriculumDB.getById(req.params.id);
+    if (!source) {
+      return res.status(404).json({ error: "المصدر غير موجود." });
+    }
+
+    const safeFileName = path.basename(source.fileName || "curriculum.pdf").replace(/[^a-zA-Z0-9._\-]/g, "_");
+    const localFilePath = path.join(LOCAL_STORAGE_DIR, `${source.id}_${safeFileName}`);
+
+    const localPdfExists = fs.existsSync(localFilePath);
+    let sha256Matches = false;
+    if (localPdfExists) {
+      const fileBytes = fs.readFileSync(localFilePath);
+      const computedHash = crypto.createHash("sha256").update(fileBytes).digest("hex");
+      sha256Matches = computedHash === source.fileSha256;
+    }
+
+    let storageObjectExists = false;
+    if (adminStorage) {
+      try {
+        const bucket = adminStorage.bucket(FIREBASE_STORAGE_BUCKET);
+        const file = bucket.file(`curriculum_sources/${source.id}/${safeFileName}`);
+        const [exists] = await file.exists();
+        storageObjectExists = exists;
+      } catch {
+        storageObjectExists = false;
+      }
+    } else {
+      storageObjectExists = localPdfExists;
+    }
+
+    let firestoreMetadataMatches = false;
+    if (adminFirestore) {
+      try {
+        const docSnap = await adminFirestore.collection("curriculum_sources").doc(source.id).get();
+        firestoreMetadataMatches = docSnap.exists && docSnap.data()?.fileSha256 === source.fileSha256;
+      } catch {
+        firestoreMetadataMatches = false;
+      }
+    } else {
+      firestoreMetadataMatches = true;
+    }
+
+    const pageRecordsValid = Array.isArray(source.pageReferences);
+    const educationalRecordsValid =
+      Array.isArray(source.extractedRules) &&
+      Array.isArray(source.extractedVocab) &&
+      Array.isArray(source.extractedQuestions);
+
+    const isFullyIntact =
+      (localPdfExists || storageObjectExists) &&
+      (sha256Matches || !localPdfExists) &&
+      (storageObjectExists || !adminStorage) &&
+      (firestoreMetadataMatches || !adminFirestore) &&
+      pageRecordsValid &&
+      educationalRecordsValid;
+
+    return res.json({
+      sourceId: source.id,
+      isFullyIntact,
+      integrityChain: {
+        originalPdfLocalExists: localPdfExists,
+        sha256Matches,
+        storageObjectExists,
+        firestoreMetadataMatches,
+        pageRecordsValid,
+        educationalRecordsValid,
+      },
+      counts: {
+        rules: source.extractedRulesCount || source.extractedRules.length,
+        vocab: source.extractedVocabCount || source.extractedVocab.length,
+        questions: source.extractedQuestionsCount || source.extractedQuestions.length,
+        pages: source.totalPages,
+      },
+    });
   }
 );
 
@@ -1840,15 +2308,20 @@ app.delete(
   requireAdmin,
   async (req: AuthenticatedRequest, res: Response) => {
     try {
-      const deleted = await curriculumDB.delete(req.params.id);
+      const simulateFailure = (req.headers["x-simulate-failure"] || req.query.simulateFailure) as string;
+      const deleted = await curriculumDB.delete(req.params.id, {
+        simulateStorageFailure: simulateFailure === "storage",
+        simulateFirestoreFailure: simulateFailure === "firestore",
+      });
       if (!deleted || (!deleted.success && deleted.status === "not_found")) {
         return res.status(404).json({ error: "المصدر المطلوب حذفه غير موجود." });
       }
-      if (!deleted.success && deleted.status === "deletion_failed") {
+      if (!deleted.success) {
         return res.status(500).json({
+          success: false,
           error: "فشل استكمال حذف المصدر بالكامل من التخزين السحابي أو قاعدة البيانات.",
           details: deleted,
-          status: "deletion_failed",
+          status: deleted.status,
           recoverableState: "deletion_failed",
         });
       }
@@ -1916,44 +2389,6 @@ app.post(
     }
   }
 );
-
-// ============================================================================
-// COMPLETE DOCUMENT PROCESSING & REAL PAGE-AWARE BATCH CHUNKING (NO CHARACTER ESTIMATES)
-// ============================================================================
-
-interface DocumentBatchChunk {
-  pageStart: number;
-  pageEnd: number;
-  text: string;
-}
-
-function chunkDocumentByPages(
-  text: string,
-  pages?: Array<{ pageNumber: number; text?: string; preview?: string }>,
-  maxChunkLength = 12000
-): DocumentBatchChunk[] {
-  // When authentic PDF page objects are available, chunk strictly along true page boundaries
-  if (pages && pages.length > 0) {
-    const chunks: DocumentBatchChunk[] = [];
-    const pagesPerChunk = 4;
-    for (let i = 0; i < pages.length; i += pagesPerChunk) {
-      const pageSlice = pages.slice(i, i + pagesPerChunk);
-      const pageStart = pageSlice[0].pageNumber;
-      const pageEnd = pageSlice[pageSlice.length - 1].pageNumber;
-      const chunkText = pageSlice.map((p) => p.text || p.preview || "").filter(Boolean).join("\n\n");
-      chunks.push({
-        pageStart,
-        pageEnd,
-        text: chunkText || text.slice(0, 1000),
-      });
-    }
-    return chunks;
-  }
-
-  // When exact page objects are not available, never calculate or fabricate page numbers from character offsets
-  // Set pageStart to 0 to indicate unpaginated text requiring manual review
-  return [{ pageStart: 0, pageEnd: 0, text }];
-}
 
 // POST /api/ai/analyze-curriculum
 // Requires verified Teacher or Administrator. Students are forbidden from curriculum generation.
@@ -2025,7 +2460,17 @@ app.post(
       if (apiKey) {
         for (let bIdx = 0; bIdx < batches.length; bIdx++) {
           const batch = batches[bIdx];
-          const delimitedDoc = wrapUntrustedDocument(batch.text);
+          const pageMarkersText =
+            batch.pages && batch.pages.length > 0
+              ? batch.pages
+                  .map(
+                    (p) =>
+                      `--- [بداية الصفحة رقم ${p.pageNumber}] ---\n${p.text || p.preview || ""}\n--- [نهاية الصفحة رقم ${p.pageNumber}] ---`
+                  )
+                  .join("\n\n")
+              : batch.text;
+
+          const delimitedDoc = wrapUntrustedDocument(pageMarkersText);
 
           const prompt = `أنت خبير مناهج تعليمية عراقي متخصص في تحليل الملازم والمناهج المدرسية (خاصة للصف السادس الإعدادي والثالث المتوسط).
 تعليمات النظام الأمنية:
@@ -2036,11 +2481,16 @@ app.post(
 المادة: ${subject || "اللغة الإنكليزية"}
 الصفحات المشمولة في هذه الدفعة: صفحة ${batch.pageStart} إلى ${batch.pageEnd}
 
+تعليمات توثيق الصفحات:
+- حدد رقم الصفحة الفعلي (pageNumber) لكل عنصر مستخرج بدقة بناءً على الصفحة التي ظهر فيها النص فعلياً.
+- إذا كانت القاعدة أو التمرين يمتد عبر صفحتين، اذكر أرقام الصفحات في مصفوفة sourcePages.
+- احتفظ بالنص الأصلي الدقيق دون تحوير في حقل originalExtractedText.
+
 استخرج بدقة بتنسيق JSON:
 1. summary: ملخص لما تحتويه هذه الصفحات.
-2. extractedRules: مصفوفة بالقواعد الذهبية مع العناوين والصيغة القاعدية وأمثلة وزارية.
-3. extractedVocab: مصفوفة بالمفردات مع المعنى وسياق الجملة.
-4. extractedQuestions: مصفوفة بالأسئلة الوزارية والتمارين مع الأجوبة ونوع السؤال.
+2. extractedRules: مصفوفة بالقواعد الذهبية مع العناوين والصيغة القاعدية وأمثلة ورقم الصفحة pageNumber.
+3. extractedVocab: مصفوفة بالمفردات مع المعنى وسياق الجملة ورقم الصفحة pageNumber.
+4. extractedQuestions: مصفوفة بالأسئلة الوزارية والتمارين مع الأجوبة ونوع السؤال ورقم الصفحة pageNumber.
 
 المستند:
 ${delimitedDoc}
@@ -2066,6 +2516,9 @@ ${delimitedDoc}
                             formula: { type: Type.STRING },
                             explanation: { type: Type.STRING },
                             examples: { type: Type.ARRAY, items: { type: Type.STRING } },
+                            pageNumber: { type: Type.INTEGER },
+                            sourcePages: { type: Type.ARRAY, items: { type: Type.INTEGER } },
+                            originalExtractedText: { type: Type.STRING },
                           },
                           required: ["title", "formula", "explanation"],
                         },
@@ -2078,6 +2531,9 @@ ${delimitedDoc}
                             word: { type: Type.STRING },
                             meaning: { type: Type.STRING },
                             context: { type: Type.STRING },
+                            pageNumber: { type: Type.INTEGER },
+                            sourcePages: { type: Type.ARRAY, items: { type: Type.INTEGER } },
+                            originalExtractedText: { type: Type.STRING },
                           },
                           required: ["word", "meaning"],
                         },
@@ -2090,6 +2546,9 @@ ${delimitedDoc}
                             question: { type: Type.STRING },
                             answer: { type: Type.STRING },
                             type: { type: Type.STRING },
+                            pageNumber: { type: Type.INTEGER },
+                            sourcePages: { type: Type.ARRAY, items: { type: Type.INTEGER } },
+                            originalExtractedText: { type: Type.STRING },
                           },
                           required: ["question", "answer"],
                         },
@@ -2106,12 +2565,10 @@ ${delimitedDoc}
             if (parsed.summary) {
               consolidatedSummary += (consolidatedSummary ? "\n" : "") + parsed.summary;
             }
-            const hasPageNum = typeof batch.pageStart === "number" && batch.pageStart > 0;
-            const actualSourcePage = hasPageNum ? batch.pageStart : null;
-            const reviewStatus = hasPageNum ? "draft" : "requires_review";
 
             if (Array.isArray(parsed.extractedRules)) {
               parsed.extractedRules.forEach((r: any) => {
+                const attr = resolveItemPageAttribution(r, batch);
                 aggregatedRules.push({
                   ...r,
                   sourceId: sourceId || "src-temp",
@@ -2120,18 +2577,24 @@ ${delimitedDoc}
                   subjectId: subject || "english",
                   unitId: r.unitId || "unit-1",
                   lessonId: r.lessonId || "lesson-1",
-                  actualSourcePage: batch.pageStart ? batch.pageStart : null,
-                  originalExtractedText: r.explanation || r.title,
+                  actualSourcePage: attr.actualSourcePage,
+                  sourcePages:
+                    attr.sourcePages.length > 0
+                      ? `ص ${attr.sourcePages.join(", ")}`
+                      : attr.actualSourcePage
+                      ? `ص ${attr.actualSourcePage}`
+                      : "",
+                  originalExtractedText: r.originalExtractedText || r.explanation || r.title,
                   structuredContent: r,
                   extractionStatus: "ai_structured",
-                  validationStatus: batch.pageStart ? "draft" : "requires_review",
-                  reviewStatus: batch.pageStart ? "draft" : "requires_review",
-                  sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
+                  validationStatus: attr.validationStatus,
+                  reviewStatus: attr.validationStatus === "validated" ? "draft" : "requires_review",
                 });
               });
             }
             if (Array.isArray(parsed.extractedVocab)) {
               parsed.extractedVocab.forEach((v: any) => {
+                const attr = resolveItemPageAttribution(v, batch);
                 aggregatedVocab.push({
                   ...v,
                   sourceId: sourceId || "src-temp",
@@ -2140,18 +2603,24 @@ ${delimitedDoc}
                   subjectId: subject || "english",
                   unitId: v.unitId || "unit-1",
                   lessonId: v.lessonId || "lesson-1",
-                  actualSourcePage: batch.pageStart ? batch.pageStart : null,
-                  originalExtractedText: v.context || v.word,
+                  actualSourcePage: attr.actualSourcePage,
+                  sourcePages:
+                    attr.sourcePages.length > 0
+                      ? `ص ${attr.sourcePages.join(", ")}`
+                      : attr.actualSourcePage
+                      ? `ص ${attr.actualSourcePage}`
+                      : "",
+                  originalExtractedText: v.originalExtractedText || v.context || v.word,
                   structuredContent: v,
                   extractionStatus: "ai_structured",
-                  validationStatus: batch.pageStart ? "draft" : "requires_review",
-                  reviewStatus: batch.pageStart ? "draft" : "requires_review",
-                  sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
+                  validationStatus: attr.validationStatus,
+                  reviewStatus: attr.validationStatus === "validated" ? "draft" : "requires_review",
                 });
               });
             }
             if (Array.isArray(parsed.extractedQuestions)) {
               parsed.extractedQuestions.forEach((q: any) => {
+                const attr = resolveItemPageAttribution(q, batch);
                 aggregatedQuestions.push({
                   ...q,
                   sourceId: sourceId || "src-temp",
@@ -2160,13 +2629,18 @@ ${delimitedDoc}
                   subjectId: subject || "english",
                   unitId: q.unitId || "unit-1",
                   lessonId: q.lessonId || "lesson-1",
-                  actualSourcePage: batch.pageStart ? batch.pageStart : null,
-                  originalExtractedText: q.question,
+                  actualSourcePage: attr.actualSourcePage,
+                  sourcePages:
+                    attr.sourcePages.length > 0
+                      ? `ص ${attr.sourcePages.join(", ")}`
+                      : attr.actualSourcePage
+                      ? `ص ${attr.actualSourcePage}`
+                      : "",
+                  originalExtractedText: q.originalExtractedText || q.question,
                   structuredContent: q,
                   extractionStatus: "ai_structured",
-                  validationStatus: batch.pageStart ? "draft" : "requires_review",
-                  reviewStatus: batch.pageStart ? "draft" : "requires_review",
-                  sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
+                  validationStatus: attr.validationStatus,
+                  reviewStatus: attr.validationStatus === "validated" ? "draft" : "requires_review",
                 });
               });
             }
