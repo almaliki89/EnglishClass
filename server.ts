@@ -508,7 +508,12 @@ export interface StoredCurriculumSource {
     | "persisted"
     | "persistence_failed"
     | "deletion_pending"
+    | "deleting_storage"
+    | "deleting_firestore"
     | "deletion_failed"
+    | "deletion_failed_storage"
+    | "deletion_failed_firestore"
+    | "deletion_failed_cleanup"
     | "deleted"
     | "queued"
     | "extracting"
@@ -802,10 +807,25 @@ async function commitInBatches(
 
 class CurriculumPersistenceManager {
   private sources: Map<string, StoredCurriculumSource> = new Map();
+  private initialized: boolean = false;
+  private initPromise: Promise<void> | null = null;
 
   constructor() {
     this.loadFromDisk();
-    this.syncWithFirestore();
+  }
+
+  public async initialize(): Promise<void> {
+    if (this.initialized) return;
+    if (!this.initPromise) {
+      this.initPromise = this.syncWithFirestore().then(() => {
+        this.initialized = true;
+      });
+    }
+    return this.initPromise;
+  }
+
+  public isInitialized(): boolean {
+    return this.initialized;
   }
 
   private loadFromDisk() {
@@ -874,7 +894,15 @@ class CurriculumPersistenceManager {
       list = list.filter((s) => s.status === status);
     } else if (!status) {
       list = list.filter(
-        (s) => s.status !== "deletion_pending" && s.status !== "deletion_failed" && s.status !== "deleted"
+        (s) =>
+          s.status !== "deletion_pending" &&
+          s.status !== "deleting_storage" &&
+          s.status !== "deleting_firestore" &&
+          s.status !== "deletion_failed" &&
+          s.status !== "deletion_failed_storage" &&
+          s.status !== "deletion_failed_firestore" &&
+          s.status !== "deletion_failed_cleanup" &&
+          s.status !== "deleted"
       );
     }
     return list;
@@ -1041,12 +1069,6 @@ class CurriculumPersistenceManager {
       };
     }
 
-    // 1. Immediately mark source as deletion_pending to block all downloads & publications
-    existing.status = "deletion_pending";
-    existing.updatedAt = new Date().toISOString();
-    this.sources.set(id, existing);
-    this.saveToDisk();
-
     const isProduction = process.env.NODE_ENV === "production";
     const requireCloud =
       isProduction ||
@@ -1054,60 +1076,142 @@ class CurriculumPersistenceManager {
       process.env.REQUIRE_CLOUD_FIRESTORE === "true" ||
       process.env.STRICT_DELETION === "true";
 
-    let storageDeleted = false;
-    let subcollectionsDeleted = 0;
-    let firestoreDeleted = false;
-    const failedOps: string[] = [];
+    // 1. Immediately mark source as deletion_pending & record deletion job
+    existing.status = "deletion_pending";
+    existing.updatedAt = new Date().toISOString();
+    this.sources.set(id, existing);
+    this.saveToDisk();
 
-    // 2. Delete original PDF from Storage (both local mirror and Cloud Storage)
+    if (adminFirestore) {
+      try {
+        await adminFirestore.collection("curriculum_sources").doc(id).set(
+          { status: "deletion_pending", updatedAt: existing.updatedAt },
+          { merge: true }
+        );
+        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set({
+          sourceId: id,
+          status: "deleting_storage",
+          startedAt: new Date().toISOString(),
+          updatedAt: new Date().toISOString(),
+          storageDeleted: false,
+          firestoreDeleted: false,
+        }, { merge: true });
+      } catch (err: any) {
+        console.warn("Durable deletion job recording note:", err.message);
+      }
+    }
+
+    // 2. Transition to deleting_storage
+    existing.status = "deleting_storage";
+    this.sources.set(id, existing);
+    this.saveToDisk();
+
+    let storageDeleted = false;
+    const storageErrors: string[] = [];
+
+    // Delete local storage mirror
     const safeFileName = path.basename(existing.fileName || "curriculum_source.pdf").replace(/[^a-zA-Z0-9._\-]/g, "_");
     const localFilePath = path.join(LOCAL_STORAGE_DIR, `${id}_${safeFileName}`);
-    let localDeleted = false;
     if (fs.existsSync(localFilePath)) {
       try {
         fs.unlinkSync(localFilePath);
-        localDeleted = true;
       } catch (err: any) {
         console.warn("Local storage file cleanup note:", err.message);
-        failedOps.push(`local_storage: ${err.message}`);
+        storageErrors.push(`local_storage: ${err.message}`);
       }
-    } else {
-      localDeleted = true;
     }
 
     if (options?.simulateStorageFailure) {
-      failedOps.push("cloud_storage: Simulated Cloud Storage deletion failure");
+      storageErrors.push("cloud_storage: Simulated Cloud Storage deletion failure");
     } else if (adminStorage) {
       try {
         const bucket = adminStorage.bucket(FIREBASE_STORAGE_BUCKET);
-        const file = bucket.file(`curriculum_sources/${id}/${safeFileName}`);
-        const [exists] = await file.exists();
-        if (exists) {
-          await file.delete();
-          const [stillExists] = await file.exists();
-          if (stillExists) {
-            failedOps.push("cloud_storage: file remains after delete call");
-          } else {
-            storageDeleted = true;
+        // Prefix enumeration for all source-owned objects: curriculum_sources/{id}/, accreditations/{id}/, curriculum_drafts/{id}/
+        const prefixes = [`curriculum_sources/${id}/`, `accreditations/${id}/`, `curriculum_drafts/${id}/`];
+        for (const prefix of prefixes) {
+          const [files] = await bucket.getFiles({ prefix });
+          for (const file of files) {
+            await file.delete();
+            const [stillExists] = await file.exists();
+            if (stillExists) {
+              storageErrors.push(`cloud_storage: ${file.name} remains after delete call`);
+            }
           }
-        } else {
-          storageDeleted = true;
         }
+        storageDeleted = storageErrors.length === 0;
       } catch (err: any) {
         console.warn("Cloud Storage deletion error:", err.message);
-        failedOps.push(`cloud_storage: ${err.message}`);
+        storageErrors.push(`cloud_storage: ${err.message}`);
       }
     } else {
       if (requireCloud) {
-        failedOps.push("cloud_storage: Firebase Admin Storage uninitialized in required cloud mode");
+        storageErrors.push("cloud_storage: Firebase Admin Storage uninitialized in required cloud mode");
       } else {
-        storageDeleted = localDeleted;
+        storageDeleted = true;
       }
     }
 
-    // 3. Delete Firestore root doc and all subcollections
+    // IF STORAGE DELETION FAILS: STOP IMMEDIATELY! Preserve Firestore tombstone & deletion job. DO NOT TOUCH FIRESTORE ROOT!
+    if (storageErrors.length > 0 || !storageDeleted) {
+      existing.status = "deletion_failed_storage";
+      existing.updatedAt = new Date().toISOString();
+      existing.deletionError = storageErrors.join("; ");
+      this.sources.set(id, existing);
+      this.saveToDisk();
+
+      if (adminFirestore) {
+        try {
+          await adminFirestore.collection("curriculum_sources").doc(id).set(
+            { status: "deletion_failed_storage", deletionError: existing.deletionError, updatedAt: existing.updatedAt },
+            { merge: true }
+          );
+          await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set({
+            status: "deletion_failed_storage",
+            error: existing.deletionError,
+            updatedAt: new Date().toISOString(),
+          }, { merge: true });
+        } catch (e: any) {
+          console.warn("Failed to record deletion_failed_storage job in Firestore:", e.message);
+        }
+      }
+
+      return {
+        success: false,
+        storageDeleted: false,
+        firestoreDeleted: false,
+        subcollectionsDeleted: 0,
+        status: "deletion_failed_storage",
+        error: `Storage deletion operations incomplete or failed: ${storageErrors.join(", ")}`,
+      };
+    }
+
+    // 3. Storage deletion verified! Transition to deleting_firestore
+    existing.status = "deleting_firestore";
+    this.sources.set(id, existing);
+    this.saveToDisk();
+
+    if (adminFirestore) {
+      try {
+        await adminFirestore.collection("curriculum_sources").doc(id).set(
+          { status: "deleting_firestore", updatedAt: new Date().toISOString() },
+          { merge: true }
+        );
+        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set({
+          status: "deleting_firestore",
+          storageDeleted: true,
+          updatedAt: new Date().toISOString(),
+        }, { merge: true });
+      } catch (e: any) {
+        console.warn("Failed to record deleting_firestore job status:", e.message);
+      }
+    }
+
+    let subcollectionsDeleted = 0;
+    let firestoreDeleted = false;
+    const firestoreErrors: string[] = [];
+
     if (options?.simulateFirestoreFailure) {
-      failedOps.push("cloud_firestore: Simulated Cloud Firestore deletion failure");
+      firestoreErrors.push("cloud_firestore: Simulated Cloud Firestore deletion failure");
     } else if (adminFirestore) {
       try {
         const docRef = adminFirestore.collection("curriculum_sources").doc(id);
@@ -1128,40 +1232,70 @@ class CurriculumPersistenceManager {
         await docRef.delete();
         const checkDoc = await docRef.get();
         if (checkDoc.exists) {
-          failedOps.push("cloud_firestore: root document remains after delete call");
+          firestoreErrors.push("cloud_firestore: root document remains after delete call");
         } else {
           firestoreDeleted = true;
         }
       } catch (err: any) {
         console.warn("Firestore collection deletion error:", err.message);
-        failedOps.push(`cloud_firestore: ${err.message}`);
+        firestoreErrors.push(`cloud_firestore: ${err.message}`);
       }
     } else {
       if (requireCloud) {
-        failedOps.push("cloud_firestore: Cloud Firestore uninitialized in required cloud mode");
+        firestoreErrors.push("cloud_firestore: Cloud Firestore uninitialized in required cloud mode");
       } else {
-        firestoreDeleted = false; // Never claim true when uninitialized
+        firestoreDeleted = true;
       }
     }
 
-    // 4. Handle failures: If any required operation failed, transition to deletion_failed and RETAIN tombstone for retry
-    if (failedOps.length > 0) {
-      existing.status = "deletion_failed";
+    if (firestoreErrors.length > 0 || !firestoreDeleted) {
+      existing.status = "deletion_failed_firestore";
       existing.updatedAt = new Date().toISOString();
-      existing.deletionError = failedOps.join("; ");
+      existing.deletionError = firestoreErrors.join("; ");
       this.sources.set(id, existing);
       this.saveToDisk();
+
+      if (adminFirestore) {
+        try {
+          await adminFirestore.collection("curriculum_sources").doc(id).set(
+            { status: "deletion_failed_firestore", deletionError: existing.deletionError, updatedAt: existing.updatedAt },
+            { merge: true }
+          );
+          await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set({
+            status: "deletion_failed_firestore",
+            error: existing.deletionError,
+            updatedAt: new Date().toISOString(),
+          }, { merge: true });
+        } catch (e: any) {
+          console.warn("Failed to record deletion_failed_firestore job:", e.message);
+        }
+      }
+
       return {
         success: false,
-        storageDeleted,
-        firestoreDeleted,
+        storageDeleted: true,
+        firestoreDeleted: false,
         subcollectionsDeleted,
-        status: "deletion_failed",
-        error: `Deletion operations incomplete or failed: ${failedOps.join(", ")}`,
+        status: "deletion_failed_firestore",
+        error: `Firestore deletion operations incomplete or failed: ${firestoreErrors.join(", ")}`,
       };
     }
 
-    // 5. Successful deletion: mark as deleted, clean up from active memory and disk persistence
+    // 4. Complete deletion job record & clean up active memory/disk map
+    if (adminFirestore) {
+      try {
+        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set({
+          status: "completed",
+          storageDeleted: true,
+          firestoreDeleted: true,
+          subcollectionsDeleted,
+          completedAt: new Date().toISOString(),
+        }, { merge: true });
+      } catch (e: any) {
+        console.warn("Failed to complete deletion job record:", e.message);
+      }
+    }
+
     existing.status = "deleted";
     existing.updatedAt = new Date().toISOString();
     this.sources.delete(id);
@@ -1411,17 +1545,45 @@ function resolveItemPageAttribution(
   let resolvedPage: number | null = null;
   let resolvedPages: number[] = [];
 
-  // 1. Strict verification of pageNumber returned by Gemini against actual pages in batch
-  if (typeof item.pageNumber === "number" && allowedPages.includes(item.pageNumber)) {
-    resolvedPage = item.pageNumber;
-    resolvedPages = [item.pageNumber];
+  const searchText = (
+    item.originalExtractedText ||
+    item.word ||
+    item.title ||
+    item.question ||
+    item.explanation ||
+    ""
+  ).trim().toLowerCase();
+
+  const matchesPageText = (pageObj?: { text?: string; preview?: string }): boolean => {
+    if (!pageObj) return false;
+    const pText = (pageObj.text || pageObj.preview || "").toLowerCase();
+    if (!pText) return false;
+    if (searchText.length >= 3 && pText.includes(searchText.slice(0, 25))) return true;
+    const keyWords = searchText.split(/\s+/).filter((w: string) => w.length >= 4);
+    if (keyWords.length > 0 && keyWords.some((kw: string) => pText.includes(kw))) return true;
+    return false;
+  };
+
+  // 1. Strict verification of pageNumber returned by Gemini against actual page text
+  if (typeof item.pageNumber === "number" && allowedPages.includes(item.pageNumber) && batch.pages) {
+    const pageObj = batch.pages.find((p) => p.pageNumber === item.pageNumber);
+    if (matchesPageText(pageObj)) {
+      resolvedPage = item.pageNumber;
+      resolvedPages = [item.pageNumber];
+    }
   }
 
-  // 2. Strict verification of sourcePages returned by Gemini
-  if (Array.isArray(item.sourcePages)) {
-    const validPages = item.sourcePages.filter(
-      (p: any) => typeof p === "number" && allowedPages.includes(p)
-    );
+  // 2. Strict verification of sourcePages returned by Gemini against actual page text
+  if (Array.isArray(item.sourcePages) && batch.pages) {
+    const validPages: number[] = [];
+    for (const pNum of item.sourcePages) {
+      if (typeof pNum === "number" && allowedPages.includes(pNum)) {
+        const pageObj = batch.pages.find((p) => p.pageNumber === pNum);
+        if (matchesPageText(pageObj)) {
+          validPages.push(pNum);
+        }
+      }
+    }
     if (validPages.length > 0) {
       resolvedPages = validPages;
       if (resolvedPage === null) resolvedPage = validPages[0];
@@ -1430,14 +1592,11 @@ function resolveItemPageAttribution(
 
   // 3. Fallback search against authentic page texts in this batch ONLY
   if (resolvedPage === null && batch.pages && batch.pages.length > 0) {
-    const searchTarget = (item.word || item.title || item.question || "").trim().toLowerCase();
-    if (searchTarget.length >= 3) {
-      for (const p of batch.pages) {
-        if (p.text && p.text.toLowerCase().includes(searchTarget)) {
-          resolvedPage = p.pageNumber;
-          resolvedPages = [p.pageNumber];
-          break;
-        }
+    for (const p of batch.pages) {
+      if (matchesPageText(p)) {
+        resolvedPage = p.pageNumber;
+        resolvedPages = [p.pageNumber];
+        break;
       }
     }
   }
@@ -1445,7 +1604,7 @@ function resolveItemPageAttribution(
   // 4. Strict attribution rules:
   // - Never guess page 1 when actual page is unknown.
   // - Never use batch.pageStart as the universal page reference.
-  // - If attribution cannot be established, use null and mark requires_review.
+  // - If attribution cannot be established or text verification fails, use null and mark requires_review.
   if (resolvedPage !== null) {
     return {
       actualSourcePage: resolvedPage,

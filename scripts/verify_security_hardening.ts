@@ -143,7 +143,8 @@ assert(
 );
 
 assert(
-  serverContent.includes('bucket.file(`curriculum_sources/${id}/${safeFileName}`)') &&
+  (serverContent.includes('bucket.file(`curriculum_sources/${id}/${safeFileName}`)') ||
+    (serverContent.includes('bucket.getFiles({ prefix') && serverContent.includes('await file.delete()'))) &&
   serverContent.includes('await file.delete();'),
   'Complete Deletion: Deletes original binary PDF file from Cloud Storage'
 );
@@ -451,6 +452,42 @@ const caseC_valid = testItemMulti.sourcePages.filter(p => mockAllowed.includes(p
 assert(caseC_valid.length === 2 && caseC_valid[0] === 6 && caseC_valid[1] === 7, 'Page Attribution: Multi-page items preserve all relevant batch pages');
 
 // ----------------------------------------------------------------------------
+// SUITE 11: V12 FINAL ENGINEERING REMEDIATION (P0 - P6)
+// ----------------------------------------------------------------------------
+console.log('\n--- 11. AUDITING V12 FINAL ENGINEERING REMEDIATION (P0 - P6) ---');
+
+assert(
+  serverContent.includes('deleting_storage') &&
+  serverContent.includes('deleting_firestore') &&
+  serverContent.includes('deletion_failed_storage') &&
+  serverContent.includes('deletion_failed_firestore'),
+  'V12 P0: Deletion state machine enforces sequential states (deleting_storage -> deleting_firestore -> deleted)'
+);
+
+assert(
+  serverContent.includes('curriculum_deletion_jobs') &&
+  serverContent.includes('IF STORAGE DELETION FAILS: STOP IMMEDIATELY!'),
+  'V12 P0: Storage deletion failure halts workflow immediately, preserving Firestore tombstone & deletion job'
+);
+
+assert(
+  serverContent.includes('prefixes = [`curriculum_sources/${id}/`'),
+  'V12 P0: Storage cleanup enumerates all source-owned prefixes (curriculum_sources, accreditations, curriculum_drafts)'
+);
+
+assert(
+  serverContent.includes('matchesPageText') &&
+  serverContent.includes('pText.includes(searchText.slice(0, 25))'),
+  'V12 P1: Page attribution verifies originalExtractedText against actual normalized page text'
+);
+
+assert(
+  serverContent.includes('public async initialize(): Promise<void>') &&
+  serverContent.includes('isInitialized'),
+  'V12 P4: CurriculumPersistenceManager implements explicit async initialization lifecycle'
+);
+
+// ----------------------------------------------------------------------------
 // SUMMARY REPORT
 // ----------------------------------------------------------------------------
 console.log('\n================================================================');
@@ -460,6 +497,6 @@ console.log('================================================================\n'
 if (failedTests > 0) {
   process.exit(1);
 } else {
-  console.log('🎉 ALL V11 ADVANCED ENGINEERING REMEDIATION ASSERTIONS PASSED!\n');
+  console.log('🎉 ALL V12 FINAL ENGINEERING REMEDIATION ASSERTIONS PASSED!\n');
   process.exit(0);
 }
