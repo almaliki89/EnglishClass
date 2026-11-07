@@ -806,12 +806,20 @@ async function commitInBatches(
 }
 
 class CurriculumPersistenceManager {
+  private static instance: CurriculumPersistenceManager | null = null;
   private sources: Map<string, StoredCurriculumSource> = new Map();
   private initialized: boolean = false;
   private initPromise: Promise<void> | null = null;
 
   constructor() {
     this.loadFromDisk();
+  }
+
+  public static getInstance(): CurriculumPersistenceManager {
+    if (!CurriculumPersistenceManager.instance) {
+      CurriculumPersistenceManager.instance = new CurriculumPersistenceManager();
+    }
+    return CurriculumPersistenceManager.instance;
   }
 
   public async initialize(): Promise<void> {
@@ -854,7 +862,12 @@ class CurriculumPersistenceManager {
   }
 
   private async syncWithFirestore() {
-    if (!adminFirestore) return;
+    if (!adminFirestore) {
+      if (process.env.NODE_ENV === "production") {
+        throw new Error("Production mode error: Firebase Admin Firestore is uninitialized.");
+      }
+      return;
+    }
     try {
       const snap = await adminFirestore.collection("curriculum_sources").get();
       if (!snap.empty) {
@@ -872,6 +885,9 @@ class CurriculumPersistenceManager {
         console.log(`Durable Cloud Storage: Seeded ${this.sources.size} initial official sources to Firestore.`);
       }
     } catch (err: any) {
+      if (process.env.NODE_ENV === "production") {
+        throw new Error(`Production Firestore sync failure: ${err.message}`);
+      }
       console.warn("Durable Cloud Storage sync notice (resilient offline fallback active):", err.message);
     }
   }
@@ -1048,9 +1064,15 @@ class CurriculumPersistenceManager {
 
   public async delete(
     id: string,
-    options?: { simulateStorageFailure?: boolean; simulateFirestoreFailure?: boolean }
+    options?: {
+      requestedBy?: string;
+      simulateStorageFailure?: boolean;
+      simulateFirestoreFailure?: boolean;
+      simulateJobFailure?: boolean;
+    }
   ): Promise<{
     success: boolean;
+    jobId?: string;
     storageDeleted: boolean;
     firestoreDeleted: boolean;
     subcollectionsDeleted: number;
@@ -1076,11 +1098,43 @@ class CurriculumPersistenceManager {
       process.env.REQUIRE_CLOUD_FIRESTORE === "true" ||
       process.env.STRICT_DELETION === "true";
 
+    const jobId = `job-${id}-${Date.now()}`;
+    const requestedBy = options?.requestedBy || "admin";
+    const requestedAt = new Date().toISOString();
+
+    const jobRecord = {
+      jobId,
+      sourceId: id,
+      requestedBy,
+      requestedAt,
+      deletionStatus: "active",
+      storageDeletionStatus: "pending",
+      firestoreDeletionStatus: "pending",
+      cleanupStatus: "pending",
+      retryCount: 0,
+      lastError: null as string | null,
+      completedAt: null as string | null,
+    };
+
+    if (options?.simulateJobFailure) {
+      return {
+        success: false,
+        jobId,
+        storageDeleted: false,
+        firestoreDeleted: false,
+        subcollectionsDeleted: 0,
+        status: "deletion_failed_initialization",
+        error: "Simulated deletion job record initialization failure",
+      };
+    }
+
     // 1. Immediately mark source as deletion_pending & record deletion job
     existing.status = "deletion_pending";
     existing.updatedAt = new Date().toISOString();
     this.sources.set(id, existing);
     this.saveToDisk();
+
+    jobRecord.deletionStatus = "deletion_pending";
 
     if (adminFirestore) {
       try {
@@ -1088,14 +1142,8 @@ class CurriculumPersistenceManager {
           { status: "deletion_pending", updatedAt: existing.updatedAt },
           { merge: true }
         );
-        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set({
-          sourceId: id,
-          status: "deleting_storage",
-          startedAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString(),
-          storageDeleted: false,
-          firestoreDeleted: false,
-        }, { merge: true });
+        await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).set(jobRecord, { merge: true });
+        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set(jobRecord, { merge: true });
       } catch (err: any) {
         console.warn("Durable deletion job recording note:", err.message);
       }
@@ -1311,7 +1359,7 @@ class CurriculumPersistenceManager {
   }
 }
 
-const curriculumDB = new CurriculumPersistenceManager();
+const curriculumDB = CurriculumPersistenceManager.getInstance();
 
 // ============================================================================
 // PDF & TEXT INGESTION PIPELINE (STRICT VALIDATION, CHUNKING & PAGE AWARENESS)
@@ -3290,6 +3338,20 @@ app.post(
 
 // Vite & Static file serving
 async function startServer() {
+  console.log("Initializing EnglishClass OMEGA V3.2 Platform & Persistence Manager...");
+  try {
+    await curriculumDB.initialize();
+    const count = curriculumDB.getAll().length;
+    console.log(`CurriculumPersistenceManager initialized successfully. ${count} active curriculum sources loaded.`);
+  } catch (err: any) {
+    if (process.env.NODE_ENV === "production") {
+      console.error("FATAL: Curriculum persistence initialization failed in production mode:", err.message);
+      process.exit(1);
+    } else {
+      console.warn("Curriculum persistence initialization notice (development fallback active):", err.message);
+    }
+  }
+
   const publicPath = path.join(process.cwd(), "public");
   app.use(express.static(publicPath));
   app.use("/assets", express.static(path.join(publicPath, "assets")));

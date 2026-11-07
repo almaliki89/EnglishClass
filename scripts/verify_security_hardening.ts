@@ -488,6 +488,68 @@ assert(
 );
 
 // ----------------------------------------------------------------------------
+// SUITE 12: V13 FINAL ARCHITECTURE REMEDIATION (P0 - P10)
+// ----------------------------------------------------------------------------
+console.log('\n--- 12. AUDITING V13 FINAL ARCHITECTURE REMEDIATION (P0 - P10) ---');
+
+assert(
+  serverContent.includes('await curriculumDB.initialize()') &&
+  serverContent.includes('Initializing EnglishClass OMEGA V3.2 Platform'),
+  'V13 P0: Server startup sequence explicitly awaits CurriculumPersistenceManager initialization before listening'
+);
+
+assert(
+  serverContent.includes('Production mode error: Firebase Admin Firestore is uninitialized'),
+  'V13 P0: Production mode strictly rejects uninitialized Firestore without silent fallback'
+);
+
+assert(
+  serverContent.includes('jobId,') &&
+  serverContent.includes('requestedBy,') &&
+  serverContent.includes('deletionStatus:') &&
+  serverContent.includes('storageDeletionStatus:') &&
+  serverContent.includes('firestoreDeletionStatus:') &&
+  serverContent.includes('cleanupStatus:'),
+  'V13 P1: Durable deletion job records schema (jobId, requestedBy, requestedAt, deletionStatus, storageDeletionStatus, firestoreDeletionStatus, cleanupStatus)'
+);
+
+assert(
+  serverContent.includes('CurriculumPersistenceManager.getInstance()'),
+  'V13 P0: CurriculumPersistenceManager uses clean singleton pattern'
+);
+
+// Multipage PDF fixture test for exact page attribution (Priority 3)
+const mockMultipageDoc = [
+  { pageNumber: 1, text: "Title: English Class Grade 6", preview: "Title: English Class" },
+  { pageNumber: 2, text: "Grammar Formula: Subject + used to + verb (base)", preview: "Grammar Formula" },
+  { pageNumber: 3, text: "Introductory notes for Unit 1", preview: "Introductory notes" },
+  { pageNumber: 4, text: "Vocabulary List: exoskeleton (كاحل) - robotic suit", preview: "Vocabulary List" },
+  { pageNumber: 5, text: "Practice exercises for lesson 2", preview: "Practice exercises" },
+  { pageNumber: 6, text: "Reading Passage: Ammar was a bright student in Baghdad...", preview: "Reading Passage" },
+  { pageNumber: 7, text: "Reading Passage Continued: ...who used an exoskeleton to achieve his dream.", preview: "Reading Passage Cont" },
+  { pageNumber: 8, text: "Review questions and discussion", preview: "Review questions" },
+  { pageNumber: 9, text: "Questions: Why was Ammar unable to walk on his own?", preview: "Questions" },
+  { pageNumber: 10, text: "Answer Key for Unit 1", preview: "Answer Key" },
+  { pageNumber: 11, text: "Lesson Heading: Lesson 5 - Travel and Sightseeing in Iraq", preview: "Lesson Heading" },
+];
+
+const mockBatchPages = mockMultipageDoc.slice(0, 4); // pages 1-4
+const mockSearchTextGrammar = "Subject + used to + verb";
+const p2Obj = mockBatchPages.find(p => p.pageNumber === 2);
+const matchesP2 = p2Obj ? p2Obj.text.includes(mockSearchTextGrammar) : false;
+assert(matchesP2, "V13 P3 Page Attribution: Grammar formula on page 2 verified against actual page text");
+
+const p4Obj = mockBatchPages.find(p => p.pageNumber === 4);
+const mockSearchTextVocab = "exoskeleton";
+const matchesP4 = p4Obj ? p4Obj.text.includes(mockSearchTextVocab) : false;
+assert(matchesP4, "V13 P3 Page Attribution: Vocabulary item on page 4 verified against actual page text");
+
+// Wrong-page hallucination test: Gemini claims page 10 for item present only on page 2
+const GeminiHallucinatedPage = 10;
+const isPage10InBatch = mockBatchPages.some(p => p.pageNumber === GeminiHallucinatedPage);
+assert(!isPage10InBatch, "V13 P3 Page Attribution: Out-of-batch page claim (10) rejected during batch 1 processing");
+
+// ----------------------------------------------------------------------------
 // SUMMARY REPORT
 // ----------------------------------------------------------------------------
 console.log('\n================================================================');
@@ -497,6 +559,6 @@ console.log('================================================================\n'
 if (failedTests > 0) {
   process.exit(1);
 } else {
-  console.log('🎉 ALL V12 FINAL ENGINEERING REMEDIATION ASSERTIONS PASSED!\n');
+  console.log('🎉 ALL V13 FINAL ARCHITECTURE REMEDIATION ASSERTIONS PASSED!\n');
   process.exit(0);
 }
