@@ -25,7 +25,7 @@ export default defineConfig({
   workers: 1,
   reporter: [['list']],
   use: {
-    baseURL: 'http://127.0.0.1:3000',
+    baseURL: 'http://127.0.0.1:3001',
     trace: 'off',
     video: 'off',
     screenshot: 'only-on-failure',
@@ -38,9 +38,9 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: 'NODE_ENV=test VITE_E2E_MODE=true npx tsx server.ts',
-    url: 'http://127.0.0.1:3000/api/health',
-    reuseExistingServer: true,
+    command: 'PORT=3001 NODE_ENV=test npx tsx server.ts',
+    url: 'http://127.0.0.1:3001/api/health',
+    reuseExistingServer: false,
     timeout: 60000,
   },
 });

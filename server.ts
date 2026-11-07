@@ -23,7 +23,7 @@ if (process.env.NODE_ENV === "production") {
   }
 }
 
-const PORT = 3000;
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 const app = express();
 const FIRESTORE_DB_ID = "ai-studio-platform-5fee63ca-a212-45ad-b11d-7d4568447c02";
 const FIREBASE_STORAGE_BUCKET = "gen-lang-client-0324348726.firebasestorage.app";
@@ -76,7 +76,12 @@ async function uploadCurriculumPdf(
   fs.writeFileSync(localFilePath, buffer);
 
   let cloudPersisted = false;
-  if (adminStorage) {
+  if (!adminStorage) {
+    if (process.env.NODE_ENV === "production" || process.env.REQUIRE_CLOUD_STORAGE === "true") {
+      throw new Error("Firebase Cloud Storage persistence failure: Firebase Admin Storage is not configured in production");
+    }
+    console.warn("Firebase Admin Storage upload note (local durable copy preserved): Admin Storage uninitialized");
+  } else {
     try {
       const bucket = adminStorage.bucket(FIREBASE_STORAGE_BUCKET);
       const file = bucket.file(`curriculum_sources/${sourceId}/${safeFileName}`);
@@ -88,6 +93,10 @@ async function uploadCurriculumPdf(
           createdAt: new Date().toISOString(),
         },
       });
+      const [exists] = await file.exists();
+      if (!exists) {
+        throw new Error("Uploaded Cloud Storage file verification failed: file does not exist after save");
+      }
       cloudPersisted = true;
       console.log(`Cloud Storage: Verified upload for curriculum_sources/${sourceId}/${safeFileName}`);
     } catch (e: any) {
@@ -229,7 +238,7 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
   if (isTestMode) {
     if (token === "e2e-admin-token") {
       return {
-        uid: (req.headers["x-e2e-uid"] as string) || "admin-e2e-user",
+        uid: "admin-e2e-user",
         email: "admin@almaliki.edu.iq",
         emailVerified: true,
         role: "admin",
@@ -239,7 +248,7 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
     }
     if (token === "e2e-teacher-token") {
       return {
-        uid: (req.headers["x-e2e-uid"] as string) || "teacher-e2e-user",
+        uid: "teacher-e2e-user",
         email: "teacher@almaliki.edu.iq",
         emailVerified: true,
         role: "teacher",
@@ -249,7 +258,7 @@ export async function extractAuthUserAsync(req: Request): Promise<AuthenticatedU
     }
     if (token === "e2e-student-token") {
       return {
-        uid: (req.headers["x-e2e-uid"] as string) || "student-e2e-user",
+        uid: "student-e2e-user",
         email: "student@example.com",
         emailVerified: true,
         role: "student",
@@ -302,7 +311,7 @@ export function extractAuthUser(req: Request): AuthenticatedUser | null {
   const token = authHeader.startsWith("Bearer ") ? authHeader.slice(7) : authHeader;
   if (token === "e2e-admin-token") {
     return {
-      uid: (req.headers["x-e2e-uid"] as string) || "admin-e2e-user",
+      uid: "admin-e2e-user",
       email: "admin@almaliki.edu.iq",
       emailVerified: true,
       role: "admin",
@@ -312,7 +321,7 @@ export function extractAuthUser(req: Request): AuthenticatedUser | null {
   }
   if (token === "e2e-teacher-token") {
     return {
-      uid: (req.headers["x-e2e-uid"] as string) || "teacher-e2e-user",
+      uid: "teacher-e2e-user",
       email: "teacher@almaliki.edu.iq",
       emailVerified: true,
       role: "teacher",
@@ -322,7 +331,7 @@ export function extractAuthUser(req: Request): AuthenticatedUser | null {
   }
   if (token === "e2e-student-token") {
     return {
-      uid: (req.headers["x-e2e-uid"] as string) || "student-e2e-user",
+      uid: "student-e2e-user",
       email: "student@example.com",
       emailVerified: true,
       role: "student",
@@ -507,16 +516,71 @@ export interface StoredCurriculumSource {
   reviewedAt?: string;
   rawTextPreview: string;
   fullExtractedText?: string;
-  pageReferences?: Array<{ pageNumber: number; charCount: number; preview: string }>;
+  pageReferences?: Array<{ pageNumber: number; charCount: number; preview: string; text?: string }>;
   detectedUnits: Array<{
     unitNumber: number;
     title: string;
     detectedLessonsCount: number;
     sampleGrammarRules?: string[];
   }>;
-  extractedRules: Array<{ title: string; formula: string; explanation: string; examples?: string[]; page?: number }>;
-  extractedVocab: Array<{ word: string; meaning: string; context?: string; page?: number }>;
-  extractedQuestions: Array<{ question: string; answer: string; type?: string; page?: number }>;
+  extractedRules: Array<{
+    title: string;
+    formula: string;
+    explanation: string;
+    examples?: string[];
+    sourceId?: string;
+    documentVersion?: number;
+    gradeId?: string;
+    subjectId?: string;
+    unitId?: string;
+    lessonId?: string;
+    actualSourcePage?: number | null;
+    originalExtractedText?: string;
+    structuredContent?: any;
+    extractionStatus?: string;
+    validationStatus?: string;
+    reviewStatus?: string;
+    sourcePages?: string;
+    page?: number;
+  }>;
+  extractedVocab: Array<{
+    word: string;
+    meaning: string;
+    context?: string;
+    sourceId?: string;
+    documentVersion?: number;
+    gradeId?: string;
+    subjectId?: string;
+    unitId?: string;
+    lessonId?: string;
+    actualSourcePage?: number | null;
+    originalExtractedText?: string;
+    structuredContent?: any;
+    extractionStatus?: string;
+    validationStatus?: string;
+    reviewStatus?: string;
+    sourcePages?: string;
+    page?: number;
+  }>;
+  extractedQuestions: Array<{
+    question: string;
+    answer: string;
+    type?: string;
+    sourceId?: string;
+    documentVersion?: number;
+    gradeId?: string;
+    subjectId?: string;
+    unitId?: string;
+    lessonId?: string;
+    actualSourcePage?: number | null;
+    originalExtractedText?: string;
+    structuredContent?: any;
+    extractionStatus?: string;
+    validationStatus?: string;
+    reviewStatus?: string;
+    sourcePages?: string;
+    page?: number;
+  }>;
   extractedRulesCount: number;
   extractedVocabCount: number;
   extractedQuestionsCount: number;
@@ -668,7 +732,7 @@ const INITIAL_OFFICIAL_SOURCES: StoredCurriculumSource[] = [
     totalPages: 120,
     totalChars: 154000,
     status: "published",
-    verificationStatus: "official_approved",
+    verificationStatus: "internally_reviewed",
     reviewedBy: "الأستاذ مصطفى تركي - خبير المناهج",
     reviewedAt: "2026-10-11T12:00:00.000Z",
     accreditationEvidence: "وثيقة اعتماد وزارة التربية العراقية لمنهج الثالث المتوسط طبعة 2024-2026",
@@ -893,7 +957,15 @@ class CurriculumPersistenceManager {
     this.saveToDisk();
 
     let cloudPersisted = false;
-    if (adminFirestore) {
+    if (!adminFirestore) {
+      if (process.env.NODE_ENV === "production" || process.env.REQUIRE_CLOUD_FIRESTORE === "true") {
+        source.status = "failed";
+        this.sources.set(id, source);
+        this.saveToDisk();
+        throw new Error("Cloud Firestore persistence failure: Cloud Firestore is not configured in production");
+      }
+      console.warn("Cloud Firestore synchronization note (durable local copy preserved): Admin Firestore uninitialized");
+    } else {
       try {
         await this.writeToFirestore(id, source);
         cloudPersisted = true;
@@ -1240,7 +1312,7 @@ app.post(
       let totalPages = 1;
       let fileSha256 = "";
       let fileSizeStr = "0 KB";
-      const pageReferences: Array<{ pageNumber: number; charCount: number; preview: string }> = [];
+      const pageReferences: Array<{ pageNumber: number; charCount: number; preview: string; text?: string }> = [];
 
       if (base64Data && typeof base64Data === "string") {
         const cleanBase64 = base64Data.replace(/^data:application\/pdf;base64,/, "");
@@ -1285,6 +1357,7 @@ app.post(
               pageNumber: idx + 1,
               charCount: pageText.length,
               preview: pageText.slice(0, 300).trim(),
+              text: pageText,
             });
           });
         }
@@ -1411,6 +1484,163 @@ app.post(
             recoverableState: "storage_failed",
             details: storageErr.message,
           });
+        }
+      }
+
+      // INTEGRATE GEMINI ANALYSIS DIRECTLY INTO THE UPLOAD PIPELINE
+      if (!isScannedOrEmpty && apiKey) {
+        newSource.status = "extracting";
+        try {
+          const batches = chunkDocumentByPages(extractedText, pageReferences);
+          for (let bIdx = 0; bIdx < Math.min(batches.length, 3); bIdx++) {
+            const batch = batches[bIdx];
+            const delimitedDoc = wrapUntrustedDocument(batch.text);
+            const prompt = `أنت خبير مناهج تعليمية عراقي متخصص في تحليل الملازم والمناهج المدرسية (خاصة للصف السادس الإعدادي والثالث المتوسط).
+استخرج بدقة بتنسيق JSON:
+1. summary: ملخص لما تحتويه هذه الصفحات.
+2. extractedRules: مصفوفة بالقواعد الذهبية مع العناوين والصيغة القاعدية وأمثلة وزارية.
+3. extractedVocab: مصفوفة بالمفردات مع المعنى وسياق الجملة.
+4. extractedQuestions: مصفوفة بالأسئلة الوزارية والتمارين مع الأجوبة ونوع السؤال.
+
+المستند:
+${delimitedDoc}`;
+
+            try {
+              const aiResp = await withTimeout(
+                ai.models.generateContent({
+                  model: "gemini-2.5-flash",
+                  contents: prompt,
+                  config: {
+                    responseMimeType: "application/json",
+                    responseSchema: {
+                      type: Type.OBJECT,
+                      properties: {
+                        summary: { type: Type.STRING },
+                        extractedRules: {
+                          type: Type.ARRAY,
+                          items: {
+                            type: Type.OBJECT,
+                            properties: {
+                              title: { type: Type.STRING },
+                              formula: { type: Type.STRING },
+                              explanation: { type: Type.STRING },
+                              examples: { type: Type.ARRAY, items: { type: Type.STRING } },
+                            },
+                            required: ["title", "formula", "explanation"],
+                          },
+                        },
+                        extractedVocab: {
+                          type: Type.ARRAY,
+                          items: {
+                            type: Type.OBJECT,
+                            properties: {
+                              word: { type: Type.STRING },
+                              meaning: { type: Type.STRING },
+                              context: { type: Type.STRING },
+                            },
+                            required: ["word", "meaning"],
+                          },
+                        },
+                        extractedQuestions: {
+                          type: Type.ARRAY,
+                          items: {
+                            type: Type.OBJECT,
+                            properties: {
+                              question: { type: Type.STRING },
+                              answer: { type: Type.STRING },
+                              type: { type: Type.STRING },
+                            },
+                            required: ["question", "answer"],
+                          },
+                        },
+                      },
+                      required: ["summary", "extractedRules", "extractedVocab", "extractedQuestions"],
+                    },
+                  },
+                }),
+                15000
+              );
+
+              const parsed = JSON.parse(aiResp.text || "{}");
+              if (Array.isArray(parsed.extractedRules)) {
+                parsed.extractedRules.forEach((r: any) => {
+                  newSource.extractedRules.push({
+                    ...r,
+                    sourceId,
+                    documentVersion: 1,
+                    gradeId,
+                    subjectId,
+                    unitId: "unit-1",
+                    lessonId: "lesson-1",
+                    actualSourcePage: batch.pageStart ? batch.pageStart : null,
+                    originalExtractedText: r.explanation || r.title,
+                    structuredContent: r,
+                    extractionStatus: "ai_structured",
+                    validationStatus: batch.pageStart ? "draft" : "requires_review",
+                    reviewStatus: batch.pageStart ? "draft" : "requires_review",
+                    sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
+                  });
+                });
+              }
+              if (Array.isArray(parsed.extractedVocab)) {
+                parsed.extractedVocab.forEach((v: any) => {
+                  newSource.extractedVocab.push({
+                    ...v,
+                    sourceId,
+                    documentVersion: 1,
+                    gradeId,
+                    subjectId,
+                    unitId: "unit-1",
+                    lessonId: "lesson-1",
+                    actualSourcePage: batch.pageStart ? batch.pageStart : null,
+                    originalExtractedText: v.context || v.word,
+                    structuredContent: v,
+                    extractionStatus: "ai_structured",
+                    validationStatus: batch.pageStart ? "draft" : "requires_review",
+                    reviewStatus: batch.pageStart ? "draft" : "requires_review",
+                    sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
+                  });
+                });
+              }
+              if (Array.isArray(parsed.extractedQuestions)) {
+                parsed.extractedQuestions.forEach((q: any) => {
+                  newSource.extractedQuestions.push({
+                    ...q,
+                    sourceId,
+                    documentVersion: 1,
+                    gradeId,
+                    subjectId,
+                    unitId: "unit-1",
+                    lessonId: "lesson-1",
+                    actualSourcePage: batch.pageStart ? batch.pageStart : null,
+                    originalExtractedText: q.question,
+                    structuredContent: q,
+                    extractionStatus: "ai_structured",
+                    validationStatus: batch.pageStart ? "draft" : "requires_review",
+                    reviewStatus: batch.pageStart ? "draft" : "requires_review",
+                    sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
+                  });
+                });
+              }
+            } catch (err) {
+              console.warn("Upload pipeline Gemini batch extraction note:", getErrorMessage(err));
+            }
+          }
+
+          newSource.extractedRulesCount = newSource.extractedRules.length;
+          newSource.extractedVocabCount = newSource.extractedVocab.length;
+          newSource.extractedQuestionsCount = newSource.extractedQuestions.length;
+          statistics.actualRulesCount = newSource.extractedRulesCount;
+          statistics.actualVocabCount = newSource.extractedVocabCount;
+          statistics.actualQuestionsCount = newSource.extractedQuestionsCount;
+
+          if (newSource.extractedRulesCount > 0 || newSource.extractedVocabCount > 0 || newSource.extractedQuestionsCount > 0) {
+            newSource.status = "structured";
+          } else {
+            newSource.status = "pending_review";
+          }
+        } catch (e) {
+          console.warn("Upload Gemini analysis caught error:", getErrorMessage(e));
         }
       }
 
@@ -1697,29 +1927,32 @@ interface DocumentBatchChunk {
   text: string;
 }
 
-function chunkDocumentByPages(text: string, maxChunkLength = 12000): DocumentBatchChunk[] {
-  if (text.length <= maxChunkLength) {
-    return [{ pageStart: 1, pageEnd: 1, text }];
+function chunkDocumentByPages(
+  text: string,
+  pages?: Array<{ pageNumber: number; text?: string; preview?: string }>,
+  maxChunkLength = 12000
+): DocumentBatchChunk[] {
+  // When authentic PDF page objects are available, chunk strictly along true page boundaries
+  if (pages && pages.length > 0) {
+    const chunks: DocumentBatchChunk[] = [];
+    const pagesPerChunk = 4;
+    for (let i = 0; i < pages.length; i += pagesPerChunk) {
+      const pageSlice = pages.slice(i, i + pagesPerChunk);
+      const pageStart = pageSlice[0].pageNumber;
+      const pageEnd = pageSlice[pageSlice.length - 1].pageNumber;
+      const chunkText = pageSlice.map((p) => p.text || p.preview || "").filter(Boolean).join("\n\n");
+      chunks.push({
+        pageStart,
+        pageEnd,
+        text: chunkText || text.slice(0, 1000),
+      });
+    }
+    return chunks;
   }
 
-  const chunks: DocumentBatchChunk[] = [];
-  let currentStart = 0;
-  let pageCounter = 1;
-
-  while (currentStart < text.length) {
-    const end = Math.min(currentStart + maxChunkLength, text.length);
-    const chunkText = text.slice(currentStart, end);
-    const estimatedSpan = Math.max(1, Math.round(chunkText.length / 2500));
-    chunks.push({
-      pageStart: pageCounter,
-      pageEnd: pageCounter + estimatedSpan - 1,
-      text: chunkText,
-    });
-    currentStart = end;
-    pageCounter += estimatedSpan;
-  }
-
-  return chunks;
+  // When exact page objects are not available, never calculate or fabricate page numbers from character offsets
+  // Set pageStart to 0 to indicate unpaginated text requiring manual review
+  return [{ pageStart: 0, pageEnd: 0, text }];
 }
 
 // POST /api/ai/analyze-curriculum
@@ -1776,7 +2009,9 @@ app.post(
         });
       }
 
-      const batches = chunkDocumentByPages(sanitizedText, 12000);
+      const existingSourceDoc = sourceId ? curriculumDB.getById(sourceId) : null;
+      const pagesToUse = existingSourceDoc?.pageReferences || req.body.pages;
+      const batches = chunkDocumentByPages(sanitizedText, pagesToUse);
       const aggregatedRules: any[] = [];
       const aggregatedVocab: any[] = [];
       const aggregatedQuestions: any[] = [];
@@ -1883,9 +2118,13 @@ ${delimitedDoc}
                   documentVersion: 1,
                   gradeId: grade || "sixth-preparatory",
                   subjectId: subject || "english",
+                  unitId: r.unitId || "unit-1",
+                  lessonId: r.lessonId || "lesson-1",
                   actualSourcePage: batch.pageStart ? batch.pageStart : null,
                   originalExtractedText: r.explanation || r.title,
+                  structuredContent: r,
                   extractionStatus: "ai_structured",
+                  validationStatus: batch.pageStart ? "draft" : "requires_review",
                   reviewStatus: batch.pageStart ? "draft" : "requires_review",
                   sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
                 });
@@ -1899,9 +2138,13 @@ ${delimitedDoc}
                   documentVersion: 1,
                   gradeId: grade || "sixth-preparatory",
                   subjectId: subject || "english",
+                  unitId: v.unitId || "unit-1",
+                  lessonId: v.lessonId || "lesson-1",
                   actualSourcePage: batch.pageStart ? batch.pageStart : null,
                   originalExtractedText: v.context || v.word,
+                  structuredContent: v,
                   extractionStatus: "ai_structured",
+                  validationStatus: batch.pageStart ? "draft" : "requires_review",
                   reviewStatus: batch.pageStart ? "draft" : "requires_review",
                   sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
                 });
@@ -1915,9 +2158,13 @@ ${delimitedDoc}
                   documentVersion: 1,
                   gradeId: grade || "sixth-preparatory",
                   subjectId: subject || "english",
+                  unitId: q.unitId || "unit-1",
+                  lessonId: q.lessonId || "lesson-1",
                   actualSourcePage: batch.pageStart ? batch.pageStart : null,
                   originalExtractedText: q.question,
+                  structuredContent: q,
                   extractionStatus: "ai_structured",
+                  validationStatus: batch.pageStart ? "draft" : "requires_review",
                   reviewStatus: batch.pageStart ? "draft" : "requires_review",
                   sourcePages: `ص ${batch.pageStart}-${batch.pageEnd}`,
                 });

@@ -232,6 +232,28 @@ assert(
   'Admin Bootstrap: Assigns cryptographically signed Custom Claims via Firebase Admin SDK'
 );
 
+assert(
+  !bootstrapContent.includes('ALLOW_UNVERIFIED_EMAIL_BOOTSTRAP'),
+  'Admin Bootstrap: Zero bypass flags permitted for email verification'
+);
+
+assert(
+  storageRulesContent.includes('allow get, list: if isTeacherOrAdmin();') &&
+  storageRulesContent.includes('allow create, update: if isTeacherOrAdmin()') &&
+  storageRulesContent.includes('allow delete: if isAdmin();'),
+  'Storage Rules: Separated get/list, create/update, and delete permissions with Admin-only delete'
+);
+
+assert(
+  serverContent.includes('INTEGRATE GEMINI ANALYSIS DIRECTLY INTO THE UPLOAD PIPELINE'),
+  'Upload Pipeline: Connected Gemini structured extraction executed as part of document ingestion'
+);
+
+assert(
+  !serverContent.includes('Math.round(chunkText.length / 2500)'),
+  'PDF Extraction: Character length offset estimation completely removed from page chunking'
+);
+
 // ----------------------------------------------------------------------------
 // SUITE 8: STORAGE & RESTART PERSISTENCE
 // ----------------------------------------------------------------------------

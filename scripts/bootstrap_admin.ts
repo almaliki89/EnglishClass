@@ -72,8 +72,8 @@ export async function bootstrapAdminUser(email: string, role: "admin" | "teacher
     throw err;
   }
 
-  // 2. Reject unverified identities unless explicitly confirmed by master authority
-  if (!user.emailVerified && process.env.ALLOW_UNVERIFIED_EMAIL_BOOTSTRAP !== "true") {
+  // 2. Reject unverified identities strictly - never grant administrative roles without authentic verification
+  if (!user.emailVerified) {
     throw new Error(`UNVERIFIED_IDENTITY: The target account ${email} has not verified their email address. Authentication verification is strictly required.`);
   }
 

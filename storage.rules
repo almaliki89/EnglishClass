@@ -33,30 +33,35 @@ service firebase.storage {
     // Write: authorized administrators and teachers only (max 25MB, PDF MIME type)
     // Read: strictly administrators and authorized teachers only (students cannot read/download private original PDFs)
     match /curriculum_sources/{sourceId}/{fileName} {
-      allow read: if isTeacherOrAdmin();
-      allow write: if isTeacherOrAdmin() &&
-                     request.resource.size <= 25 * 1024 * 1024 &&
-                     (request.resource.contentType == 'application/pdf' || request.resource.contentType == 'application/octet-stream');
+      allow get, list: if isTeacherOrAdmin();
+      allow create, update: if isTeacherOrAdmin() &&
+                             request.resource.size <= 25 * 1024 * 1024 &&
+                             (request.resource.contentType == 'application/pdf' || request.resource.contentType == 'application/octet-stream');
+      allow delete: if isAdmin();
     }
 
     // Curriculum drafts under review (restricted to teachers and admins)
     match /curriculum_drafts/{draftId}/{fileName} {
-      allow read, write: if isTeacherOrAdmin() &&
+      allow get, list: if isTeacherOrAdmin();
+      allow create, update: if isTeacherOrAdmin() &&
                             request.resource.size <= 25 * 1024 * 1024;
+      allow delete: if isAdmin();
     }
 
     // Explicitly published educational derivatives (e.g. summaries, public excerpts approved for students)
     match /curriculum_public/{gradeId}/{fileName} {
-      allow read: if isAuthenticated();
-      allow write: if isAdmin() && request.resource.size <= 10 * 1024 * 1024;
+      allow get, list: if isAuthenticated();
+      allow create, update: if isAdmin() && request.resource.size <= 10 * 1024 * 1024;
+      allow delete: if isAdmin();
     }
 
     // Student private user assets (e.g. avatars, user study notes attachments)
     match /students/{studentId}/{fileName} {
-      allow read: if isOwner(studentId) || isTeacherOrAdmin();
-      allow write: if isOwner(studentId) &&
-                     request.resource.size <= 5 * 1024 * 1024 &&
-                     request.resource.contentType.matches('image/.*');
+      allow get, list: if isOwner(studentId) || isTeacherOrAdmin();
+      allow create, update: if isOwner(studentId) &&
+                             request.resource.size <= 5 * 1024 * 1024 &&
+                             request.resource.contentType.matches('image/.*');
+      allow delete: if isOwner(studentId) || isAdmin();
     }
   }
 }
