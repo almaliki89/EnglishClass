@@ -59,6 +59,49 @@ if (process.env.NODE_ENV !== "test") {
   console.log("E2E test mode: Firebase Admin SDK disabled; external credentials are not required.");
 }
 
+// Deterministic in-memory exam persistence used only by the E2E server.
+// It exercises the transaction contract without ADC or access to real Firestore.
+const e2eExamDocuments = new Map<string, Record<string, any>>();
+const makeE2EExamDocRef = (documentPath: string): any => ({
+  id: documentPath.split("/").pop(),
+  path: documentPath,
+  collection: (collectionName: string) => ({
+    doc: (documentId: string) => makeE2EExamDocRef(`${documentPath}/${collectionName}/${documentId}`),
+  }),
+});
+const e2eExamFirestore = {
+  collection: (collectionName: string) => ({
+    doc: (documentId: string) => makeE2EExamDocRef(`${collectionName}/${documentId}`),
+  }),
+  runTransaction: async (callback: (transaction: any) => Promise<any>) => {
+    const writes: Array<{ path: string; data: Record<string, any>; operation: "create" | "update" }> = [];
+    const transaction = {
+      get: async (reference: any) => {
+        const data = e2eExamDocuments.get(reference.path);
+        return { exists: data !== undefined, data: () => data };
+      },
+      create: (reference: any, data: Record<string, any>) => {
+        if (e2eExamDocuments.has(reference.path) || writes.some((write) => write.path === reference.path)) {
+          throw new Error("E2E_DOCUMENT_ALREADY_EXISTS");
+        }
+        writes.push({ path: reference.path, data: { ...data }, operation: "create" });
+      },
+      update: (reference: any, data: Record<string, any>) => {
+        writes.push({ path: reference.path, data: { ...data }, operation: "update" });
+      },
+    };
+    const result = await callback(transaction);
+    for (const write of writes) {
+      const current = e2eExamDocuments.get(write.path);
+      e2eExamDocuments.set(
+        write.path,
+        write.operation === "update" ? { ...(current || {}), ...write.data } : write.data
+      );
+    }
+    return result;
+  },
+};
+
 // Maximum allowed PDF payload: 25 MB decoded buffer limit
 const MAX_PDF_BYTES = 25 * 1024 * 1024; // 25 MB
 const CURRICULUM_PERSISTENCE_FILE = path.join(process.cwd(), "curriculum_sources_db.json");
@@ -1442,13 +1485,27 @@ class CurriculumPersistenceManager {
         // Verify final job state persistence in Firestore
         const verifyJobSnap = await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).get();
         if (!verifyJobSnap.exists || (verifyJobSnap.data()?.deletionStatus !== "completed" && verifyJobSnap.data()?.status !== "completed")) {
+          existing.status = "deletion_failed_cleanup";
+          existing.updatedAt = new Date().toISOString();
+          existing.deletionError = "Deletion job completed status could not be verified in Cloud Firestore.";
+          this.sources.set(id, existing);
+          this.saveToDisk();
+          jobRecord.deletionStatus = "deletion_failed_cleanup";
+          jobRecord.cleanupStatus = "failed";
+          jobRecord.lastError = existing.deletionError;
+          jobRecord.failedOperations.push("final_job_verification: completed state was not durable");
+          try {
+            await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).set(jobRecord, { merge: true });
+          } catch (persistError: any) {
+            console.warn("Failed to persist final deletion verification failure:", persistError.message);
+          }
           return {
             success: false,
             storageDeleted: true,
             firestoreDeleted: true,
             subcollectionsDeleted,
-            status: "deletion_job_verification_failed",
-            error: "Deletion job completed status could not be verified in Cloud Firestore.",
+            status: "deletion_failed_cleanup",
+            error: existing.deletionError,
           };
         }
       } catch (e: any) {
@@ -2669,17 +2726,33 @@ app.post(
           updatedAt: new Date().toISOString(),
         });
         actionTaken = "reconciled_persisted";
-      } else if (source.status === "deletion_failed" || source.status === "deletion_pending") {
+      } else if ([
+        "deletion_pending",
+        "deleting_storage",
+        "deleting_firestore",
+        "deletion_failed",
+        "deletion_failed_storage",
+        "deletion_failed_firestore",
+        "deletion_failed_cleanup",
+        "deletion_job_verification_failed",
+      ].includes(source.status)) {
         const deleted = await curriculumDB.delete(id);
-        if (deleted && deleted.success) {
-          actionTaken = "reconciled_deleted";
-          return res.json({
-            success: true,
-            status: "deleted",
-            actionTaken,
-            message: "تم تسوية وإعادة تنفيذ حذف المصدر وجميع السجلات الملحقة بنجاح.",
+        if (!deleted?.success) {
+          return res.status(500).json({
+            success: false,
+            status: deleted?.status || source.status,
+            actionTaken: "reconcile_delete_failed",
+            details: deleted || null,
+            error: "تعذرت إعادة تنفيذ الحذف بالكامل؛ بقي المصدر في حالة فشل قابلة للمعالجة ولم تُسجّل التسوية كنجاح.",
           });
         }
+        actionTaken = "reconciled_deleted";
+        return res.json({
+          success: true,
+          status: "deleted",
+          actionTaken,
+          message: "تم تسوية وإعادة تنفيذ حذف المصدر وجميع السجلات الملحقة بنجاح.",
+        });
       } else {
         await curriculumDB.set(id, {
           ...source,
@@ -3408,13 +3481,14 @@ app.post(
         ...(idempotencyKey ? { idempotencyKey } : {}),
       };
 
-      if (!adminFirestore) {
+      const examFirestore = process.env.NODE_ENV === "test" ? e2eExamFirestore : adminFirestore;
+      if (!examFirestore) {
         return res.status(503).json({ success: false, error: "خدمة الحفظ السحابي غير متاحة؛ لم يتم تسجيل النتيجة أو إضافة نقاط الخبرة." });
       }
       try {
-        const studentRef = adminFirestore.collection("students").doc(user.uid);
+        const studentRef = examFirestore.collection("students").doc(user.uid);
         const examRef = studentRef.collection("exam_results").doc(examResultId);
-        const result = await adminFirestore.runTransaction(async (transaction: any) => {
+        const result = await examFirestore.runTransaction(async (transaction: any) => {
           const studentDoc = await transaction.get(studentRef);
           const existingExam = await transaction.get(examRef);
           if (existingExam.exists) {

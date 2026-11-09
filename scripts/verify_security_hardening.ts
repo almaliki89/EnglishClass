@@ -628,6 +628,21 @@ assert(
 // ----------------------------------------------------------------------------
 // SUITE 15: V16 CRITICAL DATA INTEGRITY & PRODUCTION HARDENING AUDIT
 // ----------------------------------------------------------------------------
+console.log('\n--- 16. AUDITING V17 DELETION RECONCILIATION & TEST PERSISTENCE ---');
+
+assert(
+  serverContent.includes('"deletion_failed_storage"') &&
+  serverContent.includes('"deletion_failed_firestore"') &&
+  serverContent.includes('"deletion_failed_cleanup"') &&
+  serverContent.includes('reconcile_delete_failed'),
+  'V17: Reconciliation retries every durable deletion failure state and never returns success after a failed retry'
+);
+assert(
+  serverContent.includes('e2eExamFirestore') &&
+  serverContent.includes('process.env.NODE_ENV === "test" ? e2eExamFirestore : adminFirestore'),
+  'V17: Exam persistence test adapter is strictly isolated to NODE_ENV=test'
+);
+
 console.log('\n--- 15. AUDITING V16 CRITICAL DATA INTEGRITY & PRODUCTION HARDENING ---');
 
 assert(
@@ -639,7 +654,7 @@ assert(
 assert(
   serverContent.includes('res.status(gradeMismatch ? 403 : 500).json({') &&
   serverContent.includes('Exam persistence failed:') &&
-  serverContent.includes('if (!adminFirestore)') &&
+  serverContent.includes('if (!examFirestore)') &&
   serverContent.includes('لم يتم تسجيل النتيجة أو إضافة نقاط الخبرة'),
   'V16 P0: Exam submit fails closed on missing Firestore or transaction failure; no success response is returned without durable persistence'
 );

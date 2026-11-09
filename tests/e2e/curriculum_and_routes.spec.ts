@@ -234,6 +234,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
         'mq-2': 'frightening',
       },
       timeSpentSeconds: 120,
+      idempotencyKey: 'e2e-exam-idempotency-key-01',
     };
 
     const firstSubmitRes = await request.post('/api/student/exam-submit', {
@@ -251,7 +252,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     expect(typeof submitData.earnedXp).toBe('number');
     expect(submitData.earnedXp).toBeGreaterThan(0);
 
-    // 2. Immediate duplicate submission must be rate-limited (429)
+    // 2. Retrying with the same idempotency key returns the stored result without awarding XP twice.
     const duplicateSubmitRes = await request.post('/api/student/exam-submit', {
       headers: {
         Authorization: 'Bearer e2e-student-token',
@@ -260,7 +261,13 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       },
       data: examPayload,
     });
-    expect(duplicateSubmitRes.status()).toBe(429);
+    expect(duplicateSubmitRes.status()).toBe(200);
+    const duplicateData = await duplicateSubmitRes.json();
+    expect(duplicateData.success).toBe(true);
+    expect(duplicateData.isIdempotentReplay).toBe(true);
+    expect(duplicateData.record.id).toBe(submitData.record.id);
+    expect(duplicateData.earnedXp).toBe(0);
+    expect(duplicateData.studentProgress.xp).toBe(submitData.studentProgress.xp);
   });
 
   test('10. P8 Grounded QA: AI queries enforce authenticated rate limits and provenance citations', async ({ request }) => {
