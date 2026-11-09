@@ -622,6 +622,34 @@ assert(
 );
 
 // ----------------------------------------------------------------------------
+// SUITE 15: V16 CRITICAL DATA INTEGRITY & PRODUCTION HARDENING AUDIT
+// ----------------------------------------------------------------------------
+console.log('\n--- 15. AUDITING V16 CRITICAL DATA INTEGRITY & PRODUCTION HARDENING ---');
+
+assert(
+  serverContent.includes('idempotencyKey') &&
+  serverContent.includes('isIdempotentReplay'),
+  'V16 P0: Exam submit endpoint checks idempotencyKey to prevent double XP allocation on retries'
+);
+
+assert(
+  serverContent.includes('res.status(500).json({') &&
+  serverContent.includes('Exam score Firestore write error:'),
+  'V16 P0: Exam submit returns non-success HTTP status (500/503) on Firestore commit error without optimistic fallbacks'
+);
+
+assert(
+  serverContent.includes('derived_assets/${id}/'),
+  'V16 P0: Deletion saga enumerates and deletes derived_assets storage prefixes alongside source, accreditation, and draft paths'
+);
+
+assert(
+  serverContent.includes('verifyJobSnap.data()?.deletionStatus !== "completed"') &&
+  serverContent.includes('deletion_job_verification_failed'),
+  'V16 P0: Deletion saga verifies final completed job state persistence in Firestore before returning success'
+);
+
+// ----------------------------------------------------------------------------
 // SUMMARY REPORT
 // ----------------------------------------------------------------------------
 console.log('\n================================================================');
@@ -631,6 +659,6 @@ console.log('================================================================\n'
 if (failedTests > 0) {
   process.exit(1);
 } else {
-  console.log('🎉 ALL V15 PRODUCTION READINESS ASSERTIONS PASSED!\n');
+  console.log('🎉 ALL V16 PRODUCTION HARDENING ASSERTIONS PASSED!\n');
   process.exit(0);
 }

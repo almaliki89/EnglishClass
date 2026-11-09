@@ -1265,8 +1265,8 @@ class CurriculumPersistenceManager {
     } else if (adminStorage) {
       try {
         const bucket = adminStorage.bucket(FIREBASE_STORAGE_BUCKET);
-        // Prefix enumeration for all source-owned objects: curriculum_sources/{id}/, accreditations/{id}/, curriculum_drafts/{id}/
-        const prefixes = [`curriculum_sources/${id}/`, `accreditations/${id}/`, `curriculum_drafts/${id}/`];
+        // Prefix enumeration for all source-owned objects: curriculum_sources/{id}/, accreditations/{id}/, curriculum_drafts/{id}/, derived_assets/{id}/
+        const prefixes = [`curriculum_sources/${id}/`, `accreditations/${id}/`, `curriculum_drafts/${id}/`, `derived_assets/${id}/`];
         for (const prefix of prefixes) {
           const [files] = await bucket.getFiles({ prefix });
           for (const file of files) {
@@ -1331,17 +1331,17 @@ class CurriculumPersistenceManager {
     this.sources.set(id, existing);
     this.saveToDisk();
 
+    jobRecord.deletionStatus = "deleting_firestore";
+    jobRecord.storageDeletionStatus = "completed";
+
     if (adminFirestore) {
       try {
         await adminFirestore.collection("curriculum_sources").doc(id).set(
           { status: "deleting_firestore", updatedAt: new Date().toISOString() },
           { merge: true }
         );
-        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set({
-          status: "deleting_firestore",
-          storageDeleted: true,
-          updatedAt: new Date().toISOString(),
-        }, { merge: true });
+        await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).set(jobRecord, { merge: true });
+        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set(jobRecord, { merge: true });
       } catch (e: any) {
         console.warn("Failed to record deleting_firestore job status:", e.message);
       }
@@ -1356,7 +1356,17 @@ class CurriculumPersistenceManager {
     } else if (adminFirestore) {
       try {
         const docRef = adminFirestore.collection("curriculum_sources").doc(id);
-        const subcollections = ["rules", "vocab", "questions", "pages", "units", "batches", "reviews", "extracted_content"];
+        let detectedSubs: string[] = [];
+        if (typeof (docRef as any).listCollections === "function") {
+          try {
+            const collections = await (docRef as any).listCollections();
+            detectedSubs = collections.map((c: any) => c.id);
+          } catch (listErr: any) {
+            console.warn("listCollections fallback note:", listErr.message);
+          }
+        }
+        const subcollections = ["rules", "vocab", "questions", "pages", "units", "batches", "reviews", "extracted_content", "unassigned_content", ...detectedSubs];
+
         for (const sub of subcollections) {
           const snapshot = await docRef.collection(sub).get();
           if (!snapshot.empty) {
@@ -1396,17 +1406,19 @@ class CurriculumPersistenceManager {
       this.sources.set(id, existing);
       this.saveToDisk();
 
+      jobRecord.deletionStatus = "deletion_failed_firestore";
+      jobRecord.firestoreDeletionStatus = "failed";
+      jobRecord.lastError = existing.deletionError;
+      jobRecord.failedOperations.push(...firestoreErrors);
+
       if (adminFirestore) {
         try {
           await adminFirestore.collection("curriculum_sources").doc(id).set(
             { status: "deletion_failed_firestore", deletionError: existing.deletionError, updatedAt: existing.updatedAt },
             { merge: true }
           );
-          await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set({
-            status: "deletion_failed_firestore",
-            error: existing.deletionError,
-            updatedAt: new Date().toISOString(),
-          }, { merge: true });
+          await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).set(jobRecord, { merge: true });
+          await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set(jobRecord, { merge: true });
         } catch (e: any) {
           console.warn("Failed to record deletion_failed_firestore job:", e.message);
         }
@@ -1423,15 +1435,30 @@ class CurriculumPersistenceManager {
     }
 
     // 4. Complete deletion job record & clean up active memory/disk map
+    jobRecord.deletionStatus = "completed";
+    jobRecord.storageDeletionStatus = "completed";
+    jobRecord.firestoreDeletionStatus = "completed";
+    jobRecord.cleanupStatus = "completed";
+    jobRecord.completedAt = new Date().toISOString();
+    jobRecord.updatedAt = new Date().toISOString();
+
     if (adminFirestore) {
       try {
-        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set({
-          status: "completed",
-          storageDeleted: true,
-          firestoreDeleted: true,
-          subcollectionsDeleted,
-          completedAt: new Date().toISOString(),
-        }, { merge: true });
+        await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).set(jobRecord, { merge: true });
+        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set(jobRecord, { merge: true });
+
+        // Verify final job state persistence in Firestore
+        const verifyJobSnap = await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).get();
+        if (!verifyJobSnap.exists || (verifyJobSnap.data()?.deletionStatus !== "completed" && verifyJobSnap.data()?.status !== "completed")) {
+          return {
+            success: false,
+            storageDeleted: true,
+            firestoreDeleted: true,
+            subcollectionsDeleted,
+            status: "deletion_job_verification_failed",
+            error: "Deletion job completed status could not be verified in Cloud Firestore.",
+          };
+        }
       } catch (e: any) {
         console.warn("Failed to complete deletion job record:", e.message);
       }
@@ -1444,6 +1471,7 @@ class CurriculumPersistenceManager {
 
     return {
       success: true,
+      jobId,
       storageDeleted: true,
       firestoreDeleted: true,
       subcollectionsDeleted,
@@ -3382,10 +3410,41 @@ app.post(
         return res.status(400).json({ error: "المرحلة الدراسية غير صالحة." });
       }
 
-      // Idempotency & rapid replay prevention (10s cooldown per user per exam)
-      const submissionKey = `${user.uid}_${examId}`;
+      const idempotencyKey = String(req.body.idempotencyKey || req.headers["x-idempotency-key"] || req.body.idempotency_key || "").trim();
+
+      // Idempotency check in Firestore if key provided
+      if (idempotencyKey && adminFirestore) {
+        try {
+          const studentRef = adminFirestore.collection("students").doc(user.uid);
+          const existingQuery = await studentRef
+            .collection("exam_results")
+            .where("idempotencyKey", "==", idempotencyKey)
+            .limit(1)
+            .get();
+
+          if (!existingQuery.empty) {
+            const existingRecord = existingQuery.docs[0].data();
+            return res.json({
+              success: true,
+              record: existingRecord,
+              earnedXp: 0,
+              percentage: existingRecord.percentage,
+              score: existingRecord.score,
+              correctCount: existingRecord.correctCount,
+              totalQuestions: existingRecord.totalQuestions,
+              isIdempotentReplay: true,
+              message: "تم إرجاع النتيجة المسجلة سابقاً بدون تكرار نقاط الخبرة.",
+            });
+          }
+        } catch (idempErr: any) {
+          console.warn("Idempotency lookup warning:", idempErr.message);
+        }
+      }
+
+      // Rapid replay prevention (10s cooldown per user per exam)
+      const submissionKey = `${user.uid}_${examId}_${idempotencyKey}`;
       const lastTime = recentExamSubmissions.get(submissionKey) || 0;
-      if (Date.now() - lastTime < 10000) {
+      if (Date.now() - lastTime < 10000 && !idempotencyKey) {
         return res.status(429).json({
           error: "تم استلام وتوثيق نتيجة هذا الامتحان بالفعل، يرجى الانتظار قليلاً قبل إعادة المحاولة.",
         });
@@ -3415,7 +3474,7 @@ app.post(
       const percentage = Math.round((correctCount / totalQuestions) * 100);
       const score = Math.round(percentage);
       const earnedXp = Math.max(10, (correctCount * 15) + (percentage >= 90 ? 50 : percentage >= 75 ? 25 : 0));
-      const examResultId = `exam-${Date.now()}-${crypto.randomBytes(3).toString("hex")}`;
+      const examResultId = idempotencyKey ? `exam-${user.uid}-${examId}-${idempotencyKey.replace(/[^a-zA-Z0-9_\-]/g, "_")}` : `exam-${Date.now()}-${crypto.randomBytes(3).toString("hex")}`;
 
       const examRecord = {
         id: examResultId,
@@ -3433,7 +3492,10 @@ app.post(
         timestamp: new Date().toISOString(),
         answers: verifiedAnswersList,
         isVerifiedByServer: true,
+        ...(idempotencyKey ? { idempotencyKey } : {}),
       };
+
+      const isProduction = process.env.NODE_ENV === "production" || process.env.REQUIRE_CLOUD_FIRESTORE === "true";
 
       if (adminFirestore) {
         try {
@@ -3456,11 +3518,33 @@ app.post(
                 lastActiveDate: new Date().toISOString().split("T")[0],
                 updatedAt: new Date().toISOString(),
               });
+            } else {
+              transaction.set(studentRef, {
+                uid: user.uid,
+                email: user.email || "",
+                displayName: (user as any).displayName || user.email || "طالب متميز",
+                grade,
+                xp: earnedXp,
+                totalQuestionsCorrect: correctCount,
+                totalQuestionsAttempted: totalQuestions,
+                lastActiveDate: new Date().toISOString().split("T")[0],
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString(),
+              });
             }
           });
         } catch (dbErr: any) {
-          console.warn("Exam score Firestore write note (offline fallback):", dbErr.message);
+          console.error("Exam score Firestore write error:", dbErr.message);
+          return res.status(500).json({
+            success: false,
+            error: "فشل حفظ وتوثيق نتيجة الامتحان وإضافة نقاط الخبرة في قاعدة البيانات السحابية الحية.",
+          });
         }
+      } else if (isProduction) {
+        return res.status(503).json({
+          success: false,
+          error: "خدمة قاعدة البيانات السحابية غير متوفرة حالياً لتسجيل النتيجة وإضافة نقاط الخبرة.",
+        });
       }
 
       return res.json({
