@@ -35,6 +35,9 @@ jobs:
       - name: Run V6 Security & Hardening Regression Suite
         run: npm run test:security
 
+      - name: Run Curriculum Hierarchy Runtime Unit Tests
+        run: npm run test:hierarchy
+
       - name: Build Production Bundle
         run: npm run build
 

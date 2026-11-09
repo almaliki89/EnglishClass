@@ -133,13 +133,10 @@ assert(
 console.log('\n--- 4. AUDITING COMPLETE SOURCE DELETION (P3) ---');
 
 assert(
-  serverContent.includes('const subcollections = [') &&
-  serverContent.includes('"rules"') &&
-  serverContent.includes('"vocab"') &&
-  serverContent.includes('"questions"') &&
-  serverContent.includes('"pages"') &&
-  serverContent.includes('"units"'),
-  'Complete Deletion: Deletes all associated Firestore subcollections (rules, vocab, questions, pages, units)'
+  serverContent.includes('adminFirestore.recursiveDelete(docRef)') &&
+  serverContent.includes('Firestore recursiveDelete is unavailable') &&
+  !serverContent.includes('const subcollections = ['),
+  'Complete Deletion: Uses recursive Firestore deletion and fails closed when recursive deletion is unavailable'
 );
 
 assert(
@@ -338,8 +335,11 @@ if (fs.existsSync(localPdfPath)) {
 console.log('\n--- 9. AUDITING STUDENT INTEGRITY & FOUR-GRADE ISOLATION (P9, P10) ---');
 
 assert(
-  serverContent.includes('recentExamSubmissions.get(submissionKey)'),
-  'Student Integrity: Cooldown / idempotency gate prevents duplicate rapid exam submissions'
+  serverContent.includes('/^[A-Za-z0-9._:-]{16,128}$/') &&
+  serverContent.includes('const existingExam = await transaction.get(examRef)') &&
+  serverContent.includes('transaction.create(examRef, examRecord)') &&
+  serverContent.includes('IDEMPOTENCY_KEY_CONFLICT'),
+  'Student Integrity: Requires a stable idempotency key and checks/creates the exam record atomically before awarding XP'
 );
 
 assert(
@@ -398,8 +398,9 @@ assert(
 
 assert(
   serverContent.includes('POST /api/curriculum/sources/:id/accredit') &&
-  serverContent.includes('evidenceDocumentHash.trim().length >= 16'),
-  'V11 P5: Dedicated accreditation endpoint requiring official decree SHA-256 document hash'
+  serverContent.includes('/^[a-f0-9]{64}$/i.test(evidenceDocumentHash.trim())') &&
+  serverContent.includes('typeof evidenceStoragePath === "string"'),
+  'V11 P5: Dedicated accreditation endpoint requires a full SHA-256 hash and an actual evidence Storage path'
 );
 
 assert(
@@ -476,9 +477,11 @@ assert(
 );
 
 assert(
-  serverContent.includes('matchesPageText') &&
-  serverContent.includes('pText.includes(searchText.slice(0, 25))'),
-  'V12 P1: Page attribution verifies originalExtractedText against actual normalized page text'
+  serverContent.includes('normalizeEvidenceText') &&
+  serverContent.includes('normalizedQuote.length < 24') &&
+  serverContent.includes('pageText.includes(normalizedQuote)') &&
+  !serverContent.includes('pText.includes(searchText.slice(0, 25))'),
+  'V12 P1: Page attribution requires a contiguous normalized source quotation rather than partial-prefix or keyword overlap'
 );
 
 assert(
@@ -599,8 +602,9 @@ assert(
 
 assert(
   serverContent.includes('evidenceFile.download()') &&
-  serverContent.includes('serverComputedHash'),
-  'V15 P0: Accreditation endpoint calculates server-side SHA-256 fingerprint from actual Storage file bytes'
+  serverContent.includes('crypto.createHash("sha256").update(fileBuffer).digest("hex")') &&
+  serverContent.includes('actualHash'),
+  'V15 P0: Accreditation endpoint calculates SHA-256 from downloaded Storage bytes and compares it with submitted digest'
 );
 
 assert(
@@ -624,7 +628,38 @@ assert(
 // ----------------------------------------------------------------------------
 // SUITE 15: V16 CRITICAL DATA INTEGRITY & PRODUCTION HARDENING AUDIT
 // ----------------------------------------------------------------------------
+console.log('\n--- 16. AUDITING V17 DELETION RECONCILIATION & TEST PERSISTENCE ---');
+
+assert(
+  serverContent.includes('"deletion_failed_storage"') &&
+  serverContent.includes('"deletion_failed_firestore"') &&
+  serverContent.includes('"deletion_failed_cleanup"') &&
+  serverContent.includes('reconcile_delete_failed'),
+  'V17: Reconciliation retries every durable deletion failure state and never returns success after a failed retry'
+);
+assert(
+  serverContent.includes('e2eExamFirestore') &&
+  serverContent.includes('process.env.NODE_ENV === "test" ? e2eExamFirestore : adminFirestore'),
+  'V17: Exam persistence test adapter is strictly isolated to NODE_ENV=test'
+);
+
 console.log('\n--- 15. AUDITING V16 CRITICAL DATA INTEGRITY & PRODUCTION HARDENING ---');
+
+assert(
+  serverContent.includes('accreditations/${sourceId}/') &&
+  serverContent.includes('official_accreditation_evidence') &&
+  serverContent.includes('expectedEvidencePrefix') &&
+  storageRulesContent.includes('match /accreditations/{sourceId}/{fileName}') &&
+  storageRulesContent.includes('allow create, update: if isAdmin()'),
+  'V17: Official accreditation evidence is source-scoped, hash-verified, and stored only through an administrator-only evidence path'
+);
+
+assert(
+  serverContent.includes('expectedQuestionCount = Math.min(10, officialQuestions.length)') &&
+  serverContent.includes('EXAM_COOLDOWN') &&
+  serverContent.includes('examId !== "quick-10-challenge"'),
+  'V17: Exam submissions require the full grade-specific question set and enforce a one-minute retry cooldown after new attempts'
+);
 
 assert(
   serverContent.includes('idempotencyKey') &&
@@ -633,9 +668,12 @@ assert(
 );
 
 assert(
-  serverContent.includes('res.status(500).json({') &&
-  serverContent.includes('Exam score Firestore write error:'),
-  'V16 P0: Exam submit returns non-success HTTP status (500/503) on Firestore commit error without optimistic fallbacks'
+  serverContent.includes('res.status(gradeMismatch ? 403 : examCooldown ? 429 : 500).json({') &&
+  serverContent.includes('Exam persistence failed:') &&
+  serverContent.includes('if (!examFirestore)') &&
+  serverContent.includes('EXAM_COOLDOWN') &&
+  serverContent.includes('لم يتم تسجيل النتيجة أو إضافة نقاط الخبرة'),
+  'V16 P0: Exam submit fails closed on missing Firestore or transaction failure; no success response is returned without durable persistence'
 );
 
 assert(

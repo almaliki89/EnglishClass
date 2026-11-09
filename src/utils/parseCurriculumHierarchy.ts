@@ -1,0 +1,141 @@
+export interface CurriculumSourcePage {
+  pageNumber: number;
+  text?: string;
+  preview?: string;
+}
+
+export interface ParsedCurriculumUnit {
+  unitNumber: number;
+  title: string;
+  detectedLessonsCount: number;
+  sampleGrammarRules: string[];
+}
+
+export interface ParsedCurriculumLesson {
+  unitNumber: number;
+  lessonNumber: number;
+  titleAr: string;
+  titleEn: string;
+  pageNumber: number | null;
+}
+
+export interface ParsedCurriculumHierarchy {
+  units: ParsedCurriculumUnit[];
+  lessons: ParsedCurriculumLesson[];
+  unassignedLessonHeadings: string[];
+}
+
+const normalizeDigits = (value: string): string =>
+  value.replace(/[٠-٩]/g, (digit) => String("٠١٢٣٤٥٦٧٨٩".indexOf(digit)));
+
+const normalizeHeading = (value: string): string =>
+  normalizeDigits(value)
+    .normalize("NFKC")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLocaleLowerCase();
+
+const findSourcePage = (
+  line: string,
+  pages: CurriculumSourcePage[],
+  targetUnitNumber: number
+): number | null => {
+  const normalizedLine = normalizeHeading(line);
+  if (!normalizedLine || !pages.length || !Number.isInteger(targetUnitNumber)) return null;
+
+  // Track the active unit across PDF pages. Matching a repeated title such as
+  // "Lesson 1" without its unit context can incorrectly cite an earlier unit.
+  let activeUnitNumber: number | null = null;
+  const orderedPages = [...pages].sort((a, b) => a.pageNumber - b.pageNumber);
+
+  for (const page of orderedPages) {
+    const pageLines = (page.text || page.preview || "").split(/\r?\n/);
+    for (const rawPageLine of pageLines) {
+      const pageLine = normalizeHeading(rawPageLine);
+      if (!pageLine) continue;
+
+      const unitMatch = pageLine.match(/(?:\bunit\s*|الوحدة\s*)([0-9]{1,2})/i);
+      if (unitMatch) {
+        const parsedUnit = Number.parseInt(unitMatch[1], 10);
+        activeUnitNumber = Number.isInteger(parsedUnit) && parsedUnit > 0 ? parsedUnit : null;
+      }
+
+      if (
+        activeUnitNumber === targetUnitNumber &&
+        (pageLine === normalizedLine || pageLine.includes(normalizedLine))
+      ) {
+        return page.pageNumber;
+      }
+    }
+  }
+  return null;
+};
+
+/**
+ * Parse only explicit Unit/Lesson headings. Never invent a default unit,
+ * increment a parsed unit number, or assign a lesson before its unit.
+ */
+export function parseCurriculumHierarchy(
+  text: string,
+  pages: CurriculumSourcePage[] = []
+): ParsedCurriculumHierarchy {
+  const units: ParsedCurriculumUnit[] = [];
+  const lessons: ParsedCurriculumLesson[] = [];
+  const unassignedLessonHeadings: string[] = [];
+  let currentUnitNumber: number | null = null;
+
+  for (const rawLine of text.split(/\r?\n/)) {
+    const line = rawLine.trim();
+    if (!line) continue;
+
+    const unitMatch = line.match(/(?:\bUnit\s*|الوحدة\s*)([0-9٠-٩]{1,2})/i);
+    if (unitMatch) {
+      const unitNumber = Number.parseInt(normalizeDigits(unitMatch[1]), 10);
+      if (Number.isInteger(unitNumber) && unitNumber > 0) {
+        currentUnitNumber = unitNumber;
+        if (!units.some((unit) => unit.unitNumber === unitNumber)) {
+          units.push({
+            unitNumber,
+            title: line.slice(0, 80),
+            detectedLessonsCount: 0,
+            sampleGrammarRules: [],
+          });
+        }
+      }
+    }
+
+    const lessonMatch = line.match(/(?:\bLesson\s*|الدرس\s*)([0-9٠-٩]{1,2})/i);
+    if (lessonMatch) {
+      const lessonNumber = Number.parseInt(normalizeDigits(lessonMatch[1]), 10);
+      if (!Number.isInteger(lessonNumber) || lessonNumber <= 0) continue;
+
+      if (currentUnitNumber === null) {
+        unassignedLessonHeadings.push(line.slice(0, 120));
+        continue;
+      }
+
+      const exists = lessons.some(
+        (lesson) =>
+          lesson.unitNumber === currentUnitNumber &&
+          lesson.lessonNumber === lessonNumber
+      );
+      if (!exists) {
+        lessons.push({
+          unitNumber: currentUnitNumber,
+          lessonNumber,
+          titleAr: line.slice(0, 80),
+          titleEn: `Lesson ${lessonNumber}`,
+          pageNumber: findSourcePage(line, pages, currentUnitNumber),
+        });
+      }
+    }
+  }
+
+  for (const unit of units) {
+    unit.detectedLessonsCount = lessons.filter(
+      (lesson) => lesson.unitNumber === unit.unitNumber
+    ).length;
+  }
+
+  return { units, lessons, unassignedLessonHeadings };
+}

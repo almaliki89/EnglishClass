@@ -40,6 +40,18 @@ service firebase.storage {
       allow delete: if isAdmin();
     }
 
+    // Official accreditation evidence is isolated per source and writable only by administrators.
+    match /accreditations/{sourceId}/{fileName} {
+      allow get, list: if isAdmin();
+      allow create, update: if isAdmin() &&
+                             request.resource.size > 0 &&
+                             request.resource.size <= 20 * 1024 * 1024 &&
+                             (request.resource.contentType == 'application/pdf' ||
+                              request.resource.contentType == 'image/png' ||
+                              request.resource.contentType == 'image/jpeg');
+      allow delete: if isAdmin();
+    }
+
     // Curriculum drafts under review (restricted to teachers and admins)
     match /curriculum_drafts/{draftId}/{fileName} {
       allow get, list: if isTeacherOrAdmin();

@@ -48,7 +48,24 @@ interface AuthContextType {
   logout: () => Promise<void>;
   saveStudentToCloud: (state: StudentState) => Promise<void>;
   loadStudentFromCloud: (uid: string) => Promise<StudentState | null>;
-  saveExamResultToCloud: (result: ExamResultRecord) => Promise<void>;
+  submitExamResultToServer: (payload: {
+    examId: string;
+    grade: EducationalGrade;
+    answers: Record<string, string>;
+    timeSpentSeconds: number;
+    idempotencyKey: string;
+  }) => Promise<{
+    success: true;
+    earnedXp: number;
+    correctCount: number;
+    totalQuestions: number;
+    isIdempotentReplay: boolean;
+    studentProgress: {
+      xp: number;
+      totalQuestionsCorrect: number;
+      totalQuestionsAttempted: number;
+    };
+  }>;
   saveNoteToCloud: (note: StudentNote) => Promise<void>;
   deleteNoteFromCloud: (noteId: string) => Promise<void>;
   saveBookmarkToCloud: (bookmark: BookmarkItem) => Promise<void>;
@@ -310,17 +327,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         email: user.email || '',
         phoneNumber: user.phoneNumber || '',
         name: state.name || user.displayName || 'طالب المنصة',
-        xp: state.xp || 0,
         selectedGrade: state.selectedGrade || 'sixth-preparatory',
         completedLessonIds: state.completedLessonIds || [],
         bookmarkedQuestionIds: state.bookmarkedQuestionIds || [],
-        totalQuestionsAttempted: state.totalQuestionsAttempted || 0,
-        totalQuestionsCorrect: state.totalQuestionsCorrect || 0,
-        streakDays: state.streakDays || 1,
         lastActiveDate: state.lastActiveDate || new Date().toISOString().split('T')[0],
         lastVisitedLessonId: state.lastVisitedLessonId || '1-1',
         gradeLastVisitedLessonMap: state.gradeLastVisitedLessonMap || INITIAL_STUDENT_STATE.gradeLastVisitedLessonMap,
-        unlockedBadges: state.unlockedBadges || [],
         lessonProgressMap: state.lessonProgressMap || {},
         updatedAt: new Date().toISOString()
       }, { merge: true });
@@ -405,15 +417,35 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  // Append-only Exam Result Record in subcollection (Owner only)
-  const saveExamResultToCloud = async (result: ExamResultRecord) => {
-    if (!user) return;
-    try {
-      const examDocRef = doc(db, 'students', user.uid, 'exam_results', result.id);
-      await setDoc(examDocRef, result);
-    } catch (err: unknown) {
-      console.error('Error writing exam result to cloud:', getErrorMessage(err));
+  // Exam scores and XP are server-authoritative; never write exam results from the browser.
+  const submitExamResultToServer = async (payload: {
+    examId: string;
+    grade: EducationalGrade;
+    answers: Record<string, string>;
+    timeSpentSeconds: number;
+    idempotencyKey: string;
+  }) => {
+    if (!user) throw new Error("يجب تسجيل الدخول قبل حفظ نتيجة الامتحان.");
+    const firebaseUser = auth.currentUser;
+    if (!firebaseUser || firebaseUser.uid !== user.uid) {
+      throw new Error("جلسة المصادقة غير متاحة؛ لم يتم حفظ نتيجة الامتحان.");
     }
+
+    const idToken = await firebaseUser.getIdToken();
+    const response = await fetch("/api/student/exam-submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${idToken}`,
+        "X-Idempotency-Key": payload.idempotencyKey,
+      },
+      body: JSON.stringify(payload),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result?.success !== true) {
+      throw new Error(result?.error || "تعذر حفظ نتيجة الامتحان بأمان.");
+    }
+    return result;
   };
 
   // Notes operations in subcollection (Owner only)
@@ -481,7 +513,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         logout,
         saveStudentToCloud,
         loadStudentFromCloud,
-        saveExamResultToCloud,
+        submitExamResultToServer,
         saveNoteToCloud,
         deleteNoteFromCloud,
         saveBookmarkToCloud,

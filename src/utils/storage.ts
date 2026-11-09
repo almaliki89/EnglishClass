@@ -71,14 +71,14 @@ export const INITIAL_BADGES: Badge[] = [
 
 export const INITIAL_STUDENT_STATE: StudentState = {
   name: 'طالب العراق المتفوق',
-  xp: 150,
+  xp: 0,
   selectedGrade: 'sixth-preparatory',
   completedLessonIds: [],
   bookmarkedQuestionIds: [],
   answeredExercises: {},
   totalQuestionsAttempted: 0,
   totalQuestionsCorrect: 0,
-  streakDays: 3,
+  streakDays: 1,
   lastActiveDate: new Date().toISOString().split('T')[0],
   lastVisitedLessonId: '1-1',
   gradeLastVisitedLessonMap: {
