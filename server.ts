@@ -1196,7 +1196,7 @@ class CurriculumPersistenceManager {
       process.env.REQUIRE_CLOUD_FIRESTORE === "true" ||
       process.env.STRICT_DELETION === "true";
 
-    const jobId = `job-${id}-${Date.now()}`;
+    const jobId = `delete-${id}`;
     const requestedBy = options?.requestedBy || "admin";
     const requestedAt = new Date().toISOString();
 
@@ -1228,26 +1228,28 @@ class CurriculumPersistenceManager {
       };
     }
 
-    // 1. Immediately mark source as deletion_pending & record deletion job
-    existing.status = "deletion_pending";
-    existing.updatedAt = new Date().toISOString();
-    this.sources.set(id, existing);
-    this.saveToDisk();
-
+    if (requireCloud && (!adminFirestore || !adminStorage)) {
+      return { success: false, jobId, storageDeleted: false, firestoreDeleted: false, subcollectionsDeleted: 0, status: "deletion_failed_initialization", error: "Cloud Firestore and Cloud Storage are required before production deletion." };
+    }
+    const pendingAt = new Date().toISOString();
     jobRecord.deletionStatus = "deletion_pending";
-
+    jobRecord.updatedAt = pendingAt;
     if (adminFirestore) {
       try {
-        await adminFirestore.collection("curriculum_sources").doc(id).set(
-          { status: "deletion_pending", updatedAt: existing.updatedAt },
-          { merge: true }
-        );
-        await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).set(jobRecord, { merge: true });
-        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set(jobRecord, { merge: true });
+        const batch = adminFirestore.batch();
+        batch.set(adminFirestore.collection("curriculum_sources").doc(id), { status: "deletion_pending", updatedAt: pendingAt }, { merge: true });
+        batch.set(adminFirestore.collection("curriculum_deletion_jobs").doc(jobId), jobRecord, { merge: true });
+        await batch.commit();
       } catch (err: any) {
-        console.warn("Durable deletion job recording note:", err.message);
+        return { success: false, jobId, storageDeleted: false, firestoreDeleted: false, subcollectionsDeleted: 0, status: "deletion_failed_initialization", error: "Could not persist the deletion job and tombstone. No deletion was started." };
       }
+    } else if (requireCloud) {
+      return { success: false, jobId, storageDeleted: false, firestoreDeleted: false, subcollectionsDeleted: 0, status: "deletion_failed_initialization", error: "Cloud Firestore is unavailable. No deletion was started." };
     }
+    existing.status = "deletion_pending";
+    existing.updatedAt = pendingAt;
+    this.sources.set(id, existing);
+    this.saveToDisk();
 
     // 2. Transition to deleting_storage
     existing.status = "deleting_storage";
@@ -1319,7 +1321,6 @@ class CurriculumPersistenceManager {
             { merge: true }
           );
           await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).set(jobRecord, { merge: true });
-          await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set(jobRecord, { merge: true });
         } catch (e: any) {
           console.warn("Failed to record deletion_failed_storage job in Firestore:", e.message);
         }
@@ -1350,9 +1351,12 @@ class CurriculumPersistenceManager {
           { merge: true }
         );
         await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).set(jobRecord, { merge: true });
-        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set(jobRecord, { merge: true });
       } catch (e: any) {
-        console.warn("Failed to record deleting_firestore job status:", e.message);
+        existing.status = "deletion_failed_firestore";
+        existing.deletionError = "Could not persist the deleting_firestore stage; cloud cleanup was not started.";
+        this.sources.set(id, existing);
+        this.saveToDisk();
+        return { success: false, jobId, storageDeleted: true, firestoreDeleted: false, subcollectionsDeleted: 0, status: "deletion_failed_firestore", error: existing.deletionError };
       }
     }
 
@@ -1365,31 +1369,12 @@ class CurriculumPersistenceManager {
     } else if (adminFirestore) {
       try {
         const docRef = adminFirestore.collection("curriculum_sources").doc(id);
-        let detectedSubs: string[] = [];
-        if (typeof (docRef as any).listCollections === "function") {
-          try {
-            const collections = await (docRef as any).listCollections();
-            detectedSubs = collections.map((c: any) => c.id);
-          } catch (listErr: any) {
-            console.warn("listCollections fallback note:", listErr.message);
-          }
+        const collections = await docRef.listCollections();
+        subcollectionsDeleted = collections.length;
+        if (typeof adminFirestore.recursiveDelete !== "function") {
+          throw new Error("Firestore recursiveDelete is unavailable; refusing unsafe partial deletion.");
         }
-        const subcollections = ["rules", "vocab", "questions", "pages", "units", "batches", "reviews", "extracted_content", "unassigned_content", ...detectedSubs];
-
-        for (const sub of subcollections) {
-          const snapshot = await docRef.collection(sub).get();
-          if (!snapshot.empty) {
-            const docs = snapshot.docs;
-            for (let i = 0; i < docs.length; i += 400) {
-              const chunk = docs.slice(i, i + 400);
-              const batch = adminFirestore.batch();
-              chunk.forEach((d: any) => batch.delete(d.ref));
-              await batch.commit();
-            }
-            subcollectionsDeleted += snapshot.size;
-          }
-        }
-        await docRef.delete();
+        await adminFirestore.recursiveDelete(docRef);
         const checkDoc = await docRef.get();
         if (checkDoc.exists) {
           firestoreErrors.push("cloud_firestore: root document remains after delete call");
@@ -1427,7 +1412,6 @@ class CurriculumPersistenceManager {
             { merge: true }
           );
           await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).set(jobRecord, { merge: true });
-          await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set(jobRecord, { merge: true });
         } catch (e: any) {
           console.warn("Failed to record deletion_failed_firestore job:", e.message);
         }
@@ -1454,7 +1438,6 @@ class CurriculumPersistenceManager {
     if (adminFirestore) {
       try {
         await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).set(jobRecord, { merge: true });
-        await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set(jobRecord, { merge: true });
 
         // Verify final job state persistence in Firestore
         const verifyJobSnap = await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).get();
@@ -1469,8 +1452,14 @@ class CurriculumPersistenceManager {
           };
         }
       } catch (e: any) {
-        console.warn("Failed to complete deletion job record:", e.message);
+        existing.status = "deletion_failed_cleanup";
+        existing.deletionError = "Final deletion job state could not be durably saved and verified.";
+        this.sources.set(id, existing);
+        this.saveToDisk();
+        return { success: false, jobId, storageDeleted: true, firestoreDeleted: true, subcollectionsDeleted, status: "deletion_failed_cleanup", error: existing.deletionError };
       }
+    } else if (requireCloud) {
+      return { success: false, jobId, storageDeleted: true, firestoreDeleted: true, subcollectionsDeleted, status: "deletion_failed_cleanup", error: "Cloud job verification is unavailable; deletion cannot be reported as complete." };
     }
 
     existing.status = "deleted";
@@ -1737,20 +1726,17 @@ function resolveItemPageAttribution(
     ""
   ).trim();
 
-  const searchText = sourceQuote.toLowerCase();
+  const normalizeEvidenceText = (value: string): string =>
+    value.normalize("NFKC").toLocaleLowerCase()
+      .replace(/[\u064B-\u065F\u0670]/g, "")
+      .replace(/[^a-z0-9\u0600-\u06FF]+/g, " ")
+      .replace(/\s+/g, " ").trim();
 
+  const normalizedQuote = normalizeEvidenceText(sourceQuote);
   const matchesPageText = (pageObj?: { text?: string; preview?: string }): boolean => {
-    if (!pageObj) return false;
-    const pText = (pageObj.text || pageObj.preview || "").toLowerCase();
-    if (!pText) return false;
-
-    if (searchText.length >= 3 && (pText.includes(searchText.slice(0, 25)) || pText.includes(searchText.slice(0, 30)))) return true;
-
-    const keyWords = searchText.split(/\s+/).filter((w: string) => w.length >= 4);
-    if (keyWords.length >= 2 && keyWords.filter((kw: string) => pText.includes(kw)).length >= 2) return true;
-    if (keyWords.length === 1 && keyWords[0].length >= 6 && pText.includes(keyWords[0])) return true;
-
-    return false;
+    if (!pageObj || normalizedQuote.length < 24) return false;
+    const pageText = normalizeEvidenceText(pageObj.text || pageObj.preview || "");
+    return pageText.length > 0 && pageText.includes(normalizedQuote);
   };
 
   // 1. Strict verification of pageNumber returned by Gemini against actual page text
@@ -1987,6 +1973,28 @@ app.post(
         }
       }
 
+      const resolveContentHierarchy = (
+        item: any,
+        contentType: "rule" | "vocab" | "question",
+        contentText: string,
+        pageNumber: number | null
+      ): { unitId?: string; lessonId?: string } => {
+        const unitNumber = Number.isInteger(item?.unitNumber) ? Number(item.unitNumber) : null;
+        const lessonNumber = Number.isInteger(item?.lessonNumber) ? Number(item.lessonNumber) : null;
+        const unitExists = unitNumber !== null && detectedUnits.some((unit) => unit.unitNumber === unitNumber);
+        const lessonExists = unitExists && lessonNumber !== null && extractedLessonsList.some(
+          (lesson) => lesson.unitNumber === unitNumber && lesson.lessonNumber === lessonNumber
+        );
+        if (unitExists && lessonExists) return { unitId: `unit-${unitNumber}`, lessonId: `lesson-${unitNumber}-${lessonNumber}` };
+        newSource.unassignedContent = newSource.unassignedContent || [];
+        newSource.unassignedContent.push({
+          contentType, text: String(contentText || "").slice(0, 2000), pageNumber,
+          originalQuotation: String(item?.originalExtractedText || "").slice(0, 1000),
+          validationStatus: "requires_review",
+        });
+        return {};
+      };
+
       // INTEGRATE GEMINI ANALYSIS DIRECTLY INTO THE UPLOAD PIPELINE
       if (!isScannedOrEmpty && apiKey) {
         newSource.status = "extracting";
@@ -2044,6 +2052,7 @@ app.post(
 - إذا كانت القاعدة أو التمرين يمتد عبر صفحتين، اذكر أرقام الصفحات في مصفوفة sourcePages.
 - إذا لم تستطع تحديد الصفحة بدقة، لا تخمن ولا تستخدم رقم صفحة الدفعة.
 - احتفظ بالنص الأصلي الدقيق دون تحوير في حقل originalExtractedText.
+- أرجع unitNumber وlessonNumber فقط عندما يكون رقم الوحدة والدرس واضحاً في صفحات المصدر نفسها؛ لا تخمن الارتباط.
 
 استخرج بدقة بتنسيق JSON:
 1. summary: ملخص لما تحتويه هذه الصفحات.
@@ -2081,6 +2090,8 @@ ${delimitedDoc}`;
                                 pageNumber: { type: Type.INTEGER },
                                 sourcePages: { type: Type.ARRAY, items: { type: Type.INTEGER } },
                                 originalExtractedText: { type: Type.STRING },
+                                unitNumber: { type: Type.INTEGER },
+                                lessonNumber: { type: Type.INTEGER },
                               },
                               required: ["title", "formula", "explanation"],
                             },
@@ -2096,6 +2107,8 @@ ${delimitedDoc}`;
                                 pageNumber: { type: Type.INTEGER },
                                 sourcePages: { type: Type.ARRAY, items: { type: Type.INTEGER } },
                                 originalExtractedText: { type: Type.STRING },
+                                unitNumber: { type: Type.INTEGER },
+                                lessonNumber: { type: Type.INTEGER },
                               },
                               required: ["word", "meaning"],
                             },
@@ -2111,6 +2124,8 @@ ${delimitedDoc}`;
                                 pageNumber: { type: Type.INTEGER },
                                 sourcePages: { type: Type.ARRAY, items: { type: Type.INTEGER } },
                                 originalExtractedText: { type: Type.STRING },
+                                unitNumber: { type: Type.INTEGER },
+                                lessonNumber: { type: Type.INTEGER },
                               },
                               required: ["question", "answer"],
                             },
@@ -2138,8 +2153,7 @@ ${delimitedDoc}`;
                       documentVersion: 1,
                       gradeId,
                       subjectId,
-                      unitId: "unit-1",
-                      lessonId: "lesson-1",
+                      ...resolveContentHierarchy(r, "rule", r.title || r.explanation, attr.actualSourcePage),
                       actualSourcePage: attr.actualSourcePage,
                       sourcePages:
                         attr.sourcePages.length > 0
@@ -2151,7 +2165,7 @@ ${delimitedDoc}`;
                       structuredContent: r,
                       extractionStatus: "ai_structured",
                       validationStatus: attr.validationStatus,
-                      reviewStatus: attr.validationStatus === "validated" ? "draft" : "requires_review",
+                      reviewStatus: attr.validationStatus === "validated" && Number.isInteger(r.unitNumber) && Number.isInteger(r.lessonNumber) ? "draft" : "requires_review",
                     });
                     batchItems++;
                   });
@@ -2168,8 +2182,7 @@ ${delimitedDoc}`;
                       documentVersion: 1,
                       gradeId,
                       subjectId,
-                      unitId: "unit-1",
-                      lessonId: "lesson-1",
+                      ...resolveContentHierarchy(v, "vocab", v.word || v.context, attr.actualSourcePage),
                       actualSourcePage: attr.actualSourcePage,
                       sourcePages:
                         attr.sourcePages.length > 0
@@ -2181,7 +2194,7 @@ ${delimitedDoc}`;
                       structuredContent: v,
                       extractionStatus: "ai_structured",
                       validationStatus: attr.validationStatus,
-                      reviewStatus: attr.validationStatus === "validated" ? "draft" : "requires_review",
+                      reviewStatus: attr.validationStatus === "validated" && Number.isInteger(v.unitNumber) && Number.isInteger(v.lessonNumber) ? "draft" : "requires_review",
                     });
                     batchItems++;
                   });
@@ -2198,8 +2211,7 @@ ${delimitedDoc}`;
                       documentVersion: 1,
                       gradeId,
                       subjectId,
-                      unitId: "unit-1",
-                      lessonId: "lesson-1",
+                      ...resolveContentHierarchy(q, "question", q.question || q.answer, attr.actualSourcePage),
                       actualSourcePage: attr.actualSourcePage,
                       sourcePages:
                         attr.sourcePages.length > 0
@@ -2211,7 +2223,7 @@ ${delimitedDoc}`;
                       structuredContent: q,
                       extractionStatus: "ai_structured",
                       validationStatus: attr.validationStatus,
-                      reviewStatus: attr.validationStatus === "validated" ? "draft" : "requires_review",
+                      reviewStatus: attr.validationStatus === "validated" && Number.isInteger(q.unitNumber) && Number.isInteger(q.lessonNumber) ? "draft" : "requires_review",
                     });
                     batchItems++;
                   });
@@ -2387,60 +2399,12 @@ app.post(
       return res.status(400).json({ error: "لا يمكن نشر مصدر قيد الحذف أو تم حذفه." });
     }
 
-    const {
-      isOfficiallyAccredited,
-      accreditationEvidence,
-      issuingAuthority,
-      documentNumber,
-      documentDate,
-      evidenceDocumentHash,
-      evidenceStoragePath,
-    } = req.body || {};
-
-    const hasVerifiableEvidence =
-      Boolean(isOfficiallyAccredited) &&
-      typeof accreditationEvidence === "string" &&
-      accreditationEvidence.trim().length >= 20 &&
-      typeof issuingAuthority === "string" &&
-      issuingAuthority.trim().length >= 10 &&
-      typeof documentNumber === "string" &&
-      documentNumber.trim().length >= 3 &&
-      typeof documentDate === "string" &&
-      documentDate.trim().length >= 8 &&
-      typeof evidenceDocumentHash === "string" &&
-      evidenceDocumentHash.trim().length >= 16;
-
-    if (isOfficiallyAccredited && !hasVerifiableEvidence) {
-      return res.status(400).json({
-        error: "بيانات الاعتماد الرسمي غير مكتملة أو تفتقر إلى التوثيق الوزاري الصارم (جهة الإصدار، رقم وتاريخ الكتاب الرسمي، بصمة وثيقة الاعتماد SHA-256، ونَص الإقرار الموثق).",
-        requiredFields: ["issuingAuthority", "documentNumber", "documentDate", "accreditationEvidence", "evidenceDocumentHash"],
-      });
+    const { isOfficiallyAccredited } = req.body || {};
+    if (isOfficiallyAccredited === true) {
+      return res.status(400).json({ error: "الاعتماد الرسمي غير متاح من مسار النشر. استخدم مسار الاعتماد المخصص مع ملف إثبات حقيقي." });
     }
-
-    if (hasVerifiableEvidence) {
-      source.status = "officially_accredited";
-      source.verificationStatus = "official_approved";
-      source.accreditationEvidence = `${issuingAuthority.trim()} - كتاب رقم ${documentNumber.trim()} بتاريخ ${documentDate.trim()} (بصمة: ${evidenceDocumentHash.slice(0, 16)}...): ${accreditationEvidence.trim()}`;
-      source.accreditationRecord = {
-        issuingAuthority: issuingAuthority.trim(),
-        documentNumber: documentNumber.trim(),
-        documentDate: documentDate.trim(),
-        documentaryEvidence: accreditationEvidence.trim(),
-        evidenceDocumentHash: evidenceDocumentHash.trim(),
-        evidenceStoragePath: evidenceStoragePath ? evidenceStoragePath.trim() : undefined,
-        verifiedByAdminId: req.user?.uid || "admin",
-        verificationTimestamp: new Date().toISOString(),
-        verificationOutcome: "approved",
-        auditTrail: [
-          ...(source.accreditationRecord?.auditTrail || []),
-          `Accredited on ${new Date().toISOString()} by ${req.user?.email || "admin"} per decree ${documentNumber}`,
-        ],
-      };
-      source.description += ` • اعتماد وزاري رسمي موثق: ${source.accreditationEvidence}`;
-    } else {
-      source.status = "published";
-      source.verificationStatus = "internally_reviewed";
-    }
+    source.status = "published";
+    source.verificationStatus = "internally_reviewed";
 
     source.reviewedBy = req.user?.email || "مدير المنصة الأكاديمي";
     source.reviewedAt = new Date().toISOString();
@@ -2495,7 +2459,9 @@ app.post(
       typeof documentDate === "string" &&
       documentDate.trim().length >= 8 &&
       typeof evidenceDocumentHash === "string" &&
-      evidenceDocumentHash.trim().length >= 16;
+      /^[a-f0-9]{64}$/i.test(evidenceDocumentHash.trim()) &&
+      typeof evidenceStoragePath === "string" &&
+      evidenceStoragePath.trim().length > 0;
 
     if (!hasVerifiableEvidence) {
       return res.status(400).json({
@@ -2504,33 +2470,32 @@ app.post(
       });
     }
 
-    if (evidenceStoragePath && adminStorage) {
-      try {
-        const bucket = adminStorage.bucket(FIREBASE_STORAGE_BUCKET);
-        const evidenceFile = bucket.file(evidenceStoragePath.trim());
-        const [exists] = await evidenceFile.exists();
-        if (!exists) {
-          return res.status(400).json({
-            error: "ملف وثيقة الإثبات المحددة غير موجود في التخزين السحابي الخاص.",
-            path: evidenceStoragePath,
-          });
-        }
-        const [fileBuffer] = await evidenceFile.download();
-        const serverComputedHash = crypto.createHash("sha256").update(fileBuffer).digest("hex");
-        if (serverComputedHash.toLowerCase() !== evidenceDocumentHash.trim().toLowerCase()) {
-          return res.status(400).json({
-            error: "البصمة التشفيرية SHA-256 المحسوبة من بايتات الملف في التخزين السحابي لا تطابق البصمة المرفقة.",
-            expected: evidenceDocumentHash,
-            actual: serverComputedHash,
-          });
-        }
-      } catch (storageErr: any) {
-        if (process.env.NODE_ENV === "production") {
-          return res.status(400).json({
-            error: `فشل التحقق من بايتات وثيقة الإثبات السحابية: ${storageErr.message}`,
-          });
-        }
+    if (!adminStorage) {
+      return res.status(503).json({ error: "خدمة التخزين غير متاحة؛ لم يتم اعتماد المصدر." });
+    }
+    const safeEvidencePath = String(evidenceStoragePath).trim().replace(/\\/g, "/");
+    if (safeEvidencePath.startsWith("/") || safeEvidencePath.split("/").some((part) => part === "." || part === "..")) {
+      return res.status(400).json({ error: "مسار ملف الإثبات غير صالح." });
+    }
+    try {
+      const evidenceFile = adminStorage.bucket(FIREBASE_STORAGE_BUCKET).file(safeEvidencePath);
+      const [exists] = await evidenceFile.exists();
+      if (!exists) return res.status(400).json({ error: "ملف وثيقة الإثبات غير موجود في التخزين الخاص." });
+      const [fileBuffer] = await evidenceFile.download();
+      if (fileBuffer.length === 0 || fileBuffer.length > 20 * 1024 * 1024) {
+        return res.status(400).json({ error: "حجم ملف الإثبات فارغ أو يتجاوز 20 MB." });
       }
+      const pdf = fileBuffer.subarray(0, 4).toString("ascii") === "%PDF";
+      const png = fileBuffer.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+      const jpg = fileBuffer[0] === 0xff && fileBuffer[1] === 0xd8 && fileBuffer[2] === 0xff;
+      if (!pdf && !png && !jpg) return res.status(400).json({ error: "ملف الإثبات ليس PDF أو PNG أو JPEG صالحاً." });
+      const actualHash = crypto.createHash("sha256").update(fileBuffer).digest("hex");
+      if (actualHash.toLowerCase() !== evidenceDocumentHash.trim().toLowerCase()) {
+        return res.status(400).json({ error: "بصمة SHA-256 لا تطابق بايتات ملف الإثبات الفعلية." });
+      }
+    } catch (storageErr: any) {
+      console.error("Accreditation evidence verification failed:", storageErr.message);
+      return res.status(503).json({ error: "تعذر التحقق من ملف الإثبات؛ لم يتم اعتماد المصدر." });
     }
 
     source.status = "officially_accredited";
@@ -2542,8 +2507,8 @@ app.post(
       documentDate: documentDate.trim(),
       documentaryEvidence: accreditationEvidence.trim(),
       evidenceDocumentHash: evidenceDocumentHash.trim(),
-      evidenceStoragePath: evidenceStoragePath ? evidenceStoragePath.trim() : undefined,
-      verifiedByAdminId: req.user?.uid || "admin",
+      evidenceStoragePath: safeEvidencePath,
+      verifiedByAdminId: req.user!.uid,
       verificationTimestamp: new Date().toISOString(),
       verificationOutcome: "approved",
       auditTrail: [
@@ -2833,6 +2798,7 @@ app.post(
 - حدد رقم الصفحة الفعلي (pageNumber) لكل عنصر مستخرج بدقة بناءً على الصفحة التي ظهر فيها النص فعلياً.
 - إذا كانت القاعدة أو التمرين يمتد عبر صفحتين، اذكر أرقام الصفحات في مصفوفة sourcePages.
 - احتفظ بالنص الأصلي الدقيق دون تحوير في حقل originalExtractedText.
+- أرجع unitNumber وlessonNumber فقط عندما يكون رقم الوحدة والدرس واضحاً في صفحات المصدر نفسها؛ لا تخمن الارتباط.
 
 استخرج بدقة بتنسيق JSON:
 1. summary: ملخص لما تحتويه هذه الصفحات.
@@ -3357,8 +3323,6 @@ ${sanitizedContext}`,
 // STUDENT EXAM RESULT & PROGRESS VERIFICATION (TRUSTED SERVER-SIDE SCORING)
 // ============================================================================
 
-const recentExamSubmissions = new Map<string, number>();
-
 app.post(
   "/api/student/exam-submit",
   requireAuth,
@@ -3380,51 +3344,27 @@ app.post(
       }
 
       const idempotencyKey = String(req.body.idempotencyKey || req.headers["x-idempotency-key"] || req.body.idempotency_key || "").trim();
-
-      // Idempotency check in Firestore if key provided
-      if (idempotencyKey && adminFirestore) {
-        try {
-          const studentRef = adminFirestore.collection("students").doc(user.uid);
-          const existingQuery = await studentRef
-            .collection("exam_results")
-            .where("idempotencyKey", "==", idempotencyKey)
-            .limit(1)
-            .get();
-
-          if (!existingQuery.empty) {
-            const existingRecord = existingQuery.docs[0].data();
-            return res.json({
-              success: true,
-              record: existingRecord,
-              earnedXp: 0,
-              percentage: existingRecord.percentage,
-              score: existingRecord.score,
-              correctCount: existingRecord.correctCount,
-              totalQuestions: existingRecord.totalQuestions,
-              isIdempotentReplay: true,
-              message: "تم إرجاع النتيجة المسجلة سابقاً بدون تكرار نقاط الخبرة.",
-            });
-          }
-        } catch (idempErr: any) {
-          console.warn("Idempotency lookup warning:", idempErr.message);
-        }
+      if (!/^[A-Za-z0-9._:-]{16,128}$/.test(idempotencyKey)) {
+        return res.status(400).json({ success: false, error: "يلزم مفتاح إرسال فريد بطول 16 إلى 128 حرفاً لمنع تكرار نتيجة الامتحان ونقاط الخبرة." });
       }
-
-      // Rapid replay prevention (10s cooldown per user per exam)
-      const submissionKey = `${user.uid}_${examId}_${idempotencyKey}`;
-      const lastTime = recentExamSubmissions.get(submissionKey) || 0;
-      if (Date.now() - lastTime < 10000 && !idempotencyKey) {
-        return res.status(429).json({
-          error: "تم استلام وتوثيق نتيجة هذا الامتحان بالفعل، يرجى الانتظار قليلاً قبل إعادة المحاولة.",
-        });
+      if (!answers || typeof answers !== "object" || Array.isArray(answers)) {
+        return res.status(400).json({ success: false, error: "صيغة إجابات الامتحان غير صالحة." });
       }
-      recentExamSubmissions.set(submissionKey, Date.now());
+      if (!Number.isInteger(timeSpentSeconds) || timeSpentSeconds < 0 || timeSpentSeconds > 86400) {
+        return res.status(400).json({ success: false, error: "مدة الامتحان غير صالحة." });
+      }
 
       const officialQuestions = getQuestionsForGrade(grade as EducationalGrade);
       let correctCount = 0;
       const verifiedAnswersList: any[] = [];
       const answeredQIds = Object.keys(answers);
-      const totalQuestions = Math.max(1, answeredQIds.length || Math.min(10, officialQuestions.length));
+      if (answeredQIds.length === 0 || officialQuestions.length === 0) {
+        return res.status(400).json({ success: false, error: "لا توجد أسئلة صالحة لتسجيل المحاولة." });
+      }
+      if (answeredQIds.some((id) => !officialQuestions.some((question) => question.id === id))) {
+        return res.status(400).json({ success: false, error: "تتضمن الإجابات أسئلة لا تنتمي إلى بنك أسئلة هذا الصف." });
+      }
+      const totalQuestions = answeredQIds.length;
 
       for (const qId of answeredQIds) {
         const studentAns = String(answers[qId] || "").trim();
@@ -3443,7 +3383,7 @@ app.post(
       const percentage = Math.round((correctCount / totalQuestions) * 100);
       const score = Math.round(percentage);
       const earnedXp = Math.max(10, (correctCount * 15) + (percentage >= 90 ? 50 : percentage >= 75 ? 25 : 0));
-      const examResultId = idempotencyKey ? `exam-${user.uid}-${examId}-${idempotencyKey.replace(/[^a-zA-Z0-9_\-]/g, "_")}` : `exam-${Date.now()}-${crypto.randomBytes(3).toString("hex")}`;
+      const examResultId = `exam-${crypto.createHash("sha256").update(`${user.uid}:${examId}:${idempotencyKey}`).digest("hex").slice(0, 40)}`;
 
       const examRecord = {
         id: examResultId,
@@ -3464,68 +3404,57 @@ app.post(
         ...(idempotencyKey ? { idempotencyKey } : {}),
       };
 
-      const isProduction = process.env.NODE_ENV === "production" || process.env.REQUIRE_CLOUD_FIRESTORE === "true";
-
-      if (adminFirestore) {
-        try {
-          const studentRef = adminFirestore.collection("students").doc(user.uid);
-          const examSubRef = studentRef.collection("exam_results").doc(examResultId);
-
-          await adminFirestore.runTransaction(async (transaction: any) => {
-            const studentDoc = await transaction.get(studentRef);
-            transaction.set(examSubRef, examRecord);
-
-            if (studentDoc.exists) {
-              const currentXp = Number(studentDoc.data()?.xp) || 0;
-              const currentCorrect = Number(studentDoc.data()?.totalQuestionsCorrect) || 0;
-              const currentAttempted = Number(studentDoc.data()?.totalQuestionsAttempted) || 0;
-
-              transaction.update(studentRef, {
-                xp: currentXp + earnedXp,
-                totalQuestionsCorrect: currentCorrect + correctCount,
-                totalQuestionsAttempted: currentAttempted + totalQuestions,
-                lastActiveDate: new Date().toISOString().split("T")[0],
-                updatedAt: new Date().toISOString(),
-              });
-            } else {
-              transaction.set(studentRef, {
-                uid: user.uid,
-                email: user.email || "",
-                displayName: (user as any).displayName || user.email || "طالب متميز",
-                grade,
-                xp: earnedXp,
-                totalQuestionsCorrect: correctCount,
-                totalQuestionsAttempted: totalQuestions,
-                lastActiveDate: new Date().toISOString().split("T")[0],
-                createdAt: new Date().toISOString(),
-                updatedAt: new Date().toISOString(),
-              });
-            }
-          });
-        } catch (dbErr: any) {
-          console.error("Exam score Firestore write error:", dbErr.message);
-          return res.status(500).json({
-            success: false,
-            error: "فشل حفظ وتوثيق نتيجة الامتحان وإضافة نقاط الخبرة في قاعدة البيانات السحابية الحية.",
-          });
-        }
-      } else if (isProduction) {
-        return res.status(503).json({
+      if (!adminFirestore) {
+        return res.status(503).json({ success: false, error: "خدمة الحفظ السحابي غير متاحة؛ لم يتم تسجيل النتيجة أو إضافة نقاط الخبرة." });
+      }
+      try {
+        const studentRef = adminFirestore.collection("students").doc(user.uid);
+        const examRef = studentRef.collection("exam_results").doc(examResultId);
+        const result = await adminFirestore.runTransaction(async (transaction: any) => {
+          const studentDoc = await transaction.get(studentRef);
+          const existingExam = await transaction.get(examRef);
+          if (existingExam.exists) {
+            const prior = existingExam.data();
+            if (prior.examId !== examId || prior.grade !== grade) throw new Error("IDEMPOTENCY_KEY_CONFLICT");
+            return { record: prior, earnedXp: 0, replay: true };
+          }
+          const student = studentDoc.exists ? studentDoc.data() : null;
+          if (student?.grade && student.grade !== grade) throw new Error("STUDENT_GRADE_MISMATCH");
+          transaction.create(examRef, examRecord);
+          const now = new Date().toISOString();
+          if (studentDoc.exists) {
+            transaction.update(studentRef, {
+              xp: (Number(student?.xp) || 0) + earnedXp,
+              totalQuestionsCorrect: (Number(student?.totalQuestionsCorrect) || 0) + correctCount,
+              totalQuestionsAttempted: (Number(student?.totalQuestionsAttempted) || 0) + totalQuestions,
+              lastActiveDate: now.slice(0, 10), updatedAt: now,
+            });
+          } else {
+            transaction.create(studentRef, {
+              uid: user.uid, email: user.email || "",
+              displayName: (user as any).displayName || user.email || "طالب",
+              grade, xp: earnedXp, totalQuestionsCorrect: correctCount,
+              totalQuestionsAttempted: totalQuestions,
+              lastActiveDate: now.slice(0, 10), createdAt: now, updatedAt: now,
+            });
+          }
+          return { record: examRecord, earnedXp, replay: false };
+        });
+        return res.json({
+          success: true, record: result.record, earnedXp: result.earnedXp,
+          percentage: result.record.percentage, score: result.record.score,
+          correctCount: result.record.correctCount, totalQuestions: result.record.totalQuestions,
+          isIdempotentReplay: result.replay,
+          message: result.replay ? "تم إرجاع النتيجة المسجلة سابقاً دون تكرار نقاط الخبرة." : "تم حفظ النتيجة ونقاط الخبرة ذرياً في قاعدة البيانات السحابية.",
+        });
+      } catch (dbErr: any) {
+        console.error("Exam persistence failed:", dbErr.message);
+        const gradeMismatch = dbErr.message === "STUDENT_GRADE_MISMATCH";
+        return res.status(gradeMismatch ? 403 : 500).json({
           success: false,
-          error: "خدمة قاعدة البيانات السحابية غير متوفرة حالياً لتسجيل النتيجة وإضافة نقاط الخبرة.",
+          error: gradeMismatch ? "الصف المطلوب لا يطابق الصف المرتبط بحساب الطالب." : "فشل الحفظ الدائم لنتيجة الامتحان ونقاط الخبرة؛ لم يتم تأكيد التسجيل.",
         });
       }
-
-      return res.json({
-        success: true,
-        record: examRecord,
-        earnedXp,
-        percentage,
-        score,
-        correctCount,
-        totalQuestions,
-        message: "تم تصحيح وتوثيق نتيجة الامتحان واحتساب نقاط الخبرة المعتمدة على الخادم بنجاح.",
-      });
     } catch (err: unknown) {
       console.error("Exam submit error:", err);
       return res.status(500).json({ error: "فشل احتساب وتوثيق نتيجة الامتحان." });
