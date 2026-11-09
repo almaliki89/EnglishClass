@@ -934,14 +934,21 @@ class CurriculumPersistenceManager {
   }
 
   private async syncWithFirestore() {
+    appStartupTracker.setState("initializing_firestore");
     if (!adminFirestore) {
       if (process.env.NODE_ENV === "production") {
+        appStartupTracker.setState("failed", "Production mode error: Firebase Admin Firestore is uninitialized.");
         throw new Error("Production mode error: Firebase Admin Firestore is uninitialized.");
       }
+      appStartupTracker.setState("degraded", "Firebase Admin Firestore uninitialized (development fallback active)");
       return;
     }
     try {
-      const snap = await adminFirestore.collection("curriculum_sources").get();
+      appStartupTracker.setState("synchronizing_curriculum");
+      const snap: any = await withTimeout(
+        adminFirestore.collection("curriculum_sources").get(),
+        8000
+      );
       if (!snap.empty) {
         snap.forEach((docSnap: any) => {
           const item = docSnap.data() as StoredCurriculumSource;
@@ -956,10 +963,20 @@ class CurriculumPersistenceManager {
         }
         console.log(`Durable Cloud Storage: Seeded ${this.sources.size} initial official sources to Firestore.`);
       }
+      appStartupTracker.setState("validating_data");
+      for (const [id, src] of this.sources.entries()) {
+        if (!src.id || !src.title || !src.gradeId) {
+          console.warn(`Malformed curriculum record detected (${id}), flagging for review.`);
+          src.status = "requires_review";
+        }
+      }
+      appStartupTracker.setState("ready");
     } catch (err: any) {
       if (process.env.NODE_ENV === "production") {
+        appStartupTracker.setState("failed", `Production Firestore sync failure: ${err.message}`);
         throw new Error(`Production Firestore sync failure: ${err.message}`);
       }
+      appStartupTracker.setState("degraded", err.message);
       console.warn("Durable Cloud Storage sync notice (resilient offline fallback active):", err.message);
     }
   }
@@ -1663,28 +1680,39 @@ function resolveItemPageAttribution(
 ): {
   actualSourcePage: number | null;
   sourcePages: number[];
+  sourcePageNumbers: number[];
+  sourceQuote: string;
+  evidenceStatus: "validated" | "requires_review";
+  evidenceConfidence: "high" | "medium" | "low";
+  requiresReview: boolean;
   validationStatus: "validated" | "requires_review";
 } {
   const allowedPages = batch.pages && batch.pages.length > 0 ? batch.pages.map((p) => p.pageNumber) : [];
   let resolvedPage: number | null = null;
   let resolvedPages: number[] = [];
 
-  const searchText = (
+  const sourceQuote = (
+    item.sourceQuote ||
     item.originalExtractedText ||
     item.word ||
     item.title ||
     item.question ||
-    item.explanation ||
     ""
-  ).trim().toLowerCase();
+  ).trim();
+
+  const searchText = sourceQuote.toLowerCase();
 
   const matchesPageText = (pageObj?: { text?: string; preview?: string }): boolean => {
     if (!pageObj) return false;
     const pText = (pageObj.text || pageObj.preview || "").toLowerCase();
     if (!pText) return false;
-    if (searchText.length >= 3 && pText.includes(searchText.slice(0, 25))) return true;
+
+    if (searchText.length >= 3 && (pText.includes(searchText.slice(0, 25)) || pText.includes(searchText.slice(0, 30)))) return true;
+
     const keyWords = searchText.split(/\s+/).filter((w: string) => w.length >= 4);
-    if (keyWords.length > 0 && keyWords.some((kw: string) => pText.includes(kw))) return true;
+    if (keyWords.length >= 2 && keyWords.filter((kw: string) => pText.includes(kw)).length >= 2) return true;
+    if (keyWords.length === 1 && keyWords[0].length >= 6 && pText.includes(keyWords[0])) return true;
+
     return false;
   };
 
@@ -1730,9 +1758,15 @@ function resolveItemPageAttribution(
   // - Never use batch.pageStart as the universal page reference.
   // - If attribution cannot be established or text verification fails, use null and mark requires_review.
   if (resolvedPage !== null) {
+    const pageList = resolvedPages.length > 0 ? resolvedPages : [resolvedPage];
     return {
       actualSourcePage: resolvedPage,
-      sourcePages: resolvedPages.length > 0 ? resolvedPages : [resolvedPage],
+      sourcePages: pageList,
+      sourcePageNumbers: pageList,
+      sourceQuote,
+      evidenceStatus: "validated",
+      evidenceConfidence: "high",
+      requiresReview: false,
       validationStatus: "validated",
     };
   }
@@ -1740,6 +1774,11 @@ function resolveItemPageAttribution(
   return {
     actualSourcePage: null,
     sourcePages: [],
+    sourcePageNumbers: [],
+    sourceQuote,
+    evidenceStatus: "requires_review",
+    evidenceConfidence: "low",
+    requiresReview: true,
     validationStatus: "requires_review",
   };
 }
@@ -2466,6 +2505,35 @@ app.post(
         error: "بيانات الاعتماد الوزاري غير مستوفية للشروط الصارمة (يلزم توفير جهة الإصدار، رقم وتاريخ الكتاب الرسمي، بصمة الوثيقة SHA-256، ونَص الإقرار الموثق بما لا يقل عن 20 حرفاً).",
         requiredFields: ["issuingAuthority", "documentNumber", "documentDate", "accreditationEvidence", "evidenceDocumentHash"],
       });
+    }
+
+    if (evidenceStoragePath && adminStorage) {
+      try {
+        const bucket = adminStorage.bucket(FIREBASE_STORAGE_BUCKET);
+        const evidenceFile = bucket.file(evidenceStoragePath.trim());
+        const [exists] = await evidenceFile.exists();
+        if (!exists) {
+          return res.status(400).json({
+            error: "ملف وثيقة الإثبات المحددة غير موجود في التخزين السحابي الخاص.",
+            path: evidenceStoragePath,
+          });
+        }
+        const [fileBuffer] = await evidenceFile.download();
+        const serverComputedHash = crypto.createHash("sha256").update(fileBuffer).digest("hex");
+        if (serverComputedHash.toLowerCase() !== evidenceDocumentHash.trim().toLowerCase()) {
+          return res.status(400).json({
+            error: "البصمة التشفيرية SHA-256 المحسوبة من بايتات الملف في التخزين السحابي لا تطابق البصمة المرفقة.",
+            expected: evidenceDocumentHash,
+            actual: serverComputedHash,
+          });
+        }
+      } catch (storageErr: any) {
+        if (process.env.NODE_ENV === "production") {
+          return res.status(400).json({
+            error: `فشل التحقق من بايتات وثيقة الإثبات السحابية: ${storageErr.message}`,
+          });
+        }
+      }
     }
 
     source.status = "officially_accredited";

@@ -587,6 +587,41 @@ assert(
 );
 
 // ----------------------------------------------------------------------------
+// SUITE 14: V15 PRODUCTION READINESS & RUNTIME VERIFICATION (P0 - P10)
+// ----------------------------------------------------------------------------
+console.log('\n--- 14. AUDITING V15 PRODUCTION READINESS & RUNTIME VERIFICATION (P0 - P10) ---');
+
+assert(
+  serverContent.includes('withTimeout') &&
+  serverContent.includes('adminFirestore.collection("curriculum_sources").get()'),
+  'V15 P0: Firestore connection ping executes real read query with 8000ms timeout during startup'
+);
+
+assert(
+  serverContent.includes('evidenceFile.download()') &&
+  serverContent.includes('serverComputedHash'),
+  'V15 P0: Accreditation endpoint calculates server-side SHA-256 fingerprint from actual Storage file bytes'
+);
+
+assert(
+  serverContent.includes('evidenceConfidence:') &&
+  serverContent.includes('sourcePageNumbers:'),
+  'V15 P0: Page attribution returns explicit sourcePageNumbers, sourceQuote, and evidenceConfidence (high/low)'
+);
+
+assert(
+  serverContent.includes('jobRecord.failedOperations.push'),
+  'V15 P0: Deletion saga records explicit failure operations for auditability and idempotent retries'
+);
+
+assert(
+  ORDERED_GRADES.length === 4 &&
+  !ORDERED_GRADES.includes('first-intermediate' as any) &&
+  !ORDERED_GRADES.includes('second-intermediate' as any),
+  'V15 P1: Active grade environment is strictly locked to four active grades without first/second intermediate'
+);
+
+// ----------------------------------------------------------------------------
 // SUMMARY REPORT
 // ----------------------------------------------------------------------------
 console.log('\n================================================================');
@@ -596,6 +631,6 @@ console.log('================================================================\n'
 if (failedTests > 0) {
   process.exit(1);
 } else {
-  console.log('🎉 ALL V14 MASTER ENGINEERING REMEDIATION ASSERTIONS PASSED!\n');
+  console.log('🎉 ALL V15 PRODUCTION READINESS ASSERTIONS PASSED!\n');
   process.exit(0);
 }
