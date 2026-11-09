@@ -2165,7 +2165,7 @@ ${delimitedDoc}`;
                       structuredContent: r,
                       extractionStatus: "ai_structured",
                       validationStatus: attr.validationStatus,
-                      reviewStatus: attr.validationStatus === "validated" && Number.isInteger(r.unitNumber) && Number.isInteger(r.lessonNumber) ? "draft" : "requires_review",
+                      reviewStatus: attr.validationStatus === "validated" && detectedUnits.some((unit) => unit.unitNumber === r.unitNumber) && extractedLessonsList.some((lesson) => lesson.unitNumber === r.unitNumber && lesson.lessonNumber === r.lessonNumber) ? "draft" : "requires_review",
                     });
                     batchItems++;
                   });
@@ -2194,7 +2194,7 @@ ${delimitedDoc}`;
                       structuredContent: v,
                       extractionStatus: "ai_structured",
                       validationStatus: attr.validationStatus,
-                      reviewStatus: attr.validationStatus === "validated" && Number.isInteger(v.unitNumber) && Number.isInteger(v.lessonNumber) ? "draft" : "requires_review",
+                      reviewStatus: attr.validationStatus === "validated" && detectedUnits.some((unit) => unit.unitNumber === v.unitNumber) && extractedLessonsList.some((lesson) => lesson.unitNumber === v.unitNumber && lesson.lessonNumber === v.lessonNumber) ? "draft" : "requires_review",
                     });
                     batchItems++;
                   });
@@ -2223,7 +2223,7 @@ ${delimitedDoc}`;
                       structuredContent: q,
                       extractionStatus: "ai_structured",
                       validationStatus: attr.validationStatus,
-                      reviewStatus: attr.validationStatus === "validated" && Number.isInteger(q.unitNumber) && Number.isInteger(q.lessonNumber) ? "draft" : "requires_review",
+                      reviewStatus: attr.validationStatus === "validated" && detectedUnits.some((unit) => unit.unitNumber === q.unitNumber) && extractedLessonsList.some((lesson) => lesson.unitNumber === q.unitNumber && lesson.lessonNumber === q.lessonNumber) ? "draft" : "requires_review",
                     });
                     batchItems++;
                   });
