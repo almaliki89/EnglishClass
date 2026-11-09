@@ -2480,6 +2480,88 @@ app.post(
   }
 );
 
+// POST /api/curriculum/sources/:id/accreditation-evidence
+// Admin-only evidence intake. Every object is isolated under its owning source and tagged for later verification.
+app.post(
+  "/api/curriculum/sources/:id/accreditation-evidence",
+  requireAdmin,
+  async (req: AuthenticatedRequest, res: Response) => {
+    try {
+      const sourceId = String(req.params.id || "");
+      if (!/^[A-Za-z0-9_-]{1,128}$/.test(sourceId)) {
+        return res.status(400).json({ success: false, error: "معرّف مصدر المنهج غير صالح." });
+      }
+      const source = curriculumDB.getById(sourceId);
+      if (!source) return res.status(404).json({ success: false, error: "المصدر غير موجود." });
+      if (!adminStorage) {
+        return res.status(503).json({ success: false, error: "خدمة التخزين غير متاحة؛ لم يتم رفع ملف الإثبات." });
+      }
+
+      const { base64Data, fileName } = req.body || {};
+      if (typeof base64Data !== "string" || base64Data.length === 0) {
+        return res.status(400).json({ success: false, error: "بيانات ملف الإثبات مفقودة." });
+      }
+      const encoded = base64Data.replace(/^data:[^,]*;base64,/i, "").replace(/\s/g, "");
+      if (!/^[A-Za-z0-9+/]+={0,2}$/.test(encoded) || encoded.length > 28_000_000) {
+        return res.status(400).json({ success: false, error: "ترميز ملف الإثبات غير صالح أو يتجاوز الحد المسموح." });
+      }
+      const fileBuffer = Buffer.from(encoded, "base64");
+      if (
+        fileBuffer.length === 0 ||
+        fileBuffer.length > 20 * 1024 * 1024 ||
+        fileBuffer.toString("base64").replace(/=+$/, "") !== encoded.replace(/=+$/, "")
+      ) {
+        return res.status(400).json({ success: false, error: "حجم أو ترميز ملف الإثبات غير صالح؛ الحد الأقصى 20 MB." });
+      }
+
+      const pdf = fileBuffer.subarray(0, 4).toString("ascii") === "%PDF";
+      const png = fileBuffer.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]));
+      const jpg = fileBuffer[0] === 0xff && fileBuffer[1] === 0xd8 && fileBuffer[2] === 0xff;
+      if (!pdf && !png && !jpg) {
+        return res.status(400).json({ success: false, error: "يسمح فقط بملفات PDF أو PNG أو JPEG الحقيقية." });
+      }
+
+      const contentType = pdf ? "application/pdf" : png ? "image/png" : "image/jpeg";
+      const safeName = path.basename(String(fileName || "government-decree"))
+        .replace(/[^A-Za-z0-9._-]/g, "_")
+        .slice(0, 100) || "government-decree";
+      const fileSha256 = crypto.createHash("sha256").update(fileBuffer).digest("hex");
+      const objectPath = `accreditations/${sourceId}/${Date.now()}-${crypto.randomUUID()}-${safeName}`;
+      const uploadedAt = new Date().toISOString();
+      const evidenceFile = adminStorage.bucket(FIREBASE_STORAGE_BUCKET).file(objectPath);
+      await evidenceFile.save(fileBuffer, {
+        resumable: false,
+        contentType,
+        metadata: {
+          metadata: {
+            sourceId,
+            purpose: "official_accreditation_evidence",
+            sha256: fileSha256,
+            uploadedByAdminId: req.user!.uid,
+            uploadedAt,
+          },
+        },
+      });
+      const [exists] = await evidenceFile.exists();
+      if (!exists) {
+        return res.status(503).json({ success: false, error: "تعذر التحقق من وجود ملف الإثبات بعد رفعه." });
+      }
+      return res.status(201).json({
+        success: true,
+        evidenceStoragePath: objectPath,
+        evidenceDocumentHash: fileSha256,
+        contentType,
+        fileSize: fileBuffer.length,
+        uploadedAt,
+        message: "تم رفع ملف الإثبات إلى مساحة الاعتمادات الخاصة بالمصدر والتحقق من بصمته.",
+      });
+    } catch (error: any) {
+      console.error("Accreditation evidence upload failed:", error.message);
+      return res.status(503).json({ success: false, error: "فشل رفع ملف الإثبات إلى التخزين الآمن." });
+    }
+  }
+);
+
 // POST /api/curriculum/sources/:id/accredit
 // Dedicated Official Governmental Accreditation endpoint - Requires Administrator with full documentary decree evidence
 app.post(
@@ -2491,7 +2573,11 @@ app.post(
       return res.status(404).json({ error: "المصدر غير موجود." });
     }
 
-    if (source.status === "deletion_pending" || source.status === "deletion_failed" || source.status === "deleted") {
+    if (
+      source.status === "deleted" ||
+      source.status.startsWith("deletion_") ||
+      source.status.startsWith("deleting_")
+    ) {
       return res.status(400).json({ error: "لا يمكن اعتماد مصدر قيد الحذف أو محذوف." });
     }
 
@@ -2529,13 +2615,27 @@ app.post(
       return res.status(503).json({ error: "خدمة التخزين غير متاحة؛ لم يتم اعتماد المصدر." });
     }
     const safeEvidencePath = String(evidenceStoragePath).trim().replace(/\\/g, "/");
-    if (safeEvidencePath.startsWith("/") || safeEvidencePath.split("/").some((part) => part === "." || part === "..")) {
-      return res.status(400).json({ error: "مسار ملف الإثبات غير صالح." });
+    const expectedEvidencePrefix = `accreditations/${source.id}/`;
+    if (
+      safeEvidencePath.startsWith("/") ||
+      !safeEvidencePath.startsWith(expectedEvidencePrefix) ||
+      safeEvidencePath.slice(expectedEvidencePrefix.length).includes("/") ||
+      safeEvidencePath.split("/").some((part) => !part || part === "." || part === "..")
+    ) {
+      return res.status(400).json({ error: "يجب أن يكون ملف الإثبات ضمن مساحة الاعتمادات الخاصة بهذا المصدر." });
     }
     try {
       const evidenceFile = adminStorage.bucket(FIREBASE_STORAGE_BUCKET).file(safeEvidencePath);
       const [exists] = await evidenceFile.exists();
       if (!exists) return res.status(400).json({ error: "ملف وثيقة الإثبات غير موجود في التخزين الخاص." });
+      const [evidenceMetadata] = await evidenceFile.getMetadata();
+      const customMetadata = evidenceMetadata.metadata || {};
+      if (
+        String(customMetadata.sourceId || "") !== source.id ||
+        String(customMetadata.purpose || "") !== "official_accreditation_evidence"
+      ) {
+        return res.status(400).json({ error: "ملف الإثبات غير مرتبط بهذا المصدر أو لم يرفع عبر مسار الاعتمادات المخصص." });
+      }
       const [fileBuffer] = await evidenceFile.download();
       if (fileBuffer.length === 0 || fileBuffer.length > 20 * 1024 * 1024) {
         return res.status(400).json({ error: "حجم ملف الإثبات فارغ أو يتجاوز 20 MB." });

@@ -646,6 +646,15 @@ assert(
 console.log('\n--- 15. AUDITING V16 CRITICAL DATA INTEGRITY & PRODUCTION HARDENING ---');
 
 assert(
+  serverContent.includes('accreditations/${sourceId}/') &&
+  serverContent.includes('official_accreditation_evidence') &&
+  serverContent.includes('expectedEvidencePrefix') &&
+  storageRulesContent.includes('match /accreditations/{sourceId}/{fileName}') &&
+  storageRulesContent.includes('allow create, update: if isAdmin()'),
+  'V17: Official accreditation evidence is source-scoped, hash-verified, and stored only through an administrator-only evidence path'
+);
+
+assert(
   serverContent.includes('expectedQuestionCount = Math.min(10, officialQuestions.length)') &&
   serverContent.includes('EXAM_COOLDOWN') &&
   serverContent.includes('examId !== "quick-10-challenge"'),
