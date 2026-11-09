@@ -30,7 +30,7 @@ const GradesPortal = React.lazy(() => import('./components/GradesPortal').then((
 const UnitDashboardView = React.lazy(() => import('./components/UnitDashboardView').then((m) => ({ default: m.UnitDashboardView })));
 
 import { getUnitsForGrade, getGradeMeta, ORDERED_GRADES } from './data/gradeContentResolver';
-import { Unit, Lesson, StudentState, EducationalGrade } from './types';
+import { Unit, Lesson, StudentState, EducationalGrade, ExamResultRecord } from './types';
 import { SubjectId } from './types/subject';
 import {
   loadStudentState,
@@ -81,11 +81,13 @@ function ScopedSectionWrapper({
   section,
   studentState,
   onRecordAnswer,
+  onRecordResult,
   onSelectLesson,
 }: {
   section: 'review' | 'exam' | 'mock' | 'literature' | 'essays' | 'verbs' | 'vocab';
   studentState: StudentState;
   onRecordAnswer: (questionId: string, isCorrect: boolean) => void;
+  onRecordResult: (record: ExamResultRecord, grade: EducationalGrade) => Promise<void>;
   onSelectLesson: (lesson: Lesson) => void;
 }) {
   const { gradeId } = useParams<{ gradeId: string }>();
@@ -114,6 +116,7 @@ function ScopedSectionWrapper({
       return (
         <ExamEngine
           onRecordAnswer={onRecordAnswer}
+          onRecordResult={(record) => onRecordResult(record, effectiveGrade)}
           grade={effectiveGrade}
           onSelectGrade={(g) => navigate(`/grade/${g}/exam`)}
         />
@@ -288,7 +291,7 @@ function RouteLoadingFallback() {
 }
 
 function MainAppContent() {
-  const { user, loading, saveStudentToCloud, loadStudentFromCloud } = useAuth();
+  const { user, loading, saveStudentToCloud, loadStudentFromCloud, submitExamResultToServer } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -539,6 +542,38 @@ function MainAppContent() {
     });
   };
 
+  const handleRecordExamResult = async (
+    record: ExamResultRecord,
+    grade: EducationalGrade = selectedGrade
+  ): Promise<void> => {
+    const answers = Object.fromEntries(
+      (record.answers || []).map((answer) => [answer.questionId, answer.studentAnswer])
+    );
+    if (Object.keys(answers).length === 0) {
+      throw new Error("لا توجد إجابات قابلة للتحقق في هذه المحاولة.");
+    }
+
+    const response = await submitExamResultToServer({
+      examId: record.examId,
+      grade,
+      answers,
+      timeSpentSeconds: Math.max(0, Math.floor(record.timeSpentSeconds || 0)),
+      // Keep the same record ID on retries: the server deduplicates the award transactionally.
+      idempotencyKey: record.id,
+    });
+
+    setStudentState((prev) => {
+      const nextState: StudentState = {
+        ...prev,
+        xp: response.studentProgress.xp,
+        totalQuestionsCorrect: response.studentProgress.totalQuestionsCorrect,
+        totalQuestionsAttempted: response.studentProgress.totalQuestionsAttempted,
+      };
+      saveStudentState(nextState);
+      return nextState;
+    });
+  };
+
   const handleUpdateStudentName = (newName: string) => {
     setStudentState((prev) => {
       const nextState = { ...prev, name: newName };
@@ -736,6 +771,7 @@ function MainAppContent() {
                 section="exam"
                 studentState={studentState}
                 onRecordAnswer={handleRecordQuestionAnswer}
+                onRecordResult={handleRecordExamResult}
                 onSelectLesson={handleSelectLesson}
               />
             }
@@ -815,6 +851,7 @@ function MainAppContent() {
             element={
               <ExamEngine
                 onRecordAnswer={handleRecordQuestionAnswer}
+                onRecordResult={(record) => handleRecordExamResult(record, selectedGrade)}
                 grade={selectedGrade}
                 onSelectGrade={handleSelectGrade}
               />

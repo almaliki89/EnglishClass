@@ -398,7 +398,7 @@ assert(
 
 assert(
   serverContent.includes('POST /api/curriculum/sources/:id/accredit') &&
-  serverContent.includes('/^[a-f0-9]{64}$/i.test(evidenceDocumentHash.trim())/') &&
+  serverContent.includes('/^[a-f0-9]{64}$/i.test(evidenceDocumentHash.trim())') &&
   serverContent.includes('typeof evidenceStoragePath === "string"'),
   'V11 P5: Dedicated accreditation endpoint requires a full SHA-256 hash and an actual evidence Storage path'
 );

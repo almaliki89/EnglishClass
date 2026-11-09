@@ -49,6 +49,24 @@ interface AuthContextType {
   saveStudentToCloud: (state: StudentState) => Promise<void>;
   loadStudentFromCloud: (uid: string) => Promise<StudentState | null>;
   saveExamResultToCloud: (result: ExamResultRecord) => Promise<void>;
+  submitExamResultToServer: (payload: {
+    examId: string;
+    grade: EducationalGrade;
+    answers: Record<string, string>;
+    timeSpentSeconds: number;
+    idempotencyKey: string;
+  }) => Promise<{
+    success: true;
+    earnedXp: number;
+    correctCount: number;
+    totalQuestions: number;
+    isIdempotentReplay: boolean;
+    studentProgress: {
+      xp: number;
+      totalQuestionsCorrect: number;
+      totalQuestionsAttempted: number;
+    };
+  }>;
   saveNoteToCloud: (note: StudentNote) => Promise<void>;
   deleteNoteFromCloud: (noteId: string) => Promise<void>;
   saveBookmarkToCloud: (bookmark: BookmarkItem) => Promise<void>;
@@ -416,6 +434,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
+  // Exam scores and XP are server-authoritative; never write exam results from the browser.
+  const submitExamResultToServer = async (payload: {
+    examId: string;
+    grade: EducationalGrade;
+    answers: Record<string, string>;
+    timeSpentSeconds: number;
+    idempotencyKey: string;
+  }) => {
+    if (!user) throw new Error("يجب تسجيل الدخول قبل حفظ نتيجة الامتحان.");
+    const firebaseUser = auth.currentUser;
+    if (!firebaseUser || firebaseUser.uid !== user.uid) {
+      throw new Error("جلسة المصادقة غير متاحة؛ لم يتم حفظ نتيجة الامتحان.");
+    }
+
+    const idToken = await firebaseUser.getIdToken();
+    const response = await fetch("/api/student/exam-submit", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${idToken}`,
+        "X-Idempotency-Key": payload.idempotencyKey,
+      },
+      body: JSON.stringify(payload),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result?.success !== true) {
+      throw new Error(result?.error || "تعذر حفظ نتيجة الامتحان بأمان.");
+    }
+    return result;
+  };
+
   // Notes operations in subcollection (Owner only)
   const saveNoteToCloud = async (note: StudentNote) => {
     if (!user) return;
@@ -482,6 +531,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         saveStudentToCloud,
         loadStudentFromCloud,
         saveExamResultToCloud,
+        submitExamResultToServer,
         saveNoteToCloud,
         deleteNoteFromCloud,
         saveBookmarkToCloud,

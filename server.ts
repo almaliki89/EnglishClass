@@ -3332,8 +3332,8 @@ app.post(
       }
 
       const { examId, grade = "sixth-preparatory", answers = {}, timeSpentSeconds = 60 } = req.body;
-      if (!examId) {
-        return res.status(400).json({ error: "معلومات الامتحان غير مكتملة." });
+      if (typeof examId !== "string" || examId.trim().length < 3 || examId.trim().length > 160) {
+        return res.status(400).json({ success: false, error: "معرّف الامتحان غير صالح." });
       }
 
       const validGrades = ["third-intermediate", "fourth-preparatory", "fifth-preparatory", "sixth-preparatory"];
@@ -3345,8 +3345,14 @@ app.post(
       if (!/^[A-Za-z0-9._:-]{16,128}$/.test(idempotencyKey)) {
         return res.status(400).json({ success: false, error: "يلزم مفتاح إرسال فريد بطول 16 إلى 128 حرفاً لمنع تكرار نتيجة الامتحان ونقاط الخبرة." });
       }
-      if (!answers || typeof answers !== "object" || Array.isArray(answers)) {
-        return res.status(400).json({ success: false, error: "صيغة إجابات الامتحان غير صالحة." });
+      if (
+        !answers ||
+        typeof answers !== "object" ||
+        Array.isArray(answers) ||
+        Object.keys(answers).length > 100 ||
+        Object.values(answers).some((answer: unknown) => typeof answer !== "string" || answer.length > 2000)
+      ) {
+        return res.status(400).json({ success: false, error: "صيغة إجابات الامتحان غير صالحة أو تتجاوز الحد المسموح." });
       }
       if (!Number.isInteger(timeSpentSeconds) || timeSpentSeconds < 0 || timeSpentSeconds > 86400) {
         return res.status(400).json({ success: false, error: "مدة الامتحان غير صالحة." });
@@ -3414,32 +3420,46 @@ app.post(
           if (existingExam.exists) {
             const prior = existingExam.data();
             if (prior.examId !== examId || prior.grade !== grade) throw new Error("IDEMPOTENCY_KEY_CONFLICT");
-            return { record: prior, earnedXp: 0, replay: true };
+            const existingStudent = studentDoc.exists ? studentDoc.data() : {};
+            return {
+              record: prior,
+              earnedXp: 0,
+              replay: true,
+              studentProgress: {
+                xp: Number(existingStudent?.xp) || 0,
+                totalQuestionsCorrect: Number(existingStudent?.totalQuestionsCorrect) || 0,
+                totalQuestionsAttempted: Number(existingStudent?.totalQuestionsAttempted) || 0,
+              },
+            };
           }
           const student = studentDoc.exists ? studentDoc.data() : null;
-          if (student?.grade && student.grade !== grade) throw new Error("STUDENT_GRADE_MISMATCH");
+          const enrolledGrade = student?.grade || student?.selectedGrade;
+          if (enrolledGrade && enrolledGrade !== grade) throw new Error("STUDENT_GRADE_MISMATCH");
           transaction.create(examRef, examRecord);
           const now = new Date().toISOString();
+          const nextStudentProgress = {
+            xp: (Number(student?.xp) || 0) + earnedXp,
+            totalQuestionsCorrect: (Number(student?.totalQuestionsCorrect) || 0) + correctCount,
+            totalQuestionsAttempted: (Number(student?.totalQuestionsAttempted) || 0) + totalQuestions,
+          };
           if (studentDoc.exists) {
             transaction.update(studentRef, {
-              xp: (Number(student?.xp) || 0) + earnedXp,
-              totalQuestionsCorrect: (Number(student?.totalQuestionsCorrect) || 0) + correctCount,
-              totalQuestionsAttempted: (Number(student?.totalQuestionsAttempted) || 0) + totalQuestions,
+              ...nextStudentProgress,
               lastActiveDate: now.slice(0, 10), updatedAt: now,
             });
           } else {
             transaction.create(studentRef, {
               uid: user.uid, email: user.email || "",
               displayName: (user as any).displayName || user.email || "طالب",
-              grade, xp: earnedXp, totalQuestionsCorrect: correctCount,
-              totalQuestionsAttempted: totalQuestions,
+              grade, ...nextStudentProgress,
               lastActiveDate: now.slice(0, 10), createdAt: now, updatedAt: now,
             });
           }
-          return { record: examRecord, earnedXp, replay: false };
+          return { record: examRecord, earnedXp, replay: false, studentProgress: nextStudentProgress };
         });
         return res.json({
           success: true, record: result.record, earnedXp: result.earnedXp,
+          studentProgress: result.studentProgress,
           percentage: result.record.percentage, score: result.record.score,
           correctCount: result.record.correctCount, totalQuestions: result.record.totalQuestions,
           isIdempotentReplay: result.replay,

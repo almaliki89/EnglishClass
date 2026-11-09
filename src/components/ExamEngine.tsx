@@ -12,7 +12,7 @@ import { Bookmark } from 'lucide-react';
 interface ExamEngineProps {
   studentName?: string;
   onRecordAnswer: (questionId: string, isCorrect: boolean) => void;
-  onRecordResult?: (record: ExamResultRecord) => void;
+  onRecordResult?: (record: ExamResultRecord) => Promise<void> | void;
   defaultMode?: 'practice' | 'mock' | 'full-mock';
   grade?: EducationalGrade;
   bookmarkedQuestionIds?: string[];
@@ -51,6 +51,26 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
   const [userExamAnswers, setUserExamAnswers] = useState<Record<string, string>>({});
   const [examSubmitted, setExamSubmitted] = useState(false);
   const [timeLeft, setTimeLeft] = useState<number>(600); // 10 minutes (600s)
+  const [persistenceStatus, setPersistenceStatus] = useState<"idle" | "saving" | "saved" | "error">("idle");
+  const [persistenceError, setPersistenceError] = useState<string | null>(null);
+  const [lastSubmittedRecord, setLastSubmittedRecord] = useState<ExamResultRecord | null>(null);
+
+  const persistExamResult = async (record: ExamResultRecord) => {
+    if (!onRecordResult) {
+      setPersistenceStatus("error");
+      setPersistenceError("لم يتم ربط خدمة الحفظ الآمن بنتيجة الامتحان.");
+      return;
+    }
+    setPersistenceStatus("saving");
+    setPersistenceError(null);
+    try {
+      await onRecordResult(record);
+      setPersistenceStatus("saved");
+    } catch (error) {
+      setPersistenceStatus("error");
+      setPersistenceError(error instanceof Error ? error.message : "تعذر حفظ النتيجة.");
+    }
+  };
 
   // Start a new mock exam
   const handleStartMockExam = () => {
@@ -60,6 +80,9 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
     setExamQuestions(selected);
     setUserExamAnswers({});
     setExamSubmitted(false);
+    setPersistenceStatus("idle");
+    setPersistenceError(null);
+    setLastSubmittedRecord(null);
     setTimeLeft(600);
     setIsExamActive(true);
   };
@@ -85,9 +108,8 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
     examQuestions.forEach(q => {
       const userAns = (userExamAnswers[q.id] || '').trim().toLowerCase();
       const targetAns = q.correctAnswer.trim().toLowerCase();
-      const isCorrect = userAns === targetAns || (targetAns.includes(userAns) && userAns.length > 3);
+      const isCorrect = userAns === targetAns;
       if (isCorrect) correctCount++;
-      onRecordAnswer(q.id, isCorrect);
       answersList.push({
         questionId: q.id,
         studentAnswer: userExamAnswers[q.id] || '',
@@ -109,7 +131,11 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
         timestamp: new Date().toISOString(),
         answers: answersList,
       };
-      onRecordResult(record);
+      setLastSubmittedRecord(record);
+      void persistExamResult(record);
+    } else {
+      setPersistenceStatus("error");
+      setPersistenceError("تعذر حفظ النتيجة: لا توجد خدمة تسجيل مرتبطة بهذا الامتحان.");
     }
 
     if (correctCount >= 7) {
@@ -219,7 +245,6 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
           onRecordScore={(score) => {
             onRecordAnswer('full-mock-paper', score >= 50);
           }}
-          onRecordResult={onRecordResult}
           bookmarkedQuestionIds={bookmarkedQuestionIds}
           onToggleBookmark={onToggleBookmark}
         />
@@ -484,6 +509,24 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
                 <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-indigo-900 to-slate-900 text-white shadow-xl space-y-4 text-center">
                   <Award className="w-12 h-12 mx-auto text-amber-400" />
                   <h3 className="text-2xl font-black">نتيجة الاختبار الوزاري التجريبي</h3>
+                  <div className="text-sm font-bold" role="status" aria-live="polite">
+                    {persistenceStatus === "saving" && "جارٍ حفظ النتيجة ونقاط الخبرة في قاعدة البيانات الآمنة..."}
+                    {persistenceStatus === "saved" && "تم حفظ النتيجة ونقاط الخبرة بنجاح."}
+                    {persistenceStatus === "error" && (
+                      <div className="space-y-2">
+                        <p className="text-rose-200">{persistenceError || "تعذر حفظ النتيجة."}</p>
+                        {lastSubmittedRecord && onRecordResult && (
+                          <button
+                            type="button"
+                            onClick={() => void persistExamResult(lastSubmittedRecord)}
+                            className="px-3 py-2 bg-white text-slate-900 rounded-xl font-black text-xs"
+                          >
+                            إعادة محاولة الحفظ الآمن
+                          </button>
+                        )}
+                      </div>
+                    )}
+                  </div>
                   
                   {(() => {
                     let correct = 0;
