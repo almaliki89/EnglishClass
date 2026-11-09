@@ -659,9 +659,10 @@ assert(
 );
 
 assert(
-  serverContent.includes('res.status(gradeMismatch ? 403 : 500).json({') &&
+  serverContent.includes('res.status(gradeMismatch ? 403 : examCooldown ? 429 : 500).json({') &&
   serverContent.includes('Exam persistence failed:') &&
   serverContent.includes('if (!examFirestore)') &&
+  serverContent.includes('EXAM_COOLDOWN') &&
   serverContent.includes('لم يتم تسجيل النتيجة أو إضافة نقاط الخبرة'),
   'V16 P0: Exam submit fails closed on missing Firestore or transaction failure; no success response is returned without durable persistence'
 );
