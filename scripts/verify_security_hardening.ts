@@ -550,6 +550,43 @@ const isPage10InBatch = mockBatchPages.some(p => p.pageNumber === GeminiHallucin
 assert(!isPage10InBatch, "V13 P3 Page Attribution: Out-of-batch page claim (10) rejected during batch 1 processing");
 
 // ----------------------------------------------------------------------------
+// SUITE 13: V14 MASTER ENGINEERING REMEDIATION (P0 - P10)
+// ----------------------------------------------------------------------------
+console.log('\n--- 13. AUDITING V14 MASTER ENGINEERING REMEDIATION (P0 - P10) ---');
+
+assert(
+  serverContent.includes('AppStartupTracker') &&
+  serverContent.includes('appStartupTracker') &&
+  serverContent.includes('synchronizing_curriculum') &&
+  serverContent.includes('validating_data'),
+  'V14 P0: Application startup lifecycle implements explicit state tracking (starting -> ready/failed)'
+);
+
+assert(
+  serverContent.includes('app.get("/api/ready"') &&
+  serverContent.includes('res.status(503)'),
+  'V14 P0/P6: GET /api/ready endpoint enforces HTTP 503 dependency readiness check in production'
+);
+
+assert(
+  serverContent.includes('failedOperations:') &&
+  serverContent.includes('jobRecord.failedOperations'),
+  'V14 P1: Durable deletion job saga tracks failedOperations array for precise failure recovery'
+);
+
+assert(
+  serverContent.includes('unassignedContent') &&
+  serverContent.includes('validationStatus: "requires_review"'),
+  'V14 P2: Ambiguous educational content routes cleanly to unassignedContent rather than arbitrary fallback unit'
+);
+
+assert(
+  serverContent.includes('status: "published"') &&
+  serverContent.includes('verificationStatus: "internally_reviewed"'),
+  'V14 P4: Initial official sources audited to default to internal published status without unverified government claims'
+);
+
+// ----------------------------------------------------------------------------
 // SUMMARY REPORT
 // ----------------------------------------------------------------------------
 console.log('\n================================================================');
@@ -559,6 +596,6 @@ console.log('================================================================\n'
 if (failedTests > 0) {
   process.exit(1);
 } else {
-  console.log('🎉 ALL V13 FINAL ARCHITECTURE REMEDIATION ASSERTIONS PASSED!\n');
+  console.log('🎉 ALL V14 MASTER ENGINEERING REMEDIATION ASSERTIONS PASSED!\n');
   process.exit(0);
 }

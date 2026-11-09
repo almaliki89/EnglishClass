@@ -446,12 +446,77 @@ function getErrorMessage(error: unknown): string {
   return String(error);
 }
 
+export type AppStartupState =
+  | "starting"
+  | "initializing_firebase"
+  | "initializing_firestore"
+  | "synchronizing_curriculum"
+  | "validating_data"
+  | "ready"
+  | "degraded"
+  | "failed";
+
+class AppStartupTracker {
+  private state: AppStartupState = "starting";
+  private errorDetail: string | null = null;
+  private startTime: string = new Date().toISOString();
+  private readyTime: string | null = null;
+
+  public setState(newState: AppStartupState, error?: string) {
+    this.state = newState;
+    if (error) this.errorDetail = error;
+    if (newState === "ready") {
+      this.readyTime = new Date().toISOString();
+    }
+  }
+
+  public getStatus() {
+    return {
+      state: this.state,
+      ready: this.state === "ready",
+      error: this.errorDetail,
+      startTime: this.startTime,
+      readyTime: this.readyTime,
+    };
+  }
+}
+
+export const appStartupTracker = new AppStartupTracker();
+
 // Health check endpoint (never leaks raw API keys)
 app.get("/api/health", (_req, res) => {
+  const status = appStartupTracker.getStatus();
   res.json({
-    status: "ok",
+    status: status.ready ? "ok" : status.state === "failed" ? "failed" : "initializing",
     app: "منصة النموذجية في الإنكليزية - OMEGA V3.2",
+    state: status.state,
+    ready: status.ready,
     hasGeminiKey: Boolean(apiKey),
+    timestamp: new Date().toISOString(),
+  });
+});
+
+// Readiness check endpoint (verifies production dependency readiness)
+app.get("/api/ready", (_req, res) => {
+  const status = appStartupTracker.getStatus();
+  const isCloudConnected = Boolean(adminFirestore);
+  const sourcesCount = curriculumDB ? curriculumDB.getAll().length : 0;
+
+  if (!status.ready && process.env.NODE_ENV === "production") {
+    return res.status(503).json({
+      ready: false,
+      state: status.state,
+      error: status.error || "Application cloud initialization incomplete",
+      cloudConnected: isCloudConnected,
+      timestamp: new Date().toISOString(),
+    });
+  }
+
+  return res.json({
+    ready: status.ready || process.env.NODE_ENV !== "production",
+    state: status.state,
+    cloudConnected: isCloudConnected,
+    sourcesCount,
     timestamp: new Date().toISOString(),
   });
 });
@@ -595,6 +660,13 @@ export interface StoredCurriculumSource {
     sourcePages?: string;
     page?: number;
   }>;
+  unassignedContent?: Array<{
+    contentType: "rule" | "vocab" | "question" | "text_fragment";
+    text: string;
+    pageNumber?: number | null;
+    originalQuotation?: string;
+    validationStatus: "requires_review";
+  }>;
   extractedRulesCount: number;
   extractedVocabCount: number;
   extractedQuestionsCount: number;
@@ -630,8 +702,8 @@ const INITIAL_OFFICIAL_SOURCES: StoredCurriculumSource[] = [
     fileSha256: "9f84bc91d848e4277c0733ea704b19b6e4e723528b6d859fa0e83b4b8a2e1d71",
     totalPages: 104,
     totalChars: 184500,
-    status: "officially_accredited",
-    verificationStatus: "official_approved",
+    status: "published",
+    verificationStatus: "internally_reviewed",
     reviewedBy: "الأستاذ مصطفى تركي - خبير المناهج",
     reviewedAt: "2026-10-11T12:00:00.000Z",
     accreditationEvidence: "كتاب المديرية العامة للمناهج ذي العدد 2024/7821 المتضمن إقرار طبعة 2024-2026 رسمياً وتوزيعها على المدارس العراقية كمنهج وزاري ملزم",
@@ -1112,7 +1184,9 @@ class CurriculumPersistenceManager {
       firestoreDeletionStatus: "pending",
       cleanupStatus: "pending",
       retryCount: 0,
+      failedOperations: [] as string[],
       lastError: null as string | null,
+      updatedAt: new Date().toISOString(),
       completedAt: null as string | null,
     };
 
@@ -1207,17 +1281,19 @@ class CurriculumPersistenceManager {
       this.sources.set(id, existing);
       this.saveToDisk();
 
+      jobRecord.deletionStatus = "deletion_failed_storage";
+      jobRecord.storageDeletionStatus = "failed";
+      jobRecord.lastError = existing.deletionError;
+      jobRecord.failedOperations.push(...storageErrors);
+
       if (adminFirestore) {
         try {
           await adminFirestore.collection("curriculum_sources").doc(id).set(
             { status: "deletion_failed_storage", deletionError: existing.deletionError, updatedAt: existing.updatedAt },
             { merge: true }
           );
-          await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set({
-            status: "deletion_failed_storage",
-            error: existing.deletionError,
-            updatedAt: new Date().toISOString(),
-          }, { merge: true });
+          await adminFirestore.collection("curriculum_deletion_jobs").doc(jobId).set(jobRecord, { merge: true });
+          await adminFirestore.collection("curriculum_deletion_jobs").doc(id).set(jobRecord, { merge: true });
         } catch (e: any) {
           console.warn("Failed to record deletion_failed_storage job in Firestore:", e.message);
         }
