@@ -646,6 +646,13 @@ assert(
 console.log('\n--- 15. AUDITING V16 CRITICAL DATA INTEGRITY & PRODUCTION HARDENING ---');
 
 assert(
+  serverContent.includes('expectedQuestionCount = Math.min(10, officialQuestions.length)') &&
+  serverContent.includes('EXAM_COOLDOWN') &&
+  serverContent.includes('examId !== "quick-10-challenge"'),
+  'V17: Exam submissions require the full grade-specific question set and enforce a one-minute retry cooldown after new attempts'
+);
+
+assert(
   serverContent.includes('idempotencyKey') &&
   serverContent.includes('isIdempotentReplay'),
   'V16 P0: Exam submit endpoint checks idempotencyKey to prevent double XP allocation on retries'

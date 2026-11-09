@@ -227,11 +227,19 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
   test('9. P9 Student Exam Integrity: Server-side grading, XP calculation, and rapid replay protection', async ({ request }) => {
     // 1. Student submits exam results
     const examPayload = {
-      examId: 'ministerial-mock-exam-6th',
+      examId: 'quick-10-challenge',
       grade: 'sixth-preparatory',
       answers: {
         'mq-1': 'knocked',
         'mq-2': 'frightening',
+        'mq-3': 'give it up',
+        'mq-4': "didn't use to be",
+        'mq-5': 'An exoskeleton',
+        'mq-6': '',
+        'mq-7': '',
+        'mq-8': '',
+        'mq-9': '',
+        'mq-10': '',
       },
       timeSpentSeconds: 120,
       idempotencyKey: 'e2e-exam-idempotency-key-01',
@@ -268,6 +276,17 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     expect(duplicateData.record.id).toBe(submitData.record.id);
     expect(duplicateData.earnedXp).toBe(0);
     expect(duplicateData.studentProgress.xp).toBe(submitData.studentProgress.xp);
+
+    // A genuinely new attempt is subject to the server-side cooldown.
+    const newAttemptRes = await request.post('/api/student/exam-submit', {
+      headers: {
+        Authorization: 'Bearer e2e-student-token',
+        'x-e2e-mode': 'true',
+        'x-e2e-role': 'student',
+      },
+      data: { ...examPayload, idempotencyKey: 'e2e-exam-idempotency-key-02' },
+    });
+    expect(newAttemptRes.status()).toBe(429);
   });
 
   test('10. P8 Grounded QA: AI queries enforce authenticated rate limits and provenance citations', async ({ request }) => {

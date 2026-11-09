@@ -3405,8 +3405,8 @@ app.post(
       }
 
       const { examId, grade = "sixth-preparatory", answers = {}, timeSpentSeconds = 60 } = req.body;
-      if (typeof examId !== "string" || examId.trim().length < 3 || examId.trim().length > 160) {
-        return res.status(400).json({ success: false, error: "معرّف الامتحان غير صالح." });
+      if (examId !== "quick-10-challenge") {
+        return res.status(400).json({ success: false, error: "معرّف الامتحان غير مدعوم لمسار التقييم السريع." });
       }
 
       const validGrades = ["third-intermediate", "fourth-preparatory", "fifth-preparatory", "sixth-preparatory"];
@@ -3440,6 +3440,13 @@ app.post(
       }
       if (answeredQIds.some((id) => !officialQuestions.some((question) => question.id === id))) {
         return res.status(400).json({ success: false, error: "تتضمن الإجابات أسئلة لا تنتمي إلى بنك أسئلة هذا الصف." });
+      }
+      const expectedQuestionCount = Math.min(10, officialQuestions.length);
+      if (answeredQIds.length !== expectedQuestionCount) {
+        return res.status(400).json({
+          success: false,
+          error: `يجب إرسال جميع أسئلة المحاولة المحددة وعددها ${expectedQuestionCount} لهذا الصف.`,
+        });
       }
       const totalQuestions = answeredQIds.length;
 
@@ -3488,9 +3495,11 @@ app.post(
       try {
         const studentRef = examFirestore.collection("students").doc(user.uid);
         const examRef = studentRef.collection("exam_results").doc(examResultId);
+        const attemptControlRef = studentRef.collection("exam_attempt_controls").doc(examId);
         const result = await examFirestore.runTransaction(async (transaction: any) => {
           const studentDoc = await transaction.get(studentRef);
           const existingExam = await transaction.get(examRef);
+          const attemptControlDoc = await transaction.get(attemptControlRef);
           if (existingExam.exists) {
             const prior = existingExam.data();
             if (prior.examId !== examId || prior.grade !== grade) throw new Error("IDEMPOTENCY_KEY_CONFLICT");
@@ -3509,8 +3518,17 @@ app.post(
           const student = studentDoc.exists ? studentDoc.data() : null;
           const enrolledGrade = student?.grade || student?.selectedGrade;
           if (enrolledGrade && enrolledGrade !== grade) throw new Error("STUDENT_GRADE_MISMATCH");
-          transaction.create(examRef, examRecord);
           const now = new Date().toISOString();
+          const lastAttemptAt = Date.parse(String(attemptControlDoc.data()?.lastAttemptAt || ""));
+          if (Number.isFinite(lastAttemptAt) && Date.now() - lastAttemptAt < 60_000) {
+            throw new Error("EXAM_COOLDOWN");
+          }
+          transaction.create(examRef, examRecord);
+          if (attemptControlDoc.exists) {
+            transaction.update(attemptControlRef, { lastAttemptAt: now, updatedAt: now });
+          } else {
+            transaction.create(attemptControlRef, { lastAttemptAt: now, createdAt: now, updatedAt: now });
+          }
           const nextStudentProgress = {
             xp: (Number(student?.xp) || 0) + earnedXp,
             totalQuestionsCorrect: (Number(student?.totalQuestionsCorrect) || 0) + correctCount,
@@ -3542,9 +3560,14 @@ app.post(
       } catch (dbErr: any) {
         console.error("Exam persistence failed:", dbErr.message);
         const gradeMismatch = dbErr.message === "STUDENT_GRADE_MISMATCH";
-        return res.status(gradeMismatch ? 403 : 500).json({
+        const examCooldown = dbErr.message === "EXAM_COOLDOWN";
+        return res.status(gradeMismatch ? 403 : examCooldown ? 429 : 500).json({
           success: false,
-          error: gradeMismatch ? "الصف المطلوب لا يطابق الصف المرتبط بحساب الطالب." : "فشل الحفظ الدائم لنتيجة الامتحان ونقاط الخبرة؛ لم يتم تأكيد التسجيل.",
+          error: gradeMismatch
+            ? "الصف المطلوب لا يطابق الصف المرتبط بحساب الطالب."
+            : examCooldown
+              ? "يرجى الانتظار دقيقة واحدة قبل بدء محاولة جديدة للامتحان نفسه."
+              : "فشل الحفظ الدائم لنتيجة الامتحان ونقاط الخبرة؛ لم يتم تأكيد التسجيل.",
         });
       }
     } catch (err: unknown) {
