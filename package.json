@@ -15,8 +15,9 @@
     "test:audit": "tsx scripts/deep_architecture_audit.ts",
     "test:security": "tsx scripts/verify_security_hardening.ts",
     "test:e2e": "playwright test",
-    "test:acceptance": "npm run lint && npm run test && npm run test:audit && npm run test:security && npm run build",
-    "admin:bootstrap": "tsx scripts/bootstrap_admin.ts"
+    "test:acceptance": "npm run lint && npm run test && npm run test:audit && npm run test:security && npm run test:hierarchy && npm run build",
+    "admin:bootstrap": "tsx scripts/bootstrap_admin.ts",
+    "test:hierarchy": "tsx scripts/verify_curriculum_hierarchy.ts"
   },
   "dependencies": {
     "@google/genai": "^2.24.0",

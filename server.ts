@@ -13,6 +13,7 @@ import { getStorage } from "firebase-admin/storage";
 import { CurriculumSourceDocument } from "./src/types/curriculumManagement";
 import { getUnitsForGrade, getQuestionsForGrade } from "./src/data/gradeContentResolver";
 import { EducationalGrade } from "./src/types";
+import { parseCurriculumHierarchy } from "./src/utils/parseCurriculumHierarchy";
 
 dotenv.config();
 
@@ -41,17 +42,21 @@ const MAX_CONCURRENT_INGESTIONS = 3;
 // Initialize Firebase Admin SDK for cryptographic token verification, durable Firestore & Storage
 let adminFirestore: any = null;
 let adminStorage: any = null;
-try {
-  const currentApps = getApps();
-  const adminApp = currentApps.length ? currentApps[0] : initializeApp({
-    projectId: "gen-lang-client-0324348726",
-    storageBucket: FIREBASE_STORAGE_BUCKET,
-  });
-  adminFirestore = getFirestore(adminApp, FIRESTORE_DB_ID);
-  adminStorage = getStorage(adminApp);
-  console.log("Firebase Admin SDK, Firestore & Storage initialized successfully.");
-} catch (adminErr) {
-  console.warn("Firebase Admin SDK initialization note:", adminErr);
+if (process.env.NODE_ENV !== "test") {
+  try {
+    const currentApps = getApps();
+    const adminApp = currentApps.length ? currentApps[0] : initializeApp({
+      projectId: "gen-lang-client-0324348726",
+      storageBucket: FIREBASE_STORAGE_BUCKET,
+    });
+    adminFirestore = getFirestore(adminApp, FIRESTORE_DB_ID);
+    adminStorage = getStorage(adminApp);
+    console.log("Firebase Admin SDK, Firestore & Storage initialized successfully.");
+  } catch (adminErr) {
+    console.warn("Firebase Admin SDK initialization note:", adminErr);
+  }
+} else {
+  console.log("E2E test mode: Firebase Admin SDK disabled; external credentials are not required.");
 }
 
 // Maximum allowed PDF payload: 25 MB decoded buffer limit
@@ -602,6 +607,13 @@ export interface StoredCurriculumSource {
     detectedLessonsCount: number;
     sampleGrammarRules?: string[];
   }>;
+  detectedLessons?: Array<{
+    unitNumber: number;
+    lessonNumber: number;
+    titleAr: string;
+    titleEn: string;
+    pageNumber: number | null;
+  }>;
   extractedRules: Array<{
     title: string;
     formula: string;
@@ -909,6 +921,7 @@ class CurriculumPersistenceManager {
   }
 
   private loadFromDisk() {
+    if (process.env.NODE_ENV === "production") return;
     try {
       if (fs.existsSync(CURRICULUM_PERSISTENCE_FILE)) {
         const raw = fs.readFileSync(CURRICULUM_PERSISTENCE_FILE, "utf8");
@@ -949,19 +962,15 @@ class CurriculumPersistenceManager {
         adminFirestore.collection("curriculum_sources").get(),
         8000
       );
+      this.sources.clear();
       if (!snap.empty) {
         snap.forEach((docSnap: any) => {
           const item = docSnap.data() as StoredCurriculumSource;
-          if (item && item.id) {
-            this.sources.set(item.id, item);
-          }
+          if (item && item.id) this.sources.set(item.id, item);
         });
-        console.log(`Durable Cloud Storage: Synchronized ${snap.size} curriculum sources from Firestore.`);
+        console.log(`Durable Cloud Storage: Reconciled ${snap.size} authoritative curriculum sources from Firestore.`);
       } else {
-        for (const src of this.sources.values()) {
-          await this.writeToFirestore(src.id, src);
-        }
-        console.log(`Durable Cloud Storage: Seeded ${this.sources.size} initial official sources to Firestore.`);
+        console.log("Firestore curriculum collection is empty; no local records were promoted. Use an explicit audited migration if seeding is required.");
       }
       appStartupTracker.setState("validating_data");
       for (const [id, src] of this.sources.entries()) {
@@ -1906,56 +1915,10 @@ app.post(
       // Explicit rule: Uploaded files NEVER start as "official_approved", always "draft" until approved
       const verificationStatus: StoredCurriculumSource["verificationStatus"] = "draft";
 
-      // Real page-aware detection of units and lessons from extracted text lines
-      const detectedUnits: StoredCurriculumSource["detectedUnits"] = [];
-      const extractedLessonsList: Array<{ unitNumber: number; lessonNumber: number; titleAr: string; titleEn: string; pageNumber: number }> = [];
-
-      const lines = extractedText.split("\n").map((l) => l.trim()).filter(Boolean);
-      let currentUnitNum = 1;
-
-      for (const line of lines) {
-        const unitMatch = line.match(/(?:Unit|الوحدة)\s*([1-8\d])/i);
-        if (unitMatch) {
-          const parsedNum = parseInt(unitMatch[1], 10) || currentUnitNum;
-          if (!detectedUnits.some((u) => u.unitNumber === parsedNum)) {
-            detectedUnits.push({
-              unitNumber: parsedNum,
-              title: line.slice(0, 80),
-              detectedLessonsCount: 0,
-              sampleGrammarRules: [],
-            });
-            currentUnitNum = parsedNum + 1;
-          }
-        }
-
-        const lessonMatch = line.match(/(?:Lesson|الدرس)\s*([1-9\d])/i);
-        if (lessonMatch) {
-          const lessonNum = parseInt(lessonMatch[1], 10);
-          if (!extractedLessonsList.some((l) => l.unitNumber === currentUnitNum && l.lessonNumber === lessonNum)) {
-            extractedLessonsList.push({
-              unitNumber: currentUnitNum,
-              lessonNumber: lessonNum,
-              titleAr: line.slice(0, 80),
-              titleEn: `Lesson ${lessonNum}`,
-              pageNumber: 1,
-            });
-          }
-        }
-      }
-
-      // Compute actual detected lessons per unit (never hardcoded 5 or 3)
-      detectedUnits.forEach((u) => {
-        const unitLessons = extractedLessonsList.filter((l) => l.unitNumber === u.unitNumber);
-        u.detectedLessonsCount = unitLessons.length;
-      });
-
-      if (detectedUnits.length === 0 && !isScannedOrEmpty) {
-        detectedUnits.push({
-          unitNumber: 1,
-          title: title || fileName || "الوحدة المستخرجة",
-          detectedLessonsCount: extractedLessonsList.length,
-        });
-      }
+      // Only create hierarchy nodes supported by explicit source headings.
+      const hierarchy = parseCurriculumHierarchy(extractedText, pageReferences);
+      const detectedUnits: StoredCurriculumSource["detectedUnits"] = hierarchy.units;
+      const extractedLessonsList = hierarchy.lessons;
 
       const statistics = {
         actualUnitsCount: detectedUnits.length,
@@ -1989,6 +1952,12 @@ app.post(
         fullExtractedText: extractedText,
         pageReferences,
         detectedUnits,
+        detectedLessons: extractedLessonsList,
+        unassignedContent: hierarchy.unassignedLessonHeadings.map((heading) => ({
+          contentType: "text_fragment" as const,
+          text: heading,
+          validationStatus: "requires_review" as const,
+        })),
         extractedRules: [],
         extractedVocab: [],
         extractedQuestions: [],
