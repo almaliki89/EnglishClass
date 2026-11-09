@@ -28,16 +28,45 @@ export interface ParsedCurriculumHierarchy {
 const normalizeDigits = (value: string): string =>
   value.replace(/[٠-٩]/g, (digit) => String("٠١٢٣٤٥٦٧٨٩".indexOf(digit)));
 
-const findSourcePage = (line: string, pages: CurriculumSourcePage[]): number | null => {
-  const normalizedLine = line.normalize("NFKC").replace(/\s+/g, " ").trim().toLocaleLowerCase();
-  if (!normalizedLine || !pages.length) return null;
+const normalizeHeading = (value: string): string =>
+  normalizeDigits(value)
+    .normalize("NFKC")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLocaleLowerCase();
 
-  for (const page of pages) {
-    const pageText = (page.text || page.preview || "")
-      .normalize("NFKC")
-      .replace(/\s+/g, " ")
-      .toLocaleLowerCase();
-    if (pageText.includes(normalizedLine)) return page.pageNumber;
+const findSourcePage = (
+  line: string,
+  pages: CurriculumSourcePage[],
+  targetUnitNumber: number
+): number | null => {
+  const normalizedLine = normalizeHeading(line);
+  if (!normalizedLine || !pages.length || !Number.isInteger(targetUnitNumber)) return null;
+
+  // Track the active unit across PDF pages. Matching a repeated title such as
+  // "Lesson 1" without its unit context can incorrectly cite an earlier unit.
+  let activeUnitNumber: number | null = null;
+  const orderedPages = [...pages].sort((a, b) => a.pageNumber - b.pageNumber);
+
+  for (const page of orderedPages) {
+    const pageLines = (page.text || page.preview || "").split(/\r?\n/);
+    for (const rawPageLine of pageLines) {
+      const pageLine = normalizeHeading(rawPageLine);
+      if (!pageLine) continue;
+
+      const unitMatch = pageLine.match(/(?:\bunit\s*|الوحدة\s*)([0-9]{1,2})/i);
+      if (unitMatch) {
+        const parsedUnit = Number.parseInt(unitMatch[1], 10);
+        activeUnitNumber = Number.isInteger(parsedUnit) && parsedUnit > 0 ? parsedUnit : null;
+      }
+
+      if (
+        activeUnitNumber === targetUnitNumber &&
+        (pageLine === normalizedLine || pageLine.includes(normalizedLine))
+      ) {
+        return page.pageNumber;
+      }
+    }
   }
   return null;
 };
@@ -96,7 +125,7 @@ export function parseCurriculumHierarchy(
           lessonNumber,
           titleAr: line.slice(0, 80),
           titleEn: `Lesson ${lessonNumber}`,
-          pageNumber: findSourcePage(line, pages),
+          pageNumber: findSourcePage(line, pages, currentUnitNumber),
         });
       }
     }
