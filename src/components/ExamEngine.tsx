@@ -11,7 +11,6 @@ import { Bookmark } from 'lucide-react';
 
 interface ExamEngineProps {
   studentName?: string;
-  onRecordAnswer: (questionId: string, isCorrect: boolean) => void;
   onRecordResult?: (record: ExamResultRecord) => Promise<void> | void;
   defaultMode?: 'practice' | 'mock' | 'full-mock';
   grade?: EducationalGrade;
@@ -22,7 +21,6 @@ interface ExamEngineProps {
 
 export const ExamEngine: React.FC<ExamEngineProps> = ({
   studentName = 'طالب المنهاج المتميز',
-  onRecordAnswer,
   onRecordResult,
   defaultMode = 'practice',
   grade = 'sixth-preparatory',
@@ -242,9 +240,6 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
           grade={grade}
           onSelectGrade={onSelectGrade}
           onClose={() => setMode('practice')}
-          onRecordScore={(score) => {
-            onRecordAnswer('full-mock-paper', score >= 50);
-          }}
           bookmarkedQuestionIds={bookmarkedQuestionIds}
           onToggleBookmark={onToggleBookmark}
         />

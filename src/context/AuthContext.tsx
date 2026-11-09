@@ -48,7 +48,6 @@ interface AuthContextType {
   logout: () => Promise<void>;
   saveStudentToCloud: (state: StudentState) => Promise<void>;
   loadStudentFromCloud: (uid: string) => Promise<StudentState | null>;
-  saveExamResultToCloud: (result: ExamResultRecord) => Promise<void>;
   submitExamResultToServer: (payload: {
     examId: string;
     grade: EducationalGrade;
@@ -328,17 +327,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         email: user.email || '',
         phoneNumber: user.phoneNumber || '',
         name: state.name || user.displayName || 'طالب المنصة',
-        xp: state.xp || 0,
         selectedGrade: state.selectedGrade || 'sixth-preparatory',
         completedLessonIds: state.completedLessonIds || [],
         bookmarkedQuestionIds: state.bookmarkedQuestionIds || [],
-        totalQuestionsAttempted: state.totalQuestionsAttempted || 0,
-        totalQuestionsCorrect: state.totalQuestionsCorrect || 0,
-        streakDays: state.streakDays || 1,
         lastActiveDate: state.lastActiveDate || new Date().toISOString().split('T')[0],
         lastVisitedLessonId: state.lastVisitedLessonId || '1-1',
         gradeLastVisitedLessonMap: state.gradeLastVisitedLessonMap || INITIAL_STUDENT_STATE.gradeLastVisitedLessonMap,
-        unlockedBadges: state.unlockedBadges || [],
         lessonProgressMap: state.lessonProgressMap || {},
         updatedAt: new Date().toISOString()
       }, { merge: true });
@@ -420,17 +414,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       console.warn('Error loading student from cloud (offline mode active):', getErrorMessage(error));
       setSyncStatus('offline');
       return null;
-    }
-  };
-
-  // Append-only Exam Result Record in subcollection (Owner only)
-  const saveExamResultToCloud = async (result: ExamResultRecord) => {
-    if (!user) return;
-    try {
-      const examDocRef = doc(db, 'students', user.uid, 'exam_results', result.id);
-      await setDoc(examDocRef, result);
-    } catch (err: unknown) {
-      console.error('Error writing exam result to cloud:', getErrorMessage(err));
     }
   };
 
@@ -530,7 +513,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         logout,
         saveStudentToCloud,
         loadStudentFromCloud,
-        saveExamResultToCloud,
         submitExamResultToServer,
         saveNoteToCloud,
         deleteNoteFromCloud,

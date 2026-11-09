@@ -87,7 +87,7 @@ function ScopedSectionWrapper({
   section: 'review' | 'exam' | 'mock' | 'literature' | 'essays' | 'verbs' | 'vocab';
   studentState: StudentState;
   onRecordAnswer: (questionId: string, isCorrect: boolean) => void;
-  onRecordResult: (record: ExamResultRecord, grade: EducationalGrade) => Promise<void>;
+  onRecordResult?: (record: ExamResultRecord, grade: EducationalGrade) => Promise<void>;
   onSelectLesson: (lesson: Lesson) => void;
 }) {
   const { gradeId } = useParams<{ gradeId: string }>();
@@ -115,8 +115,7 @@ function ScopedSectionWrapper({
     case 'exam':
       return (
         <ExamEngine
-          onRecordAnswer={onRecordAnswer}
-          onRecordResult={(record) => onRecordResult(record, effectiveGrade)}
+          onRecordResult={onRecordResult ? (record) => onRecordResult(record, effectiveGrade) : undefined}
           grade={effectiveGrade}
           onSelectGrade={(g) => navigate(`/grade/${g}/exam`)}
         />
@@ -351,24 +350,17 @@ function MainAppContent() {
           const merged: StudentState = {
             ...cloudData,
             name: cloudData.name || user.displayName || currentLocal.name,
-            xp: Math.max(cloudData.xp || 0, currentLocal.xp || 0),
+            // XP and exam totals are server-owned; local browser values are never authoritative.
+            xp: Number(cloudData.xp) || 0,
             completedLessonIds: Array.from(
               new Set([...(cloudData.completedLessonIds || []), ...(currentLocal.completedLessonIds || [])])
             ),
             bookmarkedQuestionIds: Array.from(
               new Set([...(cloudData.bookmarkedQuestionIds || []), ...(currentLocal.bookmarkedQuestionIds || [])])
             ),
-            totalQuestionsAttempted: Math.max(
-              cloudData.totalQuestionsAttempted || 0,
-              currentLocal.totalQuestionsAttempted || 0
-            ),
-            totalQuestionsCorrect: Math.max(
-              cloudData.totalQuestionsCorrect || 0,
-              currentLocal.totalQuestionsCorrect || 0
-            ),
-            unlockedBadges: Array.from(
-              new Set([...(cloudData.unlockedBadges || []), ...(currentLocal.unlockedBadges || [])])
-            ),
+            totalQuestionsAttempted: Number(cloudData.totalQuestionsAttempted) || 0,
+            totalQuestionsCorrect: Number(cloudData.totalQuestionsCorrect) || 0,
+            unlockedBadges: cloudData.unlockedBadges || [],
             selectedGrade: cloudData.selectedGrade || currentLocal.selectedGrade || selectedGrade,
             answeredExercises: {
               ...(cloudData.answeredExercises || {}),
@@ -850,7 +842,6 @@ function MainAppContent() {
             path="/exam"
             element={
               <ExamEngine
-                onRecordAnswer={handleRecordQuestionAnswer}
                 onRecordResult={(record) => handleRecordExamResult(record, selectedGrade)}
                 grade={selectedGrade}
                 onSelectGrade={handleSelectGrade}
