@@ -163,36 +163,36 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
   };
 
   return (
-    <div className="space-y-6 pb-20 max-w-5xl mx-auto">
+    <div className="lesson-reading space-y-6 pb-20 max-w-5xl mx-auto">
       
       {/* Header & Mode Switcher */}
-      <div className="p-5 sm:p-6 bg-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] flex flex-col gap-5">
+      <div className="p-5 sm:p-6 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex flex-col gap-5">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#E9FF57] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-mono font-black mb-2">
-              <HelpCircle className="w-3.5 h-3.5 text-[#304FFE]" />
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-black mb-2">
+              <HelpCircle className="w-3.5 h-3.5 text-[#405DE6]" />
               <span>{gradeMeta.isMinisterial ? `MINISTERIAL ARCHIVE // ${gradeMeta.nameAr}` : `ACADEMIC QUESTION BANK // ${gradeMeta.nameAr}`}</span>
             </div>
-            <h1 className="font-display text-xl sm:text-3xl font-black text-[#171717]">
+            <h1 className="font-display text-xl sm:text-3xl font-black text-[#202124]">
               محرك الاختبارات وبنك الأسئلة • {gradeMeta.nameAr}
             </h1>
-            <p className="text-xs sm:text-sm text-[#171717]/70 font-medium mt-1">
+            <p className="text-xs sm:text-sm text-[#202124]/70 font-medium mt-1">
               مستخلصة من الدفاتر الامتحانية الرسمية لوزارة التربية العراقية مع الشرح والحل النموذجي بإشراف الأستاذ مصطفى تركي
             </p>
           </div>
 
           {/* Toggle Mode */}
-          <div className="flex flex-wrap items-center p-1 bg-[#F4EFE3] border-2 border-[#171717] gap-1">
+          <div className="flex flex-wrap items-center p-1 bg-[#F7F5EF] border-2 border-[#202124] gap-1">
             <button
               id="mode-full-mock-btn"
               onClick={() => setMode('full-mock')}
               className={`px-3.5 py-1.5 text-xs sm:text-sm font-black transition-all flex items-center gap-1.5 cursor-pointer border ${
                 mode === 'full-mock'
-                  ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                  : 'bg-transparent text-[#171717] border-transparent hover:bg-white'
+                  ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                  : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
               }`}
             >
-              <Trophy className="w-3.5 h-3.5 text-[#E9FF57]" />
+              <Trophy className="w-3.5 h-3.5 text-[#F3E6A5]" />
               <span>{gradeMeta.isMinisterial ? 'محاكي الامتحان الوزاري الشامل (100 د)' : 'محاكي الامتحان النهائي الشامل (100 د)'}</span>
             </button>
             
@@ -201,8 +201,8 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
               onClick={() => setMode('practice')}
               className={`px-3.5 py-1.5 text-xs sm:text-sm font-black transition-all cursor-pointer border ${
                 mode === 'practice'
-                  ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                  : 'bg-transparent text-[#171717] border-transparent hover:bg-white'
+                  ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                  : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
               }`}
             >
               بنك الأسئلة والبحث
@@ -213,8 +213,8 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
               onClick={() => setMode('mock')}
               className={`px-3.5 py-1.5 text-xs sm:text-sm font-black transition-all cursor-pointer border ${
                 mode === 'mock'
-                  ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                  : 'bg-transparent text-[#171717] border-transparent hover:bg-white'
+                  ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                  : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
               }`}
             >
               تحدي 10 أسئلة سريعة
@@ -223,10 +223,10 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
         </div>
 
         {/* Grade Isolation Badge */}
-        <div className="pt-3 border-t-2 border-[#171717] flex items-center justify-between gap-3">
+        <div className="pt-3 border-t-2 border-[#202124] flex items-center justify-between gap-3">
           <div className="flex items-center gap-2">
-            <span className="text-xs font-mono font-bold text-[#171717]">الأسئلة مقيدة بحسب:</span>
-            <span className="px-2.5 py-0.5 bg-[#304FFE] text-white font-black text-xs border border-[#171717]">
+            <span className="text-xs font-mono font-bold text-[#202124]">الأسئلة مقيدة بحسب:</span>
+            <span className="px-2.5 py-0.5 bg-[#405DE6] text-white font-black text-xs border border-[#202124]">
               {gradeMeta.nameAr}
             </span>
           </div>
@@ -250,16 +250,16 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
         <div className="space-y-6">
           
           {/* Filter Bar */}
-          <div className="p-4 sm:p-5 bg-white border-3 border-[#171717] shadow-[3px_3px_0px_#171717] space-y-3">
+          <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[3px_3px_0px_#202124] space-y-3">
             <div className="relative">
-              <Search className="w-4 h-4 text-[#171717]/60 absolute right-3.5 top-3.5" />
+              <Search className="w-4 h-4 text-[#202124]/60 absolute right-3.5 top-3.5" />
               <input
                 id="search-exam-input"
                 type="text"
                 placeholder="ابحث عن سؤال، موضوع، أو قاعدة (مثلاً: used to, While, Zaid)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pr-10 pl-4 py-2 bg-[#F4EFE3] border-2 border-[#171717] text-xs font-bold text-[#171717] placeholder:text-[#171717]/50 focus:outline-none focus:bg-white transition-colors"
+                className="w-full pr-10 pl-4 py-2 bg-[#F7F5EF] border-2 border-[#202124] text-xs font-bold text-[#202124] placeholder:text-[#202124]/50 focus:outline-none focus:bg-white transition-colors"
               />
             </div>
 
@@ -267,7 +267,7 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
               <select
                 value={selectedUnit}
                 onChange={(e) => setSelectedUnit(e.target.value)}
-                className="p-2 bg-white border-2 border-[#171717] text-[#171717] focus:outline-none cursor-pointer"
+                className="p-2 bg-white border-2 border-[#202124] text-[#202124] focus:outline-none cursor-pointer"
               >
                 <option value="all">جميع الوحدات</option>
                 <option value="1">الوحدة 1</option>
@@ -282,7 +282,7 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
               <select
                 value={selectedYear}
                 onChange={(e) => setSelectedYear(e.target.value)}
-                className="p-2 bg-white border-2 border-[#171717] text-[#171717] focus:outline-none cursor-pointer"
+                className="p-2 bg-white border-2 border-[#202124] text-[#202124] focus:outline-none cursor-pointer"
               >
                 <option value="all">جميع السنوات (2014-2025)</option>
                 <option value="2025">2025</option>
@@ -301,7 +301,7 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
               <select
                 value={selectedCategory}
                 onChange={(e) => setSelectedCategory(e.target.value)}
-                className="p-2 bg-white border-2 border-[#171717] text-[#171717] focus:outline-none cursor-pointer"
+                className="p-2 bg-white border-2 border-[#202124] text-[#202124] focus:outline-none cursor-pointer"
               >
                 <option value="all">جميع الأقسام</option>
                 <option value="Grammar">قواعد (Grammar)</option>
@@ -317,7 +317,7 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
                   setSelectedYear('all');
                   setSelectedCategory('all');
                 }}
-                className="p-2 bg-[#F4EFE3] hover:bg-white text-[#171717] border-2 border-[#171717] font-black transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
+                className="p-2 bg-[#F7F5EF] hover:bg-white text-[#202124] border-2 border-[#202124] font-black transition-colors flex items-center justify-center gap-1.5 cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>إعادة الضبط</span>
@@ -327,16 +327,16 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
 
           {/* Question List */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between text-xs font-mono text-[#171717]/80 px-1 font-bold">
+            <div className="flex items-center justify-between text-xs font-mono text-[#202124]/80 px-1 font-bold">
               <span>SHOWING {filteredQuestions.length} QUESTIONS</span>
               <span>انقر لكشف الحل والتعليل الوزاري</span>
             </div>
 
             {filteredQuestions.length === 0 ? (
-              <div className="p-10 text-center bg-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] space-y-3">
-                <HelpCircle className="w-10 h-10 mx-auto text-[#171717]" />
-                <p className="font-black text-[#171717] text-base">لا توجد أسئلة تطابق معايير البحث الحالية</p>
-                <p className="text-xs text-[#171717]/60">جرب تغيير السنة أو الوحدة المختارة</p>
+              <div className="p-10 text-center bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3">
+                <HelpCircle className="w-10 h-10 mx-auto text-[#202124]" />
+                <p className="font-black text-[#202124] text-base">لا توجد أسئلة تطابق معايير البحث الحالية</p>
+                <p className="text-xs text-[#202124]/60">جرب تغيير السنة أو الوحدة المختارة</p>
               </div>
             ) : (
               filteredQuestions.map((q) => {
@@ -346,29 +346,29 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
                   <div
                     key={q.id}
                     id={`ministerial-question-${q.id}`}
-                    className="p-5 sm:p-6 bg-white border-3 border-[#171717] shadow-[3px_3px_0px_#171717] hover:shadow-[5px_5px_0px_#171717] hover:-translate-y-0.5 transition-all space-y-4"
+                    className="p-5 sm:p-6 bg-white border-3 border-[#202124] shadow-[3px_3px_0px_#202124] hover:shadow-[5px_5px_0px_#202124] hover:-translate-y-0.5 transition-all space-y-4"
                   >
-                    <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#171717] pb-3">
+                    <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#202124] pb-3">
                       <div className="flex items-center gap-2">
-                        <span className="text-xs font-black font-mono px-2 py-0.5 bg-[#304FFE] text-white border border-[#171717]">
+                        <span className="text-xs font-black font-mono px-2 py-0.5 bg-[#405DE6] text-white border border-[#202124]">
                           UNIT {q.unitId}
                         </span>
-                        <span className="text-xs font-black text-[#171717]">
+                        <span className="text-xs font-black text-[#202124]">
                           {q.topic}
                         </span>
                       </div>
 
                       <div className="flex items-center gap-1.5 text-[11px] font-mono font-bold">
-                        <span className="px-2 py-0.2 bg-[#E9FF57] text-[#171717] border border-[#171717]">
+                        <span className="px-2 py-0.2 bg-[#F3E6A5] text-[#202124] border border-[#202124]">
                           YEAR {q.year} • {q.session}
                         </span>
-                        <span className="px-2 py-0.2 bg-[#F4EFE3] text-[#171717] border border-[#171717]">
+                        <span className="px-2 py-0.2 bg-[#F7F5EF] text-[#202124] border border-[#202124]">
                           {q.category}
                         </span>
                       </div>
                     </div>
 
-                    <p dir="ltr" className="text-base sm:text-lg font-black text-[#171717] text-left en-sentence font-mono">
+                    <p dir="ltr" className="text-base sm:text-lg font-black text-[#202124] text-left en-sentence font-mono">
                       {q.questionText}
                     </p>
 
@@ -408,15 +408,11 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
                     </div>
 
                     {isRevealed && (
-                      <div className="mt-3 p-4 rounded-2xl bg-indigo-50/80 border border-indigo-100 space-y-2 text-right">
-                        <div className="flex flex-wrap items-center gap-2">
-                          <span className="text-xs font-bold text-indigo-900">الجواب الوزاري النموذجي:</span>
-                          <span dir="ltr" className="font-mono text-sm font-black text-emerald-700 bg-white px-2.5 py-0.5 rounded-lg border border-emerald-200 bidi-en">
-                            {q.correctAnswer}
-                          </span>
-                        </div>
-                        <p className="text-xs text-slate-700 leading-relaxed">
-                          <span className="font-bold text-slate-900">التعليل وقاعدة الحل: </span>
+                      <div className="lesson-answer">
+                        <span className="lesson-answer__label">الإجابة النموذجية</span>
+                        <p dir="ltr" className="lesson-answer__value">{q.correctAnswer}</p>
+                        <p className="lesson-answer__explanation">
+                          <span className="font-bold">التعليل وقاعدة الحل: </span>
                           {q.ruleExplanation}
                         </p>
                       </div>
