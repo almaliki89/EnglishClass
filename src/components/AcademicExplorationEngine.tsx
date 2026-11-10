@@ -184,37 +184,37 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
     : lesson.detailedContent;
 
   return (
-    <div className="space-y-6 text-[#171717]">
+    <div className="space-y-6 text-[#202124]">
       
       {/* Pedagogical Control Bar */}
-      <div className="p-4 sm:p-5 bg-white border-4 border-[#171717] text-[#171717] shadow-[6px_6px_0px_#171717] flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+      <div className="p-4 sm:p-5 bg-white border-4 border-[#202124] text-[#202124] shadow-[6px_6px_0px_#202124] flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
         
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 bg-[#304FFE] text-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center font-black text-xl shrink-0">
+          <div className="w-11 h-11 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center font-black text-xl shrink-0">
             <Cpu className="w-6 h-6" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 bg-[#E9FF57] text-[#171717] text-[10px] font-mono font-black tracking-wider uppercase border border-[#171717]">
+              <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] text-[10px] font-mono font-black tracking-wider uppercase border border-[#202124]">
                 ACADEMIC DISSECTION ENGINE
               </span>
-              <span className="text-xs font-mono font-bold text-[#171717]/60">• تفصيل وشرح المحتوى</span>
+              <span className="text-xs font-mono font-bold text-[#202124]/60">• تفصيل وشرح المحتوى</span>
             </div>
-            <h2 className="text-base sm:text-lg font-black text-[#171717] mt-0.5">
+            <h2 className="text-base sm:text-lg font-black text-[#202124] mt-0.5">
               مختبر الشرح والتفكيك الأكاديمي والوزاري
             </h2>
           </div>
         </div>
 
         {/* 4 Interactive Pedagogical Lenses */}
-        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#F4EFE3] border-2 border-[#171717] shadow-[2px_2px_0px_#171717]">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
           
           <button
             onClick={() => setActiveLens('dissect')}
             className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
               activeLens === 'dissect' 
-                ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]' 
-                : 'bg-white text-[#171717] border-transparent hover:border-[#171717]'
+                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
+                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
@@ -225,8 +225,8 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
             onClick={() => setActiveLens('mindmap')}
             className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
               activeLens === 'mindmap' 
-                ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]' 
-                : 'bg-white text-[#171717] border-transparent hover:border-[#171717]'
+                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
+                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
             }`}
           >
             <GitBranch className="w-3.5 h-3.5" />
@@ -237,8 +237,8 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
             onClick={() => setActiveLens('contrast')}
             className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
               activeLens === 'contrast' 
-                ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]' 
-                : 'bg-white text-[#171717] border-transparent hover:border-[#171717]'
+                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
+                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
             }`}
           >
             <ArrowLeftRight className="w-3.5 h-3.5" />
@@ -249,8 +249,8 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
             onClick={() => setActiveLens('stepper')}
             className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
               activeLens === 'stepper' 
-                ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]' 
-                : 'bg-white text-[#171717] border-transparent hover:border-[#171717]'
+                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
+                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
             }`}
           >
             <Target className="w-3.5 h-3.5" />
@@ -643,17 +643,17 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
       {lesson.teacherNotes && lesson.teacherNotes.length > 0 && (
         <div 
           id="teacher-golden-notes-box"
-          className="p-6 sm:p-7 bg-[#E9FF57]/30 border-4 border-[#171717] shadow-[6px_6px_0px_#171717] space-y-3.5"
+          className="p-6 sm:p-7 bg-[#F3E6A5]/30 border-4 border-[#202124] shadow-[6px_6px_0px_#202124] space-y-3.5"
         >
-          <div className="flex items-center gap-2 text-[#171717] font-black text-sm sm:text-base border-b-2 border-[#171717] pb-2">
-            <Lightbulb className="w-5 h-5 text-[#304FFE] fill-[#304FFE]" />
+          <div className="flex items-center gap-2 text-[#202124] font-black text-sm sm:text-base border-b-2 border-[#202124] pb-2">
+            <Lightbulb className="w-5 h-5 text-[#405DE6] fill-[#405DE6]" />
             <span>ملاحظات الأستاذ مصطفى تركي الذهبية للوزاري 2026/2027</span>
           </div>
 
           <div className="space-y-2.5">
             {lesson.teacherNotes.map((note, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#171717] font-bold leading-relaxed bg-white p-3 border-2 border-[#171717] shadow-[2px_2px_0px_#171717]">
-                <span className="text-[#FF5738] font-mono font-black shrink-0 text-base">✦</span>
+              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#202124] font-bold leading-relaxed bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
+                <span className="text-[#F2A18E] font-mono font-black shrink-0 text-base">✦</span>
                 <p>{note}</p>
               </div>
             ))}
@@ -665,17 +665,17 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
       {lesson.commonMistakes && lesson.commonMistakes.length > 0 && (
         <div 
           id="common-mistakes-box"
-          className="p-6 sm:p-7 bg-[#FF5738]/15 border-4 border-[#171717] shadow-[6px_6px_0px_#171717] space-y-3.5"
+          className="p-6 sm:p-7 bg-[#F2A18E]/15 border-4 border-[#202124] shadow-[6px_6px_0px_#202124] space-y-3.5"
         >
-          <div className="flex items-center gap-2 text-[#171717] font-black text-sm sm:text-base border-b-2 border-[#171717] pb-2">
-            <ShieldAlert className="w-5 h-5 text-[#FF5738]" />
+          <div className="flex items-center gap-2 text-[#202124] font-black text-sm sm:text-base border-b-2 border-[#202124] pb-2">
+            <ShieldAlert className="w-5 h-5 text-[#F2A18E]" />
             <span>فخاخ وزارية شائعة احذر الوقوع بها في الدفتر الامتحاني</span>
           </div>
 
           <div className="space-y-2.5">
             {lesson.commonMistakes.map((mistake, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#171717] leading-relaxed bg-white p-3 border-2 border-[#171717] shadow-[2px_2px_0px_#171717] font-bold">
-                <X className="w-4 h-4 text-[#FF5738] shrink-0 mt-0.5 font-black" />
+              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#202124] leading-relaxed bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-bold">
+                <X className="w-4 h-4 text-[#F2A18E] shrink-0 mt-0.5 font-black" />
                 <p>{mistake}</p>
               </div>
             ))}
