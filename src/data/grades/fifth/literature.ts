@@ -31,7 +31,16 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
     ],
     genre: "Classic Semi-Autobiographical Coming-of-Age Novel",
     genreAr: "رواية كلاسيكية شبه ذاتية عن النضج والنشأة الأدبية",
-    image: "/assets/literature/little_women.webp",
+    image: "/assets/images/little_women_scene_1794251359174.jpg",
+    imageCaptionAr: "الشقيقات الأربع من عائلة مارتش (ميغ، وجو تكتب مسرحياتها، وبيث تعزف البيانو، وإيمي ترسم) في منزلهن الدافئ بنيو إنغلاند.",
+    imageCaptionEn: "The four March sisters (Meg, Jo writing her stories, Beth at the piano, and Amy painting) in their warm New England living room.",
+    galleryImages: [
+      {
+        url: "/assets/images/little_women_scene_1794251359174.jpg",
+        captionAr: "فتيات مارتش في غرفة المعيشة: جو المستقلة تكتب بشغف وإيمي ترسم وبيث تعزف الموسيقى.",
+        captionEn: "The March sisters in their living room: independent Jo writing with passion, Amy painting, and Beth playing music."
+      }
+    ],
     summaryAr: "تروي الرواية قصة حياة أربع شقيقات من عائلة مارتش (ميغ، جو، بيث، وإيمي) أثناء غياب والدهن للخدمة كقسيس في الجيش خلال الحرب الأهلية الأمريكية. تناضل الفتيات مع والدتهن الحبيبة (مارمي) ضد الفقر والحرمان بروح ملؤها الكرم والمحبة والإيثار، ويتعلمن دروساً عميقة في التغلب على عيوبهن الشخصية وصنع الفرح من أبسط الأشياء مع جارهن الثري لوري وجده السيد لورنس.",
     summaryEn: "Little Women chronicles the lives and moral growth of four sisters—Meg, Jo, Beth, and Amy March—living in modest circumstances in New England while their father serves as an army chaplain in the American Civil War. Guided by their affectionate mother (Marmee), the sisters navigate poverty, societal expectations, personal ambitions, and family devotion.",
     keyThemes: [
@@ -179,7 +188,16 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
     ],
     genre: "Jacobean Dramatic Romance / Romantic Comedy",
     genreAr: "مسرحية رومانسية درامية خيالية (العصر اليعقوبي)",
-    image: "/assets/literature/the_tempest.webp",
+    image: "/assets/images/the_tempest_scene_1794251373907.jpg",
+    imageCaptionAr: "الساحر بروسبيرو يرفع عصاه على صخور الجزيرة السحرية مستحضراً العاصفة، بجانبه روح الهواء أرييل وابنته الرقيقة ميراندا.",
+    imageCaptionEn: "Sorcerer Prospero raising his magical staff on the island cliff summoning the tempest, with spirit Ariel and compassionate Miranda.",
+    galleryImages: [
+      {
+        url: "/assets/images/the_tempest_scene_1794251373907.jpg",
+        captionAr: "بروسبيرو وأرييل وميراندا ومشهد استحضار العاصفة البحرية على الجزيرة السحرية.",
+        captionEn: "Prospero, Ariel, and Miranda witnessing the dramatic tempest raised over the magical island."
+      }
+    ],
     summaryAr: "تدور المسرحية على جزيرة سحرية نائية في البحر الأبيض المتوسط. بطلها بروسبيرو، دوق ميلانو الشرعي، الذي استولى أخوه الخائن أنطونيو على عرشه بمساعدة ألونسو ملك نابولي ونفاه مع طفلته الرضيعة ميراندا في قارب متهالك إلى البحر. يتعلم بروسبيرو فنون السحر ويسيطر على روح الهواء 'أرييل' والكائن المتوحش 'كاليبان'. وبعد 12 عاماً، يستحضر بروسبيرو عاصفة بحرية هائلة تجلب سفينة أعدائه إلى شاطئ الجزيرة، لكنه بدلاً من الانتقام الدامي يختار الحكمة والعفو والصفح ويزوج ابنته ميراندا للأمير فرديناند ويستعيد دوقيته بسلام.",
     summaryEn: "Set on a remote magical Mediterranean island, The Tempest follows Prospero, the rightful Duke of Milan, who was usurped by his ambitious brother Antonio with the help of Alonso, King of Naples. Exiled with his infant daughter Miranda, Prospero masters the magic arts and controls the spirit Ariel and the earth-bound monster Caliban. When a ship carrying his treacherous enemies passes by, Prospero raises a tempest to bring them to justice, ultimately choosing reconciliation and forgiveness over vengeance.",
     keyThemes: [

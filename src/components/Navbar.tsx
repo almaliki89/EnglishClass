@@ -53,15 +53,20 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const currentGradeMeta = getGradeMeta(selectedGrade);
   const isMinisterial = currentGradeMeta.isMinisterial;
-  const isPortal = location.pathname === '/grades';
+  
+  // Grade scope detection: Options appear ONLY when inside a selected grade
+  const isInsideGrade =
+    location.pathname.startsWith('/grade/') ||
+    location.pathname.startsWith('/lesson/') ||
+    location.pathname.startsWith('/unit/');
 
   const litLabel =
     selectedGrade === 'third-intermediate'
       ? 'قصص الثالث (Story Time)'
       : 'الأدب والنصوص';
 
-  // Home path points to the dedicated grade dashboard when inside a grade
-  const homePath = `/grade/${selectedGrade}`;
+  // Home path points to the main Grade Selection view
+  const homePath = '/';
 
   const navItems: NavItem[] = [
     { id: 'dashboard', path: homePath, label: 'الرئيسية', icon: Home },
@@ -91,12 +96,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const isItemActive = (item: NavItem) => {
     if (item.id === 'dashboard') {
-      return (
-        location.pathname === '/' ||
-        location.pathname === '/subjects' ||
-        location.pathname === `/grade/${selectedGrade}` ||
-        location.pathname.startsWith(`/grade/${selectedGrade}/unit`)
-      );
+      return location.pathname === '/' || location.pathname === '/grades';
     }
     return location.pathname.startsWith(item.path);
   };
@@ -111,7 +111,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div className="flex items-center gap-2.5 sm:gap-4 shrink-0 select-none">
             <Link 
               id="brand-logo"
-              to={`/grade/${selectedGrade}`}
+              to="/"
               className="flex items-center gap-2.5 group shrink-0"
             >
               <div className="w-10 h-10 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0 group-hover:-translate-y-0.5 group-hover:-translate-x-0.5 group-hover:shadow-[3px_3px_0px_#202124] transition-all">
@@ -122,10 +122,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                   <span className="font-display font-extrabold text-base sm:text-lg text-[#202124] tracking-tight whitespace-nowrap">
                     النموذجية
                   </span>
-                  <span className="text-xs text-[#777873] font-mono hidden sm:inline">/</span>
-                  <span className="text-xs font-bold text-[#405DE6] hidden sm:inline font-mono">
-                    {currentGradeMeta.shortName}
-                  </span>
+                  {isInsideGrade && (
+                    <>
+                      <span className="text-xs text-[#777873] font-mono hidden sm:inline">/</span>
+                      <span className="text-xs font-bold text-[#405DE6] hidden sm:inline font-mono">
+                        {currentGradeMeta.shortName}
+                      </span>
+                    </>
+                  )}
                 </div>
                 <div className="flex items-center gap-1.5">
                   <span className="text-[10px] font-mono uppercase bg-[#F3E6A5] text-[#202124] border border-[#202124] px-1 py-0.2 font-bold">
@@ -138,35 +142,32 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             </Link>
 
-            {/* Strict Grade Isolation: Current Grade Stamp + Exit to Grades Portal Button */}
-            <div className="flex items-center gap-2">
-              <div className="hidden xs:flex items-center gap-1.5 px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-mono font-bold text-[#202124]">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
-                <span className="text-[#405DE6]">{currentGradeMeta.shortName}</span>
-                {isMinisterial && (
-                  <span className="text-[9px] px-1 py-0.2 bg-[#F2A18E] text-[#202124] font-mono font-bold border border-[#202124]">
-                    وزاري
-                  </span>
-                )}
-              </div>
+            {/* Current Grade Stamp + Switch Grade Button (Shown inside a grade) */}
+            {isInsideGrade && (
+              <div className="flex items-center gap-2">
+                <div className="hidden xs:flex items-center gap-1.5 px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-mono font-bold text-[#202124]">
+                  <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
+                  <span className="text-[#405DE6]">{currentGradeMeta.shortName}</span>
+                  {isMinisterial && (
+                    <span className="text-[9px] px-1 py-0.2 bg-[#F2A18E] text-[#202124] font-mono font-bold border border-[#202124]">
+                      وزاري
+                    </span>
+                  )}
+                </div>
 
-              {/* Exit / Switch Grade button (No other grades shown here) */}
-              <button
-                id="grade-portal-exit-btn"
-                onClick={() => {
-                  playPopSound();
-                  navigate('/grades');
-                }}
-                className={`flex items-center gap-1 px-2.5 py-1 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] text-xs font-bold cursor-pointer transition-all ${
-                  isPortal
-                    ? 'bg-[#405DE6] text-white'
-                    : 'bg-[#F3E6A5] hover:bg-[#e4d896] text-[#202124]'
-                }`}
-                title="الخروج إلى صفحة اختيار الصفوف الرئيسية"
-              >
-                <span>{isPortal ? 'بوابة الصفوف' : 'تغيير الصف ↩'}</span>
-              </button>
-            </div>
+                <button
+                  id="grade-portal-exit-btn"
+                  onClick={() => {
+                    playPopSound();
+                    navigate('/');
+                  }}
+                  className="flex items-center gap-1 px-2.5 py-1 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] text-xs font-bold cursor-pointer transition-all bg-[#F3E6A5] hover:bg-[#e4d896] text-[#202124]"
+                  title="تغيير الصف الدراسي"
+                >
+                  <span>تغيير الصف ↩</span>
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Left Zone: Action Hub (Resume + Streak/XP + Sound FX + Profile) */}
@@ -257,39 +258,41 @@ export const Navbar: React.FC<NavbarProps> = ({
         </div>
       </div>
 
-      {/* Dedicated Navigation Sub-Bar (Strictly Scoped) */}
-      <div className="bg-[#F7F5EF] border-t border-[#202124]/15">
-        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-1.5 py-1.5 overflow-x-auto no-scrollbar scroll-smooth">
-            {navItems.map((item) => {
-              const active = isItemActive(item);
-              const Icon = item.icon;
-              return (
-                <button
-                  key={item.id}
-                  id={`nav-${item.id}-btn`}
-                  onClick={() => {
-                    playPopSound();
-                    navigate(item.path);
-                  }}
-                  className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 whitespace-nowrap cursor-pointer border-2 ${
-                    active
-                      ? item.highlight
-                        ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
-                        : 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
-                      : item.highlight
-                        ? 'bg-white text-[#F2A18E] border-[#202124] hover:bg-[#F2A18E] hover:text-[#202124]'
-                        : 'bg-transparent text-[#202124] border-transparent hover:border-[#202124] hover:bg-white'
-                  }`}
-                >
-                  <Icon className={`w-3.5 h-3.5 ${active ? 'text-current' : 'text-[#777873]'}`} />
-                  <span>{item.label}</span>
-                </button>
-              );
-            })}
-          </nav>
+      {/* Dedicated Navigation Sub-Bar (Shown ONLY when inside a selected grade) */}
+      {isInsideGrade && (
+        <div className="bg-[#F7F5EF] border-t border-[#202124]/15">
+          <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+            <nav className="flex items-center gap-1.5 py-1.5 overflow-x-auto no-scrollbar scroll-smooth">
+              {navItems.map((item) => {
+                const active = isItemActive(item);
+                const Icon = item.icon;
+                return (
+                  <button
+                    key={item.id}
+                    id={`nav-${item.id}-btn`}
+                    onClick={() => {
+                      playPopSound();
+                      navigate(item.path);
+                    }}
+                    className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 whitespace-nowrap cursor-pointer border-2 ${
+                      active
+                        ? item.highlight
+                          ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
+                          : 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                        : item.highlight
+                          ? 'bg-white text-[#F2A18E] border-[#202124] hover:bg-[#F2A18E] hover:text-[#202124]'
+                          : 'bg-transparent text-[#202124] border-transparent hover:border-[#202124] hover:bg-white'
+                    }`}
+                  >
+                    <Icon className={`w-3.5 h-3.5 ${active ? 'text-current' : 'text-[#777873]'}`} />
+                    <span>{item.label}</span>
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };

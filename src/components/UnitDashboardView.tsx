@@ -93,7 +93,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
   };
 
   const breadcrumbs = [
-    { label: 'بوابة الصفوف', onClick: () => navigate('/grades') },
+    { label: 'الرئيسية', onClick: () => navigate('/') },
     { label: gradeMeta.nameAr, onClick: () => navigate(`/grade/${validGrade}`) },
     { label: 'اللغة الإنكليزية', onClick: () => navigate(`/grade/${validGrade}`) },
     { label: `الوحدة 0${currentUnit.id}: ${currentUnit.titleAr}` },

@@ -31,7 +31,16 @@ export const FOURTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
     ],
     genre: "Classic Nautical Pirate Adventure Novel",
     genreAr: "رواية مغامرات قراصنة وأبحر كلاسيكية",
-    image: "/assets/literature/treasure_island.webp",
+    image: "/assets/images/treasure_island_scene_1794251330821.jpg",
+    imageCaptionAr: "جيم هوكينز مع القرصان لونغ جون سيلفر وخريطة كنز الكابتن فلينت على شاطئ الجزيرة الاستوائية وأمامهما سفينة هسبانيولا.",
+    imageCaptionEn: "Jim Hawkins with pirate Long John Silver examining Captain Flint's treasure map on the island shore with the Hispaniola anchored in the bay.",
+    galleryImages: [
+      {
+        url: "/assets/images/treasure_island_scene_1794251330821.jpg",
+        captionAr: "جيم هوكينز والقرصان ذو الساق الخشبية لونغ جون سيلفر وخريطة الكنز على شاطئ جزيرة الكنز.",
+        captionEn: "Jim Hawkins and one-legged pirate Long John Silver with the treasure map on Treasure Island."
+      }
+    ],
     summaryAr: "تبدأ الرواية في نزل يملكه والد الصبي الشاب جيم هوكينز (Jim Hawkins)، حيث ينزل بحار قاسي يُدعى بيلي بونز يحمل مفتاح صندوق بحري سري. بعد مقتل بيلي بونز على يد القراصنة، يعثر جيم على الخريطة الأسطورية لكنز الكابتن فلينت الشرير (Captain Flint). يبحر جيم مع الدكتور ليفسي والسيد تريلوني على متن السفينة هسبانيولا، لكن طباخ السفينة ذو الرجل الخشبية لونغ جون سيلفر (Long John Silver) يقود تمرداً خفياً للقراصنة للاستولاء على الخريطة. وعلى الجزيرة المعزولة، يلتقي جيم مع بن غان (Ben Gunn) المتروك هناك منذ 3 سنوات، والذي نجح في استخراج الكنز ونقله إلى كهفه الآمن، لينتصر جيم وحلفاؤه ويتغلبوا على القراصنة.",
     summaryEn: "Treasure Island tells the thrilling adventure of young Jim Hawkins, who discovers a mysterious treasure map in the sea chest of a deceased pirate at his parents' inn. Joining Dr. Livesey and Squire Trelawney aboard the Hispaniola, Jim sets sail for a uncharted island. However, the ship's cook, the one-legged pirate Long John Silver, leads a bloody mutiny to claim Flint's buried gold. Guided by courage and aided by Ben Gunn, a marooned sailor, Jim secures the treasure and outwits the mutineers.",
     keyThemes: [
@@ -154,7 +163,16 @@ export const FOURTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
     ],
     genre: "Classic Geographical Adventure & Science Romance Novel",
     genreAr: "رواية مغامرة جغرافية وخيال علمي كلاسيكية",
-    image: "/assets/literature/around_the_world.webp",
+    image: "/assets/images/around_the_world_scene_1794251344918.jpg",
+    imageCaptionAr: "فيلياس فوغ ممسكاً بساعته الدقيقة برفقة خادمه باسبارتو والأميرة أودا أمام القطار البخاري ومنطاد الهواء إبان رحلتهم حول العالم.",
+    imageCaptionEn: "Phileas Fogg checking his precision pocket watch with valet Passepartout and princess Auda before the steam locomotive and hot air balloon.",
+    galleryImages: [
+      {
+        url: "/assets/images/around_the_world_scene_1794251344918.jpg",
+        captionAr: "فيلياس فوغ وباسبارتو والأميرة أودا ومغامرة الطواف حول الكرة الأرضية في 80 يوماً.",
+        captionEn: "Phileas Fogg, Passepartout, and Auda on their circumnavigation adventure around the world."
+      }
+    ],
     summaryAr: "تدور القصة حول السادة الإنجليزي الدقيق والمتحفظ فيلياس فوغ (Phileas Fogg) الذي يقطع رهاناً بقيمة 20,000 جنيه إسترليني مع أعضاء نادi في لندن بإمكانية الطواف حول الكرة الأرضية بأكملها في 80 يوماً فقط، وذلك بفضل فتح قناة السويس وتطور شبكات السكك الحديدية والبخاريات. ينطلق فوغ مع خادمه الفرنسي النشيط باسبارتو (Passepartout). وفي هذه الأثناء، يشتبه المحقق فيكس (Detective Fix) بأن فوغ هو السارق الذي سطا على بنك إنجلترا، فيلاحقهما عبر السويس، والهند، وهونغ كونغ، واليابان، وأمريكا. يواجه فوغ خطوباً ومغامرات جمة وأنقذ الحسناء أودا (Auda) في الهند. وعند عودتهما إلى لندن يظن فوغ أنه خسر الرهان بـ 5 دقائق، لكنه يكتشف أنه كسب يوماً كاملاً (24 ساعة) بسبب سفره باتجاه الشرق عبر خطوط الطول، ليفوز بالرهان ويتزوج أودا.",
     summaryEn: "Around the World in Eighty Days narrates the daring quest of the meticulous English gentleman Phileas Fogg, who wagers £20,000 at the Reform Club that he can circumnavigate the globe in precisely 80 days using new railways and steamships. Accompanied by his French valet Passepartout, Fogg crosses Egypt, India (where he rescues Princess Auda), Hong Kong, Japan, and the United States. Unbeknownst to Fogg, Detective Fix pursues him worldwide believing he stole £55,000 from the Bank of England. Crossing the International Date Line going east, Fogg gains a day, winning the bet and marrying Auda.",
     keyThemes: [

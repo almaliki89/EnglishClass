@@ -642,16 +642,13 @@ function MainAppContent() {
             }
           />
 
-          {/* Root / Default Grade Dashboard */}
+          {/* Root / Default Grade Selection Portal */}
           <Route
             path="/"
             element={
-              <GradePageView
+              <GradesPortal
                 studentState={studentState}
                 onSelectGrade={handleSelectGrade}
-                onSelectUnit={handleSelectUnit}
-                onSelectLesson={handleSelectLesson}
-                onNavigateTab={(tab) => navigate(`/${tab}`)}
               />
             }
           />
