@@ -174,45 +174,45 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
     <div className="space-y-6 pb-16">
       
       {/* 1. Header Banner */}
-      <div className="bg-white border-3 border-[#171717] shadow-[6px_6px_0px_#171717] p-6 md:p-8 text-[#171717]">
+      <div className="bg-white border-3 border-[#202124] shadow-[6px_6px_0px_#202124] p-6 md:p-8 text-[#202124]">
         <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#E9FF57] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-mono font-black">
-            <Sparkles className="w-3.5 h-3.5 text-[#304FFE]" />
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-black">
+            <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
             <span>SMART REVIEW ENGINE // المراجعة المركزة</span>
           </div>
 
-          <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-[#171717]">
-            المراجعة المركزة • <span className="bg-[#E9FF57] px-2 py-0.5 border-2 border-[#171717] shadow-[2px_2px_0px_#171717] inline-block">{gradeMeta.nameAr}</span>
+          <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-[#202124]">
+            المراجعة المركزة • <span className="bg-[#F3E6A5] px-2 py-0.5 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] inline-block">{gradeMeta.nameAr}</span>
           </h1>
 
-          <p className="text-xs sm:text-sm text-[#171717]/80 leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm text-[#202124]/80 leading-relaxed font-medium">
             يحلل هذا القسم أداءك الحقيقي تلقائياً لـ {gradeMeta.nameAr} ويحدد مواضيع الضعف والأخطاء السابقة والأسئلة المحفوظة في مفضلتك لتمكينك من معالجتها فورياً.
           </p>
 
           <div className="flex items-center gap-2 pt-2">
-            <span className="px-3 py-1 bg-[#304FFE] text-white border-2 border-[#171717] font-black text-xs shadow-[2px_2px_0px_#171717]">
+            <span className="px-3 py-1 bg-[#405DE6] text-white border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124]">
               منصة {gradeMeta.nameAr}
             </span>
           </div>
         </div>
 
         {/* Stats Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t-2 border-[#171717]">
-          <div className="bg-[#F4EFE3] p-3.5 border-2 border-[#171717] shadow-[3px_3px_0px_#171717] text-center">
-            <span className="text-xs font-mono font-bold text-[#171717]/70 block mb-1">ACCURACY // دقة الإجابات</span>
-            <span className="text-xl sm:text-2xl font-black text-[#304FFE] font-mono">{accuracyRate}%</span>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t-2 border-[#202124]">
+          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center">
+            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">ACCURACY // دقة الإجابات</span>
+            <span className="text-xl sm:text-2xl font-black text-[#405DE6] font-mono">{accuracyRate}%</span>
           </div>
-          <div className="bg-[#F4EFE3] p-3.5 border-2 border-[#171717] shadow-[3px_3px_0px_#171717] text-center">
-            <span className="text-xs font-mono font-bold text-[#171717]/70 block mb-1">SAVED // أسئلة محفوظة</span>
-            <span className="text-xl sm:text-2xl font-black text-[#FF5738] font-mono">{bookmarkedQuestions.length}</span>
+          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center">
+            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">SAVED // أسئلة محفوظة</span>
+            <span className="text-xl sm:text-2xl font-black text-[#F2A18E] font-mono">{bookmarkedQuestions.length}</span>
           </div>
-          <div className="bg-[#F4EFE3] p-3.5 border-2 border-[#171717] shadow-[3px_3px_0px_#171717] text-center">
-            <span className="text-xs font-mono font-bold text-[#171717]/70 block mb-1">PENDING // دروس متبقية</span>
-            <span className="text-xl sm:text-2xl font-black text-[#171717] font-mono">{incompleteLessons.length}</span>
+          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center">
+            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">PENDING // دروس متبقية</span>
+            <span className="text-xl sm:text-2xl font-black text-[#202124] font-mono">{incompleteLessons.length}</span>
           </div>
-          <div className="bg-[#F4EFE3] p-3.5 border-2 border-[#171717] shadow-[3px_3px_0px_#171717] text-center">
-            <span className="text-xs font-mono font-bold text-[#171717]/70 block mb-1">NOTES // ملاحظات مدونة</span>
-            <span className="text-xl sm:text-2xl font-black text-[#171717] font-mono">{studentState.notes?.length || 0}</span>
+          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center">
+            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">NOTES // ملاحظات مدونة</span>
+            <span className="text-xl sm:text-2xl font-black text-[#202124] font-mono">{studentState.notes?.length || 0}</span>
           </div>
         </div>
       </div>
