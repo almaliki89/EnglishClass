@@ -455,9 +455,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
           )}
 
           {/* Final Boss Arena Card */}
-          <div className="p-6 sm:p-8 bg-[#F3E6A5] text-[#202124] border-4 border-[#202124] shadow-[8px_8px_0px_#202124] flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="ui-card p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="space-y-2 text-right">
-              <span className="px-2.5 py-1 bg-[#202124] text-[#F3E6A5] text-xs font-mono font-black inline-block">
+              <span className="ui-chip text-xs font-mono uppercase">
                 FINAL BOSS ARENA // المحطة الختامية
               </span>
               <h3 className="font-display text-2xl sm:text-3xl font-black text-[#202124]">
@@ -474,7 +474,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 playFanfare();
                 onNavigateTab('mock');
               }}
-              className="px-6 py-4 bg-[#202124] hover:bg-[#405DE6] text-white font-black text-sm sm:text-base border-3 border-[#202124] shadow-[4px_4px_0px_#F2A18E] flex items-center gap-2 cursor-pointer transition-all hover:-translate-y-0.5 shrink-0"
+              className="ui-button ui-button--primary shrink-0"
             >
               <Trophy className="w-5 h-5 text-[#F3E6A5]" />
               <span>دخول ساحة الامتحان الآن</span>
