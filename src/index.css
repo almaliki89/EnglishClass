@@ -450,6 +450,12 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--ds-surface-muted) !important;
   background-image: none !important;
 }
+.lesson-reading [class*="bg-slate-"][class*="text-white"],
+.lesson-reading [class*="bg-indigo-"][class*="text-white"],
+.lesson-reading [class*="bg-blue-"][class*="text-white"],
+.lesson-reading [class*="bg-emerald-"][class*="text-white"],
+.lesson-reading [class*="bg-amber-"][class*="text-white"],
+.lesson-reading [class*="bg-rose-"][class*="text-white"],
 .lesson-reading [class*="bg-slate-"] [class*="text-white"],
 .lesson-reading [class*="bg-indigo-"] [class*="text-white"],
 .lesson-reading [class*="bg-blue-"] [class*="text-white"],
