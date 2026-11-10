@@ -166,10 +166,10 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-wrap items-center justify-between gap-4 border-b-3 border-[#171717] pb-4 ${className}`}>
+    <div className={`flex flex-wrap items-center justify-between gap-4 border-b-3 border-[#202124] pb-4 ${className}`}>
       <div className="flex items-center gap-3">
         {icon && (
-          <div className="w-11 h-11 sm:w-12 sm:h-12 bg-[#304FFE] text-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center font-black text-lg shrink-0">
+          <div className="w-11 h-11 sm:w-12 sm:h-12 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center font-black text-lg shrink-0">
             {icon}
           </div>
         )}
@@ -179,11 +179,11 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
               <BrutalBadge variant={badgeVariant}>{badgeText}</BrutalBadge>
             </div>
           )}
-          <h2 className="text-xl sm:text-2xl font-black text-[#171717] tracking-tight leading-tight">
+          <h2 className="text-xl sm:text-2xl font-black text-[#202124] tracking-tight leading-tight">
             {title}
           </h2>
           {subtitle && (
-            <p className="text-xs sm:text-sm font-mono font-bold text-[#171717]/70 mt-0.5">
+            <p className="text-xs sm:text-sm font-mono font-bold text-[#202124]/70 mt-0.5">
               {subtitle}
             </p>
           )}
@@ -212,36 +212,36 @@ export const CalloutBox: React.FC<CalloutBoxProps> = ({
 }) => {
   const config = {
     golden_note: {
-      bg: 'bg-[#E9FF57]',
-      text: 'text-[#171717]',
-      border: 'border-3 border-[#171717]',
-      shadow: 'shadow-[3px_3px_0px_#171717]',
+      bg: 'bg-[#F3E6A5]',
+      text: 'text-[#202124]',
+      border: 'border-3 border-[#202124]',
+      shadow: 'shadow-[3px_3px_0px_#202124]',
       defaultTitle: 'ملاحظة الأستاذ مصطفى تركي الذهبية 💡',
-      icon: <Lightbulb className="w-5 h-5 shrink-0 text-[#171717]" />,
+      icon: <Lightbulb className="w-5 h-5 shrink-0 text-[#202124]" />,
     },
     ministerial_trap: {
-      bg: 'bg-[#FF5738]',
+      bg: 'bg-[#F2A18E]',
       text: 'text-white',
-      border: 'border-3 border-[#171717]',
-      shadow: 'shadow-[3px_3px_0px_#171717]',
+      border: 'border-3 border-[#202124]',
+      shadow: 'shadow-[3px_3px_0px_#202124]',
       defaultTitle: 'فخ وزاري - احذر منه 🚨',
       icon: <AlertTriangle className="w-5 h-5 shrink-0 text-white" />,
     },
     rule_formula: {
-      bg: 'bg-[#A8D8FF]',
-      text: 'text-[#171717]',
-      border: 'border-3 border-[#171717]',
-      shadow: 'shadow-[3px_3px_0px_#171717]',
+      bg: 'bg-[#DCD8FA]',
+      text: 'text-[#202124]',
+      border: 'border-3 border-[#202124]',
+      shadow: 'shadow-[3px_3px_0px_#202124]',
       defaultTitle: 'صيغة القاعدة الأساسية (Formula) ⚡',
-      icon: <Sparkles className="w-5 h-5 shrink-0 text-[#304FFE]" />,
+      icon: <Sparkles className="w-5 h-5 shrink-0 text-[#405DE6]" />,
     },
     info: {
       bg: 'bg-white',
-      text: 'text-[#171717]',
-      border: 'border-3 border-[#171717]',
-      shadow: 'shadow-[3px_3px_0px_#171717]',
+      text: 'text-[#202124]',
+      border: 'border-3 border-[#202124]',
+      shadow: 'shadow-[3px_3px_0px_#202124]',
       defaultTitle: 'معلومات عامة 📌',
-      icon: <CheckCircle2 className="w-5 h-5 shrink-0 text-[#304FFE]" />,
+      icon: <CheckCircle2 className="w-5 h-5 shrink-0 text-[#405DE6]" />,
     },
   }[type];
 
@@ -249,7 +249,7 @@ export const CalloutBox: React.FC<CalloutBoxProps> = ({
     <div
       className={`${config.bg} ${config.text} ${config.border} ${config.shadow} p-4 rounded-none space-y-2 ${className}`}
     >
-      <div className="flex items-center gap-2 font-black text-sm sm:text-base border-b-2 border-[#171717]/20 pb-1.5">
+      <div className="flex items-center gap-2 font-black text-sm sm:text-base border-b-2 border-[#202124]/20 pb-1.5">
         {config.icon}
         <span>{title || config.defaultTitle}</span>
       </div>
@@ -282,29 +282,29 @@ export const AccordionBlock: React.FC<AccordionBlockProps> = ({
 
   return (
     <div
-      className={`bg-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] transition-all ${className}`}
+      className={`bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] transition-all ${className}`}
     >
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-4 flex items-center justify-between gap-3 text-right bg-[#F4EFE3] hover:bg-[#eae3d2] border-b-2 border-[#171717] cursor-pointer transition-colors"
+        className="w-full p-4 flex items-center justify-between gap-3 text-right bg-[#F7F5EF] hover:bg-[#EEECE6] border-b-2 border-[#202124] cursor-pointer transition-colors"
       >
         <div className="flex items-center gap-3">
           {icon && (
-            <div className="w-8 h-8 bg-[#304FFE] text-white border border-[#171717] flex items-center justify-center shrink-0 font-black">
+            <div className="w-8 h-8 bg-[#405DE6] text-white border border-[#202124] flex items-center justify-center shrink-0 font-black">
               {icon}
             </div>
           )}
           <div>
             {badge && (
-              <span className="px-2 py-0.5 bg-[#E9FF57] text-[#171717] border border-[#171717] text-[10px] font-mono font-black uppercase tracking-wider mb-1 inline-block">
+              <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] text-[10px] font-mono font-black uppercase tracking-wider mb-1 inline-block">
                 {badge}
               </span>
             )}
-            <h3 className="text-sm sm:text-base font-black text-[#171717]">{title}</h3>
+            <h3 className="text-sm sm:text-base font-black text-[#202124]">{title}</h3>
           </div>
         </div>
-        <div className="w-8 h-8 bg-white border border-[#171717] flex items-center justify-center shrink-0 text-[#171717]">
+        <div className="w-8 h-8 bg-white border border-[#202124] flex items-center justify-center shrink-0 text-[#202124]">
           {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
         </div>
       </button>
@@ -330,25 +330,25 @@ interface BreadcrumbsNavProps {
 
 export const BreadcrumbsNav: React.FC<BreadcrumbsNavProps> = ({ items, className = '' }) => {
   return (
-    <nav className={`flex items-center flex-wrap gap-1.5 text-xs sm:text-sm font-mono font-bold text-[#171717] ${className}`}>
+    <nav className={`flex items-center flex-wrap gap-1.5 text-xs sm:text-sm font-mono font-bold text-[#202124] ${className}`}>
       {items.map((item, idx) => {
         const isLast = idx === items.length - 1;
         return (
           <React.Fragment key={idx}>
-            {idx > 0 && <ChevronLeft className="w-4 h-4 text-[#FF5738] shrink-0" />}
+            {idx > 0 && <ChevronLeft className="w-4 h-4 text-[#F2A18E] shrink-0" />}
             {isLast ? (
-              <span className="px-2 py-0.5 bg-[#E9FF57] border border-[#171717] font-black text-[#171717]">
+              <span className="px-2 py-0.5 bg-[#F3E6A5] border border-[#202124] font-black text-[#202124]">
                 {item.label}
               </span>
             ) : item.onClick ? (
               <button
                 onClick={item.onClick}
-                className="hover:underline hover:text-[#304FFE] cursor-pointer"
+                className="hover:underline hover:text-[#405DE6] cursor-pointer"
               >
                 {item.label}
               </button>
             ) : item.href ? (
-              <a href={item.href} className="hover:underline hover:text-[#304FFE]">
+              <a href={item.href} className="hover:underline hover:text-[#405DE6]">
                 {item.label}
               </a>
             ) : (
