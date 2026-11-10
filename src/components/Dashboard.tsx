@@ -24,14 +24,6 @@ interface DashboardProps {
   onSelectGrade?: (grade: EducationalGrade) => void;
 }
 
-const MASCOT_TIPS = [
-  { text: "أهلاً بك يا بطل! جاهز لرحلة الـ 100 في الإنجليزي؟ اختر محطتك وابدأ فوراً!", mood: 'waving' as const },
-  { text: "نصيحة ذهبية: مفتاح الحل الوزاري يبدأ بتحديد زمن الجملة والفاعل أولاً قبل اختيار الفعل!", mood: 'genius' as const },
-  { text: "تذكر: أفعال الحالة (know, understand, remember) لا تأخذ ing نهائياً في قواعد الرابع والسادس!", mood: 'explaining' as const },
-  { text: "في الجمل الشرطية: حدد شطر الجملة المكتمل لتعرف الشطر الناقص بكل سهولة ودون تردد!", mood: 'genius' as const },
-  { text: "استمر في التقدم! كل تمرين تحله اليوم يقربك خطوة حقيقية من العلامة الكاملة 100 🏆", mood: 'celebrating' as const },
-];
-
 export const Dashboard: React.FC<DashboardProps> = ({
   studentState,
   onSelectUnit,
@@ -49,31 +41,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
   // View Mode: 'quest-map' (Adventure Roadmap) or 'pin-feed' (Pinterest Boards)
   const [viewMode, setViewMode] = useState<'quest-map' | 'pin-feed'>('quest-map');
 
-  // Interactive Quests State
-  const [dailyQuests, setDailyQuests] = useState([
-    { id: 'q1', text: 'راجِع 3 أسئلة وزارية مع التعليل', target: 3, current: 2, completed: false, xp: 50 },
-    { id: 'q2', text: 'أكمِل درساً تفاعلياً جديداً في وحدتك', target: 1, current: 1, completed: true, xp: 75 },
-    { id: 'q3', text: 'تدرّب على 5 أفعال شاذة في الساحة', target: 5, current: 4, completed: false, xp: 40 },
-  ]);
-
-  // Mascot dynamic tips state
-  const [tipIndex, setTipIndex] = useState(0);
-
   // Search and Filter State
   const [searchQuery, setSearchQuery] = useState('');
   const [statusFilter, setStatusFilter] = useState<'all' | 'uncompleted' | 'completed'>('all');
-
-  const toggleQuest = (id: string) => {
-    playPopSound();
-    setDailyQuests(prev => prev.map(q => {
-      if (q.id === id) {
-        const nextCompleted = !q.completed;
-        if (nextCompleted) playSuccessChime();
-        return { ...q, completed: nextCompleted, current: nextCompleted ? q.target : 0 };
-      }
-      return q;
-    }));
-  };
 
   // Calculate overall grade progress
   const totalLessons = units.reduce((acc, u) => acc + u.lessons.length, 0);
@@ -81,6 +51,16 @@ export const Dashboard: React.FC<DashboardProps> = ({
     return acc + u.lessons.filter(l => studentState.completedLessonIds.includes(l.id)).length;
   }, 0);
   const overallPercentage = totalLessons > 0 ? Math.round((completedLessonsCount / totalLessons) * 100) : 0;
+
+  // Resume the student's actual in-progress lesson; otherwise choose the first incomplete lesson.
+  const allLessonEntries = units.flatMap(unit => unit.lessons.map(lesson => ({ unit, lesson })));
+  const lastVisitedLessonId =
+    studentState.gradeLastVisitedLessonMap?.[effectiveGrade] || studentState.lastVisitedLessonId;
+  const lastVisitedEntry = allLessonEntries.find(entry => entry.lesson.id === lastVisitedLessonId);
+  const nextLearningEntry =
+    (lastVisitedEntry && !studentState.completedLessonIds.includes(lastVisitedEntry.lesson.id))
+      ? lastVisitedEntry
+      : allLessonEntries.find(entry => !studentState.completedLessonIds.includes(entry.lesson.id)) || null;
 
   // Filtered Units computation
   const filteredUnits = useMemo(() => {
@@ -108,337 +88,136 @@ export const Dashboard: React.FC<DashboardProps> = ({
   }, [units, statusFilter, searchQuery, studentState.completedLessonIds]);
 
   return (
-    <div className="w-full space-y-8 pb-20">
-      
-      {/* 1. Swiss Editorial Hero Poster Section */}
-      <div className="relative overflow-hidden bg-white border-2 border-[#202124] shadow-[5px_5px_0px_#202124] p-6 sm:p-8 text-[#202124]">
-        <div className="relative z-10 space-y-5 text-right">
-          
-          {/* Top Editorial Metadata Strip */}
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-[#202124]/20 pb-3">
-            <button
-              type="button"
-              onClick={() => {
-                playPopSound();
-                setTipIndex(prev => (prev + 1) % MASCOT_TIPS.length);
-              }}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#F3E6A5] hover:bg-[#e4d896] border border-[#202124] shadow-[2px_2px_0px_#202124] text-[#202124] text-xs font-bold transition-all cursor-pointer active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
-              title="انقر للحصول على نصيحة دراسية جديدة"
-            >
-              <Lightbulb className="w-3.5 h-3.5 text-[#202124] fill-[#202124]" />
-              <span>نصيحة ذهبية: {MASCOT_TIPS[tipIndex].text}</span>
-            </button>
-
-            <div className="flex flex-wrap items-center gap-2">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-[#202124] text-xs font-mono font-bold">
-                <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
-                <span>إشراف أ. مصطفى تركي • 2026</span>
-              </span>
-
-              {isMinisterial ? (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#F2A18E] text-[#202124] border border-[#202124] text-xs font-mono font-bold">
-                  <Crown className="w-3.5 h-3.5" />
-                  <span>مرحلة وزارية مصيرية</span>
-                </span>
-              ) : (
-                <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#DCD8FA] text-[#202124] border border-[#202124] text-xs font-mono font-bold">
-                  <GraduationCap className="w-3.5 h-3.5" />
-                  <span>منهج مرحلي رسمي</span>
-                </span>
-              )}
-            </div>
-          </div>
-            
-          {/* Oversized Headline */}
-          <div className="space-y-2">
-            <div className="font-mono text-xs font-bold text-[#F2A18E] uppercase tracking-widest">
-              VOL. 26 // OFFICIAL IRAQI CURRICULUM ARCHIVE
-            </div>
-            <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-extrabold text-[#202124] leading-tight tracking-tight">
-              بوابة التفوق الوزاري واللغة الإنجليزية •{' '}
-              <span className="bg-[#F3E6A5] text-[#202124] px-2 py-0.5 border border-[#202124] shadow-[2px_2px_0px_#202124] inline-block mt-1">
-                {gradeMeta.nameAr}
-              </span>
-            </h1>
-            <p className="text-[#777873] text-xs sm:text-sm leading-relaxed max-w-3xl font-medium">
-              منهج اللغة الإنجليزية المعتمد لوزارة التربية العراقية مشروحاً بأسلوب تفاعلي منظم: تفكيك القواعد، حفظ مفاتيح الحل، تدريبات الامتحانات الوزارية، وضمان العلامة الكاملة 100 بعيداً عن التعقيد.
-            </p>
-          </div>
-
-          {/* Gamified Live Stats Chips */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 pt-2">
-            
-            <div className="p-3 bg-[#F7F5EF] border border-[#202124] shadow-[2.5px_2.5px_0px_#202124] text-center">
-              <div className="flex items-center justify-center gap-1 text-[#F2A18E] text-xs font-mono font-bold mb-1">
-                <Flame className="w-3.5 h-3.5 fill-[#F2A18E]" />
-                <span>سلسلة الحماس</span>
-              </div>
-              <div className="text-xl sm:text-2xl font-extrabold font-mono text-[#202124]">
-                {studentState.streakDays || 5}D 🔥
-              </div>
-            </div>
-
-            <div className="p-3 bg-[#F7F5EF] border border-[#202124] shadow-[2.5px_2.5px_0px_#202124] text-center">
-              <div className="flex items-center justify-center gap-1 text-[#405DE6] text-xs font-mono font-bold mb-1">
-                <Zap className="w-3.5 h-3.5 fill-[#405DE6]" />
-                <span>نقاط الخبرة XP</span>
-              </div>
-              <div className="text-xl sm:text-2xl font-extrabold font-mono text-[#202124]">
-                {studentState.xp || 420} XP
-              </div>
-            </div>
-
-            <div className="p-3 bg-[#F7F5EF] border border-[#202124] shadow-[2.5px_2.5px_0px_#202124] text-center">
-              <div className="flex items-center justify-center gap-1 text-[#202124] text-xs font-mono font-bold mb-1">
-                <CheckCircleIcon className="w-3.5 h-3.5 text-[#405DE6]" />
-                <span>الدروس المنجزة</span>
-              </div>
-              <div className="text-xl sm:text-2xl font-extrabold font-mono text-[#202124]">
-                {completedLessonsCount} / {totalLessons}
-              </div>
-            </div>
-
-            <div className="p-3 bg-[#F7F5EF] border border-[#202124] shadow-[2.5px_2.5px_0px_#202124] text-center">
-              <div className="flex items-center justify-center gap-1 text-[#202124] text-xs font-mono font-bold mb-1">
-                <Trophy className="w-3.5 h-3.5 text-[#F2A18E]" />
-                <span>مستوى الإنجاز</span>
-              </div>
-              <div className="text-xl sm:text-2xl font-extrabold font-mono text-[#202124]">
-                LVL 4 🏆
-              </div>
-            </div>
-
-          </div>
-
+    <div className="learning-dashboard w-full space-y-7 pb-20">
+      <section className="dashboard-continue text-right space-y-5">
+        <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--ds-line)] pb-3">
+          <span className="text-xs font-bold tracking-wide text-[var(--ds-ink-muted)]">مساحة تعلمك الشخصية</span>
+          <span className="ui-chip">{gradeMeta.nameAr}</span>
         </div>
-      </div>
 
-      {/* 2. Daily Learning Quests (تحديات اليوم التعليمية) */}
-      <div className="bg-white border-3 border-[#171717] shadow-[5px_5px_0px_#171717] p-5 sm:p-6">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4 border-b-2 border-[#171717] pb-3">
-          <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 bg-[#E9FF57] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center">
-              <Target className="w-5 h-5" />
-            </div>
-            <div>
-              <h2 className="text-base sm:text-lg font-black text-[#171717]">
-                تحديات اليوم التعليمية (Daily Quests)
+        <div className="space-y-2">
+          <p className="text-sm font-bold text-[var(--ds-ink-muted)]">مرحباً {studentState.name || 'بك'}،</p>
+          <h1 className="font-display text-2xl sm:text-4xl font-extrabold leading-tight text-[var(--ds-ink)]">
+            {nextLearningEntry ? 'تابع رحلتك التعليمية' : 'أحسنت، أتممت دروس المنهج'}
+          </h1>
+          <p className="text-sm sm:text-base leading-relaxed text-[var(--ds-ink-muted)] max-w-3xl">
+            {nextLearningEntry
+              ? 'خطوتك التالية واضحة. أكمل الدرس الذي توقفت عنده أو ابدأ الدرس التالي في تسلسل المنهج.'
+              : 'أنهيت جميع الدروس المتاحة لهذا الصف. يمكنك الآن تثبيت ما تعلمته بالمراجعة والاختبارات.'}
+          </p>
+        </div>
+
+        {nextLearningEntry ? (
+          <div className="dashboard-next-lesson">
+            <div className="min-w-0 space-y-2">
+              <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-[var(--ds-primary)]">
+                <BookOpen className="w-4 h-4" />
+                {lastVisitedEntry?.lesson.id === nextLearningEntry.lesson.id ? 'متابعة من حيث توقفت' : 'الدرس التالي المقترح'}
+              </span>
+              <h2 className="text-xl sm:text-2xl font-extrabold leading-tight text-[var(--ds-ink)]">
+                {nextLearningEntry.lesson.titleAr}
               </h2>
-              <p className="text-xs text-[#171717]/70 font-medium">
-                أكمل التحديات اليومية لترفع نقاط خبرتك وتثبت معلوماتك الوزارية
+              <p dir="ltr" className="text-left font-semibold text-sm sm:text-base text-[var(--ds-primary)]">
+                {nextLearningEntry.lesson.titleEn}
+              </p>
+              <p className="text-xs sm:text-sm text-[var(--ds-ink-muted)]">
+                {nextLearningEntry.unit.titleAr} · الدرس {nextLearningEntry.lesson.lessonNumber}
               </p>
             </div>
-          </div>
-
-          <div className="flex items-center gap-2 self-start sm:self-center font-mono">
-            <span className="text-xs font-bold text-[#171717]/80">معدل الإنجاز:</span>
-            <span className="px-2 py-0.5 bg-[#E9FF57] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-black">
-              {dailyQuests.filter(q => q.completed).length}/{dailyQuests.length} DONE
-            </span>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-          {dailyQuests.map((quest) => (
-            <div 
-              key={quest.id}
-              onClick={() => toggleQuest(quest.id)}
-              className={`p-4 border-2 border-[#171717] transition-all cursor-pointer select-none ${
-                quest.completed
-                  ? 'bg-[#E9FF57] shadow-[3px_3px_0px_#171717]'
-                  : 'bg-[#F4EFE3] hover:bg-white shadow-[2px_2px_0px_#171717] hover:shadow-[3px_3px_0px_#171717]'
-              }`}
+            <button
+              type="button"
+              className="ui-button ui-button--primary shrink-0"
+              onClick={() => onSelectLesson(nextLearningEntry.lesson)}
             >
-              <div className="flex items-start justify-between gap-2 mb-2">
-                <span className={`text-xs font-black leading-snug ${quest.completed ? 'line-through text-[#171717]/80' : 'text-[#171717]'}`}>
-                  {quest.text}
-                </span>
-                <span className="px-1.5 py-0.5 bg-white text-[#171717] border border-[#171717] text-[10px] font-mono font-black shrink-0">
-                  +{quest.xp} XP
-                </span>
-              </div>
-
-              <div className="flex items-center justify-between text-xs text-[#171717]/80 font-mono">
-                <span>{quest.current} / {quest.target}</span>
-                <span className="text-[11px] font-black">
-                  {quest.completed ? 'تم بنجاح! 🏆' : 'انقر للتحديث'}
-                </span>
-              </div>
-              <div className="w-full bg-white border-2 border-[#171717] h-3 mt-2 overflow-hidden">
-                <div 
-                  className={`h-full transition-all duration-300 ${quest.completed ? 'bg-[#304FFE]' : 'bg-[#171717]'}`}
-                  style={{ width: `${(quest.current / quest.target) * 100}%` }}
-                />
-              </div>
+              <Play className="w-4 h-4" />
+              متابعة التعلم
+              <ArrowLeft className="w-4 h-4" />
+            </button>
+          </div>
+        ) : (
+          <div className="dashboard-next-lesson">
+            <div>
+              <h2 className="font-bold text-base">المنهج مكتمل لهذا الصف</h2>
+              <p className="mt-1 text-sm text-[var(--ds-ink-muted)]">انتقل إلى المراجعة لتثبيت المعلومات.</p>
             </div>
-          ))}
+            <button type="button" className="ui-button ui-button--primary" onClick={() => onNavigateTab('review')}>
+              <Brain className="w-4 h-4" />
+              ابدأ المراجعة
+            </button>
+          </div>
+        )}
+
+        <div className="space-y-2">
+          <div className="flex items-center justify-between text-xs font-bold text-[var(--ds-ink-muted)]">
+            <span>تقدمك في المنهج</span>
+            <span className="font-mono tabular-nums">{completedLessonsCount} / {totalLessons} · {overallPercentage}%</span>
+          </div>
+          <div className="dashboard-progress" role="progressbar" aria-valuenow={overallPercentage} aria-valuemin={0} aria-valuemax={100}>
+            <span style={{ width: `${overallPercentage}%` }} />
+          </div>
+        </div>
+      </section>
+
+      <section className="grid grid-cols-1 sm:grid-cols-3 gap-3" aria-label="ملخص التقدم">
+        <div className="dashboard-stat text-right">
+          <span className="text-xs font-bold text-[var(--ds-ink-muted)]">الدروس المكتملة</span>
+          <p className="mt-1 text-2xl font-extrabold tabular-nums">{completedLessonsCount}<span className="text-sm font-semibold text-[var(--ds-ink-muted)]"> / {totalLessons}</span></p>
+        </div>
+        <div className="dashboard-stat text-right">
+          <span className="text-xs font-bold text-[var(--ds-ink-muted)]">نقاط الخبرة المسجلة</span>
+          <p className="mt-1 text-2xl font-extrabold tabular-nums">{studentState.xp ?? 0} <span className="text-sm font-semibold text-[var(--ds-ink-muted)]">XP</span></p>
+        </div>
+        <div className="dashboard-stat text-right">
+          <span className="text-xs font-bold text-[var(--ds-ink-muted)]">سلسلة النشاط</span>
+          <p className="mt-1 text-2xl font-extrabold tabular-nums">{studentState.streakDays ?? 0} <span className="text-sm font-semibold text-[var(--ds-ink-muted)]">يوم</span></p>
+        </div>
+      </section>
+
+      <section className="flex flex-wrap items-center gap-2" aria-label="اختصارات التعلم">
+        <span className="ml-1 text-xs font-bold text-[var(--ds-ink-muted)]">اختصارات:</span>
+        <button type="button" className="dashboard-shortcut" onClick={() => onNavigateTab('review')}><Brain className="w-4 h-4 text-[var(--ds-primary)]" /> المراجعة الذكية</button>
+        <button type="button" className="dashboard-shortcut" onClick={() => onNavigateTab('mock')}><Trophy className="w-4 h-4" /> محاكي الامتحان</button>
+        <button type="button" className="dashboard-shortcut" onClick={() => onNavigateTab('verbs')}><Zap className="w-4 h-4" /> مختبر الأفعال</button>
+      </section>
+
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+        <div>
+          <h2 className="text-lg sm:text-xl font-extrabold text-[var(--ds-ink)]">خريطة المنهج الدراسي</h2>
+          <p className="text-sm text-[var(--ds-ink-muted)]">استكشف وحدات {gradeMeta.nameAr} واختر أي درس مباشرة.</p>
+        </div>
+        <div className="flex items-center gap-1 p-1 bg-[var(--ds-surface-muted)] border border-[var(--ds-line)] rounded-md">
+          <button
+            type="button"
+            aria-pressed={viewMode === 'quest-map'}
+            onClick={() => setViewMode('quest-map')}
+            className={`px-3 py-2 text-xs font-bold border rounded transition-colors ${viewMode === 'quest-map' ? 'bg-white text-[var(--ds-primary)] border-[var(--ds-line)] shadow-sm' : 'border-transparent text-[var(--ds-ink-muted)] hover:text-[var(--ds-ink)]'}`}
+          >خريطة الوحدات</button>
+          <button
+            type="button"
+            aria-pressed={viewMode === 'pin-feed'}
+            onClick={() => setViewMode('pin-feed')}
+            className={`px-3 py-2 text-xs font-bold border rounded transition-colors ${viewMode === 'pin-feed' ? 'bg-white text-[var(--ds-primary)] border-[var(--ds-line)] shadow-sm' : 'border-transparent text-[var(--ds-ink-muted)] hover:text-[var(--ds-ink)]'}`}
+          >ملخصات مرئية</button>
         </div>
       </div>
 
-      {/* 3. Six Quick Adventure Stations (محطات المغامرة السريعة) */}
-      <div className="space-y-3">
-        <div className="flex items-center justify-between">
-          <h2 className="text-base sm:text-lg font-black text-[#171717] flex items-center gap-2">
-            <Rocket className="w-5 h-5 text-[#304FFE]" />
-            <span>محطات المغامرة السريعة (Adventure Portals)</span>
-          </h2>
-          <span className="text-xs font-mono text-[#171717]/70 font-bold">FAST ACCESS</span>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
-          
-          {/* Station 1: Ministerial Mock */}
-          <button
-            type="button"
-            onClick={() => {
-              playPopSound();
-              onNavigateTab('mock');
-            }}
-            className="p-4 bg-[#E9FF57] hover:bg-[#d8ee43] text-[#171717] border-3 border-[#171717] shadow-[4px_4px_0px_#171717] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#171717] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer flex flex-col items-center text-center group"
-          >
-            <div className="w-12 h-12 bg-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-              <Trophy className="w-6 h-6 text-[#171717]" />
-            </div>
-            <span className="text-xs font-black leading-tight">محاكي الـ 100</span>
-            <span className="text-[10px] font-bold text-[#171717]/80 mt-1">الامتحان الوزاري</span>
-          </button>
-
-          {/* Station 2: Smart Review */}
-          <button
-            type="button"
-            onClick={() => {
-              playPopSound();
-              onNavigateTab('review');
-            }}
-            className="p-4 bg-[#304FFE] hover:bg-[#203ecc] text-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#171717] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer flex flex-col items-center text-center group"
-          >
-            <div className="w-12 h-12 bg-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-              <Brain className="w-6 h-6 text-[#304FFE]" />
-            </div>
-            <span className="text-xs font-black leading-tight">المراجعة الذكية</span>
-            <span className="text-[10px] text-white/80 mt-1">بطاقات وخوارزميات</span>
-          </button>
-
-          {/* Station 3: Literature */}
-          <button
-            type="button"
-            onClick={() => {
-              playPopSound();
-              onNavigateTab('literature');
-            }}
-            className="p-4 bg-[#A8D8FF] hover:bg-[#91caff] text-[#171717] border-3 border-[#171717] shadow-[4px_4px_0px_#171717] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#171717] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer flex flex-col items-center text-center group"
-          >
-            <div className="w-12 h-12 bg-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-              <BookOpen className="w-6 h-6 text-[#171717]" />
-            </div>
-            <span className="text-xs font-black leading-tight">الأدب والنصوص</span>
-            <span className="text-[10px] text-[#171717]/80 mt-1">قصص ومؤلفون</span>
-          </button>
-
-          {/* Station 4: Essays */}
-          <button
-            type="button"
-            onClick={() => {
-              playPopSound();
-              onNavigateTab('essays');
-            }}
-            className="p-4 bg-white hover:bg-[#FFFDF7] text-[#171717] border-3 border-[#171717] shadow-[4px_4px_0px_#171717] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#171717] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer flex flex-col items-center text-center group"
-          >
-            <div className="w-12 h-12 bg-[#E9FF57] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-              <FileText className="w-6 h-6 text-[#171717]" />
-            </div>
-            <span className="text-xs font-black leading-tight">الإنشاءات الوزارية</span>
-            <span className="text-[10px] text-[#171717]/80 mt-1">نماذج 20 درجة</span>
-          </button>
-
-          {/* Station 5: Irregular Verbs */}
-          <button
-            type="button"
-            onClick={() => {
-              playPopSound();
-              onNavigateTab('verbs');
-            }}
-            className="p-4 bg-[#FF5738] hover:bg-[#e0482b] text-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#171717] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer flex flex-col items-center text-center group"
-          >
-            <div className="w-12 h-12 bg-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-              <Zap className="w-6 h-6 text-[#FF5738]" />
-            </div>
-            <span className="text-xs font-black leading-tight">الأفعال الشاذة</span>
-            <span className="text-[10px] text-white/90 mt-1">80 فعل وزاري</span>
-          </button>
-
-          {/* Station 6: Ministerial Questions */}
-          <button
-            type="button"
-            onClick={() => {
-              playPopSound();
-              onNavigateTab('exam');
-            }}
-            className="p-4 bg-[#F4EFE3] hover:bg-white text-[#171717] border-3 border-[#171717] shadow-[4px_4px_0px_#171717] hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_#171717] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all cursor-pointer flex flex-col items-center text-center group"
-          >
-            <div className="w-12 h-12 bg-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center mb-2 group-hover:scale-105 transition-transform">
-              <ShieldCheck className="w-6 h-6 text-[#304FFE]" />
-            </div>
-            <span className="text-xs font-black leading-tight">بنك الوزاريات</span>
-            <span className="text-[10px] text-[#171717]/80 mt-1">2020–2026 كامل</span>
-          </button>
-
-        </div>
-      </div>
-
-      {/* 4. Dual View Mode Selector Tabs */}
-      <div className="flex items-center justify-center p-1.5 bg-[#F4EFE3] border-3 border-[#171717] shadow-[3px_3px_0px_#171717] max-w-md mx-auto">
-        <button
-          type="button"
-          onClick={() => {
-            playPopSound();
-            setViewMode('quest-map');
-          }}
-          className={`flex-1 py-2 px-4 text-xs font-black flex items-center justify-center gap-2 transition-all cursor-pointer border-2 ${
-            viewMode === 'quest-map'
-              ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-              : 'border-transparent text-[#171717] hover:bg-white hover:border-[#171717]'
-          }`}
-        >
-          <MapPin className="w-4 h-4" />
-          <span>خريطة المغامرة المنهجية</span>
-        </button>
-
-        <button
-          type="button"
-          onClick={() => {
-            playPopSound();
-            setViewMode('pin-feed');
-          }}
-          className={`flex-1 py-2 px-4 text-xs font-black flex items-center justify-center gap-2 transition-all cursor-pointer border-2 ${
-            viewMode === 'pin-feed'
-              ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-              : 'border-transparent text-[#171717] hover:bg-white hover:border-[#171717]'
-          }`}
-        >
-          <Layers className="w-4 h-4" />
-          <span>لوحات الأفكار الذكية (Pins)</span>
-        </button>
-      </div>
-
-      {/* 5. View Content Rendering */}
       {viewMode === 'quest-map' ? (
         /* ADVENTURE QUEST MAP */
         <div className="space-y-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b-2 border-[#171717] pb-3">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b-2 border-[#202124] pb-3">
             <div>
-              <h2 className="text-lg sm:text-xl font-black text-[#171717] flex items-center gap-2">
-                <Compass className="w-5 h-5 text-[#304FFE]" />
+              <h2 className="text-lg sm:text-xl font-black text-[#202124] flex items-center gap-2">
+                <Compass className="w-5 h-5 text-[#405DE6]" />
                 <span>محطات المنهج الدراسي • {gradeMeta.nameAr}</span>
               </h2>
-              <p className="text-xs text-[#171717]/70 font-medium">
+              <p className="text-xs text-[#202124]/70 font-medium">
                 تنقل بين الوحدات الدراسية، أتقن الدروس، وافتح المحطة النهائية
               </p>
             </div>
             
             <div className="flex items-center gap-2 font-mono">
-              <span className="text-xs font-bold text-[#171717]">
-                إجمالي الوحدات: <span className="bg-[#E9FF57] px-1.5 py-0.2 border border-[#171717] font-black">{units.length} UNITS</span>
+              <span className="text-xs font-bold text-[#202124]">
+                إجمالي الوحدات: <span className="bg-[#F3E6A5] px-1.5 py-0.2 border border-[#202124] font-black">{units.length} UNITS</span>
               </span>
               {completedLessonsCount > 0 && (
                 <button
@@ -447,10 +226,10 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     playFanfare();
                     triggerCelebration();
                   }}
-                  className="px-2.5 py-1 bg-[#E9FF57] hover:bg-[#d8ee43] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-black transition-all cursor-pointer flex items-center gap-1 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
+                  className="px-2.5 py-1 bg-[#F3E6A5] hover:bg-[#d8ee43] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer flex items-center gap-1 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
                   title="احتفل بتقدمك الدراسي!"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-[#304FFE]" />
+                  <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
                   <span>احتفل بإنجازك 🎉</span>
                 </button>
               )}
@@ -458,22 +237,22 @@ export const Dashboard: React.FC<DashboardProps> = ({
           </div>
 
           {/* Search & Fast Filters Bar */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-3 sm:p-4 border-3 border-[#171717] shadow-[3px_3px_0px_#171717]">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-3 sm:p-4 border-3 border-[#202124] shadow-[3px_3px_0px_#202124]">
             {/* Search Input */}
             <div className="relative flex-1">
-              <Search className="w-4 h-4 text-[#171717]/60 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Search className="w-4 h-4 text-[#202124]/60 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="ابحث في أسماء الوحدات أو الدروس أو القواعد..."
-                className="w-full pr-9 pl-8 py-2 bg-[#F4EFE3] border-2 border-[#171717] text-xs font-bold text-[#171717] placeholder:text-[#171717]/50 focus:outline-none focus:bg-white transition-colors"
+                className="w-full pr-9 pl-8 py-2 bg-[#F7F5EF] border-2 border-[#202124] text-xs font-bold text-[#202124] placeholder:text-[#202124]/50 focus:outline-none focus:bg-white transition-colors"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={() => setSearchQuery('')}
-                  className="absolute left-2.5 top-1/2 -translate-y-1/2 p-1 text-[#171717] hover:text-[#FF5738] cursor-pointer"
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 p-1 text-[#202124] hover:text-[#F2A18E] cursor-pointer"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -482,7 +261,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
             {/* Filter Pills */}
             <div className="flex items-center gap-1.5 self-start sm:self-auto shrink-0">
-              <span className="text-[11px] font-mono font-bold text-[#171717] hidden lg:inline-block">FILTER:</span>
+              <span className="text-[11px] font-mono font-bold text-[#202124] hidden lg:inline-block">FILTER:</span>
               <button
                 type="button"
                 onClick={() => {
@@ -491,8 +270,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 }}
                 className={`px-3 py-1.5 text-xs font-black transition-all cursor-pointer border-2 ${
                   statusFilter === 'all'
-                    ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                    : 'bg-[#F4EFE3] text-[#171717] border-[#171717] hover:bg-white'
+                    ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                    : 'bg-[#F7F5EF] text-[#202124] border-[#202124] hover:bg-white'
                 }`}
               >
                 الكل ({units.length})
@@ -505,8 +284,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 }}
                 className={`px-3 py-1.5 text-xs font-black transition-all cursor-pointer border-2 ${
                   statusFilter === 'uncompleted'
-                    ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                    : 'bg-[#F4EFE3] text-[#171717] border-[#171717] hover:bg-white'
+                    ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                    : 'bg-[#F7F5EF] text-[#202124] border-[#202124] hover:bg-white'
                 }`}
               >
                 قيد الإنجاز
@@ -519,8 +298,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 }}
                 className={`px-3 py-1.5 text-xs font-black transition-all cursor-pointer border-2 ${
                   statusFilter === 'completed'
-                    ? 'bg-[#E9FF57] text-[#171717] border-[#171717] shadow-[2px_2px_0px_#171717]'
-                    : 'bg-[#F4EFE3] text-[#171717] border-[#171717] hover:bg-white'
+                    ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
+                    : 'bg-[#F7F5EF] text-[#202124] border-[#202124] hover:bg-white'
                 }`}
               >
                 المكتملة ✅
@@ -530,14 +309,14 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
           {/* Unit Roadmap Cards or Empty State */}
           {filteredUnits.length === 0 ? (
-            <div className="p-10 bg-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] text-center space-y-4">
+            <div className="p-10 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] text-center space-y-4">
               <div className="flex justify-center">
                 <CartoonMascot mood="puzzled" size="md" speechText="لم أعثر على أي درس يطابق هذا البحث! جرب كلمة بحث أخرى يا بطل." />
               </div>
-              <h3 className="text-lg font-black text-[#171717]">
+              <h3 className="text-lg font-black text-[#202124]">
                 لا توجد نتائج مطابقة لبحثك
               </h3>
-              <p className="text-xs text-[#171717]/70 max-w-md mx-auto font-medium">
+              <p className="text-xs text-[#202124]/70 max-w-md mx-auto font-medium">
                 تأكد من كتابة الكلمة بشكل صحيح، أو قم بإعادة ضبط معايير التصفية للرجوع إلى كامل قائمة الوحدات.
               </p>
               <button
@@ -547,7 +326,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   setSearchQuery('');
                   setStatusFilter('all');
                 }}
-                className="px-4 py-2 bg-[#304FFE] text-white font-black text-xs border-2 border-[#171717] shadow-[2px_2px_0px_#171717] hover:-translate-y-0.5 transition-all cursor-pointer"
+                className="px-4 py-2 bg-[#405DE6] text-white font-black text-xs border-2 border-[#202124] shadow-[2px_2px_0px_#202124] hover:-translate-y-0.5 transition-all cursor-pointer"
               >
                 إعادة ضبط البحث والتصفية
               </button>
@@ -563,63 +342,63 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 return (
                   <div 
                     key={unit.id}
-                    className="p-6 bg-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] hover:shadow-[6px_6px_0px_#171717] hover:-translate-y-0.5 space-y-4 transition-all flex flex-col justify-between"
+                    className="p-6 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] hover:shadow-[6px_6px_0px_#202124] hover:-translate-y-0.5 space-y-4 transition-all flex flex-col justify-between"
                   >
                     <div className="space-y-3">
                       {/* Unit Header Badge */}
-                      <div className="flex items-center justify-between border-b-2 border-[#171717] pb-2.5">
+                      <div className="flex items-center justify-between border-b-2 border-[#202124] pb-2.5">
                         <div className="flex items-center gap-2.5">
-                          <span className="w-9 h-9 bg-[#304FFE] text-white font-black font-mono text-sm flex items-center justify-center border-2 border-[#171717] shadow-[2px_2px_0px_#171717]">
+                          <span className="w-9 h-9 bg-[#405DE6] text-white font-black font-mono text-sm flex items-center justify-center border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
                             0{unit.number}
                           </span>
                           <div>
-                            <span className="text-[10px] font-mono font-black text-[#FF5738] block uppercase">
+                            <span className="text-[10px] font-mono font-black text-[#F2A18E] block uppercase">
                               UNIT {unit.number} // المنهج الرسمي
                             </span>
-                            <h3 className="text-base sm:text-lg font-black text-[#171717]">
+                            <h3 className="text-base sm:text-lg font-black text-[#202124]">
                               {unit.titleAr}
                             </h3>
                           </div>
                         </div>
 
                         {isUnitCompleted ? (
-                          <span className="px-2 py-0.5 bg-[#E9FF57] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-black flex items-center gap-1">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#171717]" />
+                          <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black flex items-center gap-1">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#202124]" />
                             <span>مكتملة 100%</span>
                           </span>
                         ) : (
                           <div className="flex items-center gap-1.5 font-mono">
-                            <span className="text-xs font-bold text-[#171717]/70">
+                            <span className="text-xs font-bold text-[#202124]/70">
                               {completedInUnit}/{unit.lessons.length}
                             </span>
-                            <span className="text-[10px] font-black px-1.5 py-0.2 bg-[#F4EFE3] border border-[#171717] text-[#171717]">
+                            <span className="text-[10px] font-black px-1.5 py-0.2 bg-[#F7F5EF] border border-[#202124] text-[#202124]">
                               {unitPercentage}%
                             </span>
                           </div>
                         )}
                       </div>
 
-                      <div className="flex items-center gap-2 text-[11px] font-mono text-[#171717]/70">
-                        <Clock className="w-3.5 h-3.5 text-[#171717]" />
+                      <div className="flex items-center gap-2 text-[11px] font-mono text-[#202124]/70">
+                        <Clock className="w-3.5 h-3.5 text-[#202124]" />
                         <span>ESTIMATED: ~{estimatedMinutes} MIN // {unit.lessons.length} LESSONS</span>
                       </div>
 
-                      <p className="text-xs text-[#171717]/80 leading-relaxed line-clamp-2 font-medium">
+                      <p className="text-xs text-[#202124]/80 leading-relaxed line-clamp-2 font-medium">
                         {unit.description || unit.titleEn}
                       </p>
 
                       {/* Progress Bar (Brutalist style) */}
-                      <div className="w-full bg-[#F4EFE3] border-2 border-[#171717] h-3 overflow-hidden">
+                      <div className="w-full bg-[#F7F5EF] border-2 border-[#202124] h-3 overflow-hidden">
                         <div 
-                          className="h-full bg-[#304FFE] transition-all duration-500"
+                          className="h-full bg-[#405DE6] transition-all duration-500"
                           style={{ width: `${unitPercentage}%` }}
                         />
                       </div>
                     </div>
 
                     {/* Lessons Pills Grid */}
-                    <div className="space-y-2 pt-2 border-t-2 border-[#171717]">
-                      <span className="text-[11px] font-mono font-bold text-[#171717]/80 block">
+                    <div className="space-y-2 pt-2 border-t-2 border-[#202124]">
+                      <span className="text-[11px] font-mono font-bold text-[#202124]/80 block">
                         LESSONS // دروس الوحدة المعتمدة:
                       </span>
                       <div className="flex flex-wrap gap-1.5">
@@ -635,14 +414,14 @@ export const Dashboard: React.FC<DashboardProps> = ({
                               }}
                               className={`px-2.5 py-1 text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 ${
                                 isDone
-                                  ? 'bg-[#E9FF57] text-[#171717] border-[#171717] shadow-[2px_2px_0px_#171717]'
-                                  : 'bg-white hover:bg-[#F4EFE3] text-[#171717] border-[#171717] shadow-[2px_2px_0px_#171717] active:shadow-none'
+                                  ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
+                                  : 'bg-white hover:bg-[#F7F5EF] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124] active:shadow-none'
                               }`}
                             >
                               {isDone ? (
-                                <CheckCircle2 className="w-3 h-3 text-[#171717]" />
+                                <CheckCircle2 className="w-3 h-3 text-[#202124]" />
                               ) : (
-                                <Play className="w-3 h-3 text-[#304FFE]" />
+                                <Play className="w-3 h-3 text-[#405DE6]" />
                               )}
                               <span className="truncate max-w-[140px]">{lesson.titleAr}</span>
                             </button>
@@ -652,19 +431,19 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     </div>
 
                     {/* Action Link to Unit Explorer */}
-                    <div className="pt-2 flex items-center justify-between text-xs border-t border-[#171717]/20">
+                    <div className="pt-2 flex items-center justify-between text-xs border-t border-[#202124]/20">
                       <button
                         type="button"
                         onClick={() => {
                           playPopSound();
                           onSelectUnit(unit);
                         }}
-                        className="text-[#304FFE] hover:text-[#171717] font-black flex items-center gap-1 cursor-pointer transition-colors"
+                        className="text-[#405DE6] hover:text-[#202124] font-black flex items-center gap-1 cursor-pointer transition-colors"
                       >
                         <span>استكشف الوحدة بالكامل</span>
                         <ChevronLeft className="w-4 h-4" />
                       </button>
-                      <span className="text-[10px] text-[#171717]/60 font-mono font-bold">
+                      <span className="text-[10px] text-[#202124]/60 font-mono font-bold">
                         {unit.academicYear || '2024–2026'}
                       </span>
                     </div>
@@ -676,15 +455,15 @@ export const Dashboard: React.FC<DashboardProps> = ({
           )}
 
           {/* Final Boss Arena Card */}
-          <div className="p-6 sm:p-8 bg-[#E9FF57] text-[#171717] border-4 border-[#171717] shadow-[8px_8px_0px_#171717] flex flex-col sm:flex-row items-center justify-between gap-6">
+          <div className="ui-card p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="space-y-2 text-right">
-              <span className="px-2.5 py-1 bg-[#171717] text-[#E9FF57] text-xs font-mono font-black inline-block">
+              <span className="ui-chip text-xs font-mono uppercase">
                 FINAL BOSS ARENA // المحطة الختامية
               </span>
-              <h3 className="font-display text-2xl sm:text-3xl font-black text-[#171717]">
+              <h3 className="font-display text-2xl sm:text-3xl font-black text-[#202124]">
                 الامتحان الوزاري الشامل (100 درجة)
               </h3>
-              <p className="text-xs sm:text-sm text-[#171717]/90 max-w-xl font-medium">
+              <p className="text-xs sm:text-sm text-[#202124]/90 max-w-xl font-medium">
                 دفتر امتحاني متكامل يطابق المواصفات الوزارية لوزارة التربية: القطعة الخارجية، القواعد، المفردات، الأدب، والإنشاء مع تصحيح فوري لجميع الأسئلة.
               </p>
             </div>
@@ -695,9 +474,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 playFanfare();
                 onNavigateTab('mock');
               }}
-              className="px-6 py-4 bg-[#171717] hover:bg-[#304FFE] text-white font-black text-sm sm:text-base border-3 border-[#171717] shadow-[4px_4px_0px_#FF5738] flex items-center gap-2 cursor-pointer transition-all hover:-translate-y-0.5 shrink-0"
+              className="ui-button ui-button--primary shrink-0"
             >
-              <Trophy className="w-5 h-5 text-[#E9FF57]" />
+              <Trophy className="w-5 h-5 text-[#F3E6A5]" />
               <span>دخول ساحة الامتحان الآن</span>
               <ArrowLeft className="w-5 h-5" />
             </button>

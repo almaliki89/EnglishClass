@@ -354,23 +354,23 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
           )}
 
           {/* Header Banner */}
-          <div className="p-6 sm:p-10 bg-white border-3 border-[#171717] shadow-[6px_6px_0px_#171717] text-[#171717] relative overflow-hidden text-center sm:text-right">
+          <div className="p-6 sm:p-10 bg-white border-3 border-[#202124] shadow-[6px_6px_0px_#202124] text-[#202124] relative overflow-hidden text-center sm:text-right">
             
             {/* Grade Isolation Badge */}
             <div className="flex items-center justify-center sm:justify-start gap-2 mb-6 relative z-10 self-start">
-              <span className="px-3 py-1 bg-[#304FFE] text-white border-2 border-[#171717] font-black text-xs shadow-[2px_2px_0px_#171717]">
+              <span className="px-3 py-1 bg-[#405DE6] text-white border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124]">
                 {gradeMeta.nameAr}
               </span>
               {gradeMeta.isMinisterial && (
-                <span className="px-2 py-0.5 bg-[#FF5738] text-white font-mono font-black text-xs border border-[#171717]">
+                <span className="px-2 py-0.5 bg-[#F2A18E] text-white font-mono font-black text-xs border border-[#202124]">
                   ★ امتحان وزاري رسمي
                 </span>
               )}
             </div>
 
             <div className="relative z-10 space-y-3 max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#E9FF57] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-mono font-black">
-                <Sparkles className="w-3.5 h-3.5 text-[#304FFE]" />
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-black">
+                <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
                 <span>
                   {grade === 'sixth-preparatory'
                     ? 'الامتحانات الوزارية التجريبية'
@@ -380,11 +380,11 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                 </span>
               </div>
 
-              <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-[#171717] leading-tight">
-                {currentPaper.title} <span className="bg-[#E9FF57] px-2 py-0.5 border-2 border-[#171717] shadow-[2px_2px_0px_#171717] inline-block">({currentPaper.totalMarks} درجة)</span>
+              <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-[#202124] leading-tight">
+                {currentPaper.title} <span className="bg-[#F3E6A5] px-2 py-0.5 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] inline-block">({currentPaper.totalMarks} درجة)</span>
               </h1>
 
-              <p className="text-xs sm:text-sm text-[#171717]/80 leading-relaxed font-medium">
+              <p className="text-xs sm:text-sm text-[#202124]/80 leading-relaxed font-medium">
                 {currentPaper.subtitle || 'محاكاة رسمية كاملة لدفتر الامتحان: القطعة الخارجية، القواعد، المفردات، الأدب، والإنشاء مع تصحيح كنترول فوري.'}
               </p>
             </div>
@@ -393,33 +393,33 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
           {/* Official Specifications Bento Box */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
             
-            <div className="p-4 sm:p-5 bg-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] flex items-center gap-3">
-              <div className="w-11 h-11 bg-[#E9FF57] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center shrink-0">
+            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3">
+              <div className="w-11 h-11 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0">
                 <Clock className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#FF5738] block uppercase">DURATION // الوقت المقرّر</span>
-                <span className="text-sm sm:text-base font-black text-[#171717]">{currentPaper.durationMinutes || 180} دقيقة امتحانية رسمية</span>
+                <span className="text-[10px] font-mono font-bold text-[#F2A18E] block uppercase">DURATION // الوقت المقرّر</span>
+                <span className="text-sm sm:text-base font-black text-[#202124]">{currentPaper.durationMinutes || 180} دقيقة امتحانية رسمية</span>
               </div>
             </div>
 
-            <div className="p-4 sm:p-5 bg-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] flex items-center gap-3">
-              <div className="w-11 h-11 bg-[#304FFE] text-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center shrink-0">
+            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3">
+              <div className="w-11 h-11 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0">
                 <Award className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#304FFE] block uppercase">TOTAL SCORE // الدرجة الكلية</span>
-                <span className="text-sm sm:text-base font-black text-[#171717]">100 درجة وزارية كاملة</span>
+                <span className="text-[10px] font-mono font-bold text-[#405DE6] block uppercase">TOTAL SCORE // الدرجة الكلية</span>
+                <span className="text-sm sm:text-base font-black text-[#202124]">100 درجة وزارية كاملة</span>
               </div>
             </div>
 
-            <div className="p-4 sm:p-5 bg-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] flex items-center gap-3">
-              <div className="w-11 h-11 bg-[#F4EFE3] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center shrink-0">
-                <CheckCircle2 className="w-5 h-5 text-[#304FFE]" />
+            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3">
+              <div className="w-11 h-11 bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0">
+                <CheckCircle2 className="w-5 h-5 text-[#405DE6]" />
               </div>
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#171717]/60 block uppercase">EVALUATION // التصحيح</span>
-                <span className="text-sm sm:text-base font-black text-[#171717]">تصحيح فوري مع التعليل الوزاري</span>
+                <span className="text-[10px] font-mono font-bold text-[#202124]/60 block uppercase">EVALUATION // التصحيح</span>
+                <span className="text-sm sm:text-base font-black text-[#202124]">تصحيح فوري مع التعليل الوزاري</span>
               </div>
             </div>
 
@@ -518,24 +518,24 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
             </div>
 
             {/* Launch Actions */}
-            <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-t-2 border-[#171717]">
-              <div className="text-xs text-[#171717]/80 font-mono text-center sm:text-right">
+            <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-t-2 border-[#202124]">
+              <div className="text-xs text-[#202124]/80 font-mono text-center sm:text-right">
                 <span>CANDIDATE // الطالب: </span>
-                <strong className="text-[#171717] font-black">{studentName}</strong>
+                <strong className="text-[#202124] font-black">{studentName}</strong>
               </div>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
                 <button
                   onClick={() => handleStartExam(30)}
-                  className="w-full sm:w-auto px-5 py-3 bg-[#F4EFE3] hover:bg-white text-[#171717] font-black text-xs sm:text-sm border-2 border-[#171717] shadow-[3px_3px_0px_#171717] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:w-auto px-5 py-3 bg-[#F7F5EF] hover:bg-white text-[#202124] font-black text-xs sm:text-sm border-2 border-[#202124] shadow-[3px_3px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <Clock className="w-4 h-4 text-[#171717] shrink-0" />
+                  <Clock className="w-4 h-4 text-[#202124] shrink-0" />
                   <span>تحدي الاختبار السريع (30 د)</span>
                 </button>
 
                 <button
                   onClick={() => handleStartExam(180)}
-                  className="w-full sm:w-auto px-7 py-3 bg-[#171717] hover:bg-[#304FFE] text-white font-black text-xs sm:text-sm border-3 border-[#171717] shadow-[4px_4px_0px_#FF5738] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:w-auto px-7 py-3 bg-[#202124] hover:bg-[#405DE6] text-white font-black text-xs sm:text-sm border-3 border-[#202124] shadow-[4px_4px_0px_#F2A18E] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
                   <span>بدء الامتحان الوزاري (3 ساعات)</span>
                   <ChevronLeft className="w-4 h-4 shrink-0" />

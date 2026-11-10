@@ -332,17 +332,17 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
     <div className="space-y-6 pb-24 max-w-5xl mx-auto px-2 sm:px-0">
       
       {/* ================= HERO HEADER BANNER ================= */}
-      <div className="p-6 sm:p-8 bg-white border-3 border-[#171717] shadow-[6px_6px_0px_#171717] text-[#171717] space-y-5 relative overflow-hidden">
+      <div className="p-6 sm:p-8 bg-white border-3 border-[#202124] shadow-[6px_6px_0px_#202124] text-[#202124] space-y-5 relative overflow-hidden">
         
         {/* Scoped Grade Identity Badge */}
-        <div className="flex flex-wrap items-center justify-between gap-2 p-2 bg-[#F4EFE3] border-2 border-[#171717] relative z-10">
+        <div className="flex flex-wrap items-center justify-between gap-2 p-2 bg-[#F7F5EF] border-2 border-[#202124] relative z-10">
           <div className="flex items-center gap-2">
-            <span className="editorial-tag text-[#304FFE]">GRADE CONTEXT // الصف الحالي:</span>
-            <span className="px-2.5 py-0.5 bg-[#304FFE] text-white border border-[#171717] text-xs font-black">
+            <span className="editorial-tag text-[#405DE6]">GRADE CONTEXT // الصف الحالي:</span>
+            <span className="px-2.5 py-0.5 bg-[#405DE6] text-white border border-[#202124] text-xs font-black">
               {gradeMeta.nameAr}
             </span>
             {gradeMeta.isMinisterial && (
-              <span className="px-2 py-0.5 bg-[#E9FF57] text-[#171717] border border-[#171717] text-xs font-black">
+              <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] text-xs font-black">
                 منهج وزاري معتمد
               </span>
             )}
@@ -354,7 +354,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                 e.preventDefault();
                 window.location.href = '/grades';
               }}
-              className="text-xs font-bold text-[#171717] hover:text-[#304FFE] underline"
+              className="text-xs font-bold text-[#202124] hover:text-[#405DE6] underline"
             >
               العودة لاختيار صف آخر ↩
             </a>
@@ -363,15 +363,15 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
 
         <div className="relative z-10 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#E9FF57] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-mono font-black">
-              <Award className="w-4 h-4 text-[#304FFE]" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-black">
+              <Award className="w-4 h-4 text-[#405DE6]" />
               <span>QUESTION V: ESSAYS & WRITING // 20 MARKS</span>
             </div>
 
             <div className="flex items-center gap-2">
               <button
                 onClick={handlePrint}
-                className="px-3 py-1.5 bg-[#F4EFE3] hover:bg-white text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer"
+                className="px-3 py-1.5 bg-[#F7F5EF] hover:bg-white text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer"
                 title="طباعة الإنشاء ورقياً بتنسيق وزاري"
               >
                 <Printer className="w-3.5 h-3.5" />
@@ -381,11 +381,11 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           </div>
 
           <div>
-            <h1 className="font-display text-2xl sm:text-4xl font-black tracking-tight text-[#171717] flex items-center gap-3">
+            <h1 className="font-display text-2xl sm:text-4xl font-black tracking-tight text-[#202124] flex items-center gap-3">
               <span>{gradeMeta.isMinisterial ? `الإنشاءات الوزارية النموذجية • ${gradeMeta.nameAr}` : `الإنشاءات والتعبير المنهجي • ${gradeMeta.nameAr}`}</span>
-              <Sparkles className="w-6 h-6 text-[#304FFE] inline shrink-0" />
+              <Sparkles className="w-6 h-6 text-[#405DE6] inline shrink-0" />
             </h1>
-            <p className="text-xs sm:text-sm text-[#171717]/80 max-w-3xl leading-relaxed mt-2 font-medium">
+            <p className="text-xs sm:text-sm text-[#202124]/80 max-w-3xl leading-relaxed mt-2 font-medium">
               {gradeMeta.stage === 'intermediate'
                 ? `نماذج إنشائية معتمدة لمنهج (${gradeMeta.nameAr}): لغة سليمة، تراكيب مناسبة (50-70 كلمة)، مع مختبر الحفظ ومحاكي التسميع.`
                 : `إعداد نموذجي مطابق تماماً لمنهج الأستاذ مصطفى تركي: لغة رصينة، تقسيم أكاديمي (مقدمة، متن، خاتمة)، عدّاد الكلمات الوزاري (100-130 كلمة)، مع مختبر الحفظ التفاعلي ومحاكي الدفتر الامتحاني.`}
@@ -393,8 +393,8 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           </div>
 
           {/* Unit Filter Chips */}
-          <div className="space-y-2 pt-1 border-t-2 border-[#171717]">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#FF5738]">
+          <div className="space-y-2 pt-1 border-t-2 border-[#202124]">
+            <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#F2A18E]">
               <Filter className="w-3.5 h-3.5 shrink-0" />
               <span>FILTER BY UNIT // فرز حسب الوحدة:</span>
             </div>
@@ -404,8 +404,8 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                 onClick={() => setSelectedUnitFilter('all')}
                 className={`px-3 py-1 text-xs font-black transition-all whitespace-nowrap shrink-0 border-2 cursor-pointer ${
                   selectedUnitFilter === 'all'
-                    ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                    : 'bg-[#F4EFE3] hover:bg-white text-[#171717] border-[#171717]'
+                    ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                    : 'bg-[#F7F5EF] hover:bg-white text-[#202124] border-[#202124]'
                 }`}
               >
                 جميع الوحدات ({currentEssaysList.length})
@@ -425,8 +425,8 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                     }}
                     className={`px-3 py-1 text-xs font-black transition-all flex items-center gap-1 whitespace-nowrap shrink-0 border-2 cursor-pointer ${
                       selectedUnitFilter === unitNum
-                        ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                        : 'bg-[#F4EFE3] hover:bg-white text-[#171717] border-[#171717]'
+                        ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                        : 'bg-[#F7F5EF] hover:bg-white text-[#202124] border-[#202124]'
                     }`}
                   >
                     <span>الوحدة {unitNum}</span>

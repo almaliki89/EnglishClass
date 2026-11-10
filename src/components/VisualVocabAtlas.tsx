@@ -131,38 +131,38 @@ export const VisualVocabAtlas: React.FC<VisualVocabAtlasProps> = ({
     <div className="space-y-8 pb-16 max-w-7xl mx-auto">
       
       {/* 1. Header Banner */}
-      <div className="relative overflow-hidden bg-white border-3 border-[#171717] shadow-[6px_6px_0px_#171717] text-[#171717] p-6 sm:p-8">
+      <div className="relative overflow-hidden bg-white border-3 border-[#202124] shadow-[6px_6px_0px_#202124] text-[#202124] p-6 sm:p-8">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-3">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#E9FF57] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-mono font-black">
-              <Sparkles className="w-3.5 h-3.5 text-[#304FFE]" />
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-black">
+              <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
               <span>VISUAL MNEMONICS ATLAS // أطلس الرموز</span>
             </div>
             
-            <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-[#171717]">
+            <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black tracking-tight text-[#202124]">
               أطلس الرموز والمفردات المصورة • {gradeMeta.nameAr}
             </h1>
             
-            <p className="text-[#171717]/80 text-xs sm:text-sm max-w-2xl leading-relaxed font-medium">
+            <p className="text-[#202124]/80 text-xs sm:text-sm max-w-2xl leading-relaxed font-medium">
               شرح وتبسيط مفردات ومتلازمات وتعابير منهج {gradeMeta.nameAr} عبر الربط الذهني الرمزي، مما يمنع التشتت والخلط في الأسئلة الامتحانية والتوصيل.
             </p>
           </div>
 
           {/* Grade Isolation Badge */}
           <div className="flex items-center gap-2">
-            <span className="px-3 py-1 bg-[#304FFE] text-white border-2 border-[#171717] font-black text-xs shadow-[2px_2px_0px_#171717]">
+            <span className="px-3 py-1 bg-[#405DE6] text-white border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124]">
               {gradeMeta.nameAr}
             </span>
           </div>
 
           {/* Mode Switcher */}
-          <div className="flex items-center gap-1.5 p-1 bg-[#F4EFE3] border-2 border-[#171717] overflow-x-auto no-scrollbar w-full sm:w-auto max-w-full">
+          <div className="flex items-center gap-1.5 p-1 bg-[#F7F5EF] border-2 border-[#202124] overflow-x-auto no-scrollbar w-full sm:w-auto max-w-full">
             <button
               onClick={() => setActiveViewMode('gallery')}
               className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer border ${
                 activeViewMode === 'gallery'
-                  ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                  : 'bg-transparent text-[#171717] border-transparent hover:bg-white'
+                  ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                  : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
               }`}
             >
               <Layers className="w-3.5 h-3.5 shrink-0" />
@@ -173,8 +173,8 @@ export const VisualVocabAtlas: React.FC<VisualVocabAtlasProps> = ({
               onClick={() => setActiveViewMode('flashcards')}
               className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer border ${
                 activeViewMode === 'flashcards'
-                  ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                  : 'bg-transparent text-[#171717] border-transparent hover:bg-white'
+                  ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                  : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
               }`}
             >
               <Eye className="w-3.5 h-3.5 shrink-0" />
@@ -185,8 +185,8 @@ export const VisualVocabAtlas: React.FC<VisualVocabAtlasProps> = ({
               onClick={() => setActiveViewMode('matcher')}
               className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 shrink-0 cursor-pointer border ${
                 activeViewMode === 'matcher'
-                  ? 'bg-[#E9FF57] text-[#171717] border-[#171717] shadow-[2px_2px_0px_#171717]'
-                  : 'bg-transparent text-[#171717] border-transparent hover:bg-white'
+                  ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
+                  : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
               }`}
             >
               <Gamepad2 className="w-3.5 h-3.5 shrink-0" />

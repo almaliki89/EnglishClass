@@ -230,20 +230,20 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
     <section id="curriculum-units-section" className="space-y-6 pt-2">
       
       {/* 1. Header & Controls Bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 sm:p-6 border-3 border-[#171717] shadow-[4px_4px_0px_#171717]">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-white p-5 sm:p-6 border-3 border-[#202124] shadow-[4px_4px_0px_#202124]">
         <div>
           <div className="flex items-center gap-2.5">
-            <span className="w-10 h-10 bg-[#304FFE] text-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center shrink-0">
+            <span className="w-10 h-10 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0">
               <BookOpen className="w-5 h-5" />
             </span>
             <div>
-              <div className="font-mono text-[10px] font-black uppercase text-[#FF5738] tracking-widest">
+              <div className="font-mono text-[10px] font-black uppercase text-[#F2A18E] tracking-widest">
                 SYLLABUS MODULES // الوحدات الرسمية
               </div>
-              <h2 className="text-xl sm:text-2xl font-black text-[#171717] tracking-tight">
+              <h2 className="text-xl sm:text-2xl font-black text-[#202124] tracking-tight">
                 الوحدات الدراسية المقررة (Curriculum Units)
               </h2>
-              <p className="text-xs sm:text-sm text-[#171717]/70 font-medium mt-0.5">
+              <p className="text-xs sm:text-sm text-[#202124]/70 font-medium mt-0.5">
                 منهاج الأستاذ مصطفى تركي 2026 • مرتبة حسب الأهمية الوزارية مع خطة الإتقان
               </p>
             </div>
@@ -253,20 +253,20 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
         {/* View Mode & Quick Stats Pill */}
         <div className="flex items-center gap-2 self-start md:self-auto font-mono">
           {/* Progress Pill */}
-          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-[#F4EFE3] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-bold text-[#171717]">
-            <CheckCircle2 className="w-4 h-4 text-[#304FFE]" />
+          <div className="hidden sm:flex items-center gap-2 px-3 py-1.5 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-bold text-[#202124]">
+            <CheckCircle2 className="w-4 h-4 text-[#405DE6]" />
             <span>{totalCompletedLessons}/{allLessons.length} LESSONS ({overallPercentage}%)</span>
           </div>
 
           {/* View Toggle */}
-          <div className="flex items-center p-1 bg-[#F4EFE3] border-2 border-[#171717]">
+          <div className="flex items-center p-1 bg-[#F7F5EF] border-2 border-[#202124]">
             <button
               id="units-view-cards-btn"
               onClick={() => setViewMode('cards')}
               className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-black transition-all cursor-pointer border ${
                 viewMode === 'cards'
-                  ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                  : 'bg-transparent text-[#171717] border-transparent hover:bg-white'
+                  ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                  : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
               }`}
               title="عرض شبكة البطاقات"
             >
@@ -278,8 +278,8 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
               onClick={() => setViewMode('roadmap')}
               className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-black transition-all cursor-pointer border ${
                 viewMode === 'roadmap'
-                  ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                  : 'bg-transparent text-[#171717] border-transparent hover:bg-white'
+                  ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                  : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
               }`}
               title="عرض المسار التتابعي (Roadmap)"
             >
@@ -309,8 +309,8 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
                 onClick={() => setFilterTerm(tab.id as any)}
                 className={`px-3.5 py-1.5 text-xs font-black whitespace-nowrap transition-all cursor-pointer border-2 ${
                   isActive
-                    ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                    : 'bg-white text-[#171717] border-[#171717] hover:bg-[#F4EFE3]'
+                    ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                    : 'bg-white text-[#202124] border-[#202124] hover:bg-[#F7F5EF]'
                 }`}
               >
                 {tab.label}
@@ -321,19 +321,19 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
 
         {/* Live Search Input */}
         <div className="relative min-w-[260px] sm:w-72">
-          <Search className="w-4 h-4 text-[#171717]/50 absolute right-3.5 top-3" />
+          <Search className="w-4 h-4 text-[#202124]/50 absolute right-3.5 top-3" />
           <input
             id="search-units-input"
             type="text"
             placeholder="ابحث عن وحدة، قاعدة، أو قطعة..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full pr-10 pl-4 py-2 bg-white border-2 border-[#171717] text-xs font-bold text-[#171717] placeholder:text-[#171717]/50 focus:outline-none focus:bg-[#FFFDF7] shadow-[2px_2px_0px_#171717] transition-colors"
+            className="w-full pr-10 pl-4 py-2 bg-white border-2 border-[#202124] text-xs font-bold text-[#202124] placeholder:text-[#202124]/50 focus:outline-none focus:bg-[#FFFFFF] shadow-[2px_2px_0px_#202124] transition-colors"
           />
           {searchQuery && (
             <button
               onClick={() => setSearchQuery('')}
-              className="absolute left-3 top-2.5 text-xs text-[#171717] hover:text-[#FF5738] font-black cursor-pointer"
+              className="absolute left-3 top-2.5 text-xs text-[#202124] hover:text-[#F2A18E] font-black cursor-pointer"
             >
               مسح
             </button>
@@ -393,23 +393,23 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
               <div
                 key={unit.id}
                 id={`unit-card-${unit.id}`}
-                className="bg-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] hover:shadow-[6px_6px_0px_#171717] hover:-translate-y-0.5 transition-all flex flex-col justify-between overflow-hidden relative group"
+                className="bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] hover:shadow-[6px_6px_0px_#202124] hover:-translate-y-0.5 transition-all flex flex-col justify-between overflow-hidden relative group"
               >
                 
                 {/* Top Banner Stripe with Term & Weight */}
-                <div className="p-5 sm:p-6 pb-4 border-b-2 border-[#171717]">
+                <div className="p-5 sm:p-6 pb-4 border-b-2 border-[#202124]">
                   <div className="flex items-start justify-between gap-3 mb-3">
                     
                     {/* Unit Pill Badge */}
                     <div className="flex items-center gap-2">
-                      <span className="px-3 py-1 bg-[#304FFE] text-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] font-black font-mono text-xs">
+                      <span className="px-3 py-1 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-black font-mono text-xs">
                         UNIT {unit.number}
                       </span>
-                      <span className="text-[11px] font-bold text-[#171717] bg-[#F4EFE3] px-2 py-0.5 border border-[#171717] font-mono">
+                      <span className="text-[11px] font-bold text-[#202124] bg-[#F7F5EF] px-2 py-0.5 border border-[#202124] font-mono">
                         TERM {meta.term === 1 ? '1' : '2'}
                       </span>
                       {isUnitFullyCompleted && (
-                        <span className="flex items-center gap-1 text-[11px] font-black text-[#171717] bg-[#E9FF57] px-2 py-0.5 border-2 border-[#171717]">
+                        <span className="flex items-center gap-1 text-[11px] font-black text-[#202124] bg-[#F3E6A5] px-2 py-0.5 border-2 border-[#202124]">
                           <CheckCircle className="w-3.5 h-3.5" />
                           <span>100% DONE</span>
                         </span>
@@ -417,8 +417,8 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
                     </div>
 
                     {/* Weight Badge */}
-                    <div className="flex items-center gap-1 px-2.5 py-1 bg-[#E9FF57] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-[#171717] text-[11px] font-black font-mono shrink-0">
-                      <Sparkles className="w-3 h-3 text-[#304FFE]" />
+                    <div className="flex items-center gap-1 px-2.5 py-1 bg-[#F3E6A5] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-[#202124] text-[11px] font-black font-mono shrink-0">
+                      <Sparkles className="w-3 h-3 text-[#405DE6]" />
                       <span>{meta.ministerialWeight}</span>
                     </div>
 
@@ -427,7 +427,7 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
                   {/* Titles */}
                   <h3 
                     onClick={() => onSelectUnit(unit)}
-                    className="font-black text-[#171717] text-lg sm:text-xl group-hover:text-[#304FFE] transition-colors cursor-pointer leading-snug"
+                    className="font-black text-[#202124] text-lg sm:text-xl group-hover:text-[#405DE6] transition-colors cursor-pointer leading-snug"
                   >
                     {unit.titleAr}
                   </h3>

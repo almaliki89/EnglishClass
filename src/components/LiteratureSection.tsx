@@ -110,18 +110,18 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
     <div className="space-y-6 pb-24 max-w-6xl mx-auto px-2 sm:px-4">
       
       {/* Header Banner with Ministerial Focus Badge */}
-      <div className="p-6 sm:p-8 bg-white border-3 border-[#171717] shadow-[5px_5px_0px_#171717] text-[#171717] space-y-4 relative overflow-hidden">
+      <div className="p-6 sm:p-8 bg-white border-3 border-[#202124] shadow-[5px_5px_0px_#202124] text-[#202124] space-y-4 relative overflow-hidden">
         
         <div className="flex flex-wrap items-center justify-between gap-3 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E9FF57] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-[#171717] text-xs font-mono font-black">
-            <GraduationCap className="w-4 h-4 text-[#304FFE]" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F3E6A5] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-[#202124] text-xs font-mono font-black">
+            <GraduationCap className="w-4 h-4 text-[#405DE6]" />
             <span>QUESTION IV: LITERATURE & STORIES // 10 MARKS</span>
           </div>
 
           {/* Language Mode Toggle */}
-          <div className="inline-flex items-center bg-[#F4EFE3] p-1 border-2 border-[#171717] text-xs font-black">
-            <span className="px-2 text-[#171717] flex items-center gap-1 font-mono">
-              <Languages className="w-3.5 h-3.5 text-[#304FFE]" />
+          <div className="inline-flex items-center bg-[#F7F5EF] p-1 border-2 border-[#202124] text-xs font-black">
+            <span className="px-2 text-[#202124] flex items-center gap-1 font-mono">
+              <Languages className="w-3.5 h-3.5 text-[#405DE6]" />
               <span>LANG:</span>
             </span>
             <button
@@ -129,8 +129,8 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
               onClick={() => setLangMode('bilingual')}
               className={`px-3 py-1 transition-all cursor-pointer border ${
                 langMode === 'bilingual'
-                  ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                  : 'bg-transparent text-[#171717] border-transparent hover:bg-white'
+                  ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                  : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
               }`}
             >
               ثنائي (En/Ar)
@@ -140,8 +140,8 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
               onClick={() => setLangMode('ar')}
               className={`px-3 py-1 transition-all cursor-pointer border ${
                 langMode === 'ar'
-                  ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                  : 'bg-transparent text-[#171717] border-transparent hover:bg-white'
+                  ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                  : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
               }`}
             >
               عربي فقط
@@ -151,8 +151,8 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
               onClick={() => setLangMode('en')}
               className={`px-3 py-1 transition-all cursor-pointer border ${
                 langMode === 'en'
-                  ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]'
-                  : 'bg-transparent text-[#171717] border-transparent hover:bg-white'
+                  ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                  : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
               }`}
             >
               English Only
@@ -162,24 +162,24 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
 
         {/* Grade Badge */}
         <div className="flex items-center gap-2 relative z-10 self-start">
-          <span className="px-3 py-1 bg-[#304FFE] text-white border-2 border-[#171717] font-black text-xs shadow-[2px_2px_0px_#171717]">
+          <span className="px-3 py-1 bg-[#405DE6] text-white border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124]">
             {gradeMeta.nameAr}
           </span>
           {gradeMeta.isMinisterial && (
-            <span className="px-2 py-0.5 bg-[#FF5738] text-white font-mono font-black text-xs border border-[#171717]">
+            <span className="px-2 py-0.5 bg-[#F2A18E] text-white font-mono font-black text-xs border border-[#202124]">
               ★ وزاري معتمد
             </span>
           )}
         </div>
 
         <div className="relative z-10 space-y-2">
-          <h1 className="font-display text-2xl sm:text-4xl font-black tracking-tight text-[#171717]">
+          <h1 className="font-display text-2xl sm:text-4xl font-black tracking-tight text-[#202124]">
             {grade === 'third-intermediate' && 'القصص الوزارية المقررة • الثالث المتوسط (Story Time)'}
             {grade === 'fourth-preparatory' && 'الأدب المقرّر • الرابع الإعدادي (العلمي والأدبي)'}
             {grade === 'fifth-preparatory' && 'الأدب المقرّر • الخامس الإعدادي (العلمي والأدبي)'}
             {grade === 'sixth-preparatory' && 'الأدب الوزاري المقرّر • السادس الإعدادي • إشراف الأستاذ مصطفى تركي'}
           </h1>
-          <p className="text-xs sm:text-sm text-[#171717]/80 max-w-3xl leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm text-[#202124]/80 max-w-3xl leading-relaxed font-medium">
             {grade === 'third-intermediate' && 'دراسة شاملة ومبسطة للقصص الوزارية المقررة للثالث المتوسط (كريم والزبون 50، الغزالة، أسطورة كرم، سلام أحمد وبر الوالدين) مع الأسئلة الوزارية النموذجية.'}
             {grade === 'fourth-preparatory' && 'دراسة نقدية وأكاديمية للمسرحية المقررة «تاجر البندقية» لويليام شكسبير، وقصيدة «الطريق الذي لم يُسلك» لروبرت فروست مع الشرح والتحليل.'}
             {grade === 'fifth-preparatory' && 'دراسة تحليلية لقصيدة «هجوم اللواء الخفيف» للورد ألفريد تينيسون، وقصة «بيت الدمية» لكاثرين مانسفيلد مع أهم الأسئلة والنماذج المقررة.'}
@@ -202,11 +202,11 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
                 }}
                 className={`p-3 text-right transition-all cursor-pointer border-2 min-w-[200px] flex-1 sm:flex-initial ${
                   isActive
-                    ? 'bg-[#304FFE] text-white border-[#171717] shadow-[3px_3px_0px_#171717]'
-                    : 'bg-white hover:bg-[#F4EFE3] text-[#171717] border-[#171717] shadow-[2px_2px_0px_#171717]'
+                    ? 'bg-[#405DE6] text-white border-[#202124] shadow-[3px_3px_0px_#202124]'
+                    : 'bg-white hover:bg-[#F7F5EF] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
                 }`}
               >
-                <span className={`text-[10px] font-mono font-bold block ${isActive ? 'text-[#E9FF57]' : 'text-[#FF5738]'}`}>
+                <span className={`text-[10px] font-mono font-bold block ${isActive ? 'text-[#F3E6A5]' : 'text-[#F2A18E]'}`}>
                   {badgeText}
                 </span>
                 <span className="font-black text-sm block mt-0.5">

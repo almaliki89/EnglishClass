@@ -101,24 +101,24 @@ export const IrregularVerbsLab: React.FC<IrregularVerbsLabProps> = ({
     <div className="space-y-6 pb-20 max-w-5xl mx-auto">
       
       {/* Header Banner */}
-      <div className="p-6 sm:p-8 bg-white border-3 border-[#171717] shadow-[5px_5px_0px_#171717] text-[#171717] space-y-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="p-6 sm:p-8 bg-white border-3 border-[#202124] shadow-[5px_5px_0px_#202124] text-[#202124] space-y-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#FF5738] text-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-mono font-black mb-2">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F2A18E] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-black mb-2">
             <Compass className="w-3.5 h-3.5" />
             <span>IRREGULAR VERBS LAB // 80 VERBS</span>
           </div>
 
-          <h1 className="font-display text-2xl sm:text-4xl font-black text-[#171717]">
+          <h1 className="font-display text-2xl sm:text-4xl font-black text-[#202124]">
             جدول وتصريف الأفعال الشاذة • {gradeMeta.nameAr}
           </h1>
 
-          <p className="text-xs sm:text-sm text-[#171717]/80 max-w-xl leading-relaxed font-medium">
+          <p className="text-xs sm:text-sm text-[#202124]/80 max-w-xl leading-relaxed font-medium">
             مقسمة بذكاء وفق نمط التغير اللفظي مع النطق الصوتي واختبار سرعة التثبيت لمنهج {gradeMeta.nameAr}.
           </p>
 
           {/* Grade Isolation Badge */}
           <div className="flex items-center gap-2 pt-3">
-            <span className="px-3 py-1 bg-[#304FFE] text-white border-2 border-[#171717] font-black text-xs shadow-[2px_2px_0px_#171717]">
+            <span className="px-3 py-1 bg-[#405DE6] text-white border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124]">
               {gradeMeta.nameAr}
             </span>
           </div>
@@ -133,9 +133,9 @@ export const IrregularVerbsLab: React.FC<IrregularVerbsLabProps> = ({
               handleStartSpeedTest();
             }
           }}
-          className="px-5 py-3 bg-[#E9FF57] hover:bg-[#d8ee43] text-[#171717] border-3 border-[#171717] shadow-[4px_4px_0px_#171717] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none font-black text-xs sm:text-sm transition-all flex items-center gap-2 shrink-0 cursor-pointer"
+          className="px-5 py-3 bg-[#F3E6A5] hover:bg-[#E6D99A] text-[#202124] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none font-black text-xs sm:text-sm transition-all flex items-center gap-2 shrink-0 cursor-pointer"
         >
-          <Zap className="w-4 h-4 text-[#FF5738] fill-[#FF5738]" />
+          <Zap className="w-4 h-4 text-[#F2A18E] fill-[#F2A18E]" />
           <span>{isTestMode ? 'العودة لجدول الأفعال' : 'تحدي اختبار السرعة'}</span>
         </button>
       </div>
