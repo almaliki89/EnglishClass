@@ -58,9 +58,9 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
 
   if (!currentUnit) {
     return (
-      <div className="p-8 text-center bg-white border-3 border-[#171717] shadow-[6px_6px_0px_#171717] max-w-xl mx-auto space-y-4">
-        <h2 className="text-xl font-black text-[#171717]">لم يتم العثور على هذه الوحدة الدراسية</h2>
-        <p className="text-sm text-[#171717]/70 font-bold">الوحدة المطلوبة غير موجودة ضمن منهج {gradeMeta.nameAr}.</p>
+      <div className="p-8 text-center bg-white border-3 border-[#202124] shadow-[6px_6px_0px_#202124] max-w-xl mx-auto space-y-4">
+        <h2 className="text-xl font-black text-[#202124]">لم يتم العثور على هذه الوحدة الدراسية</h2>
+        <p className="text-sm text-[#202124]/70 font-bold">الوحدة المطلوبة غير موجودة ضمن منهج {gradeMeta.nameAr}.</p>
         <BrutalButton variant="primary" onClick={() => navigate(`/grade/${validGrade}`)}>
           العودة لمنصة {gradeMeta.nameAr}
         </BrutalButton>
@@ -100,15 +100,15 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
   ];
 
   return (
-    <div className="space-y-8 pb-24 max-w-7xl mx-auto w-full text-[#171717]" dir="rtl">
+    <div className="space-y-8 pb-24 max-w-7xl mx-auto w-full text-[#202124]" dir="rtl">
       {/* 1. Breadcrumb & Scoped Isolation Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 border-3 border-[#171717] shadow-[4px_4px_0px_#171717]">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-white p-4 border-3 border-[#202124] shadow-[4px_4px_0px_#202124]">
         <BreadcrumbsNav items={breadcrumbs} />
 
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate(`/grade/${validGrade}`)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#F4EFE3] hover:bg-[#E9FF57] text-[#171717] border-2 border-[#171717] text-xs font-black shadow-[2px_2px_0px_#171717] cursor-pointer transition-all active:translate-x-0.5 active:translate-y-0.5"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#F7F5EF] hover:bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] text-xs font-black shadow-[2px_2px_0px_#202124] cursor-pointer transition-all active:translate-x-0.5 active:translate-y-0.5"
           >
             <ArrowRight className="w-3.5 h-3.5" />
             <span>العودة لوحدات {gradeMeta.shortName}</span>
@@ -118,7 +118,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
 
       {/* 2. Unit Hero Dossier */}
       <BrutalCard variant="paper" borderSize="4" shadowSize="lg" className="p-6 sm:p-8 space-y-6">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b-3 border-[#171717] pb-6">
+        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6 border-b-3 border-[#202124] pb-6">
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <BrutalBadge variant="cobalt" className="text-xs">
@@ -134,38 +134,38 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
               )}
             </div>
 
-            <h1 className="text-2xl sm:text-4xl font-black text-[#171717] tracking-tight">
+            <h1 className="text-2xl sm:text-4xl font-black text-[#202124] tracking-tight">
               {currentUnit.titleAr}
             </h1>
-            <p className="text-sm sm:text-base font-mono font-bold text-[#304FFE]" dir="ltr">
+            <p className="text-sm sm:text-base font-mono font-bold text-[#405DE6]" dir="ltr">
               {currentUnit.titleEn}
             </p>
 
-            <p className="text-xs sm:text-sm text-[#171717]/85 font-bold leading-relaxed max-w-3xl pt-1">
+            <p className="text-xs sm:text-sm text-[#202124]/85 font-bold leading-relaxed max-w-3xl pt-1">
               {currentUnit.description ||
                 'تتضمن هذه الوحدة القواعد والشروحات والمفردات والتمارين الوزارية المعتمدة وفق الطبعة الرسمية.'}
             </p>
           </div>
 
           {/* Unit Progress Tracker Badge */}
-          <div className="bg-white border-3 border-[#171717] shadow-[4px_4px_0px_#171717] p-5 shrink-0 min-w-[260px] space-y-3">
+          <div className="bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] p-5 shrink-0 min-w-[260px] space-y-3">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-black uppercase text-[#171717]/70">
+              <span className="text-xs font-mono font-black uppercase text-[#202124]/70">
                 UNIT PROGRESS // الإنجاز
               </span>
-              <span className="text-sm font-mono font-black text-[#304FFE]">
+              <span className="text-sm font-mono font-black text-[#405DE6]">
                 {completionPct}%
               </span>
             </div>
 
-            <div className="w-full bg-[#F4EFE3] h-4 border-2 border-[#171717] overflow-hidden">
+            <div className="w-full bg-[#F7F5EF] h-4 border-2 border-[#202124] overflow-hidden">
               <div
-                className="bg-[#E9FF57] h-full border-l-2 border-[#171717] transition-all duration-300"
+                className="bg-[#F3E6A5] h-full border-l-2 border-[#202124] transition-all duration-300"
                 style={{ width: `${completionPct}%` }}
               />
             </div>
 
-            <div className="flex items-center justify-between text-xs font-bold text-[#171717]/80">
+            <div className="flex items-center justify-between text-xs font-bold text-[#202124]/80">
               <span>{completedLessons.length} دروس مكتملة</span>
               <span>{lessons.length - completedLessons.length} متبقية</span>
             </div>
@@ -177,7 +177,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
           {prevUnit ? (
             <button
               onClick={() => navigate(`/grade/${validGrade}/unit/${prevUnit.id}`)}
-              className="inline-flex items-center gap-2 px-3.5 py-2 bg-white hover:bg-[#F4EFE3] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-black transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer"
             >
               <ArrowRight className="w-4 h-4" />
               <span>الوحدة السابقة: {prevUnit.titleAr}</span>
@@ -187,13 +187,13 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
           {nextUnit ? (
             <button
               onClick={() => navigate(`/grade/${validGrade}/unit/${nextUnit.id}`)}
-              className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#E9FF57] hover:bg-[#d8f03f] text-[#171717] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] text-xs font-black transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#F3E6A5] hover:bg-[#E6D99A] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer"
             >
               <span>الوحدة التالية: {nextUnit.titleAr}</span>
               <ArrowLeft className="w-4 h-4" />
             </button>
           ) : (
-            <span className="text-xs font-mono font-bold text-[#171717]/60">
+            <span className="text-xs font-mono font-bold text-[#202124]/60">
               الوحدة الأخيرة في المنهج
             </span>
           )}
@@ -202,16 +202,16 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
 
       {/* 3. Ordered Lessons List */}
       <div className="space-y-4">
-        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-3 border-[#171717] pb-3">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b-3 border-[#202124] pb-3">
           <div className="flex items-center gap-2.5">
-            <div className="w-9 h-9 bg-[#304FFE] text-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center font-black">
+            <div className="w-9 h-9 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center font-black">
               <BookOpen className="w-5 h-5" />
             </div>
             <div>
-              <h2 className="text-xl sm:text-2xl font-black text-[#171717]">
+              <h2 className="text-xl sm:text-2xl font-black text-[#202124]">
                 فهرس دروس الوحدة 0{currentUnit.id} ({lessons.length} دروس منظمة)
               </h2>
-              <p className="text-xs font-mono font-bold text-[#171717]/70">
+              <p className="text-xs font-mono font-bold text-[#202124]/70">
                 دروس مرتبة تسلسلياً حسب الكتاب الرسمي والملزمة
               </p>
             </div>
@@ -223,7 +223,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
               value={filterText}
               onChange={(e) => setFilterText(e.target.value)}
               placeholder="فلترة دروس هذه الوحدة..."
-              className="w-full px-3 py-1.5 bg-white border-2 border-[#171717] text-xs font-bold text-[#171717] shadow-[2px_2px_0px_#171717] focus:outline-none focus:bg-[#E9FF57]/30"
+              className="w-full px-3 py-1.5 bg-white border-2 border-[#202124] text-xs font-bold text-[#202124] shadow-[2px_2px_0px_#202124] focus:outline-none focus:bg-[#F3E6A5]/30"
             />
           </div>
         </div>
@@ -241,13 +241,13 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
                 borderSize="3"
                 shadowSize="md"
                 className={`p-5 flex flex-col justify-between transition-all group ${
-                  isCompleted ? 'border-[#304FFE]' : ''
+                  isCompleted ? 'border-[#405DE6]' : ''
                 }`}
               >
                 <div className="space-y-3">
                   <div className="flex items-center justify-between gap-2">
                     <div className="flex items-center gap-1.5">
-                      <span className="font-mono text-xs font-black px-2 py-0.5 bg-[#171717] text-[#E9FF57]">
+                      <span className="font-mono text-xs font-black px-2 py-0.5 bg-[#202124] text-[#F3E6A5]">
                         L0{lesson.lessonNumber || idx + 1}
                       </span>
                       <BrutalBadge variant={cat.variant} className="flex items-center gap-1">
@@ -257,39 +257,39 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
                     </div>
 
                     {isCompleted ? (
-                      <span className="inline-flex items-center gap-1 text-[11px] font-black px-2 py-0.5 bg-[#E9FF57] text-[#171717] border border-[#171717]">
-                        <Check className="w-3.5 h-3.5 text-[#304FFE]" />
+                      <span className="inline-flex items-center gap-1 text-[11px] font-black px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124]">
+                        <Check className="w-3.5 h-3.5 text-[#405DE6]" />
                         <span>مكتمل 🏆</span>
                       </span>
                     ) : (
-                      <span className="text-[11px] font-mono font-bold text-[#171717]/60">
+                      <span className="text-[11px] font-mono font-bold text-[#202124]/60">
                         لم يُدرس بعد ⏳
                       </span>
                     )}
                   </div>
 
                   <div>
-                    <h3 className="text-base sm:text-lg font-black text-[#171717] group-hover:text-[#304FFE] transition-colors leading-tight">
+                    <h3 className="text-base sm:text-lg font-black text-[#202124] group-hover:text-[#405DE6] transition-colors leading-tight">
                       {lesson.titleAr}
                     </h3>
-                    <p className="text-xs font-mono font-bold text-[#FF5738] mt-0.5" dir="ltr">
+                    <p className="text-xs font-mono font-bold text-[#F2A18E] mt-0.5" dir="ltr">
                       {lesson.titleEn}
                     </p>
                   </div>
 
-                  <p className="text-xs text-[#171717]/80 font-bold leading-relaxed line-clamp-2 bg-[#F4EFE3] p-2.5 border-2 border-[#171717]">
+                  <p className="text-xs text-[#202124]/80 font-bold leading-relaxed line-clamp-2 bg-[#F7F5EF] p-2.5 border-2 border-[#202124]">
                     {lesson.summary}
                   </p>
 
                   {lesson.grammarRuleFormula && (
-                    <div className="p-2 bg-[#A8D8FF]/30 border border-[#171717] text-[11px] font-mono font-black text-[#171717] truncate" dir="ltr">
+                    <div className="p-2 bg-[#DCD8FA]/30 border border-[#202124] text-[11px] font-mono font-black text-[#202124] truncate" dir="ltr">
                       ⚡ {lesson.grammarRuleFormula}
                     </div>
                   )}
                 </div>
 
-                <div className="mt-4 pt-3 border-t-2 border-[#171717] flex items-center justify-between gap-3">
-                  <span className="text-[11px] font-mono font-bold text-[#171717]/70">
+                <div className="mt-4 pt-3 border-t-2 border-[#202124] flex items-center justify-between gap-3">
+                  <span className="text-[11px] font-mono font-bold text-[#202124]/70">
                     {lesson.exercises ? `${lesson.exercises.length} تمارين` : 'شرح شامل'}
                   </span>
 
