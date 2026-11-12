@@ -590,7 +590,7 @@ function MainAppContent() {
             <GraduationCap className="w-8 h-8 text-[#202124]" />
           </div>
           <div>
-            <span className="editorial-tag text-[#405DE6] block mb-1">SYS // INITIALIZATION</span>
+            <span className="text-[11px] font-mono font-bold text-[#405DE6] block mb-1">المنصة الأكاديمية · جاري التهيئة</span>
             <h2 className="text-xl font-extrabold font-display text-[#202124]">النموذجية في الإنكليزية</h2>
             <p className="text-xs text-[#777873] mt-1">إشراف الأستاذ مصطفى تركي • المنهج العراقي 2026</p>
           </div>
@@ -905,8 +905,8 @@ function MainAppContent() {
           <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start pb-8 border-b border-[#202124]/15">
             {/* Column 1: Identity & Stamp */}
             <div className="md:col-span-5 space-y-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F3E6A5] border border-[#202124] shadow-[1.5px_1.5px_0px_#202124] text-xs font-mono font-bold uppercase">
-                <span>VOL. 26 // OFFICIAL ARCHIVE</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F3E6A5] border border-[#202124] shadow-[1.5px_1.5px_0px_#202124] text-xs font-mono font-bold uppercase rounded-xs">
+                <span>المنهج الرسمي المعتمد 2026</span>
               </div>
               <h3 className="text-xl sm:text-2xl font-extrabold font-display text-[#202124]">
                 النموذجية في الإنكليزية
@@ -918,19 +918,19 @@ function MainAppContent() {
 
             {/* Column 2: Grades Quick Matrix (Strictly 4 Active Grades) */}
             <div className="md:col-span-4 space-y-2">
-              <span className="editorial-tag text-[#405DE6] block">STAGES // الصفوف المشمولة</span>
+              <span className="text-[11px] font-mono font-bold text-[#405DE6] block">المراحل والصفوف المشمولة</span>
               <div className="flex flex-wrap gap-1.5 pt-1 font-mono">
-                <span className="px-2.5 py-1 bg-[#F3E6A5] border border-[#202124] text-xs font-bold text-[#202124]">المتوسطة (3rd وزاري)</span>
-                <span className="px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-bold text-[#202124]">الإعدادية (4th عام)</span>
-                <span className="px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-bold text-[#202124]">الإعدادية (5th متقدم)</span>
-                <span className="px-2.5 py-1 bg-[#405DE6] text-white border border-[#202124] text-xs font-bold">البكالوريا (6th وزاري)</span>
+                <span className="px-2.5 py-1 bg-[#F3E6A5] border border-[#202124] text-xs font-bold text-[#202124] rounded-xs">المتوسطة (3rd وزاري)</span>
+                <span className="px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-bold text-[#202124] rounded-xs">الإعدادية (4th عام)</span>
+                <span className="px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-bold text-[#202124] rounded-xs">الإعدادية (5th متقدم)</span>
+                <span className="px-2.5 py-1 bg-[#405DE6] text-white border border-[#202124] text-xs font-bold rounded-xs">البكالوريا (6th وزاري)</span>
               </div>
             </div>
 
             {/* Column 3: Verification & Specs Stamp */}
             <div className="md:col-span-3 space-y-2 text-right">
-              <span className="editorial-tag text-[#F2A18E] block">VERIFICATION // التوثيق</span>
-              <div className="p-3 bg-[#F7F5EF] border border-[#202124] shadow-[2px_2px_0px_#202124] text-[11px] font-mono space-y-1">
+              <span className="text-[11px] font-mono font-bold text-[#F2A18E] block">التوثيق والاعتماد الوزاري</span>
+              <div className="p-3 bg-[#F7F5EF] border border-[#202124] shadow-[2px_2px_0px_#202124] text-[11px] font-mono space-y-1 rounded-xs">
                 <div>SPEC: <span className="font-bold">MOE-IRAQ-2026</span></div>
                 <div>EXAM: <span className="font-bold text-[#F2A18E]">100 PTS FULL SCALE</span></div>
                 <div>AUTHOR: <span className="font-bold">MUSTAFA TURKI</span></div>
@@ -942,7 +942,7 @@ function MainAppContent() {
             <p>© 2026 النموذجية في الإنكليزية • جمهورية العراق — جميع الحقوق محفوظة.</p>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-[#F3E6A5] border border-[#202124] inline-block" />
-              <span>SWISS EDITORIAL × SOFT BRUTALISM EDITION</span>
+              <span>RETRO NEO-BRUTALISM × SWISS EDITORIAL EDITION</span>
             </div>
           </div>
         </div>

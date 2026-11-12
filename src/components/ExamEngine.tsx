@@ -169,9 +169,9 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
       <div className="p-5 sm:p-6 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex flex-col gap-5">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
           <div>
-            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-black mb-2">
+            <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-bold mb-2 rounded-xs">
               <HelpCircle className="w-3.5 h-3.5 text-[#405DE6]" />
-              <span>{gradeMeta.isMinisterial ? `MINISTERIAL ARCHIVE // ${gradeMeta.nameAr}` : `ACADEMIC QUESTION BANK // ${gradeMeta.nameAr}`}</span>
+              <span>{gradeMeta.isMinisterial ? `الأرشيف الوزاري المعتمد · ${gradeMeta.nameAr}` : `بنك الأسئلة والتمارين · ${gradeMeta.nameAr}`}</span>
             </div>
             <h1 className="font-display text-xl sm:text-3xl font-black text-[#202124]">
               محرك الاختبارات وبنك الأسئلة • {gradeMeta.nameAr}

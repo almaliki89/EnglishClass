@@ -217,7 +217,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
             
             <div className="flex items-center gap-2 font-mono">
               <span className="text-xs font-bold text-[#202124]">
-                إجمالي الوحدات: <span className="bg-[#F3E6A5] px-1.5 py-0.2 border border-[#202124] font-black">{units.length} UNITS</span>
+                إجمالي الوحدات: <span className="bg-[#F3E6A5] px-1.5 py-0.2 border border-[#202124] font-black rounded-xs">{units.length} وحدات</span>
               </span>
               {completedLessonsCount > 0 && (
                 <button
@@ -226,7 +226,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     playFanfare();
                     triggerCelebration();
                   }}
-                  className="px-2.5 py-1 bg-[#F3E6A5] hover:bg-[#d8ee43] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer flex items-center gap-1 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none"
+                  className="px-2.5 py-1 bg-[#F3E6A5] hover:bg-[#e8da98] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer flex items-center gap-1 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none rounded-xs"
                   title="احتفل بتقدمك الدراسي!"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
@@ -352,8 +352,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
                             0{unit.number}
                           </span>
                           <div>
-                            <span className="text-[10px] font-mono font-black text-[#F2A18E] block uppercase">
-                              UNIT {unit.number} // المنهج الرسمي
+                            <span className="text-[10px] font-mono font-bold text-[#F2A18E] block">
+                              الوحدة {unit.number} · المنهج الرسمي
                             </span>
                             <h3 className="text-base sm:text-lg font-black text-[#202124]">
                               {unit.titleAr}
@@ -362,7 +362,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                         </div>
 
                         {isUnitCompleted ? (
-                          <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black flex items-center gap-1">
+                          <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black flex items-center gap-1 rounded-sm">
                             <CheckCircle2 className="w-3.5 h-3.5 text-[#202124]" />
                             <span>مكتملة 100%</span>
                           </span>
@@ -371,7 +371,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                             <span className="text-xs font-bold text-[#202124]/70">
                               {completedInUnit}/{unit.lessons.length}
                             </span>
-                            <span className="text-[10px] font-black px-1.5 py-0.2 bg-[#F7F5EF] border border-[#202124] text-[#202124]">
+                            <span className="text-[10px] font-black px-1.5 py-0.2 bg-[#F7F5EF] border border-[#202124] text-[#202124] rounded-xs">
                               {unitPercentage}%
                             </span>
                           </div>
@@ -380,7 +380,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
                       <div className="flex items-center gap-2 text-[11px] font-mono text-[#202124]/70">
                         <Clock className="w-3.5 h-3.5 text-[#202124]" />
-                        <span>ESTIMATED: ~{estimatedMinutes} MIN // {unit.lessons.length} LESSONS</span>
+                        <span>المدة التقديرية: ~{estimatedMinutes} دقيقة · {unit.lessons.length} دروس</span>
                       </div>
 
                       <p className="text-xs text-[#202124]/80 leading-relaxed line-clamp-2 font-medium">
@@ -388,7 +388,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                       </p>
 
                       {/* Progress Bar (Brutalist style) */}
-                      <div className="w-full bg-[#F7F5EF] border-2 border-[#202124] h-3 overflow-hidden">
+                      <div className="w-full bg-[#F7F5EF] border-2 border-[#202124] h-3 overflow-hidden rounded-xs">
                         <div 
                           className="h-full bg-[#405DE6] transition-all duration-500"
                           style={{ width: `${unitPercentage}%` }}
@@ -399,7 +399,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     {/* Lessons Pills Grid */}
                     <div className="space-y-2 pt-2 border-t-2 border-[#202124]">
                       <span className="text-[11px] font-mono font-bold text-[#202124]/80 block">
-                        LESSONS // دروس الوحدة المعتمدة:
+                        دروس الوحدة المعتمدة:
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {unit.lessons.map((lesson) => {
@@ -412,7 +412,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                                 playPopSound();
                                 onSelectLesson(lesson);
                               }}
-                              className={`px-2.5 py-1 text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 ${
+                              className={`px-2.5 py-1 text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 rounded-xs ${
                                 isDone
                                   ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
                                   : 'bg-white hover:bg-[#F7F5EF] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124] active:shadow-none'
@@ -457,8 +457,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
           {/* Final Boss Arena Card */}
           <div className="ui-card p-4 sm:p-5 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="space-y-2 text-right">
-              <span className="ui-chip text-xs font-mono uppercase">
-                FINAL BOSS ARENA // المحطة الختامية
+              <span className="ui-chip text-xs font-mono">
+                المحطة الختامية · الاختبار الشامل
               </span>
               <h3 className="font-display text-2xl sm:text-3xl font-black text-[#202124]">
                 الامتحان الوزاري الشامل (100 درجة)

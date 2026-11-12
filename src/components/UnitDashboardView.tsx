@@ -122,7 +122,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
           <div className="space-y-2">
             <div className="flex flex-wrap items-center gap-2">
               <BrutalBadge variant="cobalt" className="text-xs">
-                UNIT 0{currentUnit.id} // الوحدة الدراسية
+                الوحدة 0{currentUnit.id} · المنهج الرسمي
               </BrutalBadge>
               <BrutalBadge variant="yellow" className="text-xs">
                 {gradeMeta.nameAr}
@@ -148,10 +148,10 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
           </div>
 
           {/* Unit Progress Tracker Badge */}
-          <div className="bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] p-5 shrink-0 min-w-[260px] space-y-3">
+          <div className="bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] p-5 shrink-0 min-w-[260px] space-y-3 rounded-xs">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-black uppercase text-[#202124]/70">
-                UNIT PROGRESS // الإنجاز
+              <span className="text-xs font-mono font-bold text-[#202124]/70">
+                نسبة إنجاز الوحدة
               </span>
               <span className="text-sm font-mono font-black text-[#405DE6]">
                 {completionPct}%

@@ -113,9 +113,9 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
       <div className="p-6 sm:p-8 bg-white border-3 border-[#202124] shadow-[5px_5px_0px_#202124] text-[#202124] space-y-4 relative overflow-hidden">
         
         <div className="flex flex-wrap items-center justify-between gap-3 relative z-10">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F3E6A5] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-[#202124] text-xs font-mono font-black">
+          <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F3E6A5] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-[#202124] text-xs font-mono font-bold rounded-xs">
             <GraduationCap className="w-4 h-4 text-[#405DE6]" />
-            <span>QUESTION IV: LITERATURE & STORIES // 10 MARKS</span>
+            <span>السؤال الرابع: نصوص الأدب والمطالعة (10 درجات)</span>
           </div>
 
           {/* Language Mode Toggle */}

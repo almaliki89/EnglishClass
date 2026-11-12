@@ -73,8 +73,8 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
               <span>العودة للرئيسية</span>
             </button>
             <div className="space-y-1">
-              <div className="text-xs font-mono uppercase tracking-widest text-[#F2A18E] font-bold">
-                {subject.titleEn} // OFFICIAL CURRICULUM
+              <div className="text-xs font-mono uppercase tracking-widest text-[#405DE6] font-bold">
+                {subject.titleEn} · OFFICIAL CURRICULUM
               </div>
               <h1 className="text-3xl sm:text-4xl font-black text-[#202124] tracking-tight">{subject.titleAr}</h1>
             </div>

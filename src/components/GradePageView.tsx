@@ -111,7 +111,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
           <div className="space-y-2.5 max-w-3xl">
             <div className="flex flex-wrap items-center gap-2">
               <BrutalBadge variant="cobalt" className="text-xs">
-                OFFICIAL GRADE DOSSIER // بيئة تعليمية مستقلة
+                بيئة تعليمية مستقلة · المنهج الرسمي
               </BrutalBadge>
               {isMinisterial ? (
                 <BrutalBadge variant="vermilion" className="text-xs">
@@ -131,7 +131,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
               منصة {gradeMeta.nameAr} • اللغة الإنكليزية
             </h1>
             <p className="text-xs sm:text-sm font-mono font-bold text-[#405DE6]" dir="ltr">
-              {gradeMeta.nameEn} // MASTER CURRICULUM
+              {gradeMeta.nameEn} · Master Curriculum
             </p>
 
             <p className="text-xs sm:text-sm text-[#202124]/85 font-bold leading-relaxed pt-1">
@@ -141,17 +141,17 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
           </div>
 
           {/* Grade Progress Box */}
-          <div className="bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] p-5 shrink-0 min-w-[260px] space-y-3">
+          <div className="bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] p-5 shrink-0 min-w-[260px] space-y-3 rounded-xs">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-mono font-black uppercase text-[#202124]/70">
-                GRADE PROGRESS // إنجاز الصف
+              <span className="text-xs font-mono font-bold text-[#202124]/70">
+                إنجاز الصف الدراسي
               </span>
               <span className="text-base font-mono font-black text-[#405DE6]">
                 {progressPct}%
               </span>
             </div>
 
-            <div className="w-full bg-[#F7F5EF] h-4 border-2 border-[#202124] overflow-hidden">
+            <div className="w-full bg-[#F7F5EF] h-4 border-2 border-[#202124] overflow-hidden rounded-xs">
               <div
                 className="bg-[#F3E6A5] h-full border-l-2 border-[#202124] transition-all duration-300"
                 style={{ width: `${progressPct}%` }}
@@ -167,14 +167,14 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
 
         {/* Last Studied Lesson Callout (if student has progress in this grade) */}
         {lastLessonInGrade && lastLessonUnit && (
-          <div className="p-4 bg-white border-3 border-[#202124] shadow-[3px_3px_0px_#202124] flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="p-4 bg-white border-3 border-[#202124] shadow-[3px_3px_0px_#202124] flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-xs">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] flex items-center justify-center font-black shrink-0">
+              <div className="w-10 h-10 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] flex items-center justify-center font-black shrink-0 rounded-xs">
                 <Play className="w-5 h-5 fill-current" />
               </div>
               <div>
-                <span className="text-[10px] font-mono font-black uppercase text-[#405DE6] block">
-                  LAST ACCESSED LESSON // تابع من حيث توقفت
+                <span className="text-[10px] font-mono font-bold text-[#405DE6] block">
+                  تابع من حيث توقفت
                 </span>
                 <h4 className="text-sm font-black text-[#202124]">
                   الوحدة 0{lastLessonUnit.id}: {lastLessonInGrade.titleAr}
@@ -213,7 +213,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
               <span>المواد الدراسية المقررة لـ {gradeMeta.nameAr}</span>
             </h2>
             <p className="text-xs font-mono font-bold text-[#202124]/70 mt-0.5">
-              SUBJECT DIRECTORY // المادة المعتمدة في المنصة
+              المادة المعتمدة في المنصة
             </p>
           </div>
           <BrutalBadge variant="cobalt">مادة معتمدة</BrutalBadge>

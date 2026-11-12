@@ -145,11 +145,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Current Grade Stamp + Switch Grade Button (Shown inside a grade) */}
             {isInsideGrade && (
               <div className="flex items-center gap-2">
-                <div className="hidden xs:flex items-center gap-1.5 px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-mono font-bold text-[#202124]">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 inline-block" />
+                <div className="hidden xs:flex items-center gap-1.5 px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-mono font-bold text-[#202124] rounded-sm">
                   <span className="text-[#405DE6]">{currentGradeMeta.shortName}</span>
                   {isMinisterial && (
-                    <span className="text-[9px] px-1 py-0.2 bg-[#F2A18E] text-[#202124] font-mono font-bold border border-[#202124]">
+                    <span className="text-[9px] px-1 py-0.2 bg-[#F2A18E] text-[#202124] font-mono font-bold border border-[#202124] rounded-xs">
                       وزاري
                     </span>
                   )}

@@ -66,7 +66,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
                 منهاج اللغة الإنكليزية العراقي
               </BrutalBadge>
               <BrutalBadge variant="yellow" className="text-xs">
-                ACADEMIC PORTAL // دليل الصفوف الدراسية 2026
+                دليل الصفوف الدراسية 2026
               </BrutalBadge>
             </div>
             <h1 className="text-2xl sm:text-4xl font-extrabold text-[#202124] tracking-tight">
@@ -78,9 +78,9 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
             </p>
           </div>
 
-          <div className="bg-white border-2 border-[#202124] shadow-[3.5px_3.5px_0px_#202124] p-5 text-center shrink-0 min-w-[220px]">
+          <div className="bg-white border-2 border-[#202124] shadow-[3.5px_3.5px_0px_#202124] p-5 text-center shrink-0 min-w-[220px] rounded">
             <span className="text-[10px] font-mono font-bold uppercase text-[#777873] block mb-1">
-              ACTIVE GRADE // الصف المعتمد
+              الصف الدراسي النشط
             </span>
             <span className="text-base font-black text-[#405DE6] block font-display">
               {studentState.selectedGrade ? getGradeMeta(studentState.selectedGrade).shortName : 'لم يتم التحديد'}
@@ -152,7 +152,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
                       <BrutalBadge variant="sky">امتحان مدرسي نهائي</BrutalBadge>
                     )}
                     <span className="text-xs font-mono font-bold text-[#777873]">
-                      STAGE // {meta.stage === 'intermediate' ? 'المرحلة المتوسطة' : 'المرحلة الإعدادية'}
+                      {meta.stage === 'intermediate' ? 'المرحلة المتوسطة' : 'المرحلة الإعدادية'}
                     </span>
                   </div>
                 </div>

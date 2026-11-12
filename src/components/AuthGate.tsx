@@ -152,7 +152,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
           <div className="space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F3E6A5] border-2 border-[#202124] text-[#202124] text-xs font-black uppercase tracking-wider shadow-[2px_2px_0px_#202124]">
               <GraduationCap className="w-4 h-4 text-[#405DE6]" />
-              <span className="font-mono">SEC. 2027 // OFFICIAL ADMISSION</span>
+              <span className="font-mono">SEC. 2026 · OFFICIAL ADMISSION</span>
             </div>
 
             <div className="space-y-2">

@@ -93,35 +93,35 @@ export const SpellingForge: React.FC<SpellingForgeProps> = ({ lesson }) => {
   };
 
   return (
-    <div className="bg-white border-4 border-[#171717] text-[#171717] p-6 sm:p-8 shadow-[6px_6px_0px_#171717] space-y-6 relative overflow-hidden">
+    <div className="bg-white border-2 border-[#202124] text-[#202124] p-6 sm:p-8 shadow-[4px_4px_0px_#202124] space-y-6 relative overflow-hidden rounded-lg">
       
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#171717] pb-4">
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#202124] pb-4">
         <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-[#FF5738] text-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] flex items-center justify-center font-black text-xl shrink-0">
+          <div className="w-12 h-12 bg-[#F2A18E] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center font-black text-xl shrink-0 rounded">
             <PenTool className="w-6 h-6" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 bg-[#E9FF57] text-[#171717] border border-[#171717] text-[10px] font-mono font-black uppercase tracking-wider">
+              <span className="px-2.5 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] text-[10px] font-mono font-black uppercase tracking-wider rounded-sm">
                 Spelling & Morphology Forge
               </span>
-              <span className="text-xs font-mono font-bold text-[#171717]/60">• ورشة الإملاء والتصريفات الوزارية</span>
+              <span className="text-xs font-mono font-bold text-[#202124]/60">• ورشة الإملاء والتصريفات الوزارية</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-black text-[#171717] mt-1 tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-black text-[#202124] mt-1 tracking-tight">
               مختبر كتابة الإملاء والسوابق واللواحق والأفعال الشاذة
             </h2>
           </div>
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex items-center gap-1.5 p-1 bg-[#F4EFE3] border-2 border-[#171717] shadow-[2px_2px_0px_#171717] overflow-x-auto no-scrollbar w-full sm:w-auto max-w-full">
+        <div className="flex items-center gap-1.5 p-1 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] overflow-x-auto no-scrollbar w-full sm:w-auto max-w-full rounded">
           <button
             onClick={() => setActiveTab('prefixes')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border-2 cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border-2 cursor-pointer rounded-sm ${
               activeTab === 'prefixes' 
-                ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]' 
-                : 'bg-white text-[#171717] border-transparent hover:border-[#171717]'
+                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
+                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
             }`}
           >
             <Layers className="w-3.5 h-3.5 shrink-0" />
@@ -130,10 +130,10 @@ export const SpellingForge: React.FC<SpellingForgeProps> = ({ lesson }) => {
           
           <button
             onClick={() => setActiveTab('suffixes')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border-2 cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border-2 cursor-pointer rounded-sm ${
               activeTab === 'suffixes' 
-                ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]' 
-                : 'bg-white text-[#171717] border-transparent hover:border-[#171717]'
+                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
+                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
             }`}
           >
             <BookOpen className="w-3.5 h-3.5 shrink-0" />
@@ -142,10 +142,10 @@ export const SpellingForge: React.FC<SpellingForgeProps> = ({ lesson }) => {
 
           <button
             onClick={() => setActiveTab('irregulars')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border-2 cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border-2 cursor-pointer rounded-sm ${
               activeTab === 'irregulars' 
-                ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]' 
-                : 'bg-white text-[#171717] border-transparent hover:border-[#171717]'
+                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
+                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
             }`}
           >
             <ArrowRightLeft className="w-3.5 h-3.5 shrink-0" />
@@ -154,10 +154,10 @@ export const SpellingForge: React.FC<SpellingForgeProps> = ({ lesson }) => {
 
           <button
             onClick={() => setActiveTab('trainer')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border-2 cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border-2 cursor-pointer rounded-sm ${
               activeTab === 'trainer' 
-                ? 'bg-[#304FFE] text-white border-[#171717] shadow-[2px_2px_0px_#171717]' 
-                : 'bg-white text-[#171717] border-transparent hover:border-[#171717]'
+                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
+                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
             }`}
           >
             <PenTool className="w-3.5 h-3.5 shrink-0" />

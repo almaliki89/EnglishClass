@@ -393,32 +393,32 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
           {/* Official Specifications Bento Box */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
             
-            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3">
-              <div className="w-11 h-11 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0">
+            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3 rounded-xs">
+              <div className="w-11 h-11 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0 rounded-xs">
                 <Clock className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#F2A18E] block uppercase">DURATION // الوقت المقرّر</span>
+                <span className="text-[10px] font-mono font-bold text-[#F2A18E] block">الوقت المقرّر</span>
                 <span className="text-sm sm:text-base font-black text-[#202124]">{currentPaper.durationMinutes || 180} دقيقة امتحانية رسمية</span>
               </div>
             </div>
 
-            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3">
-              <div className="w-11 h-11 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0">
+            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3 rounded-xs">
+              <div className="w-11 h-11 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0 rounded-xs">
                 <Award className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#405DE6] block uppercase">TOTAL SCORE // الدرجة الكلية</span>
+                <span className="text-[10px] font-mono font-bold text-[#405DE6] block">الدرجة الكلية</span>
                 <span className="text-sm sm:text-base font-black text-[#202124]">100 درجة وزارية كاملة</span>
               </div>
             </div>
 
-            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3">
-              <div className="w-11 h-11 bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0">
+            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3 rounded-xs">
+              <div className="w-11 h-11 bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0 rounded-xs">
                 <CheckCircle2 className="w-5 h-5 text-[#405DE6]" />
               </div>
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#202124]/60 block uppercase">EVALUATION // التصحيح</span>
+                <span className="text-[10px] font-mono font-bold text-[#202124]/60 block">آلية التصحيح</span>
                 <span className="text-sm sm:text-base font-black text-[#202124]">تصحيح فوري مع التعليل الوزاري</span>
               </div>
             </div>
@@ -520,7 +520,7 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
             {/* Launch Actions */}
             <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-t-2 border-[#202124]">
               <div className="text-xs text-[#202124]/80 font-mono text-center sm:text-right">
-                <span>CANDIDATE // الطالب: </span>
+                <span>الطالب المرشح: </span>
                 <strong className="text-[#202124] font-black">{studentName}</strong>
               </div>
 

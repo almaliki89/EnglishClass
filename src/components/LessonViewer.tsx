@@ -202,7 +202,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           <button
             id="toggle-quick-hints-btn"
             onClick={() => setShowQuickHints((prev) => !prev)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#F3E6A5] hover:bg-[#d8ee43] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#F3E6A5] hover:bg-[#e6d895] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5 rounded-xs"
             title="عرض تلميحات سريعة للمراجعة"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
@@ -213,26 +213,26 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
       {/* 2. Quick Hints Panel */}
       {showQuickHints && (
-        <div className="p-5 bg-[#F3E6A5]/25 border-3 border-[#202124] shadow-[5px_5px_0px_#202124] space-y-3">
+        <div className="p-5 bg-[#F3E6A5]/25 border-3 border-[#202124] shadow-[5px_5px_0px_#202124] space-y-3 rounded-xs">
           <div className="flex items-center justify-between border-b-2 border-[#202124] pb-2">
             <div className="flex items-center gap-2 text-[#202124] font-black text-sm">
               <Lightbulb className="w-4 h-4 text-[#405DE6] fill-[#405DE6]" />
               <span>تلميحات ومفاتيح الحل الوزاري السريع</span>
             </div>
-            <span className="text-[10px] font-mono font-bold text-[#202124]/70">RAPID CHEAT SHEET</span>
+            <span className="text-[10px] font-mono font-bold text-[#202124]/70">تلميحات وزارية</span>
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-[#202124]">
-            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
-              <span className="font-mono text-[10px] font-black uppercase text-[#405DE6] block mb-1">01. THE RULE // القاعدة</span>
+            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs">
+              <span className="font-mono text-[10px] font-bold text-[#405DE6] block mb-1">01. القاعدة الأساسية</span>
               <p className="font-bold leading-relaxed">{lesson.grammarRuleFormula || lesson.summary}</p>
             </div>
-            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
-              <span className="font-mono text-[10px] font-black uppercase text-[#F2A18E] block mb-1">02. EXAM TRAP // الفخ الوزاري</span>
+            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs">
+              <span className="font-mono text-[10px] font-bold text-[#F2A18E] block mb-1">02. الفخ الوزاري</span>
               <p className="font-bold leading-relaxed">{lesson.commonMistakes?.[0] || 'راجع زمن الجملة ومحددات الفعل أولاً قبل كتابة الإجابة.'}</p>
             </div>
-            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
-              <span className="font-mono text-[10px] font-black uppercase text-[#202124] block mb-1">03. SMART STEP // مفتاح الحل</span>
+            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs">
+              <span className="font-mono text-[10px] font-bold text-[#202124] block mb-1">03. مفتاح الحل</span>
               <p className="font-bold leading-relaxed">حل السؤال واستخرج الكلمة الدالة أولاً؛ لا تخمن الإجابة عشوائياً.</p>
             </div>
           </div>

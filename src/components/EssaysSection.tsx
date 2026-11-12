@@ -335,14 +335,14 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
       <div className="p-6 sm:p-8 bg-white border-3 border-[#202124] shadow-[6px_6px_0px_#202124] text-[#202124] space-y-5 relative overflow-hidden">
         
         {/* Scoped Grade Identity Badge */}
-        <div className="flex flex-wrap items-center justify-between gap-2 p-2 bg-[#F7F5EF] border-2 border-[#202124] relative z-10">
+        <div className="flex flex-wrap items-center justify-between gap-2 p-2 bg-[#F7F5EF] border-2 border-[#202124] relative z-10 rounded-xs">
           <div className="flex items-center gap-2">
-            <span className="editorial-tag text-[#405DE6]">GRADE CONTEXT // الصف الحالي:</span>
-            <span className="px-2.5 py-0.5 bg-[#405DE6] text-white border border-[#202124] text-xs font-black">
+            <span className="text-[11px] font-mono font-bold text-[#405DE6]">الصف الدراسي الحالي:</span>
+            <span className="px-2.5 py-0.5 bg-[#405DE6] text-white border border-[#202124] text-xs font-bold rounded-xs">
               {gradeMeta.nameAr}
             </span>
             {gradeMeta.isMinisterial && (
-              <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] text-xs font-black">
+              <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] text-xs font-bold rounded-xs">
                 منهج وزاري معتمد
               </span>
             )}
@@ -363,15 +363,15 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
 
         <div className="relative z-10 space-y-4">
           <div className="flex flex-wrap items-center justify-between gap-3">
-            <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-black">
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-bold rounded-xs">
               <Award className="w-4 h-4 text-[#405DE6]" />
-              <span>QUESTION V: ESSAYS & WRITING // 20 MARKS</span>
+              <span>السؤال الخامس: الإنشاء والتعبير (20 درجة)</span>
             </div>
 
             <div className="flex items-center gap-2">
               <button
                 onClick={handlePrint}
-                className="px-3 py-1.5 bg-[#F7F5EF] hover:bg-white text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer"
+                className="px-3 py-1.5 bg-[#F7F5EF] hover:bg-white text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer rounded-xs"
                 title="طباعة الإنشاء ورقياً بتنسيق وزاري"
               >
                 <Printer className="w-3.5 h-3.5" />
@@ -396,7 +396,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           <div className="space-y-2 pt-1 border-t-2 border-[#202124]">
             <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#F2A18E]">
               <Filter className="w-3.5 h-3.5 shrink-0" />
-              <span>FILTER BY UNIT // فرز حسب الوحدة:</span>
+              <span>فرز حسب الوحدة الدراسية:</span>
             </div>
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar w-full">
               <button

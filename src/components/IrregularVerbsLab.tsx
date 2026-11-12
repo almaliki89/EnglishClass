@@ -103,9 +103,9 @@ export const IrregularVerbsLab: React.FC<IrregularVerbsLabProps> = ({
       {/* Header Banner */}
       <div className="p-6 sm:p-8 bg-white border-3 border-[#202124] shadow-[5px_5px_0px_#202124] text-[#202124] space-y-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         <div>
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F2A18E] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-black mb-2">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F2A18E] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-bold mb-2 rounded-xs">
             <Compass className="w-3.5 h-3.5" />
-            <span>IRREGULAR VERBS LAB // 80 VERBS</span>
+            <span>مختبر الأفعال الشاذة والتصريفات</span>
           </div>
 
           <h1 className="font-display text-2xl sm:text-4xl font-black text-[#202124]">

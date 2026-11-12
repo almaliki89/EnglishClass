@@ -316,16 +316,16 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
       {/* Tab 1: Interactive Formula Tokenizer */}
       {activeTab === 'formula' && (
         <div className="space-y-4">
-          <div className="p-5 bg-[#F4EFE3] border-3 border-[#171717] shadow-[4px_4px_0px_#171717]">
+          <div className="p-5 bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-lg">
             <div className="flex items-center justify-between mb-3 text-xs">
-              <span className="font-black text-[#171717] flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-[#304FFE]" />
+              <span className="font-bold text-[#202124] flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-[#405DE6]" />
                 الصيغة الرياضية المعتمدة في الامتحان الوزاري
               </span>
-              <span className="text-[11px] font-mono font-bold text-[#171717]/60">RULE SYNTAX MATRIX</span>
+              <span className="text-[11px] font-mono font-bold text-[#777873]">RULE SYNTAX MATRIX</span>
             </div>
 
-            <div className="font-mono text-base sm:text-lg font-bold text-[#171717] bg-white p-4 border-2 border-[#171717] overflow-x-auto whitespace-pre-wrap leading-relaxed shadow-[2px_2px_0px_#171717]">
+            <div className="font-mono text-base sm:text-lg font-bold text-[#202124] bg-white p-4 border border-[#202124] overflow-x-auto whitespace-pre-wrap leading-relaxed shadow-[2px_2px_0px_#202124] rounded">
               {lesson.grammarRuleFormula || lesson.summary}
             </div>
           </div>
@@ -333,34 +333,34 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
           {/* Quick Examples with Pronunciation */}
           {lesson.examples && lesson.examples.length > 0 && (
             <div className="space-y-2">
-              <p className="text-xs font-black text-[#171717]">أمثلة تطبيقية مع النطق الإنجليزي السليم:</p>
+              <p className="text-xs font-bold text-[#202124]">أمثلة تطبيقية مع النطق الإنجليزي السليم:</p>
               <div className="grid grid-cols-1 gap-2.5">
                 {lesson.examples.slice(0, 3).map((ex, idx) => (
                   <div 
                     key={idx} 
-                    className="p-3.5 bg-white border-2 border-[#171717] shadow-[2px_2px_0px_#171717] hover:bg-[#F4EFE3] transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2"
+                    className="p-3.5 bg-white border border-[#202124] shadow-[2px_2px_0px_#202124] hover:bg-[#F7F5EF] transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded"
                   >
                     <div className="space-y-1">
-                      <p className="font-mono font-bold text-sm text-[#171717] dir-ltr text-right">
+                      <p className="font-mono font-bold text-sm text-[#202124] dir-ltr text-right">
                         {ex.en}
                       </p>
-                      <p className="text-xs font-bold text-[#171717]/70">
+                      <p className="text-xs font-bold text-[#777873]">
                         {ex.ar}
                       </p>
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
                       {ex.note && (
-                        <span className="text-[10px] font-mono font-black px-2 py-0.5 bg-[#E9FF57] text-[#171717] border border-[#171717]">
+                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] rounded-sm">
                           {ex.note}
                         </span>
                       )}
                       <button
                         onClick={() => handleSpeak(ex.en)}
-                        className={`p-2 border-2 border-[#171717] transition-all cursor-pointer shadow-[1px_1px_0px_#171717] active:translate-x-0.5 active:translate-y-0.5 ${
+                        className={`p-2 border border-[#202124] transition-all cursor-pointer shadow-[1px_1px_0px_#202124] active:translate-x-0.5 active:translate-y-0.5 rounded ${
                           speakingText === ex.en 
-                            ? 'bg-[#304FFE] text-white animate-pulse' 
-                            : 'bg-white hover:bg-[#E9FF57] text-[#171717]'
+                            ? 'bg-[#405DE6] text-white animate-pulse' 
+                            : 'bg-white hover:bg-[#F3E6A5] text-[#202124]'
                         }`}
                         title="استمع للنطق الإنجليزي"
                       >
@@ -379,10 +379,10 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
       {activeTab === 'stepper' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <span className="text-xs font-black text-[#171717]">
+            <span className="text-xs font-bold text-[#202124]">
               تتبع خطوات الحل بنفس الطريقة المطلوبة في الدفتر الامتحاني:
             </span>
-            <div className="flex items-center gap-1 text-xs font-mono font-bold text-[#171717]/70">
+            <div className="flex items-center gap-1 text-xs font-mono font-bold text-[#777873]">
               <span>STEP {activeStep + 1} OF {steps.length}</span>
             </div>
           </div>
@@ -393,47 +393,47 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
               <button
                 key={idx}
                 onClick={() => setActiveStep(idx)}
-                className={`p-3 border-2 text-right transition-all flex flex-col gap-1 cursor-pointer ${
+                className={`p-3 border text-right transition-all flex flex-col gap-1 cursor-pointer rounded ${
                   activeStep === idx 
-                    ? 'bg-[#304FFE] text-white border-[#171717] shadow-[3px_3px_0px_#171717] -translate-y-0.5' 
+                    ? 'bg-[#405DE6] text-white border-[#202124] shadow-[3px_3px_0px_#202124] -translate-y-0.5' 
                     : activeStep > idx 
-                      ? 'bg-[#E9FF57] text-[#171717] border-[#171717] shadow-[2px_2px_0px_#171717]'
-                      : 'bg-[#F4EFE3] hover:bg-white text-[#171717] border-[#171717]'
+                      ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
+                      : 'bg-[#F7F5EF] hover:bg-white text-[#202124] border-[#202124]'
                 }`}
               >
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] font-mono font-black">خطوة {step.stepNumber}</span>
+                  <span className="text-[11px] font-mono font-bold">خطوة {step.stepNumber}</span>
                   {activeStep > idx ? (
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#171717]" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#202124]" />
                   ) : (
                     <span className="w-2 h-2 bg-current" />
                   )}
                 </div>
-                <span className="text-xs font-black truncate">{step.title.split(':')[1] || step.title}</span>
+                <span className="text-xs font-bold truncate">{step.title.split(':')[1] || step.title}</span>
               </button>
             ))}
           </div>
 
           {/* Active Step Content Card */}
-          <div className="p-6 bg-[#F4EFE3] border-3 border-[#171717] shadow-[4px_4px_0px_#171717] space-y-3">
-            <div className="flex items-center justify-between border-b-2 border-[#171717] pb-2">
-              <h3 className="text-base sm:text-lg font-black text-[#171717] flex items-center gap-2">
-                <span className="w-6 h-6 bg-[#304FFE] text-white border border-[#171717] flex items-center justify-center text-xs font-black font-mono">
+          <div className="p-6 bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] space-y-3 rounded-lg">
+            <div className="flex items-center justify-between border-b border-[#202124]/20 pb-2">
+              <h3 className="text-base sm:text-lg font-bold text-[#202124] flex items-center gap-2">
+                <span className="w-6 h-6 bg-[#405DE6] text-white border border-[#202124] flex items-center justify-center text-xs font-bold font-mono rounded-sm">
                   {steps[activeStep].stepNumber}
                 </span>
                 <span>{steps[activeStep].title}</span>
               </h3>
             </div>
 
-            <p className="text-sm text-[#171717] font-bold leading-relaxed">
+            <p className="text-sm text-[#202124] font-medium leading-relaxed">
               {steps[activeStep].desc}
             </p>
 
-            <div className="p-4 bg-white border-2 border-[#171717] font-mono text-sm text-[#171717] dir-ltr text-right flex items-center justify-between gap-3 shadow-[2px_2px_0px_#171717]">
+            <div className="p-4 bg-white border border-[#202124] font-mono text-sm text-[#202124] dir-ltr text-right flex items-center justify-between gap-3 shadow-[2px_2px_0px_#202124] rounded">
               <span className="font-bold">{steps[activeStep].example}</span>
               <button
                 onClick={() => handleSpeak(steps[activeStep].example)}
-                className="p-1.5 bg-[#F4EFE3] hover:bg-[#E9FF57] border border-[#171717] text-[#171717] shrink-0 cursor-pointer shadow-[1px_1px_0px_#171717]"
+                className="p-1.5 bg-[#F7F5EF] hover:bg-[#F3E6A5] border border-[#202124] text-[#202124] shrink-0 cursor-pointer shadow-[1px_1px_0px_#202124] rounded"
                 title="استمع للنطق"
               >
                 <Volume2 className="w-3.5 h-3.5" />
@@ -444,7 +444,7 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
               <button
                 disabled={activeStep === 0}
                 onClick={() => setActiveStep(prev => Math.max(0, prev - 1))}
-                className="px-3.5 py-1.5 bg-white border-2 border-[#171717] text-xs font-black text-[#171717] hover:bg-[#F4EFE3] disabled:opacity-40 disabled:pointer-events-none transition-all shadow-[2px_2px_0px_#171717] cursor-pointer"
+                className="px-3.5 py-1.5 bg-white border border-[#202124] text-xs font-bold text-[#202124] hover:bg-[#F7F5EF] disabled:opacity-40 disabled:pointer-events-none transition-all shadow-[2px_2px_0px_#202124] cursor-pointer rounded"
               >
                 الخطوة السابقة
               </button>
@@ -452,7 +452,7 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
               <button
                 disabled={activeStep === steps.length - 1}
                 onClick={() => setActiveStep(prev => Math.min(steps.length - 1, prev + 1))}
-                className="px-4 py-1.5 bg-[#304FFE] text-white border-2 border-[#171717] text-xs font-black hover:bg-[#203ecc] disabled:opacity-40 disabled:pointer-events-none shadow-[2px_2px_0px_#171717] transition-all cursor-pointer"
+                className="px-4 py-1.5 bg-[#405DE6] text-white border border-[#202124] text-xs font-bold hover:bg-[#334DC6] disabled:opacity-40 disabled:pointer-events-none shadow-[2px_2px_0px_#202124] transition-all cursor-pointer rounded"
               >
                 الخطوة التالية
               </button>
@@ -464,29 +464,29 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
       {/* Tab 3: Signal Words Radar */}
       {activeTab === 'radar' && (
         <div className="space-y-4">
-          <div className="flex items-center justify-between border-b-2 border-[#171717] pb-2">
-            <span className="text-xs font-black text-[#171717] flex items-center gap-1.5">
-              <Zap className="w-4 h-4 text-[#FF5738]" />
+          <div className="flex items-center justify-between border-b border-[#202124]/20 pb-2">
+            <span className="text-xs font-bold text-[#202124] flex items-center gap-1.5">
+              <Zap className="w-4 h-4 text-[#F2A18E]" />
               رادار الكلمات المفتاحية والدلائل الوزارية القاطعة
             </span>
-            <span className="text-[11px] font-mono font-bold text-[#171717]/60">RADAR KEYWORDS</span>
+            <span className="text-[11px] font-mono font-bold text-[#777873]">RADAR KEYWORDS</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {signals.map((sig, idx) => (
               <div 
                 key={idx}
-                className="p-4 bg-white border-2 border-[#171717] shadow-[3px_3px_0px_#171717] hover:bg-[#F4EFE3] transition-all space-y-2"
+                className="p-4 bg-white border border-[#202124] shadow-[2px_2px_0px_#202124] hover:bg-[#F7F5EF] transition-all space-y-2 rounded"
               >
                 <div className="flex items-center justify-between">
-                  <span className="font-mono text-sm font-black text-[#171717] dir-ltr text-right px-2.5 py-1 bg-[#E9FF57] border border-[#171717]">
+                  <span className="font-mono text-sm font-bold text-[#202124] dir-ltr text-right px-2.5 py-1 bg-[#F3E6A5] border border-[#202124] rounded-sm">
                     {sig.word}
                   </span>
-                  <span className="text-[10px] font-mono font-black px-2 py-0.5 bg-[#304FFE] text-white border border-[#171717]">
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#405DE6] text-white border border-[#202124] rounded-sm">
                     {sig.tag}
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-[#171717] font-bold leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#202124] font-medium leading-relaxed">
                   {sig.rule}
                 </p>
               </div>

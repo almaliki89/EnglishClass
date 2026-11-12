@@ -8,6 +8,7 @@ import {
   RotateCcw, 
   HelpCircle, 
   ArrowRight, 
+  ArrowLeft,
   TrendingUp, 
   Award, 
   Flame,
@@ -174,11 +175,11 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
     <div className="space-y-6 pb-16">
       
       {/* 1. Header Banner */}
-      <div className="bg-white border-3 border-[#202124] shadow-[6px_6px_0px_#202124] p-6 md:p-8 text-[#202124]">
+      <div className="bg-white border-3 border-[#202124] shadow-[6px_6px_0px_#202124] p-6 md:p-8 text-[#202124] rounded-xs">
         <div className="max-w-2xl space-y-3">
-          <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-black">
+          <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-bold rounded-xs">
             <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
-            <span>SMART REVIEW ENGINE // المراجعة المركزة</span>
+            <span>المراجعة المركزة الذكية</span>
           </div>
 
           <h1 className="font-display text-2xl sm:text-3xl lg:text-4xl font-black text-[#202124]">
@@ -190,7 +191,7 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
           </p>
 
           <div className="flex items-center gap-2 pt-2">
-            <span className="px-3 py-1 bg-[#405DE6] text-white border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124]">
+            <span className="px-3 py-1 bg-[#405DE6] text-white border-2 border-[#202124] font-bold text-xs shadow-[2px_2px_0px_#202124] rounded-xs">
               منصة {gradeMeta.nameAr}
             </span>
           </div>
@@ -198,38 +199,46 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
 
         {/* Stats Row */}
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t-2 border-[#202124]">
-          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center">
-            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">ACCURACY // دقة الإجابات</span>
+          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center rounded-xs">
+            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">دقة الإجابات</span>
             <span className="text-xl sm:text-2xl font-black text-[#405DE6] font-mono">{accuracyRate}%</span>
           </div>
-          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center">
-            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">SAVED // أسئلة محفوظة</span>
+          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center rounded-xs">
+            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">أسئلة محفوظة</span>
             <span className="text-xl sm:text-2xl font-black text-[#F2A18E] font-mono">{bookmarkedQuestions.length}</span>
           </div>
-          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center">
-            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">PENDING // دروس متبقية</span>
+          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center rounded-xs">
+            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">دروس متبقية</span>
             <span className="text-xl sm:text-2xl font-black text-[#202124] font-mono">{incompleteLessons.length}</span>
           </div>
-          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center">
-            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">NOTES // ملاحظات مدونة</span>
+          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center rounded-xs">
+            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">ملاحظات مدونة</span>
             <span className="text-xl sm:text-2xl font-black text-[#202124] font-mono">{studentState.notes?.length || 0}</span>
           </div>
         </div>
       </div>
 
       {/* 2. Navigation Tabs */}
-      <div className="flex gap-2 p-1.5 bg-slate-900/80 border border-slate-800 rounded-2xl overflow-x-auto no-scrollbar">
+      <div className="flex gap-2 p-1.5 bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] overflow-x-auto no-scrollbar rounded-xs">
         <button
           onClick={() => setActiveTab('weak-topics')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all shrink-0 cursor-pointer ${activeTab === 'weak-topics' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30' : 'text-slate-400 hover:text-white'}`}
+          className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-bold transition-all shrink-0 cursor-pointer border rounded-xs ${
+            activeTab === 'weak-topics'
+              ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+              : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
+          }`}
         >
-          <AlertTriangle className="w-4 h-4 text-amber-400" />
+          <AlertTriangle className="w-4 h-4 text-[#F2A18E]" />
           <span>المواضيع المحتاجة لتقوية ({weakTopicsList.length})</span>
         </button>
 
         <button
           onClick={() => setActiveTab('bookmarks')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all shrink-0 cursor-pointer ${activeTab === 'bookmarks' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30' : 'text-slate-400 hover:text-white'}`}
+          className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-bold transition-all shrink-0 cursor-pointer border rounded-xs ${
+            activeTab === 'bookmarks'
+              ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+              : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
+          }`}
         >
           <Bookmark className="w-4 h-4" />
           <span>الأسئلة المحفوظة ({bookmarkedQuestions.length})</span>
@@ -237,7 +246,11 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
 
         <button
           onClick={() => setActiveTab('incomplete')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all shrink-0 cursor-pointer ${activeTab === 'incomplete' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30' : 'text-slate-400 hover:text-white'}`}
+          className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-bold transition-all shrink-0 cursor-pointer border rounded-xs ${
+            activeTab === 'incomplete'
+              ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+              : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
+          }`}
         >
           <BookOpen className="w-4 h-4" />
           <span>الدروس المتبقية ({incompleteLessons.length})</span>
@@ -245,7 +258,11 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
 
         <button
           onClick={() => setActiveTab('notes')}
-          className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs md:text-sm font-bold transition-all shrink-0 cursor-pointer ${activeTab === 'notes' ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-600/30' : 'text-slate-400 hover:text-white'}`}
+          className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-bold transition-all shrink-0 cursor-pointer border rounded-xs ${
+            activeTab === 'notes'
+              ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+              : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
+          }`}
         >
           <Award className="w-4 h-4" />
           <span>ملاحظاتي الشخصية ({studentState.notes?.length || 0})</span>
@@ -259,34 +276,34 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
             {weakTopicsList.map((item, idx) => (
               <div 
                 key={idx} 
-                className="bg-slate-900 border border-slate-800 hover:border-indigo-500/50 rounded-2xl p-5 space-y-3 transition-all"
+                className="bg-white border-2 border-[#202124] shadow-[3.5px_3.5px_0px_#202124] rounded-xs p-5 space-y-3 transition-all"
               >
                 <div className="flex items-start justify-between gap-2">
                   <div>
-                    <span className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-slate-800 text-indigo-400 mb-1 inline-block">
+                    <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#F7F5EF] border border-[#202124] text-[#405DE6] mb-1 inline-block rounded-xs">
                       {item.category}
                     </span>
-                    <h3 className="font-bold text-sm text-white">{item.topic}</h3>
+                    <h3 className="font-bold text-sm text-[#202124]">{item.topic}</h3>
                   </div>
-                  <span className={`text-xs font-black px-2.5 py-1 rounded-xl ${
-                    item.accuracy >= 80 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30' : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
+                  <span className={`text-xs font-mono font-black px-2.5 py-1 border border-[#202124] rounded-xs ${
+                    item.accuracy >= 80 ? 'bg-[#D7E9DA] text-[#202124]' : 'bg-[#F2A18E] text-[#202124]'
                   }`}>
                     {item.accuracy}% دقة
                   </span>
                 </div>
 
-                <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div className="w-full bg-[#EEECE6] h-2.5 border border-[#202124] overflow-hidden rounded-xs">
                   <div 
-                    className={`h-full transition-all ${item.accuracy >= 80 ? 'bg-emerald-500' : item.accuracy >= 50 ? 'bg-amber-500' : 'bg-rose-500'}`}
+                    className={`h-full transition-all ${item.accuracy >= 80 ? 'bg-[#287A52]' : item.accuracy >= 50 ? 'bg-[#F3E6A5]' : 'bg-[#F2A18E]'}`}
                     style={{ width: `${item.accuracy}%` }}
                   />
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-slate-400 pt-2 border-t border-slate-800">
-                  <span>الأخطاء المسجلة: <strong className="text-rose-400 font-mono">{item.mistakes}</strong></span>
+                <div className="flex items-center justify-between text-xs text-[#777873] pt-2 border-t border-[#202124]/15">
+                  <span>الأخطاء المسجلة: <strong className="text-[#B83A3A] font-mono">{item.mistakes}</strong></span>
                   <button
                     onClick={() => setActivePracticeTopic(item.topic === activePracticeTopic ? null : item.topic)}
-                    className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-1 cursor-pointer transition-colors"
+                    className="px-3 py-1.5 bg-[#405DE6] hover:bg-[#324ec8] text-white border border-[#202124] shadow-[1.5px_1.5px_0px_#202124] font-bold text-xs flex items-center gap-1 cursor-pointer transition-colors rounded-xs"
                   >
                     <Target className="w-3.5 h-3.5" />
                     <span>{activePracticeTopic === item.topic ? 'إغلاق التمرين' : 'تمرن على هذا الموضوع'}</span>
@@ -298,24 +315,25 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
 
           {/* Interactive Targeted Practice Drawer */}
           {activePracticeTopic && (
-            <div className="p-6 bg-slate-900 border border-indigo-500/50 rounded-3xl space-y-4 shadow-xl animate-in fade-in">
-              <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+            <div className="p-6 bg-[#F7F5EF] border-2 border-[#202124] shadow-[4px_4px_0px_#202124] rounded-xs space-y-4">
+              <div className="flex items-center justify-between border-b-2 border-[#202124] pb-3">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-indigo-400" />
-                  <h3 className="font-bold text-base text-white">
-                    تمرين تقوية فوري على: <span className="text-amber-300">{activePracticeTopic}</span>
+                  <Sparkles className="w-5 h-5 text-[#405DE6]" />
+                  <h3 className="font-bold text-base text-[#202124]">
+                    تمرين تقوية فوري على: <span className="bg-[#F3E6A5] px-2 py-0.5 border border-[#202124]">{activePracticeTopic}</span>
                   </h3>
                 </div>
                 <button
                   onClick={() => setActivePracticeTopic(null)}
-                  className="p-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-400 hover:text-white"
+                  className="p-1.5 bg-white border border-[#202124] hover:bg-[#F2A18E] text-[#202124] transition-colors rounded-xs cursor-pointer"
+                  title="إغلاق التمرين"
                 >
                   <X className="w-4 h-4" />
                 </button>
               </div>
 
               {practiceQuestionsForTopic.length === 0 ? (
-                <div className="text-center py-6 text-slate-400 text-xs">
+                <div className="text-center py-6 text-[#777873] text-xs font-bold">
                   جاري تجهيز أسئلة إضافية لهذا المحور... يمكنك مراجعة الدرس المتعلق به في قائمة الدروس.
                 </div>
               ) : (
@@ -326,12 +344,12 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
                     const isCorrect = practiceResults[q.id];
 
                     return (
-                      <div key={q.id} className="p-4 rounded-2xl bg-slate-950 border border-slate-800 space-y-3">
+                      <div key={q.id} className="p-4 bg-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] space-y-3 rounded-xs">
                         <div className="flex items-center justify-between text-xs">
-                          <span className="text-indigo-400 font-bold">{q.year} • {q.session}</span>
-                          <span className="text-slate-400">{q.category}</span>
+                          <span className="text-[#405DE6] font-mono font-bold">{q.year} • {q.session}</span>
+                          <span className="text-[#777873] font-bold">{q.category}</span>
                         </div>
-                        <p dir="ltr" className="text-sm font-bold text-white text-left font-serif">{q.questionText}</p>
+                        <p dir="ltr" className="text-sm font-bold text-[#202124] text-left font-mono">{q.questionText}</p>
 
                         <div className="flex gap-2">
                           <input
@@ -340,7 +358,7 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
                             placeholder="Type your answer here..."
                             value={ans}
                             onChange={(e) => setPracticeAnswers(prev => ({ ...prev, [q.id]: e.target.value }))}
-                            className="flex-1 px-3 py-2 bg-slate-900 border border-slate-700 rounded-xl text-xs text-white focus:border-indigo-500 focus:outline-hidden"
+                            className="flex-1 px-3 py-2 bg-[#F7F5EF] border-2 border-[#202124] rounded-xs text-xs font-mono font-bold text-[#202124] focus:bg-white focus:outline-none"
                           />
                           <button
                             onClick={() => {
@@ -349,18 +367,18 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
                               const correct = cleanedU === cleanedT || (cleanedT.includes(cleanedU) && cleanedU.length > 2);
                               setPracticeResults(prev => ({ ...prev, [q.id]: correct }));
                             }}
-                            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs rounded-xl cursor-pointer"
+                            className="px-4 py-2 bg-[#405DE6] hover:bg-[#324ec8] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-bold text-xs rounded-xs cursor-pointer"
                           >
                             تحقق
                           </button>
                         </div>
 
                         {isChecked && (
-                          <div className={`p-3 rounded-xl text-xs font-mono flex items-center justify-between ${
-                            isCorrect ? 'bg-emerald-950/60 border border-emerald-700 text-emerald-300' : 'bg-rose-950/60 border border-rose-700 text-rose-300'
+                          <div className={`p-3 rounded-xs text-xs font-mono border-2 ${
+                            isCorrect ? 'bg-[#D7E9DA] border-[#202124] text-[#202124]' : 'bg-[#F2A18E] border-[#202124] text-[#202124]'
                           }`}>
-                            <span>{isCorrect ? '✓ إجابة صحيحة ومطابقة للكنترول' : `✗ خطأ — الجواب الوزاري: ${q.correctAnswer}`}</span>
-                            <span className="text-[11px] text-slate-400 font-sans">{q.ruleExplanation}</span>
+                            <div className="font-bold">{isCorrect ? '✓ إجابة صحيحة ومطابقة للكنترول' : `✗ خطأ — الجواب الوزاري: ${q.correctAnswer}`}</div>
+                            {q.ruleExplanation && <p className="text-[11px] font-sans mt-1 text-[#202124]/80">{q.ruleExplanation}</p>}
                           </div>
                         )}
                       </div>
@@ -376,15 +394,15 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
       {activeTab === 'bookmarks' && (
         <div className="space-y-4">
           {bookmarkedQuestions.length === 0 ? (
-            <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-12 text-center text-slate-400">
-              <Bookmark className="w-12 h-12 mx-auto mb-3 text-slate-600" />
-              <h3 className="text-lg font-bold text-white mb-1">لا توجد أسئلة محفوظة حتى الآن</h3>
-              <p className="text-sm text-slate-400 max-w-md mx-auto mb-5">
+            <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-12 text-center text-[#777873]">
+              <Bookmark className="w-12 h-12 mx-auto mb-3 text-[#202124]/40" />
+              <h3 className="text-lg font-bold text-[#202124] mb-1">لا توجد أسئلة محفوظة حتى الآن</h3>
+              <p className="text-sm text-[#777873] max-w-md mx-auto mb-5 leading-relaxed">
                 يمكنك حفظ أي سؤال وزاري صعب أثناء خوض الاختبارات الوزارية من خلال النقر على أيقونة الإشارة المرجعية ليظهر هنا للمراجعة السريعة.
               </p>
               <button
                 onClick={() => onNavigateToTab('exam')}
-                className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold transition-all cursor-pointer"
+                className="px-5 py-2.5 bg-[#405DE6] hover:bg-[#324ec8] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-bold transition-all cursor-pointer rounded-xs"
               >
                 انتقل إلى بنك الأسئلة الوزارية
               </button>
@@ -393,31 +411,31 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
             bookmarkedQuestions.map(q => {
               const isRevealed = revealedSolutions[q.id];
               return (
-                <div key={q.id} className="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-sm">
+                <div key={q.id} className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-5">
                   <div className="flex items-center justify-between gap-3 mb-2">
-                    <span className="px-2.5 py-0.5 rounded-md text-xs font-bold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                    <span className="px-2.5 py-0.5 rounded-xs text-xs font-mono font-bold bg-[#F3E6A5] text-[#202124] border border-[#202124]">
                       {q.year} - {q.session}
                     </span>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs text-indigo-400 font-medium">الوحدة {q.unitId} • {q.topic}</span>
+                      <span className="text-xs text-[#405DE6] font-mono font-bold">الوحدة {q.unitId} • {q.topic}</span>
                       {onToggleBookmark && (
                         <button
                           type="button"
                           onClick={() => onToggleBookmark(q.id)}
-                          className="p-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-amber-400 cursor-pointer"
+                          className="p-1 rounded-xs bg-[#F7F5EF] hover:bg-[#F2A18E] border border-[#202124] text-[#202124] cursor-pointer"
                           title="إزالة من المفضلة"
                         >
-                          <Bookmark className="w-3.5 h-3.5 fill-amber-400" />
+                          <Bookmark className="w-3.5 h-3.5 fill-[#F2A18E]" />
                         </button>
                       )}
                     </div>
                   </div>
-                  <p dir="ltr" className="text-base font-bold text-white mb-3 text-left font-serif">{q.questionText}</p>
+                  <p dir="ltr" className="text-base font-bold text-[#202124] mb-3 text-left font-mono">{q.questionText}</p>
 
-                  <div className="flex items-center justify-between mt-4 pt-3 border-t border-slate-800">
+                  <div className="flex items-center justify-between mt-4 pt-3 border-t border-[#202124]/15">
                     <button
                       onClick={() => setRevealedSolutions(prev => ({ ...prev, [q.id]: !prev[q.id] }))}
-                      className="text-xs font-bold text-indigo-400 hover:text-indigo-300 flex items-center gap-1.5 transition-colors cursor-pointer"
+                      className="text-xs font-bold text-[#405DE6] hover:text-[#202124] flex items-center gap-1.5 transition-colors cursor-pointer"
                     >
                       <HelpCircle className="w-4 h-4" />
                       <span>{isRevealed ? 'إخفاء الحل' : 'كشف الحل النموذجي والقاعدة الوزارية'}</span>
@@ -425,9 +443,10 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
                   </div>
 
                   {isRevealed && (
-                    <div className="mt-3 p-3.5 bg-slate-950/80 rounded-xl border border-indigo-500/30 text-xs">
-                      <div className="font-bold text-emerald-400 mb-1">الحل النموذجي: {q.correctAnswer}</div>
-                      <p className="text-slate-300">{q.ruleExplanation}</p>
+                    <div className="lesson-answer mt-3">
+                      <div className="lesson-answer__label">الجواب النموذجي المعتمد</div>
+                      <div className="lesson-answer__value">{q.correctAnswer}</div>
+                      {q.ruleExplanation && <p className="lesson-answer__explanation">{q.ruleExplanation}</p>}
                     </div>
                   )}
                 </div>
@@ -443,18 +462,19 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
             <div
               key={lesson.id}
               onClick={() => onSelectLesson(lesson)}
-              className="p-4 bg-slate-900 hover:bg-slate-850 border border-slate-800 hover:border-indigo-500/40 rounded-2xl cursor-pointer transition-all flex items-center justify-between gap-3 group"
+              className="p-4 bg-white hover:bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs cursor-pointer transition-all flex items-center justify-between gap-3 group"
             >
               <div>
-                <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-indigo-500/20 text-indigo-400 mb-1 inline-block">
+                <span className="px-2 py-0.5 rounded-xs text-[10px] font-mono font-bold bg-[#F3E6A5] text-[#202124] border border-[#202124] mb-1 inline-block">
                   الوحدة {lesson.unitId} • درس {lesson.lessonNumber}
                 </span>
-                <h4 className="text-sm font-bold text-white group-hover:text-indigo-300 transition-colors">
-                  {lesson.titleAr} ({lesson.titleEn})
+                <h4 className="text-sm font-bold text-[#202124] group-hover:text-[#405DE6] transition-colors">
+                  {lesson.titleAr}
                 </h4>
-                <p className="text-xs text-slate-400 line-clamp-1 mt-0.5">{lesson.summary}</p>
+                <p dir="ltr" className="text-xs font-mono text-[#F2A18E] text-left">{lesson.titleEn}</p>
+                <p className="text-xs text-[#777873] line-clamp-1 mt-0.5">{lesson.summary}</p>
               </div>
-              <ArrowRight className="w-4 h-4 text-slate-500 group-hover:text-indigo-400 transition-colors shrink-0" />
+              <ArrowLeft className="w-4 h-4 text-[#405DE6] group-hover:-translate-x-1 transition-transform shrink-0" />
             </div>
           ))}
         </div>
@@ -463,10 +483,10 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
       {activeTab === 'notes' && (
         <div className="space-y-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-bold text-white">دفتر الملاحظات والأفكار الذهبية</h3>
+            <h3 className="text-sm font-bold text-[#202124]">دفتر الملاحظات والأفكار الذهبية</h3>
             <button
               onClick={() => setIsAddingNote(!isAddingNote)}
-              className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-1.5 cursor-pointer"
+              className="px-3.5 py-1.5 bg-[#405DE6] hover:bg-[#324ec8] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-bold text-xs flex items-center gap-1.5 cursor-pointer rounded-xs"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>إضافة ملاحظة</span>
@@ -474,13 +494,13 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
           </div>
 
           {isAddingNote && (
-            <form onSubmit={handleAddNote} className="p-4 bg-slate-900 border border-indigo-500/40 rounded-2xl space-y-3 animate-in fade-in">
+            <form onSubmit={handleAddNote} className="p-5 bg-white border-2 border-[#202124] shadow-[3.5px_3.5px_0px_#202124] rounded-xs space-y-3">
               <input
                 type="text"
                 placeholder="عنوان الملاحظة (مثال: فخ قاعدة if الشرطية الثالثة)..."
                 value={newNoteTitle}
                 onChange={(e) => setNewNoteTitle(e.target.value)}
-                className="w-full px-3 py-2 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-indigo-500 focus:outline-hidden"
+                className="w-full px-3 py-2 bg-[#F7F5EF] border-2 border-[#202124] rounded-xs text-xs font-bold text-[#202124] focus:bg-white focus:outline-none"
                 required
               />
               <textarea
@@ -488,20 +508,20 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
                 placeholder="اكتب ملاحظتك الذهبية هنا..."
                 value={newNoteContent}
                 onChange={(e) => setNewNoteContent(e.target.value)}
-                className="w-full p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-white focus:border-indigo-500 focus:outline-hidden"
+                className="w-full p-3 bg-[#F7F5EF] border-2 border-[#202124] rounded-xs text-xs font-bold text-[#202124] focus:bg-white focus:outline-none"
                 required
               />
               <div className="flex justify-end gap-2">
                 <button
                   type="button"
                   onClick={() => setIsAddingNote(false)}
-                  className="px-3 py-1.5 rounded-lg bg-slate-800 text-slate-400 hover:text-white text-xs"
+                  className="px-3 py-1.5 bg-white border border-[#202124] text-[#202124] hover:bg-[#F7F5EF] text-xs font-bold rounded-xs cursor-pointer"
                 >
                   إلغاء
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs"
+                  className="px-4 py-1.5 bg-[#405DE6] hover:bg-[#324ec8] text-white border-2 border-[#202124] shadow-[1.5px_1.5px_0px_#202124] font-bold text-xs rounded-xs cursor-pointer"
                 >
                   حفظ في الملف
                 </button>
@@ -510,26 +530,26 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
           )}
 
           {(!studentState.notes || studentState.notes.length === 0) ? (
-            <div className="bg-slate-900/60 border border-slate-800 rounded-3xl p-12 text-center text-slate-400">
-              <Award className="w-12 h-12 mx-auto mb-3 text-slate-600" />
-              <h3 className="text-lg font-bold text-white mb-1">لا توجد ملاحظات مدونة بعد</h3>
-              <p className="text-sm text-slate-400 max-w-md mx-auto">
+            <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-12 text-center text-[#777873]">
+              <Award className="w-12 h-12 mx-auto mb-3 text-[#202124]/40" />
+              <h3 className="text-lg font-bold text-[#202124] mb-1">لا توجد ملاحظات مدونة بعد</h3>
+              <p className="text-sm text-[#777873] max-w-md mx-auto leading-relaxed">
                 أثناء تصفح الدروس والمراجعة، يمكنك تدوين أي ملاحظة أو فكرة ذهبية في ملفك السحابي لحفظها والرجوع إليها ليلة الامتحان.
               </p>
             </div>
           ) : (
             studentState.notes.map(note => (
-              <div key={note.id} className="p-4 bg-slate-900 border border-slate-800 rounded-2xl flex items-start justify-between gap-3">
+              <div key={note.id} className="p-4 bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs flex items-start justify-between gap-3">
                 <div>
-                  <h4 className="font-bold text-sm text-indigo-300 mb-1">{note.title}</h4>
-                  <p className="text-xs text-slate-200 leading-relaxed whitespace-pre-wrap">{note.content}</p>
-                  <span className="text-[10px] text-slate-500 mt-2 block">{new Date(note.createdAt).toLocaleDateString('ar-IQ')}</span>
+                  <h4 className="font-bold text-sm text-[#405DE6] mb-1">{note.title}</h4>
+                  <p className="text-xs text-[#202124] leading-relaxed whitespace-pre-wrap">{note.content}</p>
+                  <span className="text-[10px] font-mono text-[#777873] mt-2 block">{new Date(note.createdAt).toLocaleDateString('ar-IQ')}</span>
                 </div>
                 {onSaveNotes && (
                   <button
                     type="button"
                     onClick={() => handleDeleteNote(note.id)}
-                    className="p-1.5 text-slate-500 hover:text-rose-400 transition-colors cursor-pointer"
+                    className="p-1.5 text-[#777873] hover:text-[#B83A3A] transition-colors cursor-pointer"
                     title="حذف الملاحظة"
                   >
                     <Trash2 className="w-4 h-4" />

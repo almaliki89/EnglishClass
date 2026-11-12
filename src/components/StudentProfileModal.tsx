@@ -73,7 +73,7 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
             </div>
             <div>
               <div className="font-mono text-[10px] uppercase font-black text-[#F3E6A5] tracking-wider">
-                STUDENT DOSSIER // ملف الطالب
+                ملف الطالب الأكاديمي · STUDENT DOSSIER
               </div>
               <h2 className="text-lg sm:text-xl font-black">الملف الشخصي وإنجازات الطالب</h2>
             </div>
@@ -144,7 +144,7 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
           {/* Name & Title Card */}
           <div className="p-5 bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <p className="text-xs font-mono font-bold text-[#202124]/60 mb-1">CANDIDATE NAME // اسم الطالب:</p>
+              <p className="text-xs font-mono font-bold text-[#202124]/70 mb-1">اسم الطالب المرشح:</p>
               {editingName ? (
                 <form onSubmit={handleSaveName} className="flex items-center gap-2">
                   <input
@@ -167,7 +167,7 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
                     onClick={() => setEditingName(true)}
                     className="text-xs text-[#405DE6] hover:underline font-black cursor-pointer font-mono"
                   >
-                    [EDIT]
+                    [تعديل]
                   </button>
                 </div>
               )}
