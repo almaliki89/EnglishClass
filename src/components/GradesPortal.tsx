@@ -20,7 +20,7 @@ const GRADE_VISUALS: Record<EducationalGrade, { emoji: string; accentBg: string;
   'third-intermediate': { 
     emoji: '🏆', 
     accentBg: 'bg-[#F2A18E]', 
-    tag: 'وزاري معتمد 100%',
+    tag: 'المنهج الوزاري المعتمد',
     image3d: '/assets/images/grade_3rd_intermediate_3d_1793868636685.jpg'
   },
   'fourth-preparatory': { 
@@ -38,7 +38,7 @@ const GRADE_VISUALS: Record<EducationalGrade, { emoji: string; accentBg: string;
   'sixth-preparatory': { 
     emoji: '👑', 
     accentBg: 'bg-[#405DE6]', 
-    tag: 'البكالوريا الوزارية 100%',
+    tag: 'امتحان البكالوريا الوزاري',
     image3d: '/assets/images/grade_6th_preparatory_3d_1793868638311.jpg'
   },
 };

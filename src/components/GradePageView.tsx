@@ -115,11 +115,11 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
               </BrutalBadge>
               {isMinisterial ? (
                 <BrutalBadge variant="vermilion" className="text-xs">
-                  ★ امتحان بكالوريا وزاري 100%
+                  ★ امتحان البكالوريا الوزاري المعتمد
                 </BrutalBadge>
               ) : (
                 <BrutalBadge variant="sky" className="text-xs">
-                  امتحان مدرسي نهائي 100%
+                  امتحان مدرسي شامل معتمد
                 </BrutalBadge>
               )}
               <BrutalBadge variant="yellow" className="text-xs">

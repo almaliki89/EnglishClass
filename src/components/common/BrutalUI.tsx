@@ -1,18 +1,27 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, ChevronLeft, Lightbulb, AlertTriangle, Sparkles, Bookmark, CheckCircle2 } from 'lucide-react';
+import { ChevronDown, ChevronUp, ChevronLeft, Lightbulb, AlertTriangle, Sparkles, CheckCircle2 } from 'lucide-react';
 
 // -------------------------------------------------------------
-// Design Tokens
+// Official Design System Tokens
 // -------------------------------------------------------------
 export const BRUTAL_COLORS = {
   paper: '#F7F5EF',
+  surface: '#FFFFFF',
+  white: '#FFFFFF',
   ink: '#202124',
   cobalt: '#405DE6',
-  vermilion: '#F2A18E',
+  yellow: '#F3E6A5',
   acidYellow: '#F3E6A5',
+  coral: '#F2A18E',
+  vermilion: '#F2A18E',
+  lavender: '#DCD8FA',
   skyBlue: '#DCD8FA',
+  blueMist: '#E9ECFA',
   softMint: '#D7E9DA',
-  white: '#FFFFFF',
+  mint: '#D7E9DA',
+  softBorder: '#E5E3DC',
+  success: '#287A52',
+  error: '#B83A3A',
 } as const;
 
 // -------------------------------------------------------------
@@ -20,7 +29,7 @@ export const BRUTAL_COLORS = {
 // -------------------------------------------------------------
 interface BrutalCardProps extends React.HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
-  variant?: 'white' | 'paper' | 'yellow' | 'sky' | 'vermilion' | 'cobalt' | 'mint';
+  variant?: 'white' | 'paper' | 'yellow' | 'sky' | 'vermilion' | 'cobalt' | 'mint' | 'blueMist';
   borderSize?: '2' | '3' | '4';
   shadowSize?: 'none' | 'sm' | 'md' | 'lg';
   className?: string;
@@ -42,12 +51,13 @@ export const BrutalCard: React.FC<BrutalCardProps> = ({
     vermilion: 'bg-[#F2A18E] text-[#202124]',
     cobalt: 'bg-[#405DE6] text-white',
     mint: 'bg-[#D7E9DA] text-[#202124]',
+    blueMist: 'bg-[#E9ECFA] text-[#202124]',
   }[variant];
 
   const borderClass = {
     '2': 'border-2 border-[#202124]',
-    '3': 'border-2.5 border-[#202124]',
-    '4': 'border-3 border-[#202124]',
+    '3': 'border-3 border-[#202124]',
+    '4': 'border-4 border-[#202124]',
   }[borderSize];
 
   const shadowClass = {
@@ -59,7 +69,7 @@ export const BrutalCard: React.FC<BrutalCardProps> = ({
 
   return (
     <div
-      className={`${bgClasses} ${borderClass} ${shadowClass} transition-all duration-150 ${className}`}
+      className={`${bgClasses} ${borderClass} ${shadowClass} rounded-xs transition-all duration-150 ${className}`}
       {...props}
     >
       {children}
@@ -85,10 +95,10 @@ export const BrutalButton: React.FC<BrutalButtonProps> = ({
   ...props
 }) => {
   const variantClasses = {
-    primary: 'bg-[#405DE6] text-white hover:bg-[#324ec8]',
+    primary: 'bg-[#405DE6] text-white hover:bg-[#334DC6]',
     secondary: 'bg-[#F2A18E] text-[#202124] hover:bg-[#e48e7b]',
-    yellow: 'bg-[#F3E6A5] text-[#202124] hover:bg-[#e5d792]',
-    sky: 'bg-[#DCD8FA] text-[#202124] hover:bg-[#cbaff8]',
+    yellow: 'bg-[#F3E6A5] text-[#202124] hover:bg-[#ebdca0]',
+    sky: 'bg-[#DCD8FA] text-[#202124] hover:bg-[#cdb2f5]',
     mint: 'bg-[#D7E9DA] text-[#202124] hover:bg-[#c2dec6]',
     white: 'bg-white text-[#202124] hover:bg-[#F7F5EF]',
     outline: 'bg-transparent text-[#202124] hover:bg-[#202124]/5',
@@ -102,7 +112,7 @@ export const BrutalButton: React.FC<BrutalButtonProps> = ({
 
   return (
     <button
-      className={`border-2 border-[#202124] shadow-[3px_3px_0px_#202124] active:shadow-[1px_1px_0px_#202124] active:translate-x-0.5 active:translate-y-0.5 transition-all inline-flex items-center justify-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${variantClasses} ${sizeClasses} ${className}`}
+      className={`border-2 border-[#202124] rounded-xs shadow-[2.5px_2.5px_0px_#202124] active:shadow-[1px_1px_0px_#202124] active:translate-x-0.5 active:translate-y-0.5 focus-visible:outline-3 focus-visible:outline-[#405DE6] transition-all inline-flex items-center justify-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${variantClasses} ${sizeClasses} ${className}`}
       {...props}
     >
       {children}
@@ -115,7 +125,7 @@ export const BrutalButton: React.FC<BrutalButtonProps> = ({
 // -------------------------------------------------------------
 interface BrutalBadgeProps {
   children: React.ReactNode;
-  variant?: 'yellow' | 'vermilion' | 'cobalt' | 'sky' | 'white' | 'paper' | 'mint';
+  variant?: 'yellow' | 'vermilion' | 'cobalt' | 'sky' | 'white' | 'paper' | 'mint' | 'blueMist';
   className?: string;
 }
 
@@ -132,11 +142,12 @@ export const BrutalBadge: React.FC<BrutalBadgeProps> = ({
     mint: 'bg-[#D7E9DA] text-[#202124]',
     white: 'bg-white text-[#202124]',
     paper: 'bg-[#F7F5EF] text-[#202124]',
+    blueMist: 'bg-[#E9ECFA] text-[#202124]',
   }[variant];
 
   return (
     <span
-      className={`px-2.5 py-0.5 border border-[#202124] text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider inline-flex items-center gap-1 shadow-[1.5px_1.5px_0px_#202124] ${variantClasses} ${className}`}
+      className={`px-2.5 py-0.5 border border-[#202124] rounded-xs text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider inline-flex items-center gap-1 shadow-[1.5px_1.5px_0px_#202124] ${variantClasses} ${className}`}
     >
       {children}
     </span>
@@ -166,10 +177,10 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
   className = '',
 }) => {
   return (
-    <div className={`flex flex-wrap items-center justify-between gap-4 border-b-3 border-[#202124] pb-4 ${className}`}>
+    <div className={`flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#202124] pb-4 ${className}`}>
       <div className="flex items-center gap-3">
         {icon && (
-          <div className="w-11 h-11 sm:w-12 sm:h-12 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center font-black text-lg shrink-0">
+          <div className="w-11 h-11 sm:w-12 sm:h-12 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs flex items-center justify-center font-black text-lg shrink-0">
             {icon}
           </div>
         )}
@@ -183,7 +194,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
             {title}
           </h2>
           {subtitle && (
-            <p className="text-xs sm:text-sm font-mono font-bold text-[#202124]/70 mt-0.5">
+            <p className="text-xs sm:text-sm font-mono font-bold text-[#747474] mt-0.5">
               {subtitle}
             </p>
           )}
@@ -214,23 +225,23 @@ export const CalloutBox: React.FC<CalloutBoxProps> = ({
     golden_note: {
       bg: 'bg-[#F3E6A5]',
       text: 'text-[#202124]',
-      border: 'border-3 border-[#202124]',
+      border: 'border-2 border-[#202124]',
       shadow: 'shadow-[3px_3px_0px_#202124]',
       defaultTitle: 'ملاحظة الأستاذ مصطفى تركي الذهبية 💡',
       icon: <Lightbulb className="w-5 h-5 shrink-0 text-[#202124]" />,
     },
     ministerial_trap: {
       bg: 'bg-[#F2A18E]',
-      text: 'text-white',
-      border: 'border-3 border-[#202124]',
+      text: 'text-[#202124]',
+      border: 'border-2 border-[#202124]',
       shadow: 'shadow-[3px_3px_0px_#202124]',
       defaultTitle: 'فخ وزاري - احذر منه 🚨',
-      icon: <AlertTriangle className="w-5 h-5 shrink-0 text-white" />,
+      icon: <AlertTriangle className="w-5 h-5 shrink-0 text-[#202124]" />,
     },
     rule_formula: {
       bg: 'bg-[#DCD8FA]',
       text: 'text-[#202124]',
-      border: 'border-3 border-[#202124]',
+      border: 'border-2 border-[#202124]',
       shadow: 'shadow-[3px_3px_0px_#202124]',
       defaultTitle: 'صيغة القاعدة الأساسية (Formula) ⚡',
       icon: <Sparkles className="w-5 h-5 shrink-0 text-[#405DE6]" />,
@@ -238,7 +249,7 @@ export const CalloutBox: React.FC<CalloutBoxProps> = ({
     info: {
       bg: 'bg-white',
       text: 'text-[#202124]',
-      border: 'border-3 border-[#202124]',
+      border: 'border-2 border-[#202124]',
       shadow: 'shadow-[3px_3px_0px_#202124]',
       defaultTitle: 'معلومات عامة 📌',
       icon: <CheckCircle2 className="w-5 h-5 shrink-0 text-[#405DE6]" />,
@@ -247,7 +258,7 @@ export const CalloutBox: React.FC<CalloutBoxProps> = ({
 
   return (
     <div
-      className={`${config.bg} ${config.text} ${config.border} ${config.shadow} p-4 rounded-none space-y-2 ${className}`}
+      className={`${config.bg} ${config.text} ${config.border} ${config.shadow} p-4 rounded-xs space-y-2 ${className}`}
     >
       <div className="flex items-center gap-2 font-black text-sm sm:text-base border-b-2 border-[#202124]/20 pb-1.5">
         {config.icon}
@@ -282,29 +293,29 @@ export const AccordionBlock: React.FC<AccordionBlockProps> = ({
 
   return (
     <div
-      className={`bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] transition-all ${className}`}
+      className={`bg-white border-2 border-[#202124] shadow-[3.5px_3.5px_0px_#202124] rounded-xs transition-all ${className}`}
     >
       <button
         type="button"
         onClick={() => setIsOpen(!isOpen)}
-        className="w-full p-4 flex items-center justify-between gap-3 text-right bg-[#F7F5EF] hover:bg-[#EEECE6] border-b-2 border-[#202124] cursor-pointer transition-colors"
+        className="w-full p-4 flex items-center justify-between gap-3 text-right bg-[#F7F5EF] hover:bg-[#E9ECFA] border-b-2 border-[#202124] cursor-pointer transition-colors"
       >
         <div className="flex items-center gap-3">
           {icon && (
-            <div className="w-8 h-8 bg-[#405DE6] text-white border border-[#202124] flex items-center justify-center shrink-0 font-black">
+            <div className="w-8 h-8 bg-[#405DE6] text-white border border-[#202124] rounded-xs flex items-center justify-center shrink-0 font-black">
               {icon}
             </div>
           )}
           <div>
             {badge && (
-              <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] text-[10px] font-mono font-black uppercase tracking-wider mb-1 inline-block">
+              <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] rounded-xs text-[10px] font-mono font-black uppercase tracking-wider mb-1 inline-block">
                 {badge}
               </span>
             )}
             <h3 className="text-sm sm:text-base font-black text-[#202124]">{title}</h3>
           </div>
         </div>
-        <div className="w-8 h-8 bg-white border border-[#202124] flex items-center justify-center shrink-0 text-[#202124]">
+        <div className="w-8 h-8 bg-white border border-[#202124] rounded-xs flex items-center justify-center shrink-0 text-[#202124]">
           {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
         </div>
       </button>
@@ -337,11 +348,12 @@ export const BreadcrumbsNav: React.FC<BreadcrumbsNavProps> = ({ items, className
           <React.Fragment key={idx}>
             {idx > 0 && <ChevronLeft className="w-4 h-4 text-[#F2A18E] shrink-0" />}
             {isLast ? (
-              <span className="px-2 py-0.5 bg-[#F3E6A5] border border-[#202124] font-black text-[#202124]">
+              <span className="px-2 py-0.5 bg-[#F3E6A5] border border-[#202124] rounded-xs font-black text-[#202124]">
                 {item.label}
               </span>
             ) : item.onClick ? (
               <button
+                type="button"
                 onClick={item.onClick}
                 className="hover:underline hover:text-[#405DE6] cursor-pointer"
               >

@@ -12,9 +12,7 @@ import {
   RotateCcw, 
   Lightbulb, 
   Award, 
-  Layers,
-  ChevronDown,
-  ChevronUp
+  Layers
 } from 'lucide-react';
 import { 
   LessonBlock, 
@@ -102,37 +100,57 @@ export const LessonBlockRenderer: React.FC<LessonBlockRendererProps> = ({
 
 // 1. Definition Block
 const DefinitionBlockView: React.FC<{ block: DefinitionBlock; onSpeak: (t: string) => void }> = ({ block, onSpeak }) => (
-  <div className="bg-slate-900/80 border border-emerald-500/30 rounded-2xl p-5 my-4 shadow-lg relative overflow-hidden backdrop-blur-sm">
+  <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-5 my-4 relative">
     <div className="flex items-start justify-between gap-4">
-      <div>
-        <div className="flex items-center gap-3">
-          <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+      <div className="space-y-2 flex-1">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="px-2.5 py-0.5 rounded-xs text-[11px] font-black uppercase tracking-wider bg-[#E9ECFA] text-[#405DE6] border border-[#202124] font-mono shadow-[1px_1px_0px_#202124]">
             {block.partOfSpeech || 'مفردة / مصطلح'}
           </span>
-          <h3 className="text-xl font-black text-white">{block.term}</h3>
-          {block.phonetic && <span className="text-sm font-mono text-emerald-300">/{block.phonetic}/</span>}
+          <h3 dir="ltr" className="text-xl font-black font-mono text-[#202124] bidi-en">
+            {block.term}
+          </h3>
+          {block.phonetic && (
+            <span dir="ltr" className="text-xs font-mono font-bold text-[#405DE6]">
+              /{block.phonetic}/
+            </span>
+          )}
         </div>
-        <p className="mt-3 text-base text-slate-200 font-medium leading-relaxed">{block.definitionAr}</p>
-        {block.definitionEn && <p className="mt-1 text-sm text-slate-400 italic font-mono">{block.definitionEn}</p>}
+
+        <p className="text-base text-[#202124] font-bold leading-relaxed pt-1">
+          {block.definitionAr}
+        </p>
+
+        {block.definitionEn && (
+          <p dir="ltr" className="text-xs text-[#747474] font-mono text-left en-sentence">
+            {block.definitionEn}
+          </p>
+        )}
+
         {block.contextExample && (
-          <div className="mt-3 p-3 bg-slate-800/80 rounded-xl border border-slate-700/60 text-sm text-emerald-200/90 flex items-center justify-between">
-            <span>"{block.contextExample}"</span>
+          <div className="mt-3 p-3 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs text-xs sm:text-sm text-[#202124] flex items-center justify-between gap-3">
+            <span dir="ltr" className="font-mono font-bold text-left en-sentence">
+              "{block.contextExample}"
+            </span>
             <button
+              type="button"
               onClick={() => onSpeak(block.contextExample!)}
-              className="p-1.5 hover:bg-emerald-500/20 text-emerald-400 rounded-lg transition-colors"
+              className="p-1.5 bg-white hover:bg-[#F3E6A5] text-[#202124] border border-[#202124] rounded-xs shadow-[1px_1px_0px_#202124] transition-colors cursor-pointer shrink-0"
               title="استمع للمثال"
             >
-              <Volume2 className="w-4 h-4" />
+              <Volume2 className="w-3.5 h-3.5" />
             </button>
           </div>
         )}
       </div>
+
       <button
+        type="button"
         onClick={() => onSpeak(block.termEn || block.term)}
-        className="p-3 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-400 rounded-xl border border-emerald-500/20 transition-all flex-shrink-0"
+        className="p-2.5 bg-[#F7F5EF] hover:bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs transition-all shrink-0 cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
         title="استمع للنطق"
       >
-        <Volume2 className="w-5 h-5" />
+        <Volume2 className="w-4 h-4" />
       </button>
     </div>
   </div>
@@ -140,20 +158,29 @@ const DefinitionBlockView: React.FC<{ block: DefinitionBlock; onSpeak: (t: strin
 
 // 2. Explanation Block
 const ExplanationBlockView: React.FC<{ block: ExplanationBlock }> = ({ block }) => (
-  <div className="bg-slate-900/60 border border-slate-800 rounded-2xl p-5 my-4 text-slate-200 leading-relaxed shadow-sm">
+  <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-5 my-4 text-[#202124] leading-relaxed space-y-3">
     {block.title && (
-      <h4 className="text-lg font-bold text-white mb-2 flex items-center gap-2">
-        <BookOpen className="w-5 h-5 text-indigo-400" />
-        {block.title}
-      </h4>
+      <div className="flex items-center gap-2 border-b-2 border-[#202124]/10 pb-2">
+        <BookOpen className="w-4 h-4 text-[#405DE6]" />
+        <h4 className="text-base font-black text-[#202124]">{block.title}</h4>
+      </div>
     )}
-    <p className="text-base text-slate-300 leading-relaxed">{block.textAr}</p>
-    {block.textEn && <p className="mt-2 text-sm text-slate-400 font-sans">{block.textEn}</p>}
+
+    <p className="text-sm sm:text-base text-[#202124] leading-relaxed font-bold">
+      {block.textAr}
+    </p>
+
+    {block.textEn && (
+      <p dir="ltr" className="text-xs font-mono font-bold text-[#405DE6] bg-[#F7F5EF] p-2.5 border border-[#202124] text-left en-sentence">
+        {block.textEn}
+      </p>
+    )}
+
     {block.bulletPoints && block.bulletPoints.length > 0 && (
-      <ul className="mt-3 space-y-2 list-none pr-0">
+      <ul className="space-y-2 list-none pr-0 pt-1">
         {block.bulletPoints.map((pt, idx) => (
-          <li key={idx} className="flex items-start gap-2.5 text-sm text-slate-300">
-            <span className="w-2 h-2 rounded-full bg-indigo-500 mt-2 flex-shrink-0" />
+          <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#202124] font-bold">
+            <span className="w-2 h-2 bg-[#405DE6] mt-1.5 shrink-0" />
             <span>{pt}</span>
           </li>
         ))}
@@ -164,47 +191,64 @@ const ExplanationBlockView: React.FC<{ block: ExplanationBlock }> = ({ block }) 
 
 // 3. Example Block
 const ExampleBlockView: React.FC<{ block: ExampleBlock; onSpeak: (t: string) => void }> = ({ block, onSpeak }) => (
-  <div className="bg-gradient-to-r from-blue-950/40 to-indigo-950/30 border border-blue-500/30 rounded-2xl p-4 my-3 flex items-center justify-between gap-4">
-    <div className="flex-1">
+  <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-4 my-3 flex items-center justify-between gap-4">
+    <div className="flex-1 space-y-1">
       <div className="flex items-center gap-2 mb-1">
-        {block.badge && (
-          <span className="px-2 py-0.5 bg-blue-500/20 text-blue-400 rounded-md text-xs font-bold border border-blue-500/30">
-            {block.badge}
-          </span>
-        )}
-        <span className="text-xs text-blue-300 font-bold">مثال وزاري تطبيقي</span>
+        <span className="px-2 py-0.5 bg-[#E9ECFA] text-[#405DE6] border border-[#202124] text-[10px] font-mono font-black uppercase shadow-[1px_1px_0px_#202124]">
+          {block.badge || 'مثال تطبيقي'}
+        </span>
+        <span className="text-[11px] font-black text-[#747474]">نموذج وزاري معتمد</span>
       </div>
-      <p className="text-lg font-semibold text-white tracking-wide font-sans">{block.en}</p>
-      <p className="text-sm text-slate-300 mt-0.5">{block.ar}</p>
-      {block.note && <p className="text-xs text-amber-300/80 mt-1 italic">💡 {block.note}</p>}
+
+      <p dir="ltr" className="text-base sm:text-lg font-black font-mono text-[#202124] text-left en-sentence">
+        {block.en}
+      </p>
+      <p className="text-xs sm:text-sm font-bold text-[#202124]/80">{block.ar}</p>
+
+      {block.note && (
+        <p className="text-xs font-black text-[#405DE6] bg-[#F7F5EF] p-2 border border-[#202124] mt-1">
+          💡 {block.note}
+        </p>
+      )}
     </div>
+
     <button
+      type="button"
       onClick={() => onSpeak(block.en)}
-      className="p-2.5 bg-blue-500/10 hover:bg-blue-500/20 text-blue-400 rounded-xl border border-blue-500/20 transition-all flex-shrink-0"
+      className="p-2.5 bg-[#F7F5EF] hover:bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs transition-all shrink-0 cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
       title="استمع للمثال"
     >
-      <Volume2 className="w-5 h-5" />
+      <Volume2 className="w-4 h-4" />
     </button>
   </div>
 );
 
 // 4. Formula Block
 const FormulaBlockView: React.FC<{ block: FormulaBlock }> = ({ block }) => (
-  <div className="bg-slate-900 border border-amber-500/40 rounded-2xl p-5 my-4 relative overflow-hidden shadow-md">
-    <div className="flex items-center gap-2 mb-3">
-      <Sparkles className="w-5 h-5 text-amber-400" />
-      <h4 className="text-base font-bold text-amber-300">{block.title}</h4>
+  <div className="bg-[#E9ECFA] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] rounded-xs p-5 my-4 space-y-3">
+    <div className="flex items-center gap-2 border-b-2 border-[#202124]/20 pb-2">
+      <Sparkles className="w-4 h-4 text-[#405DE6]" />
+      <h4 className="text-sm sm:text-base font-black text-[#202124]">{block.title}</h4>
+      <span className="text-[10px] font-mono font-black bg-[#F3E6A5] text-[#202124] px-2 py-0.2 border border-[#202124] mr-auto shadow-[1px_1px_0px_#202124]">
+        FORMULA
+      </span>
     </div>
-    <div className="p-3.5 bg-slate-950/90 rounded-xl border border-amber-500/30 text-center font-mono text-base md:text-lg font-bold text-amber-300 tracking-wider overflow-x-auto">
+
+    <div dir="ltr" className="p-3.5 bg-white border-2 border-[#202124] shadow-[2.5px_2.5px_0px_#202124] text-center font-mono text-base sm:text-lg font-black text-[#405DE6] tracking-wider overflow-x-auto en-sentence">
       {block.ruleFormula}
     </div>
+
     {block.breakdown && block.breakdown.length > 0 && (
-      <div className="mt-4 grid grid-cols-1 md:grid-cols-3 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-2.5 pt-2">
         {block.breakdown.map((item, idx) => (
-          <div key={idx} className="bg-slate-800/60 p-2.5 rounded-xl border border-slate-700/60 text-xs">
-            <span className="font-bold text-amber-400 font-mono block">{item.part}</span>
-            <span className="text-slate-300 block">{item.role}</span>
-            <span className="text-slate-400 text-[11px] italic mt-1 block">مثال: {item.example}</span>
+          <div key={idx} className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs space-y-1">
+            <span dir="ltr" className="font-black text-[#405DE6] font-mono block text-left bidi-en">
+              {item.part}
+            </span>
+            <span className="text-[#202124] font-bold block">{item.role}</span>
+            <span dir="ltr" className="text-[#747474] font-mono text-[11px] block text-left border-t border-[#E5E3DC] pt-1">
+              Ex: {item.example}
+            </span>
           </div>
         ))}
       </div>
@@ -214,44 +258,57 @@ const FormulaBlockView: React.FC<{ block: FormulaBlock }> = ({ block }) => (
 
 // 5. Important Block (Golden Ministerial Tip)
 const ImportantBlockView: React.FC<{ block: ImportantBlock }> = ({ block }) => (
-  <div className="bg-gradient-to-r from-amber-950/40 via-yellow-950/30 to-amber-950/40 border border-amber-500/50 rounded-2xl p-5 my-4 shadow-lg relative">
-    <div className="flex items-center gap-2.5 mb-2">
-      <Flame className="w-5 h-5 text-amber-400" />
-      <span className="text-xs font-black uppercase tracking-wider bg-amber-500 text-slate-950 px-2 py-0.5 rounded-md">
+  <div className="bg-[#F3E6A5] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] rounded-xs p-5 my-4 space-y-2">
+    <div className="flex items-center gap-2 border-b-2 border-[#202124] pb-2">
+      <Flame className="w-5 h-5 text-[#202124]" />
+      <span className="text-[10px] font-mono font-black uppercase tracking-wider bg-white text-[#202124] px-2 py-0.5 border border-[#202124] shadow-[1px_1px_0px_#202124]">
         ملاحظة ذهبية وزارية
       </span>
-      <h4 className="text-base font-bold text-white">{block.title}</h4>
+      <h4 className="text-sm sm:text-base font-black text-[#202124]">{block.title}</h4>
     </div>
-    <p className="text-sm md:text-base text-amber-100/90 leading-relaxed pr-2">{block.content}</p>
+    <p className="text-sm sm:text-base text-[#202124] leading-relaxed font-bold">
+      {block.content}
+    </p>
   </div>
 );
 
 // 6. Warning Block (Ministerial Trap)
 const WarningBlockView: React.FC<{ block: WarningBlock }> = ({ block }) => (
-  <div className="bg-rose-950/30 border border-rose-500/40 rounded-2xl p-5 my-4">
-    <div className="flex items-center gap-2 mb-2">
-      <AlertTriangle className="w-5 h-5 text-rose-400" />
-      <span className="text-xs font-bold bg-rose-500/20 text-rose-300 px-2 py-0.5 rounded-md border border-rose-500/30">
-        فخ وزاري شائع!
+  <div className="bg-[#FDF6F4] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] rounded-xs p-5 my-4 space-y-3">
+    <div className="flex items-center gap-2 border-b-2 border-[#202124] pb-2">
+      <AlertTriangle className="w-5 h-5 text-[#B83A3A]" />
+      <span className="text-[10px] font-mono font-black uppercase tracking-wider bg-[#F2A18E] text-[#202124] px-2 py-0.5 border border-[#202124] shadow-[1px_1px_0px_#202124]">
+        فخ وزاري شائع! احذر منه 🚨
       </span>
-      <h4 className="text-base font-bold text-white">{block.title}</h4>
+      <h4 className="text-sm sm:text-base font-black text-[#202124]">{block.title}</h4>
     </div>
-    <p className="text-sm text-slate-200 leading-relaxed mb-3">{block.warningText}</p>
+
+    <p className="text-sm text-[#202124] leading-relaxed font-bold">
+      {block.warningText}
+    </p>
+
     {block.commonTrapExample && (
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
-        <div className="p-3 bg-rose-950/40 border border-rose-500/30 rounded-xl text-xs flex items-start gap-2">
-          <XCircle className="w-4 h-4 text-rose-400 mt-0.5 flex-shrink-0" />
-          <div>
-            <span className="font-bold text-rose-300 block mb-0.5">صياغة خاطئة:</span>
-            <span className="font-mono text-slate-300">{block.commonTrapExample.wrong}</span>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
+        <div className="p-3 bg-white border-2 border-[#B83A3A] shadow-[2px_2px_0px_#B83A3A] rounded-xs text-xs flex items-start gap-2">
+          <XCircle className="w-4 h-4 text-[#B83A3A] mt-0.5 shrink-0" />
+          <div className="space-y-0.5">
+            <span className="font-black text-[#B83A3A] block">صياغة خاطئة (احذرها):</span>
+            <span dir="ltr" className="font-mono text-[#202124] font-bold block text-left">
+              {block.commonTrapExample.wrong}
+            </span>
           </div>
         </div>
-        <div className="p-3 bg-emerald-950/40 border border-emerald-500/30 rounded-xl text-xs flex items-start gap-2">
-          <CheckCircle2 className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
-          <div>
-            <span className="font-bold text-emerald-300 block mb-0.5">الصياغة الصحيحة وزغارياً:</span>
-            <span className="font-mono text-slate-200">{block.commonTrapExample.right}</span>
-            <span className="text-slate-400 block mt-1 text-[11px]">{block.commonTrapExample.reason}</span>
+
+        <div className="p-3 bg-white border-2 border-[#287A52] shadow-[2px_2px_0px_#287A52] rounded-xs text-xs flex items-start gap-2">
+          <CheckCircle2 className="w-4 h-4 text-[#287A52] mt-0.5 shrink-0" />
+          <div className="space-y-0.5">
+            <span className="font-black text-[#287A52] block">الصياغة النموذجية المعتمدة:</span>
+            <span dir="ltr" className="font-mono text-[#202124] font-bold block text-left">
+              {block.commonTrapExample.right}
+            </span>
+            <span className="text-[#747474] font-bold block pt-1 border-t border-[#E5E3DC]">
+              {block.commonTrapExample.reason}
+            </span>
           </div>
         </div>
       </div>
@@ -261,21 +318,26 @@ const WarningBlockView: React.FC<{ block: WarningBlock }> = ({ block }) => (
 
 // 7. Steps Block
 const StepsBlockView: React.FC<{ block: StepsBlock }> = ({ block }) => (
-  <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 my-4">
-    <h4 className="text-base font-bold text-white mb-3 flex items-center gap-2">
-      <Layers className="w-5 h-5 text-cyan-400" />
-      {block.title}
-    </h4>
+  <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-5 my-4 space-y-4">
+    <div className="flex items-center gap-2 border-b-2 border-[#202124] pb-2">
+      <Layers className="w-5 h-5 text-[#405DE6]" />
+      <h4 className="text-base font-black text-[#202124]">{block.title}</h4>
+    </div>
+
     <div className="space-y-3">
       {block.steps.map((st) => (
-        <div key={st.stepNumber} className="flex items-start gap-3 p-3 bg-slate-800/50 rounded-xl border border-slate-700/50">
-          <div className="w-7 h-7 rounded-full bg-cyan-500/20 text-cyan-400 border border-cyan-500/30 flex items-center justify-center font-bold text-xs flex-shrink-0">
+        <div key={st.stepNumber} className="flex items-start gap-3 p-3 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs">
+          <div className="w-7 h-7 bg-[#405DE6] text-white border-2 border-[#202124] flex items-center justify-center font-black font-mono text-xs shrink-0 shadow-[1px_1px_0px_#202124]">
             {st.stepNumber}
           </div>
-          <div>
-            <h5 className="font-bold text-sm text-slate-200">{st.title}</h5>
-            <p className="text-xs text-slate-400 mt-0.5">{st.description}</p>
-            {st.example && <p className="text-xs font-mono text-cyan-300/80 mt-1">مثال: {st.example}</p>}
+          <div className="space-y-1 flex-1">
+            <h5 className="font-black text-sm text-[#202124]">{st.title}</h5>
+            <p className="text-xs text-[#202124]/80 font-bold leading-relaxed">{st.description}</p>
+            {st.example && (
+              <p dir="ltr" className="text-xs font-mono font-bold text-[#405DE6] bg-white p-2 border border-[#202124] text-left en-sentence">
+                Ex: {st.example}
+              </p>
+            )}
           </div>
         </div>
       ))}
@@ -285,30 +347,50 @@ const StepsBlockView: React.FC<{ block: StepsBlock }> = ({ block }) => (
 
 // 8. Comparison Block
 const ComparisonBlockView: React.FC<{ block: ComparisonBlock }> = ({ block }) => (
-  <div className="bg-slate-900/70 border border-slate-800 rounded-2xl p-5 my-4">
-    <h4 className="text-base font-bold text-white mb-3 text-center">{block.title}</h4>
+  <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-5 my-4 space-y-4">
+    <h4 className="text-base font-black text-[#202124] text-center border-b-2 border-[#202124] pb-2">
+      {block.title}
+    </h4>
+
     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div className="p-4 bg-slate-800/60 rounded-xl border border-cyan-500/30">
-        <h5 className="font-bold text-sm text-cyan-400 mb-2">{block.itemA.name}</h5>
-        <ul className="space-y-1.5 text-xs text-slate-300">
+      {/* Column A */}
+      <div className="p-4 bg-[#E9ECFA] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs space-y-2">
+        <h5 className="font-black text-sm text-[#405DE6] border-b border-[#202124]/20 pb-1">
+          {block.itemA.name}
+        </h5>
+        <ul className="space-y-1.5 text-xs text-[#202124] font-bold">
           {block.itemA.traits.map((t, idx) => (
-            <li key={idx}>• {t}</li>
+            <li key={idx} className="flex items-start gap-1.5">
+              <span>▪</span>
+              <span>{t}</span>
+            </li>
           ))}
         </ul>
-        <p className="mt-3 p-2 bg-slate-900/60 rounded-lg text-xs font-mono text-cyan-200">
-          {block.itemA.example}
-        </p>
+        {block.itemA.example && (
+          <p dir="ltr" className="mt-3 p-2 bg-white border border-[#202124] text-xs font-mono font-bold text-[#202124] text-left en-sentence">
+            {block.itemA.example}
+          </p>
+        )}
       </div>
-      <div className="p-4 bg-slate-800/60 rounded-xl border border-purple-500/30">
-        <h5 className="font-bold text-sm text-purple-400 mb-2">{block.itemB.name}</h5>
-        <ul className="space-y-1.5 text-xs text-slate-300">
+
+      {/* Column B */}
+      <div className="p-4 bg-[#DCD8FA] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs space-y-2">
+        <h5 className="font-black text-sm text-[#202124] border-b border-[#202124]/20 pb-1">
+          {block.itemB.name}
+        </h5>
+        <ul className="space-y-1.5 text-xs text-[#202124] font-bold">
           {block.itemB.traits.map((t, idx) => (
-            <li key={idx}>• {t}</li>
+            <li key={idx} className="flex items-start gap-1.5">
+              <span>▪</span>
+              <span>{t}</span>
+            </li>
           ))}
         </ul>
-        <p className="mt-3 p-2 bg-slate-900/60 rounded-lg text-xs font-mono text-purple-200">
-          {block.itemB.example}
-        </p>
+        {block.itemB.example && (
+          <p dir="ltr" className="mt-3 p-2 bg-white border border-[#202124] text-xs font-mono font-bold text-[#202124] text-left en-sentence">
+            {block.itemB.example}
+          </p>
+        )}
       </div>
     </div>
   </div>
@@ -316,22 +398,30 @@ const ComparisonBlockView: React.FC<{ block: ComparisonBlock }> = ({ block }) =>
 
 // 9. Table Block
 const TableBlockView: React.FC<{ block: TableBlock }> = ({ block }) => (
-  <div className="bg-slate-900/80 border border-slate-800 rounded-2xl p-5 my-4 overflow-hidden">
-    {block.title && <h4 className="text-base font-bold text-white mb-3">{block.title}</h4>}
+  <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-5 my-4 overflow-hidden space-y-3">
+    {block.title && (
+      <h4 className="text-base font-black text-[#202124] border-b-2 border-[#202124] pb-2">
+        {block.title}
+      </h4>
+    )}
     <div className="overflow-x-auto">
-      <table className="w-full text-right text-xs md:text-sm">
+      <table className="w-full text-right text-xs sm:text-sm border-2 border-[#202124]">
         <thead>
-          <tr className="bg-slate-800/80 border-b border-slate-700 text-slate-300">
+          <tr className="bg-[#F7F5EF] border-b-2 border-[#202124] text-[#202124]">
             {block.headers.map((h, idx) => (
-              <th key={idx} className="p-3 font-bold">{h}</th>
+              <th key={idx} className="p-3 font-black border-l border-[#202124] last:border-l-0">
+                {h}
+              </th>
             ))}
           </tr>
         </thead>
         <tbody>
           {block.rows.map((row, rIdx) => (
-            <tr key={rIdx} className="border-b border-slate-800/60 hover:bg-slate-800/30 transition-colors">
+            <tr key={rIdx} className="border-b border-[#E5E3DC] hover:bg-[#F7F5EF] transition-colors">
               {row.map((cell, cIdx) => (
-                <td key={cIdx} className="p-3 text-slate-300">{cell}</td>
+                <td key={cIdx} className="p-3 font-bold text-[#202124] border-l border-[#E5E3DC] last:border-l-0">
+                  {cell}
+                </td>
               ))}
             </tr>
           ))}
@@ -343,11 +433,15 @@ const TableBlockView: React.FC<{ block: TableBlock }> = ({ block }) => (
 
 // 10. Image Block
 const ImageBlockView: React.FC<{ block: ImageBlock }> = ({ block }) => (
-  <div className="my-4 rounded-2xl overflow-hidden border border-slate-800 bg-slate-900">
+  <div className="my-4 rounded-xs overflow-hidden border-2 border-[#202124] shadow-[3px_3px_0px_#202124] bg-white">
     <img src={block.url} alt={block.alt} className="w-full h-auto max-h-96 object-cover" />
-    <div className="p-3 text-center bg-slate-950/80">
-      <p className="text-sm font-semibold text-slate-200">{block.captionAr}</p>
-      {block.captionEn && <p className="text-xs text-slate-400 mt-0.5">{block.captionEn}</p>}
+    <div className="p-3 text-center bg-[#F7F5EF] border-t-2 border-[#202124]">
+      <p className="text-sm font-black text-[#202124]">{block.captionAr}</p>
+      {block.captionEn && (
+        <p dir="ltr" className="text-xs font-mono text-[#747474] mt-0.5 en-sentence">
+          {block.captionEn}
+        </p>
+      )}
     </div>
   </div>
 );
@@ -371,47 +465,51 @@ const ExerciseBlockView: React.FC<{ block: ExerciseBlock; onAnswer?: (id: string
   const isCorrect = selectedOption?.trim().toLowerCase() === block.correctAnswer.trim().toLowerCase();
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 my-4">
-      <div className="flex items-center justify-between gap-2 mb-3">
-        <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-500/20 text-indigo-400 border border-indigo-500/30">
+    <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-5 my-4 space-y-3">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#202124] pb-2">
+        <span className="px-2.5 py-0.5 rounded-xs text-[11px] font-black uppercase tracking-wider bg-[#F3E6A5] text-[#202124] border border-[#202124] font-mono shadow-[1px_1px_0px_#202124]">
           تمرين وزاري: {block.category}
         </span>
         {block.ministerialYear && (
-          <span className="text-xs text-amber-400/90 font-mono font-bold">
+          <span className="text-xs text-[#202124] font-mono font-black bg-[#F7F5EF] px-2 py-0.5 border border-[#202124]">
             {block.ministerialYear}
           </span>
         )}
       </div>
-      <p className="text-base font-bold text-white mb-2">{block.questionEn}</p>
-      {block.questionAr && <p className="text-sm text-slate-400 mb-4">{block.questionAr}</p>}
+
+      <p dir="ltr" className="text-base font-black font-mono text-[#202124] text-left en-sentence">
+        {block.questionEn}
+      </p>
+      {block.questionAr && <p className="text-xs sm:text-sm font-bold text-[#747474]">{block.questionAr}</p>}
 
       {block.options && block.options.length > 0 && (
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 mt-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-2">
           {block.options.map((opt, idx) => {
             const isThisCorrect = opt.trim().toLowerCase() === block.correctAnswer.trim().toLowerCase();
             const isThisSelected = selectedOption === opt;
-            let btnClass = "bg-slate-800 hover:bg-slate-700/80 border-slate-700 text-slate-200";
+            let btnClass = "bg-[#F7F5EF] hover:bg-[#E9ECFA] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124]";
 
             if (revealed) {
               if (isThisCorrect) {
-                btnClass = "bg-emerald-950/60 border-emerald-500 text-emerald-300 font-bold";
+                btnClass = "bg-[#D7E9DA] border-2 border-[#202124] text-[#287A52] font-black shadow-[2px_2px_0px_#202124]";
               } else if (isThisSelected) {
-                btnClass = "bg-rose-950/60 border-rose-500 text-rose-300";
+                btnClass = "bg-[#F2A18E] border-2 border-[#202124] text-[#202124] font-black shadow-[2px_2px_0px_#202124]";
               } else {
-                btnClass = "bg-slate-900 border-slate-800 text-slate-500 opacity-60";
+                btnClass = "bg-[#F7F5EF] border-2 border-[#E5E3DC] text-[#747474] opacity-60";
               }
             }
 
             return (
               <button
                 key={idx}
+                type="button"
                 onClick={() => handleSelect(opt)}
                 disabled={revealed}
-                className={`p-3 rounded-xl border text-sm text-right transition-all flex items-center justify-between ${btnClass}`}
+                className={`p-3 rounded-xs text-sm font-bold text-left transition-all flex items-center justify-between cursor-pointer active:translate-x-0.5 active:translate-y-0.5 ${btnClass}`}
               >
-                <span>{opt}</span>
-                {revealed && isThisCorrect && <CheckCircle2 className="w-4 h-4 text-emerald-400" />}
-                {revealed && isThisSelected && !isThisCorrect && <XCircle className="w-4 h-4 text-rose-400" />}
+                <span dir="ltr" className="font-mono">{opt}</span>
+                {revealed && isThisCorrect && <CheckCircle2 className="w-4 h-4 text-[#287A52] shrink-0" />}
+                {revealed && isThisSelected && !isThisCorrect && <XCircle className="w-4 h-4 text-[#B83A3A] shrink-0" />}
               </button>
             );
           })}
@@ -419,9 +517,17 @@ const ExerciseBlockView: React.FC<{ block: ExerciseBlock; onAnswer?: (id: string
       )}
 
       {revealed && (
-        <div className={`mt-4 p-3.5 rounded-xl border text-xs leading-relaxed ${isCorrect ? 'bg-emerald-950/30 border-emerald-500/40 text-emerald-200' : 'bg-rose-950/30 border-rose-500/40 text-rose-200'}`}>
-          <div className="font-bold mb-1">{isCorrect ? 'إجابة وزارية صحيحة! أحسنت 🌟' : 'إجابة غير صحيحة، انتبه للصياغة الوزارية:'}</div>
-          <p className="text-slate-300">{block.explanation}</p>
+        <div className={`lesson-answer ${isCorrect ? 'lesson-answer--correct' : 'lesson-answer--review'}`}>
+          <div className="flex items-center justify-between gap-2">
+            <span className="lesson-answer__label">
+              {isCorrect ? 'إجابة وزارية صحيحة! أحسنت 🌟' : 'راجع الحل والتعليل الوزاري'}
+            </span>
+            <span className="text-xs font-mono font-black text-[#202124]">
+              {isCorrect ? 'CORRECT ✓' : 'REVIEW'}
+            </span>
+          </div>
+          <p dir="ltr" className="lesson-answer__value">{block.correctAnswer}</p>
+          <p className="lesson-answer__explanation">{block.explanation}</p>
         </div>
       )}
     </div>
@@ -457,49 +563,67 @@ const QuizBlockView: React.FC<{ block: QuizBlock }> = ({ block }) => {
 
   if (showResult) {
     return (
-      <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 my-4 text-center">
-        <Award className={`w-12 h-12 mx-auto mb-3 ${passed ? 'text-amber-400' : 'text-slate-400'}`} />
-        <h4 className="text-xl font-black text-white">{passed ? 'مبروك! اجتزت الاختبار بنجاح' : 'تحتاج إلى مراجعة بعض النقاط'}</h4>
-        <p className="text-sm text-slate-300 mt-2">
-          حصلت على <span className="font-bold text-amber-400 text-lg">{score}</span> من أصل <span className="font-bold">{total}</span>
-        </p>
-        <button
-          onClick={() => {
-            setAnswers({});
-            setCurrentIdx(0);
-            setShowResult(false);
-          }}
-          className="mt-4 px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold transition-all"
-        >
-          إعادة الاختبار
-        </button>
+      <div className="bg-white border-3 border-[#202124] shadow-[5px_5px_0px_#202124] rounded-xs p-6 my-4 text-center space-y-4">
+        <Award className={`w-12 h-12 mx-auto ${passed ? 'text-[#405DE6]' : 'text-[#747474]'}`} />
+        <h4 className="text-xl font-black text-[#202124]">
+          {passed ? 'مبروك! اجتزت الاختبار بنجاح 🎯' : 'تحتاج إلى مراجعة بعض النقاط والتدرب مجدداً'}
+        </h4>
+        <div className="p-4 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] inline-block">
+          <p className="text-sm font-bold text-[#202124]">
+            حصلت على <span className="font-mono text-2xl font-black text-[#405DE6]">{score}</span> من أصل <span className="font-mono font-bold">{total}</span>
+          </p>
+        </div>
+        <div>
+          <button
+            type="button"
+            onClick={() => {
+              setAnswers({});
+              setCurrentIdx(0);
+              setShowResult(false);
+            }}
+            className="px-5 py-2.5 bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs text-xs font-black transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
+          >
+            إعادة الاختبار
+          </button>
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="bg-slate-900 border border-indigo-500/40 rounded-2xl p-5 my-4">
-      <div className="flex items-center justify-between text-xs text-slate-400 mb-3">
-        <span className="font-bold text-indigo-400">{block.title}</span>
+    <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-5 my-4 space-y-4">
+      <div className="flex items-center justify-between text-xs border-b-2 border-[#202124] pb-2 font-mono font-bold text-[#202124]">
+        <span className="font-black text-[#405DE6]">{block.title}</span>
         <span>السؤال {currentIdx + 1} من {total}</span>
       </div>
-      <p className="text-base font-bold text-white mb-3">{question.prompt}</p>
+
+      <p dir="ltr" className="text-base font-black font-mono text-[#202124] text-left en-sentence">
+        {question.prompt}
+      </p>
+
       <div className="space-y-2">
         {question.options.map((opt, idx) => (
           <button
             key={idx}
+            type="button"
             onClick={() => handlePick(idx)}
-            className={`w-full p-3 rounded-xl border text-sm text-right transition-all ${answers[currentIdx] === idx ? 'bg-indigo-600 border-indigo-500 text-white' : 'bg-slate-800 hover:bg-slate-700/80 border-slate-700 text-slate-200'}`}
+            className={`w-full p-3 rounded-xs border-2 text-sm font-bold text-left transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5 ${
+              answers[currentIdx] === idx 
+                ? 'bg-[#405DE6] border-[#202124] text-white shadow-[2px_2px_0px_#202124]' 
+                : 'bg-[#F7F5EF] hover:bg-white border-[#202124] text-[#202124] shadow-[2px_2px_0px_#202124]'
+            }`}
           >
-            {opt}
+            <span dir="ltr" className="font-mono">{opt}</span>
           </button>
         ))}
       </div>
-      <div className="mt-4 flex justify-end">
+
+      <div className="pt-2 flex justify-end">
         <button
+          type="button"
           onClick={handleNext}
           disabled={answers[currentIdx] === undefined}
-          className="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 disabled:opacity-50 text-white font-bold rounded-xl text-xs transition-all flex items-center gap-1.5"
+          className="px-5 py-2.5 bg-[#405DE6] hover:bg-[#334DC6] disabled:opacity-50 text-white font-black border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs text-xs transition-all flex items-center gap-1.5 cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
         >
           <span>{currentIdx < total - 1 ? 'السؤال التالي' : 'إنهاء الاختبار'}</span>
           <ArrowRight className="w-4 h-4" />
@@ -527,44 +651,49 @@ const FlashcardBlockView: React.FC<{ block: FlashcardBlock; onSpeak: (t: string)
   };
 
   return (
-    <div className="bg-slate-900 border border-slate-800 rounded-2xl p-5 my-4">
-      <div className="flex items-center justify-between text-xs text-slate-400 mb-3">
-        <span className="font-bold text-emerald-400">بطاقات المراجعة السريعة (Flashcards)</span>
+    <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-5 my-4 space-y-4">
+      <div className="flex items-center justify-between text-xs border-b-2 border-[#202124] pb-2 font-mono font-bold text-[#202124]">
+        <span className="font-black text-[#405DE6]">بطاقات المراجعة السريعة (FLASHCARDS)</span>
         <span>{activeCardIdx + 1} / {block.cards.length}</span>
       </div>
 
       <div
         onClick={() => setIsFlipped(!isFlipped)}
-        className="cursor-pointer min-h-[160px] bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 rounded-2xl p-6 flex flex-col items-center justify-center text-center transition-all shadow-inner"
+        className="cursor-pointer min-h-[170px] bg-[#F7F5EF] hover:bg-[#E9ECFA] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] rounded-xs p-6 flex flex-col items-center justify-center text-center transition-all select-none"
       >
-        <span className="text-[11px] text-slate-400 uppercase tracking-widest mb-2 font-mono">
+        <span className="text-[11px] text-[#747474] uppercase tracking-widest mb-2 font-mono font-bold">
           {isFlipped ? 'المعنى والتوضيح (الخلف)' : 'المصطلح أو العبارة (الأمام) • انقر للقلب'}
         </span>
-        <p className="text-xl md:text-2xl font-black text-white">
+        <p dir="ltr" className="text-xl sm:text-2xl font-black font-mono text-[#202124] en-sentence">
           {isFlipped ? card.back : card.front}
         </p>
         {card.hint && !isFlipped && (
-          <p className="text-xs text-amber-300/80 mt-2 font-medium">تلميح: {card.hint}</p>
+          <p className="text-xs text-[#747474] mt-2 font-bold">💡 تلميح: {card.hint}</p>
         )}
       </div>
 
-      <div className="flex items-center justify-between mt-4">
+      <div className="flex items-center justify-between pt-1">
         <button
+          type="button"
           onClick={handlePrev}
-          className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-bold"
+          className="px-4 py-2 bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs text-xs font-black cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
         >
           السابق
         </button>
+
         <button
+          type="button"
           onClick={() => onSpeak(card.audioText || card.front)}
-          className="p-2 bg-emerald-500/20 text-emerald-400 hover:bg-emerald-500/30 rounded-lg text-xs"
+          className="p-2 bg-[#F3E6A5] hover:bg-[#ebdca0] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs text-xs cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
           title="استمع"
         >
           <Volume2 className="w-4 h-4" />
         </button>
+
         <button
+          type="button"
           onClick={handleNext}
-          className="px-3.5 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-bold"
+          className="px-4 py-2 bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs text-xs font-black cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
         >
           التالي
         </button>

@@ -930,10 +930,10 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                     size="md"
                     speechText={
                       results.grandTotal >= 90
-                        ? `كفووو يا ${studentName}! نتيجتك 100 بالوزاري شبه مضمونة بإذن الله!`
+                        ? `أداء استثنائي يا ${studentName}! تدريبك متقن ومثالي للاستعداد للامتحان الوزاري!`
                         : results.grandTotal >= 70
-                        ? `أداء رائع يا ${studentName}! راجع الأخطاء في الأسفل وستصل للـ 100 قريباً.`
-                        : `لا تقلق يا ${studentName}! كل غلطة الآن توفر عليك درجات بالوزاري. راجع التعليلات وكرر الاختبار!`
+                        ? `أداء رائع يا ${studentName}! راجع الأخطاء في الأسفل لتعزيز تفوقك واستعدادك.`
+                        : `بداية طيبة يا ${studentName}! كل تدريب إضافي يقربك من التفوق. راجع التعليلات وكرر الاختبار!`
                     }
                   />
                 </div>

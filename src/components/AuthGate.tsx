@@ -163,7 +163,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                 </span>
               </h1>
               <p className="text-sm sm:text-base text-[#202124]/80 font-bold leading-relaxed pt-2">
-                إشراف وإعداد <span className="underline decoration-[#F2A18E] decoration-4">الأستاذ مصطفى تركي</span>. المنظومة الأكاديمية الأولى لضمان الدرجة الكاملة 100/100 في الامتحان الوزاري.
+                إشراف وإعداد <span className="underline decoration-[#F2A18E] decoration-4">الأستاذ مصطفى تركي</span>. المنظومة الأكاديمية المتكاملة للتدريب الشامل والاستعداد للامتحان الوزاري وفق المنهج العراقي الرسمي.
               </p>
             </div>
           </div>

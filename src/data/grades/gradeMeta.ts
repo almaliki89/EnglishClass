@@ -75,7 +75,7 @@ export const ALL_GRADES_META: Record<EducationalGrade, GradeMeta> = {
     badgeBg: 'bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124]',
     description: 'المنهج الوزاري الشامل للبكالوريا وفق الكتاب المعتمد حصراً: الوحدات الثمانية، قطع (عمار وتقنية الهيكل الخارجي، نجلة عماد لفتة، الرادار، سميرة المحمود، تصاميم راشد ورنا، ونهر الفرات)، والأدب المقرّر (كبرياء وتحامل لجين أوستن، كما تشاء لشكسبير).',
     curriculumBook: 'English for Iraq - 6th Preparatory (Baccalaureate)',
-    authorNote: 'المرجع الوزاري الكامل لضمان الدرجة 100 في الامتحان الوزاري العام لجمهورية العراق.'
+    authorNote: 'المرجع الوزاري الشامل للاستعداد للامتحان الوزاري العام لجمهورية العراق.'
   }
 };
 

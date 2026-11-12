@@ -386,22 +386,22 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
                           <button
                             type="button"
                             onClick={() => onToggleBookmark(q.id)}
-                            className={`px-2.5 py-1 rounded-lg border text-xs flex items-center gap-1 transition-colors cursor-pointer ${
+                            className={`px-3 py-1.5 border-2 border-[#202124] rounded-xs text-xs font-bold flex items-center gap-1.5 shadow-[2px_2px_0px_#202124] transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5 ${
                               bookmarkedQuestionIds.includes(q.id)
-                                ? 'bg-amber-100 text-amber-900 border-amber-300'
-                                : 'bg-slate-50 hover:bg-slate-100 text-slate-600 border-slate-200'
+                                ? 'bg-[#F3E6A5] text-[#202124]'
+                                : 'bg-[#F7F5EF] hover:bg-white text-[#202124]'
                             }`}
                             title={bookmarkedQuestionIds.includes(q.id) ? 'إزالة من المفضلة' : 'حفظ في المفضلة والمراجعة المركزة'}
                           >
-                            <Bookmark className={`w-3.5 h-3.5 ${bookmarkedQuestionIds.includes(q.id) ? 'fill-amber-500 text-amber-600' : ''}`} />
-                            <span className="text-[11px] font-bold">
+                            <Bookmark className={`w-3.5 h-3.5 ${bookmarkedQuestionIds.includes(q.id) ? 'fill-[#202124] text-[#202124]' : ''}`} />
+                            <span className="text-[11px] font-black">
                               {bookmarkedQuestionIds.includes(q.id) ? 'محفوظ' : 'حفظ'}
                             </span>
                           </button>
                         )}
                       </div>
 
-                      <span className="text-xs font-bold text-slate-500 flex items-center gap-1">
+                      <span className="text-xs font-mono font-bold text-[#747474] flex items-center gap-1">
                         <span>مراجعة مباشرة</span>
                         <ArrowLeft className="w-3.5 h-3.5" />
                       </span>
@@ -431,30 +431,30 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
       {mode === 'mock' && (
         <div className="space-y-6">
           {!isExamActive ? (
-            <div className="p-8 sm:p-12 text-center bg-white rounded-3xl border border-slate-200 space-y-6">
-              <div className="w-16 h-16 mx-auto rounded-3xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
-                <Clock className="w-8 h-8" />
+            <div className="p-8 sm:p-12 text-center bg-white rounded-xs border-3 border-[#202124] shadow-[5px_5px_0px_#202124] space-y-6">
+              <div className="w-16 h-16 mx-auto rounded-xs bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2.5px_2.5px_0px_#202124] flex items-center justify-center">
+                <Clock className="w-8 h-8 text-[#202124]" />
               </div>
 
               <div className="space-y-2 max-w-md mx-auto">
-                <h2 className="text-2xl font-black text-slate-900">
+                <h2 className="text-2xl font-black text-[#202124]">
                   محاكاة الاختبار الوزاري الموقوت
                 </h2>
-                <p className="text-xs sm:text-sm text-slate-500 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#202124]/75 font-bold leading-relaxed">
                   10 أسئلة وزارية عشوائية مختارة من نماذج 2014-2025. لديك 10 دقائق للإجابة لتتعود على ضغط الوقت في قاعة الامتحان الوزاري.
                 </p>
               </div>
 
-              <div className="flex flex-wrap items-center justify-center gap-4 text-xs font-bold text-slate-600">
-                <span className="px-3 py-1.5 rounded-xl bg-slate-100">⏱️ الوقت: 10 دقائق</span>
-                <span className="px-3 py-1.5 rounded-xl bg-slate-100">📝 العدد: 10 أسئلة</span>
-                <span className="px-3 py-1.5 rounded-xl bg-slate-100">🎯 الدرجة: من 100</span>
+              <div className="flex flex-wrap items-center justify-center gap-3 text-xs font-mono font-bold text-[#202124]">
+                <span className="px-3 py-1.5 rounded-xs bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">⏱️ الوقت: 10 دقائق</span>
+                <span className="px-3 py-1.5 rounded-xs bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">📝 العدد: 10 أسئلة</span>
+                <span className="px-3 py-1.5 rounded-xs bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">🎯 الدرجة: من 100</span>
               </div>
 
               <button
                 id="start-mock-exam-btn"
                 onClick={handleStartMockExam}
-                className="px-8 py-3.5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-sm shadow-lg shadow-indigo-200 transition-all hover:scale-105 active:scale-95"
+                className="px-8 py-3.5 rounded-xs bg-[#405DE6] hover:bg-[#334DC6] text-white font-black text-sm border-3 border-[#202124] shadow-[4px_4px_0px_#202124] cursor-pointer active:translate-x-0.5 active:translate-y-0.5 transition-all"
               >
                 ابدأ الاختبار الوزاري الآن
               </button>
@@ -463,16 +463,16 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
             <div className="space-y-6">
               
               {/* Sticky Top Status Bar */}
-              <div className="sticky top-20 z-30 p-4 rounded-2xl bg-slate-900 text-white shadow-lg flex items-center justify-between">
+              <div className="sticky top-20 z-30 p-4 rounded-xs bg-[#202124] text-white border-2 border-[#202124] shadow-[3.5px_3.5px_0px_#202124] flex items-center justify-between">
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-1.5 text-amber-400 font-mono font-bold text-base">
+                  <div className="flex items-center gap-1.5 text-[#F3E6A5] font-mono font-black text-base">
                     <Clock className="w-5 h-5 animate-pulse" />
                     <span>{formatTime(timeLeft)}</span>
                   </div>
-                  <span className="text-xs text-slate-400 hidden sm:inline">الوقت المتبقي</span>
+                  <span className="text-xs font-mono font-bold text-white/70 hidden sm:inline">الوقت المتبقي</span>
                 </div>
 
-                <div className="text-xs font-bold text-slate-300">
+                <div className="text-xs font-mono font-bold text-white/90">
                   تمت الإجابة على {Object.keys(userExamAnswers).length} من {examQuestions.length}
                 </div>
 
@@ -480,14 +480,14 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
                   <button
                     id="submit-mock-exam-btn"
                     onClick={handleSubmitMockExam}
-                    className="px-4 py-2 rounded-xl bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-xs shadow-xs transition-all"
+                    className="px-4 py-2 rounded-xs bg-[#F3E6A5] hover:bg-[#ebdca0] text-[#202124] border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124] cursor-pointer active:translate-x-0.5 active:translate-y-0.5 transition-all"
                   >
                     تسليم الدفتر الامتحاني
                   </button>
                 ) : (
                   <button
                     onClick={handleStartMockExam}
-                    className="px-4 py-2 rounded-xl bg-indigo-500 hover:bg-indigo-600 text-white font-bold text-xs shadow-xs transition-all flex items-center gap-1"
+                    className="px-4 py-2 rounded-xs bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124] cursor-pointer active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center gap-1.5"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span>إعادة اختبار جديد</span>
@@ -497,20 +497,22 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
 
               {/* Result Card if submitted */}
               {examSubmitted && (
-                <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-indigo-900 to-slate-900 text-white shadow-xl space-y-4 text-center">
-                  <Award className="w-12 h-12 mx-auto text-amber-400" />
-                  <h3 className="text-2xl font-black">نتيجة الاختبار الوزاري التجريبي</h3>
-                  <div className="text-sm font-bold" role="status" aria-live="polite">
+                <div className="p-6 sm:p-8 rounded-xs bg-white border-3 border-[#202124] shadow-[5px_5px_0px_#202124] text-[#202124] space-y-4 text-center">
+                  <div className="w-14 h-14 mx-auto bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs flex items-center justify-center">
+                    <Award className="w-8 h-8 text-[#405DE6]" />
+                  </div>
+                  <h3 className="text-2xl font-black text-[#202124]">نتيجة الاختبار الوزاري التجريبي</h3>
+                  <div className="text-sm font-bold text-[#747474]" role="status" aria-live="polite">
                     {persistenceStatus === "saving" && "جارٍ حفظ النتيجة ونقاط الخبرة في قاعدة البيانات الآمنة..."}
                     {persistenceStatus === "saved" && "تم حفظ النتيجة ونقاط الخبرة بنجاح."}
                     {persistenceStatus === "error" && (
                       <div className="space-y-2">
-                        <p className="text-rose-200">{persistenceError || "تعذر حفظ النتيجة."}</p>
+                        <p className="text-[#B83A3A] font-bold">{persistenceError || "تعذر حفظ النتيجة."}</p>
                         {lastSubmittedRecord && onRecordResult && (
                           <button
                             type="button"
                             onClick={() => void persistExamResult(lastSubmittedRecord)}
-                            className="px-3 py-2 bg-white text-slate-900 rounded-xl font-black text-xs"
+                            className="px-4 py-2 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs font-black text-xs cursor-pointer"
                           >
                             إعادة محاولة الحفظ الآمن
                           </button>
@@ -529,11 +531,11 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
                     const score = correct * 10;
                     return (
                       <div className="space-y-2">
-                        <p className="text-5xl font-black text-amber-400">{score} / 100</p>
-                        <p className="text-xs sm:text-sm text-slate-300">
-                          {score >= 90 ? 'مستوى عبقري! أنت مؤهل لدرجة 100 بالوزاري بإذن الله 🌟' :
-                           score >= 70 ? 'أداء ممتاز يا بطل! راجع الأسئلة التي أخطأت بها لتفادي الفخاخ الوزارية 👍' :
-                           'بداية جيدة؛ تحتاج إلى مراجعة بعض القواعد الذهبية للأستاذ مصطفى تركي والتدرب أكثر 💪'}
+                        <p className="text-5xl font-black font-mono text-[#405DE6]">{score} / 100</p>
+                        <p className="text-xs sm:text-sm text-[#202124] font-bold max-w-lg mx-auto leading-relaxed">
+                          {score >= 90 ? 'مستوى ممتاز ومتقدم! تدريب دقيق وشامل للاستعداد للامتحان الوزاري 🌟' :
+                           score >= 70 ? 'أداء رائع جداً! راجع الأسئلة التي تحتاج تركيزاً لتفادي أي فخاخ امتحانية 👍' :
+                           'تدريب مفيد كبداية؛ استمر في مراجعة القواعد وحل النماذج الوزارية لتعزيز ثقتك 💪'}
                         </p>
                       </div>
                     );
@@ -553,25 +555,25 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
                   return (
                     <div
                       key={q.id}
-                      className={`p-6 rounded-3xl border transition-all space-y-3 ${
+                      className={`p-6 rounded-xs border-2 transition-all space-y-3 ${
                         examSubmitted
                           ? isCorrect
-                            ? 'bg-emerald-50/50 border-emerald-300'
-                            : 'bg-rose-50/50 border-rose-300'
-                          : 'bg-white border-slate-200'
+                            ? 'bg-[#D7E9DA] border-[#202124] shadow-[3px_3px_0px_#202124]'
+                            : 'bg-[#FDF6F4] border-[#B83A3A] shadow-[3px_3px_0px_#B83A3A]'
+                          : 'bg-white border-[#202124] shadow-[3px_3px_0px_#202124]'
                       }`}
                     >
-                      <div className="flex items-center justify-between text-xs font-bold text-slate-500">
-                        <span>السؤال {idx + 1} ({q.year} - {q.session})</span>
-                        <span className="px-2 py-0.5 rounded-md bg-slate-100">الوحدة {q.unitId}</span>
+                      <div className="flex items-center justify-between text-xs font-mono font-bold text-[#202124] border-b border-[#202124]/15 pb-2">
+                        <span className="font-black">السؤال {idx + 1} ({q.year} - {q.session})</span>
+                        <span className="px-2 py-0.5 rounded-xs bg-[#F7F5EF] border border-[#202124]">الوحدة 0{q.unitId}</span>
                       </div>
 
-                      <p dir="ltr" className="font-bold text-base sm:text-lg text-slate-900 text-left en-sentence">
+                      <p dir="ltr" className="font-black font-mono text-base sm:text-lg text-[#202124] text-left en-sentence">
                         {q.questionText}
                       </p>
 
                       <div className="pt-2">
-                        <label className="block text-xs font-bold text-slate-600 mb-1.5">
+                        <label className="block text-xs font-bold text-[#202124] mb-1.5">
                           إجابتك:
                         </label>
                         <input
@@ -584,16 +586,16 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
                             const val = e.target.value;
                             setUserExamAnswers(prev => ({ ...prev, [q.id]: val }));
                           }}
-                          className="w-full px-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm font-mono text-left focus:outline-hidden focus:border-indigo-500"
+                          className="w-full px-4 py-2.5 rounded-xs bg-[#F7F5EF] border-2 border-[#202124] text-sm font-mono text-left focus:outline-hidden focus:bg-white focus:shadow-[2px_2px_0px_#202124] text-[#202124]"
                         />
                       </div>
 
                       {examSubmitted && (
-                        <div className="mt-3 p-3.5 rounded-2xl bg-white border border-slate-200 space-y-1 text-right">
-                          <p className="text-xs font-bold text-indigo-900">
-                            الجواب النموذجي: <span dir="ltr" className="font-mono text-emerald-700 font-black inline-block ml-1">{q.correctAnswer}</span>
-                          </p>
-                          <p className="text-xs text-slate-600">
+                        <div className="lesson-answer">
+                          <span className="lesson-answer__label">الإجابة النموذجية المعتمدة</span>
+                          <p dir="ltr" className="lesson-answer__value">{q.correctAnswer}</p>
+                          <p className="lesson-answer__explanation">
+                            <span className="font-bold">التعليل: </span>
                             {q.ruleExplanation}
                           </p>
                         </div>

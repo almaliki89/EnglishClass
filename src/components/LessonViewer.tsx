@@ -92,40 +92,40 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const prevLesson = currentIndex > 0 ? unit.lessons[currentIndex - 1] : null;
   const nextLesson = currentIndex < unit.lessons.length - 1 ? unit.lessons[currentIndex + 1] : null;
 
-  // Category Configuration
+  // Category Configuration with Unified Semantic Design Tokens
   const getCategoryConfig = () => {
     switch (lesson.category) {
       case 'grammar':
         return {
           title: 'قواعد وزارية وخوارزميات الحل',
-          badgeClass: 'bg-indigo-50 text-indigo-700 border-indigo-200',
-          accentColor: 'indigo',
-          icon: <Cpu className="w-4 h-4 text-indigo-600" />,
+          badgeClass: 'bg-[#E9ECFA] text-[#405DE6] border-[#202124]',
+          accentColor: '#405DE6',
+          icon: <Cpu className="w-4 h-4 text-[#405DE6]" />,
           modeName: 'معمل القواعد والتحويلات',
         };
       case 'reading':
         return {
           title: 'قطع الكتاب الاستيعابية وقصص الأدب',
-          badgeClass: 'bg-amber-50 text-amber-700 border-amber-200',
-          accentColor: 'amber',
-          icon: <BookOpen className="w-4 h-4 text-amber-600" />,
+          badgeClass: 'bg-[#F7F5EF] text-[#202124] border-[#202124]',
+          accentColor: '#202124',
+          icon: <BookOpen className="w-4 h-4 text-[#405DE6]" />,
           modeName: 'ملف القصة والبطاقات القلابة',
         };
       case 'vocabulary':
         return {
           title: 'مفردات ومتلازمات وإسقاطات',
-          badgeClass: 'bg-emerald-50 text-emerald-700 border-emerald-200',
-          accentColor: 'emerald',
-          icon: <Compass className="w-4 h-4 text-emerald-600" />,
+          badgeClass: 'bg-[#F3E6A5] text-[#202124] border-[#202124]',
+          accentColor: '#F3E6A5',
+          icon: <Compass className="w-4 h-4 text-[#405DE6]" />,
           modeName: 'ساحة التوصيل والمتلازمات',
         };
       case 'spelling':
       default:
         return {
           title: 'إملاء وسوابق ولواحق وشواذ',
-          badgeClass: 'bg-rose-50 text-rose-700 border-rose-200',
-          accentColor: 'rose',
-          icon: <PenTool className="w-4 h-4 text-rose-600" />,
+          badgeClass: 'bg-[#F2A18E] text-[#202124] border-[#202124]',
+          accentColor: '#F2A18E',
+          icon: <PenTool className="w-4 h-4 text-[#202124]" />,
           modeName: 'مختبر الإملاء الدقيق',
         };
     }

@@ -129,7 +129,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
               </BrutalBadge>
               {gradeMeta.isMinisterial && (
                 <BrutalBadge variant="vermilion" className="text-xs">
-                  ★ وزاري معتمد 100%
+                  ★ المنهج الوزاري المعتمد
                 </BrutalBadge>
               )}
             </div>

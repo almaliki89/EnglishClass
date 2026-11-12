@@ -221,7 +221,7 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
                     <BrutalBadge variant="sky">
                       {story.author || 'المنهج الوزاري'}
                     </BrutalBadge>
-                    <BrutalBadge variant="yellow">وزاري مضمون</BrutalBadge>
+                    <BrutalBadge variant="yellow">سؤال وزاري متكرر</BrutalBadge>
                   </div>
                   <h4 className="text-base sm:text-lg font-black text-[#202124]">{story.titleAr}</h4>
                   <p className="text-xs font-mono font-bold text-[#405DE6]" dir="ltr">{story.title}</p>
