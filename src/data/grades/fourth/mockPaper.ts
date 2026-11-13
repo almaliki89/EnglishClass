@@ -1,16 +1,15 @@
 import { MockExamPaper } from '../../mockExamPapers';
 
 // =========================================================================
-// النموذج الامتحاني النهائي الشامل للصف الرابع الإعدادي (100 درجة)
-// مستخرج نصاً وتوزيعاً من ملزمة النموذجية 2026 (ص 149 - 150)
+// اختبار تدريبي إضافي من إعداد المنصة. لا تمثل هذه الورقة امتحاناً وزارياً أو نموذجاً رسمياً، ولا تنسب إلى صفحات 149–150؛ فالصفحة 149 تبدأ نص Treasure Island.
 // =========================================================================
 
 export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
-  id: "mock-4th-prep-final-2026",
-  title: "الامتحان النهائي الشامل لمادة اللغة الإنكليزية - الرابع الإعدادي (100 درجة)",
-  subtitle: "مبني وفق نموذج الأسئلة الامتحانية في ملزمة النموذجية 2026 (ص 149)",
-  year: "2025-2026",
-  session: "الدور الأول - الامتحان النهائي العام",
+  id: "mock-4th-prep-supplementary",
+  title: "اختبار تدريبي شامل لمادة اللغة الإنكليزية - الرابع الإعدادي (100 درجة)",
+  subtitle: "نموذج تدريبي من إعداد المنصة بالاستناد إلى موضوعات الملزمة؛ ليس ورقة امتحان وزارية أو وثيقة اعتماد رسمية.",
+  year: "تدريب إضافي",
+  session: "اختبار ذاتي — ليس امتحاناً وزارياً",
   durationMinutes: 150,
   totalMarks: 100,
   sections: [
@@ -30,7 +29,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["English and French", "English and Spanish", "French and German", "English and Arabic"],
           correctAnswer: "English and French",
-          explanation: "اللغتان الرسميتان لكندا هما الإنكليزية والفرنسية (الملزمة ص 17).",
+          explanation: "تتناول قراءة كندا في صفحات الوحدة الأولى اللغتين الإنكليزية والفرنسية. (الملزمة ص 21–23).",
           maxScore: 4
         },
         {
@@ -45,7 +44,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
             "In 1920 to build roads"
           ],
           correctAnswer: "In 1946 to help children after World War II",
-          explanation: "تأسست اليونيسيف عام 1946 لمساعدة الأطفال بعد الحرب العالمية الثانية (الملزمة ص 38).",
+          explanation: "تذكر قراءة UNICEF أنها أُنشئت عام 1946 في سياق مساعدة الأطفال بعد الحرب العالمية الثانية. (الملزمة ص 29–30).",
           maxScore: 4
         },
         {
@@ -60,7 +59,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
             "Located in Basra, and the bull is Pharaoh"
           ],
           correctAnswer: "Located in Al-Alawi, Baghdad, and the winged bull is Lamassu",
-          explanation: "يقع المتحف في العلاوي ببغداد واسم الثور المجنح هو Lamassu (الملزمة ص 84).",
+          explanation: "تتناول قراءة المتحف الوطني العراقي ومقتنياته في هذا القسم. (الملزمة ص 92–94).",
           maxScore: 4
         },
         {
@@ -70,7 +69,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["Between 8 and 10 hours", "4 hours", "12 hours", "6 hours"],
           correctAnswer: "Between 8 and 10 hours",
-          explanation: "يحتاج المراهقون بين 8 إلى 10 ساعات نوم ليلية (الملزمة ص 102).",
+          explanation: "تتناول قراءة النوم حاجة المراهقين إلى النوم وآثاره. (الملزمة ص 99–100).",
           maxScore: 4
         },
         {
@@ -85,7 +84,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
             "A industrial oil refining station"
           ],
           correctAnswer: "One of the largest wetland ecosystems and a UNESCO World Heritage site",
-          explanation: "أهوار الحمار هي منطقة رطبة عالمية وموقع تراث عالمي لليونسكو (الملزمة ص 130).",
+          explanation: "تصف الملزمة أهوار الحمار بأنها من أهم المناطق الرطبة وتعرض مشروع استعادتها. (الملزمة ص 127–128).",
           maxScore: 4
         }
       ]
@@ -111,7 +110,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
             "where main library is"
           ],
           correctAnswer: "where the main library is",
-          explanation: "تقدم الفاعل (the main library) على الفعل المساعد is في السؤال غير المباشر (الملزمة ص 21).",
+          explanation: "يعود السؤال غير المباشر إلى ترتيب الجملة الخبري. (الملزمة ص 14–16).",
           maxScore: 5
         },
         {
@@ -127,11 +126,11 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
         {
           id: "4th-mock-q2-3",
           number: 3,
-          questionText: "There ______ to be a traditional market here, but now there is a big shopping centre.",
+          questionText: "When I got to the airport, I realised I ______ (forget) my passport.",
           type: "choice",
-          options: ["used", "use", "using", "uses"],
-          correctAnswer: "used",
-          explanation: "صيغة used to للتعبير عن عادة وحالة في الماضي (الملزمة ص 32).",
+          options: ["had forgotten", "have forgotten", "forget", "was forgetting"],
+          correctAnswer: "had forgotten",
+          explanation: "وقع نسيان جواز السفر قبل الوصول إلى المطار، لذلك نستخدم الماضي التام. (الملزمة ص 45–47)",
           maxScore: 5
         },
         {
@@ -141,7 +140,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["for", "since", "from", "ago"],
           correctAnswer: "for",
-          explanation: "مدة زمنية مجملة ومحسوبة بالسنوات (ten years) تأخذ for (الملزمة ص 59).",
+          explanation: "تستخدم for مع مدة زمنية وsince مع نقطة بداية محددة. (الملزمة ص 67–68).",
           maxScore: 5
         },
         {
@@ -151,7 +150,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["to buy", "buying", "buy", "bought"],
           correctAnswer: "to buy",
-          explanation: "الفعل decided يأخذ تركيب to + المصدر المجرد (to buy) (الملزمة ص 91).",
+          explanation: "الفعل decided يتبعه to + infinitive. (الملزمة ص 90–91).",
           maxScore: 5
         },
         {
@@ -161,7 +160,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["will be taking", "will take", "am taking", "took"],
           correctAnswer: "will be taking",
-          explanation: "مستقبل مستمر لوجود وقت محدد صباح غدٍ (At 10:00 AM tomorrow) (الملزمة ص 98).",
+          explanation: "تستخدم صيغة will be + verb-ing لوصف فعل مستمر في وقت مستقبلي محدد. (الملزمة ص 85–86).",
           maxScore: 5
         }
       ]
@@ -182,7 +181,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["well", "goodly", "good", "better"],
           correctAnswer: "well",
-          explanation: "ظرف الطريقة الشاذ من الصفة good هو well (الملزمة ص 46).",
+          explanation: "السؤال عن مفردة من صفات الشخصية الواردة في قائمة المفردات. (الملزمة ص 74).",
           maxScore: 5
         },
         {
@@ -192,7 +191,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["forgetful", "lively", "slim", "smart"],
           correctAnswer: "forgetful",
-          explanation: "الشخص الذي ينسى المواعيد يوصف بـ forgetful (الملزمة ص 87).",
+          explanation: "ترد forgetful ضمن مفردات وصف الشخصية. (الملزمة ص 74).",
           maxScore: 5
         },
         {
@@ -202,7 +201,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["Birth", "Business", "Bachelor", "Booking"],
           correctAnswer: "Birth",
-          explanation: "الرمز DOB يعني Date of Birth (تاريخ الميلاد) (الملزمة ص 23).",
+          explanation: "يظهر حقل Date of birth في نموذج التقديم بالملحق. (الملزمة ص 171).",
           maxScore: 5
         },
         {
@@ -212,7 +211,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["groom", "bride", "waiter", "guest"],
           correctAnswer: "groom",
-          explanation: "الرجل الذي يتزوج يسمى العريس (groom) (الملزمة ص 42).",
+          explanation: "تستخدم كلمة groom في فقرة عادات الزفاف. (الملزمة ص 174).",
           maxScore: 5
         }
       ]
@@ -220,9 +219,9 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
     {
       id: "4th-mock-sec-4",
       sectionCode: "Q4",
-      titleAr: "السؤال الرابع: نصوص الأدب المقرّر (جزيرة الكنز وحول العالم في 80 يوماً)",
+      titleAr: "السؤال الرابع: مراجعة أدبية تدريبية (جزيرة الكنز وحول العالم في 80 يوماً)",
       titleEn: "Question 4: Literature Spot (Treasure Island & Around the World in 80 Days)",
-      instructionsAr: "السؤال الرابع: الأدب المقرّر (جزيرة الكنز وحول العالم في 80 يوماً) (10 درجات):",
+      instructionsAr: "أسئلة تدريبية على النصين الأدبيين الواردين في الملزمة (10 درجات):",
       instructionsEn: "Question 4: Literature Spot - Treasure Island & Around the World in 80 Days (10 Marks):",
       totalMarks: 10,
       items: [
@@ -238,7 +237,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
             "He was a doctor who destroyed the map"
           ],
           correctAnswer: "He was a marooned pirate who dug up the treasure and carried it to his cave",
-          explanation: "بن غان بحار معزول بالجزيرة استخرج الكنز ونقله إلى كهفه (الملزمة ص 159).",
+          explanation: "تشرح فصول Treasure Island شخصية Ben Gunn ومصير الكنز. (الملزمة ص 149–158).",
           maxScore: 5
         },
         {
@@ -253,7 +252,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
             "By using an airplane to fly over Europe"
           ],
           correctAnswer: "By travelling constantly eastwards, he gained a full day (24 hours) crossing time zones",
-          explanation: "بسفره الدائم شرقاً كسب يوماً كاملاً في فارق التوقيت ووصل في الوقت المحدد (الملزمة ص 169).",
+          explanation: "تشرح خاتمة Around the World in 80 Days كيف كسب فوغ يوماً باتجاه سفره شرقاً. (الملزمة ص 159–169).",
           maxScore: 5
         }
       ]
@@ -264,8 +263,8 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
       id: "4th-mock-essay-a",
       optionLetter: "A",
       titleEn: "Traditional Wedding Customs and Celebrations in Iraq",
-      titleAr: "إنشاء (أ): عادات وتقاليد الزفاف والأعراس في العراق (الوحدة الرابعة - ص 176)",
-      prompt: "Write a paragraph describing Iraqi wedding customs, including Thursday celebrations, henna decorations, formal clothing, and family hospitality.",
+      titleAr: "كتابة تدريبية (أ): عادات الزفاف في العراق — استناداً إلى الملزمة ص 174",
+      prompt: "Write a paragraph about wedding customs in Iraq, including the day of the wedding, henna, the clothes of the bride and groom, and family guests.",
       suggestedModel: "Wedding customs differ from one culture to another, but in Iraq, marriage celebrations are steeped in deep joy and family hospitality. Weddings usually take place on Thursday. A day before, female relatives gather at the bride's house to decorate her hands with henna. On the wedding day, the groom wears a suit while the bride wears a white dress symbolizing purity. The groom's family hosts a grand feast for friends and relatives where traditional Iraqi food is served, and guests bring thoughtful presents to wish the couple happiness.",
       keywords: ["henna night", "Thursday", "bride & groom", "purity", "hospitality"],
       maxScore: 20
@@ -274,8 +273,8 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
       id: "4th-mock-essay-b",
       optionLetter: "B",
       titleEn: "A Package Holiday Experience in Erbil and Northern Iraq",
-      titleAr: "إنشاء (ب): رحلة سياحية جماعية شاملة إلى أربيل وشمال العراق (الوحدة الثانية - ص 173)",
-      prompt: "Write a letter to a friend describing a package holiday trip to Erbil, mentioning the hotel, visited sights (Erbil Citadel, waterfalls), food, and overall experience.",
+      titleAr: "كتابة تدريبية (ب): رسالة عن رحلة إلى أربيل — استناداً إلى الملزمة ص 173",
+      prompt: "Write a postcard or email to a friend about a package holiday to the north of Iraq. Mention the cost and what you visited.",
       suggestedModel: "Dear Alex, Last month I went with my family on an amazing package holiday to Erbil in northern Iraq. The trip cost $200 per person and included travel fare, tours, and full accommodation. We stayed in a modern 5-star hotel near the city centre. According to our programme, we visited the historic Citadel of Erbil, local bazaars, and beautiful mountain waterfalls at Gali Ali Bag. In the evening, we enjoyed traditional Iraqi kebab in a luxurious restaurant. It was a fantastic holiday! Best wishes, Ammar",
       keywords: ["package holiday", "Erbil Citadel", "accommodation", "waterfalls", "traditional kebab"],
       maxScore: 20
