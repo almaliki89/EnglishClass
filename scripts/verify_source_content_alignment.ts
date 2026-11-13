@@ -104,7 +104,7 @@ assert.ok(fourthUnit6?.lessons.some((lesson) => lesson.titleEn.includes('Reporte
 assert.ok(fourthUnit6?.lessons.some((lesson) => lesson.titleEn.includes('FIFA World Cup')), 'Unit 6 must include the FIFA World Cup reading');
 
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Al-Hammaar Marshes')), 'Unit 7 must include the Al-Hammaar Marshes reading');
-assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Petroleum')), 'Unit 7 must include the petroleum reading');
+assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Refinery') && lesson.detailedContent.some((line) => line.toLowerCase().includes('petroleum'))), 'Unit 7 must include the source reading From the Earth to the Refinery about petroleum');
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Hawksbill')), 'Unit 7 must include the hawksbill turtle reading');
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Online Shopping')), 'Unit 7 must include the online shopping source content');
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('International Space Station')), 'Unit 7 must include the International Space Station presentation');
@@ -138,6 +138,7 @@ assert.ok(FOURTH_PREPARATORY_ESSAYS[1].paragraphsEn.join(' ').includes('Mother�
 assert.ok(FOURTH_PREPARATORY_ESSAYS[2].paragraphsEn.join(' ').includes('Hello from Erbil'), 'The Erbil email must be present in Unit 3');
 assert.ok(!FOURTH_PREPARATORY_ESSAYS.some((essay) => essay.titleEn.includes('UNICEF')), 'Do not add a UNICEF essay that is not among the source writing models');
 
+assert.equal(FOURTH_PREPARATORY_QUESTIONS.length, 14, 'Fourth-grade question bank must preserve all fourteen supplemental practice items');
 assert.ok(FOURTH_PREPARATORY_QUESTIONS.every((question) => question.year === 'تدريبي' && question.session === 'تدريب إضافي'), 'Fourth-grade generated questions must be labeled as supplementary training, not past ministerial sessions');
 assert.ok(FOURTH_PREPARATORY_QUESTIONS.every((question) => question.contentOrigin === 'ai_generated' && question.provenanceVerified === false), 'Fourth-grade generated questions must carry explicit unverified AI provenance');
 const futureContinuousQuestion = FOURTH_PREPARATORY_QUESTIONS.find((question) => question.topic === 'Future Continuous');
