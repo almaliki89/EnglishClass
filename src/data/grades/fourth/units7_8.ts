@@ -200,24 +200,6 @@ export const FOURTH_PREPARATORY_UNITS_7_8: Unit[] = [
         titleAr: 'الدرس العاشر: السلحفاة البحرية صقرية المنقار',
         titleEn: 'Lesson 10: The Hawksbill Sea Turtle',
         category: 'reading',
-        summary: 'قراءة عن شكل سلحفاة صقرية المنقار وموطنها وغذائها ووضعها المهدد بسبب الصيد والمواد البلاستيكية، مع التمارين التابعة للنص.',
-        sourcePages: 'الملزمة ص 138 - 143',
-        detailedContent: [
-          'يصف النص سلحفاة صقرية المنقار بأنها متوسطة الحجم، ذات صدفة جميلة بألوان داكنة وفاتحة، وفم يشبه منقار الصقر.',
-          'يذكر النص أن وزنها يقارب 60 كيلوغراماً وطولها نحو متر، وأنها تعيش في المحيطات الأطلسي والهادئ والهندي.',
-          'تتغذى على الإسفنج وقناديل البحر وحيوانات ونباتات بحرية صغيرة، ويشرح النص أخطار الصيد من أجل الصدفة وابتلاع قطع البلاستيك.',
-          'تتضمن الصفحات تمارين لغوية ومفردات وتطبيقات على الجمل الشرطية.'
-        ],
-        examples: [{ en: 'The hawksbill is a medium-sized sea turtle with a very beautiful shell.', ar: 'سلحفاة صقرية المنقار سلحفاة بحرية متوسطة الحجم ذات صدفة جميلة جداً.', highlight: 'medium-sized sea turtle', note: 'بداية نص القراءة' }],
-        exercises: [practice('4u7-ex10', 'What can make hawksbill turtles ill?', ['Pieces of plastic they eat', 'Fresh water', 'Coral sand', 'Small fish only'], 'Pieces of plastic they eat', 'يحذر النص من أن السلاحف قد تبتلع قطع البلاستيك ظناً أنها طعام', 'ص 138 - 143')]
-      }),
-      makeLesson({
-        id: '4th-u7-l10',
-        unitId: 47,
-        lessonNumber: 10,
-        titleAr: 'الدرس العاشر: السلحفاة البحرية صقرية المنقار',
-        titleEn: 'Lesson 10: The Hawksbill Sea Turtle',
-        category: 'reading',
         summary: 'قراءة عن شكل سلحفاة صقرية المنقار وموطنها وغذائها والأخطار التي تهددها، مع التمارين التابعة للنص.',
         sourcePages: 'الملزمة ص 138 - 143',
         detailedContent: [
