@@ -24,7 +24,8 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
       "لويزا ماي ألكوت كاتبة أمريكية ولدت في جيرمانتاون بولاية بنسلفانيا في 29 نوفمبر 1832. كانت الابنة الثانية من أربع بنات، وقد ألهمت حياتهن رواية نساء صغيرات.",
       "بسبب فقر عائلتها بدأت العمل في سن مبكرة. وخلال الحرب الأهلية الأمريكية تطوعت ممرضة، وأصيبت بالتيفوئيد ثم تعافت. نُشرت قصصها القصيرة في مجلة The Atlantic Monthly، ثم ساعدت رواياتها اللاحقة على سداد ديون عائلتها.",
       "فقدت شقيقتها الصغرى بسبب الحمى القرمزية وشقيقتها الكبرى بسبب مضاعفات الولادة، ثم تولت تربية ابنة أختها التي حملت الاسم نفسه. توفيت ألكوت في بوسطن عن عمر 55 عاماً بعد معاناة صحية."
-    ],\n    genre: "Novel",
+    ],
+    genre: "Novel",
     genreAr: "رواية",
     image: "/assets/images/little_women_scene_1794251359174.jpg",
     imageCaptionAr: "الشقيقات الأربع من عائلة مارتش (ميغ، وجو تكتب مسرحياتها، وبيث تعزف البيانو، وإيمي ترسم) في منزلهن الدافئ بنيو إنغلاند.",
@@ -36,7 +37,7 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         captionEn: "The March sisters in their living room: independent Jo writing with passion, Amy painting, and Beth playing music."
       }
     ],
-    summaryAr: "تروي الرواية قصة حياة أربع شقيقات من عائلة مارتش (ميغ، جو، بيث، وإيمي) أثناء غياب والدهن أُرسل للقتال مع جيش الاتحاد خلال الحرب الأهلية الأمريكية. تناضل الفتيات مع والدتهن الحبيبة (مارمي) ضد الفقر والحرمان بروح ملؤها الكرم والمحبة والإيثار، ويتعلمن دروساً عميقة في التغلب على عيوبهن الشخصية وصنع الفرح من أبسط الأشياء مع جارهن الثري لوري وجده السيد لورنس.",
+    summaryAr: "تروي الرواية قصة حياة أربع شقيقات من عائلة مارتش (ميغ، جو، بيث، وإيمي) أثناء غياب والدهن الذي أُرسل للقتال مع جيش الاتحاد خلال الحرب الأهلية الأمريكية. تناضل الفتيات مع والدتهن الحبيبة (مارمي) ضد الفقر والحرمان بروح ملؤها الكرم والمحبة والإيثار، ويتعلمن دروساً عميقة في التغلب على عيوبهن الشخصية وصنع الفرح من أبسط الأشياء مع جارهن الثري لوري وجده السيد لورنس.",
     summaryEn: "Little Women chronicles the lives and moral growth of four sisters—Meg, Jo, Beth, and Amy March—living in modest circumstances in New England while their father has been sent to fight for the Union Army during the American Civil War. Guided by their affectionate mother (Marmee), the sisters navigate poverty, societal expectations, personal ambitions, and family devotion.",
     keyThemes: [
       "التضامن الأسري والمحبة في مواجهة الفقر والحرب",
