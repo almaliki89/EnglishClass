@@ -14,7 +14,6 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
     titleAr: "نساء صغيرات (رواية)",
     author: "Louisa May Alcott",
     authorAr: "لويزا ماي ألكوت",
-    authorYears: "ولدت في 29 نوفمبر 1832 وتوفيت عن عمر 55 عاماً",
     authorBioEn: [
       "Louisa May Alcott was an American writer born in Germantown, Pennsylvania, on 29 November 1832. She was the second of four daughters, whose lives inspired Little Women.",
       "Because her family was poor, she began working at a young age. During the American Civil War she volunteered as a nurse, caught typhoid, and recovered. Her short stories appeared in The Atlantic Monthly, and her later novels helped pay her family's debts.",
@@ -295,16 +294,15 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
     titleAr: "العاصفة (مسرحية)",
     author: "William Shakespeare",
     authorAr: "وليم شكسبير",
-    authorYears: "1564 - 1616",
     authorBioEn: [
       "William Shakespeare is described in the booklet as one of the greatest playwrights. He wrote famous works including Romeo and Juliet, Hamlet, Macbeth and The Merchant of Venice.",
       "He was born in Stratford-upon-Avon, in the centre of England. As a young man he worked as an actor before becoming a writer.",
-      "He wrote at least 37 plays, 154 sonnets and two narrative poems. His plays are performed around the world in many languages, and his poetry has been widely translated."
+      "He wrote at least 37 plays, 154 sonnets and two narrative poems. His plays are performed around the world in many languages, and his poetry has been widely translated. The booklet notes that he was born and died on 23 April, 52 years apart."
     ],
     authorBioAr: [
       "يصف الكتاب وليم شكسبير بأنه من أعظم كتّاب المسرح، ومن أشهر أعماله روميو وجولييت وهاملت وماكبث وتاجر البندقية.",
       "ولد في ستراتفورد-أبون-أفون وسط إنجلترا، وعمل ممثلاً في شبابه قبل أن يصبح كاتباً.",
-      "كتب ما لا يقل عن 37 مسرحية و154 سونيتة وقصيدتين سرديتين. وتُعرض مسرحياته في أنحاء العالم بلغات عديدة، كما تُرجمت أشعاره على نطاق واسع."
+      "كتب ما لا يقل عن 37 مسرحية و154 سونيتة وقصيدتين سرديتين. وتُعرض مسرحياته في أنحاء العالم بلغات عديدة، كما تُرجمت أشعاره على نطاق واسع. وتشير الملزمة إلى أنه ولد وتوفي في 23 أبريل، بفارق 52 عاماً بين التاريخين."
     ],
     historicalContextEn: "The play was first performed for King James and was later performed again to celebrate the marriage of his daughter Elizabeth. Its story takes place in a single day. The booklet describes it as Shakespeare's farewell to the stage and probably the last play he wrote alone. Although considered a comedy, it deals with colonialism, revenge and forgiveness.",
     historicalContextAr: "عُرضت المسرحية للمرة الأولى أمام الملك جيمس، ثم عُرضت مرة أخرى للاحتفال بزواج ابنته إليزابيث. وتجري أحداثها خلال يوم واحد. وتصفها الملزمة بأنها وداع شكسبير للمسرح، وربما آخر مسرحية كتبها منفرداً. وعلى الرغم من تصنيفها كوميديا، فإنها تتناول الاستعمار والانتقام والغفران.",
