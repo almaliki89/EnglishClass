@@ -273,10 +273,10 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
   // 9. الوحدة الثامنة: حدث بسيط حصل لك (New Year in Erbil)
   {
     id: "3rd-essay-u8-simple-event",
-    unitId: 108,
-    titleAr: "إنشاء الوحدة الثامنة: حدث بسيط حصل لك (رأس السنة في أربيل)",
-    titleEn: "Unit 8: Write about a simple event that happened to you (New Year in Erbil)",
-    ministerialWeight: "15 درجة بالسؤال الخامس (ص 142 في ملزمة الأستاذ عمار غالب)",
+    unitId: 107,
+    titleAr: "إنشاء إضافي: حدث بسيط حصل لك (رأس السنة في أربيل)",
+    titleEn: "Additional Written Component: A simple event (New Year in Erbil)",
+    ministerialWeight: "15 درجة بالسؤال الخامس (قسم الإنشاءات الإضافي، ص 142 من الملزمة)",
     paragraphsEn: [
       "New Year\nLast week, I decided to go with my friends to spend the New Year Day in Erbil. On our way, it was raining heavily. One of the tires of the car got puncture. It was difficult to change the tire in the rain.",
       "We reached Erbil at midnight. We were very tired. We missed the night. So, we went directly to a hotel to rest and sleep."
@@ -302,13 +302,13 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
     ]
   },
 
-  // 10. مشروع قصة خيالية: الأسد والفأر (Lion and Mouse)
+  // 10. إنشاء إضافي: قصة خيالية (Lion and Mouse)
   {
     id: "3rd-essay-project-lion-mouse",
-    unitId: 108,
+    unitId: 107,
     titleAr: "مشروع قصة خيالية: الأسد والفأر (Lion and Mouse)",
-    titleEn: "Project: Write an imaginary story (Lion and Mouse)",
-    ministerialWeight: "15 درجة بالسؤال الخامس (ص 143 في ملزمة الأستاذ عمار غالب)",
+    titleEn: "Additional Written Component: An imaginary story (Lion and Mouse)",
+    ministerialWeight: "15 درجة بالسؤال الخامس (قسم الإنشاءات الإضافي، ص 143 من الملزمة)",
     paragraphsEn: [
       "Lion and Mouse\nOnce upon a time there lived a lion in a forest. It was sleeping under a tree. A mouse came and it started to play on the lion. The lion got up with anger, jumped on it and started to kill it. The mouse asked the lion to forgive it. The lion felt pity and left it. The mouse ran away.",
       "On another day, a hunter caught the lion in a net. The mouse came there and cut the net. The lion escaped. After that, the mouse and the lion became friends. They lived happily in the forest."
