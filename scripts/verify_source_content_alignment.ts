@@ -107,6 +107,9 @@ assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Al-Hamm
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Petroleum')), 'Unit 7 must include the petroleum reading');
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Hawksbill')), 'Unit 7 must include the hawksbill turtle reading');
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Online Shopping')), 'Unit 7 must include the online shopping source content');
+assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('International Space Station')), 'Unit 7 must include the International Space Station presentation');
+assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Hawksbill Sea Turtle')), 'Unit 7 must include the hawksbill turtle reading after the ISS presentation');
+assert.ok(fourthUnit6?.lessons.some((lesson) => lesson.titleEn.includes('Future Simple')), 'Unit 6 must start with Future Simple on source page 97');
 assert.ok(!fourthUnit7?.description.includes('UNESCO'), 'Do not add unsupported UNESCO accreditation claims to the Marshes lesson');
 
 assert.ok(fourthUnit8?.titleEn.includes('Saturn') && fourthUnit8.titleEn.includes('GPS'), 'Unit 8 must reflect the Saturn and GPS source content');
