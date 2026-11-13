@@ -8,6 +8,10 @@ import { FIFTH_PREPARATORY_QUESTIONS } from '../src/data/grades/fifth/questions'
 import { FIFTH_PREPARATORY_MOCK_PAPER } from '../src/data/grades/fifth/mockPaper';
 import { IRREGULAR_VERBS } from '../src/data/verbsData';
 import { FIFTH_PREPARATORY_LITERATURE } from '../src/data/grades/fifth/literature';
+import { FOURTH_PREPARATORY_UNITS } from '../src/data/grades/fourth/units';
+import { FOURTH_PREPARATORY_ESSAYS } from '../src/data/grades/fourth/essays';
+import { FOURTH_PREPARATORY_QUESTIONS } from '../src/data/grades/fourth/questions';
+import { FOURTH_PREPARATORY_MOCK_PAPER } from '../src/data/grades/fourth/mockPaper';
 
 const thirdNumbers = THIRD_INTERMEDIATE_UNITS.map((unit) => unit.number);
 assert.deepEqual(thirdNumbers, [1, 2, 3, 4, 5, 6, 7], 'Third intermediate must contain exactly seven consecutive units');
@@ -73,4 +77,76 @@ assert.ok(littleWomen.ministerialQA.some((item) => item.id === 'lw-source-ex-12'
 assert.ok(tempest.ministerialQA.some((item) => item.id === 'temp-source-ex-4'), 'The Tempest true/false exercise must be represented');
 assert.ok(tempest.ministerialQA.some((item) => item.id === 'temp-source-ex-7'), 'The Tempest old-English vocabulary exercise must be represented');
 
-console.log('Source content alignment passed: 7 third-grade units, Unit 4 readings, 15 fifth-grade written items, 96 unique source verbs, and correctly labeled supplementary assessments.');
+
+const fourthNumbers = FOURTH_PREPARATORY_UNITS.map((unit) => unit.number);
+assert.deepEqual(fourthNumbers, [1, 2, 3, 4, 5, 6, 7, 8], 'Fourth preparatory must contain exactly eight consecutive source units');
+
+const fourthUnit = (number: number) => FOURTH_PREPARATORY_UNITS.find((unit) => unit.number === number);
+const fourthUnit4 = fourthUnit(4);
+const fourthUnit5 = fourthUnit(5);
+const fourthUnit6 = fourthUnit(6);
+const fourthUnit7 = fourthUnit(7);
+const fourthUnit8 = fourthUnit(8);
+
+assert.ok(fourthUnit4?.titleEn.includes('Gap Year'), 'Fourth-grade Unit 4 must cover Gap Year, not wedding revision or a fabricated mid-year exam');
+assert.ok(fourthUnit4?.lessons.some((lesson) => lesson.titleEn.includes('Obligation')), 'Unit 4 must include the source lesson on have to / do not have to');
+assert.ok(!fourthUnit4?.lessons.some((lesson) => /Official|100-Mark|Mid-Year Exam/i.test(lesson.titleEn)), 'Unit 4 must not claim an official examination absent from the source pages');
+
+assert.ok(fourthUnit5?.lessons.some((lesson) => lesson.titleEn.includes('Future Continuous')), 'Future Continuous belongs to Unit 5 source pages 85-87');
+assert.ok(fourthUnit5?.lessons.some((lesson) => lesson.titleEn.includes('Glass-blowing')), 'Unit 5 must retain the Lebanese glass-blowing reading');
+assert.ok(fourthUnit5?.lessons.some((lesson) => lesson.titleEn.includes('National Museum of Iraq')), 'Unit 5 must retain the National Museum school-trip reading');
+
+assert.ok(!fourthUnit6?.lessons.some((lesson) => lesson.titleEn.includes('Future Continuous')), 'Future Continuous must not be assigned to Unit 6');
+const sleepLesson = fourthUnit6?.lessons.find((lesson) => lesson.titleEn.includes('Sleep'));
+assert.ok(sleepLesson?.detailedContent.some((line) => line.includes('بمعدل ثماني ساعات')), 'Sleep reading must preserve the source statement: an average of eight hours');
+assert.ok(!sleepLesson?.detailedContent.some((line) => /8\s*-\s*10|8 إلى 10/.test(line)), 'Sleep reading must not replace the source statement with an unsupported 8-10-hour range');
+assert.ok(fourthUnit6?.lessons.some((lesson) => lesson.titleEn.includes('Reported Speech')), 'Unit 6 must include reported speech');
+assert.ok(fourthUnit6?.lessons.some((lesson) => lesson.titleEn.includes('FIFA World Cup')), 'Unit 6 must include the FIFA World Cup reading');
+
+assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Al-Hammaar Marshes')), 'Unit 7 must include the Al-Hammaar Marshes reading');
+assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Petroleum')), 'Unit 7 must include the petroleum reading');
+assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Hawksbill')), 'Unit 7 must include the hawksbill turtle reading');
+assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Online Shopping')), 'Unit 7 must include the online shopping source content');
+assert.ok(!fourthUnit7?.description.includes('UNESCO'), 'Do not add unsupported UNESCO accreditation claims to the Marshes lesson');
+
+assert.ok(fourthUnit8?.titleEn.includes('Saturn') && fourthUnit8.titleEn.includes('GPS'), 'Unit 8 must reflect the Saturn and GPS source content');
+assert.ok(fourthUnit8?.lessons.some((lesson) => lesson.titleEn.includes('Keeping Fit in Space')), 'Unit 8 must include the space fitness reading');
+assert.ok(!fourthUnit8?.lessons.some((lesson) => /Final Exam|Official|100-Mark/i.test(lesson.titleEn)), 'Unit 8 must not claim an official final exam absent from pages 144-148');
+
+assert.equal(FOURTH_PREPARATORY_ESSAYS.length, 7, 'Fourth preparatory booklet has seven writing models on pages 171-177');
+assert.deepEqual(
+  FOURTH_PREPARATORY_ESSAYS.map((essay) => essay.unitId),
+  [41, 42, 43, 44, 45, 46, 47],
+  'Fourth-grade writing models must map to the source-aligned units 1-7'
+);
+assert.deepEqual(
+  FOURTH_PREPARATORY_ESSAYS.map((essay) => essay.titleEn),
+  ['Application Form', 'An Accident', 'Hello from Erbil', 'Wedding Customs in Iraq', 'My Eating Habits', 'My Family’s Future', 'An Email to a Friend About Tomorrow'],
+  'Fourth-grade writing titles must match source pages 171-177'
+);
+assert.ok(FOURTH_PREPARATORY_ESSAYS.every((essay, index) => essay.ministerialWeight.includes('الملزمة ص ' + (171 + index))), 'Each fourth-grade writing item must cite its printed source page, not an invented mark allocation');
+assert.equal(FOURTH_PREPARATORY_ESSAYS[4].wordCountMin, 90, 'My Eating Habits minimum word count is 90');
+assert.equal(FOURTH_PREPARATORY_ESSAYS[4].wordCountMax, 100, 'My Eating Habits maximum word count is 100');
+assert.equal(FOURTH_PREPARATORY_ESSAYS[5].wordCountMin, 70, 'My Family’s Future minimum word count is 70');
+assert.equal(FOURTH_PREPARATORY_ESSAYS[5].wordCountMax, 90, 'My Family’s Future maximum word count is 90');
+assert.ok(FOURTH_PREPARATORY_ESSAYS[1].paragraphsEn.join(' ').includes('Mother’s Day'), 'The Accident writing model must be present in Unit 2');
+assert.ok(FOURTH_PREPARATORY_ESSAYS[2].paragraphsEn.join(' ').includes('Hello from Erbil'), 'The Erbil email must be present in Unit 3');
+assert.ok(!FOURTH_PREPARATORY_ESSAYS.some((essay) => essay.titleEn.includes('UNICEF')), 'Do not add a UNICEF essay that is not among the source writing models');
+
+assert.ok(FOURTH_PREPARATORY_QUESTIONS.every((question) => question.year === 'تدريبي' && question.session === 'تدريب إضافي'), 'Fourth-grade generated questions must be labeled as supplementary training, not past ministerial sessions');
+assert.ok(FOURTH_PREPARATORY_QUESTIONS.every((question) => question.contentOrigin === 'ai_generated' && question.provenanceVerified === false), 'Fourth-grade generated questions must carry explicit unverified AI provenance');
+const futureContinuousQuestion = FOURTH_PREPARATORY_QUESTIONS.find((question) => question.topic === 'Future Continuous');
+assert.equal(futureContinuousQuestion?.unitId, 45, 'Future Continuous question must be assigned to Unit 5');
+assert.ok(futureContinuousQuestion?.sourceReference?.includes('85'), 'Future Continuous question must reference booklet pages 85-87');
+
+assert.ok(FOURTH_PREPARATORY_MOCK_PAPER.id.includes('training'), 'Fourth-grade practice paper must be clearly identified as training');
+assert.ok(FOURTH_PREPARATORY_MOCK_PAPER.subtitle.includes('ليست ورقة وزارية'), 'Fourth-grade practice paper must explicitly disclaim official status');
+const fourthMockQuestions = FOURTH_PREPARATORY_MOCK_PAPER.sections.flatMap((section) => section.items);
+const museumQuestion = fourthMockQuestions.find((item) => item.id === '4th-mock-q1-3');
+assert.ok(museumQuestion?.correctAnswer.includes('Al-Salihiya') && museumQuestion.correctAnswer.includes('Al-Karkh'), 'Museum location must match the booklet');
+const sleepQuestion = fourthMockQuestions.find((item) => item.id === '4th-mock-q1-4');
+assert.equal(sleepQuestion?.correctAnswer, 'An average of eight hours', 'Mock paper sleep fact must match the source');
+const marshQuestion = fourthMockQuestions.find((item) => item.id === '4th-mock-q1-5');
+assert.ok(!marshQuestion?.correctAnswer.includes('UNESCO'), 'Marshes answer must not include an unsupported UNESCO designation');
+
+console.log('Source content alignment passed: third-grade unit repair; fifth-grade source writing and verbs; fourth-grade eight-unit sequence, seven writing models, question provenance, page references and non-official training assessment.');
