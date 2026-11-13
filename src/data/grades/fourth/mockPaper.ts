@@ -179,9 +179,9 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           number: 1,
           questionText: "Can I ______ your book? I left mine at home.",
           type: "choice",
-          options: ["well", "goodly", "good", "better"],
-          correctAnswer: "well",
-          explanation: "السؤال عن مفردة من صفات الشخصية الواردة في قائمة المفردات. (الملزمة ص 74).",
+          options: ["borrow", "lend", "borrowed", "lending"],
+          correctAnswer: "borrow",
+          explanation: "يستخدم borrow عندما يكون المتكلم هو من يستعير الشيء. (الملزمة ص 25–26).",
           maxScore: 5
         },
         {
@@ -211,7 +211,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["groom", "bride", "waiter", "guest"],
           correctAnswer: "groom",
-          explanation: "تستخدم كلمة groom في فقرة عادات الزفاف. (الملزمة ص 174).",
+          explanation: "ترد كلمة groom ضمن مفردات عادات الزفاف. (الملزمة ص 82–83).",
           maxScore: 5
         }
       ]
