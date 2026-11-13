@@ -143,6 +143,8 @@ export interface EssayItem {
   titleAr: string;
   titleEn: string;
   ministerialWeight: string;
+  wordCountMin?: number;
+  wordCountMax?: number;
   paragraphsEn: string[];
   paragraphsAr: string[];
   keywords: { word: string; meaning: string }[];
