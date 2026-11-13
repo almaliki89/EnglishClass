@@ -300,6 +300,16 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
   // Word count evaluation
   const getWordCountStatus = (count: number) => {
     if (count === 0) return { label: 'ابدأ بالكتابة', color: 'text-muted-gray', bg: 'bg-paper border border-ink/25', progress: 0 };
+
+    if (grade === 'fourth-preparatory') {
+      const min = currentEssay.wordCountMin;
+      const max = currentEssay.wordCountMax;
+      if (!min || !max) return { label: 'الملزمة لا تحدد عدداً مطلوباً من الكلمات لهذا النموذج', color: 'text-muted-gray', bg: 'bg-paper border border-ink/25', progress: 0 };
+      if (count < min) return { label: 'أقل من الحد المحدد (' + min + ' كلمة)', color: 'text-ink', bg: 'bg-yellow border border-ink', progress: Math.min(100, (count / min) * 100) };
+      if (count > max) return { label: 'تجاوز الحد المحدد (' + max + ' كلمة)', color: 'text-cobalt', bg: 'bg-blue-mist border border-ink', progress: 100 };
+      return { label: 'ضمن النطاق المحدد في الملزمة (' + min + '–' + max + ' كلمة) ✔', color: 'text-semantic-success font-black', bg: 'bg-soft-mint border border-ink', progress: 100 };
+    }
+
     if (count < 90) return { label: 'قصير جداً (أقل من الحد الأدنى 100)', color: 'text-ink', bg: 'bg-yellow border border-ink', progress: Math.min(100, (count / 100) * 80) };
     if (count >= 100 && count <= 135) return { label: 'مثالي للامتحان (100-130 كلمة) ✔', color: 'text-semantic-success font-black', bg: 'bg-soft-mint border border-ink', progress: 100 };
     return { label: 'طويل نسبياً (تجنب الإطالة الزائدة)', color: 'text-cobalt', bg: 'bg-blue-mist border border-ink', progress: 100 };
@@ -376,7 +386,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-yellow text-ink border-2 border-ink shadow-brutal-sm text-xs font-mono font-bold rounded-xs">
               <Award className="w-4 h-4 text-cobalt" />
-              <span>السؤال الخامس: الإنشاء والتعبير (20 درجة)</span>
+              <span>{grade === 'fourth-preparatory' ? 'نماذج الكتابة الواردة في الملزمة' : 'السؤال الخامس: الإنشاء والتعبير (20 درجة)'}</span>
             </div>
 
             <div className="flex items-center gap-2">
@@ -1174,15 +1184,30 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
               <div className="p-6 rounded-[6px] bg-yellow text-ink space-y-3 border-2 border-ink shadow-brutal-action">
                 <div className="flex items-center gap-2 text-ink font-black text-base">
                   <Award className="w-5 h-5 text-cobalt" />
-                  <span>ميزان تصحيح الإنشاء (20 درجة كاملة)</span>
+                  <span>{grade === 'fourth-preparatory' ? 'قائمة مراجعة مهارات الكتابة' : 'ميزان تصحيح الإنشاء (20 درجة كاملة)'}</span>
                 </div>
                 <p className="text-xs sm:text-sm text-ink font-medium leading-relaxed">
-                  كيف تحصل على درجة 20/20 كاملة في سؤال الإنشاء؟ إليك توزيع الدرجات وقائمة المراجعة الذاتية لتتأكد من جودة دفترك قبل تسليم الامتحان:
+                  {grade === 'fourth-preparatory' ? 'هذه إرشادات عامة للمراجعة. الملزمة تحدد نطاق عدد الكلمات لبعض الموضوعات فقط، ولا تعرض هنا توزيع درجات رسمياً لسؤال الإنشاء.' : 'كيف تحصل على درجة 20/20 كاملة في سؤال الإنشاء؟ إليك توزيع الدرجات وقائمة المراجعة الذاتية لتتأكد من جودة دفترك قبل تسليم الامتحان:'}
                 </p>
               </div>
 
               {/* Rubric Points Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {grade === 'fourth-preparatory' ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {[
+                    ['العنوان والتنظيم', 'ضع عنواناً واضحاً ونظّم النص في فقرات مناسبة.'],
+                    ['المضمون والأفكار', 'غطِّ عناصر الموضوع الموجودة في نص الملزمة دون إضافة معلومات غير مسندة.'],
+                    ['القواعد والتراكيب', 'راجع الأزمنة وترتيب الكلمات وصيغ الأفعال.'],
+                    ['الإملاء والترقيم', 'راجع الحروف الكبيرة وعلامات الترقيم وصحة كتابة الكلمات.']
+                  ].map(([title, description]) => (
+                    <div key={title} className="p-5 rounded-[6px] bg-paper border-2 border-ink shadow-brutal-callout space-y-2">
+                      <span className="text-xs font-black text-ink">{title}</span>
+                      <p className="text-xs text-ink font-medium leading-relaxed">{description}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="p-5 rounded-[6px] bg-yellow border-2 border-ink shadow-brutal-callout space-y-2">
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-xs font-black text-ink">العنوان والتنظيم</span>
@@ -1223,6 +1248,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                   </p>
                 </div>
               </div>
+              )}
 
               {/* Interactive Self-Checklist */}
               <div className="p-6 rounded-[6px] bg-paper border-2 border-ink shadow-brutal-action space-y-4">
@@ -1236,7 +1262,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                     { id: 'title', label: 'كتبت العنوان في منتصف السطر الأول بخط واضح مع وضع خط تحته.' },
                     { id: 'paragraphs', label: 'قسمت الإنشاء إلى 3 فقرات واضحة (مقدمة، متن الموضوع، وخاتمة).' },
                     { id: 'connectors', label: 'استخدمت أدوات الربط المنطقية (First of all, Furthermore, Consequently, In conclusion).' },
-                    { id: 'wordcount', label: 'تأكدت أن حجم الإنشاء يتراوح بين 100 إلى 130 كلمة دون إطالة مفرطة.' },
+                    { id: 'wordcount', label: grade === 'fourth-preparatory' ? (currentEssay.wordCountMin && currentEssay.wordCountMax ? 'تحققت من نطاق الكلمات المحدد في الملزمة (' + currentEssay.wordCountMin + '–' + currentEssay.wordCountMax + ').' : 'تحققت من النص؛ الملزمة لا تحدد له نطاقاً لعدد الكلمات.') : 'تأكدت أن حجم الإنشاء يتراوح بين 100 إلى 130 كلمة دون إطالة مفرطة.' },
                     { id: 'tenses', label: 'راجعت الأزمنة النحوية (الماضي للسرد، والمضارع للحقائق والنصائح).' },
                     { id: 'punctuation', label: 'بدأت كل جملة بحرف كبير (Capital Letter) وانتهيت بنقطة (.) وفواصل واضحة.' },
                   ].map((item) => {
