@@ -498,7 +498,7 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         answerAr: "يسيطر بروسبيرو على الجزيرة ويعامل كاليبان كعبد، بينما يعتقد كاليبان أن الجزيرة ملكه لأنه كان فيها أولاً. وهذا يشبه سيطرة المستعمرين على أرض السكان الأصليين.",
         year: "كتاب الطالب ص 205",
         keyHint: "Prospero takes the island; Caliban is its original inhabitant"
-      },,
+      },
       {
         id: "temp-source-ex-7",
         question: "Complete the Activity Book vocabulary exercise: find the old-English words or phrases meaning taken, in it, didn't, your, were, had and would.",
