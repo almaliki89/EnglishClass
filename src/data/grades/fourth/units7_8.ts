@@ -220,7 +220,7 @@ export const FOURTH_PREPARATORY_UNITS_7_8: Unit[] = [
     description: 'تضم الوحدة قراءة عن كوكب زحل وحلقاته والمركبات الفضائية، وقراءة عن أجهزة استقبال GPS وطريقة عملها، وتدريبات على المبني للمجهول، وموضوع المحافظة على لياقة رواد الفضاء.',
     accentColor: 'bg-soft-mint text-ink',
     bgGradient: 'bg-paper border-ink',
-    sourcePages: 'الملزمة ص 144 - 148',
+    sourcePages: 'الملزمة ص 143 - 148',
     academicYear: '2025',
     lessons: [
       makeLesson({
@@ -231,14 +231,14 @@ export const FOURTH_PREPARATORY_UNITS_7_8: Unit[] = [
         titleEn: 'Lesson 1: Planet Saturn',
         category: 'reading',
         summary: 'معلومات عن زحل بوصفه كوكباً عملاقاً وحلقاته وأقماره والبعثات الفضائية التي زارته.',
-        sourcePages: 'الملزمة ص 144',
+        sourcePages: 'الملزمة ص 143 - 144',
         detailedContent: [
           'يصف النص زحل بأنه كوكب عملاق وثاني أكبر كواكب المجموعة الشمسية بعد المشتري، وأنه يتكون أساساً من الغازات.',
           'يتحدث النص عن حلقات زحل التي تتكون في معظمها من الجليد وبعض الصخور، وعن المركبات الفضائية التي زارت الكوكب.',
           'تذكر القراءة أقمار زحل، ومنها Titan، والصور التي أرسلتها المركبة Cassini.'
         ],
         examples: [{ en: 'Saturn is a giant planet.', ar: 'زحل كوكب عملاق.', highlight: 'giant planet', note: 'موضوع قراءة زحل' }],
-        exercises: [practice('4u8-ex1', 'Saturn is made mainly of ______.', ['gases', 'wood', 'water', 'iron only'], 'gases', 'يذكر النص أن زحل يتكون أساساً من الغازات', 'ص 144')]
+        exercises: [practice('4u8-ex1', 'Saturn is made mainly of ______.', ['gases', 'wood', 'water', 'iron only'], 'gases', 'يذكر النص أن زحل يتكون أساساً من الغازات', 'ص 143 - 144')]
       }),
       makeLesson({
         id: '4th-u8-l2',
@@ -248,14 +248,14 @@ export const FOURTH_PREPARATORY_UNITS_7_8: Unit[] = [
         titleEn: 'Lesson 2: The Global Positioning System (GPS)',
         category: 'reading',
         summary: 'قراءة عن أجهزة استقبال GPS واتصالها بالأقمار الصناعية والإشارات الراديوية وقياس المسافة لتحديد الموقع.',
-        sourcePages: 'الملزمة ص 145 - 146',
+        sourcePages: 'الملزمة ص 144 - 145',
         detailedContent: [
           'يوضح النص أن أجهزة GPS تتصل بشبكة من الأقمار الصناعية وتبحث عن أربعة أقمار صناعية على الأقل.',
           'ترسل الأقمار إشارات راديوية إلى جهاز الاستقبال، ويقيس الجهاز الزمن الذي تستغرقه الإشارات للوصول إليه لتقدير المسافة.',
           'يذكر النص استعمال أجهزة GPS المحمولة لدى الصيادين وممارسي الأنشطة الخارجية، ويذكر أن الجهاز يحتوي على خريطة في ذاكرته.'
         ],
         examples: [{ en: 'GPS satellites send radio signals to the receiver.', ar: 'ترسل أقمار GPS إشارات راديوية إلى جهاز الاستقبال.', highlight: 'radio signals', note: 'آلية عمل الجهاز كما يشرحها النص' }],
-        exercises: [practice('4u8-ex2', 'A GPS receiver looks for at least ______ GPS satellites.', ['four', 'two', 'ten', 'one hundred'], 'four', 'يذكر النص أن الجهاز يبحث عن أربعة أقمار صناعية على الأقل', 'ص 145 - 146')]
+        exercises: [practice('4u8-ex2', 'A GPS receiver looks for at least ______ GPS satellites.', ['four', 'two', 'ten', 'one hundred'], 'four', 'يذكر النص أن الجهاز يبحث عن أربعة أقمار صناعية على الأقل', 'ص 144 - 145')]
       }),
       makeLesson({
         id: '4th-u8-l3',
