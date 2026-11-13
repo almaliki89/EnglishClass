@@ -83,6 +83,9 @@ jobs:
           distribution: temurin
           java-version: '21'
 
+      - name: Type-check Firebase Rules Emulator tests
+        run: npx tsc --noEmit -p tsconfig.rules-tests.json
+
       - name: Run Firestore and Storage Security Rules Emulator Tests
         run: npx firebase emulators:exec --project demo-englishclass-rules-test --only firestore,storage "npm run test:rules"
 
