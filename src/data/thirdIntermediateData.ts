@@ -1504,6 +1504,76 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
             ministerialYear: "وزاري 2021 تمهيدي"
           }
         ]
+      },
+      {
+        id: "3rd-u7-app-vocabulary",
+        unitId: 107,
+        lessonNumber: 5,
+        titleAr: "ملحق نهاية الملزمة: بنك المفردات والتعاريف",
+        titleEn: "Booklet Appendix: Vocabulary & Definitions Bank",
+        category: "vocabulary",
+        summary: "ملحق المفردات في الصفحات 144-167: التعاريف، إكمال الفراغات، الاختيارات، ومفتاح الإجابة في الصفحات 156-167. هذا ملحق عام بعد الوحدات وليس وحدة ثامنة.",
+        sourcePages: "144-167",
+        detailedContent: [
+          "هذا ملحق عام في نهاية الملزمة، ولا يغيّر عدد الوحدات الرسمية البالغ سبع وحدات.",
+          "مفردات المصدر تشمل: airbags, wages, spectacles, look after, hunt, naughty, hobby, falcon, sports, adverts, toothbrush, crops, engine, adults, comedy, refinery, advertisement, exports, weather forecast, quiz show, predator, queue, flat, top, deserts, patience, ancient, talk show, interested, actress, patients, fishing, hard-working, gum, species, grow, regulate, author, reporter, episode, population, transport, survivor, vet, lawyer, cooking, scored, documentary, fuel, keep cool, poet, cartoons, narrow, character, healthy, brush, fawn, praised, equipment, zoology, concert, pilot, drawing, GPS, raise, facilities, awful, houbara, firefighter, fantastic, translated, dangerous, lightning, astronauts, sand viper, saving up, underground, officer, imaginative, clumsy, queuing, next to, profit, review, connection, definitely.",
+          "الصفحات 156-167 هي مفتاح إجابة تمارين المفردات المقابلة للصفحات 144-155. حافظ على ترتيب الإجابات في كل مجموعة ولا تخلط إجابات المجموعات المتشابهة."
+        ],
+        teacherNotes: ["المرجع هو ملحق المفردات في الملزمة نفسها؛ لا تنسب كلمات إضافية إلى هذا الملحق ما لم ترد فيه."],
+        commonMistakes: ["الخلط بين advert وadvertisement، وبين weather وweather forecast، وبين look for وlook after.", "الخلط بين careful وcarefully.", "الخلط بين interested in وinteresting."],
+        examples: [
+          { en: "A mechanic repairs cars.", ar: "الميكانيكي يصلح السيارات.", highlight: "mechanic" },
+          { en: "A falcon is a bird of prey.", ar: "الصقر طائر جارح.", highlight: "falcon" },
+          { en: "The wages in some jobs are not very high.", ar: "الأجور في بعض الوظائف ليست مرتفعة جداً.", highlight: "wages" }
+        ],
+        exercises: [
+          { id: "3u7-app-v1", question: "Complete using: (look after, wages, airbags, hunt, careful, naughty, spectacles). 1. Cars have ____ so people can be safe in a crash. 2. The ____ in some jobs are not very high. 3. I need ____ to see clearly. 4. I have to ____ my sick mother. 5. Owls ____ small animals at night. 6. My brother is very ____.", correctAnswer: "1 airbags; 2 wages; 3 spectacles; 4 look after; 5 hunt; 6 naughty. 'careful' is the extra word.", explanation: "مفتاح الإجابة في الملزمة ص 156.", type: "fill", sourcePages: "144, 156" },
+          { id: "3u7-app-v2", question: "Give the words for these definitions: something you do in your spare time; the fastest bird in the world; activities like running and swimming; words and pictures to help sell things; a thing used to clean teeth; rice and wheat.", correctAnswer: "hobby; falcon; sports; adverts; toothbrush; crops.", explanation: "مفتاح الإجابة في الملزمة ص 156.", type: "fill", sourcePages: "144, 156" },
+          { id: "3u7-app-v3", question: "Give the words for these definitions: it makes cars, boats and planes move; people who are not children; a funny book, film or play; a factory for changing sugar or oil from its natural state.", correctAnswer: "an engine; adults; comedy; refinery.", explanation: "مفتاح الإجابة في الملزمة ص 156.", type: "fill", sourcePages: "144, 156" },
+          { id: "3u7-app-v4", question: "Choose the correct words: The panther is (quite / really) fast. Cars have GPS so that you (can't / can) be lost. A bat can (fly / bite). I am too (strong / weak) to carry the box. A (pilot / mechanic) repairs cars. Drive (careful / carefully).", correctAnswer: "really; can't; fly; weak; mechanic; carefully.", explanation: "مفتاح الإجابة في الملزمة ص 156.", type: "fill", sourcePages: "144, 156" },
+          { id: "3u7-app-v5", question: "Give the words for these definitions: words and pictures to help sell things; things a country produces and sells to other countries; information about sun, rain and temperature; a question-and-answer programme; a bird that hunts other birds; three or more people waiting in a line.", correctAnswer: "advertisement; exports; weather forecast; quiz show; predator; queue.", explanation: "مفتاح الإجابة في الملزمة ص 156.", type: "fill", sourcePages: "144, 156" },
+          { id: "3u7-app-v6", question: "Complete using: (patience, deserts, of, careful, look after, flat, top). 1. Holland is very ____, so people often ride bicycles. 2. Football is the ____ sport in many countries. 3. Falconers arrive in the ____ and valleys of Muthanna. 4. Ali has a lot of ____ with young children. 5. Sarah has to ____ her sick mother. 6. Rafal is afraid ____ dogs.", correctAnswer: "flat; top; deserts; patience; look after; of. 'careful' is the extra word.", explanation: "مفتاح الإجابة في الملزمة ص 157.", type: "fill", sourcePages: "145, 157" },
+          { id: "3u7-app-v7", question: "Choose the correct words: My house is (next to / over) the park. If you get a better job, you can (pay / earn) more money. Ibrahim was (interesting / interested) in animals. Lucy is an (actor / actress). Nurses look after (patients / doctors). My favourite team (won / lost).", correctAnswer: "next to; earn; interested; actress; patients; won.", explanation: "مفتاح الإجابة في الملزمة ص 157.", type: "fill", sourcePages: "145, 157" },
+          { id: "3u7-app-v8", question: "Complete using: (grow, regulate, species, hard-working, gum, look after). 1. Elephants ____ very big, but it takes many years. 2. The Caliph needed Ibn Al-Haitham to ____ the flooding of the Nile. 3. Forty ____ of birds can be found in the marshlands. 4. My brother is very ____. 5. Sudan is the world's main producer of ____ Arabic. 6. Nurses ____ the patients.", correctAnswer: "grow; regulate; species; hard-working; gum; look after.", explanation: "مفتاح الإجابة في الملزمة ص 157.", type: "fill", sourcePages: "145, 157" },
+          { id: "3u7-app-v9", question: "Give the words for these definitions: the fastest bird in the world; a question-and-answer programme; another word for a writer; someone who writes about events for a newspaper; a factory for changing sugar or oil; it makes cars, boats and planes move.", correctAnswer: "falcon; quiz show; author; reporter; refinery; engine.", explanation: "مفتاح الإجابة في الملزمة ص 157-158.", type: "fill", sourcePages: "145-146, 157-158" },
+          { id: "3u7-app-v10", question: "Choose the correct words: A vet takes care of sick animals. A lawyer studies law. Salwa is (cooking / painting) dinner. Hazim (played / scored) a goal. A bat can (walk / fly). Cars have CD players so drivers can (sing / listen to music).", correctAnswer: "vet; lawyer; cooking; scored; fly; listen to music.", explanation: "مفتاح الإجابة في الملزمة ص 158.", type: "fill", sourcePages: "146, 158" },
+          { id: "3u7-app-v11", question: "Give the words for these definitions: a kind of glue; a conversation between famous people; the fastest bird in the world; words or pictures to help sell things; rice and wheat; three or more people waiting in line.", correctAnswer: "gum Arabic; talk show; falcon; advertisement; crops; queue.", explanation: "مفتاح الإجابة في الملزمة ص 158.", type: "fill", sourcePages: "146, 158" },
+          { id: "3u7-app-v12", question: "Choose the correct words: Eating too many sweets is (good / bad) for teeth. A (reporter / firefighter) writes about events. Cars have airbags so you (can / can't) be safe in a crash. Drive (careful / carefully). Fatin looks (after / at) her sick mother. Sitting by a river with a long rod is (swimming / fishing).", correctAnswer: "bad; reporter; can; carefully; after; fishing.", explanation: "مفتاح الإجابة في الملزمة ص 158.", type: "fill", sourcePages: "146, 158" },
+          { id: "3u7-app-v13", question: "Give the words for these definitions: three or more people waiting in a line; a scary book, film or play; a documentary; travelling on a horse or camel; a business's money after expenses; always having silly accidents.", correctAnswer: "queue; horror; documentary; ride; profit; clumsy.", explanation: "مفتاح الإجابة في الملزمة ص 168.", type: "fill", sourcePages: "155, 168" },
+          { id: "3u7-app-v14", question: "Complete using: (zoology, hunt, sporty, connection, cost, definitely). My uncle is very ____. The seats ____ 15,000 IQD. Owls ____ and kill small animals. It is ____ a good idea to study hard. He studied ____ at Cairo University. The car has a Bluetooth ____.", correctAnswer: "sporty; cost; hunt; definitely; zoology; connection.", explanation: "مفتاح الإجابة في الملزمة ص 168.", type: "fill", sourcePages: "155, 168" },
+          { id: "3u7-app-v15", question: "Choose the correct words: If you get a better job, you can (earn / give) more money. He was pleased when he won first (poem / prize). If you drive (dangerously / carefully), you might have an accident. My brother (falls / drops) in the pool. Cows and goats (grow / produce) milk. She is really (creative / sporty).", correctAnswer: "earn; prize; dangerously; falls; produce; creative.", explanation: "مفتاح الإجابة في الملزمة ص 167.", type: "fill", sourcePages: "154, 167" }
+        ]
+      },
+      {
+        id: "3rd-u7-app-spelling",
+        unitId: 107,
+        lessonNumber: 6,
+        titleAr: "ملحق نهاية الملزمة: الإملاء والحروف الكبيرة وعلامات الترقيم",
+        titleEn: "Booklet Appendix: Spelling, Capital Letters & Punctuation",
+        category: "spelling",
+        summary: "ملحق الإملاء في الصفحات 168-169: الحروف الكبيرة، الاختصارات، علامات الترقيم، والتعبير عن الموافقة باستخدام So / Neither.",
+        sourcePages: "168-169",
+        detailedContent: [
+          "هذا ملحق عام في نهاية الملزمة وليس وحدة ثامنة.",
+          "Contractions shown in the booklet: im → I'm; theyre → they're; hes → he's; shes → she's; thats → that's; cant → can't; id like → I'd like; wont → won't; dont → don't; doesnt → doesn't.",
+          "Agreement responses in the source: Neither am I; Neither do I; So am I; So do I. Match the auxiliary verb to the statement: be → am/is/are; do → do/does.",
+          "The source sentences use capital letters at the beginning of sentences and for proper names, nationalities and places; they also use apostrophes in contractions and question marks at the end of direct questions."
+        ],
+        teacherNotes: ["استخدم صياغة الجمل في الصفحة 169 كما هي، ولا تستبدل الاختصارات بصيغ أخرى غير الواردة في الملزمة."],
+        commonMistakes: ["كتابة im بدلاً من I'm.", "الخلط بين So am I وSo do I.", "نسيان علامة الاستفهام في السؤال المباشر."],
+        examples: [
+          { en: "I don't like horror stories. Neither do I.", ar: "أنا لا أحب قصص الرعب. وأنا أيضاً لا أحبها.", highlight: "Neither do I" },
+          { en: "My mother is afraid of dogs. So am I.", ar: "أمي تخاف من الكلاب. وأنا أيضاً.", highlight: "So am I" }
+        ],
+        exercises: [
+          { id: "3u7-app-s1", question: "Write the correct contractions: im; theyre; hes; shes; thats; cant; id like; wont; dont; doesnt.", correctAnswer: "I'm; they're; he's; she's; that's; can't; I'd like; won't; don't; doesn't.", explanation: "الاختصارات كما وردت في الملزمة ص 168.", type: "fill", sourcePages: "168" },
+          { id: "3u7-app-s2", question: "Choose the correct response: I don't like horror stories. (Neither do I / So am I).", options: ["Neither do I", "So am I"], correctAnswer: "Neither do I", explanation: "نستخدم Neither do I لموافقة جملة منفية بفعل عادي.", type: "mcq", sourcePages: "168-169" },
+          { id: "3u7-app-s3", question: "Choose the correct response: My mother is afraid of dogs. (Neither do I / So am I).", options: ["Neither do I", "So am I"], correctAnswer: "So am I", explanation: "نستخدم So am I لموافقة جملة مثبتة بفعل be.", type: "mcq", sourcePages: "168-169" },
+          { id: "3u7-app-s4", question: "Choose the correct response: They're not afraid of spiders. (Neither am I / So am I).", options: ["Neither am I", "So am I"], correctAnswer: "Neither am I", explanation: "نستخدم Neither am I لموافقة جملة منفية بفعل be.", type: "mcq", sourcePages: "169" },
+          { id: "3u7-app-s5", question: "Complete: Would you like to swim in the pool? Yes, I'd ____ to.", correctAnswer: "love", explanation: "الجملة كما وردت في الملزمة ص 169.", type: "fill", sourcePages: "169" },
+          { id: "3u7-app-s6", question: "Rewrite with correct capitals and punctuation: what did you do ali i watched liverpool on television", correctAnswer: "What did you do, Ali? I watched Liverpool on television.", explanation: "تطبيق الحروف الكبيرة وعلامات الترقيم على الجملة في الملزمة ص 169.", type: "fill", sourcePages: "169" },
+          { id: "3u7-app-s7", question: "Rewrite with correct capitals and punctuation: ali and ahmed are from england", correctAnswer: "Ali and Ahmed are from England.", explanation: "تطبيق الحروف الكبيرة على الأسماء واسم البلد.", type: "fill", sourcePages: "169" }
+        ]
       }
     ]
   }
