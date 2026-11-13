@@ -19,7 +19,7 @@ export const UNIT_2: Unit = {
       summary: "حفظ الأسماء المركبة (Compound Nouns) المكونة من كلمتين والخاصة بأنظمة السلامة والمطارات والمرور كما وردت بصفحة 32 من الملزمة.",
       grammarRuleFormula: "Noun + Noun => Compound Noun\nSecurity Camera, Metal Detector, Radar Speed Gun, Speed Limit, Conveyor Belt",
       detailedContent: [
-        "الأسماء المركبة في المنهج الوزاري (ص 32 من ملزمة الأستاذ مصطفى تركي):",
+        "الأسماء المركبة في المنهج الوزاري (ص 32 من ملزمة الأستاذ عمار غالب):",
         "1. Security Camera = كاميرا أمنية / كاميرا مراقبة.",
         "2. Footprint = أثر القدم.",
         "3. Fingerprint = بصمة إصبع.",
@@ -157,7 +157,7 @@ export const UNIT_2: Unit = {
       summary: "القواعد الوزارية الخمس: إعطاء النصيحة (Advice)، الطلب المؤدب (Polite Requests)، الاقتراحات (Suggestions)، تقديم العروض (Offers)، والتوقعات (Expectations)، مع مصطلحات المطار والأمتعة.",
       grammarRuleFormula: "1. Advice: You should / shouldn't + base verb\n2. Polite Request: Would you / Could you / Can you / May I + base verb ... please?\n3. Suggestions: Shall we / Let's / We could + base verb\n4. Offers: Would you like me to + base verb? / Shall I + base verb? / I'll + base verb\n5. Expectations: Subject + should / shouldn't + base verb",
       detailedContent: [
-        "الوظائف اللغوية الوزارية (ص 38 - 43 من ملزمة الأستاذ مصطفى تركي):",
+        "الوظائف اللغوية الوزارية (ص 38 - 43 من ملزمة الأستاذ عمار غالب):",
         "1. إعطاء النصيحة (Giving Advice): You should / shouldn't + فعل مجرد.",
         "   مثال: You should keep your passport in a safe place.",
         "2. الطلب المؤدب (Making Polite Requests):",
@@ -249,7 +249,7 @@ export const UNIT_2: Unit = {
       summary: "حفظ الاختصارات الرسمية في الإعلانات الأمنية والوظائف، وإكمال الحروف المفقودة لوظائف الحماية وأدوات مكافحة الجريمة.",
       grammarRuleFormula: "Abbreviations in Advertisements (ص 44):\nbldgs = buildings | yrs = years | Spk = speak | lic = licence | co = company | appt = appointment | exp = experience",
       detailedContent: [
-        "1. الاختصارات الرسمية (ص 44 من ملزمة الأستاذ مصطفى تركي):",
+        "1. الاختصارات الرسمية (ص 44 من ملزمة الأستاذ عمار غالب):",
         "- Office bldgs. = office buildings (مباني مكاتب).",
         "- 18 yrs. = 18 years (18 سنة).",
         "- Spk. Engl. And Arab. = speak English and Arabic (يتحدث الإنكليزية والعربية).",
@@ -487,7 +487,7 @@ export const UNIT_2: Unit = {
       summary: "نص القراءة الاستيعابي حول أمن وسلامة المنازل وحمايتها من اللصوص، أهمية الأقفال والنوافذ والأبواب القوية، وتعاريف المفردات المتعلقة بها.",
       grammarRuleFormula: "Key Vocabulary:\njewellery = expensive items like gold rings and necklaces\nsentimental = how you feel about an object\nmeasures = things you do for a specific reason\nburglars = thieves who break into homes\nessential = very important",
       detailedContent: [
-        "نص كتيب السالمة المنزلية (ص 51 - 52 من ملزمة الأستاذ مصطفى تركي):",
+        "نص كتيب السالمة المنزلية (ص 51 - 52 من ملزمة الأستاذ عمار غالب):",
         "- في كل عام تُسرق منازل مئات الأشخاص، ويسرق اللصوص الأموال والمجوهرات والحواسيب والتلفزيونات ويبيعونها.",
         "- بعض الأشياء لا تعوض بالمال لو سرقت كالمجوهرات التي لها قيمة عاطفية (sentimental value) وساعات العمل على قرص الحاسوب.",
         "- أهم عوامل أمان المنزل: النوافذ والأبواب والأقفال الجيدة (good windows, doors and locks).",
@@ -554,7 +554,7 @@ export const UNIT_2: Unit = {
       summary: "قطعة الكتاب الوزارية للرادار: تاريخ اختراعه، طريقة عمل مسدس السرعة، أنواع أجهزة الرادار، كواشف الرادار (Radar Detectors)، والصيانة وتدريب رجال الشرطة.",
       grammarRuleFormula: "Radar Key Facts:\n- Invented during WWII to detect enemy aircraft and ships\n- Police use: over 70 years ago to catch speeders\n- Mechanism: sends radio waves that bounce back from cars\n- Radar detectors: make a beeping sound when detecting radar",
       detailedContent: [
-        "قطعة الكتاب المقررة: الرادار (ص 53 - 56 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: الرادار (ص 53 - 56 من ملزمة الأستاذ عمار غالب):",
         "1. الاختراع والتاريخ: اختُرع الرادار خلال الحرب العالمية الثانية (World War II) للكشف عن طائرات وسفن العدو، ثم استُخدم للتنبؤ بالطقس، وبدأ استخدامه من قبل الشرطة لضبط متجاوزي السرعة منذ أكثر من 70 عاماً (over 70 years ago).",
         "2. مبدأ العمل: يرسل موجات راديوية باتجاه السيارة وترتد نحوه. إذا كانت السيارة متحركة تتغير المسافة بين الموجات فيحسب سرعتها. يعمل عندما تتحرك السيارة باتجاهه أو مبتعدة عنه (moving towards or away from them).",
         "3. أنواع الرادار: بعضها محمول باليد يشبه البندقية، وبعضها يعمل من سيارات الشرطة المتحركة، وبعضها يلتقط صوراً للوحة ترخيص السيارة (number plate).",

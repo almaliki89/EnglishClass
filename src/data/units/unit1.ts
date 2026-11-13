@@ -130,7 +130,7 @@ export const UNIT_1: Unit = {
           en: "I was cleaning my room and the power went out.",
           ar: "كنت أنظف غرفتي وانقطعت الكهرباء.",
           highlight: "was cleaning ... and ... went out",
-          note: "ص 8 من ملزمة الأستاذ مصطفى تركي"
+          note: "ص 8 من ملزمة الأستاذ عمار غالب"
         },
         {
           en: "A thief took our clothes as we were swimming.",

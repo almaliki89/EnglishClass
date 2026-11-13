@@ -11,10 +11,10 @@ interface GradeSelectorBarProps {
 }
 
 const GRADE_ICONS: Record<EducationalGrade, { emoji: string; badge: string }> = {
-  'third-intermediate': { emoji: '🏆', badge: 'وزاري 100%' },
+  'third-intermediate': { emoji: '🏆', badge: 'مسار وزاري' },
   'fourth-preparatory': { emoji: '🚀', badge: 'المستوى 4' },
   'fifth-preparatory': { emoji: '💎', badge: 'المستوى 5' },
-  'sixth-preparatory': { emoji: '👑', badge: 'بكالوريا 100%' }
+  'sixth-preparatory': { emoji: '👑', badge: 'مسار البكالوريا' }
 };
 
 export const GradeSelectorBar: React.FC<GradeSelectorBarProps> = ({

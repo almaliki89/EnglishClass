@@ -70,7 +70,7 @@ export const UNIT_7: Unit = {
       summary: "شرح الصيغ الخمس للتعبير عن المستقبل: الجداول والمواعيد الثابتة (Present Simple)، الخطط والنوايا (Going to)، المواعيد والترتيبات الثابتة (Present Continuous)، الاستمرار في وقت محدد (Future Continuous)، والوعود والآراء (Will).",
       grammarRuleFormula: "1. Present Simple (timetables/schedules): Subject + verb-(s)\n2. Present Continuous (fixed arrangements): am/is/are + v-ing\n3. Going to (plans & intentions): am/is/are + going to + inf\n4. Future Continuous (action in progress at a future time): will be + v-ing\n5. Future Simple (predictions/promises/opinions): will + inf",
       detailedContent: [
-        "صيغ المستقبل الخمسة (ص 143 - 146 من ملزمة الأستاذ مصطفى تركي):",
+        "صيغ المستقبل الخمسة (ص 143 - 146 من ملزمة الأستاذ عمار غالب):",
         "1. المضارع البسيط للجداول والمواعيد الثابتة (Timetables & Schedules):",
         "   - نستخدمه عند وجود فاعل غير عاقل يدل على جدول مواعيد: (course, term, class, train, plane, match, film).",
         "   - The English course begins (begin) on September 21st.",
@@ -144,7 +144,7 @@ export const UNIT_7: Unit = {
       summary: "قطعة استيعاب مهارات سوق العمل المعاصر: أهمية تعلم الحاسوب، الجداول الحسابية (spreadsheets)، التصميم الجرافيكي، والعمل عن بعد (telecommuting).",
       grammarRuleFormula: "Key Vocabulary:\nspreadsheets = programs that arrange financial and numerical data\nweb design = creating websites\ntelecommuting = working from home using computers and the internet\nself-disciplined = able to manage your own time and work without supervision",
       detailedContent: [
-        "قطعة العمل اليوم (ص 147 - 149 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة العمل اليوم (ص 147 - 149 من ملزمة الأستاذ عمار غالب):",
         "- تغيرت متطلبات سوق العمل؛ فلم تعد الشهادة الجامعية وحدها كافية، بل باتت مهارات الحاسوب والتقنية أساسية لأي وظيفة.",
         "- برامج الجداول الإلكترونية (Spreadsheets): تستخدمها الشركات في إدارة الحسابات المالية والموازنات والرسوم البيانية.",
         "- تصميم المواقع (Web design): مهارة رقمية مطلوبة تمكن الأشخاص من العمل لحسابهم الخاص وتطوير واجهات رقمية للشركات.",
@@ -256,7 +256,7 @@ export const UNIT_7: Unit = {
       summary: "تمارين الاختيارات بين الأفعال والمتلازمات اللفظية للغات والدورات الصيفية (تمرين D ص 158 كتاب النشاط).",
       grammarRuleFormula: "Key Collocations:\nenrol in a course | take an exam | pass an exam | fail an exam | attend a seminar",
       detailedContent: [
-        "اختيارات الأفعال والتعبيرات (ص 153 من ملزمة الأستاذ مصطفى تركي):",
+        "اختيارات الأفعال والتعبيرات (ص 153 من ملزمة الأستاذ عمار غالب):",
         "- If you want to improve your career, you should (enrol in) a course.",
         "- After you (take) the test, you will know your level.",
         "- She hopes to (pass) her exams with high grades so she can enter medical school.",
@@ -341,7 +341,7 @@ export const UNIT_7: Unit = {
       summary: "قطعة الكتاب المقررة حول الاستفادة من المكتبة المركزية: البحث عن وظائف جديدة، كتب المهن وتطوير السيرة الذاتية، مهارات لغة الجسد في المقابلات، ومصادر تعلم اللغات.",
       grammarRuleFormula: "Library Resources:\n- Books about careers: describe job duties, skills and qualifications\n- Job vacancy newspapers & magazines: find current openings\n- Language learning section: audio CDs, language tests and practice books\n- Computers: search the internet for companies and online courses",
       detailedContent: [
-        "قطعة الكتاب المقررة: استخدام المكتبة (ص 154 - 157 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: استخدام المكتبة (ص 154 - 157 من ملزمة الأستاذ عمار غالب):",
         "- ذهب الكاتب إلى المكتبة المركزية للبحث عن مهنة جديدة تناسب شغفه بالسفر والتواصل مع الناس.",
         "- مصادر البحث في المكتبة:",
         "1) كتب المهن (Books about careers): تشرح طبيعة الوظائف والمهارات والمؤهلات المطلوبة لكل مهنة.",

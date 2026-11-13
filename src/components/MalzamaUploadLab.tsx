@@ -243,7 +243,7 @@ export const MalzamaUploadLab: React.FC<MalzamaUploadLabProps> = ({
   const handleResetToOfficialMalzama = () => {
     saveMalzama(DEFAULT_PRELOADED_3RD_MALZAMA);
     setUploadWarningMessage(null);
-    setUploadSuccessMessage('تمت استعادة ملزمة الأستاذ مصطفى تركي للثالث المتوسط بنجاح!');
+    setUploadSuccessMessage('تمت استعادة ملزمة الأستاذ عمار غالب للثالث المتوسط بنجاح!');
     setTimeout(() => setUploadSuccessMessage(null), 4000);
   };
 
@@ -277,7 +277,7 @@ export const MalzamaUploadLab: React.FC<MalzamaUploadLabProps> = ({
             </h1>
             
             <p className="text-sm sm:text-base text-surface/90 leading-relaxed font-medium">
-              ارفع ملزمتك بصيغة (PDF نصي أو نص مباشر) ليقوم النظام تلقائياً باستخراج القواعد والمفردات والأسئلة، أو ادرس مباشرة مع <strong>ملزمة الأستاذ مصطفى تركي</strong>.
+              ارفع ملزمتك بصيغة (PDF نصي أو نص مباشر) ليقوم النظام تلقائياً باستخراج القواعد والمفردات والأسئلة، أو ادرس مباشرة مع <strong>ملزمة الأستاذ عمار غالب</strong>.
             </p>
           </div>
 
@@ -457,7 +457,7 @@ export const MalzamaUploadLab: React.FC<MalzamaUploadLabProps> = ({
               className="w-full py-2.5 px-4 rounded bg-surface border-2 border-ink text-cobalt hover:bg-blue-mist shadow-brutal-press text-xs font-bold transition-all flex items-center justify-center gap-2 cursor-pointer"
             >
               <RefreshCw className="w-3.5 h-3.5 shrink-0" />
-              <span>تحميل ملزمة الأستاذ مصطفى تركي</span>
+              <span>تحميل ملزمة الأستاذ عمار غالب</span>
             </button>
           </div>
         </div>
@@ -707,7 +707,7 @@ export const MalzamaUploadLab: React.FC<MalzamaUploadLabProps> = ({
                   type="text"
                   value={pastedTitle}
                   onChange={(e) => setPastedTitle(e.target.value)}
-                  placeholder="مثلاً: ملزمة الأستاذ مصطفى تركي - قواعد الوحدة الأولى"
+                  placeholder="مثلاً: ملزمة الأستاذ عمار غالب - قواعد الوحدة الأولى"
                   className="w-full px-3 py-2 text-xs font-bold rounded bg-paper border-2 border-ink focus:bg-surface focus:outline-none focus:shadow-brutal-cobalt-sm text-ink"
                 />
               </div>

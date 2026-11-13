@@ -87,7 +87,7 @@ export const UNIT_8: Unit = {
       summary: "مصطلحات البيئة وإعادة تدوير النفايات واستخدام المبني للمجهول للتوعية بالاستدامة (تمرين B ص 176 كتاب النشاط).",
       grammarRuleFormula: "Environmental Collocations:\nrecycle waste materials | reduce pollution | conserve water | plant trees",
       detailedContent: [
-        "حماية البيئة والمفردات البيئية (ص 160 - 161 من ملزمة الأستاذ مصطفى تركي):",
+        "حماية البيئة والمفردات البيئية (ص 160 - 161 من ملزمة الأستاذ عمار غالب):",
         "- تدوير النفايات (Recycling): إعادة استخدام الزجاج والبلاستيك والورق لتقليل النفايات والتلوث.",
         "- ترشيد استهلاك المياه والكهرباء (Conserving water and electricity).",
         "- زراعة الأشجار لمكافحة التصحر وزيادة الأكسجين.",
@@ -131,7 +131,7 @@ export const UNIT_8: Unit = {
       summary: "قطعة الكتاب المقررة حول طاقة الرياح: تاريخ استخدامها، طريقة عمل توربينات الرياح، المزايا البيئية النظيفة، الانتقادات، وأثرها على الطيور وقوارب الصيد.",
       grammarRuleFormula: "Wind Power Key Points:\n- Used for thousands of years (windmills for grain and water)\n- Wind turbines: wind turns blades -> generates clean electricity\n- Advantages: renewable, green, no greenhouse gases, uses little land\n- Disadvantages: needs constant wind, visual impact, noise, danger to birds",
       detailedContent: [
-        "قطعة الكتاب المقررة: طاقة الرياح (ص 162 - 165 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: طاقة الرياح (ص 162 - 165 من ملزمة الأستاذ عمار غالب):",
         "1. التاريخ: استُخدمت طاقة الرياح لآلاف السنين في تسيير السفن الشراعية، وفي طواحين الهواء القديمة لطحن الحبوب وضخ المياه من الآبار.",
         "2. توربينات الرياح الحديثة (Wind turbines): أبراج عملاقة مزودة بشفرات تديرها الرياح، تقوم بتدوير مولد يولد الكهرباء.",
         "3. مزايا طاقة الرياح (Advantages):",
@@ -283,7 +283,7 @@ export const UNIT_8: Unit = {
       summary: "حل الاختبار الشامل للوحدة الثامنة وجدول الإملاء الوزاري لكافة السوابق (un-, in-, im-, il-, ir-, dis-) واللواحق (ment, tion, sion, able, ful, fully) في المنهج (ص 167 - 170 من الملزمة).",
       grammarRuleFormula: "Master Spelling Table:\nPrefixes: im-, il-, ir-, in-, un-, dis-\nSuffixes: -ment, -tion, -sion, -ance, -ence, -able, -al, -ful, -fully",
       detailedContent: [
-        "جدول السوابق واللواحق الوزاري الشامل (ص 167 - 170 من ملزمة الأستاذ مصطفى تركي):",
+        "جدول السوابق واللواحق الوزاري الشامل (ص 167 - 170 من ملزمة الأستاذ عمار غالب):",
         "1. سوابق المعاكسات (Negative Prefixes):",
         "- im-: polite -> impolite, possible -> impossible, moral -> immoral.",
         "- il-: legal -> illegal, literate -> illiterate.",
@@ -301,7 +301,7 @@ export const UNIT_8: Unit = {
         "- -able / -ible: comfort -> comfortable, flex -> flexible."
       ],
       teacherNotes: [
-        "ملاحظة الأستاذ مصطفى تركي: هذا الجدول الشامل يضمن لك الدرجة الكاملة (20/20) في سؤال الإملاء والمشتقات الوزاري!"
+        "ملاحظة الأستاذ مصطفى تركي: هذا الجدول الشامل يساعدك على إتقان سؤال الإملاء والمشتقات الوزاري!"
       ],
       commonMistakes: [
         "الخلط بين السوابق وإضافة بادئة خاطئة للكلمة الشاذة."

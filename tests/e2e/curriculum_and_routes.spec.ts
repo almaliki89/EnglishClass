@@ -10,10 +10,10 @@ test.describe('Iraqi English Curriculum Platform - Critical Architecture & Secur
     await expect(page.locator('text=منهاج اللغة الإنكليزية العراقي')).toBeVisible();
 
     // Verify all four active grades are present
-    await expect(page.locator('text=الثالث المتوسط')).toBeVisible();
-    await expect(page.locator('text=الرابع الإعدادي')).toBeVisible();
-    await expect(page.locator('text=الخامس الإعدادي')).toBeVisible();
-    await expect(page.locator('text=السادس الإعدادي')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'الثالث المتوسط', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'الرابع الإعدادي', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'الخامس الإعدادي', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'السادس الإعدادي', exact: true })).toBeVisible();
 
     // Verify obsolete grades are completely absent
     const pageContent = await page.content();

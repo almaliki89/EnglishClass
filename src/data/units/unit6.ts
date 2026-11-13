@@ -19,7 +19,7 @@ export const UNIT_6: Unit = {
       summary: "تعاريف المصطلحات البنكية الأساسية (Bank card, ATM, PIN, Cheque, Credit card) من صفحة 122 من الملزمة (تمرين A ص 119 كتاب النشاط).",
       grammarRuleFormula: "Banking Definitions:\nbank card = a piece of plastic used to pay for things or get money in the street\nATM = a machine where you can get money using a bank card\nPIN = a secret number used with a bank card to stop others using it\ncheque = a piece of paper used to pay for things\ncredit card = a plastic card used to buy things now and pay later",
       detailedContent: [
-        "تعاريف البنوك الوزارية (ص 122 من ملزمة الأستاذ مصطفى تركي):",
+        "تعاريف البنوك الوزارية (ص 122 من ملزمة الأستاذ عمار غالب):",
         "1. bank card (بطاقة بنكية): a piece of plastic you can use to pay for things or get money in the street.",
         "2. ATM / Automated Teller Machine (صراف آلي): a machine you can get money from using a bank card.",
         "3. PIN / Personal Identification Number (الرقم السري): a secret number you use with your bank card to stop other people using it.",
@@ -66,7 +66,7 @@ export const UNIT_6: Unit = {
       titleAr: "الدرس الثاني: المتلازمات البنكية والمبني للمجهول الشامل",
       titleEn: "Lesson 2: Bank Collocations & Complete Passive Voice",
       category: "grammar",
-      summary: "متلازمات البنوك وقواعد المبني للمجهول (Passive Voice) في كافة الأزمنة وطريقة الحل الوزاري المضمونة (ص 124 - 128 من الملزمة).",
+      summary: "متلازمات البنوك وقواعد المبني للمجهول (Passive Voice) في كافة الأزمنة وخطوات الحل الوزاري المعتمدة (ص 124 - 128 من الملزمة).",
       grammarRuleFormula: "General Passive Formula: New Object + verb 'to be' (in tense) + Past Participle [p.p.]\nPresent Simple: am/is/are + p.p.\nPast Simple: was/were + p.p.\nPresent Continuous: is/are being + p.p.\nPast Continuous: was/were being + p.p.\nPresent Perfect: have/has been + p.p.\nPast Perfect: had been + p.p.\nModals (will/can/must): will be + p.p.",
       detailedContent: [
         "1. المتلازمات اللفظية البنكية (ص 124 من الملزمة):",
@@ -149,7 +149,7 @@ export const UNIT_6: Unit = {
       summary: "قطعة الكتاب الوزارية لمهنة موظف البنك: تنوع المهام اليومية، إقناع الناس والشركات بفتح الحسابات، تقييم القروض والاستثمارات، ومهارات التواصل والرياضيات.",
       grammarRuleFormula: "Key Skills of a Banker:\n- Convince people to use the bank\n- Assess loan requests for businesses and homes\n- Good at maths and reading financial graphs\n- Excellent communicator with all types of clients",
       detailedContent: [
-        "قطعة الكتاب المقررة: موظف البنك (ص 129 - 132 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: موظف البنك (ص 129 - 132 من ملزمة الأستاذ عمار غالب):",
         "- لماذا يحب موظف البنك وظيفته؟ بسبب التنوع (variety)؛ فلا يوجد يومان متشابهان، ويتعامل مع أفراد وشركات من كافة الشرائح.",
         "- أهم المهام: إقناع الناس بفتح حسابات بنكية، تقديم العروض والخدمات الجديدة للعملاء والطلاب.",
         "- منح القروض (loans): مساعدة الناس على شراء منازل أو سيارات، ومساعدة أصحاب المشاريع والشركات على بدء أعمالهم أو توسعتها.",
@@ -248,7 +248,7 @@ export const UNIT_6: Unit = {
       summary: "مصطلحات أسعار الصرف وتحويل العملات والتعامل المالي في السفر (تمرين B ص 131 كتاب النشاط).",
       grammarRuleFormula: "Money Vocabulary:\nexchange rate = the value of one currency compared to another\ntraveller's cheques = safe cheques used when travelling abroad\nfreeze an account = stop transactions temporarily",
       detailedContent: [
-        "مفردات السفر والأموال (ص 135 من ملزمة الأستاذ مصطفى تركي):",
+        "مفردات السفر والأموال (ص 135 من ملزمة الأستاذ عمار غالب):",
         "- exchange rate (سعر الصرف): how much one currency is worth against another.",
         "- currency (العملة): the money used in a country.",
         "- commission (عمولة): money paid to a bank or service for a transaction.",
@@ -380,7 +380,7 @@ export const UNIT_6: Unit = {
       summary: "قطعة الكتاب المقررة حول طرق ادخار واستثمار الأموال: خطط التقاعد، حسابات التوفير، الأسهم والبورصة، والعقارات (Property).",
       grammarRuleFormula: "Investment Options:\n- Savings accounts: pay interest over time, good for regular savers\n- Pension plans: save for old age and retirement\n- Stocks and shares: high risk, high potential profit or loss\n- Property: buying houses/land to rent or sell at higher value (safest long-term)",
       detailedContent: [
-        "قطعة الكتاب المقررة: كسب المال (ص 138 - 141 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: كسب المال (ص 138 - 141 من ملزمة الأستاذ عمار غالب):",
         "- ادخار المال للمستقبل ثقافة يتعلمها الناس منذ الطفولة لضمان حياة كريمة عند الكبر والتقاعد (retirement).",
         "- طرق استثمار المال الشائعة:",
         "1) حسابات التوفير البنكية (Savings accounts): تفيد من لا يحتاج المال فوراً وتدفع فائدة بمرور الوقت.",

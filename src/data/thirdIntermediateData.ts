@@ -30,7 +30,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "الصيغة مع (It has): في النفي نستخدم (It doesn't have) وليس (It hasn't). وفي السؤال نستخدم (Does it have...?)."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: انتبه جيداً لكلمة (any)، تأتي فقط مع النفي والاستفهام!",
+          "ملاحظة الأستاذ عمار غالب: انتبه جيداً لكلمة (any)، تأتي فقط مع النفي والاستفهام!",
           "تنبيه وزاري: إذا رأيت اسماً مفرداً يبدأ بحرف علة (e, a, i, o, u) نستخدم an مثل an information desk.",
           "السؤال الوزاري يتكرر غالباً كاختيارات بين (There is / There are) أو بين (some / any)."
         ],
@@ -96,7 +96,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "تأكد من كتابة الأرقام الإنجليزية بدون أخطاء إملائية: fifteen, twenty, thirty, forty, fifty."
         ],
         teacherNotes: [
-          "نصيحة الأستاذ مصطفى تركي: اعتمد الطريقة المباشرة (الساعات أولاً ثم الدقائق) لأنها مضمونة بنسبة 100% في التصحيح الوزاري وتبعدك عن أخطاء past و to.",
+          "نصيحة الأستاذ عمار غالب: اعتمد الطريقة المباشرة (الساعات أولاً ثم الدقائق) لأنها واضحة ومعتمدة في التصحيح الوزاري وتبعدك عن أخطاء past و to.",
           "تذكر دائماً كتابة It's في بداية الجواب."
         ],
         commonMistakes: [
@@ -149,7 +149,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "3. He can't play football. => He isn't very good at football."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: في قاعدة so you can / can't انتبه إلى معنى الجملة:",
+          "ملاحظة الأستاذ عمار غالب: في قاعدة so you can / can't انتبه إلى معنى الجملة:",
           "نستخدم can't حصراً مع: get lost (يضيع)، أما بقية الميزات الإيجابية فنستخدم can.",
           "في الوصف المؤدب، الوزاري يكرر جداً جملة (isn't very good at) عند وجود can't."
         ],
@@ -210,7 +210,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "6. What is the warranty on the Panther? => It has a 4-year warranty."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: تأتي أسئلة البانثر في السؤال الأول فرع B من الامتحان الوزاري (قطعة الكتاب 10 درجات).",
+          "ملاحظة الأستاذ عمار غالب: تأتي أسئلة البانثر في السؤال الأول فرع B من الامتحان الوزاري (قطعة الكتاب 10 درجات).",
           "احفظ جيداً: عدد المقاعد هو 8 (eight seats). إذا قال 6 فـ False!"
         ],
         commonMistakes: [
@@ -262,7 +262,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "3. مع can't: إذا كان الفراغ بعد isn't very good at: نضع اسماً أو فعلاً منتهياً بـ ing: He can't play football. -> He isn't very good at football."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: انتبه للأسماء المركبة في سؤال التوصيل والإملاء: air : bag / disc : brakes / sun : roof / sweet : shop."
+          "ملاحظة الأستاذ عمار غالب: انتبه للأسماء المركبة في سؤال التوصيل والإملاء: air : bag / disc : brakes / sun : roof / sweet : shop."
         ],
         commonMistakes: [
           "نسيان عكس الصفة عند وجود isn't very (مثال: He isn't very lazy خطأ، الصحيح He isn't very hardworking)."
@@ -330,7 +330,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "- No, I'd rather not. / No, I'm busy."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: انتبه! كلمة (How about) هي الوحيدة التي يأتي بعدها فعل ينتهي بـ ing.",
+          "ملاحظة الأستاذ عمار غالب: انتبه! كلمة (How about) هي الوحيدة التي يأتي بعدها فعل ينتهي بـ ing.",
           "صيغ I'd like / I'd love تحتاج إلى to + مجرد.",
           "صيغ Let's / I'd rather / Why not تحتاج إلى مجرد مباشرة بدون to."
         ],
@@ -389,7 +389,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "المثال الوزاري: Would you like to come to my graduation party on Thursday?"
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: لا تنسَ تحويل (your) إلى (my) في الامتحان الوزاري عند كتابة الدعوة.",
+          "ملاحظة الأستاذ عمار غالب: لا تنسَ تحويل (your) إلى (my) في الامتحان الوزاري عند كتابة الدعوة.",
           "تأكد من وضع علامة الاستفهام في النهاية."
         ],
         commonMistakes: [
@@ -439,7 +439,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "6. What happened to Samara's brother's hair? => He put cleaning fluid on his hair instead of hair gel, and his hair turned green!"
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: قصة لوسي تأتي في السؤال الرابع (Story Time) المخصص للقصص الوزارية (10 درجات).",
+          "ملاحظة الأستاذ عمار غالب: قصة لوسي تأتي في السؤال الرابع (Story Time) المخصص للقصص الوزارية (10 درجات).",
           "احفظ معنى كلمة clumsy = أحمق أو كثير الحوادث السخيفة.",
           "انتبه: لوسي هي الممثلة الحقيقية، وسمارة (Samara) هي الشخصية بالمسلسل."
         ],
@@ -493,7 +493,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "يشمل تحديد المناسبة (حفل تخرج أو عيد ميلاد)، التاريخ واليوم، الوقت (من الساعة 4 إلى 8)، والمكان، والتأكيد على الحضور المجاني."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: انتبه لتحويل your إلى my عند صياغة الدعوة: Invite your friend to your party -> Would you like to come to my party?"
+          "ملاحظة الأستاذ عمار غالب: انتبه لتحويل your إلى my عند صياغة الدعوة: Invite your friend to your party -> Would you like to come to my party?"
         ],
         commonMistakes: [
           "نسيان to بعد Would you like (الصحيح Would you like to come)."
@@ -545,7 +545,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "نفي المقارنة يحول الجملة إلى صفة مجردة بين as ... as مع نفي الفعل المساعد."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: الشواذ تأتي في سؤال الإملاء (سؤال 3 فرع C) بصيغة: fast: faster, good: better.",
+          "ملاحظة الأستاذ عمار غالب: الشواذ تأتي في سؤال الإملاء (سؤال 3 فرع C) بصيغة: fast: faster, good: better.",
           "تذكر قاعدة as ... as: تأتي بينهما الصفة مجردة تماماً بدون er وبدون more!"
         ],
         commonMistakes: [
@@ -605,7 +605,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "I am not afraid of dogs. => Neither am I."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: قاعدة ذهبية: إذا رأيت not أو don't في الجملة، فاختر فوراً (Neither)!",
+          "ملاحظة الأستاذ عمار غالب: قاعدة ذهبية: إذا رأيت not أو don't في الجملة، فاختر فوراً (Neither)!",
           "إذا كانت الجملة مثبتة بدون نفي، فاختر (So)."
         ],
         commonMistakes: [
@@ -657,7 +657,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "5. Did the deer give birth to a healthy fawn? => Yes, she gave birth to a healthy fawn safely."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: قصة الغزالة الحامل من أكثر القصص التي تتكرر أسئلتها في السؤال الرابع (Story Time).",
+          "ملاحظة الأستاذ عمار غالب: قصة الغزالة الحامل من أكثر القصص التي تتكرر أسئلتها في السؤال الرابع (Story Time).",
           "احفظ المخاطر الأربعة بدقة: hunter, lion, fire, river."
         ],
         commonMistakes: [
@@ -703,14 +703,14 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
         summary: "كيفية إظهار الموافقة على جملة مثبتة باستخدام (So do I / So am I) والموافقة على جملة منفية باستخدام (Neither do I / Neither am I).",
         grammarRuleFormula: "1. الموافقة على جملة مثبتة (Affirmative Agreement):\n- So + verb + I\n- فعل مجرد -> So do I (e.g., I like spiders. -> So do I)\n- فعل كينونة -> So am I (e.g., I am afraid of dogs. -> So am I)\n\n2. الموافقة على جملة منفية (Negative Agreement):\n- Neither + verb + I\n- جملة فيها don't -> Neither do I (e.g., I don't like flies. -> Neither do I)\n- جملة فيها am not -> Neither am I (e.g., I'm not afraid of snakes. -> Neither am I)",
         detailedContent: [
-          "سؤال وزاري مضمون 100%: يطلب منك (Agree with this statement) أو (Express your preference).",
+          "سؤال تدريبي مهم متكرر وزارياً: يطلب منك (Agree with this statement) أو (Express your preference).",
           "القاعدة الذهبية:",
           "1. إذا كانت الجملة الأصلية مثبتة: اختر (So...)",
           "2. إذا كانت الجملة الأصلية منفية (تحتوي على not أو don't): اختر (Neither...)",
           "3. إذا كان الفعل am نستخدم am I. إذا كان أي فعل عادي نستخدم do I."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: انتبه! الجملة المنفية لا تأخذ So إطلاقاً! بمجرد أن ترى don't أو not اختر Neither فوراً."
+          "ملاحظة الأستاذ عمار غالب: انتبه! الجملة المنفية لا تأخذ So إطلاقاً! بمجرد أن ترى don't أو not اختر Neither فوراً."
         ],
         commonMistakes: [
           "استخدام So مع جملة منفية مثل: I don't like cats. -> So do I (خطأ فادح؛ الصحيح Neither do I)."
@@ -761,7 +761,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "4. بيوتهم مقوسة ومبنية من القصب (arched reed houses)، ويتنقلون بقوارب المشحوف والطرادة (Mashhoof & Tarrada)."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: تأتي أسئلة الصقور والأهوار كل سنة وزارياً: How fast can falcons dive? 240 kph. What do Marsh Arabs live in? Arched reed houses."
+          "ملاحظة الأستاذ عمار غالب: تأتي أسئلة الصقور والأهوار كل سنة وزارياً: How fast can falcons dive? 240 kph. What do Marsh Arabs live in? Arched reed houses."
         ],
         commonMistakes: [
           "الخلط بين سرعة الصقر (240 kph) وأرقام أخرى."
@@ -823,7 +823,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "- I was playing football when it started to rain."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: تذكر دائماً أن While تحب الـ ing (was/were + ing).",
+          "ملاحظة الأستاذ عمار غالب: تذكر دائماً أن While تحب الـ ing (was/were + ing).",
           "أما When فيأتي بعدها الفعل البسيط."
         ],
         commonMistakes: [
@@ -868,7 +868,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "6. What did John use to stop the dog? => He kicked a football at the dog."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: هذه القطعة أساسية في السؤال الأول فرع B في الامتحانات الوزارية.",
+          "ملاحظة الأستاذ عمار غالب: هذه القطعة أساسية في السؤال الأول فرع B في الامتحانات الوزارية.",
           "تذكر اسم الطفل/الرجل البطل: John، واسم الطفلة: Israa."
         ],
         commonMistakes: [
@@ -910,7 +910,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "الظروف الدالة: tomorrow, next year/month, in the future, soon."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: انتبه لسؤال الاختيارات الوزاري: The train ______ (will arrive / arrives) at 6 PM."
+          "ملاحظة الأستاذ عمار غالب: انتبه لسؤال الاختيارات الوزاري: The train ______ (will arrive / arrives) at 6 PM."
         ],
         commonMistakes: [
           "وضع verb-ing بعد will (الصحيح will + base)."
@@ -962,7 +962,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "- إذا كان قبل الفراغ اسم مكان وبعد الفراغ فاعل أو جملة فعلية تدل على حدث في المكان، اختر (where)."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: انتبه للمكان! إذا كان بعد الفراغ فعل مثل is، فنختار which لأنها تصف المكان كشيء، أما إذا كان بعد الفراغ فاعل وجملة مثل we bought things، فنختار where!"
+          "ملاحظة الأستاذ عمار غالب: انتبه للمكان! إذا كان بعد الفراغ فعل مثل is، فنختار which لأنها تصف المكان كشيء، أما إذا كان بعد الفراغ فاعل وجملة مثل we bought things، فنختار where!"
         ],
         commonMistakes: [
           "استخدام who مع الحيوانات أو الجمادات.",
@@ -1020,7 +1020,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "5. Where did he die? => He died in Cairo in 1040 AD."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: تأتي أسئلة ابن الهيثم في السؤال الرابع (Story Time).",
+          "ملاحظة الأستاذ عمار غالب: تأتي أسئلة ابن الهيثم في السؤال الرابع (Story Time).",
           "احفظ جيداً: ولد في البصرة عام 965، ومات في القاهرة عام 1040."
         ],
         commonMistakes: [
@@ -1074,7 +1074,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "- عند الوصول للمكان نكتب: The library is on the right/left."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: انتبه لحرف الجر on مع اليمين واليسار: on the right / on the left."
+          "ملاحظة الأستاذ عمار غالب: انتبه لحرف الجر on مع اليمين واليسار: on the right / on the left."
         ],
         commonMistakes: [
           "كتابة in the right (الصحيح on the right)."
@@ -1114,7 +1114,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "لا نستخدم أي أداة قبل أسماء الدروس المدرسية، أو الرياضات، أو الأيام، أو الأشياء بصفة عامة."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: انتبه! أسماء الدروس المدرسية لا تأخذ the: I am good at English (وليس the English)."
+          "ملاحظة الأستاذ عمار غالب: انتبه! أسماء الدروس المدرسية لا تأخذ the: I am good at English (وليس the English)."
         ],
         commonMistakes: [
           "قول I like the apples (إذا كنت تقصد التفاح عموماً الصحيح I like apples)."
@@ -1162,14 +1162,14 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
         detailedContent: [
           "في الامتحان الوزاري يأتيك السؤال كاختيارات بين ترتيبات متعددة للظروف:",
           "مثال: Ali ran (well in the race yesterday / in the race well yesterday / yesterday well in the race).",
-          "طريقة الحل المضمونة:",
+          "خطوات الحل المنهجية:",
           "1. ابحث عن ظرف الحال (well أو كلمة بـ ly) واجعله أولاً.",
           "2. بعده يأتي ظرف المكان (in the race).",
           "3. وأخيراً ظرف الزمان (yesterday).",
           "فالاختيار الصحيح: well in the race yesterday."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: تذكر دائماً كلمة (حَمَز) باللغة العربية:",
+          "ملاحظة الأستاذ عمار غالب: تذكر دائماً كلمة (حَمَز) باللغة العربية:",
           "ح: حال (Manner)",
           "م: مكان (Place)",
           "ز: زمان (Time)",
@@ -1220,7 +1220,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "- Marsh Arabs (can be found) in the south of Iraq. (صيغة can be + P.P.)."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: تذكر دائماً أن المبني للمجهول يتطلب تصريفاً ثالثاً للفعل (P.P.).",
+          "ملاحظة الأستاذ عمار غالب: تذكر دائماً أن المبني للمجهول يتطلب تصريفاً ثالثاً للفعل (P.P.).",
           "في الاختيارات: إذا كان الفاعل غير قادر على فعل الشيء بنفسه (مثل المحاصيل أو الحقيبة)، فالجملة مبني للمجهول!"
         ],
         commonMistakes: [
@@ -1264,7 +1264,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "Answer: Life is the coffee, whereas jobs, wealth, and status are just cups that hold life. True happiness comes from enjoying the coffee, not obsessing over the cup."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: قصة فنجان القهوة قصة فلسفية جميلة وتتكرر في السؤال الرابع.",
+          "ملاحظة الأستاذ عمار غالب: قصة فنجان القهوة قصة فلسفية جميلة وتتكرر في السؤال الرابع.",
           "احفظ التشبيه: Coffee = life, Cups = money and jobs."
         ],
         commonMistakes: [
@@ -1308,7 +1308,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           "المفردات: continent (قارة), motto/slogan (شعار), friendship (صداقة), compete (يتنافس), medals (ميداليات)."
         ],
         teacherNotes: [
-          "ملاحظة الأستاذ مصطفى تركي: انتبه لسؤال متكرر: Where and when did the first Asian Games take place? In New Delhi, India in 1951."
+          "ملاحظة الأستاذ عمار غالب: انتبه لسؤال متكرر: Where and when did the first Asian Games take place? In New Delhi, India in 1951."
         ],
         commonMistakes: [
           "الخلط بين عام أول دورة (1951) ومكانها (New Delhi)."
@@ -1460,17 +1460,17 @@ export const THIRD_INTERMEDIATE_QUESTIONS: MinisterialExamQuestion[] = [
 ];
 
 // ==========================================
-// 5. الملزمة الافتراضية الجاهزة (ملزمة الأستاذ مصطفى تركي)
+// 5. الملزمة الافتراضية الجاهزة (ملزمة الأستاذ عمار غالب)
 // ==========================================
 export const DEFAULT_PRELOADED_3RD_MALZAMA: UploadedMalzama = {
   id: "malzama-3rd-official",
-  name: "النموذجية في اللغة الانكليزية - الثالث المتوسط 2025 (الأستاذ مصطفى تركي)",
+  name: "النموذجية في اللغة الانكليزية - الثالث المتوسط 2025 (الأستاذ عمار غالب)",
   size: "18.4 MB",
   uploadDate: "2025-01-10",
   fileType: "application/pdf",
   grade: "third-intermediate",
   unitsCount: 7,
-  summary: "الملزمة الشاملة والمعتمدة للأستاذ مصطفى تركي لمرحلة الثالث المتوسط 2025: تغطي كافة القواعد بأسلوب مبسط، قطع استيعابية (سيارة البانثر، الهوايات، الأهوار، لوسي، ابن الهيثم)، المفردات والتعاريف والتوصيلات، قصص الأدب (كريم وشاعر النواب، كرم ولاعب السلة، ملء الفراغ، إبراهيم، سلام أحمد، داليا، تنظيف المدرسة، سيرة علي)، والإنشاءات الوزارية النموذجية العشرة.",
+  summary: "الملزمة الشاملة والمعتمدة للأستاذ عمار غالب لمرحلة الثالث المتوسط 2025: تغطي كافة القواعد بأسلوب مبسط، قطع استيعابية (سيارة البانثر، الهوايات، الأهوار، لوسي، ابن الهيثم)، المفردات والتعاريف والتوصيلات، قصص الأدب (كريم وشاعر النواب، كرم ولاعب السلة، ملء الفراغ، إبراهيم، سلام أحمد، داليا، تنظيف المدرسة، سيرة علي)، والإنشاءات الوزارية النموذجية العشرة.",
   extractedRules: [
     {
       title: "الوصف المكاني (There is / There are / It has)",
@@ -1543,5 +1543,5 @@ export const DEFAULT_PRELOADED_3RD_MALZAMA: UploadedMalzama = {
       type: "Grammar"
     }
   ],
-  rawContentPreview: "جمهورية العراق - وزارة التربية • منهج اللغة الإنكليزية للصف الثالث المتوسط (English for Iraq - 3rd Intermediate) • ملزمة النموذجية للأستاذ مصطفى تركي 2025 • تغطية شاملة لجميع الوحدات وقصص المنهج الثمانية والإنشاءات الوزارية من ص 134 إلى ص 143 مع بنك الأسئلة الوزارية لسنوات 2017 - 2025."
+  rawContentPreview: "جمهورية العراق - وزارة التربية • منهج اللغة الإنكليزية للصف الثالث المتوسط (English for Iraq - 3rd Intermediate) • ملزمة النموذجية للأستاذ عمار غالب 2025 • تغطية شاملة لجميع الوحدات وقصص المنهج الثمانية والإنشاءات الوزارية من ص 134 إلى ص 143 مع بنك الأسئلة الوزارية لسنوات 2017 - 2025."
 };

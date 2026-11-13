@@ -85,7 +85,7 @@ export const UNIT_4: Unit = {
       summary: "قطعة استيعاب أحدث التقنيات الرقمية في ممارسة الرياضة: الساعات الذكية، تتبع ضربات القلب، السعرات الحرارية، مرايا اللياقة التفاعلية، والذكاء الاصطناعي في التمرين.",
       grammarRuleFormula: "Fitness Tech Key Concepts:\n- Smart watches & trackers: monitor heart rate, sleep quality and burned calories\n- Smart fitness mirrors: interactive screens providing instant trainer feedback\n- AI workout apps: tailor personalized routines to personal fitness goals",
       detailedContent: [
-        "قطعة تقنيات اللياقة البدنية (ص 84 - 86 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة تقنيات اللياقة البدنية (ص 84 - 86 من ملزمة الأستاذ عمار غالب):",
         "- كيف غيرت التكنولوجيا الحديثة عالم اللياقة والتمارين البدنية في السنوات الأخيرة؟",
         "- أجهزة التتبع القابلة للارتداء (Wearable fitness trackers): تقيس نبضات القلب، عدد الخطوات، جودة النوم، وحرق السعرات الحرارية بدقة عالية.",
         "- المرايا الذكية (Smart mirrors): شاشات متطورة تعكس صورة المتدرب وتوفر له توجيهات فورية لتصحيح وضعية التمرين وحركات الجسد لمنع الإصابات.",

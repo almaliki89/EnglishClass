@@ -19,7 +19,7 @@ export const UNIT_5: Unit = {
       summary: "حفظ الأسماء المركبة الخاصة بالسياحة والعطل من صفحة 92 من الملزمة (تمرين A ص 89 كتاب النشاط).",
       grammarRuleFormula: "Compound Nouns in Travel:\nboarding card | travel agency | five-star hotel | package deal | packed lunch | ski resort | car hire | self-catering apartment | sight-seeing | sea front",
       detailedContent: [
-        "الأسماء المركبة في السفر والسياحة (ص 92 من ملزمة الأستاذ مصطفى تركي):",
+        "الأسماء المركبة في السفر والسياحة (ص 92 من ملزمة الأستاذ عمار غالب):",
         "1. boarding card = بطاقة صعود الطائرة (You cannot board the plane without it).",
         "2. travel agency = وكالة سفر وسياحة (A company that arranges holidays).",
         "3. five-star hotel = فندق خمس نجوم (A luxury place to stay).",
@@ -373,7 +373,7 @@ export const UNIT_5: Unit = {
       summary: "قطعة واستيعاب رحلة آنا جونسون الترويجية إلى جزر قرقنة الهادئة في تونس، جمال الشواطئ، الرحلة بالعبارة، والصفات السياحية المترادفة.",
       grammarRuleFormula: "Key Vocabulary:\npeace and quiet = calm atmosphere\nferry = boat that transports people and cars\nunspoiled = natural and not ruined by tourism\nfascinating = extremely interesting",
       detailedContent: [
-        "قطعة جزر قرقنة في تونس (ص 109 - 110 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة جزر قرقنة في تونس (ص 109 - 110 من ملزمة الأستاذ عمار غالب):",
         "- جزر قرقنة (Kerkennah Islands) مجموعة جزر هادئة قبالة الساحل الشرقي لتونس.",
         "- توفر مكاناً مثالياً للباحثين عن الراحة والهدوء (peace and quiet) بعيداً عن صخب المدن والمنتجعات السياحية المزدحمة.",
         "- الوصول إليها: ركوب عبارة (ferry) من مدينة صفاقس مرتين يومياً.",
@@ -423,7 +423,7 @@ export const UNIT_5: Unit = {
       summary: "ضمائر الوصل (who, which, that, where, whose)، الفرق بين الجمل المعرفة وغير المعرفة، قواعد وضع الفواصل، وطرق دمج جملتين وزارياً.",
       grammarRuleFormula: "who = للعاقل (شخص + who + فعل أو فاعل)\nwhich / that = لغير العاقل (جماد أو حيوان + which/that)\nwhere = للمكان (مكان + where + فاعل + فعل)\nwhose = للتملك (اسم + whose + اسم يملكه)",
       detailedContent: [
-        "عبارات الوصل (Relative Clauses) - ص 111 - 117 من ملزمة الأستاذ مصطفى تركي:",
+        "عبارات الوصل (Relative Clauses) - ص 111 - 117 من ملزمة الأستاذ عمار غالب:",
         "1. ضمائر الوصل واختياراتها:",
         "- للعاقل: who (The man who lives next door is a doctor).",
         "- لغير العاقل: which أو that (The car which he bought is fast).",
@@ -499,7 +499,7 @@ export const UNIT_5: Unit = {
       summary: "قطعة الكتاب المقررة حول أهمية أخذ العطل والإجازات، مخاطر الإجهاد وضغط الدم، ظاهرة مدمني العمل (workaholics)، والعلاقات الأسرية.",
       grammarRuleFormula: "Key Vocabulary:\nat least = no less than\nworkaholics = people who think their work is too important to leave to others\ndeadline = a time limit to finish work\non the verge of = about to happen\nsnatched = taken quickly",
       detailedContent: [
-        "قطعة الكتاب المقررة: لمَ العطل مهمة جداً؟ (ص 118 - 121 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: لمَ العطل مهمة جداً؟ (ص 118 - 121 من ملزمة الأستاذ عمار غالب):",
         "- في عالم اليوم السريع، يتعرض الدماغ والجسد لضغوط هائلة بسبب العمل؛ وإذا أهملنا الراحة فقد ينهار الجسد (let us down).",
         "- ضغط الحياة يسبب ارتفاع ضغط الدم (high blood pressure) الذي قد يؤدي إلى نوبات قلبية وسكتات دماغية (strokes and heart attacks).",
         "- مدمنو العمل (Workaholics): أشخاص يعتقدون أن أعمالهم بالغة الأهمية ولا يمكن تركها للآخرين، ولا يتحملون البقاء بعيداً عن مكاتبهم. يكتشفون بعد فوات الأوان أن الحياة فيها أمور أكثر أهمية من العمل.",

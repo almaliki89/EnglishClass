@@ -19,7 +19,7 @@ export const UNIT_3: Unit = {
       summary: "صياغة تعاريف المهن (A ... is someone who + verb-s) وقائمة الوظائف والواجبات الوزارية (تمرين A ص 52 وتمرين C ص 53).",
       grammarRuleFormula: "A / An + Job Title + is someone who + (verb with -s) + duty",
       detailedContent: [
-        "1. قاعدة التعاريف الوزارية (ص 57 - 58 من ملزمة الأستاذ مصطفى تركي):",
+        "1. قاعدة التعاريف الوزارية (ص 57 - 58 من ملزمة الأستاذ عمار غالب):",
         "- نحذف كلمة Define ونضع اسم المهنة مع أداة التنكير (A / An).",
         "- نضع العبارة الثابتة: (is someone who).",
         "- نضع الفعل بين القوسين مضافاً له s الشخص الثالث إذا لم تكن موجودة، ونكمل الجملة.",
@@ -42,7 +42,7 @@ export const UNIT_3: Unit = {
         "- nurse (ممرضة): looks after sick people and helps doctors."
       ],
       teacherNotes: [
-        "ملاحظة الأستاذ مصطفى تركي: تأتي التعاريف في السؤال الثاني فرع A بصيغة: Define a ... (Use: ...) وهي درجة مضمونة!",
+        "ملاحظة الأستاذ مصطفى تركي: تأتي التعاريف في السؤال الثاني فرع A بصيغة: Define a ... (Use: ...) وهي صيغة متكررة ومهمة في الامتحان!",
         "انتبه لإضافة s الشخص الثالث للفعل إذا كان مجرداً بين القوسين: operate -> operates, design -> designs.",
         "احفظ كتابة المهن والواجبات وتأتي أيضاً في السؤال الثالث فرع A (إسقاطات)."
       ],
@@ -169,7 +169,7 @@ export const UNIT_3: Unit = {
       summary: "الحالة الشرطية الثانية للمواقف الخيالية أو غير المحتملة في الحاضر والمستقبل (If + past simple, would/could/might + base verb) وحالة were مع الجميع.",
       grammarRuleFormula: "If + Past Simple [v-ed / irregular / were] , Subject + would / could / might + base verb",
       detailedContent: [
-        "قواعد الحالة الشرطية الثانية (ص 61 - 62 من ملزمة الأستاذ مصطفى تركي):",
+        "قواعد الحالة الشرطية الثانية (ص 61 - 62 من ملزمة الأستاذ عمار غالب):",
         "- نستخدم هذا النوع للتحدث عن شيء خيالي أو غير محتمل الحدوث في الحاضر أو المستقبل:",
         "  If + ماضي بسيط (Past Simple) , الفاعل + would / could / might + فعل مجرد",
         "  If I had enough money, I would buy a car. (لو كان لدي مال كافٍ لاشتريت سيارة - لكن في الواقع لا أملك ذلك).",
@@ -328,7 +328,7 @@ export const UNIT_3: Unit = {
       summary: "التعبير عن الندم على أحداث وقعت أو لم تقع في الماضي باستخدام (If only / I wish) وقاعدة الماضي التام (had / hadn't + p.p).",
       grammarRuleFormula: "If only / I wish + Subject + had + p.p. (إذا كانت الجملة الأصلية منفية)\nIf only / I wish + Subject + hadn't + p.p. (إذا كانت الجملة الأصلية مثبتة)",
       detailedContent: [
-        "قواعد أسلوب الندم (ص 71 - 74 من ملزمة الأستاذ مصطفى تركي):",
+        "قواعد أسلوب الندم (ص 71 - 74 من ملزمة الأستاذ عمار غالب):",
         "- للتعبير عن الندم عن شيء حصل أو لم يحصل في الماضي نستخدم:",
         "  If only أو I wish + فاعل + ماضي تام بسيط (had / hadn't + p.p).",
         "- خطوات الحل الوزاري:",
@@ -409,7 +409,7 @@ export const UNIT_3: Unit = {
       summary: "الحالة الشرطية الثالثة للتعبير عن أحداث مستحيلة الوقوع في الماضي والندم الافتراضي (If + past perfect, would/could/might have + p.p).",
       grammarRuleFormula: "If + Past Perfect [had + p.p.] , Subject + would / could / might + have + Past Participle [p.p.]",
       detailedContent: [
-        "قواعد الحالة الشرطية الثالثة (ص 74 - 75 من ملزمة الأستاذ مصطفى تركي):",
+        "قواعد الحالة الشرطية الثالثة (ص 74 - 75 من ملزمة الأستاذ عمار غالب):",
         "- نستخدم هذا النوع للتحدث عن شيء تخيلي أو ندم على شيء لم يحصل أو حصل في الماضي واستحال تغييره:",
         "  If + ماضي تام (had / hadn't + p.p) , الفاعل + would / could / might + have + تصريف ثالث (p.p).",
         "  If we had known about the problem yesterday, we could have solved it.",
@@ -477,7 +477,7 @@ export const UNIT_3: Unit = {
       summary: "اشتقاق الصفات بإضافة اللواحق المناسبة للأسماء (تمرين C ص 65 كتاب النشاط).",
       grammarRuleFormula: "Noun => Adjective:\nqualification -> qualified | residence -> residential | comfort -> comfortable | experience -> experienced | tailor -> tailored | friend -> friendly",
       detailedContent: [
-        "اشتقاق الصفات من الأسماء (ص 76 من ملزمة الأستاذ مصطفى تركي):",
+        "اشتقاق الصفات من الأسماء (ص 76 من ملزمة الأستاذ عمار غالب):",
         "1. qualification (مؤهل) -> qualified (مؤهل/كفوء).",
         "2. residence (سكن) -> residential (سكني).",
         "3. comfort (راحة) -> comfortable (مريح).",
@@ -529,7 +529,7 @@ export const UNIT_3: Unit = {
       summary: "قطعة الكتاب المقررة للمترجمة الفورية سميرة المحمود: مؤتمر النفط في أبوظبي، العمل الحر (freelance)، مهارات المترجم، الترجمة تحت الضغط، وأهمية اللغة العربية.",
       grammarRuleFormula: "Key Vocabulary:\nfreelance = working when you want and for the organization you want\nunder pressure = in a difficult situation\nconvey the sense = give an idea of the meaning\nbooth = box-like room where interpreters work\nheadphones = listen privately",
       detailedContent: [
-        "قطعة الكتاب المقررة: سميرة المحمود (ص 76 - 81 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: سميرة المحمود (ص 76 - 81 من ملزمة الأستاذ عمار غالب):",
         "- سميرة المحمود: مترجمة مؤتمرات فورية (conference interpreter) من الإنجليزية إلى العربية في فندق هيلتون بأبوظبي خلال مؤتمر النفط العربي السنوي.",
         "- ولدت في بريطانيا من والدين عراقيين، وتحدثت العربية في المنزل والإنجليزية في المدرسة.",
         "- حصلت على شهادة في اللغة العربية من جامعة لندن، ثم دبلوم دراسات عليا في الترجمة الفورية (postgraduate diploma in conference interpreting). كانت الدورة صعبة واجتازها 50% فقط من الطلاب.",
