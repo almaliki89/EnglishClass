@@ -109,6 +109,8 @@ assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Hawksbi
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Online Shopping')), 'Unit 7 must include the online shopping source content');
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('International Space Station')), 'Unit 7 must include the International Space Station presentation');
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Hawksbill Sea Turtle')), 'Unit 7 must include the hawksbill turtle reading after the ISS presentation');
+assert.equal(new Set(fourthUnit7?.lessons.map((lesson) => lesson.id)).size, fourthUnit7?.lessons.length, 'Unit 7 lesson IDs must be unique and must not duplicate content');
+assert.equal(fourthUnit7?.lessons.length, 10, 'Unit 7 must include its ten source-ordered lesson and reading blocks');
 assert.ok(fourthUnit6?.lessons.some((lesson) => lesson.titleEn.includes('Future Simple')), 'Unit 6 must start with Future Simple on source page 97');
 assert.ok(!fourthUnit7?.description.includes('UNESCO'), 'Do not add unsupported UNESCO accreditation claims to the Marshes lesson');
 
