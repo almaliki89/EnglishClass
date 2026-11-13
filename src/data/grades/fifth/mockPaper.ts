@@ -253,8 +253,8 @@ export const FIFTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
     {
       id: "5th-mock-essay-a",
       optionLetter: "A",
-      titleEn: "Ramadan Traditions and Hospitality in Iraq",
-      titleAr: "إنشاء (أ): تقاليد شهر رمضان المبارك وكرم الضيافة في العراق (الوحدة الأولى - ص 212)",
+      titleEn: "My Friend",
+      titleAr: "تدريب كتابي إضافي: My Friend — راجع النص الأصلي في قسم الإنشاءات",
       prompt: "Write a well-organized composition about the spiritual and social traditions of Ramadan in Iraq, including family Iftar and the game of Mheibes.",
       suggestedModel: "The Holy Month of Ramadan is the most sacred and cherished season for Muslims across Iraq. During this blessed month, believers abstain from dawn to sunset, cultivating self-discipline, patience, and empathy. Families gather around tables filled with dates, lentil soup (Shorbat Adas), and traditional dishes. Mosques organize collective banquets for the needy. In the evening, people visit relatives and play the traditional game of Mheibes in historic cafes, showcasing centuries of Iraqi warmth and solidarity.",
       keywords: ["sacred season", "abstain", "Shorbat Adas", "Iftar banquets", "Mheibes game", "solidarity"],
@@ -263,8 +263,8 @@ export const FIFTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
     {
       id: "5th-mock-essay-b",
       optionLetter: "B",
-      titleEn: "Preserving Endangered Wildlife from Extinction",
-      titleAr: "إنشاء (ب): حماية الحيوانات المهددة بالانقراض (الوحدة الثالثة - ص 215)",
+      titleEn: "How Can We Save Water?",
+      titleAr: "تدريب كتابي إضافي: How Can We Save Water? — راجع النص الأصلي في قسم الإنشاءات",
       prompt: "Write a composition highlighting endangered species (like the Right Whale, Black Rhino, and Panda) and explain practical ways governments and individuals can protect them.",
       suggestedModel: "Our planet is currently experiencing a biodiversity crisis, with thousands of species facing extinction. Magnificent creatures such as the Northern Right Whale, the Giant Panda, and marine turtles are dwindling due to deforestation, illegal poaching, and pollution. To preserve them, governments must establish protected nature sanctuaries and enforce strict anti-poaching penalties. Raising community awareness is vital to protect our natural heritage for future generations.",
       keywords: ["biodiversity crisis", "deforestation", "poaching", "nature sanctuaries", "ecological balance"],
