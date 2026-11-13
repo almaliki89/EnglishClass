@@ -1,233 +1,213 @@
 import { EssayItem } from '../../../types';
 
-// =========================================================================
-// الإنشاءات المنهجية النموذجية للصف الرابع الإعدادي - ملزمة النموذجية 2026
-// مرجع الصفحات: ص 171 - 179 (7 إنشاءات معتمدة مع الكلمات المفتاحية والترجمة)
-// =========================================================================
-
+// Source-aligned writing models from the fourth-preparatory booklet, printed pages 171-177.
+// Personal contact details shown in the sample application form are represented as placeholders.
 export const FOURTH_PREPARATORY_ESSAYS: EssayItem[] = [
   {
-    id: "4th-essay-u1-info-form",
+    id: '4th-essay-u1-info-form',
     unitId: 41,
-    titleAr: "إنشاء الوحدة الأولى: استمارة المعلومات للتقديم على برنامج لغوي صيفي",
-    titleEn: "Application & Information Form for a Summer Language Course",
-    ministerialWeight: "20 درجة منهجية - الملزمة ص 171",
+    titleAr: 'استمارة التقديم إلى مدرسة أو برنامج صيفي',
+    titleEn: 'Application Form',
+    ministerialWeight: 'موضع المصدر: الملزمة ص 171',
     paragraphsEn: [
-      "Surname: Al-Tamimi | First Name: Ali | Date of Birth: 14/03/2009 | Address: Palestine Street, District 502, Baghdad, Iraq | Email: ali.tamimi2009@gmail.com | Mobile: +964 770 123 4567.",
-      "Why I would like to join this language programme: I am a 4th Preparatory student eager to improve my spoken English and academic writing skills during the summer vacation. I am particularly interested in your self-access learning facility and cultural excursion activities, as I plan to pursue higher university studies in international engineering."
+      'Application Form\\nSurname: [Surname]\\nForenames: [Forenames]\\nDate of birth: [Date of birth]\\nAddress: [Address]\\nPhone number: [Phone number]\\nEmail: [Email]\\nWhy are you interested in our school?\\nI would like to go on a summer program to improve my English. I am interested in your school because it has fantastic facilities and highly experienced teachers. All your subjects are in English, and this is very important for me to improve my English.'
     ],
     paragraphsAr: [
-      "لقب العائلة: التميمي | الاسم الأول: علي | تاريخ الميلاد: 14/03/2009 | العنوان: شارع فلسطين، محلة 502، بغداد، العراق | البريد الإلكتروني: ali.tamimi2009@gmail.com | الهاتف: +964 770 123 4567.",
-      "لماذا أود الانضمام لهذا البرنامج اللغوي: أنا طالب في الصف الرابع الإعدادي وأرغب بشدة في تطوير مهارات المحادثة والكتابة الأكاديمية باللغة الإنكليزية خلال العطلة الصيفية. وأنا مهتم بوجه خاص بمركز التعلم الذاتي التابع لكم وبالأنشطة والرحلات الثقافية، حيث أخطط لإكمال دراستي الجامعية في الهندسة الدولية."
+      'استمارة التقديم\\nاسم العائلة: [اسم العائلة]\\nالأسماء: [الأسماء]\\nتاريخ الميلاد: [تاريخ الميلاد]\\nالعنوان: [العنوان]\\nرقم الهاتف: [رقم الهاتف]\\nالبريد الإلكتروني: [البريد الإلكتروني]\\nلماذا أنت مهتم بمدرستنا؟\\nأود الالتحاق ببرنامج صيفي لتحسين لغتي الإنجليزية. أنا مهتم بمدرستكم لأنها تضم مرافق ممتازة ومدرسين ذوي خبرة عالية. جميع المواد لديكم تُدرّس باللغة الإنجليزية، وهذا مهم جداً لتحسين لغتي الإنجليزية.'
     ],
     keywords: [
-      { word: "Surname", meaning: "لقب العائلة" },
-      { word: "DOB", meaning: "تاريخ الميلاد" },
-      { word: "self-access centre", meaning: "مركز التعلم الذاتي" },
-      { word: "cultural excursions", meaning: "رحلات وجولات ثقافية" }
+      { word: 'Surname', meaning: 'اسم العائلة' },
+      { word: 'Forenames', meaning: 'الأسماء الشخصية' },
+      { word: 'Date of birth', meaning: 'تاريخ الميلاد' },
+      { word: 'facilities', meaning: 'مرافق وتجهيزات' },
+      { word: 'experienced', meaning: 'ذوو خبرة' }
     ],
     goldenTips: [
-      "اكتب استمارة المعلومات بدقة مع تعبئة الحقول الشخصية الأساسية.",
-      "اذكر هدفك الدراسي كتعلم المحادثة واستخدام مركز التعلم الذاتي."
+      'املأ حقول الاستمارة بالبيانات الصحيحة لصاحب الطلب.',
+      'استخدم حقولاً عامة في النماذج الرقمية ولا تنشر بيانات شخصية حقيقية.',
+      'اذكر سبب الاهتمام بالمدرسة واربطه بتحسين اللغة والمرافق وخبرة المدرسين.'
     ],
     clozeSentences: [
-      {
-        textWithBlanks: "I am eager to join a summer ______ programme to improve my English.",
-        missingWord: "language",
-        options: ["language", "cooking", "driving", "swimming"]
-      }
+      { textWithBlanks: 'I would like to go on a summer program to improve my ______.', missingWord: 'English', options: ['English', 'history', 'physics', 'geography'] }
     ]
   },
   {
-    id: "4th-essay-u2-package-holiday",
+    id: '4th-essay-u2-accident',
     unitId: 42,
-    titleAr: "إنشاء الوحدة الثانية: رحلة سياحية جماعية شاملة إلى أربيل وشمال العراق",
-    titleEn: "A Package Holiday Experience in Erbil and Northern Iraq",
-    ministerialWeight: "20 درجة منهجية - الملزمة ص 173",
+    titleAr: 'إنشاء الوحدة الثانية: حادث في المدرسة',
+    titleEn: 'An Accident',
+    ministerialWeight: 'موضع المصدر: الملزمة ص 172',
     paragraphsEn: [
-      "Dear Alex,\nLast month, I went with my family on an amazing package holiday to Erbil in the north of Iraq. The entire trip cost $200 per person and included travel fare, guided tours, and full accommodation.",
-      "We stayed in a clean, modern five-star hotel near the city centre, which featured a wonderful restaurant and two swimming pools. According to our tour programme, we visited the ancient Citadel of Erbil, local bazaars, and beautiful mountain waterfalls at Gali Ali Bag. In the evening, we enjoyed a delicious supper of traditional Iraqi kebabs in a luxurious restaurant. It was a truly fantastic holiday! Tell me your news soon.\nBest wishes,\nAmmar"
+      'One day, my school organized a celebration on Mother’s Day. I was very happy, and I had a role in a play. I was a grandmother with grey hair.',
+      'The play was fantastic, everybody was happy and they clapped a lot. But just before we left the stage, my friend Sarah pushed me on the stairs. I fell down and hurt my leg.',
+      'I couldn’t walk. Then my English teacher brought a big board and they put me on it. Then they carried me to hospital. Finally, we arrived at hospital. First, the doctor said that I must have an x-ray. Later a nurse came and told me that there was nothing serious and I could leave the hospital.'
     ],
     paragraphsAr: [
-      "عزيزي أليكس،\nفي الشهر الماضي، ذهبت مع عائلتي في رحلة سياحية جماعية شاملة ومذهلة إلى أربيل في شمال العراق. بلغت تكلفة الرحلة الكلية 200 دولار للشخص الواحد وشملت أجور التنقل والجولات الإرشادية والسكن الكامل.",
-      "أقمنا في فندق حديث ونظيف من فئة الخمس نجوم بالقرب من مركز المدينة، يضم مطعماً رائعاً وحوضي سباحة. ووفقاً لبرنامج الرحلة، زرنا قلعة أربيل الأثرية، والأسواق الشعبية، وشلالات كلي علي بك الجبلية الساحرة. وفي المساء، استمتعنا بعشاء شهي من الكباب العراقي التراثي في مطعم فاخر. لقد كانت عطلة رائعة بحق! أطلعني على أخبارك قريباً.\nأطيب التمنيات،\nعمار"
+      'في أحد الأيام، نظمت مدرستي احتفالاً بعيد الأم. كنت سعيداً جداً، وكان لي دور في مسرحية. كنت أؤدي دور جدة ذات شعر رمادي.',
+      'كانت المسرحية رائعة، وكان الجميع سعداء وصفقوا كثيراً. لكن قبل أن نغادر المنصة بقليل، دفعتني صديقتي سارة على الدرج. فسقطت وأصبت ساقي.',
+      'لم أستطع المشي. ثم أحضر مدرس اللغة الإنجليزية لوحاً كبيراً ووضعوني عليه. بعد ذلك حملوني إلى المستشفى. وأخيراً وصلنا إلى المستشفى. قال الطبيب أولاً إن عليّ إجراء أشعة سينية. وبعد ذلك جاءت ممرضة وأخبرتني أنه لا يوجد شيء خطير وأنني أستطيع مغادرة المستشفى.'
     ],
     keywords: [
-      { word: "package holiday", meaning: "رحلة سياحية شاملة" },
-      { word: "Citadel of Erbil", meaning: "قلعة أربيل الأثرية" },
-      { word: "accommodation", meaning: "سكن وإقامة" },
-      { word: "guided tour", meaning: "جولة سياحية بإرشاد" }
+      { word: 'celebration', meaning: 'احتفال' },
+      { word: 'play', meaning: 'مسرحية' },
+      { word: 'stage', meaning: 'منصة المسرح' },
+      { word: 'hurt', meaning: 'أصاب / جرح' },
+      { word: 'x-ray', meaning: 'أشعة سينية' }
     ],
     goldenTips: [
-      "اذكر مكان الرحلة (Erbil) وتكلفتها الإجمالية (Package deal).",
-      "عدد المعالم المزورة مثل قلعة أربيل والشلالات والمطاعم التراثية."
+      'رتب أحداث الحادث بالتسلسل الزمني.',
+      'استخدم الماضي البسيط للسرد، وروابط مثل Then وFinally.',
+      'اذكر الحادث والإصابة والإجراء الطبي والنتيجة.'
     ],
     clozeSentences: [
-      {
-        textWithBlanks: "A ______ holiday includes travel, hotel, and tours in one price.",
-        missingWord: "package",
-        options: ["package", "cheap", "lonely", "short"]
-      }
+      { textWithBlanks: 'I fell down and ______ my leg.', missingWord: 'hurt', options: ['hurt', 'built', 'bought', 'lent'] }
     ]
   },
   {
-    id: "4th-essay-u3-unicef",
+    id: '4th-essay-u3-erbil-email',
     unitId: 43,
-    titleAr: "إنشاء الوحدة الثالثة: دور منظمة اليونيسيف في مساعدة الأطفال",
-    titleEn: "UNICEF's Humanitarian Role in Helping Disadvantaged Children",
-    ministerialWeight: "20 درجة منهجية - الملزمة ص 174",
+    titleAr: 'إنشاء الوحدة الثالثة: رسالة من أربيل',
+    titleEn: 'Hello from Erbil',
+    ministerialWeight: 'موضع المصدر: الملزمة ص 173',
     paragraphsEn: [
-      "UNICEF, which stands for the United Nations International Children's Emergency Fund, is one of the most vital international humanitarian organizations in the world. Established in 1946, UNICEF works tirelessly across more than 190 countries to defend children's rights to survival, health, and education.",
-      "The organization provides free vaccines against deadly diseases, builds clean water sanitation facilities, and supplies textbooks and nutritional aid to children living in poverty or war-torn regions. Furthermore, UNICEF fights to abolish child labour and ensure that every child attends school. Supporting UNICEF is an essential moral duty for a peaceful global future."
+      'From: Ammar\\nTo: Farah\\nSubject: Hello from Erbil\\n\\nHi Farah,\\nHow are you?\\nLast month I went with my family on a holiday to the north of Iraq. It was a package deal and cost us $200 each.\\nWe stayed in a five-star hotel in Erbil. It has big rooms, a wonderful restaurant and two swimming pools. It was clean and tidy. According to the program of the holiday, they took us to several places including the malls, mosques, museums and a free tour. In the evening, we visited the castle of Erbil and had supper in a luxurious restaurant.\\nThe best thing about the holiday was that we visited a variety of places, old and modern. The weather was wonderful and the holiday was really fantastic.\\nWhat about you? Tell me your news.\\nBest wishes\\nAmmar'
     ],
     paragraphsAr: [
-      "تعد منظمة اليونيسيف (صندوق الأمم المتحدة الدولي لشرطة الطوارئ للأطفال) واحدة من أهم المنظمات الإنسانية الدولية في العالم. تأسست عام 1946 وتعمل بلا كلل في أكثر من 190 دولة لدعم حقوق الأطفال في الحياة والصحة والتعليم.",
-      "تقدم المنظمة اللقاحات المجانية ضد الأمراض الفتاكة، وتبني محطات المياه النظيفة، وتوفر الكتب المدرسية والمساعدات الغذائية للأطفال الفقراء أو المتأثرين بالنزاعات المسلحة. علاوة على ذلك، تحارب اليونيسيف عمالة الأطفال لضمان التحاق كل طفل بالمدرسة. إن دعم اليونيسيف واجب أخلاقي لإرساء المستقبل."
+      'من: عمار\\nإلى: فرح\\nالموضوع: تحياتي من أربيل\\n\\nمرحباً فرح،\\nكيف حالك؟\\nفي الشهر الماضي ذهبت مع عائلتي في عطلة إلى شمال العراق. كانت رحلة ضمن عرض سياحي متكامل وكلفت 200 دولار لكل شخص.\\nأقمنا في فندق خمس نجوم في أربيل. يحتوي على غرف كبيرة ومطعم رائع ومسبحيْن. كان نظيفاً ومرتباً. ووفقاً لبرنامج العطلة، أخذونا إلى أماكن عدة، منها المراكز التجارية والمساجد والمتاحف وجولة مجانية. وفي المساء زرنا قلعة أربيل وتناولنا العشاء في مطعم فاخر.\\nأفضل ما في العطلة أننا زرنا أماكن متنوعة، قديمة وحديثة. كان الطقس رائعاً وكانت العطلة ممتعة حقاً.\\nوماذا عنك؟ أخبريني بأخبارك.\\nأطيب التحيات،\\nعمار'
     ],
     keywords: [
-      { word: "UNICEF", meaning: "منظمة اليونيسيف" },
-      { word: "humanitarian", meaning: "إنساني" },
-      { word: "vaccines", meaning: "لقاحات وتطعيمات" },
-      { word: "child labour", meaning: "عمالة الأطفال" }
+      { word: 'package deal', meaning: 'عرض سياحي متكامل' },
+      { word: 'five-star hotel', meaning: 'فندق خمس نجوم' },
+      { word: 'castle', meaning: 'قلعة' },
+      { word: 'luxurious', meaning: 'فاخر' },
+      { word: 'variety', meaning: 'تنوع' }
     ],
     goldenTips: [
-      "اذكر الاختصار المكتمل لاسم المنظمة وسنة تأسيسها (1946).",
-      "أبرز دور المنظمة في توفير المياه واللقاحات ومحاربة عمالة الأطفال."
+      'حافظ على عناصر البريد الإلكتروني: From وTo وSubject والتحية والخاتمة.',
+      'استخدم الماضي البسيط لوصف الرحلة والأماكن التي زرتها.',
+      'اذكر مكان الإقامة والأنشطة وأفضل ما في الرحلة.'
     ],
     clozeSentences: [
-      {
-        textWithBlanks: "UNICEF was created in 1946 to help ______ affected by war.",
-        missingWord: "children",
-        options: ["children", "soldiers", "pilots", "drivers"]
-      }
+      { textWithBlanks: 'In the evening, we visited the castle of ______.', missingWord: 'Erbil', options: ['Erbil', 'Basra', 'Mosul', 'Amara'] }
     ]
   },
   {
-    id: "4th-essay-u4-wedding-customs",
+    id: '4th-essay-u4-wedding-customs',
     unitId: 44,
-    titleAr: "إنشاء الوحدة الرابعة: عادات وتقاليد الزفاف والأعراس في العراق",
-    titleEn: "Traditional Wedding Customs and Celebrations in Iraq",
-    ministerialWeight: "20 درجة منهجية - الملزمة ص 176",
+    titleAr: 'إنشاء الوحدة الرابعة: عادات الزواج في العراق',
+    titleEn: 'Wedding Customs in Iraq',
+    ministerialWeight: 'موضع المصدر: الملزمة ص 174',
     paragraphsEn: [
-      "Wedding customs differ from one culture to another, but in Iraq, marriage celebrations are steeped in deep joy and generous family hospitality. Weddings usually take place on Thursday. A day before the main celebration, female relatives and friends gather at the bride's house to decorate her hands and feet with intricate henna designs.",
-      "On the wedding day, the groom wears a formal suit, while the bride wears an elegant white dress symbolizing purity and innocence. The groom's family hosts a grand celebration for friends and relatives where traditional Iraqi food and sweets are served. Guests bring thoughtful presents and offer heartfelt congratulations to the new couple, wishing them a lifetime of happiness."
+      'Wedding customs differ from country to country. In Iraq, a person usually gets married on Thursday. A day before the wedding, the bride’s hands and feet are decorated with henna. On the wedding day, the groom usually wears a suit, and the bride wears a white dress which symbolizes purity. The groom’s family invites friends and relatives to the wedding party. Sometimes food is served on the wedding day, but some families serve it a day before the wedding. Friends and relatives visit the bride and the groom and give them presents.'
     ],
     paragraphsAr: [
-      "تختلف عادات الزفاف من ثقافة لأخرى، ولكن في العراق، تتسم حفلات الزواج ببهجة عارمة وكرم عائلي أصيل. وتجري الأعراس عادة يوم الخميس. وقبل يوم من الاحتفال الرئيسي، تجتمع القريبات والصديقات في منزل العروس لتزيين يديها وقدميها بنقوش الحناء البديعة.",
-      "وفي يوم الزفاف، يرتدي العريس بدلة رسمية، بينما ترتدي العروس فستاناً أبيض أنيقاً يرمز للنقاء والبراءة. وتقيم عائلة العريس حتلاً كبيراً تدعو إليه الأقارب والأصدقاء حيث تُقدم الوجبات والحلويات العراقية التراثية. ويحمل الضيوف الهدايا القيمة ويقدمون أحر التهاني للعروسين متمنين لهما حياة ملؤها السعادة."
+      'تختلف عادات الزواج من بلد إلى آخر. في العراق، يتزوج الشخص عادة يوم الخميس. وقبل يوم من الزفاف، تُزيّن يدا العروس وقدماها بالحناء. وفي يوم الزفاف، يرتدي العريس عادة بدلة، وترتدي العروس فستاناً أبيض يرمز إلى النقاء. تدعو عائلة العريس الأصدقاء والأقارب إلى حفلة الزفاف. وأحياناً يقدم الطعام في يوم الزفاف، لكن بعض العائلات تقدمه في اليوم الذي يسبقه. ويزور الأصدقاء والأقارب العروس والعريس ويقدمون لهما الهدايا.'
     ],
     keywords: [
-      { word: "henna night", meaning: "ليلة الحناء" },
-      { word: "groom & bride", meaning: "العريس والعروس" },
-      { word: "purity", meaning: "نقاء وبراءة" },
-      { word: "hospitality", meaning: "كرم الضيافة" }
+      { word: 'bride', meaning: 'عروس' },
+      { word: 'groom', meaning: 'عريس' },
+      { word: 'henna', meaning: 'حناء' },
+      { word: 'purity', meaning: 'نقاء' },
+      { word: 'relatives', meaning: 'أقارب' }
     ],
     goldenTips: [
-      "اذكر اليوم المفضل للزفاف بالعراق (Thursday) ومراسم ليلة الحناء.",
-      "أوضح رمزية الفستان الأبيض (purity) ودور العائلة في تقديم الطعام والمأدبة."
+      'استخدم المضارع البسيط لوصف العادات المتكررة.',
+      'اذكر يوم الزواج والحناء وملابس العروسين ودعوة الأقارب والطعام والهدايا.',
+      'لا تضف طقوساً غير مذكورة في نص الملزمة.'
     ],
     clozeSentences: [
-      {
-        textWithBlanks: "In Iraq, the bride's white dress symbolizes ______ and innocence.",
-        missingWord: "purity",
-        options: ["purity", "wealth", "speed", "anger"]
-      }
+      { textWithBlanks: 'The bride’s hands and feet are decorated with ______.', missingWord: 'henna', options: ['henna', 'silver', 'paper', 'wool'] }
     ]
   },
   {
-    id: "4th-essay-u5-eating-habits",
+    id: '4th-essay-u5-eating-habits',
     unitId: 45,
-    titleAr: "إنشاء الوحدة الخامسة: عاداتي ونظامي الغذائي المفضل",
-    titleEn: "My Daily Eating Habits and Personal Dietary Preferences",
-    ministerialWeight: "20 درجة منهجية - الملزمة ص 177",
+    titleAr: 'إنشاء الوحدة الخامسة: عاداتي الغذائية',
+    titleEn: 'My Eating Habits',
+    ministerialWeight: 'موضع المصدر: الملزمة ص 175',
+    wordCountMin: 90,
+    wordCountMax: 100,
     paragraphsEn: [
-      "I generally prefer balanced meals containing a variety of food groups because a nutritious diet is vital for maintaining physical growth and mental energy. Our bodies require proteins, wholesome carbohydrates, vitamins, and minerals to stay healthy.",
-      "For instance, my daily breakfast consists of fresh milk, eggs, cheese, and whole-wheat bread, accompanied by fresh orange juice. For lunch, I usually enjoy Iraqi rice and okra broth with grilled meat or chicken, followed by seasonal fresh fruits. For dinner, I prefer lighter choices like grilled fish or a warm bowl of soup. I also make sure to drink plenty of water throughout the day."
+      'I usually prefer meals with a lot of food groups, because these meals would be healthy. Our bodies need different things to grow and be healthy. For example, my breakfast always contains milk, eggs, cheese and bread, but I sometimes have orange juice instead of milk.',
+      'For lunch I always have rice and broth with meat, fish, or chicken. I also have some fruit after lunch.',
+      'For dinner I prefer light meals like grilled chicken, but sometimes I prefer a cup of hot milk.'
     ],
     paragraphsAr: [
-      "أفضل بوجه عام الوجبات المتوازنة التي تحتوي على تنوع من المجموعات الغذائية، لأن النظام الغذائي المغذي مصيري للحفاظ على النمو البدني والنشاط الذهني. فأنشطة أجسادنا تتطلب البروتينات والنشويات الصحية والفيتامينات والمعادن للبقاء بصحة جيدة.",
-      "على سبيل المثال، يتكون فطوري اليومي من الحليب الطازج والبيض والجبن وخبز القمح الكامل مصحوباً بعصير البرتقال. وفي الغداء، أتناول عادة الأرز العراقي ومرق البامية مع اللحم أو الدجاج المشوي، تتبعها فواكه طازجة. أما العشاء، فأفضل الخيارات الخفيفة ك السمك المشوي أو حساء دافئ، كما أحرص على شرب وفرة من الماء طوال اليوم."
+      'أفضل عادةً الوجبات التي تحتوي على مجموعات غذائية كثيرة، لأن هذه الوجبات تكون صحية. تحتاج أجسامنا إلى أشياء مختلفة لكي تنمو وتبقى بصحة جيدة. فعلى سبيل المثال، يتضمن فطوري دائماً الحليب والبيض والجبن والخبز، لكنني أتناول أحياناً عصير البرتقال بدلاً من الحليب.',
+      'أما الغداء، فأتناول دائماً الأرز والمرق مع اللحم أو السمك أو الدجاج. كما أتناول بعض الفاكهة بعد الغداء.',
+      'وبالنسبة إلى العشاء، أفضل الوجبات الخفيفة مثل الدجاج المشوي، لكنني أفضل أحياناً كوباً من الحليب الساخن.'
     ],
     keywords: [
-      { word: "balanced meals", meaning: "وجبات متوازنة" },
-      { word: "food groups", meaning: "مجموعات غذائية" },
-      { word: "carbohydrates", meaning: "كربوهيدرات ونشويات" },
-      { word: "vitamins", meaning: "فيتامينات" }
+      { word: 'food groups', meaning: 'مجموعات غذائية' },
+      { word: 'broth', meaning: 'مرق' },
+      { word: 'grilled', meaning: 'مشوي' },
+      { word: 'light meals', meaning: 'وجبات خفيفة' }
     ],
     goldenTips: [
-      "اذكر مكونات الوجبات الثلاث الأساسية (Breakfast, Lunch, Dinner).",
-      "أكد على التنوع بين البروتين والفواكه وشرب الماء."
+      'تحدد الملزمة لهذا الموضوع فقرة من 90 إلى 100 كلمة.',
+      'رتب الأفكار بحسب الوجبات: breakfast ثم lunch ثم dinner.',
+      'التزم بالأطعمة والأمثلة الموجودة في نص المصدر عند دراسة النموذج.'
     ],
     clozeSentences: [
-      {
-        textWithBlanks: "A healthy diet should contain items from all main food ______.",
-        missingWord: "groups",
-        options: ["groups", "boxes", "streets", "cars"]
-      }
+      { textWithBlanks: 'For dinner I prefer light meals like grilled ______.', missingWord: 'chicken', options: ['chicken', 'bread', 'rice', 'cheese'] }
     ]
   },
   {
-    id: "4th-essay-u6-family-future",
+    id: '4th-essay-u6-family-future',
     unitId: 46,
-    titleAr: "إنشاء الوحدة السادسة: مستقبل عائلتي والخطط القادمة",
-    titleEn: "My Family's Future Plans and Aspirations",
-    ministerialWeight: "20 درجة منهجية - الملزمة ص 178",
+    titleAr: 'إنشاء الوحدة السادسة: مستقبل عائلتي',
+    titleEn: 'My Family’s Future',
+    ministerialWeight: 'موضع المصدر: الملزمة ص 176',
+    wordCountMin: 70,
+    wordCountMax: 90,
     paragraphsEn: [
-      "In the coming years, many positive changes will take place in my family's life. My elder brother, Ali, will travel to Italy to complete his master's degree in architectural engineering. My younger brother, Hamad, will become a university student studying law because he dreams of becoming a successful lawyer.",
-      "As for my sister, Zahraa, she will graduate from medical college after two years and begin her clinical residency as a pediatrician. Meanwhile, my parents will retire from their government jobs to enjoy a peaceful life. I am confident that our family will enjoy a bright and prosperous future together."
+      'In the future, everything will change, including my family. I have two brothers and one sister. My older brother Ali will travel to Italy to study for a higher degree there. My little brother Hamad will be a university student. He will study law because he wants to be a lawyer. As for my sister, Zahraa, she will become a doctor after finishing her last two years of college. Both my parents will be retired from their current jobs. I think my family will have a happy and peaceful life in the future.'
     ],
     paragraphsAr: [
-      "في السنوات القادمة، ستحدث تغييرات إيجابية كثيرة في حياة عائلتي. شقيقي الأكبر، علي، سيسافر إلى إيطاليا لإكمال دراسة الماجستير في الهندسة المعمارية. وشقيقي الأصغر، حمد، سيلتحق بالجامعة لدراسة القانون لأنه يحلم بأن يصبح محامياً ناجحاً.",
-      "أما شقيقتي زهراء، فستتخرج من كلية الطب بعد سنتين وتبدأ تدريبها الطبي كطبيبة أطفال. وفي هذه الأثناء، سيتقاعد والداي من وظائفهما الحكومية ليستمتعا بحياة هادئة. وأنا واثق من أن عائلتنا ستنعم بمستقبل مشرق وسعيد معاً."
+      'في المستقبل، سيتغير كل شيء، بما في ذلك عائلتي. لدي أخوان وأخت واحدة. سيسافر أخي الأكبر علي إلى إيطاليا للدراسة والحصول على شهادة أعلى هناك. وسيكون أخي الصغير حمد طالباً جامعياً، وسيدرس القانون لأنه يريد أن يصبح محامياً. أما أختي زهراء فستصبح طبيبة بعد إنهاء السنتين الأخيرتين من دراستها الجامعية. وسيتقاعد والداي من وظيفتيهما الحاليتين. أعتقد أن عائلتي ستعيش حياة سعيدة وهادئة في المستقبل.'
     ],
     keywords: [
-      { word: "aspirations", meaning: "طموحات وآمال" },
-      { word: "architectural engineering", meaning: "هندسة معمارية" },
-      { word: "pediatrician", meaning: "طبيبة أطفال" },
-      { word: "retire", meaning: "يتقاعد عن العمل" }
+      { word: 'higher degree', meaning: 'شهادة دراسية أعلى' },
+      { word: 'law', meaning: 'القانون' },
+      { word: 'lawyer', meaning: 'محامٍ' },
+      { word: 'retired', meaning: 'متقاعد' },
+      { word: 'peaceful', meaning: 'هادئ' }
     ],
     goldenTips: [
-      "استخدم زمن المستقبل البسيط (will + مصدر) للحديث عن خطط المستقبل.",
-      "اذكر طموحات الأخوة والوالدين بأسلوب متسلسل."
+      'تحدد الملزمة لهذا الموضوع فقرة من 70 إلى 90 كلمة.',
+      'استخدم will + المصدر للحديث عن الأحداث المحتملة في المستقبل.',
+      'حافظ على تفاصيل أفراد الأسرة كما وردت في النموذج ولا تضف تخصصات أو تفاصيل أخرى.'
     ],
     clozeSentences: [
-      {
-        textWithBlanks: "My sister will become a doctor after graduating from ______ college.",
-        missingWord: "medical",
-        options: ["medical", "art", "music", "sport"]
-      }
+      { textWithBlanks: 'He will study law because he wants to be a ______.', missingWord: 'lawyer', options: ['lawyer', 'doctor', 'pilot', 'farmer'] }
     ]
   },
   {
-    id: "4th-essay-u7-tomorrow-plans",
+    id: '4th-essay-u7-tomorrow-plans',
     unitId: 47,
-    titleAr: "إنشاء الوحدة السابعة: رسالة بريد إلكتروني لصديق عن خطط الغد",
-    titleEn: "An Email to a Friend About Tomorrow's Plans and Possibilities",
-    ministerialWeight: "20 درجة منهجية - الملزمة ص 179",
+    titleAr: 'إنشاء الوحدة السابعة: رسالة إلى صديق عن خطط الغد',
+    titleEn: 'An Email to a Friend About Tomorrow',
+    ministerialWeight: 'موضع المصدر: الملزمة ص 177',
     paragraphsEn: [
-      "Hi Ali,\nHow are you doing? Thanks for your last email. If there is no heavy housework tomorrow morning, I may go to the computer store to buy a new laptop and a digital camera for my school projects.",
-      "In the afternoon, I might visit my uncle Sam in hospital because he had a minor knee operation yesterday; my brother Osama might come along too. In the evening, the weather will be very pleasant. Why don't you come over to our house? We can play video games or football in the garden. Let me know if you can make it.\nOmar"
+      'Hi Ali,\\nHow are you?\\nThanks for the email. If there is no housework, I may go to the computer store. I need to buy a new laptop and a camera. In the afternoon, I might visit my uncle, Sam, in hospital. He had an operation yesterday. My brother Osama might go, too.\\nI think the weather will be nice in the evening. Why don’t you come to our house? We can play some video games or football in the garden. Let me know.\\nOmar'
     ],
     paragraphsAr: [
-      "أهلاً علي،\nكيف حالك؟ شكراً على بريدك الأخير. إذا لم تكن هناك أعمال منزلية كثيرة صباح غد، فقد أذهب إلى متجر الحواسيب لشراء حاسوب محمول جديد وكاميرا رقمية لمشاريعي المدرسية.",
-      "وفي بعد الظهيرة، قد أزور عمي سام في المستشفى لأنه أجرى عملية جراحية بسيطة في ركبته أمس، وقد يرافقني أخي أسامة أيضاً. وفي المساء، سيكون الجو لطيفاً جداً. لماذا لا تأتي إلى منزلنا؟ يمكننا لعب ألعاب الفيديو أو كرة القدم في الحديقة. أطلعني إذا كنت تستطيع القدوم.\nعمر"
+      'مرحباً علي،\\nكيف حالك؟\\nشكراً على رسالتك. إذا لم تكن هناك أعمال منزلية، فقد أذهب إلى متجر الحواسيب. أحتاج إلى شراء حاسوب محمول جديد وكاميرا. وفي فترة بعد الظهر، قد أزور عمي سام في المستشفى. لقد أجرى عملية جراحية أمس. وقد يذهب أخي أسامة أيضاً.\\nأعتقد أن الطقس سيكون جميلاً في المساء. لماذا لا تأتي إلى منزلنا؟ يمكننا لعب بعض ألعاب الفيديو أو كرة القدم في الحديقة. أخبرني.\\nعمر'
     ],
     keywords: [
-      { word: "possibilities", meaning: "احتمالات وإمكانيات" },
-      { word: "computer store", meaning: "متجر حواسيب" },
-      { word: "operation", meaning: "عملية جراحية" },
-      { word: "video games", meaning: "ألعاب الفيديو" }
+      { word: 'may', meaning: 'قد / ربما' },
+      { word: 'might', meaning: 'قد / ربما' },
+      { word: 'operation', meaning: 'عملية جراحية' },
+      { word: 'computer store', meaning: 'متجر حواسيب' },
+      { word: 'Let me know', meaning: 'أخبرني / دعني أعرف' }
     ],
     goldenTips: [
-      "حافظ على التنسيق غير الرسمي لرسائل الأصدقاء (Hi ... / Let me know).",
-      "استخدم الأفعال الناقصة الدالة على الاحتمال المنهجي (may, might, will)."
+      'ابدأ بتحية مناسبة لصديق واختم باسم المرسل.',
+      'استخدم may وmight للتعبير عن الاحتمال، وwill للتوقع.',
+      'لا تضف تفاصيل جديدة إلى نص النموذج عند حفظه بوصفه نص الملزمة.'
     ],
     clozeSentences: [
-      {
-        textWithBlanks: "If I finish my homework, I ______ visit my uncle tomorrow.",
-        missingWord: "may",
-        options: ["may", "must", "had", "did"]
-      }
+      { textWithBlanks: 'In the afternoon, I ______ visit my uncle in hospital.', missingWord: 'might', options: ['might', 'must', 'did', 'was'] }
     ]
   }
 ];

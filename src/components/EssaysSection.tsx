@@ -300,6 +300,16 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
   // Word count evaluation
   const getWordCountStatus = (count: number) => {
     if (count === 0) return { label: 'ابدأ بالكتابة', color: 'text-muted-gray', bg: 'bg-paper border border-ink/25', progress: 0 };
+
+    if (grade === 'fourth-preparatory') {
+      const min = currentEssay.wordCountMin;
+      const max = currentEssay.wordCountMax;
+      if (!min || !max) return { label: 'الملزمة لا تحدد عدداً مطلوباً من الكلمات لهذا النموذج', color: 'text-muted-gray', bg: 'bg-paper border border-ink/25', progress: 0 };
+      if (count < min) return { label: 'أقل من الحد المحدد (' + min + ' كلمة)', color: 'text-ink', bg: 'bg-yellow border border-ink', progress: Math.min(100, (count / min) * 100) };
+      if (count > max) return { label: 'تجاوز الحد المحدد (' + max + ' كلمة)', color: 'text-cobalt', bg: 'bg-blue-mist border border-ink', progress: 100 };
+      return { label: 'ضمن النطاق المحدد في الملزمة (' + min + '–' + max + ' كلمة) ✔', color: 'text-semantic-success font-black', bg: 'bg-soft-mint border border-ink', progress: 100 };
+    }
+
     if (count < 90) return { label: 'قصير جداً (أقل من الحد الأدنى 100)', color: 'text-ink', bg: 'bg-yellow border border-ink', progress: Math.min(100, (count / 100) * 80) };
     if (count >= 100 && count <= 135) return { label: 'مثالي للامتحان (100-130 كلمة) ✔', color: 'text-semantic-success font-black', bg: 'bg-soft-mint border border-ink', progress: 100 };
     return { label: 'طويل نسبياً (تجنب الإطالة الزائدة)', color: 'text-cobalt', bg: 'bg-blue-mist border border-ink', progress: 100 };
@@ -352,9 +362,9 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
             <span className="px-2.5 py-0.5 bg-cobalt text-surface border border-ink text-xs font-bold rounded-xs">
               {gradeMeta.nameAr}
             </span>
-            {gradeMeta.isMinisterial && (
+            {(gradeMeta.isMinisterial || grade === 'fourth-preparatory') && (
               <span className="px-2 py-0.5 bg-yellow text-ink border border-ink text-xs font-bold rounded-xs">
-                مرحلة وزارية
+                {grade === 'fourth-preparatory' ? 'مصدر الملزمة: 2025' : 'مرحلة وزارية'}
               </span>
             )}
           </div>
@@ -376,7 +386,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           <div className="flex flex-wrap items-center justify-between gap-3">
             <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-yellow text-ink border-2 border-ink shadow-brutal-sm text-xs font-mono font-bold rounded-xs">
               <Award className="w-4 h-4 text-cobalt" />
-              <span>السؤال الخامس: الإنشاء والتعبير (20 درجة)</span>
+              <span>{grade === 'fourth-preparatory' ? 'نماذج الكتابة الواردة في الملزمة' : 'السؤال الخامس: الإنشاء والتعبير (20 درجة)'}</span>
             </div>
 
             <div className="flex items-center gap-2">
@@ -394,13 +404,15 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
 
           <div>
             <h1 className="font-display text-2xl sm:text-4xl font-black tracking-tight text-ink flex items-center gap-3">
-              <span>{gradeMeta.isMinisterial ? `الإنشاءات الوزارية النموذجية • ${gradeMeta.nameAr}` : `الإنشاءات والتعبير المنهجي • ${gradeMeta.nameAr}`}</span>
+              <span>{grade === 'fourth-preparatory' ? `نماذج الكتابة في ملزمة ${gradeMeta.nameAr}` : gradeMeta.isMinisterial ? `الإنشاءات الوزارية النموذجية • ${gradeMeta.nameAr}` : `الإنشاءات والتعبير المنهجي • ${gradeMeta.nameAr}`}</span>
               <Sparkles className="w-6 h-6 text-cobalt inline shrink-0" />
             </h1>
             <p className="text-xs sm:text-sm text-ink/80 max-w-3xl leading-relaxed mt-2 font-medium">
-              {gradeMeta.stage === 'intermediate'
-                ? `نماذج إنشائية لمنهج (${gradeMeta.nameAr}): لغة سليمة، تراكيب مناسبة (50-70 كلمة)، مع مختبر الحفظ ومحاكي التسميع.`
-                : `إعداد نموذجي مطابق لمنهج الأستاذ مصطفى تركي: لغة رصينة، تقسيم أكاديمي (مقدمة، متن، خاتمة)، عدّاد الكلمات (100-130 كلمة)، مع مختبر الحفظ التفاعلي ومحاكي الدفتر الامتحاني.`}
+              {grade === 'fourth-preparatory'
+                ? 'نماذج الكتابة الواردة في ملزمة الرابع الإعدادي (طبعة 2025)، مع ترجمة عربية، مفردات للمراجعة، وتمارين استذكار. حدود الكلمات تظهر فقط للموضوعات التي حددتها الملزمة.'
+                : gradeMeta.stage === 'intermediate'
+                  ? `نماذج إنشائية لمنهج (${gradeMeta.nameAr}): لغة سليمة، تراكيب مناسبة (50-70 كلمة)، مع مختبر الحفظ ومحاكي التسميع.`
+                  : `إعداد نموذجي مطابق لمنهج الأستاذ مصطفى تركي: لغة رصينة، تقسيم أكاديمي (مقدمة، متن، خاتمة)، عدّاد الكلمات (100-130 كلمة)، مع مختبر الحفظ التفاعلي ومحاكي الدفتر الامتحاني.`}
             </p>
           </div>
 
@@ -596,10 +608,10 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
             {[
               { id: 'mode-dual-btn', mode: 'dual' as const, label: 'الوضع النموذجي والمتوازي', Icon: BookOpen },
               { id: 'mode-memory-btn', mode: 'memory' as const, label: 'مختبر الحفظ والتعتيم الذكي', Icon: Brain },
-              { id: 'mode-simulator-btn', mode: 'simulator' as const, label: 'محاكي الدفتر الامتحاني', Icon: PenTool },
+              { id: 'mode-simulator-btn', mode: 'simulator' as const, label: grade === 'fourth-preparatory' ? 'محاكي التدريب الكتابي' : 'محاكي الدفتر الامتحاني', Icon: PenTool },
               { id: 'mode-cloze-btn', mode: 'cloze' as const, label: 'اختبار الفراغات (Cloze)', Icon: Sparkles },
               { id: 'mode-cards-btn', mode: 'cards' as const, label: 'بطاقات المفردات (Flashcards)', Icon: Layers },
-              { id: 'mode-rubric-btn', mode: 'rubric' as const, label: 'دليل الدرجات الـ 20', Icon: ListChecks },
+              { id: 'mode-rubric-btn', mode: 'rubric' as const, label: grade === 'fourth-preparatory' ? 'قائمة مراجعة الكتابة' : 'دليل الدرجات الـ 20', Icon: ListChecks },
             ].map(({ id, mode, label, Icon }) => {
               const isActive = activeMode === mode;
               return (
@@ -762,7 +774,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
               <div className="p-6 rounded-[6px] bg-yellow/35 border-2 border-ink shadow-brutal-action space-y-3">
                 <div className="flex items-center gap-2 text-ink font-black text-sm">
                   <Lightbulb className="w-5 h-5 text-cobalt fill-yellow shrink-0" />
-                  <span>نصائح الأستاذ مصطفى تركي الذهبية لنيل 20/20 كاملة في هذا الإنشاء</span>
+                  <span>{grade === 'fourth-preparatory' ? 'نصائح للمراجعة وتذكر نص الملزمة' : 'نصائح الأستاذ مصطفى تركي الذهبية لنيل 20/20 كاملة في هذا الإنشاء'}</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {currentEssay.goldenTips.map((tip, idx) => (
@@ -882,14 +894,14 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2 text-cobalt font-black text-sm">
                     <PenTool className="w-4 h-4" />
-                    <span>محاكي الدفتر الامتحاني (Exam Booklet Simulator)</span>
+                    <span>{grade === 'fourth-preparatory' ? 'محاكي التدريب الكتابي (Writing Practice)' : 'محاكي الدفتر الامتحاني (Exam Booklet Simulator)'}</span>
                   </div>
                   <span className="text-xs bg-yellow text-ink px-2.5 py-0.5 rounded-[4px] border-2 border-ink font-black">
-                    السؤال الخامس
+                    {grade === 'fourth-preparatory' ? 'تدريب إضافي' : 'السؤال الخامس'}
                   </span>
                 </div>
                 <p className="text-xs sm:text-sm text-ink font-medium leading-relaxed">
-                  اكتب الإنشاء غيباً هنا كما لو كنت في القاعة الامتحانية. سيقوم المحاكي باحتساب الكلمات بدقة ومقارنة كتابتك مع النموذج القياسي للأستاذ مصطفى تركي!
+                  {grade === 'fourth-preparatory' ? 'اكتب إجابتك التدريبية هنا. يحسب المحاكي الكلمات ويقارن كتابتك بنموذج الكتابة الوارد في الملزمة، لأغراض المراجعة الذاتية فقط.' : 'اكتب الإنشاء غيباً هنا كما لو كنت في القاعة الامتحانية. سيقوم المحاكي باحتساب الكلمات بدقة ومقارنة كتابتك مع النموذج القياسي للأستاذ مصطفى تركي!'}
                 </p>
               </div>
 
@@ -935,8 +947,8 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
               <div className="relative rounded-[6px] border-2 border-ink bg-surface overflow-hidden shadow-brutal-action">
                 {/* Exam booklet header decoration */}
                 <div className="bg-paper border-b-2 border-ink p-3 px-4 sm:px-5 flex flex-wrap items-center justify-between gap-2 text-xs text-ink font-mono">
-                  <span className="font-bold">نموذج الدفتر الامتحاني التدريبي • العراق</span>
-                  <span className="font-black text-cobalt font-sans">Q5: Writing / الإنشاء (20 Marks)</span>
+                  <span className="font-bold">{grade === 'fourth-preparatory' ? 'نموذج كتابة تدريبي • غير رسمي' : 'نموذج الدفتر الامتحاني التدريبي • العراق'}</span>
+                  <span className="font-black text-cobalt font-sans">{grade === 'fourth-preparatory' ? 'Writing Practice / تدريب كتابي' : 'Q5: Writing / الإنشاء (20 Marks)'}</span>
                   <span className="font-bold">ورقة الإجابة</span>
                 </div>
 
@@ -1174,15 +1186,30 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
               <div className="p-6 rounded-[6px] bg-yellow text-ink space-y-3 border-2 border-ink shadow-brutal-action">
                 <div className="flex items-center gap-2 text-ink font-black text-base">
                   <Award className="w-5 h-5 text-cobalt" />
-                  <span>ميزان تصحيح الإنشاء (20 درجة كاملة)</span>
+                  <span>{grade === 'fourth-preparatory' ? 'قائمة مراجعة مهارات الكتابة' : 'ميزان تصحيح الإنشاء (20 درجة كاملة)'}</span>
                 </div>
                 <p className="text-xs sm:text-sm text-ink font-medium leading-relaxed">
-                  كيف تحصل على درجة 20/20 كاملة في سؤال الإنشاء؟ إليك توزيع الدرجات وقائمة المراجعة الذاتية لتتأكد من جودة دفترك قبل تسليم الامتحان:
+                  {grade === 'fourth-preparatory' ? 'هذه إرشادات عامة للمراجعة. الملزمة تحدد نطاق عدد الكلمات لبعض الموضوعات فقط، ولا تعرض هنا توزيع درجات رسمياً لسؤال الإنشاء.' : 'كيف تحصل على درجة 20/20 كاملة في سؤال الإنشاء؟ إليك توزيع الدرجات وقائمة المراجعة الذاتية لتتأكد من جودة دفترك قبل تسليم الامتحان:'}
                 </p>
               </div>
 
               {/* Rubric Points Cards */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {grade === 'fourth-preparatory' ? (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+                  {[
+                    ['العنوان والتنظيم', 'ضع عنواناً واضحاً ونظّم النص في فقرات مناسبة.'],
+                    ['المضمون والأفكار', 'غطِّ عناصر الموضوع الموجودة في نص الملزمة دون إضافة معلومات غير مسندة.'],
+                    ['القواعد والتراكيب', 'راجع الأزمنة وترتيب الكلمات وصيغ الأفعال.'],
+                    ['الإملاء والترقيم', 'راجع الحروف الكبيرة وعلامات الترقيم وصحة كتابة الكلمات.']
+                  ].map(([title, description]) => (
+                    <div key={title} className="p-5 rounded-[6px] bg-paper border-2 border-ink shadow-brutal-callout space-y-2">
+                      <span className="text-xs font-black text-ink">{title}</span>
+                      <p className="text-xs text-ink font-medium leading-relaxed">{description}</p>
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div className="p-5 rounded-[6px] bg-yellow border-2 border-ink shadow-brutal-callout space-y-2">
                   <div className="flex items-center justify-between gap-2">
                     <span className="text-xs font-black text-ink">العنوان والتنظيم</span>
@@ -1223,12 +1250,13 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                   </p>
                 </div>
               </div>
+              )}
 
               {/* Interactive Self-Checklist */}
               <div className="p-6 rounded-[6px] bg-paper border-2 border-ink shadow-brutal-action space-y-4">
                 <h4 className="text-sm font-black text-ink flex items-center gap-2">
                   <ListChecks className="w-4 h-4 text-cobalt" />
-                  <span>قائمة التدقيق الذاتي قبل تسليم الدفتر الامتحاني:</span>
+                  <span>{grade === 'fourth-preparatory' ? 'قائمة التدقيق الذاتي للمراجعة:' : 'قائمة التدقيق الذاتي قبل تسليم الدفتر الامتحاني:'}</span>
                 </h4>
 
                 <div className="space-y-2.5">
@@ -1236,7 +1264,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                     { id: 'title', label: 'كتبت العنوان في منتصف السطر الأول بخط واضح مع وضع خط تحته.' },
                     { id: 'paragraphs', label: 'قسمت الإنشاء إلى 3 فقرات واضحة (مقدمة، متن الموضوع، وخاتمة).' },
                     { id: 'connectors', label: 'استخدمت أدوات الربط المنطقية (First of all, Furthermore, Consequently, In conclusion).' },
-                    { id: 'wordcount', label: 'تأكدت أن حجم الإنشاء يتراوح بين 100 إلى 130 كلمة دون إطالة مفرطة.' },
+                    { id: 'wordcount', label: grade === 'fourth-preparatory' ? (currentEssay.wordCountMin && currentEssay.wordCountMax ? 'تحققت من نطاق الكلمات المحدد في الملزمة (' + currentEssay.wordCountMin + '–' + currentEssay.wordCountMax + ').' : 'تحققت من النص؛ الملزمة لا تحدد له نطاقاً لعدد الكلمات.') : 'تأكدت أن حجم الإنشاء يتراوح بين 100 إلى 130 كلمة دون إطالة مفرطة.' },
                     { id: 'tenses', label: 'راجعت الأزمنة النحوية (الماضي للسرد، والمضارع للحقائق والنصائح).' },
                     { id: 'punctuation', label: 'بدأت كل جملة بحرف كبير (Capital Letter) وانتهيت بنقطة (.) وفواصل واضحة.' },
                   ].map((item) => {

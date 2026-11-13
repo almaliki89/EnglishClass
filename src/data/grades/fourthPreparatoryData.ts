@@ -1,7 +1,7 @@
 /**
- * المرجع التعليمي الشامل والوحيد لمنهج اللغة الإنكليزية للصف الرابع الإعدادي
- * استناداً إلى ملزمة "النموذجية في اللغة الإنكليزية للصف الرابع الإعدادي" 2026
- * المرجع المعتمد: /public/assets/aistudio/______________________30f0f820.pdf (205 صفحات)
+ * Content source: "النموذجية في اللغة الإنكليزية للصف الرابع الإعدادي" (cover dated 2025).
+ * Repository source PDF: /public/assets/aistudio/______________________30f0f820.pdf (205 pages).
+ * This is a study resource aligned to the cited booklet and does not claim Ministry accreditation.
  */
 
 export { FOURTH_PREPARATORY_UNITS } from './fourth/units';
