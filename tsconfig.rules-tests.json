@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["node"],
+    "allowJs": false,
+    "noEmit": true
+  },
+  "include": ["scripts/verify_firebase_rules.ts"],
+  "exclude": []
+}
