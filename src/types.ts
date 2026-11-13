@@ -65,7 +65,7 @@ export interface MinisterialExamQuestion {
   unitId: number;
   topic: string;
   year: string;
-  session: 'دور أول' | 'دور ثاني' | 'دور ثانٍ' | 'دور ثالث' | 'تمهيدي' | 'خارج القطر';
+  session: 'دور أول' | 'دور ثاني' | 'دور ثانٍ' | 'دور ثالث' | 'تمهيدي' | 'خارج القطر' | 'تدريب';
   questionText: string;
   correctAnswer: string;
   ruleExplanation: string;
@@ -94,6 +94,8 @@ export interface LiteratureQA {
   answerAr?: string;
   year: string;
   keyHint?: string;
+  sourcePages?: string;
+  contentOrigin?: ContentOrigin;
 }
 
 export interface LiteratureVocabulary {
@@ -135,6 +137,9 @@ export interface LiteratureItem {
     speaker: string;
   }[];
   ministerialQA: LiteratureQA[];
+  sourcePages?: string;
+  contentOrigin?: ContentOrigin;
+  coverageNote?: string;
 }
 
 export interface EssayItem {
@@ -143,6 +148,10 @@ export interface EssayItem {
   titleAr: string;
   titleEn: string;
   ministerialWeight: string;
+  sourcePages?: string;
+  contentOrigin?: ContentOrigin;
+  supportMaterialOrigin?: ContentOrigin;
+  isSupplementary?: boolean;
   paragraphsEn: string[];
   paragraphsAr: string[];
   keywords: { word: string; meaning: string }[];
@@ -156,6 +165,9 @@ export interface IrregularVerb {
   pastParticiple: string;
   arabicMeaning: string;
   group: 'all-same' | 'two-same' | 'all-different';
+  sourceOrder?: number;
+  sourcePages?: string;
+  contentOrigin?: ContentOrigin;
 }
 
 export interface Badge {
