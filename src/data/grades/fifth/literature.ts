@@ -230,10 +230,10 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         id: "lw-source-ex-8",
         question: "True or False: Mother never refused Beth's requests because she usually asked for things for others; Meg and Jo helped make the slippers; Amy was going to tell Beth about the piano but Jo stopped her; Beth's sisters had read Mr Laurence's letter before she got home; Mr Laurence cared for his granddaughter's possessions.",
         questionAr: "حدد الصح والخطأ في عبارات تمرين القسم الثاني.",
-        answer: "True; True; True; True; True. The statement that Beth believed Mr Laurence had not liked her gift is False.",
+        answer: "True; True; True; True; True; True. Beth thought Mr Laurence had not liked her gift before his letter arrived.",
         answerAr: "صح؛ صح؛ صح؛ صح؛ صح. أما العبارة التي تقول إن بيث اعتقدت أن السيد لورنس لم يعجبه إهداؤها فهي خطأ.",
         year: "كتاب النشاط ص 170",
-        keyHint: "Beth's concern about the gift is not evidence that Mr Laurence disliked it"
+        keyHint: "Beth feared that Mr Laurence had not liked the slippers before she received his letter"
       },
       {
         id: "lw-source-ex-9",
