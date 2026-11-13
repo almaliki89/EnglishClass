@@ -798,6 +798,269 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
     ]
   },
   {
+    id: 104,
+    number: 4,
+    titleAr: "الوحدة الرابعة: قصة إبراهيم والحياة البرية والماضي المستمر",
+    titleEn: "Unit 4: Ibrahim's Life Story, Wildlife & Past Continuous",
+    description: "تتضمن قصة حياة إبراهيم، وقطعة النمور الفارسية المهددة بالانقراض، وقاعدة الماضي المستمر، واستخدام as / while / when / and لربط أحداث الماضي.",
+    accentColor: "bg-lavender text-ink",
+    bgGradient: "bg-blue-mist border-ink",
+    sourcePages: "الملزمة ص 85 - 90",
+    lessons: [
+      {
+        id: "3rd-u4-l1",
+        unitId: 104,
+        lessonNumber: 1,
+        titleAr: "الدرس الأول: قصة حياة إبراهيم",
+        titleEn: "Lesson 1: Ibrahim's Life Story",
+        category: "reading",
+        summary: "سيرة إبراهيم الذي اهتم بالحيوانات منذ طفولته في جنوب العراق، وانتقل إلى بغداد عام 1990، وتعلم الفرنسية، ثم درس علم الحيوان في جامعة القاهرة وعمل في فرنسا.",
+        sourcePages: "الملزمة ص 85 - 87",
+        detailedContent: [
+          "Ibrahim lived in a small village in the south of Iraq when he was a child. He loved the sea and he often went fishing with his father. From an early age, he was interested in animals. He was forever asking questions about animals, for example, 'Why do flies have wings?' and 'Why do fish live in the sea?' His father had goats and chickens and Ibrahim liked to look after them. He talked to them as if they were friends. His brothers used to laugh at him.",
+          "When he went to school, Ibrahim learned to read quickly. He liked reading and he was always asking his father for books. He did not like television, so he spent a lot of time reading. He learnt that there were lots of different animals in other countries.",
+          "In 1990, Ibrahim's father got a new job with Iraq Petroleum and the family moved to Baghdad. Life was very different in the city. At first, Ibrahim did not like it, but after a few months, he found that there was a lot to do for a 16-year-old boy.",
+          "One day, at the mall, he met a French boy called Pierre. Ibrahim learned to speak some French with him. He also learned about France. The boys used to talk about what they wanted to do when they left school. One day, Ibrahim said, 'I think I'll be a zoologist. Then I can study animals in different countries.'",
+          "When Ibrahim left school, he studied zoology at Cairo University. Now he is a well-known zoologist. He works in France and he is writing a book about animals in Africa.",
+          "Comprehension: Ibrahim's village was in the south of Iraq. He looked after his father's goats and chickens. He asked many questions because he was interested in animals. He asked his father for books because he liked reading. He moved to Baghdad because his father got a new job with Iraq Petroleum. Pierre helped him speak French and learn about France. Ibrahim wanted to be a zoologist so he could study animals in different countries. He is writing his book in France."
+        ],
+        teacherNotes: [
+          "النص الأصلي في الملزمة يذكر أن إبراهيم انتقل إلى بغداد عام 1990 وكان عمره 16 عاماً، وليس 17 عاماً.",
+          "الإجابات الأساسية: south of Iraq; goats and chickens; interested in animals; liked reading; a new job with Iraq Petroleum; French and France; study animals in different countries; in France."
+        ],
+        commonMistakes: [
+          "الخلط بين عمر إبراهيم عند انتقاله إلى بغداد: الصحيح 16 وليس 17.",
+          "الخلط بين مكان دراسته (Cairo University) ومكان عمله وكتابة كتابه (France)."
+        ],
+        examples: [
+          {
+            en: "He studied zoology at Cairo University.",
+            ar: "درس علم الحيوان في جامعة القاهرة.",
+            highlight: "zoology at Cairo University",
+            note: "مكان الدراسة"
+          },
+          {
+            en: "He works in France and is writing a book about animals in Africa.",
+            ar: "يعمل في فرنسا ويكتب كتاباً عن الحيوانات في أفريقيا.",
+            highlight: "in France",
+            note: "مكان العمل وكتابة الكتاب"
+          }
+        ],
+        exercises: [
+          {
+            id: "3u4-l1-ex1",
+            question: "How old was Ibrahim when his family moved to Baghdad?",
+            options: ["16", "17", "18", "15"],
+            correctAnswer: "16",
+            explanation: "يذكر النص أن إبراهيم وجد في المدينة أن هناك الكثير مما يمكن فعله لصبي عمره 16 عاماً.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 85 - 86",
+            contentOrigin: "teacher_explanation"
+          },
+          {
+            id: "3u4-l1-ex2",
+            question: "Where did Ibrahim study zoology?",
+            options: ["Baghdad University", "Cairo University", "Paris University", "Basra University"],
+            correctAnswer: "Cairo University",
+            explanation: "درس إبراهيم علم الحيوان في جامعة القاهرة.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 87",
+            contentOrigin: "teacher_explanation"
+          },
+          {
+            id: "3u4-l1-ex3",
+            question: "Why did Ibrahim want to be a zoologist?",
+            options: [
+              "To study animals in different countries",
+              "To work for Iraq Petroleum",
+              "To become a football player",
+              "To learn to fly"
+            ],
+            correctAnswer: "To study animals in different countries",
+            explanation: "أراد أن يصبح عالم حيوان ليتمكن من دراسة الحيوانات في بلدان مختلفة.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 86 - 87",
+            contentOrigin: "teacher_explanation"
+          }
+        ]
+      },
+      {
+        id: "3rd-u4-l2",
+        unitId: 104,
+        lessonNumber: 2,
+        titleAr: "الدرس الثاني: النمور الفارسية المهددة بالانقراض",
+        titleEn: "Lesson 2: Too Few Leopards",
+        category: "reading",
+        summary: "قطعة عن تناقص أعداد النمور الفارسية في العراق، وأسباب ذلك، وجهود الأخوين نباز وبهاز فاروق علي لحمايتها في منطقة جبل بامو.",
+        sourcePages: "الملزمة ص 88",
+        detailedContent: [
+          "There used to be many Persian Leopards living in Iraq. However, in 2022, there were only about 25 leopards left in the country. Today, conservationists are increasing efforts to protect the remaining leopards. The loss of habitat, hunting and war has caused a big decrease in leopard numbers.",
+          "The leopards are endangered, and it is against the law to hunt them. People do not hunt the leopards, but they do hunt wild goats for food. Unfortunately, this is removing the natural food of the leopards.",
+          "Two Iraqi brothers, Nabaz and Bahaz Faruq Ali, want to save the leopards. They believe that the leopards are an important part of Iraqi culture and identity. They are determined to save the leopards, and they have successfully taken photos of the leopards in the Bamo mountain area. Bamo mountain is remote, so the brothers believe it is the perfect place for the leopards to breed and increase their numbers."
+        ],
+        teacherNotes: [
+          "الأسباب التي أدت إلى انخفاض الأعداد كما وردت في الملزمة: loss of habitat, hunting and war.",
+          "يذكر النص أن عدد النمور المتبقية كان نحو 25 في عام 2022، وأن جبل بامو مكان مناسب لأنها منطقة نائية."
+        ],
+        commonMistakes: [
+          "لا تخلط بين سبب منع صيد النمور (مهددة بالانقراض وممنوع قانونياً) وبين صيد الماعز البرية الذي يقلل غذاءها الطبيعي."
+        ],
+        examples: [
+          {
+            en: "There were only about 25 leopards left in Iraq in 2022.",
+            ar: "لم يتبقَّ في العراق سوى نحو 25 نمراً في عام 2022.",
+            highlight: "about 25 leopards",
+            note: "المعلومة الرقمية في النص"
+          }
+        ],
+        exercises: [
+          {
+            id: "3u4-l2-ex1",
+            question: "What caused the big decrease in leopard numbers?",
+            options: [
+              "Loss of habitat, hunting and war",
+              "Cold weather and floods",
+              "Lack of tourists",
+              "Traffic and buildings only"
+            ],
+            correctAnswer: "Loss of habitat, hunting and war",
+            explanation: "هذه الأسباب الثلاثة مذكورة صراحة في القطعة.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 88",
+            contentOrigin: "teacher_explanation"
+          },
+          {
+            id: "3u4-l2-ex2",
+            question: "Why is Bamo Mountain a suitable place for leopards?",
+            options: ["It is remote", "It is in the city centre", "It has many factories", "It is near an airport"],
+            correctAnswer: "It is remote",
+            explanation: "يعتقد الأخوان أن جبل بامو مناسب لأنه مكان ناءٍ.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 88",
+            contentOrigin: "teacher_explanation"
+          }
+        ]
+      },
+      {
+        id: "3rd-u4-l3",
+        unitId: 104,
+        lessonNumber: 3,
+        titleAr: "الدرس الثالث: الماضي المستمر",
+        titleEn: "Lesson 3: Past Continuous",
+        category: "grammar",
+        summary: "صياغة الإثبات والنفي والسؤال بالماضي المستمر، مع قواعد إضافة ing إلى الأفعال.",
+        sourcePages: "الملزمة ص 89",
+        grammarRuleFormula: "Affirmative: Subject + was / were + V-ing\nNegative: Subject + was not (wasn't) / were not (weren't) + V-ing\nQuestion: Was / Were + subject + V-ing?\n\nI / He / She / It -> was\nWe / You / They -> were",
+        detailedContent: [
+          "نستخدم الماضي المستمر للتعبير عن فعل كان مستمراً في وقت محدد في الماضي أو كان جارياً عندما وقع حدث آخر.",
+          "الإثبات: Samer was driving at 10 p.m. / They were having lunch.",
+          "النفي: Samer wasn't driving at 10 p.m. / They weren't having lunch.",
+          "السؤال: Was Samer driving at 10 p.m.? / Were they having lunch?",
+          "قواعد إضافة -ing: make -> making (حذف e الصامتة)، agree -> agreeing و see -> seeing (الإبقاء على ee)، die -> dying و lie -> lying (تحويل ie إلى y)، sit -> sitting و stop -> stopping (مضاعفة الحرف الساكن بعد حركة قصيرة)، travel -> travelling (مضاعفة l في التهجئة البريطانية)."
+        ],
+        teacherNotes: [
+          "طابق was/were مع الفاعل أولاً، ثم أضف ing إلى الفعل الرئيسي.",
+          "التهجئة في الملزمة بريطانية: travelling بحرف l مزدوج."
+        ],
+        commonMistakes: [
+          "استخدام was مع they أو were مع he.",
+          "نسيان ing بعد was/were.",
+          "كتابة making بصيغة makeing أو sitting بصيغة siting."
+        ],
+        examples: [
+          {
+            en: "The children were playing football.",
+            ar: "كان الأطفال يلعبون كرة القدم.",
+            highlight: "were playing",
+            note: "جمع يأخذ were"
+          }
+        ],
+        exercises: [
+          {
+            id: "3u4-l3-ex1",
+            question: "Many people ______ when the Minister arrived at 10 a.m. (wait)",
+            options: ["were waiting", "was waiting", "waited", "are waiting"],
+            correctAnswer: "were waiting",
+            explanation: "الفعل المستمر كان جارياً عند وصول الوزير؛ والفاعل many people جمع.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 90",
+            contentOrigin: "teacher_explanation"
+          },
+          {
+            id: "3u4-l3-ex2",
+            question: "Correct the verb: The president (read) his emails when he got the invitation.",
+            options: ["was reading", "were reading", "readed", "is reading"],
+            correctAnswer: "was reading",
+            explanation: "حدث قراءة الرسائل كان مستمراً حين وقع حدث وصول الدعوة.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 90",
+            contentOrigin: "teacher_explanation"
+          }
+        ]
+      },
+      {
+        id: "3rd-u4-l4",
+        unitId: 104,
+        lessonNumber: 4,
+        titleAr: "الدرس الرابع: الربط بين الماضي البسيط والماضي المستمر",
+        titleEn: "Lesson 4: As, While, When & And",
+        category: "grammar",
+        summary: "استخدام as و while مع الماضي المستمر والماضي البسيط، واستخدام when و and لربط فعل مستمر بحدث ماضٍ قصير.",
+        sourcePages: "الملزمة ص 90",
+        grammarRuleFormula: "Past Simple + as / while + Past Continuous\nPast Continuous + when / and + Past Simple",
+        detailedContent: [
+          "تستخدم as / while لربط حدث قصير بالماضي البسيط مع حدث أطول بالماضي المستمر: My dad knocked at the door while I was sleeping.",
+          "يمكن تقديم جملة while أو as: While I was sleeping, my dad knocked at the door.",
+          "تستخدم when / and مع الماضي المستمر ثم الحدث القصير بالماضي البسيط: She was singing when the bell rang.",
+          "مثال إضافي من الملزمة: I saw my teacher as I was driving my car."
+        ],
+        teacherNotes: [
+          "عند وصف حدث كان مستمراً ثم قطعه حدث قصير، يكون الحدث الطويل Past Continuous والقصير Past Simple.",
+          "يمكن وضع جملة as/while في بداية الجملة أو في وسطها مع الحفاظ على المعنى."
+        ],
+        commonMistakes: [
+          "استخدام الماضي البسيط للحدث الطويل المستمر دون قرينة.",
+          "إضافة will بعد when في هذا التركيب الماضي."
+        ],
+        examples: [
+          {
+            en: "She was singing when the bell rang.",
+            ar: "كانت تغني عندما دق الجرس.",
+            highlight: "was singing / rang",
+            note: "مستمر + حدث قصير"
+          }
+        ],
+        exercises: [
+          {
+            id: "3u4-l4-ex1",
+            question: "People ______ at the arts team. (shout - make negative)",
+            options: ["weren't shouting", "wasn't shouting", "didn't shouting", "not shouted"],
+            correctAnswer: "weren't shouting",
+            explanation: "الماضي المستمر المنفي مع الفاعل الجمع People هو weren't + V-ing.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 90",
+            contentOrigin: "teacher_explanation"
+          },
+          {
+            id: "3u4-l4-ex2",
+            question: "The arts team were performing very well. (Make a question)",
+            options: [
+              "Were the arts team performing very well?",
+              "Was the arts team perform very well?",
+              "Did the arts team performing very well?",
+              "Are the arts team performed very well?"
+            ],
+            correctAnswer: "Were the arts team performing very well?",
+            explanation: "في سؤال الماضي المستمر نقدّم were على الفاعل ثم نُبقي الفعل بصيغة ing.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 90",
+            contentOrigin: "teacher_explanation"
+          }
+        ]
+      }
+    ]
+  },
+  {
     id: 105,
     number: 5,
     titleAr: "الوحدة الخامسة: الإعلام وأخبار الصباح والماضي والمستقبل",
