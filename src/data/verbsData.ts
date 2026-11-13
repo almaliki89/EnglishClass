@@ -1,6 +1,6 @@
 import { IrregularVerb } from '../types';
 
-export const IRREGULAR_VERBS: IrregularVerb[] = [
+// Source appendix: 97 numbered rows. The booklet repeats 'lose' at rows 17 and 86; the app keeps one unique entry (96 verbs).\nexport const IRREGULAR_VERBS: IrregularVerb[] = [
   // Group 1: All 3 same
   { base: "cost", past: "cost", pastParticiple: "cost", arabicMeaning: "يكلف / يقدر بثمن", group: "all-same" },
   { base: "cut", past: "cut", pastParticiple: "cut", arabicMeaning: "يقطع / يقص", group: "all-same" },
