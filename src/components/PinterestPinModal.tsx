@@ -77,38 +77,39 @@ export const PinterestPinModal: React.FC<PinterestPinModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-950/80 backdrop-blur-md overflow-y-auto animate-fade-in">
-      <div className="relative w-full max-w-4xl bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 overflow-hidden flex flex-col max-h-[92vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-ink/75 overflow-y-auto animate-fade-in">
+      <div className="relative w-full max-w-4xl bg-surface rounded-md shadow-brutal-modal border-2 border-ink overflow-hidden flex flex-col max-h-[92vh] text-ink">
         
         {/* Top Header Bar */}
-        <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100 dark:border-slate-800 bg-white/80 dark:bg-slate-900/80 backdrop-blur sticky top-0 z-20">
-          <div className="flex items-center gap-3">
+        <div className="flex flex-wrap items-center justify-between gap-3 px-4 sm:px-5 py-3.5 border-b-2 border-ink bg-paper sticky top-0 z-20">
+          <div className="flex items-center gap-3 min-w-0 flex-1">
             <button
               type="button"
               onClick={onClose}
-              className="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 transition-all cursor-pointer"
+              aria-label="إغلاق"
+              className="p-2 rounded bg-surface hover:bg-coral border-2 border-ink shadow-brutal-press text-ink transition-all cursor-pointer shrink-0"
               title="إغلاق"
             >
-              <X className="w-5 h-5" />
+              <X className="w-4 h-4" />
             </button>
-            <div>
-              <span className="text-xs font-bold text-indigo-600 dark:text-indigo-400 bg-indigo-50 dark:bg-indigo-950/50 px-2.5 py-1 rounded-full">
+            <div className="min-w-0">
+              <span className="inline-block text-[11px] font-bold text-ink bg-yellow border border-ink px-2 py-0.5 rounded-sm">
                 {pin.unitTitle}
               </span>
-              <h2 className="text-sm font-black text-slate-900 dark:text-white mt-0.5 truncate max-w-xs sm:max-w-md">
+              <h2 className="text-sm font-black text-ink mt-1 truncate max-w-xs sm:max-w-md">
                 {pin.title}
               </h2>
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 shrink-0">
             <button
               type="button"
               onClick={handleLike}
-              className={`flex items-center gap-1.5 px-3.5 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded text-xs font-bold border-2 border-ink shadow-brutal-press transition-all cursor-pointer ${
                 liked 
-                  ? 'bg-rose-500 text-white shadow-md shadow-rose-500/30' 
-                  : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                  ? 'bg-coral text-ink' 
+                  : 'bg-surface text-ink hover:bg-yellow'
               }`}
             >
               <Heart className={`w-4 h-4 ${liked ? 'fill-current' : ''}`} />
@@ -119,30 +120,27 @@ export const PinterestPinModal: React.FC<PinterestPinModalProps> = ({
               <button
                 type="button"
                 onClick={handleSave}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-bold transition-all cursor-pointer ${
+                className={`flex items-center gap-2 px-3.5 py-1.5 rounded text-xs font-bold border-2 border-ink shadow-brutal-sm transition-all cursor-pointer ${
                   saved 
-                    ? 'bg-emerald-600 text-white shadow-md shadow-emerald-600/30' 
-                    : 'bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-600/20'
+                    ? 'bg-soft-mint text-ink' 
+                    : 'bg-cobalt hover:bg-cobalt-hover text-surface'
                 }`}
               >
                 <Bookmark className={`w-4 h-4 ${saved ? 'fill-current' : ''}`} />
-                <span>{saved ? 'محفوظ في اللوحة' : 'حفظ البن'}</span>
+                <span>{saved ? 'محفوظ في اللوحة' : 'حفظ البطاقة'}</span>
               </button>
             </div>
           </div>
         </div>
 
-        {/* Modal Body (Pinterest Close-up style: Split layout) */}
+        {/* Modal Body (Split Editorial Layout) */}
         <div className="grid grid-cols-1 md:grid-cols-12 flex-1 overflow-y-auto">
           
           {/* Left / Top Visual Banner */}
-          <div className={`md:col-span-5 p-6 sm:p-8 ${pin.accentColor} text-white flex flex-col justify-between relative overflow-hidden`}>
-            <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full blur-2xl pointer-events-none -mr-10 -mt-10" />
-            <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full blur-2xl pointer-events-none -ml-10 -mb-10" />
-            
+          <div className={`md:col-span-5 p-6 sm:p-8 ${pin.accentColor} flex flex-col justify-between relative overflow-hidden border-b-2 md:border-b-0 md:border-l-2 border-ink`}>
             <div className="relative z-10 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-black">
-                <Sparkles className="w-3.5 h-3.5 text-amber-300" />
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-surface text-ink border border-ink shadow-brutal-press text-xs font-black">
+                <Sparkles className="w-3.5 h-3.5 text-cobalt" />
                 <span>منهج العراق • الأستاذ مصطفى تركي</span>
               </div>
               
@@ -150,40 +148,40 @@ export const PinterestPinModal: React.FC<PinterestPinModalProps> = ({
                 {pin.title}
               </h1>
 
-              <p className="text-white/90 text-xs sm:text-sm leading-relaxed">
+              <p className="text-xs sm:text-sm font-medium leading-relaxed opacity-90 break-words">
                 {pin.contentSummary}
               </p>
             </div>
 
-            <div className="relative z-10 mt-6 pt-6 border-t border-white/20 space-y-3">
-              <div className="flex items-center justify-between text-xs font-bold text-white/80">
+            <div className="relative z-10 mt-6 pt-6 border-t-2 border-current/20 space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bold">
                 <span>الصف الدراسي:</span>
-                <span className="bg-white/20 px-2.5 py-1 rounded-lg text-white">{pin.grade}</span>
+                <span className="bg-surface text-ink border border-ink px-2.5 py-1 rounded-sm">{pin.grade}</span>
               </div>
-              <div className="flex items-center justify-between text-xs font-bold text-white/80">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-bold">
                 <span>التصنيف المنهجي:</span>
-                <span className="bg-white/20 px-2.5 py-1 rounded-lg text-white">{pin.subtitle}</span>
+                <span className="bg-surface text-ink border border-ink px-2.5 py-1 rounded-sm">{pin.subtitle}</span>
               </div>
             </div>
           </div>
 
           {/* Right / Content Details */}
-          <div className="md:col-span-7 p-6 sm:p-8 space-y-6 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 overflow-y-auto">
+          <div className="md:col-span-7 p-6 sm:p-8 space-y-6 bg-surface text-ink overflow-y-auto">
             
             {/* Detailed Notes / Bullet Points */}
             {pin.detailedNotes && pin.detailedNotes.length > 0 && (
               <div className="space-y-3">
-                <h3 className="text-xs font-bold text-indigo-600 dark:text-indigo-400 uppercase tracking-wider flex items-center gap-2">
-                  <BookOpen className="w-4 h-4" />
+                <h3 className="text-xs font-bold text-cobalt uppercase tracking-wider flex items-center gap-2">
+                  <BookOpen className="w-4 h-4 shrink-0" />
                   <span>الشرح المفصل والقواعد</span>
                 </h3>
                 <ul className="space-y-2">
                   {pin.detailedNotes.map((note, idx) => (
-                    <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm bg-slate-50 dark:bg-slate-800/60 p-3 rounded-xl border border-slate-100 dark:border-slate-800">
-                      <span className="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-300 text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">
+                    <li key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm bg-paper p-3 rounded border border-ink shadow-brutal-press">
+                      <span className="w-5 h-5 rounded-sm bg-cobalt text-surface border border-ink text-[10px] font-black flex items-center justify-center shrink-0 mt-0.5">
                         {idx + 1}
                       </span>
-                      <span className="leading-relaxed">{note}</span>
+                      <span className="leading-relaxed break-words">{note}</span>
                     </li>
                   ))}
                 </ul>
@@ -192,15 +190,15 @@ export const PinterestPinModal: React.FC<PinterestPinModalProps> = ({
 
             {/* Teacher's Golden Notes */}
             {pin.teacherTips && pin.teacherTips.length > 0 && (
-              <div className="p-4 rounded-2xl bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-900/50 space-y-2">
-                <div className="flex items-center gap-2 text-amber-800 dark:text-amber-400 font-black text-xs">
-                  <Shield className="w-4 h-4" />
-                  <span>ملاحظات الأستاذ مصطفى تركي الذهبية 🌟</span>
+              <div className="p-4 rounded-md bg-yellow border-2 border-ink shadow-brutal-sm space-y-2">
+                <div className="flex items-center gap-2 text-ink font-black text-xs">
+                  <Shield className="w-4 h-4 text-cobalt shrink-0" />
+                  <span>ملاحظات الأستاذ مصطفى تركي الذهبية</span>
                 </div>
                 <ul className="space-y-1.5">
                   {pin.teacherTips.map((tip, idx) => (
-                    <li key={idx} className="text-xs text-amber-900 dark:text-amber-200 leading-relaxed flex items-start gap-2">
-                      <span className="text-amber-500 font-bold">•</span>
+                    <li key={idx} className="text-xs font-medium text-ink leading-relaxed flex items-start gap-2">
+                      <span className="text-cobalt font-bold">•</span>
                       <span>{tip}</span>
                     </li>
                   ))}
@@ -208,17 +206,17 @@ export const PinterestPinModal: React.FC<PinterestPinModalProps> = ({
               </div>
             )}
 
-            {/* Common Mistakes / Ministerial Traps */}
+            {/* Common Mistakes / Traps */}
             {pin.commonMistakes && pin.commonMistakes.length > 0 && (
-              <div className="p-4 rounded-2xl bg-rose-50 dark:bg-rose-950/30 border border-rose-200 dark:border-rose-900/50 space-y-2">
-                <div className="flex items-center gap-2 text-rose-800 dark:text-rose-400 font-black text-xs">
-                  <AlertTriangle className="w-4 h-4" />
-                  <span>فخوخ وزارية احذر منها ⚠️</span>
+              <div className="p-4 rounded-md bg-answer-review-bg border-2 border-ink shadow-brutal-sm space-y-2">
+                <div className="flex items-center gap-2 text-semantic-error font-black text-xs">
+                  <AlertTriangle className="w-4 h-4 shrink-0" />
+                  <span>أخطاء شائعة احذر منها</span>
                 </div>
                 <ul className="space-y-1.5">
                   {pin.commonMistakes.map((mistake, idx) => (
-                    <li key={idx} className="text-xs text-rose-900 dark:text-rose-200 leading-relaxed flex items-start gap-2">
-                      <span className="text-rose-500 font-bold">⚠️</span>
+                    <li key={idx} className="text-xs font-medium text-ink leading-relaxed flex items-start gap-2">
+                      <span className="text-semantic-error font-bold">!</span>
                       <span>{mistake}</span>
                     </li>
                   ))}
@@ -229,14 +227,14 @@ export const PinterestPinModal: React.FC<PinterestPinModalProps> = ({
             {/* Examples */}
             {pin.examples && pin.examples.length > 0 && (
               <div className="space-y-3">
-                <h4 className="text-xs font-bold text-slate-700 dark:text-slate-300 uppercase">أمثلة توضيحية من المنهج:</h4>
+                <h4 className="text-xs font-bold text-ink uppercase">أمثلة توضيحية من المنهج:</h4>
                 <div className="space-y-2">
                   {pin.examples.map((ex, idx) => (
-                    <div key={idx} className="p-3 rounded-xl bg-slate-50 dark:bg-slate-800/40 border border-slate-200/60 dark:border-slate-800 space-y-1">
-                      <p className="text-xs sm:text-sm font-semibold text-indigo-700 dark:text-indigo-300 ltr text-left">
+                    <div key={idx} className="p-3 rounded bg-paper border border-ink space-y-1">
+                      <p dir="ltr" className="text-xs sm:text-sm font-mono font-bold text-cobalt text-left break-words">
                         {ex.en}
                       </p>
-                      <p className="text-xs text-slate-600 dark:text-slate-400">
+                      <p className="text-xs font-medium text-muted-gray">
                         {ex.ar}
                       </p>
                     </div>
@@ -246,23 +244,23 @@ export const PinterestPinModal: React.FC<PinterestPinModalProps> = ({
             )}
 
             {/* Comments & Discussion */}
-            <div className="pt-4 border-t border-slate-100 dark:border-slate-800 space-y-4">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-700 dark:text-slate-300">
-                <MessageCircle className="w-4 h-4 text-indigo-500" />
-                <span>تعليقات ونقاشات الطلبة ({comments.length})</span>
+            <div className="pt-4 border-t-2 border-ink/15 space-y-4">
+              <div className="flex items-center gap-2 text-xs font-bold text-ink">
+                <MessageCircle className="w-4 h-4 text-cobalt" />
+                <span>ملاحظات ونقاشات الطلبة ({comments.length})</span>
               </div>
 
-              <form onSubmit={handleAddComment} className="flex gap-2">
+              <form onSubmit={handleAddComment} className="flex flex-wrap sm:flex-nowrap gap-2">
                 <input
                   type="text"
                   value={commentText}
                   onChange={(e) => setCommentText(e.target.value)}
-                  placeholder="أضف ملاحظتك أو سؤالك حول هذا البن..."
-                  className="flex-1 px-4 py-2 text-xs rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 text-slate-900 dark:text-white"
+                  placeholder="أضف ملاحظتك أو سؤالك حول هذه البطاقة..."
+                  className="flex-1 min-w-0 px-4 py-2 text-xs rounded bg-paper border-2 border-ink focus:outline-none focus:shadow-brutal-cobalt-sm text-ink placeholder-muted-gray"
                 />
                 <button
                   type="submit"
-                  className="px-4 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs flex items-center gap-1 cursor-pointer shadow-md shadow-indigo-600/20"
+                  className="px-4 py-2 rounded bg-cobalt hover:bg-cobalt-hover text-surface border-2 border-ink shadow-brutal-press font-bold text-xs flex items-center gap-1 cursor-pointer shrink-0"
                 >
                   <Send className="w-3.5 h-3.5" />
                   <span>إرسال</span>
@@ -271,11 +269,11 @@ export const PinterestPinModal: React.FC<PinterestPinModalProps> = ({
 
               <div className="space-y-2 max-h-40 overflow-y-auto">
                 {comments.map((c, idx) => (
-                  <div key={idx} className="p-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 text-xs text-slate-700 dark:text-slate-300 flex items-start gap-2">
-                    <span className="w-5 h-5 rounded-full bg-indigo-500 text-white font-bold text-[10px] flex items-center justify-center shrink-0">
+                  <div key={idx} className="p-2.5 rounded bg-paper border border-ink text-xs text-ink flex items-start gap-2">
+                    <span className="w-5 h-5 rounded-sm bg-cobalt text-surface font-bold text-[10px] flex items-center justify-center shrink-0">
                       ط
                     </span>
-                    <span className="leading-relaxed">{c}</span>
+                    <span className="leading-relaxed break-words">{c}</span>
                   </div>
                 ))}
               </div>

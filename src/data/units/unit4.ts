@@ -6,8 +6,8 @@ export const UNIT_4: Unit = {
   titleAr: "الوحدة الرابعة: المراجعة الشاملة وتقنيات اللياقة البدنية",
   titleEn: "Unit 4: Comprehensive Review & Fitness Tech",
   description: "مراجعة أزمنة الماضي البسيط والمستمر، قطعة تقنيات اللياقة الذكية (Fitness Tech)، مطابقة نصائح النجاح المهني، التدريب المركز على الندم والحالة الشرطية الثالثة، مع اختبار الوحدة الرابعة الشامل وتمارين الإملاء.",
-  accentColor: "from-purple-600 to-violet-600",
-  bgGradient: "bg-gradient-to-r from-purple-50 to-violet-50 border-purple-200",
+  accentColor: "bg-lavender text-ink",
+  bgGradient: "bg-blue-mist border-ink",
   lessons: [
     {
       id: "u4-l1",
@@ -19,7 +19,7 @@ export const UNIT_4: Unit = {
       summary: "قطعة شركة راشد ورنا للأزياء (ص 42 كتاب الطالب وص 76 كتاب النشاط): تأسيس الشركة، تصميم القمصان والجينز، التصدير لدول الخليج والمملكة المتحدة، المنافسة الصينية، وأسبوع الموضة في لندن، مع مراجعة الماضي البسيط والمستمر.",
       grammarRuleFormula: "Key Vocabulary:\ndesigner, marketing, personal assistant, business, profit, sales, compete, contracts, flight\nGrammar: Past Simple vs Past Continuous (when, while, as)",
       detailedContent: [
-        "قطعة الكتاب الرسمية: تصاميم راشد ورنا (Rashid & Rana Designs - ص 42 كتاب الطالب):",
+        "قطعة الكتاب المقررة: تصاميم راشد ورنا (Rashid & Rana Designs - ص 42 كتاب الطالب):",
         "1. التأسيس والنشاط: أسس راشد ورنا شركتهما في أيلول الماضي لإنتاج القمصان وبناطيل الجينز (shirts and jeans).",
         "2. الأدوار: رنا هي المصممة (designer)، راشد يتولى التسويق (marketing)، وابنة عمهما سليمة تعمل مساعدة شخصية لراشد (personal assistant).",
         "3. المبيعات والأرباح: استثمروا أموالاً كثيرة في المشروع، ولم يحققوا أرباحاً بعد لكن المبيعات جيدة جداً، ويصدرون إلى الإمارات وعمان والبحرين والمملكة المتحدة.",

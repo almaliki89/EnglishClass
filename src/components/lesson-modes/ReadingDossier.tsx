@@ -44,7 +44,7 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
         crisis: 'هجوم القرش وعض ذراعه (Shark bit his arm)',
         savior: 'ستة دلافين صنعت دائرة + جميل العلاوي خفر السواحل',
         keyTheme: 'البقاء والنجدة السريعة والإسعاف الأولي',
-        badgeColor: 'from-amber-600 to-yellow-600',
+        badgeColor: 'bg-yellow',
       };
     }
     if (id.includes('u1-l10')) {
@@ -54,7 +54,7 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
         crisis: 'فقدان والدته لطيفة للوعي بسبب انخفاض السكر (Insulin drop)',
         savior: 'اتصل بالطوارئ 999 بهدوء وفتح الباب للمسعفين',
         keyTheme: 'سرعة البديهة والذكاء والشجاعة للأطفال',
-        badgeColor: 'from-rose-600 to-red-600',
+        badgeColor: 'bg-coral',
       };
     }
     if (id.includes('u2-l8')) {
@@ -64,7 +64,7 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
         crisis: 'رصد طائرات وسفن العدو ثم تنظيم سرعة الطرق وتقليل الحوادث',
         savior: 'الصيانة الدورية والفحص المستمر للأجهزة لمنع الأخطاء',
         keyTheme: 'التكنولوجيا الأمنية وحماية أرواح المسافرين',
-        badgeColor: 'from-blue-600 to-cyan-600',
+        badgeColor: 'bg-blue-mist',
       };
     }
     if (id.includes('u3-l3')) {
@@ -74,7 +74,7 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
         crisis: 'الضغط النفسي العالي والتفكير تحت وطأة الوقت',
         savior: 'سماع الأخبار يومياً وقراءة الصحف والاطلاع العام الدائم',
         keyTheme: 'الترجمة الفورية ليست كلمة بكلمة بل نقل الفكرة والمعنى',
-        badgeColor: 'from-purple-600 to-indigo-600',
+        badgeColor: 'bg-lavender',
       };
     }
     if (id.includes('u5-l9')) {
@@ -84,7 +84,7 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
         crisis: 'الإجهاد المزمن والجلطات وأمراض ضغط الدم بسبب عدم أخذ عطلة',
         savior: 'أخذ إجازات منتظمة وترك الهاتف والعمل جانباً لقضاء وقت عائلي',
         keyTheme: 'العطلات ليست رفاهية بل ضرورة بيولوجية للبقاء والتركيز',
-        badgeColor: 'from-teal-600 to-emerald-600',
+        badgeColor: 'bg-soft-mint',
       };
     }
     if (id.includes('u6-l3')) {
@@ -94,7 +94,7 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
         crisis: 'صعوبة رفض بعض القروض وتنوع التعامل اليومي مع الزبائن',
         savior: 'مهارات التواصل الممتازة والبراعة في الرياضيات والرسوم البيانية',
         keyTheme: 'تنوع العمل المصرفي ومساعدة المشاريع على التطور والنجاح',
-        badgeColor: 'from-emerald-600 to-green-600',
+        badgeColor: 'bg-soft-mint',
       };
     }
     if (id.includes('u6-l9')) {
@@ -104,7 +104,7 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
         crisis: 'مخاطر الأسهم والتضخم المالي والحاجة لضمان حياة كريمة عند الكبر',
         savior: 'الاستثمار العقاري الأكثر أماناً وحسابات التوفير طويلة الأجل',
         keyTheme: 'ادخار المال ثقافة ذكية تبدأ مبكراً لضمان المستقبل والتقاعد',
-        badgeColor: 'from-amber-600 to-orange-600',
+        badgeColor: 'bg-yellow',
       };
     }
     if (id.includes('u7-l9')) {
@@ -114,7 +114,7 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
         crisis: 'الحاجة لتغيير المسار الوظيفي وتطوير مهارات اللغات والإنترنت',
         savior: 'كتب المهن، صحف إعلانات التوظيف، وحواسيب المكتبة المجانية',
         keyTheme: 'المكتبة كنز معرفي مجاني لتطوير المهارات والحصول على فرص عمل',
-        badgeColor: 'from-pink-600 to-rose-600',
+        badgeColor: 'bg-coral',
       };
     }
     if (id.includes('u8-l3')) {
@@ -124,17 +124,17 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
         crisis: 'انبعاثات الغازات الدفيئة وتلوث الوقود الأحفوري التقليدي',
         savior: 'شفرات توربينات الرياح النظيفة التي تشغل القليل من الأراضي',
         keyTheme: 'طاقة خضراء متجددة لا تلوث الهواء ولا تنتج نفايات بيئية',
-        badgeColor: 'from-teal-600 to-cyan-600',
+        badgeColor: 'bg-soft-mint',
       };
     }
     // Default fallback
     return {
-      protagonist: 'قطعة الكتاب الوزارية المعتمدة',
-      location: 'المنهج الرسمي للصف السادس الإعدادي 2027',
+      protagonist: 'قطعة الكتاب المقررة',
+      location: 'منهج اللغة الإنكليزية للصف السادس الإعدادي',
       crisis: 'الأسئلة الاستيعابية وتحليل تفاصيل القصة بالامتحان',
       savior: 'حفظ الكلمات المفتاحية وأسئلة القطعة بدقة 100%',
       keyTheme: 'الفهم العميق للنص الإنجليزي وتفادي الأخطاء الإملائية',
-      badgeColor: 'from-indigo-600 to-purple-600',
+      badgeColor: 'bg-blue-mist',
     };
   };
 
@@ -227,7 +227,7 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
         timeOrPhase: 'Phase 3',
         phaseAr: 'النتيجة والعبرة الوزارية',
         descEn: 'The outcome and vital takeaways tested in Question 1 Branch B.',
-        descAr: 'الخلاصة والإجابات المعتمدة في أسئلة الامتحان الوزاري.',
+        descAr: 'الخلاصة والإجابات النموذجية في أسئلة الامتحان.',
         ministerialKey: 'Exam Outcome',
       }
     ];
@@ -300,71 +300,75 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
   const tfStatements = getTrueFalseStatements();
 
   return (
-    <div className="bg-white border-2 border-[#202124] text-[#202124] p-6 sm:p-8 shadow-[4px_4px_0px_#202124] space-y-6 relative overflow-hidden rounded-lg">
+    <div className="bg-surface border-2 border-ink text-ink p-6 sm:p-8 shadow-brutal-action space-y-6 relative overflow-hidden rounded-md">
       
       {/* Header */}
-      <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#202124] pb-4">
-        <div className="flex items-center gap-3">
-          <div className="w-12 h-12 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center font-black text-xl shrink-0 rounded">
-            <BookOpen className="w-6 h-6 text-white" />
+      <div className="flex flex-wrap items-center justify-between gap-4 border-b-2 border-ink pb-4">
+        <div className="flex items-center gap-3 min-w-0">
+          <div className="w-12 h-12 bg-cobalt text-surface border-2 border-ink shadow-brutal-sm flex items-center justify-center font-black text-xl shrink-0 rounded">
+            <BookOpen className="w-6 h-6 text-surface" />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] text-[10px] font-mono font-black uppercase tracking-wider rounded-sm">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-2.5 py-0.5 bg-yellow text-ink border border-ink text-[10px] font-mono font-black uppercase tracking-wider rounded-sm">
                 READING COMPREHENSION DOSSIER
               </span>
-              <span className="text-xs font-mono font-bold text-[#202124]/60">• ملف استيعاب القصة الوزاري</span>
+              <span className="text-xs font-mono font-bold text-muted-gray">• ملف استيعاب القصة</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-black text-[#202124] mt-1 tracking-tight">
-              الملف الأمني والاستيعابي الشامل للقطعة الوزارية
+            <h2 className="text-xl sm:text-2xl font-black text-ink mt-1 tracking-tight">
+              الملف التحليلي والاستيعابي الشامل لقطعة الكتاب
             </h2>
           </div>
         </div>
 
         {/* Tab Controls */}
-        <div className="flex items-center gap-1.5 p-1 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] overflow-x-auto no-scrollbar rounded">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-paper border-2 border-ink shadow-brutal-sm w-full sm:w-auto rounded">
           <button
+            type="button"
             onClick={() => setActiveTab('dossier')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 border-2 cursor-pointer rounded-sm ${
+            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 border-2 cursor-pointer rounded-sm shrink-0 ${
               activeTab === 'dossier' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
-            <FileText className="w-3.5 h-3.5" />
+            <FileText className="w-3.5 h-3.5 shrink-0" />
             <span>البطاقة</span>
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('timeline')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 border-2 cursor-pointer rounded-sm ${
+            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 border-2 cursor-pointer rounded-sm shrink-0 ${
               activeTab === 'timeline' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
-            <Milestone className="w-3.5 h-3.5" />
+            <Milestone className="w-3.5 h-3.5 shrink-0" />
             <span>الخط الزمني</span>
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('flashcards')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 border-2 cursor-pointer rounded-sm ${
+            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 border-2 cursor-pointer rounded-sm shrink-0 ${
               activeTab === 'flashcards' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
-            <RotateCw className="w-3.5 h-3.5" />
+            <RotateCw className="w-3.5 h-3.5 shrink-0" />
             <span>البطاقات القلابة</span>
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('drill')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 border-2 cursor-pointer rounded-sm ${
+            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 border-2 cursor-pointer rounded-sm shrink-0 ${
               activeTab === 'drill' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
-            <HelpCircle className="w-3.5 h-3.5" />
+            <HelpCircle className="w-3.5 h-3.5 shrink-0" />
             <span>تحدي الصح والخطأ</span>
           </button>
         </div>
@@ -372,54 +376,54 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
 
       {/* Tab 1: Dossier Card */}
       {activeTab === 'dossier' && (
-        <div className="p-5 sm:p-6 rounded-2xl bg-stone-900/90 border border-amber-500/30 backdrop-blur-md relative z-10 space-y-4">
-          <div className="flex items-center justify-between border-b border-white/10 pb-3">
-            <div className="flex items-center gap-2 text-amber-400 font-extrabold text-sm">
-              <FileText className="w-4 h-4" />
+        <div className="p-5 sm:p-6 rounded-md bg-paper border-2 border-ink shadow-brutal-callout relative z-10 space-y-4">
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink/15 pb-3">
+            <div className="flex items-center gap-2 text-ink font-extrabold text-sm">
+              <FileText className="w-4 h-4 text-cobalt shrink-0" />
               <span>بطاقة بيانات القصة (Story Dossier Card)</span>
             </div>
-            <span className="text-[11px] text-stone-400 font-mono">Confidential Exam Digest</span>
+            <span className="text-[11px] text-muted-gray font-mono font-bold">Exam Reading Digest</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 text-xs sm:text-sm">
-            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-              <span className="text-stone-400 font-bold flex items-center gap-1.5">
-                <User className="w-3.5 h-3.5 text-amber-400" />
+            <div className="p-3.5 rounded bg-surface border border-ink shadow-brutal-sm space-y-1 min-w-0">
+              <span className="text-muted-gray font-bold flex items-center gap-1.5 text-xs">
+                <User className="w-3.5 h-3.5 text-cobalt shrink-0" />
                 الشخصية / البطل الرئيسي
               </span>
-              <p className="font-bold text-white text-xs sm:text-sm">{meta.protagonist}</p>
+              <p className="font-bold text-ink text-xs sm:text-sm break-words">{meta.protagonist}</p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-              <span className="text-stone-400 font-bold flex items-center gap-1.5">
-                <MapPin className="w-3.5 h-3.5 text-amber-400" />
+            <div className="p-3.5 rounded bg-surface border border-ink shadow-brutal-sm space-y-1 min-w-0">
+              <span className="text-muted-gray font-bold flex items-center gap-1.5 text-xs">
+                <MapPin className="w-3.5 h-3.5 text-cobalt shrink-0" />
                 مسرح الأحداث / المكان
               </span>
-              <p className="font-bold text-white text-xs sm:text-sm">{meta.location}</p>
+              <p className="font-bold text-ink text-xs sm:text-sm break-words">{meta.location}</p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-              <span className="text-stone-400 font-bold flex items-center gap-1.5">
-                <ShieldAlert className="w-3.5 h-3.5 text-rose-400" />
-                الأزمة / الصراع الوزاري
+            <div className="p-3.5 rounded bg-answer-review-bg border border-ink shadow-brutal-sm space-y-1 min-w-0">
+              <span className="text-semantic-error font-bold flex items-center gap-1.5 text-xs">
+                <ShieldAlert className="w-3.5 h-3.5 text-semantic-error shrink-0" />
+                الأزمة / الصراع المحوري
               </span>
-              <p className="font-bold text-rose-200 text-xs sm:text-sm">{meta.crisis}</p>
+              <p className="font-bold text-ink text-xs sm:text-sm break-words">{meta.crisis}</p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 sm:col-span-2 lg:col-span-2 space-y-1">
-              <span className="text-stone-400 font-bold flex items-center gap-1.5">
-                <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                الحل والإنقاذ الوزاري المعتمد
+            <div className="p-3.5 rounded bg-answer-correct-bg border border-ink shadow-brutal-sm sm:col-span-2 lg:col-span-2 space-y-1 min-w-0">
+              <span className="text-semantic-success font-bold flex items-center gap-1.5 text-xs">
+                <CheckCircle2 className="w-3.5 h-3.5 text-semantic-success shrink-0" />
+                الحل والإنقاذ النموذجي
               </span>
-              <p className="font-bold text-emerald-200 text-xs sm:text-sm">{meta.savior}</p>
+              <p className="font-bold text-ink text-xs sm:text-sm break-words">{meta.savior}</p>
             </div>
 
-            <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-              <span className="text-stone-400 font-bold flex items-center gap-1.5">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+            <div className="p-3.5 rounded bg-yellow border border-ink shadow-brutal-sm space-y-1 min-w-0">
+              <span className="text-ink font-bold flex items-center gap-1.5 text-xs">
+                <Sparkles className="w-3.5 h-3.5 text-cobalt shrink-0" />
                 الرسالة والمغزى التربوي
               </span>
-              <p className="font-bold text-amber-200 text-xs sm:text-sm">{meta.keyTheme}</p>
+              <p className="font-bold text-ink text-xs sm:text-sm break-words">{meta.keyTheme}</p>
             </div>
           </div>
         </div>
@@ -428,39 +432,41 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
       {/* Tab 2: Story Chronological Timeline */}
       {activeTab === 'timeline' && (
         <div className="space-y-4 relative z-10">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-amber-300 flex items-center gap-1.5">
-              <Milestone className="w-4 h-4 text-amber-400" />
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="text-xs font-bold text-ink flex items-center gap-1.5">
+              <Milestone className="w-4 h-4 text-cobalt shrink-0" />
               الخط الزمني لتسلسل أحداث القصة من البداية إلى النهاية:
             </span>
-            <span className="text-[11px] text-stone-400">تتبع الأحداث يسهل تذكر الإجابات</span>
+            <span className="text-[11px] font-bold text-muted-gray">تتبع الأحداث يسهل تذكر الإجابات</span>
           </div>
 
-          <div className="relative border-r-2 border-amber-500/40 mr-4 space-y-6 pr-6">
+          <div className="relative border-r-2 border-ink mr-3 space-y-5 pr-5">
             {timeline.map((event, idx) => (
               <div key={idx} className="relative space-y-2 group">
                 {/* Timeline Node Dot */}
-                <div className="absolute -right-[31px] top-1.5 w-4 h-4 rounded-full bg-amber-400 border-4 border-stone-900 shadow-md group-hover:scale-125 transition-transform" />
+                <div className="absolute -right-[29px] top-2 w-4 h-4 rounded-full bg-yellow border-2 border-ink shadow-brutal-press transition-transform group-hover:scale-110" />
 
-                <div className="p-4 rounded-2xl bg-stone-900/90 border border-white/10 group-hover:border-amber-400/50 transition-all space-y-2">
+                <div className="p-4 rounded-md bg-paper border-2 border-ink shadow-brutal-sm group-hover:bg-surface transition-all space-y-2 min-w-0">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className="px-2.5 py-0.5 rounded-md bg-amber-500/20 text-amber-300 font-black text-[11px]">
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className="px-2.5 py-0.5 rounded-sm bg-yellow border border-ink text-ink font-black text-[11px]">
                         {event.phaseAr}
                       </span>
-                      <span className="text-xs text-stone-400 font-mono">({event.timeOrPhase})</span>
+                      <span className="text-xs text-muted-gray font-mono font-bold">({event.timeOrPhase})</span>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-400/30">
-                        مفتاح الوزاري: {event.ministerialKey}
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span dir="ltr" className="text-[10px] font-bold px-2 py-0.5 rounded-sm bg-soft-mint text-ink border border-ink break-words">
+                        مفتاح السؤال: {event.ministerialKey}
                       </span>
                       <button
+                        type="button"
                         onClick={() => handleSpeak(`timeline-${idx}`, event.descEn)}
-                        className={`p-1.5 rounded-lg border transition-all ${
+                        aria-label="استمع للنطق"
+                        className={`p-1.5 rounded border border-ink shadow-brutal-press cursor-pointer transition-all shrink-0 ${
                           speakingId === `timeline-${idx}`
-                            ? 'bg-amber-400 text-stone-950 border-amber-400 animate-pulse'
-                            : 'bg-white/10 text-stone-300 border-white/10 hover:bg-white/20'
+                            ? 'bg-cobalt text-surface animate-pulse'
+                            : 'bg-surface text-ink hover:bg-yellow'
                         }`}
                         title="استمع للنطق"
                       >
@@ -469,11 +475,11 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
                     </div>
                   </div>
 
-                  <p className="font-mono text-xs sm:text-sm font-bold text-amber-100 dir-ltr text-right">
+                  <p dir="ltr" className="font-mono text-xs sm:text-sm font-bold text-ink text-left break-words">
                     {event.descEn}
                   </p>
 
-                  <p className="text-xs text-stone-300 leading-relaxed">
+                  <p className="text-xs font-medium text-muted-gray leading-relaxed">
                     {event.descAr}
                   </p>
                 </div>
@@ -486,17 +492,17 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
       {/* Tab 3: Interactive Flip Flashcard Deck */}
       {activeTab === 'flashcards' && (
         <div className="space-y-3 relative z-10">
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <div>
-              <h3 className="text-base sm:text-lg font-bold text-white flex items-center gap-2">
-                <RotateCw className="w-4 h-4 text-amber-400" />
+              <h3 className="text-base sm:text-lg font-bold text-ink flex items-center gap-2">
+                <RotateCw className="w-4 h-4 text-cobalt shrink-0" />
                 <span>بطاقات الحفظ الذكي القلابة (Flip Flashcards)</span>
               </h3>
-              <p className="text-xs text-stone-400">
-                اضغط على البطاقة لقلبها وقراءة الإجابة النموذجية المعتمدة بالكنترول
+              <p className="text-xs font-medium text-muted-gray">
+                اضغط على البطاقة لقلبها وقراءة الإجابة النموذجية
               </p>
             </div>
-            <span className="text-xs font-bold px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-400/30">
+            <span className="text-xs font-black px-2.5 py-1 rounded-sm bg-yellow text-ink border border-ink shadow-brutal-press">
               {flashcards.length} بطاقات
             </span>
           </div>
@@ -506,60 +512,61 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
               const isFlipped = flippedCardId === card.id;
 
               return (
-                <div 
+                <div
                   key={card.id}
-                  onClick={() => toggleFlip(card.id)}
-                  className={`p-5 rounded-2xl border cursor-pointer transition-all duration-300 min-h-[140px] flex flex-col justify-between ${
-                    isFlipped 
-                      ? 'bg-gradient-to-br from-amber-900/70 to-stone-900 border-amber-400 text-white shadow-lg' 
-                      : 'bg-white/5 border-white/10 hover:border-amber-400/50 hover:bg-white/10 text-stone-200'
+                  className={`relative rounded-md border-2 border-ink shadow-brutal-sm transition-all ${
+                    isFlipped
+                      ? 'bg-yellow text-ink'
+                      : 'bg-paper hover:bg-surface text-ink'
                   }`}
                 >
-                  <div className="flex items-start justify-between gap-2">
-                    <div className="flex items-center gap-2">
-                      <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded-md ${
-                        isFlipped ? 'bg-amber-400 text-stone-950 font-black' : 'bg-white/10 text-amber-300'
+                  <button
+                    type="button"
+                    onClick={() => handleSpeak(card.id, isFlipped ? card.a : card.q)}
+                    aria-label="استمع للنطق الإنجليزي"
+                    className={`absolute top-4 left-4 z-10 p-1.5 rounded border border-ink shadow-brutal-press cursor-pointer transition-all ${
+                      speakingId === card.id
+                        ? 'bg-cobalt text-surface animate-pulse'
+                        : 'bg-surface text-ink hover:bg-blue-mist'
+                    }`}
+                    title="استمع للنطق الإنجليزي"
+                  >
+                    <Volume2 className="w-3.5 h-3.5" />
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={() => toggleFlip(card.id)}
+                    className="w-full p-5 pl-14 text-right cursor-pointer min-h-[140px] flex flex-col justify-between gap-3 rounded-md focus-visible:outline-none"
+                  >
+                    <div className="flex flex-wrap items-center gap-2">
+                      <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded-sm border border-ink ${
+                        isFlipped ? 'bg-cobalt text-surface' : 'bg-surface text-ink'
                       }`}>
-                        {isFlipped ? 'الإجابة النموذجية' : 'السؤال الوزاري'}
+                        {isFlipped ? 'الإجابة النموذجية' : 'سؤال القطعة'}
                       </span>
                       {card.note && (
-                        <span className="text-[10px] text-stone-400">{card.note}</span>
+                        <span className="text-[10px] font-bold text-muted-gray">{card.note}</span>
                       )}
                     </div>
 
-                    <div className="flex items-center gap-1.5" onClick={(e) => e.stopPropagation()}>
-                      <button
-                        onClick={() => handleSpeak(card.id, isFlipped ? card.a : card.q)}
-                        className={`p-1.5 rounded-lg border transition-all ${
-                          speakingId === card.id 
-                            ? 'bg-amber-400 text-stone-950 border-amber-400 animate-pulse' 
-                            : 'bg-white/10 text-stone-300 border-white/10 hover:bg-white/20'
-                        }`}
-                        title="استمع للنطق الإنجليزي"
-                      >
-                        <Volume2 className="w-3.5 h-3.5" />
-                      </button>
-                      <span className="text-stone-500 text-[11px] hover:text-amber-300">
-                        <RotateCw className="w-3.5 h-3.5" />
-                      </span>
+                    <div className="w-full min-w-0">
+                      {isFlipped ? (
+                        <p className="text-xs sm:text-sm font-bold text-ink leading-relaxed break-words">
+                          {card.a}
+                        </p>
+                      ) : (
+                        <p dir="ltr" className="font-mono text-xs sm:text-sm font-bold text-ink text-left leading-snug break-words">
+                          {card.q}
+                        </p>
+                      )}
                     </div>
-                  </div>
 
-                  <div className="my-2">
-                    {isFlipped ? (
-                      <p className="text-xs sm:text-sm font-semibold text-amber-100 leading-relaxed">
-                        {card.a}
-                      </p>
-                    ) : (
-                      <p className="font-mono text-xs sm:text-sm font-bold text-white dir-ltr text-right leading-snug">
-                        {card.q}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="text-left text-[10px] text-stone-400">
-                    {isFlipped ? 'اضغط للعودة إلى السؤال' : 'اضغط لإظهار الإجابة الوزارية'}
-                  </div>
+                    <div className="w-full flex items-center justify-between text-[10px] font-bold text-muted-gray">
+                      <span>{isFlipped ? 'اضغط للعودة إلى السؤال' : 'اضغط لإظهار الإجابة النموذجية'}</span>
+                      <RotateCw className="w-3.5 h-3.5 text-ink shrink-0" />
+                    </div>
+                  </button>
                 </div>
               );
             })}
@@ -569,9 +576,9 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
 
       {/* Tab 4: Rapid True/False Comprehension Drill */}
       {activeTab === 'drill' && (
-        <div className="p-5 rounded-2xl bg-black/40 border border-white/10 relative z-10 space-y-3">
-          <div className="flex items-center gap-2 text-xs font-bold text-amber-400">
-            <HelpCircle className="w-4 h-4" />
+        <div className="p-5 rounded-md bg-paper border-2 border-ink shadow-brutal-callout relative z-10 space-y-3">
+          <div className="flex items-center gap-2 text-xs font-bold text-ink">
+            <HelpCircle className="w-4 h-4 text-cobalt shrink-0" />
             <span>تحدي صح أو خطأ السريع (True / False Rapid Drill)</span>
           </div>
 
@@ -582,13 +589,13 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
               const isCorrect = userChoice === stmt.correct;
 
               return (
-                <div key={idx} className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                  <div className="space-y-1">
-                    <p className="font-mono text-xs sm:text-sm font-bold text-white dir-ltr text-right">
+                <div key={idx} className="p-3.5 rounded bg-surface border border-ink shadow-brutal-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="space-y-1 min-w-0 flex-1">
+                    <p dir="ltr" className="font-mono text-xs sm:text-sm font-bold text-ink text-left break-words">
                       {stmt.q}
                     </p>
                     {answered && (
-                      <p className={`text-xs ${isCorrect ? 'text-emerald-400 font-bold' : 'text-rose-400 font-bold'}`}>
+                      <p dir="ltr" className={`text-xs text-left break-words ${isCorrect ? 'text-semantic-success font-bold' : 'text-semantic-error font-bold'}`}>
                         {stmt.reason}
                       </p>
                     )}
@@ -596,28 +603,30 @@ export const ReadingDossier: React.FC<ReadingDossierProps> = ({ lesson }) => {
 
                   <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
                     <button
+                      type="button"
                       disabled={answered}
                       onClick={() => setSelectedTfAnswers(prev => ({ ...prev, [idx]: true }))}
-                      className={`px-3 py-1 rounded-lg text-xs font-bold border transition-all ${
+                      className={`px-3 py-1.5 rounded text-xs font-bold border border-ink shadow-brutal-press cursor-pointer transition-all ${
                         answered 
                           ? stmt.correct === true 
-                            ? 'bg-emerald-600 text-white border-emerald-500' 
-                            : userChoice === true ? 'bg-rose-600 text-white border-rose-500' : 'opacity-40'
-                          : 'bg-white/10 text-white border-white/15 hover:bg-white/20'
+                            ? 'bg-soft-mint text-semantic-success' 
+                            : userChoice === true ? 'bg-coral text-semantic-error' : 'bg-paper text-muted-gray opacity-50'
+                          : 'bg-paper text-ink hover:bg-soft-mint'
                       }`}
                     >
                       True (صح)
                     </button>
 
                     <button
+                      type="button"
                       disabled={answered}
                       onClick={() => setSelectedTfAnswers(prev => ({ ...prev, [idx]: false }))}
-                      className={`px-3 py-1 rounded-lg text-xs font-bold border transition-all ${
+                      className={`px-3 py-1.5 rounded text-xs font-bold border border-ink shadow-brutal-press cursor-pointer transition-all ${
                         answered 
                           ? stmt.correct === false 
-                            ? 'bg-emerald-600 text-white border-emerald-500' 
-                            : userChoice === false ? 'bg-rose-600 text-white border-rose-500' : 'opacity-40'
-                          : 'bg-white/10 text-white border-white/15 hover:bg-white/20'
+                            ? 'bg-soft-mint text-semantic-success' 
+                            : userChoice === false ? 'bg-coral text-semantic-error' : 'bg-paper text-muted-gray opacity-50'
+                          : 'bg-paper text-ink hover:bg-coral'
                       }`}
                     >
                       False (خطأ)

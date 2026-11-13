@@ -1,7 +1,7 @@
 import { Unit } from '../../../types';
 
 // =========================================================================
-// الوحدة الثالثة والرابعة - ملزمة الخامس الإعدادي (الأستاذ عمار غالب 2026)
+// الوحدة الثالثة والرابعة - ملزمة الخامس الإعدادي (الأستاذ مصطفى تركي 2026)
 // مرجع الصفحات: ص 72 - 103
 // =========================================================================
 
@@ -12,8 +12,8 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
     titleAr: "الوحدة الثالثة: البيئة والكائنات المهددة والشرطية الأولى (The Environment & First Conditional)",
     titleEn: "Unit 3: Endangered Animals, First Conditional, Recycling, Basra Pollution & Hybrid Cars",
     description: "ترتيب الصفات، الحيوانات المهددة بالانقراض، أفعال الإلزام must/mustn't، الحالة الشرطية الأولى، إعادة التدوير والبادئة re-، التلوث النفطي، تقديم العروض، والسيارات الهجينة وعودة المها العربي.",
-    accentColor: "from-emerald-600 to-teal-600",
-    bgGradient: "bg-gradient-to-r from-emerald-50 to-teal-50 border-emerald-200",
+    accentColor: "bg-soft-mint text-ink",
+    bgGradient: "bg-paper border-ink",
     sourcePages: "الملزمة ص 72 - 96",
     academicYear: "2025-2026",
     lessons: [
@@ -388,8 +388,8 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
     titleAr: "الوحدة الرابعة: المراجعة الشاملة للفصل الأول (Semester 1 Comprehensive Revision)",
     titleEn: "Unit 4: Semester 1 Consolidation, Bakkar Cartoon & Comprehensive Mid-Year Exam",
     description: "مراجعة كبرى ومكثفة لجميع قواعد وقراءات ومفردات الفصل الأول: قصة المسلسل الكارتوني الشهير 'بكار' للمخرجة منى أبو النصر، ومباراة التنس، ودمج الأزمنة والشرطية الأولى والاستنتاج، والامتحان التحريري الشامل لنصف السنة (100 درجة).",
-    accentColor: "from-amber-600 to-orange-600",
-    bgGradient: "bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200",
+    accentColor: "bg-yellow text-ink",
+    bgGradient: "bg-paper border-ink",
     sourcePages: "الملزمة ص 97 - 103",
     academicYear: "2025-2026",
     lessons: [

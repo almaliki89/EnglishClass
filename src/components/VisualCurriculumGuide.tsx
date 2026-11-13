@@ -33,63 +33,67 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
   return (
     <BrutalCard variant="paper" borderSize="3" shadowSize="lg" className="p-6 sm:p-8 space-y-8">
       {/* Header */}
-      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-b-3 border-[#202124] pb-6">
-        <div>
+      <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-b-3 border-ink pb-6">
+        <div className="min-w-0">
           <div className="mb-2 inline-block">
             <BrutalBadge variant="yellow" className="text-xs sm:text-sm">
-              <Brain className="w-4 h-4 text-[#202124] inline ml-1" />
-              الشرح الصوري والتفاعلي المخصص • المنهج العراقي الرسمي
+              <Brain className="w-4 h-4 text-ink inline ml-1" />
+              الشرح الصوري والتفاعلي المخصص • المنهج العراقي المقرر
             </BrutalBadge>
           </div>
-          <h2 className="text-2xl sm:text-3xl font-black text-[#202124] tracking-tight">
-            الدليل البصري الشامل لصف: <span className="bg-[#F3E6A5] px-2 border border-[#202124]">{gradeMeta.nameAr}</span>
+          <h2 className="text-2xl sm:text-3xl font-black text-ink tracking-tight">
+            الدليل البصري الشامل لصف: <span className="bg-yellow px-2 border border-ink inline-block">{gradeMeta.nameAr}</span>
           </h2>
-          <p className="text-[#202124]/80 text-xs sm:text-sm font-bold font-mono mt-1">
+          <p className="text-ink/80 text-xs sm:text-sm font-bold font-mono mt-1">
             {gradeMeta.description} • إشراف الأستاذ مصطفى تركي
           </p>
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex flex-wrap gap-2 bg-white p-2 border-3 border-[#202124] shadow-[3px_3px_0px_#202124]">
+        <div className="flex flex-wrap gap-2 bg-surface p-2 border-3 border-ink shadow-brutal-callout">
           <button
+            type="button"
             onClick={() => setActiveTab('units')}
-            className={`px-3.5 py-2 text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 border-[#202124] ${
+            className={`px-3.5 py-2 text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 border-ink ${
               activeTab === 'units'
-                ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]'
-                : 'bg-[#F7F5EF] text-[#202124] hover:bg-[#F3E6A5]'
+                ? 'bg-cobalt text-surface shadow-brutal-sm'
+                : 'bg-paper text-ink hover:bg-yellow'
             }`}
           >
             <Layers className="w-4 h-4" />
             <span>الوحدات والدروس</span>
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('grammar')}
-            className={`px-3.5 py-2 text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 border-[#202124] ${
+            className={`px-3.5 py-2 text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 border-ink ${
               activeTab === 'grammar'
-                ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]'
-                : 'bg-[#F7F5EF] text-[#202124] hover:bg-[#F3E6A5]'
+                ? 'bg-cobalt text-surface shadow-brutal-sm'
+                : 'bg-paper text-ink hover:bg-yellow'
             }`}
           >
             <Lightbulb className="w-4 h-4" />
             <span>القواعد المصورة</span>
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('literature')}
-            className={`px-3.5 py-2 text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 border-[#202124] ${
+            className={`px-3.5 py-2 text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 border-ink ${
               activeTab === 'literature'
-                ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]'
-                : 'bg-[#F7F5EF] text-[#202124] hover:bg-[#F3E6A5]'
+                ? 'bg-cobalt text-surface shadow-brutal-sm'
+                : 'bg-paper text-ink hover:bg-yellow'
             }`}
           >
             <BookMarked className="w-4 h-4" />
             <span>القصص والأدب</span>
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('exam')}
-            className={`px-3.5 py-2 text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 border-[#202124] ${
+            className={`px-3.5 py-2 text-xs sm:text-sm font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 border-ink ${
               activeTab === 'exam'
-                ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]'
-                : 'bg-[#F7F5EF] text-[#202124] hover:bg-[#F3E6A5]'
+                ? 'bg-cobalt text-surface shadow-brutal-sm'
+                : 'bg-paper text-ink hover:bg-yellow'
             }`}
           >
             <Award className="w-4 h-4" />
@@ -103,12 +107,12 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
         {/* 1. Units & Lessons Visual Cards */}
         {activeTab === 'units' && (
           <div className="space-y-6">
-            <div className="flex items-center justify-between border-b-2 border-[#202124]/20 pb-2">
-              <h3 className="text-lg font-black text-[#202124] flex items-center gap-2">
-                <Compass className="w-5 h-5 text-[#405DE6]" />
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink/20 pb-2">
+              <h3 className="text-lg font-black text-ink flex items-center gap-2">
+                <Compass className="w-5 h-5 text-cobalt" />
                 <span>خريطة وحدات المنهج ({units.length} وحدات دراسية)</span>
               </h3>
-              <BrutalBadge variant="sky">محتوى حصري لـ {gradeMeta.shortName}</BrutalBadge>
+              <BrutalBadge variant="sky">محتوى مخصص لـ {gradeMeta.shortName}</BrutalBadge>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -120,32 +124,33 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
                   shadowSize="md"
                   className="p-5 flex flex-col justify-between group hover:translate-x-0.5 hover:-translate-y-0.5 transition-transform"
                 >
-                  <div>
+                  <div className="min-w-0">
                     <div className="flex items-center justify-between mb-3">
                       <BrutalBadge variant="cobalt">
                         الوحدة {idx + 1}
                       </BrutalBadge>
-                      <span className="text-xs font-mono font-bold text-[#202124]/70 bg-[#F7F5EF] px-2 py-0.5 border border-[#202124]">
+                      <span className="text-xs font-mono font-bold text-ink/70 bg-paper px-2 py-0.5 border border-ink tabular-nums">
                         {unit.lessons.length} دروس
                       </span>
                     </div>
-                    <h4 className="text-base sm:text-lg font-black text-[#202124] group-hover:text-[#405DE6] transition-colors">
+                    <h4 className="text-base sm:text-lg font-black text-ink group-hover:text-cobalt transition-colors">
                       {unit.titleAr}
                     </h4>
-                    <p className="text-xs font-mono font-bold text-[#405DE6] mt-0.5" dir="ltr">
+                    <p className="text-xs font-mono font-bold text-cobalt mt-0.5 break-words" dir="ltr">
                       {unit.titleEn}
                     </p>
-                    <p className="text-xs font-bold text-[#202124]/80 mt-3 line-clamp-2 bg-[#F7F5EF] p-3 border-2 border-[#202124]">
+                    <p className="text-xs font-bold text-ink/80 mt-3 line-clamp-2 bg-paper p-3 border-2 border-ink">
                       {unit.description}
                     </p>
                   </div>
 
-                  <div className="mt-5 pt-3 border-t-2 border-[#202124] flex items-center justify-between">
-                    <span className="text-[11px] font-mono font-bold text-[#202124]/70">شرح صوري ومعاينة</span>
+                  <div className="mt-5 pt-3 border-t-2 border-ink flex items-center justify-between">
+                    <span className="text-[11px] font-mono font-bold text-ink/70">شرح صوري ومعاينة</span>
                     {onNavigateTab && (
                       <button
+                        type="button"
                         onClick={() => onNavigateTab('subjects')}
-                        className="text-xs font-black text-[#405DE6] hover:underline flex items-center gap-1 cursor-pointer"
+                        className="text-xs font-black text-cobalt hover:underline flex items-center gap-1 cursor-pointer"
                       >
                         <span>استعراض الدروس</span>
                         <ArrowRight className="w-4 h-4 rotate-180" />
@@ -161,40 +166,40 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
         {/* 2. Pictorial Grammar Cards */}
         {activeTab === 'grammar' && (
           <div className="space-y-6">
-            <div className="flex items-center justify-between border-b-2 border-[#202124]/20 pb-2">
-              <h3 className="text-lg font-black text-[#202124] flex items-center gap-2">
-                <Lightbulb className="w-5 h-5 text-[#202124] fill-[#F3E6A5]" />
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink/20 pb-2">
+              <h3 className="text-lg font-black text-ink flex items-center gap-2">
+                <Lightbulb className="w-5 h-5 text-ink fill-yellow" />
                 <span>أبرز قواعد وبطاقات الشرح البصري لـ {gradeMeta.nameAr}</span>
               </h3>
-              <BrutalBadge variant="yellow">مبسطة بالأمثلة الوزارية</BrutalBadge>
+              <BrutalBadge variant="yellow">مبسطة بالأمثلة التطبيقية</BrutalBadge>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               <BrutalCard variant="white" borderSize="3" shadowSize="md" className="p-5 space-y-4">
-                <div className="flex items-center gap-2 font-black text-sm text-[#405DE6]">
-                  <Zap className="w-5 h-5 text-[#405DE6]" />
+                <div className="flex items-center gap-2 font-black text-sm text-cobalt">
+                  <Zap className="w-5 h-5 text-cobalt" />
                   <span>قاعدة الأزمنة والتكوين (Tenses Structure)</span>
                 </div>
-                <p className="text-xs sm:text-sm font-bold text-[#202124] leading-relaxed">
-                  يتم التركيز في منهج {gradeMeta.shortName} على إتقان التفرقة بين المضارع البسيط والمستمر، والماضي بنوعيه، مع التطبيق الوزاري المباشر.
+                <p className="text-xs sm:text-sm font-bold text-ink leading-relaxed">
+                  يتم التركيز في منهج {gradeMeta.shortName} على إتقان التفرقة بين المضارع البسيط والمستمر، والماضي بنوعيه، مع التطبيق المباشر.
                 </p>
                 <CalloutBox type="rule_formula" title="Formula التكوين">
-                  <div dir="ltr" className="font-mono font-black text-[#202124]">
+                  <div dir="ltr" className="font-mono font-black text-ink break-words">
                     Subject + Auxiliary + Verb (Base/V2/V3) + Complement
                   </div>
                 </CalloutBox>
               </BrutalCard>
 
               <BrutalCard variant="white" borderSize="3" shadowSize="md" className="p-5 space-y-4">
-                <div className="flex items-center gap-2 font-black text-sm text-[#B83A3A]">
-                  <CheckCircle2 className="w-5 h-5 text-[#B83A3A]" />
-                  <span>الأخطاء الشائعة في الامتحانات الوزارية</span>
+                <div className="flex items-center gap-2 font-black text-sm text-semantic-error">
+                  <CheckCircle2 className="w-5 h-5 text-semantic-error" />
+                  <span>الأخطاء الشائعة في الامتحانات</span>
                 </div>
-                <p className="text-xs sm:text-sm font-bold text-[#202124] leading-relaxed">
+                <p className="text-xs sm:text-sm font-bold text-ink leading-relaxed">
                   تجنب الأخطاء الإملائية الشائعة في إضافة (-ed) أو (-ing) والتصريفات الشاذة للأفعال مع مراعاة التنقيط السليم للجملة.
                 </p>
                 <CalloutBox type="ministerial_trap" title="احذر من الأخطاء الإملائية والترميز">
-                  <div dir="ltr" className="font-mono font-bold text-xs text-[#202124]">
+                  <div dir="ltr" className="font-mono font-bold text-xs text-ink break-words">
                     ✓ Always double-check punctuation marks (capital letters & full stops).
                   </div>
                 </CalloutBox>
@@ -206,9 +211,9 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
         {/* 3. Stories & Literature */}
         {activeTab === 'literature' && (
           <div className="space-y-6">
-            <div className="flex items-center justify-between border-b-2 border-[#202124]/20 pb-2">
-              <h3 className="text-lg font-black text-[#202124] flex items-center gap-2">
-                <BookMarked className="w-5 h-5 text-[#405DE6]" />
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink/20 pb-2">
+              <h3 className="text-lg font-black text-ink flex items-center gap-2">
+                <BookMarked className="w-5 h-5 text-cobalt" />
                 <span>{gradeMeta.stage === 'intermediate' ? 'قصص المطالعة المقررة (Story Time)' : 'الأدب والشعر والنصوص المقررة'}</span>
               </h3>
               <BrutalBadge variant="vermilion">{stories.length} أعمال أدبية رئيسية</BrutalBadge>
@@ -217,16 +222,16 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
               {stories.map((story) => (
                 <BrutalCard key={story.id} variant="white" borderSize="3" shadowSize="md" className="p-5 space-y-3">
-                  <div className="flex items-center justify-between">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
                     <BrutalBadge variant="sky">
-                      {story.author || 'المنهج الوزاري'}
+                      {story.author || 'منهج المادة'}
                     </BrutalBadge>
-                    <BrutalBadge variant="yellow">سؤال وزاري متكرر</BrutalBadge>
+                    <BrutalBadge variant="yellow">سؤال امتحاني متكرر</BrutalBadge>
                   </div>
-                  <h4 className="text-base sm:text-lg font-black text-[#202124]">{story.titleAr}</h4>
-                  <p className="text-xs font-mono font-bold text-[#405DE6]" dir="ltr">{story.title}</p>
-                  <p className="text-xs font-bold text-[#202124] leading-relaxed bg-[#F7F5EF] p-3 border-2 border-[#202124]">
-                    {story.summaryAr || 'قصة ومقال أدبي مقرر في الامتحان الوزاري مع الأسئلة والنموذج الإجابي.'}
+                  <h4 className="text-base sm:text-lg font-black text-ink">{story.titleAr}</h4>
+                  <p className="text-xs font-mono font-bold text-cobalt break-words" dir="ltr">{story.title}</p>
+                  <p className="text-xs font-bold text-ink leading-relaxed bg-paper p-3 border-2 border-ink">
+                    {story.summaryAr || 'قصة ومقال أدبي مقرر في المنهج الدراسي مع الأسئلة والإجابات النموذجية.'}
                   </p>
                 </BrutalCard>
               ))}
@@ -237,10 +242,10 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
         {/* 4. Exam Blueprint */}
         {activeTab === 'exam' && (
           <div className="space-y-6">
-            <div className="flex items-center justify-between border-b-2 border-[#202124]/20 pb-2">
-              <h3 className="text-lg font-black text-[#202124] flex items-center gap-2">
-                <Award className="w-5 h-5 text-[#405DE6]" />
-                <span>هيكلية وتوزيع درجات الامتحان الوزاري (100 درجة كاملة)</span>
+            <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink/20 pb-2">
+              <h3 className="text-lg font-black text-ink flex items-center gap-2">
+                <Award className="w-5 h-5 text-cobalt" />
+                <span>هيكلية وتوزيع درجات الامتحان (100 درجة كاملة)</span>
               </h3>
               <BrutalBadge variant="cobalt">{gradeMeta.nameAr}</BrutalBadge>
             </div>
@@ -261,20 +266,20 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
               ]).map((item, i) => (
                 <BrutalCard key={i} variant="white" borderSize="2" shadowSize="sm" className="p-4 text-center space-y-2">
                   <BrutalBadge variant="yellow">{item.q}</BrutalBadge>
-                  <h4 className="text-sm font-black text-[#202124]">{item.title}</h4>
-                  <p className="text-xs font-mono font-black text-[#B83A3A]">{item.marks}</p>
+                  <h4 className="text-sm font-black text-ink">{item.title}</h4>
+                  <p className="text-xs font-mono font-black text-semantic-error">{item.marks}</p>
                 </BrutalCard>
               ))}
             </div>
 
             <BrutalCard variant="sky" borderSize="3" shadowSize="md" className="p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 bg-[#405DE6] text-white border-2 border-[#202124] flex items-center justify-center font-black shrink-0">
+                <div className="w-10 h-10 bg-cobalt text-surface border-2 border-ink flex items-center justify-center font-black shrink-0">
                   <Sparkles className="w-6 h-6" />
                 </div>
                 <div>
-                  <p className="text-sm font-black text-[#202124]">هل أنت مستعد لتجربة الامتحان التجريبي الكامل؟</p>
-                  <p className="text-xs font-bold text-[#202124]/80">يحتوي المحاكي الوزاري على ورقة أسئلة متكاملة بمدة 100 دقيقة تماماً كالوزاري.</p>
+                  <p className="text-sm font-black text-ink">هل أنت مستعد لتجربة الامتحان التجريبي الكامل؟</p>
+                  <p className="text-xs font-bold text-ink/80">يحتوي المحاكي الشامل على ورقة أسئلة متكاملة بمدة 100 دقيقة بنمط تدريبي متكامل.</p>
                 </div>
               </div>
               {onNavigateTab && (

@@ -43,42 +43,35 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
     id: 'english' as const,
     titleAr: 'اللغة الإنكليزية',
     titleEn: 'English for Iraq',
-    description: `المنهج الرسمي المعتمد في العراق لـ (${currentGradeMeta.nameAr}): قواعد، مفردات، قطع استيعابية، أدب، إنشاءات، وأسئلة امتحانية ونماذج شاملة.`,
+    description: `المنهاج الدراسي العراقي لـ (${currentGradeMeta.nameAr}): قواعد، مفردات، قطع استيعابية، أدب، إنشاءات، وأسئلة امتحانية ونماذج شاملة.`,
     category: 'language' as const,
     icon: 'Languages',
-    theme: {
-      bg: 'bg-blue-50 dark:bg-blue-950/30',
-      border: 'border-blue-200 dark:border-blue-800',
-      text: 'text-blue-700 dark:text-blue-300',
-      badge: 'bg-blue-100 text-blue-800 dark:bg-blue-900/50 dark:text-blue-300',
-      gradient: 'from-blue-600 to-indigo-600',
-    },
     unitsCount: unitsList.length,
     hasSimulations: false,
     isAvailable: true,
   };
 
   return (
-    <div className="space-y-8 pb-20 max-w-7xl mx-auto w-full text-[#202124]">
+    <div className="space-y-8 pb-20 max-w-7xl mx-auto w-full text-ink">
       {/* Subject Header Banner */}
-      <div className="relative overflow-hidden bg-white border-4 border-[#202124] p-6 sm:p-10 shadow-[8px_8px_0px_#202124]">
+      <div className="relative overflow-hidden bg-surface border-4 border-ink p-6 sm:p-10 shadow-brutal-hero">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
           <div className="space-y-3">
             <button
               type="button"
               onClick={onBack}
-              className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#F7F5EF] hover:bg-white text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
+              className="inline-flex items-center gap-2 px-3 py-1.5 bg-paper hover:bg-surface text-ink border-2 border-ink shadow-brutal-sm text-xs font-black transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
             >
               <ArrowRight className="w-4 h-4" />
               <span>العودة للرئيسية</span>
             </button>
             <div className="space-y-1">
-              <div className="text-xs font-mono uppercase tracking-widest text-[#405DE6] font-bold">
-                {subject.titleEn} · OFFICIAL CURRICULUM
+              <div className="text-xs font-mono uppercase tracking-widest text-cobalt font-bold">
+                {subject.titleEn} · IRAQ CURRICULUM
               </div>
-              <h1 className="text-3xl sm:text-4xl font-black text-[#202124] tracking-tight">{subject.titleAr}</h1>
+              <h1 className="text-3xl sm:text-4xl font-black text-ink tracking-tight">{subject.titleAr}</h1>
             </div>
-            <p className="text-[#202124]/80 text-sm max-w-2xl leading-relaxed font-bold">
+            <p className="text-ink/80 text-sm max-w-2xl leading-relaxed font-bold">
               {subject.description}
             </p>
           </div>
@@ -88,17 +81,17 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
             <button
               type="button"
               onClick={() => navigate('/mock')}
-              className="flex items-center gap-2 px-5 py-3 bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-3 border-[#202124] rounded-[4px] font-black text-sm shadow-[4px_4px_0px_#202124] hover:shadow-[2px_2px_0px_#202124] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
+              className="flex items-center gap-2 px-5 py-3 bg-yellow hover:bg-yellow-hover text-ink border-3 border-ink rounded-[4px] font-black text-sm shadow-brutal-action hover:shadow-brutal-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
             >
-              <Award className="w-4 h-4 text-[#202124]" />
+              <Award className="w-4 h-4 text-ink" />
               <span>محاكي الامتحان الوزاري 100د</span>
             </button>
             <button
               type="button"
               onClick={() => navigate('/exam')}
-              className="flex items-center gap-2 px-5 py-3 bg-[#405DE6] hover:bg-[#334DC6] text-white border-3 border-[#202124] rounded-[4px] font-black text-sm shadow-[4px_4px_0px_#202124] hover:shadow-[2px_2px_0px_#202124] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
+              className="flex items-center gap-2 px-5 py-3 bg-cobalt hover:bg-cobalt-hover text-surface border-3 border-ink rounded-[4px] font-black text-sm shadow-brutal-action hover:shadow-brutal-sm hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
             >
-              <FileText className="w-4 h-4 text-[#F3E6A5]" />
+              <FileText className="w-4 h-4 text-yellow" />
               <span>بنك الأسئلة الوزارية</span>
             </button>
           </div>
@@ -106,25 +99,25 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
       </div>
 
       {/* Grade Isolation Header */}
-      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b-2 border-[#202124] pb-4">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 border-b-2 border-ink pb-4">
         <div>
-          <h2 className="text-xl font-black text-[#202124] flex items-center gap-2">
-            <BookOpen className="w-5 h-5 text-[#405DE6]" />
+          <h2 className="text-xl font-black text-ink flex items-center gap-2">
+            <BookOpen className="w-5 h-5 text-cobalt" />
             <span>وحدات ودروس {currentGradeMeta.nameAr}</span>
           </h2>
-          <p className="text-xs text-[#202124]/70 font-bold mt-1">
-            استعراض الوحدات، القواعد، والتمارين الوزارية المعتمدة لـ {currentGradeMeta.shortName} فقط
+          <p className="text-xs text-ink/70 font-bold mt-1">
+            استعراض الوحدات، القواعد، والتمارين المقررة لـ {currentGradeMeta.shortName} فقط
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
-          <span className="px-3 py-1.5 bg-[#F3E6A5] text-[#202124] font-black text-xs border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
+        <div className="flex flex-wrap items-center gap-2">
+          <span className="px-3 py-1.5 bg-yellow text-ink font-black text-xs border-2 border-ink shadow-brutal-sm">
             {currentGradeMeta.nameAr}
           </span>
           <button
             type="button"
             onClick={() => navigate(`/grade/${activeGrade}`)}
-            className="px-3 py-1.5 bg-[#F7F5EF] hover:bg-white text-[#202124] font-black text-xs border-2 border-[#202124] shadow-[2px_2px_0px_#202124] cursor-pointer"
+            className="px-3 py-1.5 bg-paper hover:bg-surface text-ink font-black text-xs border-2 border-ink shadow-brutal-sm cursor-pointer"
           >
             منصة الصف ↩
           </button>
@@ -136,23 +129,23 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
         {unitsList.map((unit) => (
           <div
             key={unit.id}
-            className="bg-white p-6 border-3 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-4"
+            className="bg-surface p-6 border-3 border-ink shadow-brutal-action space-y-4 min-w-0"
           >
-            <div className="flex items-center justify-between">
-              <span className="px-3 py-1 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] font-black text-xs font-mono shadow-[2px_2px_0px_#202124]">
+            <div className="flex items-center justify-between gap-2">
+              <span className="px-3 py-1 bg-yellow text-ink border-2 border-ink font-black text-xs font-mono shadow-brutal-sm">
                 UNIT 0{unit.number || unit.id}
               </span>
-              <span className="text-xs text-[#202124]/70 font-mono font-bold">
+              <span className="text-xs text-ink/70 font-mono font-bold">
                 {unit.lessons.length} LESSONS
               </span>
             </div>
             <div>
-              <h3 className="text-lg font-black text-[#202124]">
+              <h3 className="text-lg font-black text-ink">
                 {unit.titleAr}
               </h3>
-              <p className="text-xs text-[#202124]/60 font-mono font-bold">{unit.titleEn}</p>
+              <p className="text-xs text-ink/60 font-mono font-bold break-words">{unit.titleEn}</p>
             </div>
-            <div className="space-y-2 pt-2 border-t-2 border-[#202124]/20">
+            <div className="space-y-2 pt-2 border-t-2 border-ink/20">
               {unit.lessons.map((lesson) => {
                 const isCompleted = studentState.completedLessonIds.includes(lesson.id);
                 return (
@@ -160,17 +153,17 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
                     key={lesson.id}
                     type="button"
                     onClick={() => onSelectLesson(lesson)}
-                    className="w-full flex items-center justify-between p-2.5 bg-[#F7F5EF] hover:bg-[#F3E6A5] border-2 border-[#202124] text-right text-xs font-black text-[#202124] transition-all group cursor-pointer active:translate-x-0.5 active:translate-y-0.5 shadow-[2px_2px_0px_#202124]"
+                    className="w-full flex items-center justify-between p-2.5 bg-paper hover:bg-yellow border-2 border-ink text-right text-xs font-black text-ink transition-all group cursor-pointer active:translate-x-0.5 active:translate-y-0.5 shadow-brutal-sm"
                   >
-                    <div className="flex items-center gap-2 truncate">
+                    <div className="flex items-center gap-2 min-w-0">
                       {isCompleted ? (
-                        <CheckCircle2 className="w-4 h-4 text-[#405DE6] shrink-0" />
+                        <CheckCircle2 className="w-4 h-4 text-cobalt shrink-0" />
                       ) : (
-                        <div className="w-2 h-2 bg-[#202124] shrink-0" />
+                        <div className="w-2 h-2 bg-ink shrink-0" />
                       )}
                       <span className="truncate">{lesson.titleAr}</span>
                     </div>
-                    <ChevronLeft className="w-4 h-4 text-[#202124] group-hover:-translate-x-1 transition-transform shrink-0" />
+                    <ChevronLeft className="w-4 h-4 text-ink group-hover:-translate-x-1 transition-transform shrink-0" />
                   </button>
                 );
               })}

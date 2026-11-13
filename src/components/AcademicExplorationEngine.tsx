@@ -46,26 +46,26 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
         category: 'core',
         summary: lesson.titleAr,
         details: lesson.summary,
-        color: 'border-indigo-500 bg-indigo-50/70 text-indigo-950',
+        color: 'border-cobalt bg-blue-mist text-ink',
         badge: 'الركيزة الأساسية'
       },
       ...lesson.detailedContent.slice(0, 4).map((content, idx) => ({
         id: idx + 1,
-        title: `المحور ${idx + 1}: تفصيل الحكم الوزاري`,
+        title: `المحور ${idx + 1}: تفصيل القاعدة`,
         category: 'branch',
         summary: content.slice(0, 60) + (content.length > 60 ? '...' : ''),
         details: content,
-        color: 'border-slate-300 bg-white text-slate-800',
+        color: 'border-soft-border bg-surface text-ink',
         badge: `بند ${idx + 1}`
       })),
       {
         id: 5,
         title: 'الفخاخ والشواذ الامتحانية',
         category: 'traps',
-        summary: lesson.commonMistakes?.[0] || 'انتبه للشواذ وتطابق الأزمنة وقواعد التحويل الوزارية.',
+        summary: lesson.commonMistakes?.[0] || 'انتبه للشواذ وتطابق الأزمنة وقواعد التحويل.',
         details: lesson.commonMistakes?.join(' • ') || 'تجنب خلط القواعد أو نسيان حروف الجر وتصريف الأفعال الشاذة.',
-        color: 'border-rose-400 bg-rose-50/70 text-rose-950',
-        badge: 'تحذير وزاري'
+        color: 'border-semantic-error bg-answer-review-bg text-ink',
+        badge: 'تنبيه مهم'
       }
     ];
     return nodes;
@@ -139,10 +139,10 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
 
     // Default Universal Contrast
     return {
-      leftTitle: 'الصياغة القياسية المعتمدة',
+      leftTitle: 'الصياغة القياسية',
       leftRule: 'تطبيق القاعدة المباشرة وفق جدول الأزمنة والأدوات المعطاة في الدرس.',
       leftExample: lesson.examples[0]?.en || 'Apply standard grammatical formulas consistently.',
-      rightTitle: 'الاستثناءات والتحويل الوزاري',
+      rightTitle: 'الاستثناءات وصيغ التحويل',
       rightRule: 'مراعاة مطابقة الفاعل، علامات الترقيم، وحذف الدلائل عند السؤال.',
       rightExample: lesson.examples[1]?.en || 'Mind irregular verbs and pronoun transformations.',
       trap: 'راجع إملاء الكلمات المحولة لتجنب خصم نصف الدرجة في الدفتر الامتحاني.'
@@ -175,7 +175,7 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
       stepNumber: '04',
       title: 'التدقيق النهائي ومطابقة المعنى',
       desc: 'قراءة الجملة كاملة بعد الحل للتأكد من سلاسة المعنى وتطابقه مع المطلوب.',
-      tip: 'قارن حلك مع نموذج الكنترول الوزاري.'
+      tip: 'قارن حلك مع الأجوبة النموذجية المقترحة.'
     }
   ];
 
@@ -184,37 +184,38 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
     : lesson.detailedContent;
 
   return (
-    <div className="space-y-6 text-[#202124]">
+    <div className="space-y-6 text-ink">
       
       {/* Pedagogical Control Bar */}
-      <div className="p-4 sm:p-5 bg-white border-4 border-[#202124] text-[#202124] shadow-[6px_6px_0px_#202124] flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
+      <div className="p-4 sm:p-5 bg-surface border-4 border-ink text-ink shadow-brutal-modal flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4">
         
         <div className="flex items-center gap-3">
-          <div className="w-11 h-11 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center font-black text-xl shrink-0">
+          <div className="w-11 h-11 bg-cobalt text-surface border-2 border-ink shadow-brutal-sm flex items-center justify-center font-black text-xl shrink-0">
             <Cpu className="w-6 h-6" />
           </div>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] text-[10px] font-mono font-black tracking-wider uppercase border border-[#202124]">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-2 py-0.5 bg-yellow text-ink text-[10px] font-mono font-black tracking-wider uppercase border border-ink">
                 ACADEMIC DISSECTION ENGINE
               </span>
-              <span className="text-xs font-mono font-bold text-[#202124]/60">• تفصيل وشرح المحتوى</span>
+              <span className="text-xs font-mono font-bold text-ink/60">• تفصيل وشرح المحتوى</span>
             </div>
-            <h2 className="text-base sm:text-lg font-black text-[#202124] mt-0.5">
-              مختبر الشرح والتفكيك الأكاديمي والوزاري
+            <h2 className="text-base sm:text-lg font-black text-ink mt-0.5">
+              مختبر الشرح والتفكيك الأكاديمي
             </h2>
           </div>
         </div>
 
         {/* 4 Interactive Pedagogical Lenses */}
-        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-paper border-2 border-ink shadow-brutal-sm">
           
           <button
+            type="button"
             onClick={() => setActiveLens('dissect')}
             className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
               activeLens === 'dissect' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <Layers className="w-3.5 h-3.5" />
@@ -222,11 +223,12 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveLens('mindmap')}
             className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
               activeLens === 'mindmap' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <GitBranch className="w-3.5 h-3.5" />
@@ -234,11 +236,12 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveLens('contrast')}
             className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
               activeLens === 'contrast' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <ArrowLeftRight className="w-3.5 h-3.5" />
@@ -246,11 +249,12 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveLens('stepper')}
             className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
               activeLens === 'stepper' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <Target className="w-3.5 h-3.5" />
@@ -264,9 +268,9 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
       {/* LENS 1: CONCEPT DISSECTION (التفكيك المفهومي الذكي) */}
       {activeLens === 'dissect' && (
         <div className="space-y-4">
-          <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-[6px] bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124]">
+          <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-[6px] bg-surface border-2 border-ink shadow-brutal-callout">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-black text-[#202124]">
+              <span className="text-xs font-black text-ink">
                 طريقة التفكيك المفهومي: بطاقات تفاعلية مستقلة مع ميزة الفحص الذاتي
               </span>
             </div>
@@ -275,14 +279,14 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
               <button
                 type="button"
                 onClick={() => setHighYieldOnly(!highYieldOnly)}
-                className={`px-3 py-1.5 rounded-[4px] text-xs font-black transition-all flex items-center gap-1.5 border-2 border-[#202124] cursor-pointer ${
+                className={`px-3 py-1.5 rounded-[4px] text-xs font-black transition-all flex items-center gap-1.5 border-2 border-ink cursor-pointer ${
                   highYieldOnly 
-                    ? 'bg-[#F3E6A5] text-[#202124] shadow-[2px_2px_0px_#202124]' 
-                    : 'bg-[#F7F5EF] text-[#202124] hover:bg-white'
+                    ? 'bg-yellow text-ink shadow-brutal-sm' 
+                    : 'bg-paper text-ink hover:bg-surface'
                 }`}
               >
-                <Zap className="w-3.5 h-3.5 text-[#405DE6]" />
-                <span>{highYieldOnly ? 'إظهار كامل التفاصيل' : 'تفعيل وضع الزبدة الوزارية'}</span>
+                <Zap className="w-3.5 h-3.5 text-cobalt" />
+                <span>{highYieldOnly ? 'إظهار كامل التفاصيل' : 'تفعيل وضع الخلاصة المركزة'}</span>
               </button>
             </div>
           </div>
@@ -295,25 +299,25 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
               return (
                 <div 
                   key={idx}
-                  className={`p-5 rounded-[6px] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] transition-all duration-200 space-y-3.5 ${
-                    isUnderstood ? 'bg-[#D7E9DA]/35' : 'bg-white'
+                  className={`p-5 rounded-[6px] border-2 border-ink shadow-brutal-callout transition-all duration-200 space-y-3.5 ${
+                    isUnderstood ? 'bg-soft-mint/35' : 'bg-surface'
                   }`}
                 >
                   <div className="flex flex-wrap items-center justify-between gap-3">
                     <div className="flex flex-wrap items-center gap-2.5">
-                      <div className={`w-7 h-7 rounded-[4px] border-2 border-[#202124] flex items-center justify-center text-xs font-mono font-black shrink-0 tabular-nums ${
-                        isUnderstood ? 'bg-[#287A52] text-white' : 'bg-[#202124] text-white'
+                      <div className={`w-7 h-7 rounded-[4px] border-2 border-ink flex items-center justify-center text-xs font-mono font-black shrink-0 tabular-nums ${
+                        isUnderstood ? 'bg-semantic-success text-surface' : 'bg-ink text-surface'
                       }`}>
                         {idx + 1}
                       </div>
                       
-                      <span className="text-xs font-black text-[#202124]">
-                        {idx === 0 ? 'القاعدة التأسيسية للموضوع' : `الفرع والتطبيق الوزاري رقم (${idx + 1})`}
+                      <span className="text-xs font-black text-ink">
+                        {idx === 0 ? 'القاعدة التأسيسية للموضوع' : `الفرع والتطبيق رقم (${idx + 1})`}
                       </span>
 
                       {point.includes('ص') && (
-                        <span className="text-[10px] px-2 py-0.5 rounded-[4px] bg-[#F3E6A5] text-[#202124] border border-[#202124] font-black">
-                          توثيق ملزمة الوزاري
+                        <span className="text-[10px] px-2 py-0.5 rounded-[4px] bg-yellow text-ink border border-ink font-black">
+                          مرجع الملزمة
                         </span>
                       )}
                     </div>
@@ -322,31 +326,31 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
                       <button
                         type="button"
                         onClick={() => toggleHidden(idx)}
-                        className="p-2 rounded-[4px] bg-[#F7F5EF] hover:bg-white border-2 border-[#202124] text-[#202124] text-xs font-black transition-all flex items-center gap-1 cursor-pointer"
+                        className="p-2 rounded-[4px] bg-paper hover:bg-surface border-2 border-ink text-ink text-xs font-black transition-all flex items-center gap-1 cursor-pointer"
                         aria-label={isHidden ? 'إظهار الشرح' : 'إخفاء الشرح لاختبار الاستذكار'}
                         title={isHidden ? 'إظهار الشرح' : 'إخفاء الشرح لاختبار الاستذكار'}
                       >
-                        {isHidden ? <Eye className="w-3.5 h-3.5 text-[#405DE6]" /> : <EyeOff className="w-3.5 h-3.5 text-[#747474]" />}
+                        {isHidden ? <Eye className="w-3.5 h-3.5 text-cobalt" /> : <EyeOff className="w-3.5 h-3.5 text-muted-gray" />}
                         <span className="hidden sm:inline text-[11px]">{isHidden ? 'كشف' : 'تسميع ذهني'}</span>
                       </button>
 
                       <button
                         type="button"
                         onClick={() => handleSpeak(point)}
-                        className="p-2 rounded-[4px] bg-[#F7F5EF] hover:bg-white border-2 border-[#202124] text-[#202124] transition-all cursor-pointer"
+                        className="p-2 rounded-[4px] bg-paper hover:bg-surface border-2 border-ink text-ink transition-all cursor-pointer"
                         aria-label="استماع صوتي"
                         title="استماع صوتي"
                       >
-                        <Volume2 className="w-3.5 h-3.5 text-[#405DE6]" />
+                        <Volume2 className="w-3.5 h-3.5 text-cobalt" />
                       </button>
 
                       <button
                         type="button"
                         onClick={() => toggleUnderstood(idx)}
-                        className={`px-3 py-1.5 rounded-[4px] border-2 border-[#202124] text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer ${
+                        className={`px-3 py-1.5 rounded-[4px] border-2 border-ink text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer ${
                           isUnderstood 
-                            ? 'bg-[#287A52] text-white shadow-[2px_2px_0px_#202124]' 
-                            : 'bg-[#F7F5EF] hover:bg-white text-[#202124]'
+                            ? 'bg-semantic-success text-surface shadow-brutal-sm' 
+                            : 'bg-paper hover:bg-surface text-ink'
                         }`}
                       >
                         <Check className="w-3.5 h-3.5" />
@@ -356,14 +360,14 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
                   </div>
 
                   <div className={`transition-all duration-300 lesson-reading ${isHidden ? 'filter blur-md select-none opacity-40' : ''}`}>
-                    <p className="text-sm sm:text-base text-[#202124] leading-relaxed font-medium">
+                    <p className="text-sm sm:text-base text-ink leading-relaxed font-medium min-w-0 break-words">
                       {point}
                     </p>
                   </div>
 
                   {isHidden && (
-                    <div className="p-3 rounded-[4px] bg-[#E9ECFA] border-2 border-[#202124] text-center">
-                      <p className="text-xs font-black text-[#405DE6]">
+                    <div className="p-3 rounded-[4px] bg-blue-mist border-2 border-ink text-center">
+                      <p className="text-xs font-black text-cobalt">
                         🔒 النص مخفي الآن. حاول استذكار القاعدة وشروطها غيباً ثم اضغط "كشف" للمطابقة.
                       </p>
                     </div>
@@ -377,86 +381,80 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
 
       {/* LENS 2: VISUAL LOGIC MINDMAP (الخريطة الذهنية والشجرة المنطقية) */}
       {activeLens === 'mindmap' && (
-        <div className="p-6 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-6">
+        <div className="p-6 sm:p-8 rounded-[6px] bg-surface border-2 border-ink shadow-brutal-action space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <GitBranch className="w-5 h-5 text-[#405DE6]" />
-              <h3 className="text-base font-black text-[#202124]">
+              <GitBranch className="w-5 h-5 text-cobalt" />
+              <h3 className="text-base font-black text-ink">
                 الشجرة المنطقية والخريطة الهيكلية للدرس
               </h3>
             </div>
-            <span className="text-xs font-bold text-[#747474]">اضغط على أي عقدة لاستعراض تفاصيلها</span>
+            <span className="text-xs font-bold text-muted-gray">اضغط على أي عقدة لاستعراض تفاصيلها</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div 
-              role="button"
-              tabIndex={0}
+            <button
+              type="button"
               onClick={() => setSelectedMindNode(0)}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedMindNode(0); }}
-              className={`p-5 rounded-[6px] border-2 border-[#202124] cursor-pointer transition-all ${
-                selectedMindNode === 0 ? 'bg-[#E9ECFA] shadow-[4px_4px_0px_#202124]' : 'bg-white hover:bg-[#F7F5EF]'
+              className={`w-full text-right p-5 rounded-[6px] border-2 border-ink cursor-pointer transition-all ${
+                selectedMindNode === 0 ? 'bg-blue-mist shadow-brutal-action' : 'bg-surface hover:bg-paper'
               }`}
             >
-              <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-[#405DE6] text-white border border-[#202124]">
+              <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-cobalt text-surface border border-ink">
                 الجذر المركزي
               </span>
-              <h4 className="text-base font-black text-[#202124] mt-2">{lesson.titleAr}</h4>
-              <p className="text-xs text-[#747474] font-bold mt-1 line-clamp-2">{lesson.summary}</p>
-            </div>
+              <h4 className="text-base font-black text-ink mt-2">{lesson.titleAr}</h4>
+              <p className="text-xs text-muted-gray font-bold mt-1 line-clamp-2">{lesson.summary}</p>
+            </button>
 
             {mindNodes.slice(1, 4).map((node) => (
-              <div 
+              <button
+                type="button"
                 key={node.id}
-                role="button"
-                tabIndex={0}
                 onClick={() => setSelectedMindNode(node.id)}
-                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedMindNode(node.id); }}
-                className={`p-5 rounded-[6px] border-2 border-[#202124] cursor-pointer transition-all ${
-                  selectedMindNode === node.id ? 'bg-[#E9ECFA] shadow-[4px_4px_0px_#202124]' : 'bg-white hover:bg-[#F7F5EF]'
+                className={`w-full text-right p-5 rounded-[6px] border-2 border-ink cursor-pointer transition-all ${
+                  selectedMindNode === node.id ? 'bg-blue-mist shadow-brutal-action' : 'bg-surface hover:bg-paper'
                 }`}
               >
-                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-[#F3E6A5] text-[#202124] border border-[#202124]">
+                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-yellow text-ink border border-ink">
                   {node.badge}
                 </span>
-                <h4 className="text-sm font-black text-[#202124] mt-2">{node.title}</h4>
-                <p className="text-xs text-[#747474] font-bold mt-1 line-clamp-2">{node.summary}</p>
-              </div>
+                <h4 className="text-sm font-black text-ink mt-2">{node.title}</h4>
+                <p className="text-xs text-muted-gray font-bold mt-1 line-clamp-2">{node.summary}</p>
+              </button>
             ))}
 
-            <div 
-              role="button"
-              tabIndex={0}
+            <button
+              type="button"
               onClick={() => setSelectedMindNode(5)}
-              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedMindNode(5); }}
-              className={`p-5 rounded-[6px] border-2 border-[#202124] cursor-pointer transition-all ${
-                selectedMindNode === 5 ? 'bg-[#FDF6F4] shadow-[4px_4px_0px_#202124]' : 'bg-[#FDF6F4]/50 hover:bg-[#FDF6F4]'
+              className={`w-full text-right p-5 rounded-[6px] border-2 border-ink cursor-pointer transition-all ${
+                selectedMindNode === 5 ? 'bg-answer-review-bg shadow-brutal-action' : 'bg-answer-review-bg/50 hover:bg-answer-review-bg'
               }`}
             >
-              <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-[#B83A3A] text-white border border-[#202124]">
+              <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-semantic-error text-surface border border-ink">
                 الفخاخ والشواذ
               </span>
-              <h4 className="text-sm font-black text-[#202124] mt-2">محاذير الامتحان الوزاري</h4>
-              <p className="text-xs text-[#B83A3A] font-bold mt-1 line-clamp-2">تجنب الأخطاء الشائعة والشواذ.</p>
-            </div>
+              <h4 className="text-sm font-black text-ink mt-2">محاذير الامتحان الوزاري</h4>
+              <p className="text-xs text-semantic-error font-bold mt-1 line-clamp-2">تجنب الأخطاء الشائعة والشواذ.</p>
+            </button>
           </div>
 
           {selectedMindNode !== null && (
-            <div className="p-5 rounded-[6px] bg-[#F7F5EF] text-[#202124] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3">
-              <div className="flex items-center justify-between gap-2">
-                <span className="text-xs font-black text-[#405DE6]">
+            <div className="p-5 rounded-[6px] bg-paper text-ink border-3 border-ink shadow-brutal-action space-y-3">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className="text-xs font-black text-cobalt">
                   تفصيل العقدة المختارة في الخريطة الذهنية:
                 </span>
                 <button
                   type="button"
                   onClick={() => handleSpeak(mindNodes[selectedMindNode]?.details || '')}
-                  className="p-1.5 px-2.5 rounded-[4px] bg-white hover:bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] text-xs font-black flex items-center gap-1 cursor-pointer"
+                  className="p-1.5 px-2.5 rounded-[4px] bg-surface hover:bg-yellow text-ink border-2 border-ink text-xs font-black flex items-center gap-1 cursor-pointer"
                 >
-                  <Volume2 className="w-3.5 h-3.5 text-[#405DE6]" />
+                  <Volume2 className="w-3.5 h-3.5 text-cobalt" />
                   <span>استماع</span>
                 </button>
               </div>
-              <p className="text-sm sm:text-base leading-relaxed text-[#202124] font-bold">
+              <p className="text-sm sm:text-base leading-relaxed text-ink font-bold min-w-0 break-words">
                 {mindNodes[selectedMindNode]?.details}
               </p>
             </div>
@@ -466,60 +464,60 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
 
       {/* LENS 3: DUAL CONTRAST & COMPARISON MATRIX (مصفوفة المقارنة والفروقات) */}
       {activeLens === 'contrast' && (
-        <div className="p-6 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-6">
+        <div className="p-6 sm:p-8 rounded-[6px] bg-surface border-2 border-ink shadow-brutal-action space-y-6">
           
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <ArrowLeftRight className="w-5 h-5 text-[#405DE6]" />
-              <h3 className="text-base font-black text-[#202124]">
+              <ArrowLeftRight className="w-5 h-5 text-cobalt" />
+              <h3 className="text-base font-black text-ink">
                 مصفوفة المقارنة المزدوجة والفروقات الدقيقة
               </h3>
             </div>
-            <span className="text-xs font-bold text-[#747474]">حسم حالات الشك الوزارية</span>
+            <span className="text-xs font-bold text-muted-gray">حسم حالات الشك الامتحانية</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             
             {/* Left Case */}
-            <div className="p-5 rounded-[6px] bg-[#E9ECFA]/70 border-2 border-[#202124] space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="px-2.5 py-1 rounded-[4px] bg-[#405DE6] text-white border border-[#202124] text-xs font-black">
+            <div className="p-5 rounded-[6px] bg-blue-mist/70 border-2 border-ink space-y-3 min-w-0">
+              <div className="flex items-center justify-between gap-2">
+                <span className="px-2.5 py-1 rounded-[4px] bg-cobalt text-surface border border-ink text-xs font-black">
                   الحالة الأولى [أ]
                 </span>
-                <span className="text-xs font-black text-[#405DE6]">الصيغة والشرط</span>
+                <span className="text-xs font-black text-cobalt">الصيغة والشرط</span>
               </div>
 
-              <h4 className="text-base font-black text-[#202124]">
+              <h4 className="text-base font-black text-ink">
                 {contrast.leftTitle}
               </h4>
 
-              <p className="text-xs sm:text-sm text-[#202124] leading-relaxed font-medium">
+              <p className="text-xs sm:text-sm text-ink leading-relaxed font-medium">
                 {contrast.leftRule}
               </p>
 
-              <div dir="ltr" className="p-3 rounded-[4px] bg-white border-2 border-[#202124] text-xs font-mono font-black text-[#202124] text-left en-sentence">
+              <div dir="ltr" className="p-3 rounded-[4px] bg-surface border-2 border-ink text-xs font-mono font-black text-ink text-left en-sentence min-w-0 break-words">
                 {contrast.leftExample}
               </div>
             </div>
 
             {/* Right Case */}
-            <div className="p-5 rounded-[6px] bg-[#D7E9DA]/50 border-2 border-[#202124] space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="px-2.5 py-1 rounded-[4px] bg-[#287A52] text-white border border-[#202124] text-xs font-black">
+            <div className="p-5 rounded-[6px] bg-soft-mint/50 border-2 border-ink space-y-3 min-w-0">
+              <div className="flex items-center justify-between gap-2">
+                <span className="px-2.5 py-1 rounded-[4px] bg-semantic-success text-surface border border-ink text-xs font-black">
                   الحالة المقابلة [ب]
                 </span>
-                <span className="text-xs font-black text-[#287A52]">الصيغة والشرط</span>
+                <span className="text-xs font-black text-semantic-success">الصيغة والشرط</span>
               </div>
 
-              <h4 className="text-base font-black text-[#202124]">
+              <h4 className="text-base font-black text-ink">
                 {contrast.rightTitle}
               </h4>
 
-              <p className="text-xs sm:text-sm text-[#202124] leading-relaxed font-medium">
+              <p className="text-xs sm:text-sm text-ink leading-relaxed font-medium">
                 {contrast.rightRule}
               </p>
 
-              <div dir="ltr" className="p-3 rounded-[4px] bg-white border-2 border-[#202124] text-xs font-mono font-black text-[#202124] text-left en-sentence">
+              <div dir="ltr" className="p-3 rounded-[4px] bg-surface border-2 border-ink text-xs font-mono font-black text-ink text-left en-sentence min-w-0 break-words">
                 {contrast.rightExample}
               </div>
             </div>
@@ -527,13 +525,13 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
           </div>
 
           {/* Golden Trap Alert */}
-          <div className="p-4 rounded-[4px] bg-[#FDF6F4] border-2 border-[#202124] flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-[#B83A3A] shrink-0 mt-0.5" />
-            <div>
-              <span className="text-xs font-black text-[#B83A3A] block">
-                الفخ الوزاري الحاسم للمقارنة:
+          <div className="p-4 rounded-[4px] bg-answer-review-bg border-2 border-ink flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-semantic-error shrink-0 mt-0.5" />
+            <div className="min-w-0">
+              <span className="text-xs font-black text-semantic-error block">
+                التنبيه الحاسم للمقارنة:
               </span>
-              <p className="text-xs sm:text-sm text-[#202124] mt-0.5 leading-relaxed font-bold">
+              <p className="text-xs sm:text-sm text-ink mt-0.5 leading-relaxed font-bold">
                 {contrast.trap}
               </p>
             </div>
@@ -544,16 +542,16 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
 
       {/* LENS 4: STEPPER PROBLEM SOLVER (خوارزمية الحل الوزاري بالخطوات) */}
       {activeLens === 'stepper' && (
-        <div className="p-6 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-6">
+        <div className="p-6 sm:p-8 rounded-[6px] bg-surface border-2 border-ink shadow-brutal-action space-y-6">
           
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <Target className="w-5 h-5 text-[#405DE6]" />
-              <h3 className="text-base font-black text-[#202124]">
+              <Target className="w-5 h-5 text-cobalt" />
+              <h3 className="text-base font-black text-ink">
                 خوارزمية التفكير للحل النموذجي بالدفتر الامتحاني
               </h3>
             </div>
-            <span className="text-xs font-bold text-[#747474]">4 خطوات ذهبية لضمان الدرجة الكاملة</span>
+            <span className="text-xs font-bold text-muted-gray">4 خطوات ذهبية لضمان الدرجة الكاملة</span>
           </div>
 
           {/* Stepper Interactive Timeline */}
@@ -562,54 +560,52 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
               const isActive = activeStepIdx === idx;
 
               return (
-                <div 
+                <button
+                  type="button"
                   key={step.stepNumber}
-                  role="button"
-                  tabIndex={0}
                   onClick={() => setActiveStepIdx(idx)}
-                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveStepIdx(idx); }}
-                  className={`p-4 rounded-[6px] border-2 border-[#202124] cursor-pointer transition-all flex flex-col justify-between ${
+                  className={`w-full text-right p-4 rounded-[6px] border-2 border-ink cursor-pointer transition-all flex flex-col justify-between ${
                     isActive 
-                      ? 'bg-[#E9ECFA] shadow-[4px_4px_0px_#202124]' 
-                      : 'bg-white hover:bg-[#F7F5EF]'
+                      ? 'bg-blue-mist shadow-brutal-action' 
+                      : 'bg-surface hover:bg-paper'
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono font-black text-xs px-2 py-0.5 rounded-[4px] bg-[#202124] text-white tabular-nums">
+                      <span className="font-mono font-black text-xs px-2 py-0.5 rounded-[4px] bg-ink text-surface tabular-nums">
                         خطوة {step.stepNumber}
                       </span>
                       {isActive && (
-                        <span className="w-2.5 h-2.5 rounded-full bg-[#405DE6] border border-[#202124]" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-cobalt border border-ink" />
                       )}
                     </div>
 
-                    <h4 className="text-xs sm:text-sm font-black text-[#202124] leading-snug">
+                    <h4 className="text-xs sm:text-sm font-black text-ink leading-snug">
                       {step.title}
                     </h4>
 
-                    <p className="text-xs text-[#747474] font-bold mt-2 leading-relaxed">
+                    <p className="text-xs text-muted-gray font-bold mt-2 leading-relaxed">
                       {step.desc}
                     </p>
                   </div>
 
-                  <div className="mt-4 pt-2.5 border-t border-[#202124]/15 text-[11px] font-black text-[#405DE6]">
+                  <div className="mt-4 pt-2.5 border-t border-ink/15 text-[11px] font-black text-cobalt">
                     💡 {step.tip}
                   </div>
-                </div>
+                </button>
               );
             })}
           </div>
 
           {/* Stepper Active Simulation Preview */}
-          <div className="p-5 rounded-[6px] bg-[#F7F5EF] text-[#202124] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3">
-            <span className="text-xs font-black text-[#405DE6] block">
-              تطبيق خوارزمية الحل على مثال وزاري من الدرس:
+          <div className="p-5 rounded-[6px] bg-paper text-ink border-3 border-ink shadow-brutal-action space-y-3">
+            <span className="text-xs font-black text-cobalt block">
+              تطبيق خوارزمية الحل على مثال من الدرس:
             </span>
-            <p dir="ltr" className="font-mono text-xs sm:text-sm text-[#287A52] font-black bg-white p-3 rounded-[4px] border-2 border-[#202124] text-left en-sentence">
+            <p dir="ltr" className="font-mono text-xs sm:text-sm text-semantic-success font-black bg-surface p-3 rounded-[4px] border-2 border-ink text-left en-sentence min-w-0 break-words">
               Example: {lesson.examples[0]?.en || 'I was walking when I saw the accident.'}
             </p>
-            <p className="text-xs text-[#202124] font-bold">
+            <p className="text-xs text-ink font-bold">
               المعنى والتعليل: {lesson.examples[0]?.ar || 'تم التحويل بتطبيق قاعدة الدرس نصاً ومطابقة الأدوات المعطاة.'}
             </p>
           </div>
@@ -621,18 +617,18 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
       {lesson.teacherNotes && lesson.teacherNotes.length > 0 && (
         <div 
           id="teacher-golden-notes-box"
-          className="p-6 sm:p-7 bg-[#F3E6A5]/30 border-4 border-[#202124] shadow-[6px_6px_0px_#202124] space-y-3.5"
+          className="p-6 sm:p-7 bg-yellow/30 border-4 border-ink shadow-brutal-modal space-y-3.5"
         >
-          <div className="flex items-center gap-2 text-[#202124] font-black text-sm sm:text-base border-b-2 border-[#202124] pb-2">
-            <Lightbulb className="w-5 h-5 text-[#405DE6] fill-[#405DE6]" />
-            <span>ملاحظات الأستاذ مصطفى تركي الذهبية للوزاري 2026/2027</span>
+          <div className="flex items-center gap-2 text-ink font-black text-sm sm:text-base border-b-2 border-ink pb-2">
+            <Lightbulb className="w-5 h-5 text-cobalt fill-cobalt shrink-0" />
+            <span>ملاحظات الأستاذ مصطفى تركي الذهبية لمنهج 2026/2027</span>
           </div>
 
           <div className="space-y-2.5">
             {lesson.teacherNotes.map((note, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#202124] font-bold leading-relaxed bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
-                <span className="text-[#B83A3A] font-mono font-black shrink-0 text-base">✦</span>
-                <p>{note}</p>
+              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink font-bold leading-relaxed bg-surface p-3 border-2 border-ink shadow-brutal-sm">
+                <span className="text-semantic-error font-mono font-black shrink-0 text-base">✦</span>
+                <p className="min-w-0 break-words">{note}</p>
               </div>
             ))}
           </div>
@@ -643,18 +639,18 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
       {lesson.commonMistakes && lesson.commonMistakes.length > 0 && (
         <div 
           id="common-mistakes-box"
-          className="p-6 sm:p-7 bg-[#FDF6F4] border-4 border-[#202124] shadow-[6px_6px_0px_#202124] space-y-3.5"
+          className="p-6 sm:p-7 bg-answer-review-bg border-4 border-ink shadow-brutal-modal space-y-3.5"
         >
-          <div className="flex items-center gap-2 text-[#202124] font-black text-sm sm:text-base border-b-2 border-[#202124] pb-2">
-            <ShieldAlert className="w-5 h-5 text-[#B83A3A]" />
-            <span>فخاخ وزارية شائعة احذر الوقوع بها في الدفتر الامتحاني</span>
+          <div className="flex items-center gap-2 text-ink font-black text-sm sm:text-base border-b-2 border-ink pb-2">
+            <ShieldAlert className="w-5 h-5 text-semantic-error shrink-0" />
+            <span>أخطاء شائعة احذر الوقوع بها في الدفتر الامتحاني</span>
           </div>
 
           <div className="space-y-2.5">
             {lesson.commonMistakes.map((mistake, idx) => (
-              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#202124] leading-relaxed bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-bold">
-                <X className="w-4 h-4 text-[#B83A3A] shrink-0 mt-0.5 font-black" />
-                <p>{mistake}</p>
+              <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-ink leading-relaxed bg-surface p-3 border-2 border-ink shadow-brutal-sm font-bold">
+                <X className="w-4 h-4 text-semantic-error shrink-0 mt-0.5 font-black" />
+                <p className="min-w-0 break-words">{mistake}</p>
               </div>
             ))}
           </div>

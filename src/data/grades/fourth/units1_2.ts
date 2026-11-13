@@ -12,8 +12,8 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
     titleAr: "الوحدة الأولى: طرق التعلم والتواصل (Getting in Touch)",
     titleEn: "Unit 1: Learning Methods, Languages of Canada, Present Simple vs Continuous & Indirect Questions",
     description: "مفردات مراكز التعلم الذاتي، المضارع البسيط والمستمر، أفعال الحالة (Stative Verbs)، اللغات الرسمية لكندا، الأسئلة غير المباشرة المهذبة، صفات ed/ing، وتأطير البرامج الصيفية.",
-    accentColor: "from-violet-600 to-indigo-600",
-    bgGradient: "bg-gradient-to-r from-violet-50 to-indigo-50 border-violet-200",
+    accentColor: "bg-lavender text-ink",
+    bgGradient: "bg-blue-mist border-ink",
     sourcePages: "الملزمة ص 1 - 25",
     academicYear: "2025-2026",
     lessons: [
@@ -288,8 +288,8 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
     titleAr: "الوحدة الثانية: الشعوب والمجتمعات والماضي البسيط والمستمر (People & Cultures)",
     titleEn: "Unit 2: People & Cultures, Past Simple vs Continuous, used to, UNICEF & Package Holidays",
     description: "الماضي البسيط والماضي المستمر مع الربط بـ when/while، الاعتياد في الماضي بـ used to، منظمة يونيسيف (UNICEF) وحماية الأطفال، عادات الأعراس، ظروف الطريقة، ورحلة أربيل الجماعية.",
-    accentColor: "from-blue-600 to-sky-600",
-    bgGradient: "bg-gradient-to-r from-blue-50 to-sky-50 border-blue-200",
+    accentColor: "bg-cobalt text-surface",
+    bgGradient: "bg-blue-mist border-ink",
     sourcePages: "الملزمة ص 25 - 53",
     academicYear: "2025-2026",
     lessons: [

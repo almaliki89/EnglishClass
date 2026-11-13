@@ -12,8 +12,8 @@ export const FOURTH_PREPARATORY_UNITS_7_8: Unit[] = [
     titleAr: "الوحدة السابعة: البيئة والأهوار والمبني للمجهول (Environment & Technology)",
     titleEn: "Unit 7: Zero & First Conditionals, The Al-Hammaar Marshes, Petroleum & Passive Voice, Satellites & Sea Turtles",
     description: "الحالة الشرطية الصفرية والأولى، رياح التجارة والأرصاد الجوية، أهوار الحمار في جنوب العراق، تكون النفط والمبني للمجهول، التجارة الإلكترونية، الأقمار الصناعية، وسلاحف صقرية المنقار المهددة.",
-    accentColor: "from-sky-600 to-blue-700",
-    bgGradient: "bg-gradient-to-r from-sky-50 to-blue-50 border-sky-200",
+    accentColor: "bg-cobalt text-surface",
+    bgGradient: "bg-blue-mist border-ink",
     sourcePages: "الملزمة ص 119 - 144",
     academicYear: "2025-2026",
     lessons: [
@@ -176,8 +176,8 @@ export const FOURTH_PREPARATORY_UNITS_7_8: Unit[] = [
     titleAr: "الوحدة الثامنة: المراجعة الشاملة للفصل الثاني (Semester 2 Comprehensive Revision)",
     titleEn: "Unit 8: Semester 2 Consolidation, GPS Navigation, Planet Saturn & Final Examination",
     description: "مراجعة كبرى مكثفة لجميع القواعد والقراءات والمفردات للفصل الثاني: نظام تحديد المواقع (GPS)، حقائق كوكب زحل، لياقة رواد الفضاء، والامتحان التحريري الشامل النهائي لنهاية العام (100 درجة).",
-    accentColor: "from-teal-600 to-emerald-700",
-    bgGradient: "bg-gradient-to-r from-teal-50 to-emerald-50 border-teal-200",
+    accentColor: "bg-soft-mint text-ink",
+    bgGradient: "bg-paper border-ink",
     sourcePages: "الملزمة ص 144 - 149",
     academicYear: "2025-2026",
     lessons: [

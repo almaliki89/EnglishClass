@@ -249,12 +249,12 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
   const signals = getSignalWords();
 
   return (
-    <div className="bg-white border-2 border-[#202124] text-[#202124] p-6 sm:p-8 shadow-[5px_5px_0px_#202124] space-y-6 relative overflow-hidden">
+    <div className="bg-surface border-2 border-ink text-ink p-6 sm:p-8 shadow-brutal-lg space-y-6 relative overflow-hidden rounded-md">
       
       {/* 3D Visual Banner & Header bar */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b-2 border-[#202124]/15 pb-5">
-        <div className="flex items-center gap-4">
-          <div className="relative overflow-hidden border-2 border-[#202124] shadow-[3px_3px_0px_#202124] w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-[#F7F5EF]">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b-2 border-ink/15 pb-5">
+        <div className="flex items-center gap-4 min-w-0">
+          <div className="relative overflow-hidden border-2 border-ink shadow-brutal-callout w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-paper rounded">
             <img 
               src="/assets/images/grammar_lab_3d_1793868639624.jpg" 
               alt="Grammar Lab 3D" 
@@ -262,49 +262,52 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
               className="w-full h-full object-cover"
             />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] text-[10px] font-mono font-bold uppercase tracking-wider">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-2.5 py-0.5 bg-yellow text-ink border border-ink text-[10px] font-mono font-bold uppercase tracking-wider rounded-sm">
                 INTERACTIVE GRAMMAR LAB
               </span>
-              <span className="text-xs font-mono font-bold text-[#747474]">• معمل القواعد الذكي</span>
+              <span className="text-xs font-mono font-bold text-muted-gray">• معمل القواعد الذكي</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-[#202124] mt-1 tracking-tight">
-              الخوارزمية الوزارية وحل القواعد خطوة بخطوة
+            <h2 className="text-xl sm:text-2xl font-extrabold text-ink mt-1 tracking-tight">
+              خوارزمية حل القواعد خطوة بخطوة
             </h2>
           </div>
         </div>
 
         {/* Tab Controls */}
-        <div className="flex items-center gap-1.5 p-1 bg-[#F7F5EF] border border-[#202124] shadow-[2px_2px_0px_#202124] overflow-x-auto no-scrollbar w-full sm:w-auto max-w-full">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-paper border border-ink shadow-brutal-sm w-full md:w-auto rounded">
           <button
+            type="button"
             onClick={() => setActiveTab('formula')}
-            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 border cursor-pointer rounded-sm ${
               activeTab === 'formula' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <Sliders className="w-3.5 h-3.5 shrink-0" />
             <span>المعادلة</span>
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('stepper')}
-            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 border cursor-pointer rounded-sm ${
               activeTab === 'stepper' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <Layers className="w-3.5 h-3.5 shrink-0" />
             <span>خطوات التحويل</span>
           </button>
           <button
+            type="button"
             onClick={() => setActiveTab('radar')}
-            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 border cursor-pointer rounded-sm ${
               activeTab === 'radar' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <Zap className="w-3.5 h-3.5 shrink-0" />
@@ -316,16 +319,16 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
       {/* Tab 1: Interactive Formula Tokenizer */}
       {activeTab === 'formula' && (
         <div className="space-y-4">
-          <div className="p-5 bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-lg">
-            <div className="flex items-center justify-between mb-3 text-xs">
-              <span className="font-bold text-[#202124] flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 text-[#405DE6]" />
-                الصيغة الرياضية المعتمدة في الامتحان الوزاري
+          <div className="p-5 bg-paper border-2 border-ink shadow-brutal-callout rounded-md">
+            <div className="flex flex-wrap items-center justify-between gap-2 mb-3 text-xs">
+              <span className="font-bold text-ink flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-cobalt shrink-0" />
+                الصيغة الرياضية المقررة في القاعدة
               </span>
-              <span className="text-[11px] font-mono font-bold text-[#747474]">RULE SYNTAX MATRIX</span>
+              <span className="text-[11px] font-mono font-bold text-muted-gray">RULE SYNTAX MATRIX</span>
             </div>
 
-            <div className="font-mono text-base sm:text-lg font-bold text-[#202124] bg-white p-4 border border-[#202124] overflow-x-auto whitespace-pre-wrap leading-relaxed shadow-[2px_2px_0px_#202124] rounded">
+            <div className="font-mono text-base sm:text-lg font-bold text-ink bg-surface p-4 border border-ink whitespace-pre-wrap break-words min-w-0 leading-relaxed shadow-brutal-sm rounded">
               {lesson.grammarRuleFormula || lesson.summary}
             </div>
           </div>
@@ -333,34 +336,36 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
           {/* Quick Examples with Pronunciation */}
           {lesson.examples && lesson.examples.length > 0 && (
             <div className="space-y-2">
-              <p className="text-xs font-bold text-[#202124]">أمثلة تطبيقية مع النطق الإنجليزي السليم:</p>
+              <p className="text-xs font-bold text-ink">أمثلة تطبيقية مع النطق الإنجليزي السليم:</p>
               <div className="grid grid-cols-1 gap-2.5">
                 {lesson.examples.slice(0, 3).map((ex, idx) => (
                   <div 
                     key={idx} 
-                    className="p-3.5 bg-white border border-[#202124] shadow-[2px_2px_0px_#202124] hover:bg-[#F7F5EF] transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded"
+                    className="p-3.5 bg-surface border border-ink shadow-brutal-sm hover:bg-paper transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2 rounded"
                   >
-                    <div className="space-y-1">
-                      <p className="font-mono font-bold text-sm text-[#202124] dir-ltr text-right">
+                    <div className="space-y-1 min-w-0 flex-1">
+                      <p dir="ltr" className="font-mono font-bold text-sm text-ink text-left break-words">
                         {ex.en}
                       </p>
-                      <p className="text-xs font-bold text-[#747474]">
+                      <p className="text-xs font-bold text-muted-gray">
                         {ex.ar}
                       </p>
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
                       {ex.note && (
-                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] rounded-sm">
+                        <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-yellow text-ink border border-ink rounded-sm">
                           {ex.note}
                         </span>
                       )}
                       <button
+                        type="button"
                         onClick={() => handleSpeak(ex.en)}
-                        className={`p-2 border border-[#202124] transition-all cursor-pointer shadow-[1px_1px_0px_#202124] active:translate-x-0.5 active:translate-y-0.5 rounded ${
+                        aria-label="استمع للنطق الإنجليزي"
+                        className={`p-2 border border-ink transition-all cursor-pointer shadow-brutal-press active:translate-x-0.5 active:translate-y-0.5 rounded ${
                           speakingText === ex.en 
-                            ? 'bg-[#405DE6] text-white animate-pulse' 
-                            : 'bg-white hover:bg-[#F3E6A5] text-[#202124]'
+                            ? 'bg-cobalt text-surface animate-pulse' 
+                            : 'bg-surface hover:bg-yellow text-ink'
                         }`}
                         title="استمع للنطق الإنجليزي"
                       >
@@ -378,11 +383,11 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
       {/* Tab 2: Step-by-Step Transformation Stepper */}
       {activeTab === 'stepper' && (
         <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-[#202124]">
-              تتبع خطوات الحل بنفس الطريقة المطلوبة في الدفتر الامتحاني:
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="text-xs font-bold text-ink">
+              تتبع خطوات الحل بنفس التسلسل المطلوب في الدفتر الامتحاني:
             </span>
-            <div className="flex items-center gap-1 text-xs font-mono font-bold text-[#747474]">
+            <div className="flex items-center gap-1 text-xs font-mono font-bold text-muted-gray">
               <span>STEP {activeStep + 1} OF {steps.length}</span>
             </div>
           </div>
@@ -392,19 +397,20 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
             {steps.map((step, idx) => (
               <button
                 key={idx}
+                type="button"
                 onClick={() => setActiveStep(idx)}
-                className={`p-3 border text-right transition-all flex flex-col gap-1 cursor-pointer rounded ${
+                className={`p-3 border text-right transition-all flex flex-col gap-1 cursor-pointer rounded min-w-0 ${
                   activeStep === idx 
-                    ? 'bg-[#405DE6] text-white border-[#202124] shadow-[3px_3px_0px_#202124] -translate-y-0.5' 
+                    ? 'bg-cobalt text-surface border-ink shadow-brutal-callout -translate-y-0.5' 
                     : activeStep > idx 
-                      ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
-                      : 'bg-[#F7F5EF] hover:bg-white text-[#202124] border-[#202124]'
+                      ? 'bg-yellow text-ink border-ink shadow-brutal-sm'
+                      : 'bg-paper hover:bg-surface text-ink border-ink'
                 }`}
               >
                 <div className="flex items-center justify-between">
                   <span className="text-[11px] font-mono font-bold">خطوة {step.stepNumber}</span>
                   {activeStep > idx ? (
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#202124]" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-ink" />
                   ) : (
                     <span className="w-2 h-2 bg-current" />
                   )}
@@ -415,25 +421,27 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
           </div>
 
           {/* Active Step Content Card */}
-          <div className="p-6 bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] space-y-3 rounded-lg">
-            <div className="flex items-center justify-between border-b border-[#202124]/20 pb-2">
-              <h3 className="text-base sm:text-lg font-bold text-[#202124] flex items-center gap-2">
-                <span className="w-6 h-6 bg-[#405DE6] text-white border border-[#202124] flex items-center justify-center text-xs font-bold font-mono rounded-sm">
+          <div className="p-6 bg-paper border-2 border-ink shadow-brutal-callout space-y-3 rounded-md">
+            <div className="flex items-center justify-between border-b border-ink/20 pb-2">
+              <h3 className="text-base sm:text-lg font-bold text-ink flex items-center gap-2 min-w-0">
+                <span className="w-6 h-6 bg-cobalt text-surface border border-ink flex items-center justify-center text-xs font-bold font-mono rounded-sm shrink-0">
                   {steps[activeStep].stepNumber}
                 </span>
                 <span>{steps[activeStep].title}</span>
               </h3>
             </div>
 
-            <p className="text-sm text-[#202124] font-medium leading-relaxed">
+            <p className="text-sm text-ink font-medium leading-relaxed">
               {steps[activeStep].desc}
             </p>
 
-            <div className="p-4 bg-white border border-[#202124] font-mono text-sm text-[#202124] dir-ltr text-right flex items-center justify-between gap-3 shadow-[2px_2px_0px_#202124] rounded">
-              <span className="font-bold">{steps[activeStep].example}</span>
+            <div className="p-4 bg-surface border border-ink font-mono text-sm text-ink flex items-center justify-between gap-3 shadow-brutal-sm rounded">
+              <span dir="ltr" className="font-bold text-left break-words min-w-0 flex-1">{steps[activeStep].example}</span>
               <button
+                type="button"
                 onClick={() => handleSpeak(steps[activeStep].example)}
-                className="p-1.5 bg-[#F7F5EF] hover:bg-[#F3E6A5] border border-[#202124] text-[#202124] shrink-0 cursor-pointer shadow-[1px_1px_0px_#202124] rounded"
+                aria-label="استمع للنطق"
+                className="p-1.5 bg-paper hover:bg-yellow border border-ink text-ink shrink-0 cursor-pointer shadow-brutal-press rounded"
                 title="استمع للنطق"
               >
                 <Volume2 className="w-3.5 h-3.5" />
@@ -442,17 +450,19 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
 
             <div className="flex items-center justify-between pt-2">
               <button
+                type="button"
                 disabled={activeStep === 0}
                 onClick={() => setActiveStep(prev => Math.max(0, prev - 1))}
-                className="px-3.5 py-1.5 bg-white border border-[#202124] text-xs font-bold text-[#202124] hover:bg-[#F7F5EF] disabled:opacity-40 disabled:pointer-events-none transition-all shadow-[2px_2px_0px_#202124] cursor-pointer rounded"
+                className="px-3.5 py-1.5 bg-surface border border-ink text-xs font-bold text-ink hover:bg-paper disabled:opacity-40 disabled:pointer-events-none transition-all shadow-brutal-sm cursor-pointer rounded"
               >
                 الخطوة السابقة
               </button>
 
               <button
+                type="button"
                 disabled={activeStep === steps.length - 1}
                 onClick={() => setActiveStep(prev => Math.min(steps.length - 1, prev + 1))}
-                className="px-4 py-1.5 bg-[#405DE6] text-white border border-[#202124] text-xs font-bold hover:bg-[#334DC6] disabled:opacity-40 disabled:pointer-events-none shadow-[2px_2px_0px_#202124] transition-all cursor-pointer rounded"
+                className="px-4 py-1.5 bg-cobalt text-surface border border-ink text-xs font-bold hover:bg-cobalt-hover disabled:opacity-40 disabled:pointer-events-none shadow-brutal-sm transition-all cursor-pointer rounded"
               >
                 الخطوة التالية
               </button>
@@ -464,29 +474,29 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
       {/* Tab 3: Signal Words Radar */}
       {activeTab === 'radar' && (
         <div className="space-y-4">
-          <div className="flex items-center justify-between border-b border-[#202124]/20 pb-2">
-            <span className="text-xs font-bold text-[#202124] flex items-center gap-1.5">
-              <Zap className="w-4 h-4 text-[#202124] fill-[#F2A18E]" />
-              رادار الكلمات المفتاحية والدلائل الوزارية القاطعة
+          <div className="flex flex-wrap items-center justify-between gap-2 border-b border-ink/20 pb-2">
+            <span className="text-xs font-bold text-ink flex items-center gap-1.5">
+              <Zap className="w-4 h-4 text-ink fill-coral shrink-0" />
+              رادار الكلمات المفتاحية والدلائل الزمنية
             </span>
-            <span className="text-[11px] font-mono font-bold text-[#747474]">RADAR KEYWORDS</span>
+            <span className="text-[11px] font-mono font-bold text-muted-gray">RADAR KEYWORDS</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {signals.map((sig, idx) => (
               <div 
                 key={idx}
-                className="p-4 bg-white border border-[#202124] shadow-[2px_2px_0px_#202124] hover:bg-[#F7F5EF] transition-all space-y-2 rounded"
+                className="p-4 bg-surface border border-ink shadow-brutal-sm hover:bg-paper transition-all space-y-2 rounded min-w-0"
               >
-                <div className="flex items-center justify-between">
-                  <span className="font-mono text-sm font-bold text-[#202124] dir-ltr text-right px-2.5 py-1 bg-[#F3E6A5] border border-[#202124] rounded-sm">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <span dir="ltr" className="font-mono text-sm font-bold text-ink text-left break-words px-2.5 py-1 bg-yellow border border-ink rounded-sm">
                     {sig.word}
                   </span>
-                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-[#405DE6] text-white border border-[#202124] rounded-sm">
+                  <span className="text-[10px] font-mono font-bold px-2 py-0.5 bg-cobalt text-surface border border-ink rounded-sm shrink-0">
                     {sig.tag}
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-[#202124] font-medium leading-relaxed">
+                <p className="text-xs sm:text-sm text-ink font-medium leading-relaxed">
                   {sig.rule}
                 </p>
               </div>

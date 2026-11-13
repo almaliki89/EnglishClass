@@ -1,7 +1,7 @@
 import { Unit } from '../../../types';
 
 // =========================================================================
-// الوحدة الأولى والثانية - ملزمة الخامس الإعدادي (الأستاذ عمار غالب 2026)
+// الوحدة الأولى والثانية - ملزمة الخامس الإعدادي (الأستاذ مصطفى تركي 2026)
 // مرجع الصفحات: ص 1 - 71
 // =========================================================================
 
@@ -12,8 +12,8 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
     titleAr: "الوحدة الأولى: رمضان في العراق والأزمنة (Ramadan & Tenses)",
     titleEn: "Unit 1: Ramadan in Iraq, Present & Past Tenses, Scotland & Babylon",
     description: "المضارع البسيط والمستمر، صفات الشخصية ورمضان في العراق، الماضي البسيط والمستمر، المضارع التام البسيط والمستمر، الأسئلة الذيلية، ومهرجان بابل الدولي.",
-    accentColor: "from-fuchsia-600 to-pink-600",
-    bgGradient: "bg-gradient-to-r from-fuchsia-50 to-pink-50 border-fuchsia-200",
+    accentColor: "bg-coral text-ink",
+    bgGradient: "bg-answer-review-bg border-ink",
     sourcePages: "الملزمة ص 1 - 38",
     academicYear: "2025-2026",
     lessons: [
@@ -413,8 +413,8 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
     titleAr: "الوحدة الثانية: التكنولوجيا والاتصالات والاستنتاج (Technology & Deductions)",
     titleEn: "Unit 2: Mobile Devices, Zero Conditional, Digital Poverty, Past Deductions & Inventions",
     description: "الأجهزة الذكية والأسماء المركبة، صيغة الأمر والحالة الشرطية الصفرية، مؤسسة 'We Are Connected' والفقر الرقمي، عبارات الهاتف، ظروف الطريقة، الاستنتاج في الماضي بـ must/can't/might have، واختراع شبكة الويب.",
-    accentColor: "from-blue-600 to-cyan-600",
-    bgGradient: "bg-gradient-to-r from-blue-50 to-cyan-50 border-blue-200",
+    accentColor: "bg-cobalt text-surface",
+    bgGradient: "bg-blue-mist border-ink",
     sourcePages: "الملزمة ص 39 - 71",
     academicYear: "2025-2026",
     lessons: [

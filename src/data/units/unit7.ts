@@ -6,8 +6,8 @@ export const UNIT_7: Unit = {
   titleAr: "الوحدة السابعة: الدراسة، صيغ المستقبل، واستخدام المكتبة",
   titleEn: "Unit 7: Education, Future Forms & Using the Library",
   description: "اشتقاق الأسماء واللواحق (Suffixes)، صيغ المستقبل الخمسة (Will, Going to, Present Continuous, Future Continuous, Present Simple)، المستقبل في الماضي (Future in the Past)، قطعة العمل اليوم (Work Today)، وقطعة استخدام المكتبة (Using the Library).",
-  accentColor: "from-rose-600 to-pink-600",
-  bgGradient: "bg-gradient-to-r from-rose-50 to-pink-50 border-rose-200",
+  accentColor: "bg-coral text-ink",
+  bgGradient: "bg-answer-review-bg border-ink",
   lessons: [
     {
       id: "u7-l1",
@@ -338,10 +338,10 @@ export const UNIT_7: Unit = {
       titleAr: "الدرس التاسع: قطعة استخدام المكتبة (Using the Library)",
       titleEn: "Lesson 9: Using the Library (Reading Comprehension)",
       category: "reading",
-      summary: "قطعة الكتاب الوزارية الرسمية حول الاستفادة من المكتبة المركزية: البحث عن وظائف جديدة، كتب المهن وتطوير السيرة الذاتية، مهارات لغة الجسد في المقابلات، ومصادر تعلم اللغات.",
+      summary: "قطعة الكتاب المقررة حول الاستفادة من المكتبة المركزية: البحث عن وظائف جديدة، كتب المهن وتطوير السيرة الذاتية، مهارات لغة الجسد في المقابلات، ومصادر تعلم اللغات.",
       grammarRuleFormula: "Library Resources:\n- Books about careers: describe job duties, skills and qualifications\n- Job vacancy newspapers & magazines: find current openings\n- Language learning section: audio CDs, language tests and practice books\n- Computers: search the internet for companies and online courses",
       detailedContent: [
-        "قطعة الكتاب الرسمية: استخدام المكتبة (ص 154 - 157 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: استخدام المكتبة (ص 154 - 157 من ملزمة الأستاذ مصطفى تركي):",
         "- ذهب الكاتب إلى المكتبة المركزية للبحث عن مهنة جديدة تناسب شغفه بالسفر والتواصل مع الناس.",
         "- مصادر البحث في المكتبة:",
         "1) كتب المهن (Books about careers): تشرح طبيعة الوظائف والمهارات والمؤهلات المطلوبة لكل مهنة.",

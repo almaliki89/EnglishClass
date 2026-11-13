@@ -1,7 +1,7 @@
 import { Unit } from '../../../types';
 
 // =========================================================================
-// الوحدة الخامسة والسادسة - ملزمة الخامس الإعدادي (الأستاذ عمار غالب 2026)
+// الوحدة الخامسة والسادسة - ملزمة الخامس الإعدادي (الأستاذ مصطفى تركي 2026)
 // مرجع الصفحات: ص 104 - 149
 // =========================================================================
 
@@ -12,8 +12,8 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
     titleAr: "الوحدة الخامسة: الصحة والتغذية والنصيحة والشرطية الثانية والندم (Health, Diet & Conditionals)",
     titleEn: "Unit 5: Food & Nutrition, Modals of Necessity, Second Conditional, Wishes & Regrets",
     description: "تصنيفات الأغذية وحاوياتها، النظام الغذائي الصحي، أفعال الإلزام have to/don't have to، أفعال المطبخ وتقديم النصيحة بـ had better، الحالة الشرطية الثانية، التمني، والندم على الماضي بـ wish / if only، ورسالة شكوى مايك غرين.",
-    accentColor: "from-rose-600 to-red-600",
-    bgGradient: "bg-gradient-to-r from-rose-50 to-red-50 border-rose-200",
+    accentColor: "bg-coral text-ink",
+    bgGradient: "bg-answer-review-bg border-ink",
     sourcePages: "الملزمة ص 104 - 129",
     academicYear: "2025-2026",
     lessons: [
@@ -360,7 +360,7 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
             question: "In a formal letter of complaint, the most appropriate closing phrase when the recipient's name is unknown is: 'Yours ______.'",
             options: ["faithfully", "sincerely", "cheers", "affectionately"],
             correctAnswer: "faithfully",
-            explanation: "عند بدء الرسالة الرسمية بـ Dear Sir or Madam يكون الختام الرسمي المعتمد دائماً Yours faithfully (الملزمة ص 128).",
+            explanation: "عند بدء الرسالة الرسمية بـ Dear Sir or Madam يكون الختام المتّبع دائماً Yours faithfully (الملزمة ص 128).",
             type: "mcq",
             sourcePages: "الملزمة ص 128"
           }
@@ -374,8 +374,8 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
     titleAr: "الوحدة السادسة: الإعلام والتلفزيون والكلام المنقول (Media, Television & Reported Speech)",
     titleEn: "Unit 6: TV & Film Genres, Manchester Fire, Reported Speech & Artist Widad Al-Orfali",
     description: "أنواع البرامج والأفلام التلفزيونية، حريق شارع كوين في مانشستر والمفردات الرسمية، الكلام المنقول للجمل الخبرية والاستفهامية، مقابلة الفنانة وداد الأورفلي، نقد فيلم القبطان الإسباني، قواعد الفواصل، ونقل الأوامر والطلبات وتاريخ البث الفضائي.",
-    accentColor: "from-indigo-600 to-violet-600",
-    bgGradient: "bg-gradient-to-r from-indigo-50 to-violet-50 border-indigo-200",
+    accentColor: "bg-lavender text-ink",
+    bgGradient: "bg-blue-mist border-ink",
     sourcePages: "الملزمة ص 130 - 149",
     academicYear: "2025-2026",
     lessons: [

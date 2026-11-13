@@ -185,18 +185,18 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <h2 className="text-lg sm:text-xl font-extrabold text-[var(--ds-ink)]">خريطة المنهج الدراسي</h2>
           <p className="text-sm text-[var(--ds-ink-muted)]">استكشف وحدات {gradeMeta.nameAr} واختر أي درس مباشرة.</p>
         </div>
-        <div className="flex items-center gap-1 p-1 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-[4px]">
+        <div className="flex items-center gap-1 p-1 bg-paper border-2 border-ink shadow-brutal-sm rounded-[4px]">
           <button
             type="button"
             aria-pressed={viewMode === 'quest-map'}
             onClick={() => setViewMode('quest-map')}
-            className={`px-3 py-2 text-xs font-bold border rounded-[4px] transition-colors cursor-pointer ${viewMode === 'quest-map' ? 'bg-[#405DE6] text-white border-[#202124] shadow-[1.5px_1.5px_0px_#202124]' : 'border-transparent text-[#747474] hover:text-[#202124]'}`}
+            className={`px-3 py-2 text-xs font-bold border rounded-[4px] transition-colors cursor-pointer ${viewMode === 'quest-map' ? 'bg-cobalt text-surface border-ink shadow-brutal-xs' : 'border-transparent text-muted-gray hover:text-ink'}`}
           >خريطة الوحدات</button>
           <button
             type="button"
             aria-pressed={viewMode === 'pin-feed'}
             onClick={() => setViewMode('pin-feed')}
-            className={`px-3 py-2 text-xs font-bold border rounded-[4px] transition-colors cursor-pointer ${viewMode === 'pin-feed' ? 'bg-[#405DE6] text-white border-[#202124] shadow-[1.5px_1.5px_0px_#202124]' : 'border-transparent text-[#747474] hover:text-[#202124]'}`}
+            className={`px-3 py-2 text-xs font-bold border rounded-[4px] transition-colors cursor-pointer ${viewMode === 'pin-feed' ? 'bg-cobalt text-surface border-ink shadow-brutal-xs' : 'border-transparent text-muted-gray hover:text-ink'}`}
           >ملخصات مرئية</button>
         </div>
       </div>
@@ -204,20 +204,20 @@ export const Dashboard: React.FC<DashboardProps> = ({
       {viewMode === 'quest-map' ? (
         /* ADVENTURE QUEST MAP */
         <div className="space-y-6">
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b-2 border-[#202124] pb-3">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b-2 border-ink pb-3">
             <div>
-              <h2 className="text-lg sm:text-xl font-black text-[#202124] flex items-center gap-2">
-                <Compass className="w-5 h-5 text-[#405DE6]" />
+              <h2 className="text-lg sm:text-xl font-black text-ink flex items-center gap-2">
+                <Compass className="w-5 h-5 text-cobalt" />
                 <span>محطات المنهج الدراسي • {gradeMeta.nameAr}</span>
               </h2>
-              <p className="text-xs text-[#202124]/70 font-medium">
+              <p className="text-xs text-ink/70 font-medium">
                 تنقل بين الوحدات الدراسية، أتقن الدروس، وافتح المحطة النهائية
               </p>
             </div>
             
             <div className="flex items-center gap-2 font-mono">
-              <span className="text-xs font-bold text-[#202124]">
-                إجمالي الوحدات: <span className="bg-[#F3E6A5] px-1.5 py-0.2 border border-[#202124] font-black rounded-xs">{units.length} وحدات</span>
+              <span className="text-xs font-bold text-ink">
+                إجمالي الوحدات: <span className="bg-yellow px-1.5 py-0.2 border border-ink font-black rounded-xs">{units.length} وحدات</span>
               </span>
               {completedLessonsCount > 0 && (
                 <button
@@ -226,10 +226,10 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     playFanfare();
                     triggerCelebration();
                   }}
-                  className="px-2.5 py-1 bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer flex items-center gap-1 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none rounded-[4px]"
+                  className="px-2.5 py-1 bg-yellow hover:bg-yellow-hover text-ink border-2 border-ink shadow-brutal-sm text-xs font-black transition-all cursor-pointer flex items-center gap-1 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none rounded-[4px]"
                   title="احتفل بتقدمك الدراسي!"
                 >
-                  <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
+                  <Sparkles className="w-3.5 h-3.5 text-cobalt" />
                   <span>احتفل بإنجازك 🎉</span>
                 </button>
               )}
@@ -237,23 +237,23 @@ export const Dashboard: React.FC<DashboardProps> = ({
           </div>
 
           {/* Search & Fast Filters Bar */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-white p-3 sm:p-4 border-3 border-[#202124] shadow-[3px_3px_0px_#202124]">
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 bg-surface p-3 sm:p-4 border-3 border-ink shadow-brutal-callout">
             {/* Search Input */}
             <div className="relative flex-1">
-              <Search className="w-4 h-4 text-[#202124]/60 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
+              <Search className="w-4 h-4 text-ink/60 absolute right-3 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 placeholder="ابحث في أسماء الوحدات أو الدروس أو القواعد..."
-                className="w-full pr-9 pl-8 py-2 bg-[#F7F5EF] border-2 border-[#202124] text-xs font-bold text-[#202124] placeholder:text-[#202124]/50 focus:outline-none focus:bg-white transition-colors"
+                className="w-full pr-9 pl-8 py-2 bg-paper border-2 border-ink text-xs font-bold text-ink placeholder:text-ink/50 focus:outline-none focus:bg-surface transition-colors"
               />
               {searchQuery && (
                 <button
                   type="button"
                   aria-label="مسح البحث"
                   onClick={() => setSearchQuery('')}
-                  className="absolute left-2.5 top-1/2 -translate-y-1/2 p-1 text-[#202124] hover:text-[#B83A3A] cursor-pointer"
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 p-1 text-ink hover:text-semantic-error cursor-pointer"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -261,8 +261,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
             </div>
 
             {/* Filter Pills */}
-            <div className="flex items-center gap-1.5 self-start sm:self-auto shrink-0">
-              <span className="text-[11px] font-mono font-bold text-[#202124] hidden lg:inline-block">FILTER:</span>
+            <div className="flex items-center gap-1.5 self-start sm:self-auto shrink-0 flex-wrap">
+              <span className="text-[11px] font-mono font-bold text-ink hidden lg:inline-block">FILTER:</span>
               <button
                 type="button"
                 onClick={() => {
@@ -271,8 +271,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 }}
                 className={`px-3 py-1.5 text-xs font-black transition-all cursor-pointer border-2 ${
                   statusFilter === 'all'
-                    ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
-                    : 'bg-[#F7F5EF] text-[#202124] border-[#202124] hover:bg-white'
+                    ? 'bg-cobalt text-surface border-ink shadow-brutal-sm'
+                    : 'bg-paper text-ink border-ink hover:bg-surface'
                 }`}
               >
                 الكل ({units.length})
@@ -285,8 +285,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 }}
                 className={`px-3 py-1.5 text-xs font-black transition-all cursor-pointer border-2 ${
                   statusFilter === 'uncompleted'
-                    ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
-                    : 'bg-[#F7F5EF] text-[#202124] border-[#202124] hover:bg-white'
+                    ? 'bg-cobalt text-surface border-ink shadow-brutal-sm'
+                    : 'bg-paper text-ink border-ink hover:bg-surface'
                 }`}
               >
                 قيد الإنجاز
@@ -299,8 +299,8 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 }}
                 className={`px-3 py-1.5 text-xs font-black transition-all cursor-pointer border-2 ${
                   statusFilter === 'completed'
-                    ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
-                    : 'bg-[#F7F5EF] text-[#202124] border-[#202124] hover:bg-white'
+                    ? 'bg-yellow text-ink border-ink shadow-brutal-sm'
+                    : 'bg-paper text-ink border-ink hover:bg-surface'
                 }`}
               >
                 المكتملة ✅
@@ -310,14 +310,14 @@ export const Dashboard: React.FC<DashboardProps> = ({
 
           {/* Unit Roadmap Cards or Empty State */}
           {filteredUnits.length === 0 ? (
-            <div className="p-10 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] text-center space-y-4">
+            <div className="p-10 bg-surface border-3 border-ink shadow-brutal-action text-center space-y-4">
               <div className="flex justify-center">
                 <CartoonMascot mood="puzzled" size="md" speechText="لم أعثر على أي درس يطابق هذا البحث! جرب كلمة بحث أخرى يا بطل." />
               </div>
-              <h3 className="text-lg font-black text-[#202124]">
+              <h3 className="text-lg font-black text-ink">
                 لا توجد نتائج مطابقة لبحثك
               </h3>
-              <p className="text-xs text-[#202124]/70 max-w-md mx-auto font-medium">
+              <p className="text-xs text-ink/70 max-w-md mx-auto font-medium">
                 تأكد من كتابة الكلمة بشكل صحيح، أو قم بإعادة ضبط معايير التصفية للرجوع إلى كامل قائمة الوحدات.
               </p>
               <button
@@ -327,7 +327,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                   setSearchQuery('');
                   setStatusFilter('all');
                 }}
-                className="px-4 py-2 bg-[#405DE6] text-white font-black text-xs border-2 border-[#202124] shadow-[2px_2px_0px_#202124] hover:-translate-y-0.5 transition-all cursor-pointer"
+                className="px-4 py-2 bg-cobalt text-surface font-black text-xs border-2 border-ink shadow-brutal-sm hover:-translate-y-0.5 transition-all cursor-pointer"
               >
                 إعادة ضبط البحث والتصفية
               </button>
@@ -343,64 +343,64 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 return (
                   <div 
                     key={unit.id}
-                    className="p-6 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] hover:shadow-[6px_6px_0px_#202124] hover:-translate-y-0.5 space-y-4 transition-all flex flex-col justify-between"
+                    className="p-6 bg-surface border-3 border-ink shadow-brutal-action hover:shadow-brutal-modal hover:-translate-y-0.5 space-y-4 transition-all flex flex-col justify-between"
                   >
                     <div className="space-y-3">
                       {/* Unit Header Badge */}
-                      <div className="flex items-center justify-between border-b-2 border-[#202124] pb-2.5">
+                      <div className="flex items-center justify-between border-b-2 border-ink pb-2.5">
                         <div className="flex items-center gap-2.5">
-                          <span className="w-9 h-9 bg-[#405DE6] text-white font-black font-mono text-sm flex items-center justify-center border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
+                          <span className="w-9 h-9 bg-cobalt text-surface font-black font-mono text-sm flex items-center justify-center border-2 border-ink shadow-brutal-sm">
                             0{unit.number}
                           </span>
                           <div>
-                            <span className="text-[10px] font-mono font-bold text-[#747474] block">
-                              الوحدة {unit.number} · المنهج الرسمي
+                            <span className="text-[10px] font-mono font-bold text-muted-gray block">
+                              الوحدة {unit.number} · المنهج الدراسي
                             </span>
-                            <h3 className="text-base sm:text-lg font-black text-[#202124]">
+                            <h3 className="text-base sm:text-lg font-black text-ink">
                               {unit.titleAr}
                             </h3>
                           </div>
                         </div>
 
                         {isUnitCompleted ? (
-                          <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black flex items-center gap-1 rounded-sm">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#202124]" />
+                          <span className="px-2 py-0.5 bg-yellow text-ink border-2 border-ink shadow-brutal-sm text-xs font-black flex items-center gap-1 rounded-sm">
+                            <CheckCircle2 className="w-3.5 h-3.5 text-ink" />
                             <span>مكتملة 100%</span>
                           </span>
                         ) : (
                           <div className="flex items-center gap-1.5 font-mono">
-                            <span className="text-xs font-bold text-[#202124]/70">
+                            <span className="text-xs font-bold text-ink/70">
                               {completedInUnit}/{unit.lessons.length}
                             </span>
-                            <span className="text-[10px] font-black px-1.5 py-0.2 bg-[#F7F5EF] border border-[#202124] text-[#202124] rounded-xs">
+                            <span className="text-[10px] font-black px-1.5 py-0.2 bg-paper border border-ink text-ink rounded-xs">
                               {unitPercentage}%
                             </span>
                           </div>
                         )}
                       </div>
 
-                      <div className="flex items-center gap-2 text-[11px] font-mono text-[#202124]/70">
-                        <Clock className="w-3.5 h-3.5 text-[#202124]" />
+                      <div className="flex items-center gap-2 text-[11px] font-mono text-ink/70">
+                        <Clock className="w-3.5 h-3.5 text-ink" />
                         <span>المدة التقديرية: ~{estimatedMinutes} دقيقة · {unit.lessons.length} دروس</span>
                       </div>
 
-                      <p className="text-xs text-[#202124]/80 leading-relaxed line-clamp-2 font-medium">
+                      <p className="text-xs text-ink/80 leading-relaxed line-clamp-2 font-medium">
                         {unit.description || unit.titleEn}
                       </p>
 
                       {/* Progress Bar (Brutalist style) */}
-                      <div className="w-full bg-[#F7F5EF] border-2 border-[#202124] h-3 overflow-hidden rounded-xs">
+                      <div className="w-full bg-paper border-2 border-ink h-3 overflow-hidden rounded-xs">
                         <div 
-                          className="h-full bg-[#405DE6] transition-all duration-500"
+                          className="h-full bg-cobalt transition-all duration-500"
                           style={{ width: `${unitPercentage}%` }}
                         />
                       </div>
                     </div>
 
                     {/* Lessons Pills Grid */}
-                    <div className="space-y-2 pt-2 border-t-2 border-[#202124]">
-                      <span className="text-[11px] font-mono font-bold text-[#202124]/80 block">
-                        دروس الوحدة المعتمدة:
+                    <div className="space-y-2 pt-2 border-t-2 border-ink">
+                      <span className="text-[11px] font-mono font-bold text-ink/80 block">
+                        دروس الوحدة:
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {unit.lessons.map((lesson) => {
@@ -415,14 +415,14 @@ export const Dashboard: React.FC<DashboardProps> = ({
                               }}
                               className={`px-2.5 py-1 text-xs font-black transition-all cursor-pointer flex items-center gap-1.5 border-2 rounded-xs ${
                                 isDone
-                                  ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
-                                  : 'bg-white hover:bg-[#F7F5EF] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124] active:shadow-none'
+                                  ? 'bg-yellow text-ink border-ink shadow-brutal-sm'
+                                  : 'bg-surface hover:bg-paper text-ink border-ink shadow-brutal-sm active:shadow-none'
                               }`}
                             >
                               {isDone ? (
-                                <CheckCircle2 className="w-3 h-3 text-[#202124]" />
+                                <CheckCircle2 className="w-3 h-3 text-ink" />
                               ) : (
-                                <Play className="w-3 h-3 text-[#405DE6]" />
+                                <Play className="w-3 h-3 text-cobalt" />
                               )}
                               <span className="truncate max-w-[140px]">{lesson.titleAr}</span>
                             </button>
@@ -432,19 +432,19 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     </div>
 
                     {/* Action Link to Unit Explorer */}
-                    <div className="pt-2 flex items-center justify-between text-xs border-t border-[#202124]/20">
+                    <div className="pt-2 flex items-center justify-between text-xs border-t border-ink/20">
                       <button
                         type="button"
                         onClick={() => {
                           playPopSound();
                           onSelectUnit(unit);
                         }}
-                        className="text-[#405DE6] hover:text-[#202124] font-black flex items-center gap-1 cursor-pointer transition-colors"
+                        className="text-cobalt hover:text-ink font-black flex items-center gap-1 cursor-pointer transition-colors"
                       >
                         <span>استكشف الوحدة بالكامل</span>
                         <ChevronLeft className="w-4 h-4" />
                       </button>
-                      <span className="text-[10px] text-[#202124]/60 font-mono font-bold">
+                      <span className="text-[10px] text-ink/60 font-mono font-bold">
                         {unit.academicYear || '2024–2026'}
                       </span>
                     </div>
@@ -461,11 +461,11 @@ export const Dashboard: React.FC<DashboardProps> = ({
               <span className="ui-chip text-xs font-mono">
                 المحطة الختامية · الاختبار الشامل
               </span>
-              <h3 className="font-display text-2xl sm:text-3xl font-black text-[#202124]">
+              <h3 className="font-display text-2xl sm:text-3xl font-black text-ink">
                 الامتحان الوزاري الشامل (100 درجة)
               </h3>
-              <p className="text-xs sm:text-sm text-[#202124]/90 max-w-xl font-medium">
-                دفتر امتحاني متكامل يطابق المواصفات الوزارية لوزارة التربية: القطعة الخارجية، القواعد، المفردات، الأدب، والإنشاء مع تصحيح فوري لجميع الأسئلة.
+              <p className="text-xs sm:text-sm text-ink/90 max-w-xl font-medium">
+                دفتر امتحاني متكامل يحاكي نمط الامتحانات العامة في العراق: القطعة الخارجية، القواعد، المفردات، الأدب، والإنشاء مع تصحيح فوري لجميع الأسئلة.
               </p>
             </div>
 
@@ -477,7 +477,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
               }}
               className="ui-button ui-button--primary shrink-0"
             >
-              <Trophy className="w-5 h-5 text-[#F3E6A5]" />
+              <Trophy className="w-5 h-5 text-yellow" />
               <span>دخول ساحة الامتحان الآن</span>
               <ArrowLeft className="w-5 h-5" />
             </button>

@@ -281,10 +281,10 @@ function LessonRouteWrapper({
 function RouteLoadingFallback() {
   return (
     <div className="flex flex-col items-center justify-center min-h-[45vh] p-8 text-center space-y-3">
-      <div className="w-10 h-10 border-2 border-[#202124] bg-[#F3E6A5] shadow-[2px_2px_0px_#202124] flex items-center justify-center">
-        <Loader2 className="w-5 h-5 animate-spin text-[#405DE6]" />
+      <div className="w-10 h-10 border-2 border-ink bg-yellow shadow-brutal-sm flex items-center justify-center">
+        <Loader2 className="w-5 h-5 animate-spin text-cobalt" />
       </div>
-      <p className="text-xs font-mono font-bold text-[#202124]">جاري تحميل المحتوى التعليمي...</p>
+      <p className="text-xs font-mono font-bold text-ink">جاري تحميل المحتوى التعليمي...</p>
     </div>
   );
 }
@@ -582,20 +582,20 @@ function MainAppContent() {
   if (loading) {
     return (
       <div
-        className="min-h-screen bg-[#F7F5EF] text-[#202124] flex flex-col items-center justify-center p-6 paper-canvas"
+        className="min-h-screen bg-paper text-ink flex flex-col items-center justify-center p-6 paper-canvas"
         dir="rtl"
       >
         <div className="brutal-card p-8 max-w-sm w-full text-center space-y-4">
-          <div className="w-16 h-16 mx-auto bg-[#F3E6A5] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] flex items-center justify-center text-[#202124]">
-            <GraduationCap className="w-8 h-8 text-[#202124]" />
+          <div className="w-16 h-16 mx-auto bg-yellow border-2 border-ink shadow-brutal-callout flex items-center justify-center text-ink">
+            <GraduationCap className="w-8 h-8 text-ink" />
           </div>
           <div>
-            <span className="text-[11px] font-mono font-bold text-[#405DE6] block mb-1">المنصة الأكاديمية · جاري التهيئة</span>
-            <h2 className="text-xl font-extrabold font-display text-[#202124]">النموذجية في الإنكليزية</h2>
-            <p className="text-xs text-[#747474] mt-1">إشراف الأستاذ مصطفى تركي • المنهج العراقي 2026</p>
+            <span className="text-[11px] font-mono font-bold text-cobalt block mb-1">المنصة الأكاديمية · جاري التهيئة</span>
+            <h2 className="text-xl font-extrabold font-display text-ink">النموذجية في الإنكليزية</h2>
+            <p className="text-xs text-muted-gray mt-1">إشراف الأستاذ مصطفى تركي • المنهج العراقي 2026</p>
           </div>
-          <div className="flex items-center justify-center gap-2 pt-2 text-xs font-mono font-bold text-[#202124]">
-            <Loader2 className="w-4 h-4 animate-spin text-[#405DE6]" />
+          <div className="flex items-center justify-center gap-2 pt-2 text-xs font-mono font-bold text-ink">
+            <Loader2 className="w-4 h-4 animate-spin text-cobalt" />
             <span>جاري مزامنة المحتوى الدراسي...</span>
           </div>
         </div>
@@ -616,7 +616,7 @@ function MainAppContent() {
 
   return (
     <div
-      className="min-h-screen w-full max-w-full min-w-0 bg-[#F7F5EF] text-[#202124] flex flex-col font-sans selection:bg-[#F3E6A5] selection:text-[#202124] paper-canvas"
+      className="min-h-screen w-full max-w-full min-w-0 bg-paper text-ink flex flex-col font-sans selection:bg-yellow selection:text-ink paper-canvas"
       dir="rtl"
     >
       <Navbar
@@ -900,48 +900,48 @@ function MainAppContent() {
 
 
       {/* Swiss Editorial Footer */}
-      <footer className="mt-auto border-t-2 border-[#202124] bg-white text-[#202124]">
+      <footer className="mt-auto border-t-2 border-ink bg-surface text-ink">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start pb-8 border-b border-[#202124]/15">
+          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start pb-8 border-b border-ink/15">
             {/* Column 1: Identity & Stamp */}
             <div className="md:col-span-5 space-y-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F3E6A5] border border-[#202124] shadow-[1.5px_1.5px_0px_#202124] text-xs font-mono font-bold uppercase rounded-xs">
-                <span>المنهج الرسمي المعتمد 2026</span>
+              <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow border border-ink shadow-brutal-xs text-xs font-mono font-bold uppercase rounded-xs">
+                <span>منهاج اللغة الإنكليزية 2026</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-extrabold font-display text-[#202124]">
+              <h3 className="text-xl sm:text-2xl font-extrabold font-display text-ink">
                 النموذجية في الإنكليزية
               </h3>
-              <p className="text-xs text-[#747474] leading-relaxed font-medium max-w-md">
-                المنصة الأكاديمية الشاملة لتدريس ومراجعة منهاج اللغة الإنكليزية لجميع المراحل المتوسطة والإعدادية في العراق وفق الكتب المعتمدة وزارياً، إشراف الأستاذ مصطفى تركي.
+              <p className="text-xs text-muted-gray leading-relaxed font-medium max-w-md">
+                المنصة الأكاديمية الشاملة لتدريس ومراجعة منهاج اللغة الإنكليزية للمراحل المتوسطة والإعدادية في العراق، إعداد وإشراف الأستاذ مصطفى تركي.
               </p>
             </div>
 
             {/* Column 2: Grades Quick Matrix (Strictly 4 Active Grades) */}
             <div className="md:col-span-4 space-y-2">
-              <span className="text-[11px] font-mono font-bold text-[#405DE6] block">المراحل والصفوف المشمولة</span>
+              <span className="text-[11px] font-mono font-bold text-cobalt block">المراحل والصفوف المشمولة</span>
               <div className="flex flex-wrap gap-1.5 pt-1 font-mono">
-                <span className="px-2.5 py-1 bg-[#F3E6A5] border border-[#202124] text-xs font-bold text-[#202124] rounded-xs">المتوسطة (3rd وزاري)</span>
-                <span className="px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-bold text-[#202124] rounded-xs">الإعدادية (4th عام)</span>
-                <span className="px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-bold text-[#202124] rounded-xs">الإعدادية (5th متقدم)</span>
-                <span className="px-2.5 py-1 bg-[#405DE6] text-white border border-[#202124] text-xs font-bold rounded-xs">البكالوريا (6th وزاري)</span>
+                <span className="px-2.5 py-1 bg-yellow border border-ink text-xs font-bold text-ink rounded-xs">المتوسطة (3rd وزاري)</span>
+                <span className="px-2.5 py-1 bg-paper border border-ink text-xs font-bold text-ink rounded-xs">الإعدادية (4th عام)</span>
+                <span className="px-2.5 py-1 bg-paper border border-ink text-xs font-bold text-ink rounded-xs">الإعدادية (5th متقدم)</span>
+                <span className="px-2.5 py-1 bg-cobalt text-surface border border-ink text-xs font-bold rounded-xs">البكالوريا (6th وزاري)</span>
               </div>
             </div>
 
-            {/* Column 3: Verification & Specs Stamp */}
+            {/* Column 3: Platform Specs Stamp */}
             <div className="md:col-span-3 space-y-2 text-right">
-              <span className="text-[11px] font-mono font-bold text-[#405DE6] block">التوثيق والاعتماد الوزاري</span>
-              <div className="p-3 bg-[#F7F5EF] border border-[#202124] shadow-[2px_2px_0px_#202124] text-[11px] font-mono space-y-1 rounded-xs">
-                <div>SPEC: <span className="font-bold">MOE-IRAQ-2026</span></div>
-                <div>EXAM: <span className="font-bold text-[#B83A3A]">100 PTS FULL SCALE</span></div>
+              <span className="text-[11px] font-mono font-bold text-cobalt block">مواصفات المنصة الدراسية</span>
+              <div className="p-3 bg-paper border border-ink shadow-brutal-sm text-[11px] font-mono space-y-1 rounded-xs">
+                <div>CURRICULUM: <span className="font-bold">IRAQ-ENG-2026</span></div>
+                <div>EXAM: <span className="font-bold text-semantic-error">100 PTS FULL SCALE</span></div>
                 <div>AUTHOR: <span className="font-bold">MUSTAFA TURKI</span></div>
               </div>
             </div>
           </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-[#747474]">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-muted-gray">
             <p>© 2026 النموذجية في الإنكليزية • جمهورية العراق — جميع الحقوق محفوظة.</p>
             <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-[#F3E6A5] border border-[#202124] inline-block" />
+              <span className="w-2 h-2 bg-yellow border border-ink inline-block" />
               <span>RETRO NEO-BRUTALISM × SWISS EDITORIAL EDITION</span>
             </div>
           </div>

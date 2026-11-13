@@ -227,9 +227,9 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
     // Generic
     return [
       {
-        word: 'official terms',
-        partOfSpeech: 'مصطلحات وزارية',
-        meaningAr: 'كلمات محورية معتمدة في أسئلة الامتحان',
+        word: 'key curriculum terms',
+        partOfSpeech: 'مصطلحات المنهج',
+        meaningAr: 'كلمات محورية متكررة في أسئلة الامتحان',
         usageRule: 'يجب التمييز بين نوع الكلمة (فعل/اسم/صفة) لمعرفة موقعها الصحيح.',
         exampleEn: 'Study the context clues before choosing the word.',
         exampleAr: 'ادرس دلالات السياق قبل اختيار الكلمة المناسبة.',
@@ -366,12 +366,12 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
   };
 
   return (
-    <div className="bg-white border-2 border-[#202124] text-[#202124] p-6 sm:p-8 shadow-[5px_5px_0px_#202124] space-y-6 relative overflow-hidden">
+    <div className="bg-surface border-2 border-ink text-ink p-6 sm:p-8 shadow-brutal-lg space-y-6 relative overflow-hidden rounded-md">
       
       {/* 3D Visual Banner & Header */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b-2 border-[#202124]/15 pb-5">
-        <div className="flex items-center gap-4">
-          <div className="relative overflow-hidden border-2 border-[#202124] shadow-[3px_3px_0px_#202124] w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-[#F7F5EF]">
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 border-b-2 border-ink/15 pb-5">
+        <div className="flex items-center gap-4 min-w-0">
+          <div className="relative overflow-hidden border-2 border-ink shadow-brutal-callout w-20 h-20 sm:w-24 sm:h-24 shrink-0 bg-paper rounded">
             <img 
               src="/assets/images/vocabulary_atlas_3d_1793868639767.jpg" 
               alt="Vocabulary Atlas 3D" 
@@ -379,27 +379,28 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
               className="w-full h-full object-cover"
             />
           </div>
-          <div>
-            <div className="flex items-center gap-2">
-              <span className="px-2.5 py-0.5 bg-[#D7E9DA] text-[#202124] border border-[#202124] text-[10px] font-mono font-bold uppercase tracking-wider">
+          <div className="min-w-0">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="px-2.5 py-0.5 bg-soft-mint text-ink border border-ink text-[10px] font-mono font-bold uppercase tracking-wider rounded-sm">
                 Vocabulary & Collocations Arena
               </span>
-              <span className="text-xs font-mono font-bold text-[#747474]">• ساحة المفردات والإسقاطات والمتلازمات</span>
+              <span className="text-xs font-mono font-bold text-muted-gray">• ساحة المفردات والإسقاطات والمتلازمات</span>
             </div>
-            <h2 className="text-xl sm:text-2xl font-extrabold text-[#202124] mt-1 tracking-tight">
-              مختبر المفردات والمتلازمات الوزارية الذكية
+            <h2 className="text-xl sm:text-2xl font-extrabold text-ink mt-1 tracking-tight">
+              مختبر المفردات والمتلازمات التفاعلي
             </h2>
           </div>
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex items-center gap-1.5 p-1 bg-[#F7F5EF] border border-[#202124] shadow-[2px_2px_0px_#202124] overflow-x-auto no-scrollbar w-full sm:w-auto max-w-full">
+        <div className="flex flex-wrap items-center gap-1.5 p-1 bg-paper border border-ink shadow-brutal-sm w-full md:w-auto rounded">
           <button
+            type="button"
             onClick={() => setActiveTab('visual')}
-            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 border cursor-pointer rounded-sm ${
               activeTab === 'visual' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <Eye className="w-3.5 h-3.5 shrink-0" />
@@ -407,11 +408,12 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab('matcher')}
-            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 border cursor-pointer rounded-sm ${
               activeTab === 'matcher' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <Gamepad2 className="w-3.5 h-3.5 shrink-0" />
@@ -419,11 +421,12 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
           </button>
           
           <button
+            type="button"
             onClick={() => setActiveTab('confusables')}
-            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 border cursor-pointer rounded-sm ${
               activeTab === 'confusables' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <Layers className="w-3.5 h-3.5 shrink-0" />
@@ -431,11 +434,12 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab('drops')}
-            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 border cursor-pointer rounded-sm ${
               activeTab === 'drops' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <Award className="w-3.5 h-3.5 shrink-0" />
@@ -443,11 +447,12 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
           </button>
 
           <button
+            type="button"
             onClick={() => setActiveTab('audio')}
-            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border cursor-pointer ${
+            className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 border cursor-pointer rounded-sm ${
               activeTab === 'audio' 
-                ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' 
-                : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                : 'bg-surface text-ink border-transparent hover:border-ink'
             }`}
           >
             <Volume2 className="w-3.5 h-3.5 shrink-0" />
@@ -463,13 +468,13 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
 
         return (
           <div className="space-y-4 relative z-10">
-            <div className="flex items-center justify-between">
-              <span className="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
-                <Sparkles className="w-4 h-4 fill-emerald-300" />
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <span className="text-xs font-bold text-ink flex items-center gap-1.5">
+                <Sparkles className="w-4 h-4 text-cobalt shrink-0" />
                 الترميز البصري والروابط الذهنية الرمزية لمفردات الوحدة {lesson.unitId}:
               </span>
-              <span className="text-[11px] text-slate-400">
-                الربط الرمزي يسرع استدعاء المعنى بنسبة 65% بالامتحان الوزاري
+              <span className="text-[11px] font-bold text-muted-gray">
+                الربط الرمزي يسرع استدعاء المعنى وتثبيته في الذاكرة
               </span>
             </div>
 
@@ -480,21 +485,27 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
                 return (
                   <div
                     key={item.id}
-                    className="p-5 rounded-2xl bg-white/5 border border-white/10 hover:border-emerald-400/50 transition-all flex flex-col justify-between space-y-3.5 backdrop-blur-xs"
+                    className="p-5 rounded-md bg-paper border-2 border-ink shadow-brutal-sm hover:bg-surface transition-all flex flex-col justify-between space-y-3.5 min-w-0"
                   >
                     <div className="space-y-3">
-                      <div className="flex items-center justify-between">
-                        <div className="w-12 h-12 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center text-emerald-300 shadow-inner">
+                      <div className="flex items-center justify-between gap-2">
+                        <div className="w-12 h-12 rounded bg-yellow border-2 border-ink shadow-brutal-press flex items-center justify-center text-ink shrink-0">
                           <IconComp className="w-6 h-6" />
                         </div>
 
                         <div className="flex items-center gap-1.5">
-                          <span className="text-[10px] px-2 py-0.5 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-400/30 font-bold">
+                          <span className="text-[10px] px-2 py-0.5 rounded-sm bg-soft-mint text-ink border border-ink font-bold">
                             {item.domainAr}
                           </span>
                           <button
+                            type="button"
                             onClick={() => handleSpeak(item.wordEn)}
-                            className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 hover:text-white transition-all"
+                            aria-label={`استماع لنطق ${item.wordEn}`}
+                            className={`p-1.5 rounded border border-ink shadow-brutal-press cursor-pointer transition-all ${
+                              speakingWord === item.wordEn
+                                ? 'bg-cobalt text-surface'
+                                : 'bg-surface hover:bg-yellow text-ink'
+                            }`}
                             title="استماع للنطق"
                           >
                             <Volume2 className="w-3.5 h-3.5" />
@@ -502,38 +513,38 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
                         </div>
                       </div>
 
-                      <div>
-                        <h4 dir="ltr" className="text-lg font-black font-mono text-emerald-300 text-left bidi-en">
+                      <div className="min-w-0">
+                        <h4 dir="ltr" className="text-lg font-black font-mono text-cobalt text-left break-words">
                           {item.wordEn}
                         </h4>
-                        <p className="text-xs font-extrabold text-white mt-0.5">
+                        <p className="text-xs font-extrabold text-ink mt-0.5">
                           {item.wordAr}
                         </p>
                       </div>
 
                       {/* Visual Mnemonic Anchor */}
-                      <div className="p-3 rounded-xl bg-black/40 border border-white/5 space-y-1">
-                        <span className="text-[10px] font-bold text-amber-300 block">
-                          💡 الرابط البصري:
+                      <div className="p-3 rounded bg-surface border border-ink space-y-1">
+                        <span className="text-[10px] font-bold text-cobalt block">
+                          الرابط البصري:
                         </span>
-                        <p className="text-[11px] text-slate-300 leading-relaxed">
+                        <p className="text-[11px] font-medium text-ink leading-relaxed">
                           {item.visualMnemonic}
                         </p>
                       </div>
 
-                      {/* Ministerial Context */}
-                      <div className="space-y-1">
-                        <span className="text-[10px] text-slate-400 block font-bold">
-                          السياق الوزاري:
+                      {/* Context */}
+                      <div className="space-y-1 min-w-0">
+                        <span className="text-[10px] text-muted-gray block font-bold">
+                          السياق التطبيقي:
                         </span>
-                        <p dir="ltr" className="text-[11px] font-mono text-emerald-200 bg-emerald-950/40 p-2 rounded-lg border border-emerald-500/20 text-left en-sentence">
+                        <p dir="ltr" className="text-[11px] font-mono font-bold text-ink bg-answer-correct-bg p-2 rounded border border-ink text-left break-words">
                           {item.ministerialContext}
                         </p>
                       </div>
                     </div>
 
                     {/* Teacher's Tip */}
-                    <div className="pt-2 border-t border-white/10 text-[10px] text-amber-200/90">
+                    <div className="pt-2 border-t border-ink/15 text-[10px] font-bold text-muted-gray">
                       ✦ {item.ministerialTip}
                     </div>
                   </div>
@@ -547,18 +558,20 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
       {/* Tab 1: Interactive Collocations Matcher */}
       {activeTab === 'matcher' && (
         <div className="space-y-4 relative z-10">
-          <div className="p-4 rounded-2xl bg-black/40 border border-emerald-500/30 backdrop-blur-md flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
-            <div className="flex items-center gap-2 text-emerald-200">
-              <Gamepad2 className="w-4 h-4 text-emerald-400" />
-              <span>طريقة اللعب: اختر كلمة من العمود الأول، ثم اختر الكلمة المتلازمة معها من العمود الثاني لإتمام التوصيل الوزاري!</span>
+          <div className="p-4 rounded-md bg-blue-mist border-2 border-ink shadow-brutal-sm flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2 font-bold text-ink">
+              <Gamepad2 className="w-4 h-4 text-cobalt shrink-0" />
+              <span>طريقة اللعب: اختر كلمة من العمود الأول، ثم اختر الكلمة المتلازمة معها من العمود الثاني لإتمام التوصيل!</span>
             </div>
             <div className="flex items-center gap-3 shrink-0">
-              <span className="font-bold text-slate-300">
-                تم إنجاز: <span className="text-emerald-400 text-sm font-black">{matchedIds.length}</span> من <span className="text-white">{pairs.length}</span>
+              <span className="font-bold text-ink">
+                تم إنجاز: <span className="text-cobalt text-sm font-black font-mono">{matchedIds.length}</span> من <span className="text-ink font-mono">{pairs.length}</span>
               </span>
               <button
+                type="button"
                 onClick={handleResetGame}
-                className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-slate-300 transition-colors"
+                aria-label="إعادة تشغيل اللعبة"
+                className="p-1.5 rounded bg-surface border border-ink shadow-brutal-press hover:bg-yellow text-ink cursor-pointer transition-colors"
                 title="إعادة تشغيل اللعبة"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
@@ -568,8 +581,8 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {/* Left Column */}
-            <div className="space-y-2">
-              <p className="text-xs font-bold text-slate-400 mb-2">الفعل أو الكلمة الأولى (Collocation Verb):</p>
+            <div className="space-y-2 min-w-0">
+              <p className="text-xs font-bold text-muted-gray mb-2">الفعل أو الكلمة الأولى (Collocation Verb):</p>
               {pairs.map((item) => {
                 const isMatched = matchedIds.includes(item.id);
                 const isSelected = selectedLeft === item.id;
@@ -577,23 +590,24 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
                 return (
                   <button
                     key={item.id}
+                    type="button"
                     disabled={isMatched}
                     onClick={() => handleLeftClick(item.id)}
-                    className={`w-full p-3.5 rounded-xl border text-right transition-all flex items-center justify-between ${
+                    className={`w-full p-3.5 rounded border-2 text-right transition-all flex items-center justify-between gap-2 cursor-pointer ${
                       isMatched 
-                        ? 'bg-emerald-950/60 border-emerald-500/60 text-emerald-300 opacity-80' 
+                        ? 'bg-answer-correct-bg border-semantic-success text-semantic-success opacity-80' 
                         : isSelected 
-                          ? 'bg-emerald-600 text-white border-emerald-300 shadow-md ring-2 ring-emerald-400' 
-                          : 'bg-white/5 border-white/10 text-white hover:bg-white/10 hover:border-emerald-400/40'
+                          ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' 
+                          : 'bg-paper border-ink text-ink hover:bg-yellow shadow-brutal-press'
                     }`}
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-sm font-bold dir-ltr text-right">{item.left}</span>
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span dir="ltr" className="font-mono text-sm font-bold text-left break-words">{item.left}</span>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <span className="text-[11px] text-slate-400">{item.arabic.split(' ')[0]}</span>
-                      {isMatched && <Check className="w-4 h-4 text-emerald-400" />}
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className={`text-[11px] font-bold ${isSelected ? 'text-surface/90' : 'text-muted-gray'}`}>{item.arabic.split(' ')[0]}</span>
+                      {isMatched && <Check className="w-4 h-4 text-semantic-success shrink-0" />}
                     </div>
                   </button>
                 );
@@ -601,31 +615,32 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
             </div>
 
             {/* Right Column */}
-            <div className="space-y-2">
-              <p className="text-xs font-bold text-slate-400 mb-2">المتلازمة التكميلية (Complement):</p>
+            <div className="space-y-2 min-w-0">
+              <p className="text-xs font-bold text-muted-gray mb-2">المتلازمة التكميلية (Complement):</p>
               {shuffledRight.map((item) => {
                 const isMatched = matchedIds.includes(item.id);
 
                 return (
                   <button
                     key={item.id}
+                    type="button"
                     disabled={isMatched}
                     onClick={() => handleRightClick(item.id)}
-                    className={`w-full p-3.5 rounded-xl border text-left transition-all flex items-center justify-between ${
+                    className={`w-full p-3.5 rounded border-2 text-left transition-all flex items-center justify-between gap-2 cursor-pointer ${
                       isMatched 
-                        ? 'bg-emerald-950/60 border-emerald-500/60 text-emerald-300 opacity-80' 
+                        ? 'bg-answer-correct-bg border-semantic-success text-semantic-success opacity-80' 
                         : wrongAttempt && selectedLeft 
-                          ? 'bg-rose-950/40 border-rose-500/40 text-rose-200' 
-                          : 'bg-white/5 border-white/10 text-white hover:bg-white/10 hover:border-emerald-400/40'
+                          ? 'bg-coral border-semantic-error text-ink' 
+                          : 'bg-paper border-ink text-ink hover:bg-soft-mint shadow-brutal-press'
                     }`}
                   >
-                    <div className="flex items-center gap-2">
-                      <span className="font-mono text-sm font-bold dir-ltr">{item.right}</span>
+                    <div className="flex items-center gap-2 min-w-0">
+                      <span dir="ltr" className="font-mono text-sm font-bold text-left break-words">{item.right}</span>
                     </div>
 
-                    <div className="flex items-center gap-2">
-                      <span className="text-[11px] text-slate-400">{item.arabic}</span>
-                      {isMatched && <Check className="w-4 h-4 text-emerald-400" />}
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="text-[11px] font-bold text-muted-gray">{item.arabic}</span>
+                      {isMatched && <Check className="w-4 h-4 text-semantic-success shrink-0" />}
                     </div>
                   </button>
                 );
@@ -634,13 +649,13 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
           </div>
 
           {matchedIds.length === pairs.length && (
-            <div className="p-4 rounded-2xl bg-emerald-500/20 border border-emerald-400/40 text-center space-y-1 animate-fade-in">
-              <div className="flex items-center justify-center gap-2 text-emerald-300 font-extrabold text-sm">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
-                <span>رائع جداً! أتقنت جميع متلازمات هذا الدرس بنجاح تام 🎉</span>
+            <div className="p-4 rounded-md bg-soft-mint border-2 border-ink shadow-brutal-sm text-center space-y-1">
+              <div className="flex items-center justify-center gap-2 text-semantic-success font-extrabold text-sm">
+                <CheckCircle2 className="w-5 h-5 shrink-0" />
+                <span>رائع جداً! أتقنت جميع متلازمات هذا الدرس بنجاح تام</span>
               </div>
-              <p className="text-xs text-slate-300">
-                أنت الآن جاهز بنسبة 100% لسؤال التوصيل والإسقاطات الوزاري لهذه الوحدة!
+              <p className="text-xs font-bold text-ink">
+                أنت الآن مستعد تماماً لسؤال التوصيل والإسقاطات لهذه الوحدة!
               </p>
             </div>
           )}
@@ -650,51 +665,53 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
       {/* Tab 2: Ministerial Confusables & Nuances */}
       {activeTab === 'confusables' && (
         <div className="space-y-4 relative z-10">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
-              <Lightbulb className="w-4 h-4 fill-emerald-400 text-emerald-400" />
-              جدول التمييز بين الكلمات المتشابهة والمربكة وزارياً (Confusables Matrix):
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="text-xs font-bold text-ink flex items-center gap-1.5">
+              <Lightbulb className="w-4 h-4 text-cobalt shrink-0" />
+              جدول التمييز بين الكلمات المتشابهة والمربكة في الاستخدام (Confusables Matrix):
             </span>
-            <span className="text-[11px] text-slate-400">فهم الفوارق يضمن الدرجة الكاملة في سؤال الاختيارات</span>
+            <span className="text-[11px] font-bold text-muted-gray">فهم الفوارق يضمن الدرجة الكاملة في سؤال الاختيارات</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
             {confusables.map((item, idx) => (
               <div 
                 key={idx}
-                className="p-5 rounded-2xl bg-stone-900/90 border border-emerald-500/30 hover:border-emerald-400/60 transition-all space-y-3"
+                className="p-5 rounded-md bg-paper border-2 border-ink shadow-brutal-sm hover:bg-surface transition-all space-y-3 min-w-0"
               >
-                <div className="flex items-center justify-between border-b border-white/10 pb-2.5">
-                  <div>
-                    <span className="font-mono text-base font-black text-emerald-300 dir-ltr text-right">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b border-ink/15 pb-2.5">
+                  <div className="min-w-0">
+                    <span dir="ltr" className="font-mono text-base font-black text-cobalt block text-left break-words">
                       {item.word}
                     </span>
-                    <p className="text-xs text-slate-400 mt-0.5">{item.partOfSpeech}</p>
+                    <p className="text-xs font-bold text-muted-gray mt-0.5">{item.partOfSpeech}</p>
                   </div>
-                  <span className="px-2.5 py-1 rounded-lg bg-emerald-500/20 text-emerald-200 text-xs font-bold">
+                  <span className="px-2.5 py-1 rounded-sm bg-soft-mint border border-ink text-ink text-xs font-bold">
                     {item.meaningAr}
                   </span>
                 </div>
 
-                <div className="space-y-1.5 text-xs text-slate-200">
-                  <p className="font-bold text-amber-300">قاعدة الاستخدام في الجملة:</p>
-                  <p className="leading-relaxed bg-white/5 p-2.5 rounded-xl border border-white/5">{item.usageRule}</p>
+                <div className="space-y-1.5 text-xs text-ink">
+                  <p className="font-bold text-cobalt">قاعدة الاستخدام في الجملة:</p>
+                  <p className="leading-relaxed bg-surface p-2.5 rounded border border-ink font-medium">{item.usageRule}</p>
                 </div>
 
-                <div className="p-3 rounded-xl bg-black/50 border border-white/10 space-y-1">
+                <div className="p-3 rounded bg-yellow border border-ink space-y-1">
                   <div className="flex items-center justify-between gap-2">
-                    <p className="font-mono text-xs font-bold text-emerald-100 dir-ltr text-right">
+                    <p dir="ltr" className="font-mono text-xs font-bold text-ink text-left break-words min-w-0 flex-1">
                       {item.exampleEn}
                     </p>
                     <button
+                      type="button"
                       onClick={() => handleSpeak(item.exampleEn)}
-                      className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white shrink-0"
+                      aria-label={`استمع لنطق ${item.exampleEn}`}
+                      className="p-1.5 rounded bg-surface border border-ink shadow-brutal-press hover:bg-blue-mist text-ink cursor-pointer shrink-0"
                       title="استمع للنطق"
                     >
                       <Volume2 className="w-3.5 h-3.5" />
                     </button>
                   </div>
-                  <p className="text-[11px] text-slate-400">{item.exampleAr}</p>
+                  <p className="text-[11px] font-bold text-ink/80">{item.exampleAr}</p>
                 </div>
               </div>
             ))}
@@ -705,18 +722,18 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
       {/* Tab 3: Drops Simulator (سؤال 3 فرع A) */}
       {activeTab === 'drops' && (
         <div className="space-y-4 relative z-10">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
-              <Award className="w-4 h-4 text-emerald-400" />
-              محاكي سؤال الإسقاطات الوزاري (Drop the Words in the Blanks):
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="text-xs font-bold text-ink flex items-center gap-1.5">
+              <Award className="w-4 h-4 text-cobalt shrink-0" />
+              محاكي سؤال الإسقاطات (Drop the Words in the Blanks):
             </span>
-            <span className="text-[11px] text-slate-400">السؤال 3 فرع A</span>
+            <span className="text-[11px] font-mono font-bold px-2 py-0.5 bg-yellow border border-ink rounded-sm text-ink">السؤال 3 فرع A</span>
           </div>
 
           {/* Word Bank Box */}
-          <div className="p-4 rounded-2xl bg-black/40 border border-emerald-500/30 backdrop-blur-md space-y-2">
-            <p className="text-xs font-bold text-slate-300">بنك الكلمات المتاحة (انقر على الكلمة ثم انقر على الفراغ المناسب):</p>
-            <div className="flex flex-wrap gap-2 dir-ltr">
+          <div className="p-4 rounded-md bg-paper border-2 border-ink shadow-brutal-sm space-y-2">
+            <p className="text-xs font-bold text-ink">بنك الكلمات المتاحة (انقر على الكلمة ثم انقر على الفراغ المناسب):</p>
+            <div className="flex flex-wrap gap-2" dir="ltr">
               {dropsData.words.map((w) => {
                 const isSelected = selectedWordForDrop === w;
                 const isAlreadyUsed = Object.values(filledDrops).includes(w);
@@ -724,14 +741,15 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
                 return (
                   <button
                     key={w}
+                    type="button"
                     disabled={isAlreadyUsed}
                     onClick={() => handleSelectDropWord(w)}
-                    className={`px-3.5 py-1.5 rounded-xl border text-xs font-mono font-bold transition-all ${
+                    className={`px-3.5 py-1.5 rounded border-2 text-xs font-mono font-bold transition-all cursor-pointer ${
                       isAlreadyUsed 
-                        ? 'bg-white/5 border-white/10 text-slate-500 line-through opacity-40' 
+                        ? 'bg-progress-track border-ink/30 text-muted-gray line-through opacity-60 cursor-default' 
                         : isSelected 
-                          ? 'bg-emerald-500 text-slate-950 border-emerald-400 font-black shadow-md ring-2 ring-emerald-300' 
-                          : 'bg-stone-800 border-white/20 text-emerald-300 hover:bg-stone-700'
+                          ? 'bg-cobalt text-surface border-ink font-black shadow-brutal-sm' 
+                          : 'bg-surface border-ink text-ink hover:bg-yellow shadow-brutal-press'
                     }`}
                   >
                     {w}
@@ -750,29 +768,30 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
               return (
                 <div 
                   key={q.id}
-                  className={`p-4 rounded-2xl border transition-all ${
+                  className={`p-4 rounded-md border-2 border-ink shadow-brutal-sm transition-all ${
                     filled 
                       ? isCorrect 
-                        ? 'bg-emerald-950/50 border-emerald-500/60' 
-                        : 'bg-rose-950/50 border-rose-500/60'
-                      : 'bg-stone-900/80 border-white/10 hover:border-emerald-500/30'
+                        ? 'bg-answer-correct-bg' 
+                        : 'bg-answer-review-bg'
+                      : 'bg-surface'
                   }`}
                 >
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-                    <div className="space-y-1">
-                      <p className="font-mono text-sm font-bold text-white dir-ltr text-right">
-                        <span className="text-emerald-400 mr-2">{idx + 1}.</span>
+                    <div className="space-y-1 min-w-0 flex-1">
+                      <p dir="ltr" className="font-mono text-sm font-bold text-ink text-left break-words">
+                        <span className="text-cobalt mr-2">{idx + 1}.</span>
                         {q.sentence.split('[___]')[0]}
                         <button
+                          type="button"
                           onClick={() => handleFillDrop(q.id)}
-                          className={`inline-block px-3 py-0.5 mx-1.5 rounded-lg border font-mono text-xs font-black transition-all ${
+                          className={`inline-block px-3 py-0.5 mx-1.5 rounded border-2 font-mono text-xs font-black transition-all cursor-pointer ${
                             filled 
                               ? isCorrect 
-                                ? 'bg-emerald-600 text-white border-emerald-400' 
-                                : 'bg-rose-600 text-white border-rose-400'
+                                ? 'bg-semantic-success text-surface border-ink' 
+                                : 'bg-semantic-error text-surface border-ink'
                               : selectedWordForDrop 
-                                ? 'bg-amber-500/30 border-amber-400 text-amber-200 animate-pulse' 
-                                : 'bg-white/10 border-white/20 text-slate-400'
+                                ? 'bg-yellow border-ink text-ink animate-pulse' 
+                                : 'bg-paper border-ink text-muted-gray'
                           }`}
                         >
                           {filled || 'انقر للإسقاط'}
@@ -780,14 +799,16 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
                         {q.sentence.split('[___]')[1]}
                       </p>
 
-                      <p className="text-xs text-slate-300">{q.translationAr}</p>
+                      <p className="text-xs font-medium text-muted-gray">{q.translationAr}</p>
                     </div>
 
                     <div className="flex items-center gap-2 shrink-0 self-end sm:self-center">
                       {filled && (
                         <button
+                          type="button"
                           onClick={() => handleResetDrop(q.id)}
-                          className="p-1.5 rounded-lg bg-white/10 text-slate-400 hover:text-white"
+                          aria-label="مسح الإجابة"
+                          className="p-1.5 rounded bg-surface border border-ink shadow-brutal-press text-ink hover:bg-coral cursor-pointer"
                           title="مسح الإجابة"
                         >
                           <RotateCcw className="w-3.5 h-3.5" />
@@ -797,8 +818,8 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
                   </div>
 
                   {filled && (
-                    <div className="mt-2 pt-2 border-t border-white/10 text-xs text-slate-300">
-                      <span className="font-bold text-amber-300">تلميح الحل: </span>
+                    <div className="mt-2 pt-2 border-t border-ink/15 text-xs text-ink">
+                      <span className="font-bold text-cobalt">تلميح الحل: </span>
                       {q.tip}
                     </div>
                   )}
@@ -812,33 +833,35 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
       {/* Tab 4: Audio Pronunciation Dictionary */}
       {activeTab === 'audio' && (
         <div className="space-y-3 relative z-10">
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-emerald-300 flex items-center gap-1.5">
-              <Sparkles className="w-4 h-4 fill-emerald-300" />
+          <div className="flex flex-wrap items-center justify-between gap-2">
+            <span className="text-xs font-bold text-ink flex items-center gap-1.5">
+              <Sparkles className="w-4 h-4 text-cobalt shrink-0" />
               قاموس النطق والمفردات الذاتي المسموع:
             </span>
-            <span className="text-[11px] text-slate-400">اضغط للاستماع للنطق الإنجليزي السليم</span>
+            <span className="text-[11px] font-bold text-muted-gray">اضغط للاستماع للنطق الإنجليزي السليم</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
             {pairs.map((p) => (
               <div 
                 key={p.id}
-                className="p-3.5 rounded-xl bg-white/5 border border-white/10 flex items-center justify-between gap-2"
+                className="p-3.5 rounded bg-paper border-2 border-ink shadow-brutal-sm flex items-center justify-between gap-2 min-w-0"
               >
-                <div>
-                  <p className="font-mono font-bold text-sm text-white dir-ltr text-right">
+                <div className="min-w-0">
+                  <p dir="ltr" className="font-mono font-bold text-sm text-ink text-left break-words">
                     {p.left} {p.right}
                   </p>
-                  <p className="text-xs text-slate-400">{p.arabic}</p>
+                  <p className="text-xs font-medium text-muted-gray">{p.arabic}</p>
                 </div>
 
                 <button
+                  type="button"
                   onClick={() => handleSpeak(`${p.left} ${p.right}`)}
-                  className={`p-2 rounded-xl border transition-all ${
+                  aria-label={`استمع لنطق ${p.left} ${p.right}`}
+                  className={`p-2 rounded border border-ink shadow-brutal-press cursor-pointer shrink-0 transition-all ${
                     speakingWord === `${p.left} ${p.right}`
-                      ? 'bg-emerald-400 text-slate-950 border-emerald-400 animate-pulse'
-                      : 'bg-white/10 text-slate-300 border-white/10 hover:bg-white/20'
+                      ? 'bg-cobalt text-surface animate-pulse'
+                      : 'bg-surface text-ink hover:bg-yellow'
                   }`}
                   title="استمع للنطق"
                 >

@@ -102,7 +102,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="sticky top-0 z-40 w-full max-w-full min-w-0 overflow-hidden bg-white border-b-2 border-[#202124] shadow-[0px_2.5px_0px_#202124]">
+    <header className="sticky top-0 z-40 w-full max-w-full min-w-0 overflow-hidden bg-surface border-b-2 border-ink shadow-brutal-nav">
       {/* Top Header Row: Identity & Actions */}
       <div className="max-w-7xl w-full mx-auto px-2 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 gap-1.5 sm:gap-3 min-w-0 w-full">
@@ -114,28 +114,28 @@ export const Navbar: React.FC<NavbarProps> = ({
               to="/"
               className="flex items-center gap-2 sm:gap-2.5 group shrink-0 rounded-[4px]"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-[#405DE6] text-white border-2 border-[#202124] rounded-[4px] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0 group-hover:-translate-y-0.5 group-hover:-translate-x-0.5 group-hover:shadow-[3px_3px_0px_#202124] transition-all">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-cobalt text-surface border-2 border-ink rounded-[4px] shadow-brutal-sm flex items-center justify-center shrink-0 group-hover:-translate-y-0.5 group-hover:-translate-x-0.5 group-hover:shadow-brutal-callout transition-all">
                 <GraduationCap className="w-5 h-5" />
               </div>
               <div className="shrink-0 text-right">
                 <div className="flex items-center gap-1.5">
-                  <span className="font-display font-extrabold text-sm sm:text-lg text-[#202124] tracking-tight whitespace-nowrap">
+                  <span className="font-display font-extrabold text-sm sm:text-lg text-ink tracking-tight whitespace-nowrap">
                     النموذجية
                   </span>
                   {isInsideGrade && (
                     <>
-                      <span className="text-xs text-[#747474] font-mono hidden sm:inline">/</span>
-                      <span className="text-xs font-bold text-[#405DE6] hidden sm:inline font-mono">
+                      <span className="text-xs text-muted-gray font-mono hidden sm:inline">/</span>
+                      <span className="text-xs font-bold text-cobalt hidden sm:inline font-mono">
                         {currentGradeMeta.shortName}
                       </span>
                     </>
                   )}
                 </div>
                 <div className="hidden xs:flex items-center gap-1.5">
-                  <span className="text-[10px] font-mono uppercase bg-[#F3E6A5] text-[#202124] border border-[#202124] rounded-[3px] px-1 py-0.2 font-bold">
+                  <span className="text-[10px] font-mono uppercase bg-yellow text-ink border border-ink rounded-[3px] px-1 py-0.2 font-bold">
                     IRAQ ED. 2026
                   </span>
-                  <span className="text-[11px] text-[#747474] font-medium whitespace-nowrap hidden md:inline">
+                  <span className="text-[11px] text-muted-gray font-medium whitespace-nowrap hidden md:inline">
                     إشراف الأستاذ مصطفى تركي
                   </span>
                 </div>
@@ -145,10 +145,10 @@ export const Navbar: React.FC<NavbarProps> = ({
             {/* Current Grade Stamp + Switch Grade Button (Shown inside a grade) */}
             {isInsideGrade && (
               <div className="hidden sm:flex items-center gap-2">
-                <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 bg-[#F7F5EF] border border-[#202124] text-xs font-mono font-bold text-[#202124] rounded-[4px]">
-                  <span className="text-[#405DE6]">{currentGradeMeta.shortName}</span>
+                <div className="hidden lg:flex items-center gap-1.5 px-2.5 py-1 bg-paper border border-ink text-xs font-mono font-bold text-ink rounded-[4px]">
+                  <span className="text-cobalt">{currentGradeMeta.shortName}</span>
                   {isMinisterial && (
-                    <span className="text-[9px] px-1 py-0.2 bg-[#F2A18E] text-[#202124] font-mono font-bold border border-[#202124] rounded-[3px]">
+                    <span className="text-[9px] px-1 py-0.2 bg-coral text-ink font-mono font-bold border border-ink rounded-[3px]">
                       وزاري
                     </span>
                   )}
@@ -161,7 +161,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                     playPopSound();
                     navigate('/');
                   }}
-                  className="flex items-center gap-1 px-2.5 py-1.5 border-2 border-[#202124] rounded-[4px] shadow-[2px_2px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] text-xs font-bold cursor-pointer transition-all bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124]"
+                  className="flex items-center gap-1 px-2.5 py-1.5 border-2 border-ink rounded-[4px] shadow-brutal-sm active:translate-x-[1px] active:translate-y-[1px] text-xs font-bold cursor-pointer transition-all bg-yellow hover:bg-yellow-hover text-ink"
                   title="تغيير الصف الدراسي"
                 >
                   <span>تغيير الصف ↩</span>
@@ -181,10 +181,10 @@ export const Navbar: React.FC<NavbarProps> = ({
                   playPopSound();
                   navigate(`/lesson/${studentState.lastVisitedLessonId}`);
                 }}
-                className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 bg-[#F3E6A5] hover:bg-[#E5D792] border-2 border-[#202124] rounded-[4px] shadow-[2px_2px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] text-xs font-bold text-[#202124] transition-all cursor-pointer"
+                className="hidden md:flex items-center gap-1.5 px-2.5 py-1.5 bg-yellow hover:bg-yellow-hover border-2 border-ink rounded-[4px] shadow-brutal-sm active:translate-x-[1px] active:translate-y-[1px] text-xs font-bold text-ink transition-all cursor-pointer"
                 title="تابع من حيث توقفت في الدرس الأخير"
               >
-                <BookOpen className="w-3.5 h-3.5 text-[#405DE6]" />
+                <BookOpen className="w-3.5 h-3.5 text-cobalt" />
                 <span className="whitespace-nowrap">تابع الدرس</span>
               </button>
             )}
@@ -194,15 +194,15 @@ export const Navbar: React.FC<NavbarProps> = ({
               type="button"
               id="student-stats-pill"
               onClick={onOpenProfile}
-              className="flex items-center gap-1 sm:gap-2 px-2 sm:px-2.5 py-1.5 bg-[#F7F5EF] border-2 border-[#202124] rounded-[4px] shadow-[2px_2px_0px_#202124] cursor-pointer hover:bg-white active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all shrink-0 font-mono tabular-nums"
+              className="flex items-center gap-1 sm:gap-2 px-2 sm:px-2.5 py-1.5 bg-paper border-2 border-ink rounded-[4px] shadow-brutal-sm cursor-pointer hover:bg-surface active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all shrink-0 font-mono tabular-nums"
               title="لوحة الإنجازات والتقدم"
             >
-              <div className="flex items-center gap-1 text-[#202124] font-bold text-xs whitespace-nowrap">
-                <Flame className="w-3.5 h-3.5 fill-[#F2A18E] text-[#202124]" />
+              <div className="flex items-center gap-1 text-ink font-bold text-xs whitespace-nowrap">
+                <Flame className="w-3.5 h-3.5 fill-coral text-ink" />
                 <span>{studentState.streakDays}D</span>
               </div>
-              <div className="w-px h-3 bg-[#202124]/30" />
-              <div className="flex items-center gap-1 text-[#405DE6] font-bold text-xs whitespace-nowrap">
+              <div className="w-px h-3 bg-ink/30" />
+              <div className="flex items-center gap-1 text-cobalt font-bold text-xs whitespace-nowrap">
                 <Sparkles className="w-3.5 h-3.5" />
                 <span>{studentState.xp} XP</span>
               </div>
@@ -215,17 +215,17 @@ export const Navbar: React.FC<NavbarProps> = ({
                 id="cloud-user-btn"
                 onClick={onOpenProfile}
                 aria-label="ملف الطالب السحابي"
-                className="p-2 bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] rounded-[4px] shadow-[2px_2px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all shrink-0 cursor-pointer"
+                className="p-2 bg-surface hover:bg-paper text-ink border-2 border-ink rounded-[4px] shadow-brutal-sm active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all shrink-0 cursor-pointer"
                 title={`مسجل دخول: ${user.displayName || user.email || 'طالب'}`}
               >
-                <UserIcon className="w-4 h-4 text-[#405DE6]" />
+                <UserIcon className="w-4 h-4 text-cobalt" />
               </button>
             ) : (
               <button
                 type="button"
                 id="auth-gate-btn"
                 onClick={onOpenAuth}
-                className="px-2.5 py-1.5 bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] rounded-[4px] shadow-[2px_2px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] text-xs font-bold transition-all shrink-0 cursor-pointer"
+                className="px-2.5 py-1.5 bg-cobalt hover:bg-cobalt-hover text-surface border-2 border-ink rounded-[4px] shadow-brutal-sm active:translate-x-[1px] active:translate-y-[1px] text-xs font-bold transition-all shrink-0 cursor-pointer"
               >
                 دخول
               </button>
@@ -241,14 +241,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                 setIsSoundOn(newState);
                 if (newState) playPopSound();
               }}
-              className={`p-2 border-2 border-[#202124] rounded-[4px] shadow-[2px_2px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all shrink-0 cursor-pointer ${
+              className={`p-2 border-2 border-ink rounded-[4px] shadow-brutal-sm active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all shrink-0 cursor-pointer ${
                 isSoundOn
-                  ? 'bg-[#F3E6A5] text-[#202124]'
-                  : 'bg-white text-[#747474]'
+                  ? 'bg-yellow text-ink'
+                  : 'bg-surface text-muted-gray'
               }`}
               title={isSoundOn ? 'المؤثرات الصوتية مفعلة' : 'المؤثرات الصوتية مكتومة'}
             >
-              {isSoundOn ? <Volume2 className="w-4 h-4 text-[#202124]" /> : <VolumeX className="w-4 h-4" />}
+              {isSoundOn ? <Volume2 className="w-4 h-4 text-ink" /> : <VolumeX className="w-4 h-4" />}
             </button>
 
             {/* Profile Trophy Button */}
@@ -257,10 +257,10 @@ export const Navbar: React.FC<NavbarProps> = ({
               id="student-profile-btn"
               aria-label="الملف الشخصي والإنجازات"
               onClick={onOpenProfile}
-              className="p-2 bg-[#F2A18E] hover:bg-[#E58E7A] text-[#202124] border-2 border-[#202124] rounded-[4px] shadow-[2px_2px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all shrink-0 cursor-pointer"
+              className="p-2 bg-coral hover:bg-coral-hover text-ink border-2 border-ink rounded-[4px] shadow-brutal-sm active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all shrink-0 cursor-pointer"
               title="الملف الشخصي والإنجازات"
             >
-              <Trophy className="w-4 h-4 text-[#202124]" />
+              <Trophy className="w-4 h-4 text-ink" />
             </button>
           </div>
 
@@ -269,9 +269,9 @@ export const Navbar: React.FC<NavbarProps> = ({
 
       {/* Dedicated Navigation Sub-Bar (Shown ONLY when inside a selected grade) */}
       {isInsideGrade && (
-        <div className="w-full max-w-full min-w-0 overflow-hidden bg-[#F7F5EF] border-t border-[#202124]/15">
+        <div className="w-full max-w-full min-w-0 overflow-hidden bg-paper border-t border-ink/15">
           <div className="max-w-7xl w-full mx-auto px-2 sm:px-6 lg:px-8 min-w-0">
-            <nav aria-label="أقسام الصف" className="flex items-center gap-1.5 py-1.5 w-full overflow-x-auto no-scrollbar scroll-smooth">
+            <nav aria-label="أقسام الصف" className="flex flex-wrap items-center gap-1.5 py-1.5 w-full min-w-0">
               {navItems.map((item) => {
                 const active = isItemActive(item);
                 const Icon = item.icon;
@@ -287,14 +287,14 @@ export const Navbar: React.FC<NavbarProps> = ({
                     className={`px-3 py-1.5 text-xs font-bold transition-all flex items-center gap-1.5 shrink-0 whitespace-nowrap cursor-pointer border-2 rounded-[4px] ${
                       active
                         ? item.highlight
-                          ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
-                          : 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+                          ? 'bg-yellow text-ink border-ink shadow-brutal-sm'
+                          : 'bg-cobalt text-surface border-ink shadow-brutal-sm'
                         : item.highlight
-                          ? 'bg-[#F3E6A5]/45 text-[#202124] border-[#202124] hover:bg-[#F3E6A5]'
-                          : 'bg-transparent text-[#202124] border-transparent hover:border-[#202124] hover:bg-white'
+                          ? 'bg-yellow/45 text-ink border-ink hover:bg-yellow'
+                          : 'bg-transparent text-ink border-transparent hover:border-ink hover:bg-surface'
                     }`}
                   >
-                    <Icon className={`w-3.5 h-3.5 ${active ? 'text-current' : item.highlight ? 'text-[#405DE6]' : 'text-[#747474]'}`} />
+                    <Icon className={`w-3.5 h-3.5 ${active ? 'text-current' : item.highlight ? 'text-cobalt' : 'text-muted-gray'}`} />
                     <span>{item.label}</span>
                   </button>
                 );

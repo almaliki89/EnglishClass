@@ -12,8 +12,8 @@ export const FOURTH_PREPARATORY_UNITS_3_4: Unit[] = [
     titleAr: "الوحدة الثالثة: العلوم والاختراعات والمضارع التام (Science & Inventions)",
     titleEn: "Unit 3: Scientific Inventions, Present Perfect Simple, for & since, Present Perfect Continuous & Water Pollution",
     description: "استخدام المضارع التام البسيط مع ever/never/just/already/yet، الفروق بين for و since، المضارع التام المستمر، تلوث المياه وحمايتها، واختراعات غيرت وجه الحياة.",
-    accentColor: "from-emerald-600 to-teal-600",
-    bgGradient: "bg-gradient-to-r from-emerald-50 to-teal-50 border-emerald-200",
+    accentColor: "bg-soft-mint text-ink",
+    bgGradient: "bg-paper border-ink",
     sourcePages: "الملزمة ص 53 - 69",
     academicYear: "2025-2026",
     lessons: [
@@ -210,8 +210,8 @@ export const FOURTH_PREPARATORY_UNITS_3_4: Unit[] = [
     titleAr: "الوحدة الرابعة: المراجعة الشاملة للفصل الأول (Semester 1 Comprehensive Revision)",
     titleEn: "Unit 4: Semester 1 Consolidation, Iraqi Wedding Customs & Mid-Year Exam",
     description: "مراجعة كبرى ومكثفة لجميع قواعد وقراءات ومفردات الوحدات 1 و2 و3: مراجعة عادات الزفاف في العراق، دمج الأزمنة، والامتحان التحريري الشامل لنصف السنة (100 درجة).",
-    accentColor: "from-amber-600 to-orange-600",
-    bgGradient: "bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200",
+    accentColor: "bg-yellow text-ink",
+    bgGradient: "bg-paper border-ink",
     sourcePages: "الملزمة ص 69 - 74",
     academicYear: "2025-2026",
     lessons: [

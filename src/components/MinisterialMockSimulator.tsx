@@ -319,14 +319,14 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
           
           {/* Draft Recovery Alert */}
           {savedDraft && (
-            <div className="p-4 sm:p-5 rounded-[6px] bg-[#F3E6A5]/45 border-2 border-[#202124] shadow-[4px_4px_0px_#202124] text-[#202124] flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="p-4 sm:p-5 rounded-[6px] bg-yellow/45 border-2 border-ink shadow-brutal-action text-ink flex flex-col sm:flex-row items-center justify-between gap-4">
               <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-[4px] bg-[#F3E6A5] border-2 border-[#202124] text-[#202124] flex items-center justify-center shrink-0">
+                <div className="w-10 h-10 rounded-[4px] bg-yellow border-2 border-ink text-ink flex items-center justify-center shrink-0">
                   <Clock className="w-5 h-5" />
                 </div>
                 <div>
-                  <p className="font-black text-[#202124] text-sm">لديك جلسة امتحان وزاري جارية غير مكتملة</p>
-                  <p className="text-xs text-[#202124]/80 font-bold tabular-nums">
+                  <p className="font-black text-ink text-sm">لديك جلسة امتحان تجريبي جارية غير مكتملة</p>
+                  <p className="text-xs text-ink/80 font-bold tabular-nums">
                     الوقت المتبقي: {Math.ceil(savedDraft.secondsRemaining / 60)} دقيقة • تمت الإجابة على {Object.keys(savedDraft.userAnswers || {}).length} سؤالاً
                   </p>
                 </div>
@@ -335,7 +335,7 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                 <button
                   type="button"
                   onClick={() => handleStartExam(savedDraft.durationMins, savedDraft)}
-                  className="flex-1 sm:flex-initial px-4 py-2.5 rounded-[4px] bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-black text-xs transition-colors cursor-pointer"
+                  className="flex-1 sm:flex-initial px-4 py-2.5 rounded-[4px] bg-cobalt hover:bg-cobalt-hover text-surface border-2 border-ink shadow-brutal-sm font-black text-xs transition-colors cursor-pointer"
                 >
                   استئناف الامتحان من حيث توقفت
                 </button>
@@ -347,7 +347,7 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                     } catch {}
                     setSavedDraft(null);
                   }}
-                  className="px-3 py-2.5 rounded-[4px] bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] font-black text-xs transition-colors cursor-pointer"
+                  className="px-3 py-2.5 rounded-[4px] bg-surface hover:bg-paper text-ink border-2 border-ink font-black text-xs transition-colors cursor-pointer"
                 >
                   إلغاء وبدء جديد
                 </button>
@@ -356,23 +356,23 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
           )}
 
           {/* Header Banner */}
-          <div className="p-6 sm:p-10 bg-white border-3 border-[#202124] shadow-[6px_6px_0px_#202124] text-[#202124] relative overflow-hidden text-center sm:text-right">
+          <div className="p-6 sm:p-10 bg-surface border-3 border-ink shadow-brutal-modal text-ink relative overflow-hidden text-center sm:text-right">
             
             {/* Grade Isolation Badge */}
-            <div className="flex items-center justify-center sm:justify-start gap-2 mb-6 relative z-10 self-start">
-              <span className="px-3 py-1 bg-[#405DE6] text-white border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124]">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2 mb-6 relative z-10 self-start">
+              <span className="px-3 py-1 bg-cobalt text-surface border-2 border-ink font-black text-xs shadow-brutal-sm">
                 {gradeMeta.nameAr}
               </span>
               {gradeMeta.isMinisterial && (
-                <span className="px-2 py-0.5 bg-[#F2A18E] text-[#202124] font-mono font-black text-xs border-2 border-[#202124] rounded-[4px]">
-                  ★ امتحان وزاري رسمي
+                <span className="px-2 py-0.5 bg-coral text-ink font-mono font-black text-xs border-2 border-ink rounded-[4px]">
+                  ★ محاكاة الامتحان الوزاري
                 </span>
               )}
             </div>
 
             <div className="relative z-10 space-y-3 max-w-3xl">
-              <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-mono font-black">
-                <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
+              <div className="inline-flex items-center gap-2 px-2.5 py-1 bg-yellow text-ink border-2 border-ink shadow-brutal-sm text-xs font-mono font-black">
+                <Sparkles className="w-3.5 h-3.5 text-cobalt" />
                 <span>
                   {grade === 'sixth-preparatory'
                     ? 'الامتحانات الوزارية التجريبية'
@@ -382,108 +382,108 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                 </span>
               </div>
 
-              <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-[#202124] leading-tight">
-                {currentPaper.title} <span className="bg-[#F3E6A5] px-2 py-0.5 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] inline-block">({currentPaper.totalMarks} درجة)</span>
+              <h1 className="font-display text-2xl sm:text-4xl lg:text-5xl font-black text-ink leading-tight">
+                {currentPaper.title} <span className="bg-yellow px-2 py-0.5 border-2 border-ink shadow-brutal-sm inline-block">({currentPaper.totalMarks} درجة)</span>
               </h1>
 
-              <p className="text-xs sm:text-sm text-[#202124]/80 leading-relaxed font-medium">
-                {currentPaper.subtitle || 'محاكاة رسمية كاملة لدفتر الامتحان: القطعة الخارجية، القواعد، المفردات، الأدب، والإنشاء مع تصحيح كنترول فوري.'}
+              <p className="text-xs sm:text-sm text-ink/80 leading-relaxed font-medium">
+                {currentPaper.subtitle || 'محاكاة تدريبية شاملة لدفتر الامتحان: القطعة الخارجية، القواعد، المفردات، الأدب، والإنشاء مع تصحيح فوري.'}
               </p>
             </div>
           </div>
 
-          {/* Official Specifications Bento Box */}
+          {/* Specifications Bento Box */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4">
             
-            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3 rounded-xs">
-              <div className="w-11 h-11 bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0 rounded-xs">
+            <div className="p-4 sm:p-5 bg-surface border-3 border-ink shadow-brutal-action flex items-center gap-3 rounded-xs">
+              <div className="w-11 h-11 bg-yellow text-ink border-2 border-ink shadow-brutal-sm flex items-center justify-center shrink-0 rounded-xs">
                 <Clock className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#B83A3A] block">الوقت المقرّر</span>
-                <span className="text-sm sm:text-base font-black text-[#202124] tabular-nums">{currentPaper.durationMinutes || 180} دقيقة امتحانية رسمية</span>
+                <span className="text-[10px] font-mono font-bold text-semantic-error block">الوقت المقرّر</span>
+                <span className="text-sm sm:text-base font-black text-ink tabular-nums">{currentPaper.durationMinutes || 180} دقيقة امتحانية</span>
               </div>
             </div>
 
-            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3 rounded-xs">
-              <div className="w-11 h-11 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0 rounded-xs">
+            <div className="p-4 sm:p-5 bg-surface border-3 border-ink shadow-brutal-action flex items-center gap-3 rounded-xs">
+              <div className="w-11 h-11 bg-cobalt text-surface border-2 border-ink shadow-brutal-sm flex items-center justify-center shrink-0 rounded-xs">
                 <Award className="w-5 h-5" />
               </div>
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#405DE6] block">الدرجة الكلية</span>
-                <span className="text-sm sm:text-base font-black text-[#202124] tabular-nums">100 درجة وزارية كاملة</span>
+                <span className="text-[10px] font-mono font-bold text-cobalt block">الدرجة الكلية</span>
+                <span className="text-sm sm:text-base font-black text-ink tabular-nums">100 درجة كاملة</span>
               </div>
             </div>
 
-            <div className="p-4 sm:p-5 bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] flex items-center gap-3 rounded-xs">
-              <div className="w-11 h-11 bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] flex items-center justify-center shrink-0 rounded-xs">
-                <CheckCircle2 className="w-5 h-5 text-[#405DE6]" />
+            <div className="p-4 sm:p-5 bg-surface border-3 border-ink shadow-brutal-action flex items-center gap-3 rounded-xs">
+              <div className="w-11 h-11 bg-paper text-ink border-2 border-ink shadow-brutal-sm flex items-center justify-center shrink-0 rounded-xs">
+                <CheckCircle2 className="w-5 h-5 text-cobalt" />
               </div>
               <div>
-                <span className="text-[10px] font-mono font-bold text-[#747474] block">آلية التصحيح</span>
-                <span className="text-sm sm:text-base font-black text-[#202124]">تصحيح فوري مع التعليل الوزاري</span>
+                <span className="text-[10px] font-mono font-bold text-muted-gray block">آلية التصحيح</span>
+                <span className="text-sm sm:text-base font-black text-ink">تصحيح فوري مع التعليل</span>
               </div>
             </div>
 
           </div>
 
           {/* Exam Blueprint Structure Table */}
-          <div className="p-5 sm:p-8 rounded-[6px] bg-white border-3 border-[#202124] shadow-[5px_5px_0px_#202124] space-y-5">
-            <h2 className="text-base sm:text-lg font-black text-[#202124] flex items-center gap-2">
-              <BookOpen className="w-5 h-5 text-[#405DE6] shrink-0" />
+          <div className="p-5 sm:p-8 rounded-[6px] bg-surface border-3 border-ink shadow-brutal-lg space-y-5">
+            <h2 className="text-base sm:text-lg font-black text-ink flex items-center gap-2">
+              <BookOpen className="w-5 h-5 text-cobalt shrink-0" />
               <span>جدول توزيع الأسئلة والدرجات في الدفتر الامتحاني</span>
             </h2>
 
             {/* Desktop / Tablet Grid Table */}
-            <div className="hidden sm:block divide-y-2 divide-[#202124]/15 border-2 border-[#202124] rounded-[4px] overflow-hidden">
-              <div className="p-3.5 bg-[#F7F5EF] border-b-2 border-[#202124] text-xs font-black text-[#202124] grid grid-cols-12 gap-2">
+            <div className="hidden sm:block divide-y-2 divide-ink/15 border-2 border-ink rounded-[4px] overflow-hidden">
+              <div className="p-3.5 bg-paper border-b-2 border-ink text-xs font-black text-ink grid grid-cols-12 gap-2">
                 <span className="col-span-2">السؤال</span>
                 <span className="col-span-6">المحور الأكاديمي</span>
                 <span className="col-span-2 text-center">الخيارات</span>
                 <span className="col-span-2 text-left">الدرجة</span>
               </div>
 
-              <div className="p-3.5 text-xs text-[#202124] grid grid-cols-12 gap-2 items-center">
-                <span className="col-span-2 font-mono font-black text-[#405DE6]">Q1 (A & B)</span>
+              <div className="p-3.5 text-xs text-ink grid grid-cols-12 gap-2 items-center">
+                <span className="col-span-2 font-mono font-black text-cobalt">Q1 (A & B)</span>
                 <span className="col-span-6 font-medium">القطعة الخارجية غير المرئية (10 د) + قطع الكتاب المقررة (10 د)</span>
-                <span className="col-span-2 text-center text-[#747474] font-bold">أجب عن 5 من 6</span>
-                <span className="col-span-2 text-left font-black text-[#202124] tabular-nums">20 درجة</span>
+                <span className="col-span-2 text-center text-muted-gray font-bold">أجب عن 5 من 6</span>
+                <span className="col-span-2 text-left font-black text-ink tabular-nums">20 درجة</span>
               </div>
 
-              <div className="p-3.5 text-xs text-[#202124] grid grid-cols-12 gap-2 items-center">
-                <span className="col-span-2 font-mono font-black text-[#405DE6]">Q2 (A & B)</span>
+              <div className="p-3.5 text-xs text-ink grid grid-cols-12 gap-2 items-center">
+                <span className="col-span-2 font-mono font-black text-cobalt">Q2 (A & B)</span>
                 <span className="col-span-6 font-medium">القواعد والوظائف اللغوية (20 د تحويلات + 10 د اختيارات)</span>
-                <span className="col-span-2 text-center text-[#747474] font-bold">10 من 12 و 5 من 6</span>
-                <span className="col-span-2 text-left font-black text-[#202124] tabular-nums">30 درجة</span>
+                <span className="col-span-2 text-center text-muted-gray font-bold">10 من 12 و 5 من 6</span>
+                <span className="col-span-2 text-left font-black text-ink tabular-nums">30 درجة</span>
               </div>
 
-              <div className="p-3.5 text-xs text-[#202124] grid grid-cols-12 gap-2 items-center">
-                <span className="col-span-2 font-mono font-black text-[#405DE6]">Q3 (A, B, C)</span>
+              <div className="p-3.5 text-xs text-ink grid grid-cols-12 gap-2 items-center">
+                <span className="col-span-2 font-mono font-black text-cobalt">Q3 (A, B, C)</span>
                 <span className="col-span-6 font-medium">المفردات والإسقاطات (10 د) + التوصيل (5 د) + الإملاء والشواذ (5 د)</span>
-                <span className="col-span-2 text-center text-[#747474] font-bold">شامل</span>
-                <span className="col-span-2 text-left font-black text-[#202124] tabular-nums">20 درجة</span>
+                <span className="col-span-2 text-center text-muted-gray font-bold">شامل</span>
+                <span className="col-span-2 text-left font-black text-ink tabular-nums">20 درجة</span>
               </div>
 
-              <div className="p-3.5 text-xs text-[#202124] grid grid-cols-12 gap-2 items-center">
-                <span className="col-span-2 font-mono font-black text-[#405DE6]">Q4</span>
+              <div className="p-3.5 text-xs text-ink grid grid-cols-12 gap-2 items-center">
+                <span className="col-span-2 font-mono font-black text-cobalt">Q4</span>
                 <span className="col-span-6 font-medium">
                   {grade === 'third-intermediate'
                     ? 'القصص المقررة (Story Time): كريم، كرم، ملء الفراغ، إبراهيم، سلام أحمد، داليا'
-                    : 'الأدب الوزاري المقرّر والشخصيات والأسئلة النقدية'}
+                    : 'الأدب المقرّر والشخصيات والأسئلة النقدية'}
                 </span>
-                <span className="col-span-2 text-center text-[#747474] font-bold">أجب عن 5 من 6</span>
-                <span className="col-span-2 text-left font-black text-[#202124] tabular-nums">10 درجات</span>
+                <span className="col-span-2 text-center text-muted-gray font-bold">أجب عن 5 من 6</span>
+                <span className="col-span-2 text-left font-black text-ink tabular-nums">10 درجات</span>
               </div>
 
-              <div className="p-3.5 text-xs text-[#202124] grid grid-cols-12 gap-2 items-center">
-                <span className="col-span-2 font-mono font-black text-[#405DE6]">Q5</span>
+              <div className="p-3.5 text-xs text-ink grid grid-cols-12 gap-2 items-center">
+                <span className="col-span-2 font-mono font-black text-cobalt">Q5</span>
                 <span className="col-span-6 font-medium">
                   {grade === 'third-intermediate'
-                    ? 'الإنشاء الوزاري النموذجي: سيرة نور صبري أو برنامج تلفزيوني عن الفيلة'
-                    : 'الإنشاء الوزاري النموذجي (100 إلى 120 كلمة)'}
+                    ? 'الإنشاء النموذجي: سيرة نور صبري أو برنامج تلفزيوني عن الفيلة'
+                    : 'الإنشاء النموذجي (100 إلى 120 كلمة)'}
                 </span>
-                <span className="col-span-2 text-center text-[#747474] font-bold">اختر A أو B</span>
-                <span className="col-span-2 text-left font-black text-[#202124] tabular-nums">
+                <span className="col-span-2 text-center text-muted-gray font-bold">اختر A أو B</span>
+                <span className="col-span-2 text-left font-black text-ink tabular-nums">
                   {grade === 'third-intermediate' ? '15 درجة' : '20 درجة'}
                 </span>
               </div>
@@ -495,24 +495,24 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                 { q: 'Q1 (A & B)', title: 'القطعة الخارجية غير المرئية + قطع الكتاب', opt: '5 من 6', marks: '20 درجة' },
                 { q: 'Q2 (A & B)', title: 'القواعد والوظائف اللغوية (تحويلات + اختيارات)', opt: '10 من 12 و 5 من 6', marks: '30 درجة' },
                 { q: 'Q3 (A, B, C)', title: 'المفردات والإسقاطات والتوصيل والإملاء', opt: 'شامل', marks: '20 درجة' },
-                { q: 'Q4', title: 'الأدب الوزاري المقرّر', opt: '5 من 6', marks: '10 درجات' },
-                { q: 'Q5', title: 'الإنشاء الوزاري النموذجي', opt: 'اختر A أو B', marks: grade === 'third-intermediate' ? '15 درجة' : '20 درجة' },
+                { q: 'Q4', title: 'الأدب المقرّر', opt: '5 من 6', marks: '10 درجات' },
+                { q: 'Q5', title: 'الإنشاء النموذجي', opt: 'اختر A أو B', marks: grade === 'third-intermediate' ? '15 درجة' : '20 درجة' },
               ].map((item, idx) => (
-                <div key={idx} className="p-3 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] flex items-center justify-between gap-3 text-xs">
+                <div key={idx} className="p-3 rounded-[4px] bg-paper border-2 border-ink flex items-center justify-between gap-3 text-xs">
                   <div className="min-w-0">
                     <div className="flex items-center gap-2 mb-1">
-                      <span className="font-mono font-black text-[#405DE6] bg-white border border-[#202124] px-2 py-0.5 rounded-[4px] text-[11px] shrink-0">
+                      <span className="font-mono font-black text-cobalt bg-surface border border-ink px-2 py-0.5 rounded-[4px] text-[11px] shrink-0">
                         {item.q}
                       </span>
-                      <span className="text-[10px] text-[#747474] font-bold">
+                      <span className="text-[10px] text-muted-gray font-bold">
                         ({item.opt})
                       </span>
                     </div>
-                    <p className="font-black text-[#202124] text-xs truncate">
+                    <p className="font-black text-ink text-xs truncate">
                       {item.title}
                     </p>
                   </div>
-                  <span className="font-black text-[#202124] bg-[#F3E6A5] px-2.5 py-1 rounded-[4px] border border-[#202124] shrink-0 tabular-nums">
+                  <span className="font-black text-ink bg-yellow px-2.5 py-1 rounded-[4px] border border-ink shrink-0 tabular-nums">
                     {item.marks}
                   </span>
                 </div>
@@ -520,26 +520,28 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
             </div>
 
             {/* Launch Actions */}
-            <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-t-2 border-[#202124]">
-              <div className="text-xs text-[#202124]/80 font-mono text-center sm:text-right">
+            <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 border-t-2 border-ink">
+              <div className="text-xs text-ink/80 font-mono text-center sm:text-right">
                 <span>الطالب المرشح: </span>
-                <strong className="text-[#202124] font-black">{studentName}</strong>
+                <strong className="text-ink font-black">{studentName}</strong>
               </div>
 
               <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 sm:gap-3 w-full sm:w-auto">
                 <button
+                  type="button"
                   onClick={() => handleStartExam(30)}
-                  className="w-full sm:w-auto px-5 py-3 bg-[#F7F5EF] hover:bg-white text-[#202124] font-black text-xs sm:text-sm border-2 border-[#202124] shadow-[3px_3px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:w-auto px-5 py-3 bg-paper hover:bg-surface text-ink font-black text-xs sm:text-sm border-2 border-ink shadow-brutal-callout active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <Clock className="w-4 h-4 text-[#202124] shrink-0" />
+                  <Clock className="w-4 h-4 text-ink shrink-0" />
                   <span>تحدي الاختبار السريع (30 د)</span>
                 </button>
 
                 <button
+                  type="button"
                   onClick={() => handleStartExam(180)}
-                  className="w-full sm:w-auto px-7 py-3 bg-[#202124] hover:bg-[#405DE6] text-white font-black text-xs sm:text-sm border-3 border-[#202124] shadow-[4px_4px_0px_#F2A18E] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
+                  className="w-full sm:w-auto px-7 py-3 bg-ink hover:bg-cobalt text-surface font-black text-xs sm:text-sm border-3 border-ink shadow-brutal-action active:translate-x-[2px] active:translate-y-[2px] active:shadow-none transition-all flex items-center justify-center gap-2 cursor-pointer"
                 >
-                  <span>بدء الامتحان الوزاري (3 ساعات)</span>
+                  <span>بدء الامتحان الشامل (3 ساعات)</span>
                   <ChevronLeft className="w-4 h-4 shrink-0" />
                 </button>
               </div>
@@ -554,18 +556,18 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
       {examStatus === 'exam' && (
         <div className="space-y-6 animate-in fade-in duration-200">
           
-          {/* Sticky Official Header & Timer Bar */}
-          <div className="sticky top-16 sm:top-20 z-30 p-3 sm:p-4 rounded-[6px] bg-white border-3 border-[#202124] text-[#202124] shadow-[4px_4px_0px_#202124] flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
+          {/* Sticky Header & Timer Bar */}
+          <div className="sticky top-16 sm:top-20 z-30 p-3 sm:p-4 rounded-[6px] bg-surface border-3 border-ink text-ink shadow-brutal-action flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2.5 sm:gap-3">
             
             <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
-              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-[4px] bg-[#F3E6A5] border-2 border-[#202124] flex items-center justify-center font-mono font-black text-[#202124] text-xs shrink-0">
+              <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-[4px] bg-yellow border-2 border-ink flex items-center justify-center font-mono font-black text-ink text-xs shrink-0">
                 IQ
               </div>
               <div className="min-w-0 truncate">
-                <h3 className="text-xs sm:text-sm font-black text-[#202124] truncate">
-                  الامتحان الوزاري لشهادة الإعدادية • 2026/2027
+                <h3 className="text-xs sm:text-sm font-black text-ink truncate">
+                  محاكي الامتحان التجريبي • {gradeMeta.nameAr}
                 </h3>
-                <span className="text-[10px] font-bold text-[#747474] block truncate">
+                <span className="text-[10px] font-bold text-muted-gray block truncate">
                   إشراف الأستاذ مصطفى تركي • {currentPaper.session}
                 </span>
               </div>
@@ -573,19 +575,19 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
 
             {/* Countdown Clock & Submit */}
             <div className="flex items-center justify-between sm:justify-end gap-2 sm:gap-3 shrink-0">
-              <div className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-[4px] font-mono text-xs sm:text-base font-black flex items-center gap-1.5 sm:gap-2 border-2 border-[#202124] tabular-nums ${
+              <div className={`px-3 sm:px-4 py-1.5 sm:py-2 rounded-[4px] font-mono text-xs sm:text-base font-black flex items-center gap-1.5 sm:gap-2 border-2 border-ink tabular-nums ${
                 secondsRemaining < 900 
-                  ? 'bg-[#FDF6F4] text-[#B83A3A]' 
-                  : 'bg-[#F7F5EF] text-[#202124]'
+                  ? 'bg-answer-review-bg text-semantic-error' 
+                  : 'bg-paper text-ink'
               }`}>
-                <Clock className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${secondsRemaining < 900 ? 'text-[#B83A3A]' : 'text-[#405DE6]'}`} />
+                <Clock className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${secondsRemaining < 900 ? 'text-semantic-error' : 'text-cobalt'}`} />
                 <span>{formatTimer(secondsRemaining)}</span>
               </div>
 
               <button
                 type="button"
                 onClick={handleFinalSubmit}
-                className="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-[4px] bg-[#287A52] hover:bg-[#202124] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-black text-xs sm:text-sm transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
+                className="px-3.5 sm:px-5 py-2 sm:py-2.5 rounded-[4px] bg-semantic-success hover:bg-ink text-surface border-2 border-ink shadow-brutal-sm font-black text-xs sm:text-sm transition-all flex items-center gap-1.5 shrink-0 cursor-pointer"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>تسليم الدفتر</span>
@@ -595,7 +597,7 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
           </div>
 
           {/* Question Navigation Strip (Q1-A to Q5) */}
-          <div className="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar scroll-smooth w-full">
+          <div className="flex flex-wrap items-center gap-2 pb-1 w-full">
             {currentPaper.sections.map(section => {
               const { total, answered, flagged } = getSectionStats(section);
               const isActive = activeSectionId === section.id;
@@ -605,20 +607,20 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                   type="button"
                   key={section.id}
                   onClick={() => setActiveSectionId(section.id)}
-                  className={`px-3 sm:px-4 py-2 rounded-[4px] text-xs font-black whitespace-nowrap transition-all flex items-center gap-1.5 sm:gap-2 border-2 border-[#202124] shrink-0 cursor-pointer tabular-nums ${
+                  className={`px-3 sm:px-4 py-2 rounded-[4px] text-xs font-black transition-all flex items-center gap-1.5 sm:gap-2 border-2 border-ink cursor-pointer tabular-nums ${
                     isActive
-                      ? 'bg-[#405DE6] text-white shadow-[3px_3px_0px_#202124]'
-                      : 'bg-white text-[#202124] hover:bg-[#F7F5EF]'
+                      ? 'bg-cobalt text-surface shadow-brutal-callout'
+                      : 'bg-surface text-ink hover:bg-paper'
                   }`}
                 >
                   <span>{section.sectionCode}</span>
-                  <span className={`text-[10px] px-1.5 py-0.5 rounded-[4px] border border-[#202124] font-mono ${
-                    isActive ? 'bg-[#F3E6A5] text-[#202124]' : 'bg-[#F7F5EF] text-[#202124]'
+                  <span className={`text-[10px] px-1.5 py-0.5 rounded-[4px] border border-ink font-mono ${
+                    isActive ? 'bg-yellow text-ink' : 'bg-paper text-ink'
                   }`}>
                     {answered}/{total}
                   </span>
                   {flagged > 0 && (
-                    <span className="w-2 h-2 rounded-full bg-[#F2A18E] border border-[#202124] shrink-0" />
+                    <span className="w-2 h-2 rounded-full bg-coral border border-ink shrink-0" />
                   )}
                 </button>
               );
@@ -628,16 +630,16 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
             <button
               type="button"
               onClick={() => setActiveSectionId('q5-essay')}
-              className={`px-3 sm:px-4 py-2 rounded-[4px] text-xs font-black whitespace-nowrap transition-all flex items-center gap-1.5 sm:gap-2 border-2 border-[#202124] shrink-0 cursor-pointer tabular-nums ${
+              className={`px-3 sm:px-4 py-2 rounded-[4px] text-xs font-black transition-all flex items-center gap-1.5 sm:gap-2 border-2 border-ink cursor-pointer tabular-nums ${
                 activeSectionId === 'q5-essay'
-                  ? 'bg-[#405DE6] text-white shadow-[3px_3px_0px_#202124]'
-                  : 'bg-white text-[#202124] hover:bg-[#F7F5EF]'
+                  ? 'bg-cobalt text-surface shadow-brutal-callout'
+                  : 'bg-surface text-ink hover:bg-paper'
               }`}
             >
               <PenTool className="w-3.5 h-3.5 shrink-0" />
               <span>Q5 الإنشاء</span>
-              <span className={`text-[10px] px-1.5 py-0.5 rounded-[4px] border border-[#202124] font-mono ${
-                activeSectionId === 'q5-essay' ? 'bg-[#F3E6A5] text-[#202124]' : 'bg-[#F7F5EF] text-[#202124]'
+              <span className={`text-[10px] px-1.5 py-0.5 rounded-[4px] border border-ink font-mono ${
+                activeSectionId === 'q5-essay' ? 'bg-yellow text-ink' : 'bg-paper text-ink'
               }`}>
                 {countWords(essayText)} كلمة
               </span>
@@ -649,46 +651,46 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
             const section = currentPaper.sections.find(s => s.id === activeSectionId) || currentPaper.sections[0];
 
             return (
-              <div className="p-5 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-6">
+              <div className="p-5 sm:p-8 rounded-[6px] bg-surface border-2 border-ink shadow-brutal-action space-y-6">
                 
                 {/* Section Title & Instructions */}
-                <div className="border-b-2 border-[#202124] pb-4 space-y-2">
+                <div className="border-b-2 border-ink pb-4 space-y-2">
                   <div className="flex flex-wrap items-center justify-between gap-2">
-                    <span className="px-3 py-1 rounded-[4px] bg-[#E9ECFA] border border-[#202124] text-[#405DE6] text-xs font-mono font-black tabular-nums">
+                    <span className="px-3 py-1 rounded-[4px] bg-blue-mist border border-ink text-cobalt text-xs font-mono font-black tabular-nums">
                       {section.sectionCode} • {section.totalMarks} درجات
                     </span>
-                    <span className="text-xs font-mono font-bold text-[#747474]" dir="ltr">
+                    <span className="text-xs font-mono font-bold text-muted-gray min-w-0 break-words" dir="ltr">
                       {section.titleEn}
                     </span>
                   </div>
 
-                  <h2 className="text-base sm:text-lg font-black text-[#202124]">
+                  <h2 className="text-base sm:text-lg font-black text-ink">
                     {section.titleAr}
                   </h2>
 
-                  <p className="text-xs sm:text-sm text-[#747474] font-bold">
+                  <p className="text-xs sm:text-sm text-muted-gray font-bold">
                     {section.instructionsAr}
                   </p>
                 </div>
 
                 {/* Unseen Passage Box (if Q1-A) */}
                 {section.unseenPassage && (
-                  <div className="p-5 sm:p-6 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] space-y-3 lesson-reading">
+                  <div className="p-5 sm:p-6 rounded-[4px] bg-paper border-2 border-ink space-y-3 lesson-reading">
                     <div className="flex items-center justify-between gap-2">
-                      <span className="text-xs font-mono font-black text-[#202124] uppercase tracking-wider">
+                      <span className="text-xs font-mono font-black text-ink uppercase tracking-wider">
                         Reading Text (Passage)
                       </span>
                       <button
                         type="button"
                         onClick={() => speakEnglish(section.unseenPassage || '')}
-                        className="p-1.5 px-2.5 rounded-[4px] bg-white hover:bg-[#F3E6A5] text-[#202124] font-black text-xs flex items-center gap-1 border-2 border-[#202124] cursor-pointer"
+                        className="p-1.5 px-2.5 rounded-[4px] bg-surface hover:bg-yellow text-ink font-black text-xs flex items-center gap-1 border-2 border-ink cursor-pointer"
                       >
-                        <Volume2 className="w-3.5 h-3.5 text-[#405DE6]" />
+                        <Volume2 className="w-3.5 h-3.5 text-cobalt" />
                         <span>استماع للنص</span>
                       </button>
                     </div>
 
-                    <p dir="ltr" className="text-xs sm:text-sm text-[#202124] leading-relaxed font-medium text-left en-sentence">
+                    <p dir="ltr" className="text-xs sm:text-sm text-ink leading-relaxed font-medium text-left en-sentence break-words">
                       {section.unseenPassage}
                     </p>
                   </div>
@@ -696,9 +698,9 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
 
                 {/* Boxed Words (if Q3-A) */}
                 {section.boxedWords && (
-                  <div className="p-4 rounded-[4px] bg-[#F3E6A5]/35 border-2 border-[#202124] space-y-2">
-                    <span className="text-xs font-black text-[#202124] block">
-                      صندوق الكلمات الوزاري (انقر على الكلمة للاستماع لنطقها):
+                  <div className="p-4 rounded-[4px] bg-yellow/35 border-2 border-ink space-y-2">
+                    <span className="text-xs font-black text-ink block">
+                      صندوق الكلمات (انقر على الكلمة للاستماع لنطقها):
                     </span>
                     <div className="flex flex-wrap gap-2" dir="ltr">
                       {section.boxedWords.map(word => (
@@ -706,7 +708,7 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                           type="button"
                           key={word}
                           onClick={() => speakEnglish(word)}
-                          className="px-3 py-1.5 rounded-[4px] bg-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black text-[#202124] hover:bg-[#F3E6A5] transition-all font-mono cursor-pointer"
+                          className="px-3 py-1.5 rounded-[4px] bg-surface border-2 border-ink shadow-brutal-sm text-xs font-black text-ink hover:bg-yellow transition-all font-mono cursor-pointer"
                         >
                           {word}
                         </button>
@@ -724,17 +726,17 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                     return (
                       <div 
                         key={item.id}
-                        className={`p-5 rounded-[6px] border-2 border-[#202124] transition-all ${
-                          isFlagged ? 'bg-[#F3E6A5]/30 shadow-[3px_3px_0px_#202124]' : 'bg-[#F7F5EF]'
+                        className={`p-5 rounded-[6px] border-2 border-ink transition-all ${
+                          isFlagged ? 'bg-yellow/30 shadow-brutal-callout' : 'bg-paper'
                         }`}
                       >
                         <div className="flex items-start justify-between gap-3 mb-2.5">
                           <div className="flex flex-wrap items-center gap-2">
-                            <span className="w-7 h-7 rounded-[4px] bg-[#202124] text-white font-mono font-black text-xs flex items-center justify-center shrink-0 tabular-nums">
+                            <span className="w-7 h-7 rounded-[4px] bg-ink text-surface font-mono font-black text-xs flex items-center justify-center shrink-0 tabular-nums">
                               {item.number}
                             </span>
                             {item.requirement && (
-                              <span className="text-[11px] font-black text-[#405DE6] bg-white border border-[#202124] px-2 py-0.5 rounded-[4px]">
+                              <span className="text-[11px] font-black text-cobalt bg-surface border border-ink px-2 py-0.5 rounded-[4px]">
                                 {item.requirement}
                               </span>
                             )}
@@ -744,22 +746,22 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                             <button
                               type="button"
                               onClick={() => toggleFlag(item.id)}
-                              className={`p-1.5 rounded-[4px] border-2 border-[#202124] text-xs font-black transition-all cursor-pointer ${
-                                isFlagged ? 'bg-[#F3E6A5] text-[#202124]' : 'bg-white text-[#747474] hover:bg-[#F7F5EF]'
+                              className={`p-1.5 rounded-[4px] border-2 border-ink text-xs font-black transition-all cursor-pointer ${
+                                isFlagged ? 'bg-yellow text-ink' : 'bg-surface text-muted-gray hover:bg-paper'
                               }`}
                               aria-label="تحديد للمراجعة لاحقاً"
                               title="تحديد للمراجعة لاحقاً"
                             >
                               <Flag className="w-3.5 h-3.5" />
                             </button>
-                            <span className="text-xs font-mono font-black text-[#747474] tabular-nums">
+                            <span className="text-xs font-mono font-black text-muted-gray tabular-nums">
                               [{item.maxScore} درجات]
                             </span>
                           </div>
                         </div>
 
                         {/* Question Text */}
-                        <p dir="ltr" className="text-xs sm:text-sm font-black text-[#202124] mb-3 text-left en-sentence">
+                        <p dir="ltr" className="text-xs sm:text-sm font-black text-ink mb-3 text-left en-sentence min-w-0 break-words">
                           {item.questionText}
                         </p>
 
@@ -771,10 +773,10 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                                 type="button"
                                 key={opt}
                                 onClick={() => handleAnswerChange(item.id, opt)}
-                                className={`px-4 py-2 rounded-[4px] text-xs font-black transition-all border-2 border-[#202124] cursor-pointer ${
+                                className={`px-4 py-2 rounded-[4px] text-xs font-black transition-all border-2 border-ink cursor-pointer ${
                                   currentAns === opt
-                                    ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]'
-                                    : 'bg-white text-[#202124] hover:bg-[#F3E6A5]/40'
+                                    ? 'bg-cobalt text-surface shadow-brutal-sm'
+                                    : 'bg-surface text-ink hover:bg-yellow/40'
                                 }`}
                               >
                                 {opt}
@@ -789,7 +791,7 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                               value={currentAns}
                               onChange={(e) => handleAnswerChange(item.id, e.target.value)}
                               placeholder="Type your answer here in English..."
-                              className="w-full px-4 py-2.5 rounded-[4px] bg-white border-2 border-[#202124] focus:outline-none text-xs sm:text-sm text-[#202124] placeholder:text-[#747474] text-left font-mono font-bold"
+                              className="w-full px-4 py-2.5 rounded-[4px] bg-surface border-2 border-ink focus:outline-none text-xs sm:text-sm text-ink placeholder:text-muted-gray text-left font-mono font-bold"
                             />
                           </div>
                         )}
@@ -800,8 +802,8 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                 </div>
 
                 {/* Section Navigation Prev/Next */}
-                <div className="pt-4 flex flex-wrap items-center justify-between gap-2 border-t-2 border-[#202124]">
-                  <span className="text-xs text-[#747474] font-bold">
+                <div className="pt-4 flex flex-wrap items-center justify-between gap-2 border-t-2 border-ink">
+                  <span className="text-xs text-muted-gray font-bold">
                     تأكد من كتابة الإملاء بالشكل الدقيق
                   </span>
 
@@ -815,7 +817,7 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                         setActiveSectionId('q5-essay');
                       }
                     }}
-                    className="px-5 py-2.5 rounded-[4px] bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] font-black text-xs flex items-center gap-1.5 transition-all cursor-pointer"
+                    className="px-5 py-2.5 rounded-[4px] bg-cobalt hover:bg-cobalt-hover text-surface border-2 border-ink shadow-brutal-callout font-black text-xs flex items-center gap-1.5 transition-all cursor-pointer"
                   >
                     <span>السؤال التالي</span>
                     <ChevronLeft className="w-4 h-4" />
@@ -828,23 +830,23 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
 
           {/* Q5 ESSAY COMPOSITION TAB */}
           {activeSectionId === 'q5-essay' && (
-            <div className="p-5 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-6">
+            <div className="p-5 sm:p-8 rounded-[6px] bg-surface border-2 border-ink shadow-brutal-action space-y-6">
               
-              <div className="border-b-2 border-[#202124] pb-4 space-y-2">
+              <div className="border-b-2 border-ink pb-4 space-y-2">
                 <div className="flex flex-wrap items-center justify-between gap-2">
-                  <span className="px-3 py-1 rounded-[4px] bg-[#FDF6F4] border border-[#202124] text-[#B83A3A] text-xs font-mono font-black">
-                    Q5 • 20 درجة وزارية
+                  <span className="px-3 py-1 rounded-[4px] bg-answer-review-bg border border-ink text-semantic-error text-xs font-mono font-black">
+                    Q5 • 20 درجة
                   </span>
-                  <span className="text-xs text-[#747474] font-mono font-bold" dir="ltr">
+                  <span className="text-xs text-muted-gray font-mono font-bold" dir="ltr">
                     Written Composition (100 - 120 words)
                   </span>
                 </div>
 
-                <h2 className="text-base sm:text-lg font-black text-[#202124]">
-                  السؤال الخامس: الإنشاء الوزاري النموذجي
+                <h2 className="text-base sm:text-lg font-black text-ink">
+                  السؤال الخامس: الإنشاء النموذجي
                 </h2>
 
-                <p className="text-xs sm:text-sm text-[#747474] font-bold">
+                <p className="text-xs sm:text-sm text-muted-gray font-bold">
                   اختر أحد الموضوعين الإنشائيين (A أو B) واكتب مقالاً من 100 إلى 120 كلمة مع مراعاة علامات الترقيم ووضوح الفكرة:
                 </p>
               </div>
@@ -852,48 +854,46 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
               {/* Essay Choice Switcher */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                 {currentPaper.essayOptions.map(opt => (
-                  <div
+                  <button
+                    type="button"
                     key={opt.id}
-                    role="button"
-                    tabIndex={0}
                     onClick={() => setSelectedEssayOption(opt.optionLetter)}
-                    onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedEssayOption(opt.optionLetter); }}
-                    className={`p-4 rounded-[6px] border-2 border-[#202124] cursor-pointer transition-all ${
+                    className={`w-full text-right p-4 rounded-[6px] border-2 border-ink cursor-pointer transition-all ${
                       selectedEssayOption === opt.optionLetter
-                        ? 'bg-[#E9ECFA] shadow-[3px_3px_0px_#202124]'
-                        : 'bg-white hover:bg-[#F7F5EF]'
+                        ? 'bg-blue-mist shadow-brutal-callout'
+                        : 'bg-surface hover:bg-paper'
                     }`}
                   >
                     <div className="flex items-center justify-between mb-1.5">
-                      <span className="font-mono font-black text-xs px-2 py-0.5 rounded-[4px] bg-[#202124] text-white">
+                      <span className="font-mono font-black text-xs px-2 py-0.5 rounded-[4px] bg-ink text-surface">
                         الفرع ({opt.optionLetter})
                       </span>
                       {selectedEssayOption === opt.optionLetter && (
-                        <span className="text-xs font-black text-[#405DE6]">تم الاختيار ✓</span>
+                        <span className="text-xs font-black text-cobalt">تم الاختيار ✓</span>
                       )}
                     </div>
-                    <h3 className="font-black text-[#202124] text-sm">{opt.titleAr}</h3>
-                    <p className="text-xs text-[#747474] font-bold mt-1" dir="ltr">{opt.titleEn}</p>
-                  </div>
+                    <h3 className="font-black text-ink text-sm">{opt.titleAr}</h3>
+                    <p className="text-xs text-muted-gray font-bold mt-1 min-w-0 break-words text-left" dir="ltr">{opt.titleEn}</p>
+                  </button>
                 ))}
               </div>
 
               {/* Live Writing Paper */}
               <div className="space-y-3">
                 <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
-                  <span className="font-black text-[#202124]">
+                  <span className="font-black text-ink">
                     محرر الدفتر الامتحاني للإنشاء:
                   </span>
                   <div className="flex items-center gap-2">
-                    <span className="text-[#747474] font-bold">عدد الكلمات الحالي:</span>
+                    <span className="text-muted-gray font-bold">عدد الكلمات الحالي:</span>
                     <strong className={`font-mono text-sm font-black tabular-nums ${
                       countWords(essayText) >= 100 && countWords(essayText) <= 130 
-                        ? 'text-[#287A52]' 
-                        : 'text-[#B83A3A]'
+                        ? 'text-semantic-success' 
+                        : 'text-semantic-error'
                     }`}>
                       {countWords(essayText)} كلمة
                     </strong>
-                    <span className="text-[10px] text-[#747474] font-bold">(الهدف: 100 - 120)</span>
+                    <span className="text-[10px] text-muted-gray font-bold">(الهدف: 100 - 120)</span>
                   </div>
                 </div>
 
@@ -902,11 +902,11 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                   value={essayText}
                   onChange={(e) => setEssayText(e.target.value)}
                   placeholder="Start writing your essay here in English... (Title, Paragraph 1, Paragraph 2, Conclusion)"
-                  className="w-full p-4 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] focus:bg-white focus:outline-none text-xs sm:text-sm text-[#202124] placeholder:text-[#747474] leading-relaxed font-mono dir-ltr"
+                  className="w-full p-4 rounded-[4px] bg-paper border-2 border-ink focus:bg-surface focus:outline-none text-xs sm:text-sm text-ink placeholder:text-muted-gray leading-relaxed font-mono dir-ltr"
                 />
 
-                {/* Ministerial Rubrics Indicator */}
-                <div className="p-3.5 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] text-xs text-[#202124] grid grid-cols-1 sm:grid-cols-3 gap-2 text-center font-black tabular-nums">
+                {/* Rubrics Indicator */}
+                <div className="p-3.5 rounded-[4px] bg-paper border-2 border-ink text-xs text-ink grid grid-cols-1 sm:grid-cols-3 gap-2 text-center font-black tabular-nums">
                   <div>1. الفكرة والمحتوى (10 درجات)</div>
                   <div>2. القواعد والمفردات (5 درجات)</div>
                   <div>3. الترتيب والإملاء (5 درجات)</div>
@@ -919,7 +919,7 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
         </div>
       )}
 
-      {/* 3. OFFICIAL CONTROL REPORT / RESULTS SCREEN */}
+      {/* 3. RESULTS & EVALUATION REPORT SCREEN */}
       {examStatus === 'results' && (() => {
         const results = calculateTotalScore();
 
@@ -927,11 +927,11 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
           <div className="space-y-8 animate-in fade-in duration-300">
             
             {/* Master Grade Certificate Card */}
-            <div className="p-6 sm:p-10 rounded-[6px] bg-white border-4 border-[#202124] text-[#202124] shadow-[6px_6px_0px_#202124] relative overflow-hidden text-center">
+            <div className="p-6 sm:p-10 rounded-[6px] bg-surface border-4 border-ink text-ink shadow-brutal-modal relative overflow-hidden text-center">
               <div className="relative z-10 space-y-4">
-                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[4px] bg-[#F3E6A5] text-xs font-mono font-black text-[#202124] border-2 border-[#202124]">
-                  <Trophy className="w-4 h-4 text-[#405DE6]" />
-                  <span>وثيقة نتيجة الامتحان الوزاري الرسمي • الكنترول العام</span>
+                <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-[4px] bg-yellow text-xs font-mono font-black text-ink border-2 border-ink">
+                  <Trophy className="w-4 h-4 text-cobalt" />
+                  <span>وثيقة نتيجة الامتحان الشامل • التقييم الآلي</span>
                 </div>
 
                 {/* Cartoon Mascot Reaction */}
@@ -941,7 +941,7 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                     size="md"
                     speechText={
                       results.grandTotal >= 90
-                        ? `أداء استثنائي يا ${studentName}! تدريبك متقن ومثالي للاستعداد للامتحان الوزاري!`
+                        ? `أداء استثنائي يا ${studentName}! تدريبك متقن ومثالي للاستعداد للامتحان!`
                         : results.grandTotal >= 70
                         ? `أداء رائع يا ${studentName}! راجع الأخطاء في الأسفل لتعزيز تفوقك واستعدادك.`
                         : `بداية طيبة يا ${studentName}! كل تدريب إضافي يقربك من التفوق. راجع التعليلات وكرر الاختبار!`
@@ -949,25 +949,25 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                   />
                 </div>
 
-                <h1 className="text-2xl sm:text-4xl font-black text-[#202124] tabular-nums">
-                  الدرجة الكلية: <span className="text-[#405DE6] text-5xl sm:text-6xl font-mono font-black">{results.grandTotal}</span> / 100
+                <h1 className="text-2xl sm:text-4xl font-black text-ink tabular-nums">
+                  الدرجة الكلية: <span className="text-cobalt text-5xl sm:text-6xl font-mono font-black">{results.grandTotal}</span> / 100
                 </h1>
 
-                <p className="text-[#747474] font-bold text-sm max-w-xl mx-auto">
-                  الطالب: <strong className="text-[#202124]">{studentName}</strong> • {results.grandTotal >= 90 ? 'تقدير: امتياز (تأهل تام للدرجة الكاملة 100)' : results.grandTotal >= 80 ? 'تقدير: جيد جداً' : results.grandTotal >= 50 ? 'تقدير: ناجح' : 'بحاجة لتعزيز المراجعة'}
+                <p className="text-muted-gray font-bold text-sm max-w-xl mx-auto">
+                  الطالب: <strong className="text-ink">{studentName}</strong> • {results.grandTotal >= 90 ? 'تقدير: امتياز (جاهزية عالية للدرجة الكاملة 100)' : results.grandTotal >= 80 ? 'تقدير: جيد جداً' : results.grandTotal >= 50 ? 'تقدير: ناجح' : 'بحاجة لتعزيز المراجعة'}
                 </p>
 
                 {/* Score Breakdown Badges */}
                 <div className="pt-4 flex flex-wrap items-center justify-center gap-3 tabular-nums">
                   {Object.entries(results.sectionScores).map(([secId, score]) => (
-                    <div key={secId} className="px-3.5 py-2 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] text-xs text-center">
-                      <span className="text-[#747474] block text-[10px] uppercase font-mono font-bold">{secId}</span>
-                      <strong className="text-[#202124] font-mono font-black">{score.earned} / {score.total}</strong>
+                    <div key={secId} className="px-3.5 py-2 rounded-[4px] bg-paper border-2 border-ink text-xs text-center">
+                      <span className="text-muted-gray block text-[10px] uppercase font-mono font-bold">{secId}</span>
+                      <strong className="text-ink font-mono font-black">{score.earned} / {score.total}</strong>
                     </div>
                   ))}
-                  <div className="px-3.5 py-2 rounded-[4px] bg-[#F3E6A5] border-2 border-[#202124] text-xs text-center">
-                    <span className="text-[#202124] block text-[10px] uppercase font-mono font-black">Q5 الإنشاء</span>
-                    <strong className="text-[#405DE6] font-mono font-black">{results.essayScore} / 20</strong>
+                  <div className="px-3.5 py-2 rounded-[4px] bg-yellow border-2 border-ink text-xs text-center">
+                    <span className="text-ink block text-[10px] uppercase font-mono font-black">Q5 الإنشاء</span>
+                    <strong className="text-cobalt font-mono font-black">{results.essayScore} / 20</strong>
                   </div>
                 </div>
 
@@ -976,16 +976,16 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                   <button
                     type="button"
                     onClick={() => window.print()}
-                    className="px-5 py-2.5 rounded-[4px] bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-black text-xs flex items-center gap-2 cursor-pointer"
+                    className="px-5 py-2.5 rounded-[4px] bg-surface hover:bg-paper text-ink border-2 border-ink shadow-brutal-sm font-black text-xs flex items-center gap-2 cursor-pointer"
                   >
                     <Printer className="w-4 h-4" />
-                    <span>طباعة تقرير الكنترول</span>
+                    <span>طباعة تقرير النتيجة</span>
                   </button>
 
                   <button
                     type="button"
                     onClick={() => handleStartExam(180)}
-                    className="px-6 py-2.5 rounded-[4px] bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] font-black text-xs flex items-center gap-2 cursor-pointer"
+                    className="px-6 py-2.5 rounded-[4px] bg-cobalt hover:bg-cobalt-hover text-surface border-2 border-ink shadow-brutal-callout font-black text-xs flex items-center gap-2 cursor-pointer"
                   >
                     <RefreshCw className="w-4 h-4" />
                     <span>إعادة الاختبار بنموذج جديد</span>
@@ -997,19 +997,19 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
             {/* Detailed Question-by-Question Solution Review */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <h2 className="text-base sm:text-lg font-black text-[#202124] flex items-center gap-2">
-                  <CheckCircle2 className="w-5 h-5 text-[#287A52]" />
-                  <span>المطابقة مع نموذج الكنترول والحلول النموذجية</span>
+                <h2 className="text-base sm:text-lg font-black text-ink flex items-center gap-2">
+                  <CheckCircle2 className="w-5 h-5 text-semantic-success" />
+                  <span>المطابقة مع الحلول النموذجية وشرح الإجابات</span>
                 </h2>
               </div>
 
               {currentPaper.sections.map(section => (
-                <div key={section.id} className="p-5 sm:p-6 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-4">
-                  <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#202124] pb-3">
-                    <h3 className="font-black text-[#202124] text-sm">
+                <div key={section.id} className="p-5 sm:p-6 rounded-[6px] bg-surface border-2 border-ink shadow-brutal-action space-y-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink pb-3">
+                    <h3 className="font-black text-ink text-sm">
                       {section.sectionCode}: {section.titleAr}
                     </h3>
-                    <span className="text-xs font-mono font-black text-[#405DE6] tabular-nums">
+                    <span className="text-xs font-mono font-black text-cobalt tabular-nums">
                       درجة القسم: {results.sectionScores[section.id]?.earned} من {section.totalMarks}
                     </span>
                   </div>
@@ -1022,12 +1022,12 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                       return (
                         <div 
                           key={item.id}
-                          className={`p-4 rounded-[4px] border-2 border-[#202124] ${
-                            evalRes.isCorrect ? 'bg-[#F4F8F5]' : 'bg-[#FDF6F4]'
+                          className={`p-4 rounded-[4px] border-2 border-ink ${
+                            evalRes.isCorrect ? 'bg-answer-correct-bg' : 'bg-answer-review-bg'
                           }`}
                         >
                           <div className="flex items-start justify-between gap-2 mb-1.5">
-                            <span dir="ltr" className="text-xs font-black text-[#202124] text-left en-sentence">
+                            <span dir="ltr" className="text-xs font-black text-ink text-left en-sentence min-w-0 break-words">
                               {item.number}. {item.questionText}
                             </span>
                             <div className="flex items-center gap-1.5 shrink-0">
@@ -1035,35 +1035,35 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
                                 <button
                                   type="button"
                                   onClick={() => onToggleBookmark(item.id)}
-                                  className={`p-1.5 rounded-[4px] border-2 border-[#202124] text-xs flex items-center gap-1 transition-colors cursor-pointer ${
+                                  className={`p-1.5 rounded-[4px] border-2 border-ink text-xs flex items-center gap-1 transition-colors cursor-pointer ${
                                     bookmarkedQuestionIds.includes(item.id)
-                                      ? 'bg-[#F3E6A5] text-[#202124]'
-                                      : 'bg-white hover:bg-[#F7F5EF] text-[#747474]'
+                                      ? 'bg-yellow text-ink'
+                                      : 'bg-surface hover:bg-paper text-muted-gray'
                                   }`}
                                   aria-label={bookmarkedQuestionIds.includes(item.id) ? 'محفوظ في المفضلة' : 'حفظ للمراجعة المركزة'}
                                   title={bookmarkedQuestionIds.includes(item.id) ? 'محفوظ في المفضلة' : 'حفظ للمراجعة المركزة'}
                                 >
-                                  <Bookmark className={`w-3.5 h-3.5 ${bookmarkedQuestionIds.includes(item.id) ? 'fill-[#202124] text-[#202124]' : ''}`} />
+                                  <Bookmark className={`w-3.5 h-3.5 ${bookmarkedQuestionIds.includes(item.id) ? 'fill-ink text-ink' : ''}`} />
                                 </button>
                               )}
-                              <span className={`text-xs font-mono font-black px-2 py-0.5 rounded-[4px] border border-[#202124] tabular-nums ${
-                                evalRes.isCorrect ? 'bg-[#287A52] text-white' : 'bg-[#B83A3A] text-white'
+                              <span className={`text-xs font-mono font-black px-2 py-0.5 rounded-[4px] border border-ink tabular-nums ${
+                                evalRes.isCorrect ? 'bg-semantic-success text-surface' : 'bg-semantic-error text-surface'
                               }`}>
                                 {evalRes.score} / {item.maxScore}
                               </span>
                             </div>
                           </div>
 
-                          <div className="mt-2 text-xs space-y-1 font-mono">
-                            <div className="text-[#747474] font-bold">
-                              إجابتك: <span className={evalRes.isCorrect ? 'text-[#287A52] font-black' : 'text-[#B83A3A] font-black'}>{userAns || '(فارغ)'}</span>
+                          <div className="mt-2 text-xs space-y-1 font-mono min-w-0 break-words">
+                            <div className="text-muted-gray font-bold">
+                              إجابتك: <span className={evalRes.isCorrect ? 'text-semantic-success font-black' : 'text-semantic-error font-black'}>{userAns || '(فارغ)'}</span>
                             </div>
-                            <div className="text-[#202124] font-bold">
-                              الحل النموذجي: <span className="text-[#405DE6] font-black">{item.correctAnswer}</span>
+                            <div className="text-ink font-bold">
+                              الحل النموذجي: <span className="text-cobalt font-black">{item.correctAnswer}</span>
                             </div>
                           </div>
 
-                          <div className="mt-2 pt-2 border-t border-[#202124]/15 text-[11px] font-bold text-[#202124]/85">
+                          <div className="mt-2 pt-2 border-t border-ink/15 text-[11px] font-bold text-ink/85">
                             💡 {item.explanation}
                           </div>
                         </div>
@@ -1074,18 +1074,18 @@ export const MinisterialMockSimulator: React.FC<MinisterialMockSimulatorProps> =
               ))}
 
               {/* Essay Review Box */}
-              <div className="p-5 sm:p-6 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3">
-                <h3 className="font-black text-[#202124] text-sm">
-                  Q5: الإنشاء الوزاري المكتوب والنموذج القياسي
+              <div className="p-5 sm:p-6 rounded-[6px] bg-surface border-2 border-ink shadow-brutal-action space-y-3">
+                <h3 className="font-black text-ink text-sm">
+                  Q5: الإنشاء المكتوب والنموذج القياسي
                 </h3>
-                <div dir="ltr" className="p-4 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] text-xs text-[#202124] leading-relaxed font-mono text-left">
-                  <span className="font-black text-[#202124] block mb-1 font-sans">Your Written Essay ({countWords(essayText)} words):</span>
-                  <p className="en-sentence">{essayText || 'No essay written.'}</p>
+                <div dir="ltr" className="p-4 rounded-[4px] bg-paper border-2 border-ink text-xs text-ink leading-relaxed font-mono text-left min-w-0 break-words">
+                  <span className="font-black text-ink block mb-1 font-sans">Your Written Essay ({countWords(essayText)} words):</span>
+                  <p className="en-sentence whitespace-pre-wrap">{essayText || 'No essay written.'}</p>
                 </div>
 
-                <div dir="ltr" className="p-4 rounded-[4px] bg-[#E9ECFA] border-2 border-[#202124] text-xs text-[#202124] leading-relaxed font-mono text-left">
-                  <span className="font-black text-[#405DE6] block mb-1 font-sans">Official Model Answer (الأستاذ مصطفى تركي):</span>
-                  <p className="en-sentence">{currentPaper.essayOptions.find(o => o.optionLetter === selectedEssayOption)?.suggestedModel}</p>
+                <div dir="ltr" className="p-4 rounded-[4px] bg-blue-mist border-2 border-ink text-xs text-ink leading-relaxed font-mono text-left min-w-0 break-words">
+                  <span className="font-black text-cobalt block mb-1 font-sans">Suggested Model Answer (الأستاذ مصطفى تركي):</span>
+                  <p className="en-sentence whitespace-pre-wrap">{currentPaper.essayOptions.find(o => o.optionLetter === selectedEssayOption)?.suggestedModel}</p>
                 </div>
               </div>
 

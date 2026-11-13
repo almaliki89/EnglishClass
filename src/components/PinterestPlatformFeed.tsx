@@ -65,21 +65,21 @@ export const PinterestPlatformFeed: React.FC<PinterestPlatformFeedProps> = ({
         commonMistakes: lesson.commonMistakes || ['احذر من الخلط بين مفاتيح الحل والأزمان.'],
         examples: lesson.examples,
         lessonRef: lesson,
-        accentColor: lIdx % 3 === 0 ? 'bg-gradient-to-br from-indigo-600 to-indigo-800' : lIdx % 3 === 1 ? 'bg-gradient-to-br from-purple-600 to-indigo-700' : 'bg-gradient-to-br from-blue-600 to-teal-700',
+        accentColor: lIdx % 3 === 0 ? 'bg-cobalt text-surface' : lIdx % 3 === 1 ? 'bg-lavender text-ink' : 'bg-soft-mint text-ink',
         likesCount: 34 + (lIdx * 7) % 50,
         savesCount: 12 + (lIdx * 3) % 30
       });
     });
   });
 
-  // 2. Add verified grade-specific exam questions as pins
+  // 2. Add grade-specific exam questions as pins
   questions.forEach((q, qIdx) => {
     const isYearDocumented = Boolean(q.year && q.session);
     pinsList.push({
       id: `q-${q.id}`,
       title: isYearDocumented 
         ? `${isMinisterial ? 'سؤال وزاري' : 'سؤال امتحاني'} (${q.year} - ${q.session})` 
-        : `تمرين امتحاني معتمد (${q.topic})`,
+        : `تمرين امتحاني نموذجي (${q.topic})`,
       subtitle: q.topic,
       category: 'ministerial',
       grade: gradeMeta.nameAr,
@@ -87,17 +87,17 @@ export const PinterestPlatformFeed: React.FC<PinterestPlatformFeedProps> = ({
       contentSummary: q.questionText,
       detailedNotes: [
         `السؤال: ${q.questionText}`,
-        `الجواب المعتمد: ${q.correctAnswer}`,
+        `الجواب النموذجي: ${q.correctAnswer}`,
         `التوضيح القاعدي: ${q.ruleExplanation}`
       ],
       teacherTips: [
         isYearDocumented 
-          ? `سؤال معتمد لسنة ${q.year} (${q.session}).` 
-          : `تمرين صفي معتمد من كتاب النشاط الرسمي.`,
+          ? `سؤال مأخوذ من اختبارات سنة ${q.year} (${q.session}).` 
+          : `تمرين صفي من أنشطة الكتاب.`,
         `تحقق دائماً من مفاتيح الحل ودلالة الكلمات قبل الاختيار.`
       ],
       questionData: q,
-      accentColor: isMinisterial ? 'bg-gradient-to-br from-amber-600 to-amber-800' : 'bg-gradient-to-br from-blue-600 to-slate-800',
+      accentColor: isMinisterial ? 'bg-yellow text-ink' : 'bg-blue-mist text-ink',
       likesCount: 88 + (qIdx * 5) % 100,
       savesCount: 45 + (qIdx * 4) % 60
     });
@@ -140,41 +140,39 @@ export const PinterestPlatformFeed: React.FC<PinterestPlatformFeedProps> = ({
   };
 
   return (
-    <div className="space-y-8 pb-24 max-w-7xl mx-auto w-full px-2 sm:px-6">
+    <div className="space-y-8 pb-24 max-w-7xl mx-auto w-full px-2 sm:px-6 text-ink">
       
-      {/* 1. Pinterest Top Discover Header & Grade Board Switcher */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white p-6 sm:p-10 shadow-2xl border border-indigo-900/40">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-amber-500/15 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20" />
-
+      {/* 1. Editorial Boards Header & Grade Switcher */}
+      <div className="relative overflow-hidden rounded-md bg-cobalt text-surface p-6 sm:p-10 shadow-brutal-hero border-2 border-ink">
         <div className="relative z-10 space-y-6">
           
           <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <div className="space-y-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/10 backdrop-blur-md text-xs font-black text-amber-300 border border-white/10">
-                <Sparkles className="w-4 h-4 text-amber-400" />
-                <span>منصة إنجليزي بينت التعليمية • إشراف الأستاذ مصطفى تركي</span>
+            <div className="space-y-2 min-w-0">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-sm bg-yellow text-ink text-xs font-black border border-ink shadow-brutal-press">
+                <Sparkles className="w-4 h-4 text-cobalt shrink-0" />
+                <span>لوحات الأفكار الدراسية • إعداد الأستاذ مصطفى تركي</span>
               </div>
-              <h1 className="text-2xl sm:text-4xl font-black tracking-tight">
-                لوحات الأفكار والدروس • <span className="text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-indigo-300">{gradeMeta.nameAr}</span>
+              <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-surface">
+                لوحات الأفكار والدروس • <span className="text-yellow underline decoration-2 underline-offset-4">{gradeMeta.nameAr}</span>
               </h1>
-              <p className="text-slate-300 text-xs sm:text-sm max-w-2xl leading-relaxed">
-                استكشف القواعد، المفردات، والأسئلة الوزارية (2020-2026) المصممة كأفكار بصرية (Pins) تتيح لك الحفظ في لوحاتك الدراسية الخاصة.
+              <p className="text-surface/90 text-xs sm:text-sm max-w-2xl leading-relaxed font-medium">
+                استكشف القواعد والمفردات والأسئلة الامتحانية (2020-2026) المصممة كبطاقات بصرية تتيح لك الحفظ في لوحاتك الدراسية الخاصة.
               </p>
             </div>
 
             {/* Grade Switcher */}
-            <div className="flex items-center gap-2 bg-white/10 backdrop-blur-md p-2 rounded-2xl border border-white/15">
-              <span className="text-xs font-bold text-slate-300 px-2">الصف:</span>
+            <div className="flex flex-wrap items-center gap-2 bg-surface text-ink p-2 rounded border-2 border-ink shadow-brutal-sm shrink-0">
+              <label htmlFor="board-grade-select" className="text-xs font-bold text-muted-gray px-1">الصف:</label>
               <select
+                id="board-grade-select"
                 value={selectedGrade}
                 onChange={(e) => onSelectGrade(e.target.value as EducationalGrade)}
-                className="bg-slate-900 text-white text-xs font-black px-3 py-2 rounded-xl border border-slate-700 focus:outline-none focus:ring-2 focus:ring-amber-400 cursor-pointer"
+                className="bg-paper text-ink text-xs font-black px-3 py-2 rounded-sm border border-ink focus:outline-none focus:ring-2 focus:ring-cobalt cursor-pointer"
               >
                 {ORDERED_GRADES.map((g) => {
                   const meta = getGradeMeta(g);
                   return (
-                    <option key={g} value={g} className="bg-slate-900 text-white">
+                    <option key={g} value={g} className="bg-surface text-ink">
                       {meta.nameAr}
                     </option>
                   );
@@ -184,24 +182,24 @@ export const PinterestPlatformFeed: React.FC<PinterestPlatformFeedProps> = ({
           </div>
 
           {/* Search & Boards Bar */}
-          <div className="flex flex-col sm:flex-row items-center gap-3 pt-2">
-            <div className="relative flex-1 w-full">
-              <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 pt-2">
+            <div className="relative flex-1 w-full min-w-0">
+              <Search className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-gray" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="ابحث في القواعد، المفردات، الوزاريات، أو أسئلة كتاب النشاط..."
-                className="w-full pr-11 pl-4 py-3 rounded-2xl bg-white/10 backdrop-blur-md border border-white/15 text-white placeholder-slate-400 text-xs sm:text-sm focus:outline-none focus:ring-2 focus:ring-amber-400"
+                placeholder="ابحث في القواعد، المفردات، أو أسئلة كتاب النشاط..."
+                className="w-full pr-11 pl-4 py-3 rounded bg-surface border-2 border-ink text-ink placeholder-muted-gray text-xs sm:text-sm font-bold shadow-brutal-sm focus:outline-none focus:shadow-brutal-callout"
               />
             </div>
 
             <button
               type="button"
               onClick={() => setShowNewBoardModal(true)}
-              className="px-5 py-3 rounded-2xl bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-400 hover:to-amber-500 text-slate-950 font-black text-xs sm:text-sm flex items-center gap-2 shadow-lg shadow-amber-500/20 cursor-pointer shrink-0 transition-all hover:scale-105"
+              className="px-5 py-3 rounded bg-yellow hover:bg-yellow-hover text-ink border-2 border-ink shadow-brutal-sm font-black text-xs sm:text-sm flex items-center justify-center gap-2 cursor-pointer shrink-0 transition-all"
             >
-              <FolderPlus className="w-4 h-4" />
+              <FolderPlus className="w-4 h-4 shrink-0" />
               <span>إنشاء لوحة دراسية جديدة</span>
             </button>
           </div>
@@ -209,8 +207,8 @@ export const PinterestPlatformFeed: React.FC<PinterestPlatformFeedProps> = ({
         </div>
       </div>
 
-      {/* 2. Pinterest Category Filter Pills */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+      {/* 2. Category Filter Tabs */}
+      <div className="flex flex-wrap items-center gap-2 pb-1">
         {[
           { id: 'all', label: 'جميع الأفكار والدروس', icon: Compass },
           { id: 'grammar', label: 'القواعد والوظائف اللغوية', icon: Sparkles },
@@ -225,25 +223,25 @@ export const PinterestPlatformFeed: React.FC<PinterestPlatformFeedProps> = ({
               key={cat.id}
               type="button"
               onClick={() => setActiveCategory(cat.id)}
-              className={`flex items-center gap-2 px-4 py-2.5 rounded-full text-xs font-black whitespace-nowrap transition-all cursor-pointer ${
+              className={`flex items-center gap-2 px-4 py-2 rounded text-xs font-black border-2 border-ink transition-all cursor-pointer shrink-0 ${
                 isActive 
-                  ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30 scale-105' 
-                  : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700'
+                  ? 'bg-cobalt text-surface shadow-brutal-sm' 
+                  : 'bg-surface text-ink hover:bg-yellow shadow-brutal-press'
               }`}
             >
-              <Icon className={`w-3.5 h-3.5 ${isActive ? 'text-amber-300' : 'text-indigo-500'}`} />
+              <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-yellow' : 'text-cobalt'}`} />
               <span>{cat.label}</span>
             </button>
           );
         })}
       </div>
 
-      {/* 3. Pinterest Masonry Grid of Idea Pins */}
+      {/* 3. Masonry Grid of Idea Cards */}
       {filteredPins.length === 0 ? (
-        <div className="text-center py-20 bg-white dark:bg-slate-900 rounded-3xl border border-slate-200 dark:border-slate-800 p-8 space-y-4">
-          <Compass className="w-12 h-12 text-slate-400 mx-auto animate-pulse" />
-          <h3 className="text-lg font-black text-slate-900 dark:text-white">لا توجد أفكار مطابقة لبحثك</h3>
-          <p className="text-xs text-slate-500 max-w-md mx-auto">
+        <div className="text-center py-20 bg-surface rounded-md border-2 border-ink shadow-brutal-md p-8 space-y-4">
+          <Compass className="w-12 h-12 text-cobalt mx-auto" />
+          <h3 className="text-lg font-black text-ink">لا توجد بطاقات مطابقة لبحثك</h3>
+          <p className="text-xs font-medium text-muted-gray max-w-md mx-auto">
             جرب البحث بكلمات أخرى أو اختر تصنيفاً مختلفاً من لوحات الأفكار التعليمية.
           </p>
         </div>
@@ -254,62 +252,63 @@ export const PinterestPlatformFeed: React.FC<PinterestPlatformFeedProps> = ({
             return (
               <div
                 key={pin.id}
-                onClick={() => setSelectedPin(pin)}
-                className="break-inside-avoid group bg-white dark:bg-slate-900 rounded-3xl overflow-hidden border border-slate-200/80 dark:border-slate-800 shadow-sm hover:shadow-2xl transition-all duration-300 cursor-pointer flex flex-col hover:-translate-y-1"
+                className="relative break-inside-avoid group bg-surface rounded-md overflow-hidden border-2 border-ink shadow-brutal-sm hover:shadow-brutal-md transition-all duration-200 flex flex-col hover:-translate-y-0.5"
               >
-                {/* Pin Card Visual Header Banner */}
-                <div className={`p-5 ${pin.accentColor} text-white relative overflow-hidden flex flex-col justify-between min-h-[160px]`}>
-                  <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-full blur-xl pointer-events-none -mr-10 -mt-10" />
-                  
-                  <div className="flex items-center justify-between relative z-10">
-                    <span className="text-[10px] font-black uppercase bg-black/20 backdrop-blur-md px-2.5 py-1 rounded-full text-white/90">
-                      {pin.subtitle}
-                    </span>
+                <button
+                  type="button"
+                  onClick={() => handleSaveToBoard(pin.id, 'مفضلة الطالب')}
+                  aria-label={isSaved ? 'إزالة من المحفوظات' : 'حفظ البطاقة'}
+                  className={`absolute top-4 left-4 z-10 p-2 rounded border border-ink shadow-brutal-press transition-all cursor-pointer ${
+                    isSaved ? 'bg-soft-mint text-semantic-success' : 'bg-surface hover:bg-yellow text-ink'
+                  }`}
+                  title={isSaved ? 'محفوظ' : 'حفظ البطاقة'}
+                >
+                  <Bookmark className={`w-3.5 h-3.5 ${isSaved ? 'fill-current' : ''}`} />
+                </button>
 
-                    <button
-                      type="button"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        handleSaveToBoard(pin.id, 'مفضلة الطالب');
-                      }}
-                      className={`p-2 rounded-full backdrop-blur-md transition-all cursor-pointer ${
-                        isSaved ? 'bg-emerald-500 text-white' : 'bg-black/30 hover:bg-black/50 text-white'
-                      }`}
-                      title={isSaved ? 'محفوظ' : 'حفظ البن'}
-                    >
-                      <Bookmark className={`w-3.5 h-3.5 ${isSaved ? 'fill-current' : ''}`} />
-                    </button>
-                  </div>
-
-                  <div className="relative z-10 mt-6">
-                    <h3 className="text-base sm:text-lg font-black leading-snug group-hover:underline line-clamp-2">
-                      {pin.title}
-                    </h3>
-                  </div>
-                </div>
-
-                {/* Pin Card Body & Footer */}
-                <div className="p-4 space-y-3 bg-white dark:bg-slate-900 flex-1 flex flex-col justify-between">
-                  <p className="text-xs text-slate-600 dark:text-slate-400 line-clamp-3 leading-relaxed">
-                    {pin.contentSummary}
-                  </p>
-
-                  <div className="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
-                    <span className="font-bold text-indigo-600 dark:text-indigo-400 truncate max-w-[140px]">
-                      {pin.unitTitle}
-                    </span>
-                    <div className="flex items-center gap-2">
-                      <span className="flex items-center gap-1">
-                        <Heart className="w-3.5 h-3.5 text-rose-500 fill-current" />
-                        {pin.likesCount}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <Bookmark className="w-3.5 h-3.5 text-indigo-500" />
-                        {pin.savesCount}
+                <button
+                  type="button"
+                  onClick={() => setSelectedPin(pin)}
+                  className="w-full flex-1 flex flex-col text-right cursor-pointer focus-visible:outline-none"
+                >
+                  {/* Pin Card Visual Header Banner */}
+                  <div className={`w-full p-5 pl-14 ${pin.accentColor} relative overflow-hidden flex flex-col justify-between min-h-[150px] border-b-2 border-ink`}>
+                    <div className="flex items-center justify-start relative z-10">
+                      <span dir="ltr" className="text-[10px] font-mono font-black uppercase bg-surface text-ink border border-ink px-2.5 py-0.5 rounded-sm truncate max-w-full">
+                        {pin.subtitle}
                       </span>
                     </div>
+
+                    <div className="relative z-10 mt-6 w-full min-w-0">
+                      <h3 className="text-base sm:text-lg font-black leading-snug group-hover:underline line-clamp-2 break-words">
+                        {pin.title}
+                      </h3>
+                    </div>
                   </div>
-                </div>
+
+                  {/* Pin Card Body & Footer */}
+                  <div className="w-full p-4 space-y-3 bg-surface flex-1 flex flex-col justify-between">
+                    <p className="text-xs font-medium text-muted-gray line-clamp-3 leading-relaxed break-words">
+                      {pin.contentSummary}
+                    </p>
+
+                    <div className="pt-3 border-t border-ink/15 flex items-center justify-between gap-2 text-[11px] text-muted-gray w-full">
+                      <span className="font-bold text-cobalt truncate max-w-[140px]">
+                        {pin.unitTitle}
+                      </span>
+                      <div className="flex items-center gap-2 shrink-0">
+                        <span className="flex items-center gap-1 font-mono font-bold">
+                          <Heart className="w-3.5 h-3.5 text-semantic-error fill-current" />
+                          {pin.likesCount}
+                        </span>
+                        <span className="flex items-center gap-1 font-mono font-bold">
+                          <Bookmark className="w-3.5 h-3.5 text-cobalt" />
+                          {pin.savesCount}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </button>
               </div>
             );
           })}
@@ -318,31 +317,33 @@ export const PinterestPlatformFeed: React.FC<PinterestPlatformFeedProps> = ({
 
       {/* 4. New Board Modal */}
       {showNewBoardModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-md">
-          <div className="bg-white dark:bg-slate-900 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl border border-slate-200 dark:border-slate-800 space-y-6">
-            <h3 className="text-lg font-black text-slate-900 dark:text-white">إنشاء لوحة دراسية جديدة</h3>
-            <p className="text-xs text-slate-500">نظم أفكارك ودروسك المفضلة في لوحات مخصصة تماماً مثل بينتريست.</p>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/75">
+          <div className="bg-surface rounded-md p-6 sm:p-8 max-w-md w-full shadow-brutal-modal border-2 border-ink space-y-6 text-ink">
+            <div className="space-y-2">
+              <h3 className="text-lg font-black text-ink">إنشاء لوحة دراسية جديدة</h3>
+              <p className="text-xs font-medium text-muted-gray">نظم أفكارك ودروسك المفضلة في لوحات مراجعة مخصصة.</p>
+            </div>
             
             <form onSubmit={handleCreateBoard} className="space-y-4">
               <input
                 type="text"
                 value={newBoardInput}
                 onChange={(e) => setNewBoardInput(e.target.value)}
-                placeholder="اسم اللوحة (مثلاً: وزاريات صعبة، قواعد الوحدة الثالثة)..."
-                className="w-full px-4 py-3 rounded-2xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs sm:text-sm text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                placeholder="اسم اللوحة (مثلاً: قواعد الوحدة الثالثة، مفردات مهمة)..."
+                className="w-full px-4 py-3 rounded bg-paper border-2 border-ink text-xs sm:text-sm font-bold text-ink placeholder-muted-gray focus:outline-none focus:shadow-brutal-cobalt-sm"
               />
 
               <div className="flex items-center justify-end gap-2 pt-2">
                 <button
                   type="button"
                   onClick={() => setShowNewBoardModal(false)}
-                  className="px-4 py-2 rounded-xl text-xs font-bold text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 cursor-pointer"
+                  className="px-4 py-2 rounded text-xs font-bold bg-paper text-ink border-2 border-ink hover:bg-coral cursor-pointer shadow-brutal-press"
                 >
                   إلغاء
                 </button>
                 <button
                   type="submit"
-                  className="px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-black shadow-md shadow-indigo-600/20 cursor-pointer"
+                  className="px-5 py-2 rounded bg-cobalt hover:bg-cobalt-hover text-surface border-2 border-ink text-xs font-black shadow-brutal-sm cursor-pointer"
                 >
                   إنشاء اللوحة
                 </button>

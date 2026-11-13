@@ -1,7 +1,7 @@
 import { Unit } from '../../../types';
 
 // =========================================================================
-// الوحدة السابعة والثامنة - ملزمة الخامس الإعدادي (الأستاذ عمار غالب 2026)
+// الوحدة السابعة والثامنة - ملزمة الخامس الإعدادي (الأستاذ مصطفى تركي 2026)
 // مرجع الصفحات: ص 150 - 187
 // =========================================================================
 
@@ -12,8 +12,8 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
     titleAr: "الوحدة السابعة: المبني للمجهول والبادئات والأفعال السببية وعبارات الوصل (Passive, Causatives & Relatives)",
     titleEn: "Unit 7: Sweden Ice Hotel, Passive Voice across Tenses, Causatives, Relative Clauses & Harrods",
     description: "فندق الجليد في السويد، المبني للمجهول في جميع الأزمنة، البادئات المعاكسة واللواحق، الأفعال السببية have/get something done، أسواق بغداد التراثية وضمائر الوصل (who, which, where, whose)، ومتجر هارودز الشهير بلندن.",
-    accentColor: "from-sky-600 to-blue-700",
-    bgGradient: "bg-gradient-to-r from-sky-50 to-blue-50 border-sky-200",
+    accentColor: "bg-cobalt text-surface",
+    bgGradient: "bg-blue-mist border-ink",
     sourcePages: "الملزمة ص 150 - 178",
     academicYear: "2025-2026",
     lessons: [
@@ -369,8 +369,8 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
     titleAr: "الوحدة الثامنة: المراجعة الشاملة للفصل الثاني (Semester 2 Comprehensive Revision)",
     titleEn: "Unit 8: Semester 2 Consolidation, London Boa Constrictor & Final Examination",
     description: "مراجعة كبرى ومكثفة لجميع قواعد وقراءات ومفردات الفصل الثاني: مراجعة ضمائر الوصل، الشرطية الثانية، قصة صيد الأصلة العاصرة (Boa Constrictor) في شقق لندن، مقابلة متطوع الألعاب الأولمبية، والامتحان التحريري الشامل النهائي لنهاية العام (100 درجة).",
-    accentColor: "from-teal-600 to-emerald-700",
-    bgGradient: "bg-gradient-to-r from-teal-50 to-emerald-50 border-teal-200",
+    accentColor: "bg-soft-mint text-ink",
+    bgGradient: "bg-paper border-ink",
     sourcePages: "الملزمة ص 179 - 187",
     academicYear: "2025-2026",
     lessons: [
@@ -508,7 +508,7 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
           "5. Question 5 (20 Marks): الإنشاء المنهجي (كتابة مراجعة فيلم، أو نصيحة لشخص يريد وظيفة، أو فوائد التدوير)."
         ],
         teacherNotes: [
-          "توجيه الأستاذ عمار غالب بالملزمة ص 187: هذا الاختبار النهائي يمثل محاكاة حقيقية 100% للاختبار التحريري المعتمد رسمياً في المدارس العراقية لمرحلة الخامس الإعدادي."
+          "توجيه الأستاذ مصطفى تركي بالملزمة ص 187: هذا الاختبار النهائي يمثل محاكاة تدريبية شاملة للاختبار التحريري في المدارس العراقية لمرحلة الخامس الإعدادي."
         ],
         examples: [
           {

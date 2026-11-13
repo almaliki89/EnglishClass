@@ -6,8 +6,8 @@ export const UNIT_1: Unit = {
   titleAr: "الوحدة الأولى: الصحة، القواعد، وقطع الكتاب",
   titleEn: "Unit 1: Health, Grammar & Reading",
   description: "أجزاء الجسم والمشاكل الصحية، أدوات الربط (While, As, When, And)، قطع الكتاب (عمار ونجلة عماد لفتة)، الصفات المنتهية بـ ed/ing، الأفعال المركبة، البادئات، أسلوب الأمر، تعابير الكمية، وقاعدة Used to.",
-  accentColor: "from-blue-600 to-indigo-600",
-  bgGradient: "bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200",
+  accentColor: "bg-cobalt text-surface",
+  bgGradient: "bg-blue-mist border-ink",
   lessons: [
     {
       id: "u1-l1",
@@ -176,7 +176,7 @@ export const UNIT_1: Unit = {
       titleAr: "الدرس الثالث: قطعة عمار والصفات المنتهية بـ ed/ing وظروف الحال",
       titleEn: "Lesson 3: Ammar's Story, -ed/-ing & Adverbs of Manner",
       category: "reading",
-      summary: "قطعة الكتاب الرسمية للشاب عمار وحادث الجسر وتقنية روبوت الهيكل الخارجي (Exoskeleton)، قواعد الصفات المنتهية بـ ed و ing، وقواعد الصفات وظروف الحال (-ful / -fully).",
+      summary: "قطعة الكتاب المقررة للشاب عمار وحادث الجسر وتقنية روبوت الهيكل الخارجي (Exoskeleton)، قواعد الصفات المنتهية بـ ed و ing، وقواعد الصفات وظروف الحال (-ful / -fully).",
       grammarRuleFormula: "Feelings of a person/animal => -ed\nCause of the feeling => -ing\nAction Verb in sentence => Adverb (-fully)\nState/Linking Verb (is, was, seem) => Adjective (-ful)",
       detailedContent: [
         "1. قطعة الكتاب: قصة عمار (Ammar) - ص 12 - 13 من الملزمة:",
@@ -597,7 +597,7 @@ export const UNIT_1: Unit = {
       summary: "قصة البطلة العراقية نجلة عماد لفتة، نجاتها من هجوم قنبلة في عمر الثالثة، تحدي الإعاقة واحتراف تنس الطاولة، والتتويج بذهبية الألعاب البارالمبية في باريس 2024.",
       grammarRuleFormula: "Key Fact:\nAge 3: lost right arm and both legs in bomb attack\nAge 10: discovered table tennis\nAge 12: joined Iraqi Paralympic team\nAge 16: Tokyo 2020 Paralympics\nAge 19: Paris 2024 Paralympic Gold Medal",
       detailedContent: [
-        "قطعة الكتاب الرسمية: نجلة عماد لفتة (ص 29 - 31 من الملزمة):",
+        "قطعة الكتاب المقررة: نجلة عماد لفتة (ص 29 - 31 من الملزمة):",
         "- طفلة عراقية كانت تنتظر والدها على عتبة الباب، وفي عمر 3 سنوات انفجرت قنبلة بسيارة والدها ففقدت ذراعها اليمنى وكلا ساقيها.",
         "- نشأت وتكيفت مع الحياة على كرسي متحرك بدعم أسرتها ونظام الرعاية الصحية العراقي.",
         "- في عمر 10 سنوات: اكتشفت تنس الطاولة وتدربت بيدها اليسرى رغم أنها ولدت عسراء (right-handed أصلاً وتدربت باليسرى).",

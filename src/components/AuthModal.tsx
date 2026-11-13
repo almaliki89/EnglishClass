@@ -88,45 +88,45 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
 
   return (
     <AnimatePresence>
-      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#202124]/60 overflow-y-auto">
+      <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-ink/60 overflow-y-auto">
         <motion.div
           initial={{ opacity: 0, scale: 0.95, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           exit={{ opacity: 0, scale: 0.95, y: 10 }}
-          className="relative w-full max-w-md bg-white rounded-[6px] shadow-[6px_6px_0px_#202124] border-3 border-[#202124] overflow-hidden"
+          className="relative w-full max-w-md bg-surface rounded-[6px] shadow-brutal-modal border-3 border-ink overflow-hidden"
           dir="rtl"
         >
           {/* Header Banner */}
-          <div className="bg-[#405DE6] border-b-2 border-[#202124] p-6 text-white relative">
+          <div className="bg-cobalt border-b-2 border-ink p-6 text-surface relative">
             <button
               type="button"
               onClick={onClose}
               aria-label="إغلاق نافذة تسجيل الدخول"
-              className="absolute left-4 top-4 w-8 h-8 rounded-[4px] bg-white text-[#202124] border-2 border-[#202124] hover:bg-[#F3E6A5] flex items-center justify-center transition-colors cursor-pointer"
+              className="absolute left-4 top-4 w-8 h-8 rounded-[4px] bg-surface text-ink border-2 border-ink hover:bg-yellow flex items-center justify-center transition-colors cursor-pointer"
             >
               <X className="w-5 h-5" />
             </button>
             <div className="flex items-center gap-3 mb-2">
-              <div className="w-10 h-10 rounded-[4px] bg-[#F3E6A5] border-2 border-[#202124] flex items-center justify-center shrink-0">
-                <CloudUpload className="w-5 h-5 text-[#202124]" />
+              <div className="w-10 h-10 rounded-[4px] bg-yellow border-2 border-ink flex items-center justify-center shrink-0">
+                <CloudUpload className="w-5 h-5 text-ink" />
               </div>
               <div>
-                <h3 className="text-xl font-black text-white">
+                <h3 className="text-xl font-black text-surface">
                   {mode === 'register' ? 'إنشاء حساب طالب سحابي' : 'تسجيل دخول الطالب'}
                 </h3>
-                <p className="text-xs text-white/90 font-medium">
+                <p className="text-xs text-surface/90 font-medium">
                   احفظ درجاتك ونقاطك وإنجازاتك في أي جهاز
                 </p>
               </div>
             </div>
 
             {/* Mode Switcher Tabs */}
-            <div className="grid grid-cols-2 gap-1.5 bg-[#202124]/25 p-1 rounded-[4px] mt-4 border border-white/25">
+            <div className="grid grid-cols-2 gap-1.5 bg-ink/25 p-1 rounded-[4px] mt-4 border border-surface/25">
               <button
                 type="button"
                 onClick={() => { setMode('register'); setError(null); }}
                 className={`py-2 text-xs font-black rounded-[4px] transition-all cursor-pointer ${
-                  mode === 'register' ? 'bg-[#F3E6A5] text-[#202124] border border-[#202124]' : 'text-white hover:bg-white/10'
+                  mode === 'register' ? 'bg-yellow text-ink border border-ink' : 'text-surface hover:bg-surface/10'
                 }`}
               >
                 حساب جديد
@@ -135,7 +135,7 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
                 type="button"
                 onClick={() => { setMode('login'); setError(null); }}
                 className={`py-2 text-xs font-black rounded-[4px] transition-all cursor-pointer ${
-                  mode === 'login' ? 'bg-[#F3E6A5] text-[#202124] border border-[#202124]' : 'text-white hover:bg-white/10'
+                  mode === 'login' ? 'bg-yellow text-ink border border-ink' : 'text-surface hover:bg-surface/10'
                 }`}
               >
                 تسجيل الدخول
@@ -144,15 +144,15 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
           </div>
 
           <div className="p-6">
-            {/* Quick Google Sign In */}
+            {/* Quick Google Sign In (Official Brand SVG Colors Preserved) */}
             <button
               type="button"
               onClick={handleGoogleLogin}
               disabled={googleLoading || loading}
-              className="w-full py-3 px-4 rounded-[4px] border-2 border-[#202124] bg-[#F7F5EF] hover:bg-[#F3E6A5] shadow-[2px_2px_0px_#202124] font-bold text-[#202124] text-sm flex items-center justify-center gap-3 transition-colors mb-4 disabled:opacity-50 cursor-pointer"
+              className="w-full py-3 px-4 rounded-[4px] border-2 border-ink bg-paper hover:bg-yellow shadow-brutal-sm font-bold text-ink text-sm flex items-center justify-center gap-3 transition-colors mb-4 disabled:opacity-50 cursor-pointer"
             >
               {googleLoading ? (
-                <Loader2 className="w-5 h-5 animate-spin text-[#405DE6]" />
+                <Loader2 className="w-5 h-5 animate-spin text-cobalt" />
               ) : (
                 <>
                   <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -167,9 +167,9 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
             </button>
 
             <div className="flex items-center gap-3 my-4">
-              <div className="flex-1 h-0.5 bg-[#202124]/20"></div>
-              <span className="text-xs text-[#747474] font-bold">أو عبر البريد الإلكتروني</span>
-              <div className="flex-1 h-0.5 bg-[#202124]/20"></div>
+              <div className="flex-1 h-0.5 bg-ink/20"></div>
+              <span className="text-xs text-muted-gray font-bold">أو عبر البريد الإلكتروني</span>
+              <div className="flex-1 h-0.5 bg-ink/20"></div>
             </div>
 
             {/* Error Message */}
@@ -177,9 +177,9 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
               <motion.div 
                 initial={{ opacity: 0, y: -5 }} 
                 animate={{ opacity: 1, y: 0 }} 
-                className="mb-4 p-3 rounded-[4px] bg-[#FDF6F4] border-2 border-[#B83A3A] flex items-start gap-2 text-[#B83A3A] text-xs font-bold"
+                className="mb-4 p-3 rounded-[4px] bg-answer-review-bg border-2 border-semantic-error flex items-start gap-2 text-semantic-error text-xs font-bold"
               >
-                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-[#B83A3A]" />
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-semantic-error" />
                 <span>{error}</span>
               </motion.div>
             )}
@@ -188,48 +188,48 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
             <form onSubmit={handleSubmit} className="space-y-3.5">
               {mode === 'register' && (
                 <div>
-                  <label className="block text-xs font-bold text-[#202124] mb-1">اسم الطالب الكامل</label>
+                  <label className="block text-xs font-bold text-ink mb-1">اسم الطالب الكامل</label>
                   <div className="relative">
-                    <UserIcon className="w-4 h-4 text-[#747474] absolute right-3 top-3.5" />
+                    <UserIcon className="w-4 h-4 text-muted-gray absolute right-3 top-3.5" />
                     <input
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="مثال: علي محمد حسن"
                       required
-                      className="w-full pr-10 pl-3 py-2.5 bg-[#F7F5EF] border-2 border-[#202124] rounded-[4px] text-sm text-[#202124] focus:outline-hidden focus:bg-white transition-all"
+                      className="w-full pr-10 pl-3 py-2.5 bg-paper border-2 border-ink rounded-[4px] text-sm text-ink focus:outline-hidden focus:bg-surface transition-all"
                     />
                   </div>
                 </div>
               )}
 
               <div>
-                <label className="block text-xs font-bold text-[#202124] mb-1">البريد الإلكتروني</label>
+                <label className="block text-xs font-bold text-ink mb-1">البريد الإلكتروني</label>
                 <div className="relative">
-                  <Mail className="w-4 h-4 text-[#747474] absolute right-3 top-3.5" />
+                  <Mail className="w-4 h-4 text-muted-gray absolute right-3 top-3.5" />
                   <input
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="student@example.com"
                     required
-                    className="w-full pr-10 pl-3 py-2.5 bg-[#F7F5EF] border-2 border-[#202124] rounded-[4px] text-sm text-[#202124] focus:outline-hidden focus:bg-white transition-all text-left"
+                    className="w-full pr-10 pl-3 py-2.5 bg-paper border-2 border-ink rounded-[4px] text-sm text-ink focus:outline-hidden focus:bg-surface transition-all text-left"
                     dir="ltr"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="block text-xs font-bold text-[#202124] mb-1">كلمة المرور</label>
+                <label className="block text-xs font-bold text-ink mb-1">كلمة المرور</label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-[#747474] absolute right-3 top-3.5" />
+                  <Lock className="w-4 h-4 text-muted-gray absolute right-3 top-3.5" />
                   <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
                     required
-                    className="w-full pr-10 pl-3 py-2.5 bg-[#F7F5EF] border-2 border-[#202124] rounded-[4px] text-sm text-[#202124] focus:outline-hidden focus:bg-white transition-all text-left"
+                    className="w-full pr-10 pl-3 py-2.5 bg-paper border-2 border-ink rounded-[4px] text-sm text-ink focus:outline-hidden focus:bg-surface transition-all text-left"
                     dir="ltr"
                   />
                 </div>
@@ -238,13 +238,13 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
               <button
                 type="submit"
                 disabled={loading || googleLoading}
-                className="w-full py-3 bg-[#405DE6] hover:bg-[#334DC6] text-white font-black text-sm rounded-[4px] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] flex items-center justify-center gap-2 transition-all mt-4 disabled:opacity-50 cursor-pointer"
+                className="w-full py-3 bg-cobalt hover:bg-cobalt-hover text-surface font-black text-sm rounded-[4px] border-2 border-ink shadow-brutal-callout flex items-center justify-center gap-2 transition-all mt-4 disabled:opacity-50 cursor-pointer"
               >
                 {loading ? (
                   <Loader2 className="w-5 h-5 animate-spin" />
                 ) : (
                   <>
-                    <Sparkles className="w-4 h-4 text-[#F3E6A5]" />
+                    <Sparkles className="w-4 h-4 text-yellow" />
                     <span>{mode === 'register' ? 'إنشاء الحساب وبدء الحفظ' : 'تسجيل الدخول'}</span>
                   </>
                 )}
@@ -252,9 +252,9 @@ export function AuthModal({ isOpen, onClose, onAuthSuccess }: AuthModalProps) {
             </form>
 
             {/* Cloud Storage Assurance */}
-            <div className="mt-5 p-3 rounded-[6px] bg-[#E9ECFA] border-2 border-[#202124] flex items-center gap-2.5">
-              <ShieldCheck className="w-5 h-5 text-[#405DE6] shrink-0" />
-              <p className="text-[11px] text-[#202124] font-bold leading-relaxed">
+            <div className="mt-5 p-3 rounded-[6px] bg-blue-mist border-2 border-ink flex items-center gap-2.5">
+              <ShieldCheck className="w-5 h-5 text-cobalt shrink-0" />
+              <p className="text-[11px] text-ink font-bold leading-relaxed">
                 جميع بياناتك، درجات الامتحانات، ومحاكي الوزاري تُحفظ في خوادم Google Cloud الآمنة.
               </p>
             </div>

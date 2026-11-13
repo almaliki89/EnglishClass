@@ -6,8 +6,8 @@ export const UNIT_5: Unit = {
   titleAr: "الوحدة الخامسة: السفر، العطل، وأزمنة التام وعبارات الوصل",
   titleEn: "Unit 5: Travel, Perfect Tenses & Relative Clauses",
   description: "الأسماء المركبة في السفر، المضارع التام البسيط والمستمر، أدوات (Ever, Never, Just, Already, Yet, Since, For)، الفرق بين Been و Gone، الماضي التام، عبارات الوصل (Who, Which, Where, Whose)، قطعة جزر قرقنة، وقطعة أهمية العطل.",
-  accentColor: "from-cyan-600 to-blue-600",
-  bgGradient: "bg-gradient-to-r from-cyan-50 to-blue-50 border-cyan-200",
+  accentColor: "bg-cobalt text-surface",
+  bgGradient: "bg-blue-mist border-ink",
   lessons: [
     {
       id: "u5-l1",
@@ -496,10 +496,10 @@ export const UNIT_5: Unit = {
       titleAr: "الدرس التاسع: قطعة لماذا العطل مهمة جداً؟ (Why are holidays so important?)",
       titleEn: "Lesson 9: Why are Holidays so Important? (Reading)",
       category: "reading",
-      summary: "قطعة الكتاب الوزارية الرسمية حول أهمية أخذ العطل والإجازات، مخاطر الإجهاد وضغط الدم، ظاهرة مدمني العمل (workaholics)، والعلاقات الأسرية.",
+      summary: "قطعة الكتاب المقررة حول أهمية أخذ العطل والإجازات، مخاطر الإجهاد وضغط الدم، ظاهرة مدمني العمل (workaholics)، والعلاقات الأسرية.",
       grammarRuleFormula: "Key Vocabulary:\nat least = no less than\nworkaholics = people who think their work is too important to leave to others\ndeadline = a time limit to finish work\non the verge of = about to happen\nsnatched = taken quickly",
       detailedContent: [
-        "قطعة الكتاب الرسمية: لمَ العطل مهمة جداً؟ (ص 118 - 121 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: لمَ العطل مهمة جداً؟ (ص 118 - 121 من ملزمة الأستاذ مصطفى تركي):",
         "- في عالم اليوم السريع، يتعرض الدماغ والجسد لضغوط هائلة بسبب العمل؛ وإذا أهملنا الراحة فقد ينهار الجسد (let us down).",
         "- ضغط الحياة يسبب ارتفاع ضغط الدم (high blood pressure) الذي قد يؤدي إلى نوبات قلبية وسكتات دماغية (strokes and heart attacks).",
         "- مدمنو العمل (Workaholics): أشخاص يعتقدون أن أعمالهم بالغة الأهمية ولا يمكن تركها للآخرين، ولا يتحملون البقاء بعيداً عن مكاتبهم. يكتشفون بعد فوات الأوان أن الحياة فيها أمور أكثر أهمية من العمل.",

@@ -8,7 +8,7 @@ import { MockExamPaper } from '../../mockExamPapers';
 export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
   id: "mock-4th-prep-final-2026",
   title: "الامتحان النهائي الشامل لمادة اللغة الإنكليزية - الرابع الإعدادي (100 درجة)",
-  subtitle: "مبني وفق النموذج الامتحاني الرسمي المعتمد في ملزمة النموذجية 2026 (ص 149)",
+  subtitle: "مبني وفق نموذج الأسئلة الامتحانية في ملزمة النموذجية 2026 (ص 149)",
   year: "2025-2026",
   session: "الدور الأول - الامتحان النهائي العام",
   durationMinutes: 150,

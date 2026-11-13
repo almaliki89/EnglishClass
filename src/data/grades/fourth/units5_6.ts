@@ -12,8 +12,8 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
     titleAr: "الوحدة الخامسة: المعالم والأدب والمتحف العراقي (Places to Visit & Culture)",
     titleEn: "Unit 5: Places to Visit, Future Forms (going to, will, Present Continuous), The National Museum of Iraq & Personality Adjectives",
     description: "صيغ المستقبل (going to, will, المضارع المستمر للمواعيد)، القطعة الذهبية للمتحف الوطني العراقي ببغداد، صفات المظهر والشخصية، الأفعال المتبوعة بـ (to + مصدر)، وتقديم العروض.",
-    accentColor: "from-rose-600 to-red-600",
-    bgGradient: "bg-gradient-to-r from-rose-50 to-red-50 border-rose-200",
+    accentColor: "bg-coral text-ink",
+    bgGradient: "bg-answer-review-bg border-ink",
     sourcePages: "الملزمة ص 74 - 97",
     academicYear: "2025-2026",
     lessons: [
@@ -214,8 +214,8 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
     titleAr: "الوحدة السادسة: الصحة والمستقبل المجهول والكلام المنقول (Health, Future & Reported Speech)",
     titleEn: "Unit 6: Future Continuous, Health & Diet, Sleep & Teenagers, Reported Speech & FIFA World Cup",
     description: "المستقبل المستمر (will be V-ing)، نصائح التغذية والنوم للمراهقين مع د. الأنصاري، الكلام المنقول للجمل والأسئلة، البادئات واللواحق، احتماليات might، وتاريخ كأس العالم لكرة القدم.",
-    accentColor: "from-indigo-600 to-violet-600",
-    bgGradient: "bg-gradient-to-r from-indigo-50 to-violet-50 border-indigo-200",
+    accentColor: "bg-lavender text-ink",
+    bgGradient: "bg-blue-mist border-ink",
     sourcePages: "الملزمة ص 97 - 119",
     academicYear: "2025-2026",
     lessons: [

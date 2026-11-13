@@ -10,8 +10,8 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
     titleAr: "الوحدة الأولى: في المركز التجاري ووصف الأشخاص وسيارات العام",
     titleEn: "Unit 1: At the Mall & Describing People",
     description: "قواعد There is / There are، الإخبار عن الوقت (Telling the time)، الماضي والمضارع المستمر، إعطاء الأسباب (Giving reasons)، الوصف المؤدب للأشخاص، وقطعة سيارة العام (Panther 3.0D).",
-    accentColor: "from-blue-600 to-cyan-600",
-    bgGradient: "bg-gradient-to-r from-blue-50 to-cyan-50 border-blue-200",
+    accentColor: "bg-cobalt text-surface",
+    bgGradient: "bg-blue-mist border-ink",
     lessons: [
       {
         id: "3rd-u1-l1",
@@ -304,8 +304,8 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
     titleAr: "الوحدة الثانية: التفضيل، الدعوات، وكوميديا لوسي التلفزيونية",
     titleEn: "Unit 2: Preferences, Invitations & Lucy's TV Comedy",
     description: "قواعد التعبير عن التفضيل والاقتراح (Preferences & Suggestions)، الدعوات (Invitations)، ووقت القصة: قصة لوسي فيشر وعائلتها (Lucy's TV Comedy).",
-    accentColor: "from-emerald-600 to-teal-600",
-    bgGradient: "bg-gradient-to-r from-emerald-50 to-teal-50 border-emerald-200",
+    accentColor: "bg-soft-mint text-ink",
+    bgGradient: "bg-paper border-ink",
     lessons: [
       {
         id: "3rd-u2-l1",
@@ -526,8 +526,8 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
     titleAr: "الوحدة الثالثة: المقارنة والتفضيل، عالم الصقور، وقصة الغزالة الحامل",
     titleEn: "Unit 3: Comparatives, Wildlife & The Deer",
     description: "قواعد المقارنة والتفضيل (-er / more / as...as)، جمل الموافقة والرفض (So do I / Neither do I)، الحالات الشرطية (First Conditional)، قطعة أسرع الكائنات (الصقور)، وقصة الغزالة الحامل في الغابة.",
-    accentColor: "from-amber-600 to-orange-600",
-    bgGradient: "bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200",
+    accentColor: "bg-yellow text-ink",
+    bgGradient: "bg-paper border-ink",
     lessons: [
       {
         id: "3rd-u3-l1",
@@ -803,8 +803,8 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
     titleAr: "الوحدة الخامسة: الإعلام وأخبار الصباح والماضي والمستقبل",
     titleEn: "Unit 5: The Media, Morning News & Past Tenses",
     description: "قواعد الماضي البسيط والماضي المستمر (Past Simple & Past Continuous)، أداة الربط When / While، المستقبل البسيط، وقطعة أخبار الصباح العراقية (وزير التربية والطفل المنقذ جون).",
-    accentColor: "from-indigo-600 to-purple-600",
-    bgGradient: "bg-gradient-to-r from-indigo-50 to-purple-50 border-indigo-200",
+    accentColor: "bg-lavender text-ink",
+    bgGradient: "bg-blue-mist border-ink",
     lessons: [
       {
         id: "3rd-u5-l1",
@@ -943,8 +943,8 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
     titleAr: "الوحدة السادسة: المهن وضمائر الوصل وأبو البصريات ابن الهيثم",
     titleEn: "Unit 6: Careers, Relative Pronouns & Ibn Al-Haitham",
     description: "قواعد ضمائر الوصل (who, which, that, where)، السؤال عن الاتجاهات، ووقت القصة: العالم العربي الحسن بن الهيثم (Ibn Al-Haitham).",
-    accentColor: "from-rose-600 to-pink-600",
-    bgGradient: "bg-gradient-to-r from-rose-50 to-pink-50 border-rose-200",
+    accentColor: "bg-coral text-ink",
+    bgGradient: "bg-answer-review-bg border-ink",
     lessons: [
       {
         id: "3rd-u6-l1",
@@ -1147,8 +1147,8 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
     titleAr: "الوحدة السابعة: ترتيب الظروف والمبني للمجهول وفنجان القهوة",
     titleEn: "Unit 7: Adverbs, Passive Voice & Cup of Coffee",
     description: "قواعد ترتيب الظروف الثلاثية (حال، مكان، زمان)، المبني للمجهول (Passive Voice)، ووقت القصة: الحياة مثل فنجان قهوة (A Cup of Coffee).",
-    accentColor: "from-teal-600 to-cyan-600",
-    bgGradient: "bg-gradient-to-r from-teal-50 to-cyan-50 border-teal-200",
+    accentColor: "bg-soft-mint text-ink",
+    bgGradient: "bg-paper border-ink",
     lessons: [
       {
         id: "3rd-u7-l1",
@@ -1460,17 +1460,17 @@ export const THIRD_INTERMEDIATE_QUESTIONS: MinisterialExamQuestion[] = [
 ];
 
 // ==========================================
-// 5. الملزمة الافتراضية الجاهزة (ملزمة الأستاذ عمار غالب)
+// 5. الملزمة الافتراضية الجاهزة (ملزمة الأستاذ مصطفى تركي)
 // ==========================================
 export const DEFAULT_PRELOADED_3RD_MALZAMA: UploadedMalzama = {
   id: "malzama-3rd-official",
-  name: "النموذجية في اللغة الانكليزية - الثالث المتوسط 2025 (الأستاذ عمار غالب)",
+  name: "النموذجية في اللغة الانكليزية - الثالث المتوسط 2025 (الأستاذ مصطفى تركي)",
   size: "18.4 MB",
   uploadDate: "2025-01-10",
   fileType: "application/pdf",
   grade: "third-intermediate",
   unitsCount: 7,
-  summary: "الملزمة الشاملة والمعتمدة للأستاذ عمار غالب لمرحلة الثالث المتوسط 2025: تغطي كافة القواعد بأسلوب مبسط، قطع استيعابية (سيارة البانثر، الهوايات، الأهوار، لوسي، ابن الهيثم)، المفردات والتعاريف والتوصيلات، قصص الأدب (كريم وشاعر النواب، كرم ولاعب السلة، ملء الفراغ، إبراهيم، سلام أحمد، داليا، تنظيف المدرسة، سيرة علي)، والإنشاءات الوزارية النموذجية العشرة.",
+  summary: "الملزمة الشاملة والمعتمدة للأستاذ مصطفى تركي لمرحلة الثالث المتوسط 2025: تغطي كافة القواعد بأسلوب مبسط، قطع استيعابية (سيارة البانثر، الهوايات، الأهوار، لوسي، ابن الهيثم)، المفردات والتعاريف والتوصيلات، قصص الأدب (كريم وشاعر النواب، كرم ولاعب السلة، ملء الفراغ، إبراهيم، سلام أحمد، داليا، تنظيف المدرسة، سيرة علي)، والإنشاءات الوزارية النموذجية العشرة.",
   extractedRules: [
     {
       title: "الوصف المكاني (There is / There are / It has)",
@@ -1543,5 +1543,5 @@ export const DEFAULT_PRELOADED_3RD_MALZAMA: UploadedMalzama = {
       type: "Grammar"
     }
   ],
-  rawContentPreview: "جمهورية العراق - وزارة التربية • منهج اللغة الإنكليزية للصف الثالث المتوسط (English for Iraq - 3rd Intermediate) • ملزمة النموذجية للأستاذ عمار غالب 2025 • تغطية شاملة لجميع الوحدات وقصص المنهج الثمانية والإنشاءات الوزارية من ص 134 إلى ص 143 مع بنك الأسئلة الوزارية لسنوات 2017 - 2025."
+  rawContentPreview: "جمهورية العراق - وزارة التربية • منهج اللغة الإنكليزية للصف الثالث المتوسط (English for Iraq - 3rd Intermediate) • ملزمة النموذجية للأستاذ مصطفى تركي 2025 • تغطية شاملة لجميع الوحدات وقصص المنهج الثمانية والإنشاءات الوزارية من ص 134 إلى ص 143 مع بنك الأسئلة الوزارية لسنوات 2017 - 2025."
 };

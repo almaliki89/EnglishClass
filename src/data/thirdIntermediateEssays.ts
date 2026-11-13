@@ -3,7 +3,7 @@ import { EssayItem } from '../types';
 /**
  * الإنشاءات الوزارية النموذجية لمنهج اللغة الإنكليزية - الصف الثالث المتوسط
  * مأخوذة حرفياً من ملزمة:
- * «النموذجية في اللغة الانكليزية للصف الثالث المتوسط 2025 - إعداد الأستاذ عمار غالب» (الصفحات 133 - 143)
+ * «النموذجية في اللغة الانكليزية للصف الثالث المتوسط 2025 - إعداد الأستاذ مصطفى تركي» (الصفحات 133 - 143)
  */
 export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
   // 1. الوحدة الأولى: إعلان منتج (Galaxy Watch 5)
@@ -12,7 +12,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
     unitId: 101,
     titleAr: "إنشاء الوحدة الأولى: إعلان منتج (ساعة كالاكسي 5)",
     titleEn: "Unit 1: Write an advert on a product (Galaxy Watch 5)",
-    ministerialWeight: "15 درجة في السؤال الخامس الوزاري (ص 134 في ملزمة الأستاذ عمار غالب)",
+    ministerialWeight: "15 درجة في السؤال الخامس الوزاري (ص 134 في ملزمة الأستاذ مصطفى تركي)",
     paragraphsEn: [
       "Galaxy Watch 5\nFor a better life!\nComes with a large battery, different colors and beautiful design. Works with all devices.",
       "Functions include: step counter, stop watch and heart rate monitor. Easy to set up and use. Water-resistant and drop-proof. Battery life: 6-8 hours. Price: 300,000 IQD."
@@ -29,7 +29,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
       { word: "drop-proof", meaning: "مقاوم للسقوط والصدمات" }
     ],
     goldenTips: [
-      "نصيحة الأستاذ عمار غالب: اكتب عنوان المنتج بوضوح في الأعلى (Galaxy Watch 5).",
+      "نصيحة الأستاذ مصطفى تركي: اكتب عنوان المنتج بوضوح في الأعلى (Galaxy Watch 5).",
       "قسّم الإنشاء إلى المميزات والمواصفات والسعر."
     ],
     clozeSentences: [
@@ -52,7 +52,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
     unitId: 102,
     titleAr: "إنشاء الوحدة الثانية: دعوة لحضور حفل تخرج مدرسي (Graduation Party)",
     titleEn: "Unit 2: Write an email to invite your friend to attend graduation ceremony",
-    ministerialWeight: "15 درجة مضمونة بالسؤال الخامس (ص 135 في ملزمة الأستاذ عمار غالب)",
+    ministerialWeight: "15 درجة مضمونة بالسؤال الخامس (ص 135 في ملزمة الأستاذ مصطفى تركي)",
     paragraphsEn: [
       "Graduation Party\nFrom: Ammar\nTo: Haider\n\nHi Haider,\nAre you free on Tuesday, 30th of June? There is a school graduation party and I have two tickets.",
       "You must come because the party will be amazing. You will enjoy your time there. The party will be at Babylon Hotel at 5 o’clock in the afternoon. If you can’t come, let me know so I can give the ticket to someone else. Write back soon,\nAmmar"
@@ -67,7 +67,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
       { word: "amazing", meaning: "رائع ومبهر" }
     ],
     goldenTips: [
-      "نصيحة الأستاذ عمار غالب: اذكر دائماً التاريخ (30th of June) والمكان (Babylon Hotel) والوقت (5 o'clock)."
+      "نصيحة الأستاذ مصطفى تركي: اذكر دائماً التاريخ (30th of June) والمكان (Babylon Hotel) والوقت (5 o'clock)."
     ],
     clozeSentences: [
       {
@@ -84,7 +84,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
     unitId: 102,
     titleAr: "إنشاء الوحدة الثانية (ملف فيلم): فيلم تيتانيك (Titanic)",
     titleEn: "Unit 2: Write a fact file on a film (Titanic)",
-    ministerialWeight: "15 درجة بالسؤال الخامس (ص 136 في ملزمة الأستاذ عمار غالب)",
+    ministerialWeight: "15 درجة بالسؤال الخامس (ص 136 في ملزمة الأستاذ مصطفى تركي)",
     paragraphsEn: [
       "Title: Titanic\nReleased: 1997\nGenre: Drama\nDirector: James Cameron\nScriptwriter: James Cameron\nStars: Leonardo DiCaprio, Kate Winslet\nMain Characters: Billy Zane, Leonardo DiCaprio, Kate Winslet",
       "The Story: The story was told by Rose, a survivor of the disaster. She narrates the events of that tragic night when the ship hit an iceberg and sank.\nInteresting Facts: It was the most expensive film at the time. It cost 200 million dollars.\nMy Opinion: I loved it because it is one of the best films on sacrifice. I liked the real-life scenes showing the wreck at the beginning of the film."
@@ -131,7 +131,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
       { word: "protected areas", meaning: "مناطق محمية" }
     ],
     goldenTips: [
-      "نصيحة الأستاذ عمار غالب: استخدم الكلمات المعطاة في منطوق السؤال: raise, sheep, wheat, boats, protected areas."
+      "نصيحة الأستاذ مصطفى تركي: استخدم الكلمات المعطاة في منطوق السؤال: raise, sheep, wheat, boats, protected areas."
     ],
     clozeSentences: [
       {
@@ -148,7 +148,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
     unitId: 104,
     titleAr: "إنشاء الوحدة الرابعة: اكتب عن حياتك (My Life)",
     titleEn: "Unit 4: Write about your life (My Life)",
-    ministerialWeight: "15 درجة بالسؤال الخامس (ص 138 في ملزمة الأستاذ عمار غالب)",
+    ministerialWeight: "15 درجة بالسؤال الخامس (ص 138 في ملزمة الأستاذ مصطفى تركي)",
     paragraphsEn: [
       "My Life\nMy name is Ammar. I was born in Baghdad in 1990. I live in Baghdad with my family, my father, my mother and my brother. Before school, I was a lazy boy. I used to watch TV all the time. My father used to take me to the cinema to watch a film every weekend. I liked that.",
       "Primary school was very easy to me. I enjoyed intermediate school. My favourite lessons are English and History. Outside school, I used to play football with my friends. When I graduate from school, I will be excited to go to university. I want to study the English language, because I want to be an English teacher one day."
@@ -180,7 +180,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
     unitId: 105,
     titleAr: "إنشاء الوحدة الخامسة: برنامج تلفزيوني عن الفيلة (TV Programme)",
     titleEn: "Unit 5: Write a paragraph about a TV programme",
-    ministerialWeight: "15 درجة بالسؤال الخامس (ص 139 في ملزمة الأستاذ عمار غالب)",
+    ministerialWeight: "15 درجة بالسؤال الخامس (ص 139 في ملزمة الأستاذ مصطفى تركي)",
     paragraphsEn: [
       "TV Programme\nI watched a good programme with my family last night. It was a really interesting programme about elephants. It was also funny.",
       "There were some elephants by a pool and they were very thirsty. There was a cameraman filming and a reporter talking to the camera. One of the elephants blew water into the air. The cameraman and the reporter got wet. We laughed a lot."
@@ -212,7 +212,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
     unitId: 106,
     titleAr: "إنشاء الوحدة السادسة: سيرة شخص حقيقي (اللاعب نور صبري)",
     titleEn: "Unit 6: Write a paragraph about a career of a real person (Noor Sabri)",
-    ministerialWeight: "15 درجة بالسؤال الخامس (ص 140 في ملزمة الأستاذ عمار غالب)",
+    ministerialWeight: "15 درجة بالسؤال الخامس (ص 140 في ملزمة الأستاذ مصطفى تركي)",
     paragraphsEn: [
       "Noor Sabri\nNoor Sabri is an Iraqi football player. He was born in 1984 in Baquba. He played football with the national Iraqi team. After he had finished school, he achieved his dream to be a footballer.",
       "He worked and practised a lot to be a good player. He enjoys playing football and making his family and people happy. His plan for the future is to be a coach. He is on his way to be a successful coach."
@@ -227,7 +227,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
       { word: "coach", meaning: "مدرب رياضي" }
     ],
     goldenTips: [
-      "نصيحة الأستاذ عمار غالب: اذكر الاسم وسنة ومكان الولادة والمهنة والخطط المستقبلية (coach)."
+      "نصيحة الأستاذ مصطفى تركي: اذكر الاسم وسنة ومكان الولادة والمهنة والخطط المستقبلية (coach)."
     ],
     clozeSentences: [
       {
@@ -244,7 +244,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
     unitId: 107,
     titleAr: "إنشاء الوحدة السابعة: اكتب عن بلد (العراق - Iraq)",
     titleEn: "Unit 7: Write about country (Iraq)",
-    ministerialWeight: "15 درجة بالسؤال الخامس (ص 141 في ملزمة الأستاذ عمار غالب)",
+    ministerialWeight: "15 درجة بالسؤال الخامس (ص 141 في ملزمة الأستاذ مصطفى تركي)",
     paragraphsEn: [
       "Iraq\nIraq is a big country in Western Asia. The capital and largest city is Baghdad. There are over 40 million people in Iraq. It grows wheat, rice, dates, fruits and vegetables. Oil is the most important resource in Iraq. Iraq has two great rivers, the Tigris and the Euphrates.",
       "Iraq has a lot of historical places to visit in Ur, Babylon and other interesting places. There are also holy places in Najaf and Karbala."
@@ -276,7 +276,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
     unitId: 108,
     titleAr: "إنشاء الوحدة الثامنة: حدث بسيط حصل لك (رأس السنة في أربيل)",
     titleEn: "Unit 8: Write about a simple event that happened to you (New Year in Erbil)",
-    ministerialWeight: "15 درجة بالسؤال الخامس (ص 142 في ملزمة الأستاذ عمار غالب)",
+    ministerialWeight: "15 درجة بالسؤال الخامس (ص 142 في ملزمة الأستاذ مصطفى تركي)",
     paragraphsEn: [
       "New Year\nLast week, I decided to go with my friends to spend the New Year Day in Erbil. On our way, it was raining heavily. One of the tires of the car got puncture. It was difficult to change the tire in the rain.",
       "We reached Erbil at midnight. We were very tired. We missed the night. So, we went directly to a hotel to rest and sleep."
@@ -308,7 +308,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
     unitId: 108,
     titleAr: "مشروع قصة خيالية: الأسد والفأر (Lion and Mouse)",
     titleEn: "Project: Write an imaginary story (Lion and Mouse)",
-    ministerialWeight: "15 درجة بالسؤال الخامس (ص 143 في ملزمة الأستاذ عمار غالب)",
+    ministerialWeight: "15 درجة بالسؤال الخامس (ص 143 في ملزمة الأستاذ مصطفى تركي)",
     paragraphsEn: [
       "Lion and Mouse\nOnce upon a time there lived a lion in a forest. It was sleeping under a tree. A mouse came and it started to play on the lion. The lion got up with anger, jumped on it and started to kill it. The mouse asked the lion to forgive it. The lion felt pity and left it. The mouse ran away.",
       "On another day, a hunter caught the lion in a net. The mouse came there and cut the net. The lion escaped. After that, the mouse and the lion became friends. They lived happily in the forest."

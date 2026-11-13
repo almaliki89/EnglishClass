@@ -6,8 +6,8 @@ export const UNIT_8: Unit = {
   titleAr: "الوحدة الثامنة: الموارد الطبيعية، طاقة الرياح، والبيئة",
   titleEn: "Unit 8: Natural Resources, Wind Power & Environment",
   description: "الموارد الطبيعية المتجددة وغير المتجددة، استنزاف الموارد وإزالة الغابات (Deforestation)، البادئة (dis-)، قطعة مورد متجدد: طاقة الرياح (Wind Power)، حماية البيئة وإعادة التدوير، مع جدول السوابق واللواحق الشامل.",
-  accentColor: "from-teal-600 to-emerald-600",
-  bgGradient: "bg-gradient-to-r from-teal-50 to-emerald-50 border-teal-200",
+  accentColor: "bg-soft-mint text-ink",
+  bgGradient: "bg-paper border-ink",
   lessons: [
     {
       id: "u8-l1",
@@ -128,10 +128,10 @@ export const UNIT_8: Unit = {
       titleAr: "الدرس الثالث: قطعة مورد متجدد - طاقة الرياح (Wind Power)",
       titleEn: "Lesson 3: A Renewable Resource - Wind Power",
       category: "reading",
-      summary: "قطعة الكتاب الوزارية الرسمية حول طاقة الرياح: تاريخ استخدامها، طريقة عمل توربينات الرياح، المزايا البيئية النظيفة، الانتقادات، وأثرها على الطيور وقوارب الصيد.",
+      summary: "قطعة الكتاب المقررة حول طاقة الرياح: تاريخ استخدامها، طريقة عمل توربينات الرياح، المزايا البيئية النظيفة، الانتقادات، وأثرها على الطيور وقوارب الصيد.",
       grammarRuleFormula: "Wind Power Key Points:\n- Used for thousands of years (windmills for grain and water)\n- Wind turbines: wind turns blades -> generates clean electricity\n- Advantages: renewable, green, no greenhouse gases, uses little land\n- Disadvantages: needs constant wind, visual impact, noise, danger to birds",
       detailedContent: [
-        "قطعة الكتاب الرسمية: طاقة الرياح (ص 162 - 165 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: طاقة الرياح (ص 162 - 165 من ملزمة الأستاذ مصطفى تركي):",
         "1. التاريخ: استُخدمت طاقة الرياح لآلاف السنين في تسيير السفن الشراعية، وفي طواحين الهواء القديمة لطحن الحبوب وضخ المياه من الآبار.",
         "2. توربينات الرياح الحديثة (Wind turbines): أبراج عملاقة مزودة بشفرات تديرها الرياح، تقوم بتدوير مولد يولد الكهرباء.",
         "3. مزايا طاقة الرياح (Advantages):",
@@ -199,10 +199,10 @@ export const UNIT_8: Unit = {
       titleAr: "الدرس الرابع: قطعة نهر الفرات (The Euphrates River)",
       titleEn: "Lesson 4: The Euphrates River",
       category: "reading",
-      summary: "قطعة الكتاب الرسمية لنهر الفرات (ص 87 كتاب الطالب وص 164 كتاب النشاط): طول النهر (2,800 كم)، المنبع والمسار، التقاء دجلة والفرات، السدود (سد الفرات وسد أتاتورك)، وتعاريف الجغرافيا الرسمية.",
+      summary: "قطعة الكتاب المقررة لنهر الفرات (ص 87 كتاب الطالب وص 164 كتاب النشاط): طول النهر (2,800 كم)، المنبع والمسار، التقاء دجلة والفرات، السدود (سد الفرات وسد أتاتورك)، وتعاريف الجغرافيا المقررة.",
       grammarRuleFormula: "The Euphrates River Key Facts:\nLength: 2,800 km | Longest river in the Middle East\nBegins: Caucasus Mountains in Turkey | Flows through: Turkey, Syria, Iraq\nEnds: Joins Tigris in southern Iraq -> Shatt al-Arab -> Arabian Gulf\nDams: Euphrates dam (Syria), Ataturk Dam (Turkey - largest of 22 dams)\nAncient cities: Babylon | Modern cities: An Najaf",
       detailedContent: [
-        "قطعة الكتاب الرسمية: نهر الفرات (ص 87 كتاب الطالب):",
+        "قطعة الكتاب المقررة: نهر الفرات (ص 87 كتاب الطالب):",
         "1. الطول والمسار: يبلغ طول نهر الفرات 2,800 كم، وهو أطول نهر في الشرق الأوسط. يبدأ في جبال القوقاز ويتدفق عبر تركيا وسوريا والعراق.",
         "2. الملاحة: الجزء العلوي يجري عبر ممرات صخرية شديدة الانحدار (steep gorges) ولا يمكن استخدامه للملاحة. الجزء السفلي ضحل (shallow) وتستخدمه القوارب الصغيرة فقط.",
         "3. شط العرب: في جنوب العراق، يلتقي الفرات بنهر دجلة ليشكلا معاً شط العرب (Shatt al-Arab) الذي يصب في الخليج العربي (Arabian Gulf).",

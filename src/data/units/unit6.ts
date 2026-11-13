@@ -6,8 +6,8 @@ export const UNIT_6: Unit = {
   titleAr: "الوحدة السادسة: البنوك، المبني للمجهول، والاستثمار",
   titleEn: "Unit 6: Banking, Passive Voice & Investments",
   description: "المصطلحات البنكية، المتلازمات المالية، المبني للمجهول (Passive Voice) في كافة الأزمنة والتحويل الوزاري، الاستنتاجات، قطعة موظف البنك (Meet a Banker)، وقطعة كسب المال (Making Money).",
-  accentColor: "from-emerald-700 to-green-600",
-  bgGradient: "bg-gradient-to-r from-emerald-50 to-green-50 border-emerald-200",
+  accentColor: "bg-soft-mint text-ink",
+  bgGradient: "bg-paper border-ink",
   lessons: [
     {
       id: "u6-l1",
@@ -149,7 +149,7 @@ export const UNIT_6: Unit = {
       summary: "قطعة الكتاب الوزارية لمهنة موظف البنك: تنوع المهام اليومية، إقناع الناس والشركات بفتح الحسابات، تقييم القروض والاستثمارات، ومهارات التواصل والرياضيات.",
       grammarRuleFormula: "Key Skills of a Banker:\n- Convince people to use the bank\n- Assess loan requests for businesses and homes\n- Good at maths and reading financial graphs\n- Excellent communicator with all types of clients",
       detailedContent: [
-        "قطعة الكتاب الرسمية: موظف البنك (ص 129 - 132 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: موظف البنك (ص 129 - 132 من ملزمة الأستاذ مصطفى تركي):",
         "- لماذا يحب موظف البنك وظيفته؟ بسبب التنوع (variety)؛ فلا يوجد يومان متشابهان، ويتعامل مع أفراد وشركات من كافة الشرائح.",
         "- أهم المهام: إقناع الناس بفتح حسابات بنكية، تقديم العروض والخدمات الجديدة للعملاء والطلاب.",
         "- منح القروض (loans): مساعدة الناس على شراء منازل أو سيارات، ومساعدة أصحاب المشاريع والشركات على بدء أعمالهم أو توسعتها.",
@@ -377,10 +377,10 @@ export const UNIT_6: Unit = {
       titleAr: "الدرس التاسع: قطعة كسب المال واستثماره (Making Money)",
       titleEn: "Lesson 9: Making Money & Investments (Reading Comprehension)",
       category: "reading",
-      summary: "قطعة الكتاب الوزارية الرسمية حول طرق ادخار واستثمار الأموال: خطط التقاعد، حسابات التوفير، الأسهم والبورصة، والعقارات (Property).",
+      summary: "قطعة الكتاب المقررة حول طرق ادخار واستثمار الأموال: خطط التقاعد، حسابات التوفير، الأسهم والبورصة، والعقارات (Property).",
       grammarRuleFormula: "Investment Options:\n- Savings accounts: pay interest over time, good for regular savers\n- Pension plans: save for old age and retirement\n- Stocks and shares: high risk, high potential profit or loss\n- Property: buying houses/land to rent or sell at higher value (safest long-term)",
       detailedContent: [
-        "قطعة الكتاب الرسمية: كسب المال (ص 138 - 141 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: كسب المال (ص 138 - 141 من ملزمة الأستاذ مصطفى تركي):",
         "- ادخار المال للمستقبل ثقافة يتعلمها الناس منذ الطفولة لضمان حياة كريمة عند الكبر والتقاعد (retirement).",
         "- طرق استثمار المال الشائعة:",
         "1) حسابات التوفير البنكية (Savings accounts): تفيد من لا يحتاج المال فوراً وتدفع فائدة بمرور الوقت.",

@@ -6,8 +6,8 @@ export const UNIT_3: Unit = {
   titleAr: "الوحدة الثالثة: المهن، جمل الشرط، الكلام المنقول، والندم",
   titleEn: "Unit 3: Jobs, Conditionals, Reported Speech & Regret",
   description: "التعاريف والمهن، حالات If الشرطية (الصفرية، الأولى، الثانية، الثالثة)، الكلام والأسئلة المنقولة، أفعال الإبلاغ، أسلوب الندم (I wish & If only)، واشتقاق الصفات، مع قطعة المترجمة الفورية سميرة المحمود.",
-  accentColor: "from-amber-600 to-orange-600",
-  bgGradient: "bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200",
+  accentColor: "bg-yellow text-ink",
+  bgGradient: "bg-paper border-ink",
   lessons: [
     {
       id: "u3-l1",
@@ -526,10 +526,10 @@ export const UNIT_3: Unit = {
       titleAr: "الدرس العاشر: قطعة سميرة المحمود (المترجمة الفورية)",
       titleEn: "Lesson 10: Samira Al Mahmoud (Conference Interpreter)",
       category: "reading",
-      summary: "قطعة الكتاب الرسمية للمترجمة الفورية سميرة المحمود: مؤتمر النفط في أبوظبي، العمل الحر (freelance)، مهارات المترجم، الترجمة تحت الضغط، وأهمية اللغة العربية.",
+      summary: "قطعة الكتاب المقررة للمترجمة الفورية سميرة المحمود: مؤتمر النفط في أبوظبي، العمل الحر (freelance)، مهارات المترجم، الترجمة تحت الضغط، وأهمية اللغة العربية.",
       grammarRuleFormula: "Key Vocabulary:\nfreelance = working when you want and for the organization you want\nunder pressure = in a difficult situation\nconvey the sense = give an idea of the meaning\nbooth = box-like room where interpreters work\nheadphones = listen privately",
       detailedContent: [
-        "قطعة الكتاب الرسمية: سميرة المحمود (ص 76 - 81 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: سميرة المحمود (ص 76 - 81 من ملزمة الأستاذ مصطفى تركي):",
         "- سميرة المحمود: مترجمة مؤتمرات فورية (conference interpreter) من الإنجليزية إلى العربية في فندق هيلتون بأبوظبي خلال مؤتمر النفط العربي السنوي.",
         "- ولدت في بريطانيا من والدين عراقيين، وتحدثت العربية في المنزل والإنجليزية في المدرسة.",
         "- حصلت على شهادة في اللغة العربية من جامعة لندن، ثم دبلوم دراسات عليا في الترجمة الفورية (postgraduate diploma in conference interpreting). كانت الدورة صعبة واجتازها 50% فقط من الطلاب.",

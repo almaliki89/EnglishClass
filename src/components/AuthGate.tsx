@@ -137,7 +137,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
   };
 
   return (
-    <div className="min-h-screen bg-[#F7F5EF] text-[#202124] flex flex-col justify-center items-center p-4 sm:p-6 lg:p-8 overflow-x-hidden selection:bg-[#F3E6A5] selection:text-[#202124]" dir="rtl">
+    <div className="min-h-screen w-full max-w-full min-w-0 bg-paper text-ink flex flex-col justify-center items-center p-4 sm:p-6 lg:p-8 selection:bg-yellow selection:text-ink" dir="rtl">
       
       {/* Decorative Editorial Watermarks */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03] select-none text-[120px] sm:text-[180px] font-black leading-none font-mono flex items-center justify-center overflow-hidden">
@@ -147,77 +147,77 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
       <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch relative z-10 my-auto">
         
         {/* Left / Top Hero Info Column */}
-        <div className="lg:col-span-6 bg-white border-4 border-[#202124] p-6 sm:p-8 shadow-[8px_8px_0px_#202124] flex flex-col justify-between space-y-6">
+        <div className="lg:col-span-6 bg-surface border-4 border-ink p-6 sm:p-8 shadow-brutal-hero flex flex-col justify-between space-y-6">
           
           <div className="space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#F3E6A5] border-2 border-[#202124] text-[#202124] text-xs font-black uppercase tracking-wider shadow-[2px_2px_0px_#202124]">
-              <GraduationCap className="w-4 h-4 text-[#405DE6]" />
-              <span className="font-mono">SEC. 2026 · OFFICIAL ADMISSION</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow border-2 border-ink text-ink text-xs font-black uppercase tracking-wider shadow-brutal-sm">
+              <GraduationCap className="w-4 h-4 text-cobalt" />
+              <span className="font-mono">SEC. 2026 · STUDENT PORTAL</span>
             </div>
 
             <div className="space-y-2">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-[#202124]">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-ink">
                 المنصة النموذجية <br />
-                <span className="bg-[#405DE6] text-white px-2 py-0.5 inline-block -rotate-1 mt-1">
+                <span className="bg-cobalt text-surface px-2 py-0.5 inline-block -rotate-1 mt-1">
                   اللغة الإنكليزية
                 </span>
               </h1>
-              <p className="text-sm sm:text-base text-[#202124]/80 font-bold leading-relaxed pt-2">
-                إشراف وإعداد <span className="underline decoration-[#F2A18E] decoration-4">الأستاذ مصطفى تركي</span>. المنظومة الأكاديمية المتكاملة للتدريب الشامل والاستعداد للامتحان الوزاري وفق المنهج العراقي الرسمي.
+              <p className="text-sm sm:text-base text-ink/80 font-bold leading-relaxed pt-2">
+                إشراف وإعداد <span className="underline decoration-coral decoration-4">الأستاذ مصطفى تركي</span>. المنظومة الأكاديمية المتكاملة للتدريب الشامل والاستعداد للامتحان الوزاري وفق منهاج اللغة الإنكليزية العراقي.
               </p>
             </div>
           </div>
 
           {/* Feature highlights */}
           <div className="grid grid-cols-2 gap-3 pt-2">
-            <div className="p-3 bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124]">
+            <div className="p-3 bg-paper border-2 border-ink shadow-brutal-callout">
               <div className="flex items-center gap-2 mb-1.5">
-                <div className="w-6 h-6 bg-[#F2A18E] text-[#202124] border border-[#202124] flex items-center justify-center font-black text-xs">
+                <div className="w-6 h-6 bg-coral text-ink border border-ink flex items-center justify-center font-black text-xs">
                   ★
                 </div>
-                <h4 className="text-xs font-black text-[#202124]">محاكي الوزاري 100د</h4>
+                <h4 className="text-xs font-black text-ink">محاكي الوزاري 100د</h4>
               </div>
-              <p className="text-[11px] text-[#202124]/70 font-bold">مطابق للدفتر الامتحاني الرسمي</p>
+              <p className="text-[11px] text-ink/70 font-bold">محاكاة شاملة لنمط الدفتر الامتحاني</p>
             </div>
 
-            <div className="p-3 bg-[#DCD8FA] border-2 border-[#202124] shadow-[3px_3px_0px_#202124]">
+            <div className="p-3 bg-lavender border-2 border-ink shadow-brutal-callout">
               <div className="flex items-center gap-2 mb-1.5">
-                <div className="w-6 h-6 bg-[#405DE6] text-white border border-[#202124] flex items-center justify-center font-black text-xs">
+                <div className="w-6 h-6 bg-cobalt text-surface border border-ink flex items-center justify-center font-black text-xs">
                   06
                 </div>
-                <h4 className="text-xs font-black text-[#202124]">كافة المراحل</h4>
+                <h4 className="text-xs font-black text-ink">كافة المراحل</h4>
               </div>
-              <p className="text-[11px] text-[#202124]/70 font-bold">من الثالث متوسط إلى السادس الإعدادي</p>
+              <p className="text-[11px] text-ink/70 font-bold">من الثالث متوسط إلى السادس الإعدادي</p>
             </div>
           </div>
 
-          <div className="p-3.5 bg-[#F3E6A5]/30 border-2 border-[#202124] flex items-start gap-2.5">
-            <ShieldCheck className="w-5 h-5 text-[#405DE6] shrink-0 mt-0.5" />
-            <p className="text-xs text-[#202124] font-bold leading-relaxed">
+          <div className="p-3.5 bg-yellow/30 border-2 border-ink flex items-start gap-2.5">
+            <ShieldCheck className="w-5 h-5 text-cobalt shrink-0 mt-0.5" />
+            <p className="text-xs text-ink font-bold leading-relaxed">
               سجل مجاناً برقم هاتفك أو بريدك لمزامنة تقدمك الدراسي وحفظ نتائج الاختبارات وشهادات التقدير سحابياً.
             </p>
           </div>
 
-          <div className="pt-2 border-t-2 border-[#202124] flex items-center justify-between text-[11px] font-mono text-[#202124]/60">
+          <div className="pt-2 border-t-2 border-ink flex items-center justify-between text-[11px] font-mono text-ink/60">
             <span>VOL. 26 ARCHIVE</span>
-            <span>MINISTRY OF EDUCATION IRAQ</span>
+            <span>IRAQ CURRICULUM EDITION</span>
           </div>
 
         </div>
 
         {/* Right / Registration & Login Card */}
         <div className="lg:col-span-6 w-full">
-          <div className="bg-white border-4 border-[#202124] p-6 sm:p-8 shadow-[8px_8px_0px_#202124] text-[#202124] relative">
+          <div className="bg-surface border-4 border-ink p-6 sm:p-8 shadow-brutal-hero text-ink relative">
             
             {/* Mode Switch Tabs (حساب جديد / تسجيل الدخول) */}
-            <div className="grid grid-cols-2 gap-2 p-1 bg-[#F7F5EF] border-2 border-[#202124] mb-6 shadow-[2px_2px_0px_#202124]">
+            <div className="grid grid-cols-2 gap-2 p-1 bg-paper border-2 border-ink mb-6 shadow-brutal-sm">
               <button
                 type="button"
                 onClick={() => { setMode('register'); setError(null); }}
                 className={`py-2 text-xs sm:text-sm font-black transition-all cursor-pointer border-2 ${
                   mode === 'register' 
-                    ? 'bg-[#405DE6] border-[#202124] text-white shadow-[2px_2px_0px_#202124]' 
-                    : 'bg-white border-transparent text-[#202124] hover:border-[#202124]'
+                    ? 'bg-cobalt border-ink text-surface shadow-brutal-sm' 
+                    : 'bg-surface border-transparent text-ink hover:border-ink'
                 }`}
               >
                 إنشاء حساب طالب جديد
@@ -227,23 +227,23 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                 onClick={() => { setMode('login'); setError(null); }}
                 className={`py-2 text-xs sm:text-sm font-black transition-all cursor-pointer border-2 ${
                   mode === 'login' 
-                    ? 'bg-[#405DE6] border-[#202124] text-white shadow-[2px_2px_0px_#202124]' 
-                    : 'bg-white border-transparent text-[#202124] hover:border-[#202124]'
+                    ? 'bg-cobalt border-ink text-surface shadow-brutal-sm' 
+                    : 'bg-surface border-transparent text-ink hover:border-ink'
                 }`}
               >
                 تسجيل الدخول
               </button>
             </div>
 
-            {/* Quick Google Login */}
+            {/* Quick Google Login (Official Brand SVG Colors Preserved) */}
             <button
               type="button"
               onClick={handleGoogleSignIn}
               disabled={googleLoading || loading}
-              className="w-full py-2.5 px-4 bg-white border-2 border-[#202124] hover:bg-[#F7F5EF] font-black text-[#202124] text-xs sm:text-sm flex items-center justify-center gap-3 transition-transform active:translate-x-0.5 active:translate-y-0.5 shadow-[3px_3px_0px_#202124] mb-2 disabled:opacity-50 cursor-pointer"
+              className="w-full py-2.5 px-4 bg-surface border-2 border-ink hover:bg-paper font-black text-ink text-xs sm:text-sm flex items-center justify-center gap-3 transition-transform active:translate-x-0.5 active:translate-y-0.5 shadow-brutal-callout mb-2 disabled:opacity-50 cursor-pointer"
             >
               {googleLoading ? (
-                <Loader2 className="w-5 h-5 animate-spin text-[#405DE6]" />
+                <Loader2 className="w-5 h-5 animate-spin text-cobalt" />
               ) : (
                 <>
                   <svg className="w-5 h-5" viewBox="0 0 24 24">
@@ -264,15 +264,15 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                 await signInAsGuest();
                 if (onSuccessfulAuth) onSuccessfulAuth('طالب زائر', selectedGrade);
               }}
-              className="w-full py-2 px-3 bg-[#F7F5EF] hover:bg-[#F3E6A5] border-2 border-[#202124] font-bold text-[#202124] text-xs flex items-center justify-center gap-2 transition-all shadow-[2px_2px_0px_#202124] mb-4 cursor-pointer"
+              className="w-full py-2 px-3 bg-paper hover:bg-yellow border-2 border-ink font-bold text-ink text-xs flex items-center justify-center gap-2 transition-all shadow-brutal-sm mb-4 cursor-pointer"
             >
               <span>دخول سريع كزائر (معاينة المنهاج) ←</span>
             </button>
 
             <div className="flex items-center gap-3 mb-4">
-              <div className="flex-1 h-0.5 bg-[#202124]"></div>
-              <span className="text-xs font-mono font-bold text-[#202124]">أو اختر وسيلة التسجيل:</span>
-              <div className="flex-1 h-0.5 bg-[#202124]"></div>
+              <div className="flex-1 h-0.5 bg-ink"></div>
+              <span className="text-xs font-mono font-bold text-ink">أو اختر وسيلة التسجيل:</span>
+              <div className="flex-1 h-0.5 bg-ink"></div>
             </div>
 
             {/* Choose Email vs Phone Pill Switch */}
@@ -282,11 +282,11 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                 onClick={() => { setMethod('email'); setError(null); }}
                 className={`py-2 px-3 text-xs font-black flex items-center justify-center gap-2 border-2 transition-all cursor-pointer ${
                   method === 'email'
-                    ? 'bg-[#F3E6A5] border-[#202124] text-[#202124] shadow-[2px_2px_0px_#202124]'
-                    : 'bg-[#F7F5EF] border-[#202124]/40 text-[#202124]/70 hover:border-[#202124]'
+                    ? 'bg-yellow border-ink text-ink shadow-brutal-sm'
+                    : 'bg-paper border-ink/40 text-ink/70 hover:border-ink'
                 }`}
               >
-                <Mail className="w-4 h-4 text-[#405DE6]" />
+                <Mail className="w-4 h-4 text-cobalt" />
                 <span>البريد الإلكتروني</span>
               </button>
 
@@ -295,11 +295,11 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                 onClick={() => { setMethod('phone'); setError(null); }}
                 className={`py-2 px-3 text-xs font-black flex items-center justify-center gap-2 border-2 transition-all cursor-pointer ${
                   method === 'phone'
-                    ? 'bg-[#F3E6A5] border-[#202124] text-[#202124] shadow-[2px_2px_0px_#202124]'
-                    : 'bg-[#F7F5EF] border-[#202124]/40 text-[#202124]/70 hover:border-[#202124]'
+                    ? 'bg-yellow border-ink text-ink shadow-brutal-sm'
+                    : 'bg-paper border-ink/40 text-ink/70 hover:border-ink'
                 }`}
               >
-                <Phone className="w-4 h-4 text-[#405DE6]" />
+                <Phone className="w-4 h-4 text-cobalt" />
                 <span>رقم الهاتف (SMS)</span>
               </button>
             </div>
@@ -309,9 +309,9 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               <motion.div 
                 initial={{ opacity: 0, y: -5 }} 
                 animate={{ opacity: 1, y: 0 }} 
-                className="mb-4 p-3 bg-[#FDF6F4] border-2 border-[#B83A3A] flex items-start gap-2 text-[#202124] text-xs font-bold"
+                className="mb-4 p-3 bg-answer-review-bg border-2 border-semantic-error flex items-start gap-2 text-ink text-xs font-bold"
               >
-                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-[#B83A3A]" />
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-semantic-error" />
                 <span>{error}</span>
               </motion.div>
             )}
@@ -322,28 +322,28 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               {/* If Register: Student Name */}
               {mode === 'register' && (
                 <div>
-                  <label className="block text-xs font-black text-[#202124] mb-1">اسم الطالب الثلاثي</label>
+                  <label className="block text-xs font-black text-ink mb-1">اسم الطالب الثلاثي</label>
                   <div className="relative">
-                    <UserIcon className="w-4 h-4 text-[#202124]/50 absolute right-3 top-3.5" />
+                    <UserIcon className="w-4 h-4 text-ink/50 absolute right-3 top-3.5" />
                     <input
                       type="text"
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="مثال: علي حيدر جاسم"
                       required
-                      className="w-full pr-10 pl-3 py-2.5 bg-white border-2 border-[#202124] text-sm font-bold text-[#202124] focus:outline-hidden focus:bg-[#F3E6A5]/15 focus:shadow-[2px_2px_0px_#202124] transition-all"
+                      className="w-full pr-10 pl-3 py-2.5 bg-surface border-2 border-ink text-sm font-bold text-ink focus:outline-hidden focus:bg-yellow/15 focus:shadow-brutal-sm transition-all"
                     />
                   </div>
                 </div>
               )}
 
-              {/* If Register: 6-Grade Selector */}
+              {/* If Register: Grade Selector */}
               {mode === 'register' && (
                 <div>
-                  <label className="block text-xs font-black text-[#202124] mb-1.5">
-                    اختر مرحلتك الدراسية (المنهج العراقي الرسمي):
+                  <label className="block text-xs font-black text-ink mb-1.5">
+                    اختر مرحلتك الدراسية (منهاج اللغة الإنكليزية):
                   </label>
-                  <div className="grid grid-cols-3 gap-1.5">
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-1.5">
                     {ORDERED_GRADES.map((gId) => {
                       const meta = ALL_GRADES_META[gId];
                       const isSelected = selectedGrade === gId;
@@ -354,12 +354,12 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                           onClick={() => setSelectedGrade(gId)}
                           className={`p-2 border-2 text-xs font-black text-center transition-all cursor-pointer flex flex-col items-center justify-center gap-0.5 ${
                             isSelected
-                              ? 'bg-[#405DE6] border-[#202124] text-white shadow-[2px_2px_0px_#202124]'
-                              : 'bg-white border-[#202124]/30 text-[#202124] hover:border-[#202124]'
+                              ? 'bg-cobalt border-ink text-surface shadow-brutal-sm'
+                              : 'bg-surface border-ink/30 text-ink hover:border-ink'
                           }`}
                         >
                           <span>{meta.shortName}</span>
-                          <span className={`text-[9px] font-mono ${isSelected ? 'text-white/80' : 'text-[#202124]/60'}`}>
+                          <span className={`text-[9px] font-mono ${isSelected ? 'text-surface/80' : 'text-ink/60'}`}>
                             {meta.stage === 'intermediate' ? 'متوسط' : 'إعدادي'}
                           </span>
                         </button>
@@ -372,33 +372,33 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               {/* Phone or Email Input */}
               {method === 'phone' ? (
                 <div>
-                  <label className="block text-xs font-black text-[#202124] mb-1">رقم الهاتف (زين / آسيا / كورك)</label>
+                  <label className="block text-xs font-black text-ink mb-1">رقم الهاتف (زين / آسيا / كورك)</label>
                   <div className="relative">
-                    <Phone className="w-4 h-4 text-[#202124]/50 absolute right-3 top-3.5" />
+                    <Phone className="w-4 h-4 text-ink/50 absolute right-3 top-3.5" />
                     <input
                       type="tel"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="07701234567"
                       required
-                      className="w-full pr-10 pl-3 py-2.5 bg-white border-2 border-[#202124] text-sm font-mono font-bold text-[#202124] focus:outline-hidden focus:bg-[#F3E6A5]/15 focus:shadow-[2px_2px_0px_#202124] transition-all text-left"
+                      className="w-full pr-10 pl-3 py-2.5 bg-surface border-2 border-ink text-sm font-mono font-bold text-ink focus:outline-hidden focus:bg-yellow/15 focus:shadow-brutal-sm transition-all text-left"
                       dir="ltr"
                     />
                   </div>
-                  <p className="text-[10px] text-[#202124]/60 font-mono mt-1">يُستخدم كرقم تعريف لدخول حسابك في أي وقت</p>
+                  <p className="text-[10px] text-ink/60 font-mono mt-1">يُستخدم كرقم تعريف لدخول حسابك في أي وقت</p>
                 </div>
               ) : (
                 <div>
-                  <label className="block text-xs font-black text-[#202124] mb-1">البريد الإلكتروني</label>
+                  <label className="block text-xs font-black text-ink mb-1">البريد الإلكتروني</label>
                   <div className="relative">
-                    <Mail className="w-4 h-4 text-[#202124]/50 absolute right-3 top-3.5" />
+                    <Mail className="w-4 h-4 text-ink/50 absolute right-3 top-3.5" />
                     <input
                       type="email"
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       placeholder="student@example.com"
                       required
-                      className="w-full pr-10 pl-3 py-2.5 bg-white border-2 border-[#202124] text-sm font-mono font-bold text-[#202124] focus:outline-hidden focus:bg-[#F3E6A5]/15 focus:shadow-[2px_2px_0px_#202124] transition-all text-left"
+                      className="w-full pr-10 pl-3 py-2.5 bg-surface border-2 border-ink text-sm font-mono font-bold text-ink focus:outline-hidden focus:bg-yellow/15 focus:shadow-brutal-sm transition-all text-left"
                       dir="ltr"
                     />
                   </div>
@@ -407,23 +407,23 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
 
               {/* Password */}
               <div>
-                <label className="block text-xs font-black text-[#202124] mb-1">
+                <label className="block text-xs font-black text-ink mb-1">
                   {mode === 'register' ? 'كلمة المرور / الرمز السري' : 'كلمة المرور'}
                 </label>
                 <div className="relative">
-                  <Lock className="w-4 h-4 text-[#202124]/50 absolute right-3 top-3.5" />
+                  <Lock className="w-4 h-4 text-ink/50 absolute right-3 top-3.5" />
                   <input
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="••••••••"
                     required
-                    className="w-full pr-10 pl-3 py-2.5 bg-white border-2 border-[#202124] text-sm font-mono font-bold text-[#202124] focus:outline-hidden focus:bg-[#F3E6A5]/15 focus:shadow-[2px_2px_0px_#202124] transition-all text-left"
+                    className="w-full pr-10 pl-3 py-2.5 bg-surface border-2 border-ink text-sm font-mono font-bold text-ink focus:outline-hidden focus:bg-yellow/15 focus:shadow-brutal-sm transition-all text-left"
                     dir="ltr"
                   />
                 </div>
                 {mode === 'register' && (
-                  <p className="text-[10px] text-[#202124]/60 font-mono mt-1">6 خانات على الأقل (أحرف أو أرقام)</p>
+                  <p className="text-[10px] text-ink/60 font-mono mt-1">6 خانات على الأقل (أحرف أو أرقام)</p>
                 )}
               </div>
 
@@ -431,13 +431,13 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               <button
                 type="submit"
                 disabled={loading || googleLoading}
-                className="w-full py-3.5 bg-[#405DE6] hover:bg-[#334DC6] text-white font-black text-sm border-2 border-[#202124] shadow-[4px_4px_0px_#202124] hover:shadow-[2px_2px_0px_#202124] hover:translate-x-0.5 hover:translate-y-0.5 flex items-center justify-center gap-2 transition-all mt-4 disabled:opacity-50 cursor-pointer rounded-[4px]"
+                className="w-full py-3.5 bg-cobalt hover:bg-cobalt-hover text-surface font-black text-sm border-2 border-ink shadow-brutal-action hover:shadow-brutal-sm hover:translate-x-0.5 hover:translate-y-0.5 flex items-center justify-center gap-2 transition-all mt-4 disabled:opacity-50 cursor-pointer rounded-[4px]"
               >
                 {loading ? (
                   <Loader2 className="w-5 h-5 animate-spin" />
                 ) : (
                   <>
-                    <Sparkles className="w-4 h-4 text-[#F3E6A5]" />
+                    <Sparkles className="w-4 h-4 text-yellow" />
                     <span>
                       {mode === 'register' 
                         ? 'إكمال التسجيل والدخول إلى المنصة' 
@@ -449,9 +449,9 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
 
             </form>
 
-            <div className="mt-4 pt-3 border-t-2 border-[#202124] text-center">
-              <p className="text-[11px] font-mono text-[#202124]/70">
-                منصة النموذجية • نظام تسجيل الطلبة المعتمد 2026/2027
+            <div className="mt-4 pt-3 border-t-2 border-ink text-center">
+              <p className="text-[11px] font-mono text-ink/70">
+                منصة النموذجية • بوابة تسجيل الطلبة 2026/2027
               </p>
             </div>
 

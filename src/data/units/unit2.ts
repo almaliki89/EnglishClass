@@ -6,8 +6,8 @@ export const UNIT_2: Unit = {
   titleAr: "الوحدة الثانية: القانون، واجبات الشرطة، والرادار",
   titleEn: "Unit 2: Law, Police Duties & Radar",
   description: "الأسماء المركبة، واجبات ضابط الشرطة، الضرورة والمنع (Must, Have to, Need to, Mustn't)، الوظائف اللغوية الخمس (نصيحة، طلب مؤدب، اقتراح، عرض، توقع)، الاختصارات، قصة السرقة، الأفعال السببية (Have, Get, Make)، كتيب سلامة المنازل، وقطعة الرادار الوزارية.",
-  accentColor: "from-emerald-600 to-teal-600",
-  bgGradient: "bg-gradient-to-r from-emerald-50 to-teal-50 border-emerald-200",
+  accentColor: "bg-soft-mint text-ink",
+  bgGradient: "bg-paper border-ink",
   lessons: [
     {
       id: "u2-l1",
@@ -554,7 +554,7 @@ export const UNIT_2: Unit = {
       summary: "قطعة الكتاب الوزارية للرادار: تاريخ اختراعه، طريقة عمل مسدس السرعة، أنواع أجهزة الرادار، كواشف الرادار (Radar Detectors)، والصيانة وتدريب رجال الشرطة.",
       grammarRuleFormula: "Radar Key Facts:\n- Invented during WWII to detect enemy aircraft and ships\n- Police use: over 70 years ago to catch speeders\n- Mechanism: sends radio waves that bounce back from cars\n- Radar detectors: make a beeping sound when detecting radar",
       detailedContent: [
-        "قطعة الكتاب الرسمية: الرادار (ص 53 - 56 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: الرادار (ص 53 - 56 من ملزمة الأستاذ مصطفى تركي):",
         "1. الاختراع والتاريخ: اختُرع الرادار خلال الحرب العالمية الثانية (World War II) للكشف عن طائرات وسفن العدو، ثم استُخدم للتنبؤ بالطقس، وبدأ استخدامه من قبل الشرطة لضبط متجاوزي السرعة منذ أكثر من 70 عاماً (over 70 years ago).",
         "2. مبدأ العمل: يرسل موجات راديوية باتجاه السيارة وترتد نحوه. إذا كانت السيارة متحركة تتغير المسافة بين الموجات فيحسب سرعتها. يعمل عندما تتحرك السيارة باتجاهه أو مبتعدة عنه (moving towards or away from them).",
         "3. أنواع الرادار: بعضها محمول باليد يشبه البندقية، وبعضها يعمل من سيارات الشرطة المتحركة، وبعضها يلتقط صوراً للوحة ترخيص السيارة (number plate).",

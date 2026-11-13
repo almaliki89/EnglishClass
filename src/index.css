@@ -21,6 +21,34 @@
   --color-muted-gray: #747474;
   --color-soft-border: #E5E3DC;
 
+  /* Hover & Interactive State Colors */
+  --color-cobalt-hover: #334DC6;
+  --color-yellow-hover: #E5D792;
+  --color-coral-hover: #E58E7A;
+  --color-lavender-hover: #C9C3F2;
+  --color-mint-hover: #C2DEC6;
+
+  /* Educational Surface & Progress Colors */
+  --color-progress-track: #EAE8E1;
+  --color-answer-bg: #F8F7F2;
+  --color-answer-correct-bg: #F4F8F5;
+  --color-answer-review-bg: #FDF6F4;
+
+  /* Hard-Edged Editorial & Neo-Brutalist Shadows */
+  --shadow-brutal-press: 1px 1px 0px var(--color-ink);
+  --shadow-brutal-xs: 1.5px 1.5px 0px var(--color-ink);
+  --shadow-brutal-sm: 2px 2px 0px var(--color-ink);
+  --shadow-brutal-nav: 0px 2.5px 0px var(--color-ink);
+  --shadow-brutal-btn: 2.5px 2.5px 0px var(--color-ink);
+  --shadow-brutal-callout: 3px 3px 0px var(--color-ink);
+  --shadow-brutal-md: 3.5px 3.5px 0px var(--color-ink);
+  --shadow-brutal-action: 4px 4px 0px var(--color-ink);
+  --shadow-brutal-lg: 5px 5px 0px var(--color-ink);
+  --shadow-brutal-modal: 6px 6px 0px var(--color-ink);
+  --shadow-brutal-hero: 8px 8px 0px var(--color-ink);
+  --shadow-brutal-cobalt-sm: 2px 2px 0px var(--color-cobalt);
+  --shadow-brutal-cobalt: 3.5px 3.5px 0px var(--color-cobalt);
+
   /* Semantic State Colors */
   --color-semantic-success: #287A52;
   --color-semantic-error: #B83A3A;
@@ -35,22 +63,22 @@
   --token-surface: var(--color-surface);
   --token-ink: var(--color-ink);
   --token-cobalt: var(--color-cobalt);
-  --token-cobalt-hover: #334DC6;
+  --token-cobalt-hover: var(--color-cobalt-hover);
   --token-yellow: var(--color-yellow);
-  --token-yellow-hover: #E5D792;
+  --token-yellow-hover: var(--color-yellow-hover);
   --token-coral: var(--color-coral);
-  --token-coral-hover: #E58E7A;
+  --token-coral-hover: var(--color-coral-hover);
   --token-lavender: var(--color-lavender);
-  --token-lavender-hover: #C9C3F2;
+  --token-lavender-hover: var(--color-lavender-hover);
   --token-blue-mist: var(--color-blue-mist);
   --token-mint: var(--color-soft-mint);
-  --token-mint-hover: #C2DEC6;
+  --token-mint-hover: var(--color-mint-hover);
   --token-muted: var(--color-muted-gray);
   --token-border: var(--color-soft-border);
-  --token-progress-track: #EAE8E1;
-  --token-answer-bg: #F8F7F2;
-  --token-answer-correct-bg: #F4F8F5;
-  --token-answer-review-bg: #FDF6F4;
+  --token-progress-track: var(--color-progress-track);
+  --token-answer-bg: var(--color-answer-bg);
+  --token-answer-correct-bg: var(--color-answer-correct-bg);
+  --token-answer-review-bg: var(--color-answer-review-bg);
   --token-success: var(--color-semantic-success);
   --token-error: var(--color-semantic-error);
 
@@ -58,9 +86,9 @@
   --border-width-standard: 2px;
   --border-width-featured: 3px;
   --border-width-thick: 4px;
-  --shadow-standard: 3.5px 3.5px 0px var(--token-ink);
-  --shadow-featured: 5px 5px 0px var(--token-ink);
-  --shadow-subtle: 2px 2px 0px var(--token-ink);
+  --shadow-standard: var(--shadow-brutal-md);
+  --shadow-featured: var(--shadow-brutal-lg);
+  --shadow-subtle: var(--shadow-brutal-sm);
   --radius-standard: 6px;
   --radius-button: 4px;
 
@@ -92,11 +120,10 @@ img, video, canvas, svg, iframe {
 }
 
 html, body, #root {
-  width: 100% !important;
-  max-width: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  overflow-x: hidden !important;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
   position: relative;
   background-color: var(--token-paper);
   color: var(--token-ink);
