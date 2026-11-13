@@ -5,8 +5,8 @@ import {
   PenTool, Award, Printer, ZoomIn, ZoomOut, AlertCircle, ArrowRight, 
   ListChecks, Wand2, RefreshCw, Layers
 } from 'lucide-react';
-import { getEssaysForGrade, getGradeMeta, ORDERED_GRADES, ALL_GRADES_META } from '../data/gradeContentResolver';
-import { EssayItem, EducationalGrade } from '../types';
+import { getEssaysForGrade, getUnitsForGrade, getGradeMeta } from '../data/gradeContentResolver';
+import { EssayItem, EducationalGrade, Unit } from '../types';
 import { triggerCelebration } from '../utils/storage';
 
 // Common linking words and discourse markers to highlight in English essays
@@ -30,15 +30,26 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
   onSelectGrade 
 }) => {
   const currentEssaysList: EssayItem[] = getEssaysForGrade(grade);
+  const currentUnitsList: Unit[] = getUnitsForGrade(grade);
   const gradeMeta = getGradeMeta(grade);
   const [selectedEssayId, setSelectedEssayId] = useState<string>(currentEssaysList[0]?.id || '');
+  const [selectedUnitFilter, setSelectedUnitFilter] = useState<number | 'all'>('all');
+  const activeEssayReaderRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    setSelectedUnitFilter('all');
+    if (currentEssaysList.length > 0) {
+      setSelectedEssayId(currentEssaysList[0].id);
+    } else {
+      setSelectedEssayId('');
+    }
+  }, [grade]);
 
   useEffect(() => {
     if (currentEssaysList.length > 0 && !currentEssaysList.some(e => e.id === selectedEssayId)) {
       setSelectedEssayId(currentEssaysList[0].id);
     }
-  }, [grade, currentEssaysList, selectedEssayId]);
-  const [selectedUnitFilter, setSelectedUnitFilter] = useState<number | 'all'>('all');
+  }, [currentEssaysList, selectedEssayId]);
   
   // Display & Study modes
   const [activeMode, setActiveMode] = useState<StudyMode>('dual');
@@ -76,13 +87,65 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
   const [copyFeedback, setCopyFeedback] = useState<string | null>(null);
   const [speechNotice, setSpeechNotice] = useState<string | null>(null);
 
+  // Map internal unitIds (e.g. 41, 51, 101) to clean grade-scoped Unit metadata
+  const unitById = new Map<number, Unit>(currentUnitsList.map((u) => [u.id, u]));
+
+  const resolveUnitDisplay = (unitId: number) => {
+    const matchedUnit = unitById.get(unitId);
+    const unitNumber = matchedUnit?.number ?? (unitId >= 100 ? unitId % 100 : unitId >= 40 ? unitId % 10 : unitId);
+    const rawTopicAr = matchedUnit?.titleAr || '';
+    const colonIdx = rawTopicAr.indexOf(':');
+    const topicAr = colonIdx >= 0 ? rawTopicAr.slice(colonIdx + 1).trim() : rawTopicAr;
+    return {
+      unitId,
+      unitNumber,
+      unitCode: String(unitNumber).padStart(2, '0'),
+      shortLabel: `الوحدة ${unitNumber}`,
+      topicAr,
+      titleEn: matchedUnit?.titleEn || `Unit ${unitNumber}`,
+    };
+  };
+
+  const formatEssayCountLabel = (count: number) => {
+    if (count === 1) return 'إنشاء واحد';
+    if (count === 2) return 'إنشاءان';
+    if (count <= 10) return `${count} إنشاءات`;
+    return `${count} إنشاء`;
+  };
+
+  // Ordered unit groups for filter chips & directory
+  const availableUnitIds = Array.from(new Set(currentEssaysList.map((e) => e.unitId))).sort(
+    (a, b) => resolveUnitDisplay(a).unitNumber - resolveUnitDisplay(b).unitNumber
+  );
+
   // Filtered essays list
   const filteredEssays = selectedUnitFilter === 'all'
     ? currentEssaysList
     : currentEssaysList.filter(e => e.unitId === selectedUnitFilter);
 
+  // Grouped essays per unit (ordered cleanly by unit number)
+  const groupedUnitEssays = availableUnitIds
+    .filter((uId) => selectedUnitFilter === 'all' || selectedUnitFilter === uId)
+    .map((uId) => ({
+      unit: resolveUnitDisplay(uId),
+      essays: filteredEssays.filter((e) => e.unitId === uId),
+    }))
+    .filter((group) => group.essays.length > 0);
+
   // Current selected essay
   const currentEssay: EssayItem = currentEssaysList.find(e => e.id === selectedEssayId) || filteredEssays[0] || currentEssaysList[0];
+  const currentEssayUnitInfo = resolveUnitDisplay(currentEssay.unitId);
+
+  const handleSelectEssayFromDirectory = (essayId: string) => {
+    setSelectedEssayId(essayId);
+    if (activeEssayReaderRef.current && window.innerWidth < 1024) {
+      const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      activeEssayReaderRef.current.scrollIntoView({
+        behavior: prefersReduced ? 'auto' : 'smooth',
+        block: 'start',
+      });
+    }
+  };
 
   // Stop speech when changing essay or unmounting
   useEffect(() => {
@@ -416,11 +479,16 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
             </p>
           </div>
 
-          {/* Unit Filter Chips */}
-          <div className="space-y-2 pt-2 border-t-2 border-ink">
-            <div className="flex items-center gap-2 text-xs font-mono font-black text-semantic-error">
-              <Filter className="w-3.5 h-3.5 shrink-0" />
-              <span>فرز حسب الوحدة الدراسية:</span>
+          {/* Unit Filter Bar */}
+          <div className="space-y-2.5 pt-3 border-t-2 border-ink">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <div className="flex items-center gap-2 text-xs font-mono font-black text-ink">
+                <Filter className="w-3.5 h-3.5 text-cobalt shrink-0" />
+                <span>تصفية وعرض حسب الوحدة الدراسية:</span>
+              </div>
+              <span className="text-[11px] font-bold text-muted-gray tabular-nums">
+                {availableUnitIds.length} وحدات · {currentEssaysList.length} نموذجاً
+              </span>
             </div>
             <div className="flex flex-wrap items-center gap-1.5 w-full">
               <button
@@ -435,58 +503,148 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
               >
                 جميع الوحدات ({currentEssaysList.length})
               </button>
-              {Array.from(new Set(currentEssaysList.map(e => e.unitId))).sort((a, b) => a - b).map(unitNum => {
-                const count = currentEssaysList.filter((e: EssayItem) => e.unitId === unitNum).length;
+              {availableUnitIds.map((uId) => {
+                const unitInfo = resolveUnitDisplay(uId);
+                const count = currentEssaysList.filter((e: EssayItem) => e.unitId === uId).length;
                 return (
                   <button
                     type="button"
-                    key={unitNum}
-                    id={`filter-essay-u${unitNum}`}
+                    key={uId}
+                    id={`filter-essay-u${unitInfo.unitNumber}`}
                     onClick={() => {
-                      setSelectedUnitFilter(unitNum);
-                      const firstInUnit = currentEssaysList.find((e: EssayItem) => e.unitId === unitNum);
+                      setSelectedUnitFilter(uId);
+                      const firstInUnit = currentEssaysList.find((e: EssayItem) => e.unitId === uId);
                       if (firstInUnit) {
                         setSelectedEssayId(firstInUnit.id);
                       }
                     }}
-                    className={`px-3 py-1.5 rounded-[4px] text-xs font-black transition-all flex items-center gap-1 whitespace-nowrap shrink-0 border-2 border-ink cursor-pointer tabular-nums ${
-                      selectedUnitFilter === unitNum
+                    className={`px-3 py-1.5 rounded-[4px] text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 border-2 border-ink cursor-pointer tabular-nums ${
+                      selectedUnitFilter === uId
                         ? 'bg-cobalt text-surface shadow-brutal-sm'
                         : 'bg-paper hover:bg-surface text-ink'
                     }`}
                   >
-                    <span>الوحدة {unitNum}</span>
-                    <span className="text-[10px] px-1 font-mono font-bold">{count}</span>
+                    <span>{unitInfo.shortLabel}</span>
+                    <span className={`text-[11px] font-mono font-bold ${selectedUnitFilter === uId ? 'text-yellow' : 'text-muted-gray'}`}>
+                      ({count})
+                    </span>
                   </button>
                 );
               })}
             </div>
           </div>
 
-          {/* Quick Select Buttons for Essays */}
-          <div className="pt-3 border-t-2 border-ink">
-            <div className="flex flex-wrap items-center gap-2 w-full">
-              {filteredEssays.map((essay) => {
-                const isSelected = currentEssay.id === essay.id;
+          {/* Structured Unit-by-Unit Essays Directory */}
+          <div className="pt-3 border-t-2 border-ink space-y-3" aria-label="فهرس الوحدات والإنشاءات">
+            <div className="flex flex-wrap items-center justify-between gap-2 text-xs">
+              <span className="font-black text-ink">فهرس كل وحدة وإنشاءاتها</span>
+              <span className="text-muted-gray font-bold">اختر أي إنشاء لفتحه في لوحة الدراسة بالأسفل</span>
+            </div>
+
+            <div className="space-y-3">
+              {groupedUnitEssays.map(({ unit, essays }) => {
+                const containsSelected = essays.some((e) => e.id === currentEssay.id);
                 return (
-                  <button
-                    type="button"
-                    key={essay.id}
-                    id={`essay-tab-${essay.id}`}
-                    onClick={() => setSelectedEssayId(essay.id)}
-                    className={`px-3.5 py-2 rounded-[4px] text-xs font-black transition-all flex items-center gap-2 border-2 border-ink cursor-pointer max-w-full ${
-                      isSelected
-                        ? 'bg-cobalt text-surface shadow-brutal-callout'
-                        : 'bg-paper text-ink hover:bg-surface'
+                  <section
+                    key={unit.unitId}
+                    aria-labelledby={`unit-essays-heading-${unit.unitId}`}
+                    className={`rounded-[6px] border-2 border-ink overflow-hidden transition-colors ${
+                      containsSelected ? 'bg-blue-mist/40' : 'bg-paper'
                     }`}
                   >
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded-[4px] border border-ink font-mono font-black tabular-nums shrink-0 ${
-                      isSelected ? 'bg-yellow text-ink' : 'bg-surface text-ink'
-                    }`}>
-                      وحدة {essay.unitId}
-                    </span>
-                    <span className="truncate max-w-[200px]">{essay.titleAr}</span>
-                  </button>
+                    {/* Unit Header Band */}
+                    <div className="px-3.5 py-2.5 bg-surface border-b-2 border-ink flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex flex-wrap items-center gap-2.5 min-w-0">
+                        <span className="px-2 py-0.5 rounded-[4px] bg-yellow text-ink border border-ink font-mono text-xs font-black tabular-nums shrink-0">
+                          {unit.shortLabel}
+                        </span>
+                        <h2
+                          id={`unit-essays-heading-${unit.unitId}`}
+                          className="text-xs sm:text-sm font-black text-ink min-w-0 break-words"
+                        >
+                          {unit.topicAr || unit.titleEn}
+                        </h2>
+                      </div>
+                      <span className="text-[11px] font-bold text-muted-gray tabular-nums shrink-0">
+                        {formatEssayCountLabel(essays.length)}
+                      </span>
+                    </div>
+
+                    {/* Unit's Essays Grid */}
+                    <div
+                      className={`p-2.5 grid grid-cols-1 gap-2.5 ${
+                        essays.length >= 3
+                          ? 'md:grid-cols-2 lg:grid-cols-3'
+                          : essays.length === 2
+                            ? 'md:grid-cols-2'
+                            : ''
+                      }`}
+                    >
+                      {essays.map((essay, idx) => {
+                        const isSelected = currentEssay.id === essay.id;
+                        const essayWordCount = essay.paragraphsEn
+                          .join(' ')
+                          .split(/\s+/)
+                          .filter(Boolean).length;
+                        const itemNum = String(idx + 1).padStart(2, '0');
+
+                        return (
+                          <button
+                            type="button"
+                            key={essay.id}
+                            id={`essay-tab-${essay.id}`}
+                            aria-pressed={isSelected}
+                            onClick={() => handleSelectEssayFromDirectory(essay.id)}
+                            className={`w-full h-full text-right p-3 rounded-[4px] border-2 border-ink transition-all cursor-pointer flex items-start justify-between gap-3 min-w-0 ${
+                              isSelected
+                                ? 'bg-cobalt text-surface shadow-brutal-sm'
+                                : 'bg-surface text-ink hover:bg-yellow/35'
+                            }`}
+                          >
+                            <div className="flex items-start gap-2.5 min-w-0 flex-1">
+                              <span
+                                className={`px-1.5 py-0.5 rounded-[4px] border border-ink font-mono text-[11px] font-black tabular-nums shrink-0 mt-0.5 ${
+                                  isSelected ? 'bg-yellow text-ink' : 'bg-paper text-ink'
+                                }`}
+                              >
+                                {itemNum}
+                              </span>
+                              <div className="min-w-0 flex-1 space-y-1">
+                                <div className="text-xs sm:text-sm font-black leading-snug break-words">
+                                  {essay.titleAr}
+                                </div>
+                                <div
+                                  dir="ltr"
+                                  className={`text-[11px] font-mono font-bold text-left break-words ${
+                                    isSelected ? 'text-surface/90' : 'text-cobalt'
+                                  }`}
+                                >
+                                  {essay.titleEn}
+                                </div>
+                                <div
+                                  className={`flex flex-wrap items-center gap-1.5 text-[11px] font-bold tabular-nums pt-0.5 ${
+                                    isSelected ? 'text-yellow' : 'text-muted-gray'
+                                  }`}
+                                >
+                                  <span>
+                                    {essay.wordCountMin && essay.wordCountMax
+                                      ? `${essay.wordCountMin}–${essay.wordCountMax} كلمة`
+                                      : `${essayWordCount} كلمة`}
+                                  </span>
+                                  {isSelected && (
+                                    <>
+                                      <span aria-hidden="true">·</span>
+                                      <span>مفتوح الآن</span>
+                                    </>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </section>
                 );
               })}
             </div>
@@ -496,21 +654,32 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
       </div>
 
       {/* ================= MAIN INTERACTIVE ESSAY CARD ================= */}
-      <div className="rounded-[6px] bg-surface border-3 border-ink shadow-brutal-lg overflow-hidden">
+      <div
+        id="active-essay-reader"
+        ref={activeEssayReaderRef}
+        className="rounded-[6px] bg-surface border-3 border-ink shadow-brutal-lg overflow-hidden"
+      >
         
         {/* Essay Info Bar & Toolbar */}
         <div className="p-5 sm:p-7 border-b-2 border-ink space-y-4">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div className="min-w-0">
-              <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="text-xs font-black px-2.5 py-0.5 rounded-[4px] bg-soft-mint text-ink border border-ink tabular-nums">
-                  الوحدة {currentEssay.unitId}
+              <div className="flex flex-wrap items-center gap-2 mb-2 text-xs">
+                <span className="font-black px-2.5 py-0.5 rounded-[4px] bg-soft-mint text-ink border border-ink tabular-nums">
+                  {currentEssayUnitInfo.shortLabel}
                 </span>
-                <span className="text-xs font-bold text-muted-gray bg-paper px-2.5 py-0.5 rounded-[4px] border border-ink">
+                {currentEssayUnitInfo.topicAr && (
+                  <span className="font-bold text-ink/85">
+                    {currentEssayUnitInfo.topicAr}
+                  </span>
+                )}
+                <span aria-hidden="true" className="text-muted-gray">·</span>
+                <span className="font-bold text-muted-gray">
                   {currentEssay.ministerialWeight}
                 </span>
-                <span className="text-xs font-mono font-black px-2.5 py-0.5 rounded-[4px] bg-yellow text-ink border border-ink tabular-nums">
-                  {totalEnglishWords} كلمة (حسب المنهج)
+                <span aria-hidden="true" className="text-muted-gray">·</span>
+                <span className="font-mono font-black text-ink tabular-nums">
+                  {totalEnglishWords} كلمة
                 </span>
               </div>
 
