@@ -1,8 +1,8 @@
 import { MinisterialExamQuestion } from '../../../types';
 
 // =========================================================================
-// بنك الأسئلة الامتحانية الوزارية والمدرسية للخامس الإعدادي
-// مستخرج نصاً وحلاً من ملزمة الأستاذ عمار غالب 2026 (ص 222 - 261)
+// بنك أسئلة تدريبي إضافي للخامس الإعدادي
+// أسئلة تدريبية منتقاة للمنصة. ليست تفريغاً كاملاً لقسم حل التمارين في الملزمة (ص 222-261)، ولا تُنسب إليها حرفياً ما لم يُثبت تطابق كل سؤال.
 // =========================================================================
 
 export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
@@ -19,7 +19,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 5"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u1-2",
@@ -33,7 +33,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "easy",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 19"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u1-3",
@@ -47,7 +47,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 25"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u1-4",
@@ -61,7 +61,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 28"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u1-5",
@@ -75,7 +75,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "easy",
     category: "Reading",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 35"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
 
   // --- Unit 2: Imperatives, Deductions & Inventions ---
@@ -91,7 +91,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "hard",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 65"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u2-2",
@@ -105,7 +105,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 56"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u2-3",
@@ -119,7 +119,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "easy",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 46"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
 
   // --- Unit 3: Order of Adjectives, First Conditional & Offers ---
@@ -135,7 +135,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 74"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u3-2",
@@ -149,7 +149,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 83"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u3-3",
@@ -163,7 +163,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "easy",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 93"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
 
   // --- Unit 5: Second Conditional, had better & Regret ---
@@ -179,7 +179,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "easy",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 117"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u5-2",
@@ -193,7 +193,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "hard",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 126"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u5-3",
@@ -207,7 +207,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 114"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
 
   // --- Unit 6: Reported Speech (Statements, Questions & Orders) ---
@@ -223,7 +223,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "hard",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 140"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u6-2",
@@ -237,7 +237,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "easy",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 148"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
 
   // --- Unit 7: Passive Voice, Causatives & Relative Pronouns ---
@@ -253,7 +253,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 153"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u7-2",
@@ -267,7 +267,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 161"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u7-3",
@@ -281,7 +281,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Grammar",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 166"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-u7-4",
@@ -295,7 +295,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "easy",
     category: "Spelling",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 157"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
 
   // --- Literature Spot: Little Women & The Tempest ---
@@ -311,7 +311,7 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Literature",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 199"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   },
   {
     id: "5th-q-lit-2",
@@ -325,6 +325,6 @@ export const FIFTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     difficulty: "medium",
     category: "Literature",
     grade: "fifth-preparatory",
-    sourceReference: "الملزمة ص 207"
+    sourceReference: "سؤال تدريبي إضافي؛ لم يُتحقق من مطابقته الحرفية للملزمة"
   }
 ];
