@@ -270,7 +270,7 @@ export const THIRD_INTERMEDIATE_ESSAYS: EssayItem[] = [
     ]
   },
 
-  // 9. الوحدة الثامنة: حدث بسيط حصل لك (New Year in Erbil)
+  // 9. نشاط كتابة إضافي ضمن قسم الإنشاءات: حدث بسيط (New Year in Erbil)
   {
     id: "3rd-essay-u8-simple-event",
     unitId: 107,
