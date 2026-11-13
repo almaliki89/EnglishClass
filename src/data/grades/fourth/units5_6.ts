@@ -50,7 +50,7 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleEn: 'Lesson 1: Describing Appearance and Personality; -ed / -ing Adjectives',
         category: 'vocabulary',
         summary: 'مفردات وصف الأشخاص مثل bald, wavy hair, slim, well-dressed, lively, sensible, reliable وforgetful، والتمييز بين صفات الشعور -ed وصفات المسبب -ing.',
-        sourcePages: 'الملزمة ص 74 - 81',
+        sourcePages: 'الملزمة ص 74 - 75',
         detailedContent: [
           'تتضمن مفردات الوحدة وصف المظهر الجسدي والشخصية، مثل: bald, dark-complexioned, wavy hair, tall, slim, bright, smart, well-dressed, lively, sensible, foolish, reliable, forgetful.',
           'تُستخدم الصفة المنتهية بـ -ed لوصف شعور الشخص، بينما تُستخدم الصفة المنتهية بـ -ing لوصف الشيء أو الموقف الذي يسبب ذلك الشعور.',
@@ -88,7 +88,7 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleEn: 'Lesson 3: Have / Get Something Done',
         category: 'grammar',
         summary: 'تركيب have أو get مع المفعول به والتصريف الثالث للتعبير عن خدمة يؤديها شخص آخر لنا.',
-        sourcePages: 'الملزمة ص 80 - 83',
+        sourcePages: 'الملزمة ص 80 - 81',
         grammarRuleFormula: 'Subject + have / get + object + past participle.\\nPast: had / got + object + past participle.',
         detailedContent: [
           'يُستخدم التركيب عندما لا ينفذ الفاعل العمل بنفسه، بل يرتب أن يقوم به شخص آخر.',
@@ -106,11 +106,11 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleEn: 'Lesson 4: Wedding Customs and Quantifiers',
         category: 'reading',
         summary: 'قراءة عن اختلاف عادات الزواج بين البلدان وعبر الزمن، مع استعمال ألفاظ الكمية مثل all, both, either, few وsome.',
-        sourcePages: 'الملزمة ص 84 - 96',
+        sourcePages: 'الملزمة ص 82 - 84',
         detailedContent: [
           'توضح القراءة أن مراسم الزواج تختلف من بلد إلى آخر، كما تختلف عما كانت عليه في الماضي، وأن بعض حفلات الزواج كانت تستمر عدة أيام.',
           'تتضمن الوحدة مفردات خاصة بالزفاف وأفراد العائلة، وتمارين فهم حول أسباب تغير مدة الاحتفال.',
-          'تتدرب الوحدة على all وboth وeither وfew وsome ضمن جمل سياقية. مواضع المفردات والتمارين موزعة في صفحات الوحدة.'
+          'تتدرب الوحدة على all وboth وeither وfew وsome ضمن جمل سياقية. مواضع وتأتي تمارين ألفاظ الكمية في صفحات الوحدة نفسها.'
         ],
         examples: [{ en: 'Both Abdulla and Liam start school at 7:00.', ar: 'يبدأ كل من عبد الله وليام المدرسة عند الساعة السابعة.', highlight: 'Both', note: 'both للإشارة إلى اثنين' }],
         exercises: [practice('4u5-ex4', 'I have two friends who can drive, but ______ of them are busy today.', ['both', 'all', 'few', 'some'], 'both', 'نستخدم both مع شخصين أو شيئين', 'ص 84 - 96')]
@@ -141,7 +141,7 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleEn: 'Lesson 6: Lebanese Crafts and Glass-blowing',
         category: 'reading',
         summary: 'قراءة عن التطريز والنقش على النحاس ونفخ الزجاج في لبنان، وتاريخ الزجاج ومهارات الحرفيين وانتقالها داخل العائلة.',
-        sourcePages: 'الملزمة ص 88 - 90',
+        sourcePages: 'الملزمة ص 87 - 90',
         detailedContent: [
           'تذكر القراءة حرفاً لبنانية مثل embroidery وcopper-engraving وglass-blowing.',
           'تذكر أن الزجاج معروف في الشرق الأوسط منذ أكثر من 4,000 سنة، وأن حرفيين سوريين ابتكروا نفخ الزجاج قبل أكثر من 2,100 سنة.',
@@ -173,36 +173,53 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
   {
     id: 46,
     number: 6,
-    titleAr: 'الوحدة السادسة: الصحة والنوم والرياضة والمستقبل',
-    titleEn: 'Unit 6: Health, Sleep, Exercise, Reported Speech and Possibility',
-    description: 'تتناول التغذية الصحية، النوم، الكلام المنقول، الشكاوى الصحية والنصيحة، مفردات الرياضة والبادئات، may/might، كأس العالم، وفوائد التمارين للعقل والجسم.',
+    titleAr: 'الوحدة السادسة: المستقبل والتغذية والنوم والصحة والرياضة',
+    titleEn: 'Unit 6: Future Forms, Nutrition, Sleep, Health and Exercise',
+    description: 'تضم الوحدة المستقبل البسيط، مفردات الغذاء والعناصر الغذائية، النوم، الكلام المنقول، الشكاوى الصحية والنصيحة، التمارين والبادئات، may/might، كأس العالم، وفوائد التمارين للعقل والجسم.',
     accentColor: 'bg-soft-mint text-ink',
     bgGradient: 'bg-blue-mist border-ink',
     sourcePages: 'الملزمة ص 97 - 118',
     academicYear: '2025',
     lessons: [
       makeLesson({
-        id: '4th-u6-l1',
+        id: '4th-u6-l0',
         unitId: 46,
         lessonNumber: 1,
-        titleAr: 'الدرس الأول: التغذية الصحية ومجموعات الطعام',
-        titleEn: 'Lesson 1: Healthy Eating and Food Groups',
-        category: 'reading',
-        summary: 'مفردات الغذاء الصحي ومجموعات الطعام والعناصر التي يحتاجها الجسم للنمو والمحافظة على الصحة.',
-        sourcePages: 'الملزمة ص 97 - 98',
+        titleAr: 'الدرس الأول: المستقبل البسيط',
+        titleEn: 'Lesson 1: Future Simple',
+        category: 'grammar',
+        summary: 'التعبير عن أحداث مستقبلية باستخدام will وwill not مع المصدر المجرد، كما في أمثلة الوحدة عن الحفلات والعمل والزيارات.',
+        sourcePages: 'الملزمة ص 97',
+        grammarRuleFormula: 'Affirmative: Subject + will + base verb.\\nNegative: Subject + will not (won’t) + base verb.\\nQuestion: Will + subject + base verb?',
         detailedContent: [
-          'تقدم بداية الوحدة موضوع الأكل الصحي ومجموعات الغذاء والعناصر الغذائية والسعرات.',
-          'تتدرب على مفردات مرتبطة بالتغذية وعادات الأكل، وتربط بين الطعام والنمو والصحة.'
+          'تبدأ الوحدة بأمثلة وتمارين على المستقبل البسيط، مثل الاعتذار عن عدم الحضور إلى حفلة، وبيان أن شخصاً لن يعمل خلال الأسبوع، وخطط أو أحداث ستقع لاحقاً.',
+          'يأتي الفعل بعد will بصيغته الأساسية دون s أو ed أو ing.'
         ],
-        examples: [{ en: 'Our bodies need different things to grow and be healthy.', ar: 'تحتاج أجسامنا إلى أشياء مختلفة لكي تنمو وتكون بصحة جيدة.', highlight: 'grow and be healthy', note: 'من موضوع التغذية في الوحدة' }],
-        exercises: [practice('4u6-ex1', 'A balanced diet includes different food ______.', ['groups', 'streets', 'machines', 'journeys'], 'groups', 'تعبير مجموعات الطعام هو food groups', 'ص 97 - 98')]
+        examples: [{ en: 'I will not come to your party.', ar: 'لن آتي إلى حفلتك.', highlight: 'will not come', note: 'النفي في المستقبل البسيط' }],
+        exercises: [practice('4u6-ex0', 'Issam ______ this week because he is on holiday.', ['will not work', 'will not working', 'does not worked', 'not will work'], 'will not work', 'بعد will not يأتي الفعل بصيغته الأساسية', 'ص 97')]
+      }),
+      makeLesson({
+        id: '4th-u6-l1',
+        unitId: 46,
+        lessonNumber: 2,
+        titleAr: 'الدرس الثاني: العناصر الغذائية ومجموعات الطعام',
+        titleEn: 'Lesson 2: Nutrients and Food Groups',
+        category: 'vocabulary',
+        summary: 'مفردات العناصر الغذائية التي يحتاجها الجسم، والفيتامينات والمعادن والأطعمة المصنوعة من الحليب.',
+        sourcePages: 'الملزمة ص 98',
+        detailedContent: [
+          'تتضمن الصفحة تعريفات وتمارين عن العناصر التي يحتاجها الجسم ليكون بصحة جيدة، ومنها الفيتامينات التي تسمى بأحرف من الأبجدية.',
+          'تتناول التمارين الكالسيوم اللازم لصحة الأسنان والعظام، والأطعمة المصنوعة من الحليب.'
+        ],
+        examples: [{ en: 'Calcium is needed for healthy teeth and bones.', ar: 'نحتاج إلى الكالسيوم لصحة الأسنان والعظام.', highlight: 'healthy teeth and bones', note: 'مفردات العناصر الغذائية' }],
+        exercises: [practice('4u6-ex1', '______ is needed for healthy teeth and bones.', ['Calcium', 'Petroleum', 'Plastic', 'Oxygen only'], 'Calcium', 'الكالسيوم عنصر يرتبط بصحة الأسنان والعظام في الصفحة', 'ص 98')]
       }),
       makeLesson({
         id: '4th-u6-l2',
         unitId: 46,
-        lessonNumber: 2,
-        titleAr: 'الدرس الثاني: النوم وصحة المراهقين',
-        titleEn: 'Lesson 2: Sleep and Teenagers’ Health',
+        lessonNumber: 3,
+        titleAr: 'الدرس الثالث: النوم وصحة المراهقين',
+        titleEn: 'Lesson 3: Sleep and Teenagers’ Health',
         category: 'reading',
         summary: 'قراءة عن مراحل النوم وأثر النوم في صحة المراهقين ودراستهم، مع معلومة أن المراهقين ينبغي أن يناموا بمعدل ثماني ساعات في الليلة.',
         sourcePages: 'الملزمة ص 99 - 100',
@@ -217,86 +234,102 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
       makeLesson({
         id: '4th-u6-l3',
         unitId: 46,
-        lessonNumber: 3,
-        titleAr: 'الدرس الثالث: الكلام المنقول',
-        titleEn: 'Lesson 3: Reported Speech',
+        lessonNumber: 4,
+        titleAr: 'الدرس الرابع: الكلام المنقول',
+        titleEn: 'Lesson 4: Reported Speech',
         category: 'grammar',
         summary: 'تحويل الجمل والأسئلة من الكلام المباشر إلى الكلام المنقول، مع مراعاة تغير الضمائر والأزمنة وأفعال المساعدة.',
-        sourcePages: 'الملزمة ص 101 - 103',
+        sourcePages: 'الملزمة ص 101 - 104',
         grammarRuleFormula: 'Reported statements and questions: adjust pronouns, time expressions and verb forms to fit the reporting context. For yes/no questions, use if / whether and statement word order.',
         detailedContent: [
-          'تشرح الصفحات تحويل الجمل المنطوقة إلى كلام منقول، بما في ذلك الأسئلة التي تبدأ بأفعال مساعدة.',
-          'عند نقل أسئلة نعم/لا تُستخدم if أو whether، ويكون ترتيب الجملة ترتيباً خبرياً لا ترتيب سؤال مباشر.'
+          'تشرح الصفحات تحويل الضمائر من المتكلم إلى الغائب، وتغيير بعض صيغ الأفعال عند نقل الكلام.',
+          'تتناول الصفحات نقل الأسئلة التي تبدأ بأفعال مساعدة، واستعمال if في أسئلة نعم/لا مع ترتيب خبري.'
         ],
         examples: [{ en: 'My friend asked if I could swim.', ar: 'سألني صديقي إن كنت أستطيع السباحة.', highlight: 'asked if', note: 'سؤال منقول' }],
-        exercises: [practice('4u6-ex3', '“Can you swim?” My neighbour asked ______ I could swim.', ['if', 'what', 'where', 'who'], 'if', 'نستخدم if عند نقل سؤال نعم/لا', 'ص 101 - 103')]
+        exercises: [practice('4u6-ex3', '“Can you swim?” My neighbour asked ______ I could swim.', ['if', 'what', 'where', 'who'], 'if', 'نستخدم if عند نقل سؤال نعم/لا', 'ص 101 - 104')]
       }),
       makeLesson({
         id: '4th-u6-l4',
         unitId: 46,
-        lessonNumber: 4,
-        titleAr: 'الدرس الرابع: المشكلات الصحية وتقديم النصيحة',
-        titleEn: 'Lesson 4: Health Problems and Giving Advice',
+        lessonNumber: 5,
+        titleAr: 'الدرس الخامس: المشكلات الصحية وتقديم النصيحة',
+        titleEn: 'Lesson 5: Health Problems and Giving Advice',
         category: 'grammar',
-        summary: 'التعبير عن النصيحة والاقتراحات باستخدام should / shouldn’t وcould وought to ضمن مواقف صحية.',
-        sourcePages: 'الملزمة ص 104 - 107',
+        summary: 'مفردات الشكاوى الصحية وأسماء الأعراض، والتعبير عن النصيحة والاقتراح باستخدام should / shouldn’t وcould وought to.',
+        sourcePages: 'الملزمة ص 105 - 107',
         grammarRuleFormula: 'Advice: should / should not (shouldn’t) + base verb; ought to + base verb; could + base verb for suggestions.',
         detailedContent: [
-          'تتناول الصفحات مواقف تتعلق بالمشكلات الصحية وكيفية تقديم النصيحة أو الاقتراح.',
-          'تُستخدم should وought to للتعبير عن النصيحة، وshouldn’t للتحذير من فعل غير مناسب، وcould لاقتراح ممكن.'
+          'تعرض الصفحات أسماء حالات صحية وأعراض مثل sore throat وheadache وfever وsprain وsunburn وcut وcough.',
+          'تستخدم الحوارات والتمارين should لتقديم النصيحة، وcould للاقتراح، مع تدريبات حول المواقف الصحية.'
         ],
-        examples: [{ en: 'You should get some rest.', ar: 'ينبغي أن تحصل على قسط من الراحة.', highlight: 'should get', note: 'تقديم نصيحة' }],
-        exercises: [practice('4u6-ex4', 'You have a bad headache. You ______ see a doctor.', ['should', 'shouldn’t', 'might not', 'were'], 'should', 'should مناسبة لتقديم النصيحة', 'ص 104 - 107')]
+        examples: [{ en: 'You should study hard today.', ar: 'ينبغي أن تدرس بجد اليوم.', highlight: 'should study', note: 'صيغة النصيحة في تمرين الوحدة' }],
+        exercises: [practice('4u6-ex4', 'You have a bad headache. You ______ see a doctor.', ['should', 'shouldn’t', 'might not', 'were'], 'should', 'should مناسبة لتقديم النصيحة', 'ص 105 - 107')]
       }),
       makeLesson({
         id: '4th-u6-l5',
         unitId: 46,
-        lessonNumber: 5,
-        titleAr: 'الدرس الخامس: مفردات اللياقة والبادئات may / might',
-        titleEn: 'Lesson 5: Fitness Vocabulary, Prefixes and May / Might',
-        category: 'grammar',
-        summary: 'مفردات مرتبطة بالنشاط البدني، وبعض البادئات، واستعمال may وmight للتعبير عن الاحتمال.',
-        sourcePages: 'الملزمة ص 108 - 111',
-        grammarRuleFormula: 'may / might + base verb. Negative: may not / might not + base verb. Use may and might to express possibility.',
+        lessonNumber: 6,
+        titleAr: 'الدرس السادس: التمارين واللياقة والبادئات',
+        titleEn: 'Lesson 6: Exercise, Fitness and Prefixes',
+        category: 'reading',
+        summary: 'نص عن ممارسة التمارين بانتظام وطرق الحفاظ على اللياقة، مع مفردات وصفات وتمارين على البادئات.',
+        sourcePages: 'الملزمة ص 108 - 109',
         detailedContent: [
-          'تضم الصفحات مفردات الرياضة واللياقة والبادئات im-, de- وre- في أمثلة وتمارين.',
-          'تشرح may وmight للتعبير عن احتمال وقوع حدث، مع صيغ النفي والسؤال.'
+          'توضح القراءة أن المحافظة على اللياقة والصحة تتطلب ممارسة التمارين بانتظام، وتذكر أمثلة مثل الذهاب إلى النادي أو المشي.',
+          'تتضمن الصفحات تمارين مفردات وصفات وتمارين على تكوين الكلمات.'
         ],
-        examples: [{ en: 'We might find a cure for diabetes one day.', ar: 'قد نجد علاجاً لمرض السكري يوماً ما.', highlight: 'might find', note: 'احتمال في المستقبل' }],
-        exercises: [practice('4u6-ex5', 'We ______ find a cure one day.', ['might', 'must to', 'did', 'are'], 'might', 'might يعبر عن احتمال', 'ص 108 - 111')]
+        examples: [{ en: 'If you want to be fit and healthy, you need to take regular exercise.', ar: 'إذا أردت أن تكون لائقاً وبصحة جيدة، فعليك ممارسة التمارين بانتظام.', highlight: 'regular exercise', note: 'بداية نص اللياقة' }],
+        exercises: [practice('4u6-ex5', 'If you want to be fit and healthy, you need to take ______ exercise.', ['regular', 'careless', 'rare', 'false'], 'regular', 'التعبير في النص هو regular exercise', 'ص 108 - 109')]
       }),
       makeLesson({
         id: '4th-u6-l6',
         unitId: 46,
-        lessonNumber: 6,
-        titleAr: 'الدرس السادس: قراءة كأس العالم',
-        titleEn: 'Lesson 6: The FIFA World Cup',
-        category: 'reading',
-        summary: 'قراءة معلوماتية عن بطولة كأس العالم لكرة القدم وتاريخها، مع أسئلة فهم ومفردات.',
-        sourcePages: 'الملزمة ص 112 - 113',
+        lessonNumber: 7,
+        titleAr: 'الدرس السابع: التعبير عن الاحتمال باستخدام may وmight',
+        titleEn: 'Lesson 7: Expressing Possibility with May and Might',
+        category: 'grammar',
+        summary: 'استعمال may وmight مع المصدر المجرد للتعبير عن أحداث محتملة، مع صيغ الإثبات والنفي.',
+        sourcePages: 'الملزمة ص 110 - 111',
+        grammarRuleFormula: 'Subject + may / might + base verb.\\nNegative: Subject + may not / might not + base verb.',
         detailedContent: [
-          'تقدم الصفحات قراءة عن كأس العالم لكرة القدم وبعض المعلومات التاريخية المرتبطة بالبطولة.',
-          'تُدرس هذه المعلومات بوصفها نصاً في الملزمة، ولا تمثل تحديثاً لنتائج أو حقائق رياضية معاصرة.'
+          'تشرح الصفحات أن may وmight تستخدمان للتعبير عن احتمال وقوع حدث في المستقبل.',
+          'تتضمن الأمثلة توقعات عن حياة الناس والصحة والتدخين، وتمارين تحويل الجمل إلى صيغة الاحتمال.'
         ],
-        examples: [{ en: 'The text describes the history of the FIFA World Cup.', ar: 'يعرض النص تاريخ بطولة كأس العالم لكرة القدم.', highlight: 'FIFA World Cup', note: 'عنوان القراءة' }],
-        exercises: [practice('4u6-ex6', 'The FIFA World Cup reading in this unit is a ______ text.', ['reading', 'grammar formula', 'job application', 'poem'], 'reading', 'هذا الدرس قراءة استيعابية', 'ص 112 - 113')]
+        examples: [{ en: 'People might live longer, healthier lives because medicine is improving fast.', ar: 'قد يعيش الناس حياة أطول وأكثر صحة لأن الطب يتطور بسرعة.', highlight: 'might live', note: 'التعبير عن احتمال' }],
+        exercises: [practice('4u6-ex6', 'People ______ live longer, healthier lives in the future.', ['might', 'must to', 'did', 'are'], 'might', 'might يعبر عن احتمال مستقبلي', 'ص 110 - 111')]
       }),
       makeLesson({
         id: '4th-u6-l7',
         unitId: 46,
-        lessonNumber: 7,
-        titleAr: 'الدرس السابع: فوائد الرياضة للعقل والجسم',
-        titleEn: 'Lesson 7: Five Reasons Exercise Is Good for Your Mind',
+        lessonNumber: 8,
+        titleAr: 'الدرس الثامن: قراءة كأس العالم لكرة القدم',
+        titleEn: 'Lesson 8: The FIFA World Cup',
         category: 'reading',
-        summary: 'قراءة عن فوائد التمارين في تقوية العضلات والقلب والمحافظة على الصحة والوزن وبناء العلاقات الاجتماعية.',
+        summary: 'قراءة معلوماتية عن بطولة كأس العالم لكرة القدم وتاريخها والبلدان التي استضافتها.',
+        sourcePages: 'الملزمة ص 112 - 113',
+        detailedContent: [
+          'تقدم الصفحات قراءة عن تاريخ كأس العالم لكرة القدم والبلدان التي استضافت البطولة.',
+          'تتضمن القراءة معلومات مستقبلية كما وردت في طبعة الملزمة، وتُدرس هنا بوصفها نصاً تعليمياً لا تحديثاً للأحداث الرياضية الحالية.'
+        ],
+        examples: [{ en: 'The text describes the history of the FIFA World Cup.', ar: 'يعرض النص تاريخ بطولة كأس العالم لكرة القدم.', highlight: 'FIFA World Cup', note: 'عنوان القراءة' }],
+        exercises: [practice('4u6-ex7', 'The FIFA World Cup reading in this unit is a ______ text.', ['reading', 'grammar formula', 'job application', 'poem'], 'reading', 'هذا الدرس قراءة استيعابية', 'ص 112 - 113')]
+      }),
+      makeLesson({
+        id: '4th-u6-l8',
+        unitId: 46,
+        lessonNumber: 9,
+        titleAr: 'الدرس التاسع: خمسة أسباب تجعل التمارين مفيدة للعقل',
+        titleEn: 'Lesson 9: Five Reasons Exercise Is Good for Your Mind',
+        category: 'reading',
+        summary: 'قراءة عن فوائد التمارين في تخفيف التوتر وتقوية العضلات والمحافظة على صحة الجسم والثقة بالنفس.',
         sourcePages: 'الملزمة ص 114 - 118',
         detailedContent: [
-          'توضح القراءة أن التمارين تبني العضلات وأن قوة العضلات تساعد الشخص على أداء أنشطة الحياة اليومية.',
-          'تتطرق إلى القلب بوصفه عضلة، وإلى أثر النشاط البدني في الصحة العامة والوزن والتواصل الاجتماعي.',
-          'تتضمن الصفحات أسئلة فهم وتمارين مرتبطة بالنص.'
+          'توضح القراءة أن التمارين مفيدة للصحة العامة، كما يمكن أن تكون جيدة للعقل.',
+          'تذكر الصفحات فوائد مثل إرخاء العضلات المتوترة بسبب الضغط النفسي، والمساعدة على النوم والتحكم في الوزن والشعور بالثقة.',
+          'تتضمن الصفحات حوارات وتمارين مراجعة تربط التغذية الجيدة بالنشاط البدني.'
         ],
-        examples: [{ en: 'Exercise builds muscles.', ar: 'تساعد التمارين على بناء العضلات.', highlight: 'builds muscles', note: 'فائدة للتمارين كما وردت في النص' }],
-        exercises: [practice('4u6-ex7', 'Why do you need strong muscles?', ['To do the things you want to do during the day.', 'To avoid sleeping.', 'To stop your heart.', 'To change the weather.'], 'To do the things you want to do during the day.', 'يذكر النص أن العضلات القوية تساعد على القيام بالأنشطة اليومية', 'ص 114 - 118')]
+        examples: [{ en: 'Exercise relaxes muscles that get tense with stress.', ar: 'تساعد التمارين على إرخاء العضلات التي تتوتر بسبب الضغط النفسي.', highlight: 'relaxes muscles', note: 'من فوائد التمارين في النص' }],
+        exercises: [practice('4u6-ex8', 'Exercise relaxes muscles that get tense with ______.', ['stress', 'water', 'travel', 'weather'], 'stress', 'هذا السبب مذكور في قراءة فوائد التمارين', 'ص 114 - 118')]
       })
     ]
   }
