@@ -111,11 +111,18 @@ assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Interna
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Hawksbill Sea Turtle')), 'Unit 7 must include the hawksbill turtle reading after the ISS presentation');
 assert.equal(new Set(fourthUnit7?.lessons.map((lesson) => lesson.id)).size, fourthUnit7?.lessons.length, 'Unit 7 lesson IDs must be unique and must not duplicate content');
 assert.equal(fourthUnit7?.lessons.length, 10, 'Unit 7 must include its ten source-ordered lesson and reading blocks');
-assert.ok(fourthUnit6?.lessons.some((lesson) => lesson.titleEn.includes('Future Simple')), 'Unit 6 must start with Future Simple on source page 97');
+const healthyLunchLesson = fourthUnit6?.lessons.find((lesson) => lesson.titleEn.includes('Healthy Lunch'));
+assert.equal(healthyLunchLesson?.sourcePages, 'الملزمة ص 97', 'Unit 6 must begin with the Healthy Lunch reading on printed page 97');
+assert.ok(healthyLunchLesson?.detailedContent.some((line) => line.includes('الصورة الثانية')), 'Healthy Lunch reading must preserve the source comparison of the two lunches');
+assert.ok(!fourthUnit6?.lessons.some((lesson) => lesson.titleEn.includes('Future Simple')), 'Do not misattribute a Future Simple lesson to Unit 6 page 97; the visible grammar exercise there is Future Continuous revision from Unit 5');
+assert.equal(fourthUnit6?.lessons.find((lesson) => lesson.titleEn.includes('Reported Speech'))?.sourcePages, 'الملزمة ص 100 - 104', 'Reported Speech starts on printed page 100');
 assert.ok(!fourthUnit7?.description.includes('UNESCO'), 'Do not add unsupported UNESCO accreditation claims to the Marshes lesson');
 
 assert.ok(fourthUnit8?.titleEn.includes('Saturn') && fourthUnit8.titleEn.includes('GPS'), 'Unit 8 must reflect the Saturn and GPS source content');
 assert.ok(fourthUnit8?.lessons.some((lesson) => lesson.titleEn.includes('Keeping Fit in Space')), 'Unit 8 must include the space fitness reading');
+assert.equal(fourthUnit8?.sourcePages, 'الملزمة ص 143 - 148', 'Unit 8 starts with the Saturn reading on printed page 143');
+assert.equal(fourthUnit8?.lessons.find((lesson) => lesson.titleEn.includes('Planet Saturn'))?.sourcePages, 'الملزمة ص 143 - 144', 'Saturn reading and questions span printed pages 143-144');
+assert.equal(fourthUnit8?.lessons.find((lesson) => lesson.titleEn.includes('Global Positioning System'))?.sourcePages, 'الملزمة ص 144 - 145', 'GPS reading spans printed pages 144-145');
 assert.ok(!fourthUnit8?.lessons.some((lesson) => /Final Exam|Official|100-Mark/i.test(lesson.titleEn)), 'Unit 8 must not claim an official final exam absent from pages 144-148');
 
 assert.equal(FOURTH_PREPARATORY_ESSAYS.length, 7, 'Fourth preparatory booklet has seven writing models on pages 171-177');
@@ -143,6 +150,8 @@ assert.ok(FOURTH_PREPARATORY_QUESTIONS.every((question) => question.year === 'ت
 assert.ok(FOURTH_PREPARATORY_QUESTIONS.every((question) => question.contentOrigin === 'ai_generated' && question.provenanceVerified === false), 'Fourth-grade generated questions must carry explicit unverified AI provenance');
 const futureContinuousQuestion = FOURTH_PREPARATORY_QUESTIONS.find((question) => question.topic === 'Future Continuous');
 assert.equal(futureContinuousQuestion?.unitId, 45, 'Future Continuous question must be assigned to Unit 5');
+assert.equal(futureContinuousQuestion?.id, '4th-q-u5-2', 'Future Continuous question ID must identify Unit 5 and remain distinct from the Unit 5 to-infinitive question');
+assert.equal(new Set(FOURTH_PREPARATORY_QUESTIONS.map((question) => question.id)).size, FOURTH_PREPARATORY_QUESTIONS.length, 'Fourth-grade generated question IDs must be unique');
 assert.ok(futureContinuousQuestion?.sourceReference?.includes('85'), 'Future Continuous question must reference booklet pages 85-87');
 
 assert.ok(FOURTH_PREPARATORY_MOCK_PAPER.id.includes('training'), 'Fourth-grade practice paper must be clearly identified as training');
