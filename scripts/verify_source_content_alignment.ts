@@ -66,5 +66,6 @@ assert.ok(littleWomen?.historicalContextEn?.includes('more than 50 languages'), 
 assert.ok(tempest?.historicalContextEn?.includes('King James'), 'The Tempest context must reflect the booklet');
 assert.ok(littleWomen.ministerialQA.some((item) => item.id === 'lw-source-ex-12'), 'Little Women final-section vocabulary exercise must be represented');
 assert.ok(tempest.ministerialQA.some((item) => item.id === 'temp-source-ex-4'), 'The Tempest true/false exercise must be represented');
+assert.ok(tempest.ministerialQA.some((item) => item.id === 'temp-source-ex-7'), 'The Tempest old-English vocabulary exercise must be represented');
 
 console.log('Source content alignment passed: 7 third-grade units, Unit 4 readings, 15 fifth-grade written items, 96 unique source verbs, and correctly labeled supplementary assessments.');
