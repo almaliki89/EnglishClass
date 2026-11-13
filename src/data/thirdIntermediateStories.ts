@@ -2,7 +2,7 @@ import { LiteratureItem } from '../types';
 
 /**
  * القصص المقررة (Story Time) لمنهج اللغة الإنكليزية - الصف الثالث المتوسط
- * مأخوذة حرفياً وشاملاً من ملزمة:
+ * ملخصات وأسئلة مراجعة مرتبطة بمواضعها في ملزمة:
  * «النموذجية في اللغة الانكليزية للصف الثالث المتوسط 2025 - الأستاذ عمار غالب»
  */
 export const THIRD_INTERMEDIATE_STORIES: LiteratureItem[] = [
@@ -503,13 +503,13 @@ export const THIRD_INTERMEDIATE_STORIES: LiteratureItem[] = [
     ]
   },
 
-  // 8. الوحدة الثامنة: سيرة حياة علي (Ali's Career)
+  // 7. الوحدة السابعة: سيرة حياة علي (Ali's Career) — نشاط قراءة إضافي ضمن الوحدة السابعة
   {
     id: "3rd-story-ali-career",
     title: "Ali's Career (سيرة حياة علي)",
     titleAr: "سيرة حياة علي • من الإخفاق إلى التفوق في حلم الطب البيطري",
-    author: "Unit Eight: Story",
-    authorAr: "الوحدة الثامنة • نشاطات إضافية (ص 131 - 132)",
+    author: "Unit Seven: Additional Story",
+    authorAr: "الوحدة السابعة • نشاط قراءة إضافي (ص 131 - 132)",
     authorYears: "منهج الثالث المتوسط المعتمد 2025",
     genre: "Personal Transformation",
     genreAr: "قصة إلهام وتحول دراسي",
@@ -559,5 +559,28 @@ export const THIRD_INTERMEDIATE_STORIES: LiteratureItem[] = [
         year: "كتاب الطالب ص 131"
       }
     ]
-  }
+  },
+  {
+    id: "3rd-story-too-few-leopards",
+    title: "Too Few Leopards",
+    titleAr: "النمور الفارسية: أعداد قليلة",
+    author: "Unit Four: Reading",
+    authorAr: "الوحدة الرابعة • قراءة (ص 88)",
+    authorYears: "ملزمة الثالث المتوسط 2025",
+    genre: "Reading Comprehension",
+    genreAr: "قطعة استيعاب وفهم",
+    image: "https://images.unsplash.com/photo-1546182990-dffeafbe841d?q=80&w=1200&auto=format&fit=crop",
+    summaryAr: "يتناول النص تناقص أعداد النمور الفارسية في العراق إلى نحو 25 نمراً عام 2022 بسبب فقدان الموائل والصيد والحرب، وجهود الأخوين العراقيين نباز وبهاز فاروق علي لحمايتها في منطقة جبل بامو.",
+    keyThemes: ["حماية الحيوانات المهددة بالانقراض", "أثر فقدان الموائل والصيد والحرب", "ارتباط النمور الفارسية بالثقافة والهوية العراقية"],
+    characters: [
+      { name: "Nabaz Faruq Ali", nameAr: "نباز فاروق علي", role: "Conservationist", roleAr: "أحد الأخوين الساعيين لحماية النمور", description: "Works with his brother to protect Persian leopards in Iraq." },
+      { name: "Bahaz Faruq Ali", nameAr: "بهاز فاروق علي", role: "Conservationist", roleAr: "أحد الأخوين الساعيين لحماية النمور", description: "Works with his brother to protect Persian leopards in Iraq." }
+    ],
+    ministerialQA: [
+      { question: "Why was there a big decrease in leopard numbers?", questionAr: "لماذا حدث انخفاض كبير في أعداد النمور؟", answer: "Because of the loss of habitat, hunting and war.", answerAr: "بسبب فقدان الموائل والصيد والحرب.", year: "الملزمة ص 88" },
+      { question: "Why do the brothers want to save the leopards?", questionAr: "لماذا يريد الأخوان إنقاذ النمور؟", answer: "Because they are an important part of Iraqi culture and identity.", answerAr: "لأنها جزء مهم من الثقافة والهوية العراقية.", year: "الملزمة ص 88" },
+      { question: "Why can't people hunt leopards?", questionAr: "لماذا لا يستطيع الناس صيد النمور؟", answer: "Because they are endangered and it is against the law to hunt them.", answerAr: "لأنها مهددة بالانقراض وصيدها مخالف للقانون.", year: "الملزمة ص 88" },
+      { question: "Why is Bamo Mountain the perfect place for leopards?", questionAr: "لماذا يعد جبل بامو المكان المثالي للنمور؟", answer: "Because it is remote.", answerAr: "لأنه مكان ناءٍ.", year: "2024 دور أول / الملزمة ص 88" }
+    ]
+  },
 ];

@@ -65,7 +65,7 @@ export interface MinisterialExamQuestion {
   unitId: number;
   topic: string;
   year: string;
-  session: 'دور أول' | 'دور ثاني' | 'دور ثانٍ' | 'دور ثالث' | 'تمهيدي' | 'خارج القطر';
+  session: 'دور أول' | 'دور ثاني' | 'دور ثانٍ' | 'دور ثالث' | 'تمهيدي' | 'خارج القطر' | 'تدريب إضافي';
   questionText: string;
   correctAnswer: string;
   ruleExplanation: string;

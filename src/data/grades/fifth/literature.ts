@@ -1,8 +1,8 @@
 import { LiteratureItem } from '../../../types';
 
 // =========================================================================
-// الأدب المقرّر للصف الخامس الإعدادي - ملزمة الأستاذ عمار غالب 2026
-// Literature Spot (ص 188 - 211)
+// دليل مراجعة مختصر للأدب المقرر في ملزمة الأستاذ عمار غالب 2026؛ ليس تفريغاً كاملاً للنصوص أو جميع تدريبات الصفحات.
+// Literature Spot source range: printed pages 188-211. Keep this as a study guide, not a claim of complete transcription.
 // 1. رواية نساء صغيرات (Little Women) - لويزا ماي ألكوت (ص 188 - 200)
 // 2. مسرحية العاصفة (The Tempest) - وليم شكسبير (ص 201 - 211)
 // =========================================================================
@@ -14,23 +14,20 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
     titleAr: "نساء صغيرات (رواية)",
     author: "Louisa May Alcott",
     authorAr: "لويزا ماي ألكوت",
-    authorYears: "1832 - 1888",
     authorBioEn: [
-      "Louisa May Alcott was an acclaimed American novelist, short story writer, and poet, best known as the author of the novel 'Little Women' published in 1868.",
-      "She was born in Pennsylvania and raised in Boston and Concord, Massachusetts, growing up among prominent intellectuals like Ralph Waldo Emerson and Henry David Thoreau.",
-      "Her family was impoverished, and she worked as a teacher, seamstress, and nurse during the American Civil War before achieving immense literary and financial success with her autobiographical masterpiece."
+      "Louisa May Alcott was an American writer born in Germantown, Pennsylvania, on 29 November 1832. She was the second of four daughters, whose lives inspired Little Women.",
+      "Because her family was poor, she began working at a young age. During the American Civil War she volunteered as a nurse, caught typhoid, and recovered. Her short stories appeared in The Atlantic Monthly, and her later novels helped pay her family's debts.",
+      "She later lost her younger sister to scarlet fever and her oldest sister due to complications during childbirth. She raised her niece, who had the same name. Alcott died in Boston at the age of 55 after suffering from ill health."
     ],
     authorBioAr: [
-      "لويزا ماي ألكوت كاتبة وروائية وشاعرة أمريكية شهيرة، عُرفت عالمياً بتأليف روايتها الخالدة 'نساء صغيرات' المنشورة عام 1868.",
-      "ولدت في ولاية بنسلفانيا ونشأت في بوسطن وكونكورد بين كبار المفكرين الأمريكيين مثل إيمرسون وثورو.",
-      "عاشت عائلتها في فقر مدقع، فعملت معلمة وخياطة وممرضة في الحرب الأهلية الأمريكية قبل أن تحقق مجداً أدبياً واستقلالاً مالياً عبر روايتها التي عكست سيرة حياتها وحياة شقيقاتها."
+      "لويزا ماي ألكوت كاتبة أمريكية ولدت في جيرمانتاون بولاية بنسلفانيا في 29 نوفمبر 1832. كانت الابنة الثانية من أربع بنات، وقد ألهمت حياتهن رواية نساء صغيرات.",
+      "بسبب فقر عائلتها بدأت العمل في سن مبكرة. وخلال الحرب الأهلية الأمريكية تطوعت ممرضة، وأصيبت بالتيفوئيد ثم تعافت. نُشرت قصصها القصيرة في مجلة The Atlantic Monthly، ثم ساعدت رواياتها اللاحقة على سداد ديون عائلتها.",
+      "فقدت شقيقتها الصغرى بسبب الحمى القرمزية وشقيقتها الكبرى بسبب مضاعفات الولادة، ثم تولت تربية ابنة أختها التي حملت الاسم نفسه. توفيت ألكوت في بوسطن عن عمر 55 عاماً بعد معاناة صحية."
     ],
-    authorPrizes: [
-      "Inducted into the National Women's Hall of Fame (1996)",
-      "One of the best-selling works of American literature worldwide"
-    ],
-    genre: "Classic Semi-Autobiographical Coming-of-Age Novel",
-    genreAr: "رواية كلاسيكية شبه ذاتية عن النضج والنشأة الأدبية",
+    historicalContextEn: "Little Women was unusual compared with Alcott's usual work. She preferred short stories for adults and did not enjoy writing for children, but an editor at Roberts Brothers persuaded her to write a book for young girls inspired by her life with her sisters. She wrote it in just over two months and it was first published in two parts. The book became an immediate success, was translated into more than 50 languages, and was adapted for theatre, silent films, television, major films and anime. The booklet also notes the 2019 film adaptation directed by Greta Gerwig.",
+    historicalContextAr: "كانت رواية نساء صغيرات مختلفة عن أعمال ألكوت المعتادة؛ فقد كانت تفضل القصص القصيرة للكبار ولم تكن تستمتع بالكتابة للأطفال، لكن محرراً في دار روبرتس براذرز أقنعها بكتابة كتاب للفتيات مستوحى من حياتها مع شقيقاتها. كتبته في أكثر قليلاً من شهرين ونُشر أولاً في جزأين. حقق نجاحاً فورياً وتُرجم إلى أكثر من 50 لغة، واقتُبس للمسرح والأفلام الصامتة والتلفزيون والأفلام السينمائية والأنمي. وتشير الملزمة أيضاً إلى الفيلم المقتبس عام 2019 بإخراج غريتا غيرويغ.",
+    genre: "Novel",
+    genreAr: "رواية",
     image: "/assets/images/little_women_scene_1794251359174.jpg",
     imageCaptionAr: "الشقيقات الأربع من عائلة مارتش (ميغ، وجو تكتب مسرحياتها، وبيث تعزف البيانو، وإيمي ترسم) في منزلهن الدافئ بنيو إنغلاند.",
     imageCaptionEn: "The four March sisters (Meg, Jo writing her stories, Beth at the piano, and Amy painting) in their warm New England living room.",
@@ -41,8 +38,8 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         captionEn: "The March sisters in their living room: independent Jo writing with passion, Amy painting, and Beth playing music."
       }
     ],
-    summaryAr: "تروي الرواية قصة حياة أربع شقيقات من عائلة مارتش (ميغ، جو، بيث، وإيمي) أثناء غياب والدهن للخدمة كقسيس في الجيش خلال الحرب الأهلية الأمريكية. تناضل الفتيات مع والدتهن الحبيبة (مارمي) ضد الفقر والحرمان بروح ملؤها الكرم والمحبة والإيثار، ويتعلمن دروساً عميقة في التغلب على عيوبهن الشخصية وصنع الفرح من أبسط الأشياء مع جارهن الثري لوري وجده السيد لورنس.",
-    summaryEn: "Little Women chronicles the lives and moral growth of four sisters—Meg, Jo, Beth, and Amy March—living in modest circumstances in New England while their father serves as an army chaplain in the American Civil War. Guided by their affectionate mother (Marmee), the sisters navigate poverty, societal expectations, personal ambitions, and family devotion.",
+    summaryAr: "تروي الرواية قصة حياة أربع شقيقات من عائلة مارتش (ميغ، جو، بيث، وإيمي) أثناء غياب والدهن الذي أُرسل للقتال مع جيش الاتحاد خلال الحرب الأهلية الأمريكية. تناضل الفتيات مع والدتهن الحبيبة (مارمي) ضد الفقر والحرمان بروح ملؤها الكرم والمحبة والإيثار، ويتعلمن دروساً عميقة في التغلب على عيوبهن الشخصية وصنع الفرح من أبسط الأشياء مع جارهن الثري لوري وجده السيد لورنس.",
+    summaryEn: "Little Women chronicles the lives and moral growth of four sisters—Meg, Jo, Beth, and Amy March—living in modest circumstances in New England while their father has been sent to fight for the Union Army during the American Civil War. Guided by their affectionate mother (Marmee), the sisters navigate poverty, societal expectations, personal ambitions, and family devotion.",
     keyThemes: [
       "التضامن الأسري والمحبة في مواجهة الفقر والحرب",
       "استقلالية المرأة وطموحها الإبداعي (شخصية جو مارتش الكاتبة)",
@@ -131,10 +128,10 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         id: "lw-qa-2",
         question: "Where was the March sisters' father during the events of the novel?",
         questionAr: "أين كان والد فتيات عائلة مارتش أثناء أحداث الرواية؟",
-        answer: "He was serving as a chaplain in the Union army during the American Civil War.",
-        answerAr: "كان يخدم كقسيس في جيش الاتحاد خلال الحرب الأهلية الأمريكية.",
+        answer: "He was away serving with the Union Army during the American Civil War.",
+        answerAr: "كان بعيداً يخدم مع جيش الاتحاد خلال الحرب الأهلية الأمريكية.",
         year: "الملزمة ص 191",
-        keyHint: "Chaplain in the American Civil War"
+        keyHint: "Serving with the Union Army during the American Civil War"
       },
       {
         id: "lw-qa-3",
@@ -162,7 +159,133 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         answerAr: "قصت وباعت شعرها الكستنائي الطويل الجميل لصانع شعر مستعار وحصلت على 25 دولاراً لمصاريف سفر والدتها لعلاج والدها.",
         year: "الملزمة ص 199",
         keyHint: "Sold her long hair for $25"
-      }
+      },
+      {
+        id: "lw-source-ex-1",
+        question: "Answer the four Activity Book questions on the Christmas extract: Why might the sisters not see their father for a long time? Why does Mother not want presents? How much money does each sister have? What does Jo suggest?",
+        questionAr: "أجب عن أسئلة مقطع عيد الميلاد الأربعة في كتاب النشاط.",
+        answer: "Their father is far away serving with the Union Army during the Civil War. Mother does not want presents because the winter will be hard and the family should not spend money for pleasure. Each sister has one dollar. Jo suggests that they buy presents for themselves.",
+        answerAr: "والدهن بعيد ويخدم مع جيش الاتحاد في الحرب الأهلية. لا تريد الأم هدايا لأن الشتاء سيكون صعباً ولا ينبغي إنفاق المال على الكماليات. لدى كل أخت دولار واحد. تقترح جو أن يشترين هدايا لأنفسهن.",
+        year: "كتاب النشاط ص 168",
+        keyHint: "Father away with the Union Army; hard winter; one dollar each; buy presents"
+      },
+      {
+        id: "lw-source-ex-2",
+        question: "Why can't Beth practise the piano, and why does Amy think she suffers the most?",
+        questionAr: "لماذا لا تستطيع بيث التدرب على البيانو؟ ولماذا تعتقد إيمي أنها الأكثر معاناة؟",
+        answer: "Beth's hands become rough and tired from washing dishes and doing housework. Amy says that girls at school make fun of her lessons, dresses and appearance, and that her father is not rich.",
+        answerAr: "تصبح يدا بيث خشنتين ومتعبتين بسبب غسل الصحون وأعمال المنزل. وتقول إيمي إن الفتيات في المدرسة يسخرن من دروسها وملابسها ومظهرها، وإن والدها ليس غنياً.",
+        year: "كتاب النشاط ص 168-169",
+        keyHint: "Beth: tired hands from housework; Amy: teased at school"
+      },
+      {
+        id: "lw-source-ex-3",
+        question: "Match each sister with the present she wants.",
+        questionAr: "طابق كل أخت مع الهدية التي تريدها.",
+        answer: "Jo — books; Beth — music; Amy — drawing materials; Meg — pretty things.",
+        answerAr: "جو — الكتب؛ بيث — الموسيقى؛ إيمي — أدوات الرسم؛ ميغ — الأشياء الجميلة.",
+        year: "كتاب النشاط ص 168",
+        keyHint: "Jo/books; Beth/music; Amy/drawing materials; Meg/pretty things"
+      },
+      {
+        id: "lw-source-ex-4",
+        question: "Give the words or phrases from the extract: without saying anything; not necessary, for fun; said loudly; talked about something they were annoyed with; unhappy; opposite of soft; mean; joke about.",
+        questionAr: "استخرج الكلمات والعبارات المطلوبة من مقطع نساء صغيرات.",
+        answer: "silently; for pleasure; cried; complained; upset; rough; unkind; make fun of.",
+        answerAr: "بصمت؛ من أجل المتعة؛ صاحت؛ اشتكت؛ منزعج؛ خشن؛ غير لطيف؛ يسخر من.",
+        year: "كتاب النشاط ص 169",
+        keyHint: "silently; for pleasure; cried; complained; upset; rough; unkind; make fun of"
+      },
+      {
+        id: "lw-source-ex-5",
+        question: "Which sister is a student, does the housework, is a teacher, and keeps an elderly person company?",
+        questionAr: "أي أخت تدرس، وأيهن تقوم بأعمال المنزل، وأيهن معلمة، وأيهن ترافق شخصاً مسناً؟",
+        answer: "Amy is a student; Beth does the housework; Meg is a teacher; Jo keeps an elderly person company.",
+        answerAr: "إيمي طالبة؛ بيث تقوم بأعمال المنزل؛ ميغ معلمة؛ جو ترافق شخصاً مسناً.",
+        year: "كتاب النشاط ص 169",
+        keyHint: "Amy/student; Beth/housework; Meg/teacher; Jo/elderly companion"
+      },
+      {
+        id: "lw-source-ex-6",
+        question: "Why did Jo read Mr Laurence's letter? Why did Mr Laurence give the piano to Beth?",
+        questionAr: "لماذا قرأت جو رسالة السيد لورنس؟ ولماذا أعطى السيد لورنس البيانو لبيث؟",
+        answer: "Jo read the letter to find out what it said before Beth arrived. Mr Laurence gave Beth the piano because he knew how much she loved playing it and wanted to make her happy.",
+        answerAr: "قرأت جو الرسالة لتعرف ما ورد فيها قبل وصول بيث. وأعطى السيد لورنس البيانو لبيث لأنه عرف مدى حبها للعزف وأراد إسعادها.",
+        year: "كتاب النشاط ص 170",
+        keyHint: "Jo read before Beth arrived; the piano was a gift for Beth"
+      },
+      {
+        id: "lw-source-ex-7",
+        question: "Give the seven words or phrases from the Section 2 extract: answered; the part behind (e.g. design or setting); with enthusiasm; without colour; not believing; not modern; thankful.",
+        questionAr: "استخرج مرادفات الكلمات السبعة من مقطع القسم الثاني.",
+        answer: "replied; background; eagerly; pale; incredulous; old-fashioned; grateful.",
+        answerAr: "أجاب؛ الخلفية؛ بحماس؛ شاحب؛ غير مصدق؛ قديم الطراز؛ ممتن.",
+        year: "كتاب النشاط ص 171",
+        keyHint: "replied; background; eagerly; pale; incredulous; old-fashioned; grateful"
+      },
+      {
+        id: "lw-source-ex-8",
+        question: "True or False: Mother never refused Beth's requests because she usually asked for things for others; Meg and Jo helped make the slippers; Amy was going to tell Beth about the piano but Jo stopped her; Beth's sisters had read Mr Laurence's letter before she got home; Mr Laurence cared for his granddaughter's possessions.",
+        questionAr: "حدد الصح والخطأ في عبارات تمرين القسم الثاني.",
+        answer: "True; True; False; True; True; True; True. The slippers were ready soon after Beth began making them; Beth feared Mr Laurence had not liked her gift before his letter arrived.",
+        answerAr: "صح؛ صح؛ صح؛ صح؛ صح. أما العبارة التي تقول إن بيث اعتقدت أن السيد لورنس لم يعجبه إهداؤها فهي خطأ.",
+        year: "كتاب النشاط ص 170",
+        keyHint: "Beth feared that Mr Laurence had not liked the slippers before she received his letter"
+      },
+      {
+        id: "lw-source-ex-9",
+        question: "What have Amy and Laurie come to realize? Why is harvest mentioned at the end of the passage?",
+        questionAr: "إلى ماذا توصلت إيمي ولوري؟ ولماذا ذُكر الحصاد في نهاية المقطع؟",
+        answer: "They understand that beauty, youth, luck and even love cannot prevent pain and loss. The harvest is a metaphor for the loving, patient work of their mother and the good lives her daughters have grown into.",
+        answerAr: "أدركا أن الجمال والشباب والحظ وحتى الحب لا تمنع الألم والفقد. والحصاد استعارة لعمل الأم المحب والصبور وللنتائج الطيبة التي أثمرتها تربيتها لبناتها.",
+        year: "كتاب الطالب ص 132 / كتاب النشاط ص 172",
+        keyHint: "Beauty, youth, luck and love cannot keep pain and loss away; harvest is a metaphor"
+      },
+      {
+        id: "lw-source-ex-10",
+        question: "Complete the six True/False statements about the final section and match Jo, Meg, Amy, Laurie and Mother with their actions.",
+        questionAr: "أكمل الصح والخطأ وطابق الشخصيات مع أفعالها في القسم الأخير.",
+        answer: "True; False; False; True; False; True. Matching: Jo — thinks she was selfish before; Meg — always wanted a family; Amy — wants to make a statue; Laurie — is becoming stronger and more serious; Mother — tells Amy to keep hope for her daughter.",
+        answerAr: "صح؛ خطأ؛ خطأ؛ صح؛ خطأ؛ صح. المطابقة: جو — ترى أنها كانت أنانية سابقاً؛ ميغ — كانت تريد دائماً عائلة؛ إيمي — تريد صنع تمثال؛ لوري — يصبح أقوى وأكثر جدية؛ الأم — تطلب من إيمي ألا تفقد الأمل بابنتها.",
+        year: "كتاب النشاط ص 172",
+        keyHint: "Jo/selfish before; Meg/family; Amy/statue; Laurie/stronger; Mother/hope"
+      },
+      {
+        id: "lw-source-ex-11",
+        question: "Answer the three questions about the final extract: What do the castles refer to? Why does Jo think she can write a better book? Why is Amy making a statue of a baby?",
+        questionAr: "أجب عن أسئلة المقطع الأخير: إلى ماذا تشير القصور؟ ولماذا تعتقد جو أنها ستكتب كتاباً أفضل؟ ولماذا تصنع إيمي تمثال طفل؟",
+        answer: "The castles refer to the sisters' dreams and ambitions. Jo believes her experiences have made her wiser and will help her write a better book. Amy is making a statue of a baby because she wants to preserve the image of her little daughter.",
+        answerAr: "تشير القصور إلى أحلام الأخوات وطموحاتهن. تعتقد جو أن تجاربها جعلتها أكثر حكمة وستساعدها على كتابة كتاب أفضل. وتصنع إيمي تمثالاً لطفل لأنها تريد الاحتفاظ بصورة ابنتها الصغيرة.",
+        year: "كتاب النشاط ص 172",
+        keyHint: "Castles = dreams; Jo's experiences; preserve her daughter's image"
+      },
+      {
+        id: "lw-source-ex-12",
+        question: "Give the six words or phrases from the final extract: with love; a wish to do art; make something happen; darkness; acting without thinking; way.",
+        questionAr: "استخرج الكلمات المطلوبة من المقطع الأخير.",
+        answer: "lovingly; artistic hopes; fulfil/grant; shadow; impulsive; manner.",
+        answerAr: "بمحبة؛ آمال فنية؛ يحقق؛ ظل؛ مندفع دون تفكير؛ طريقة/أسلوب.",
+        year: "كتاب النشاط ص 173",
+        keyHint: "lovingly; artistic hopes; fulfil/grant; shadow; impulsive; manner"
+      },
+      {
+        id: "lw-source-ex-13",
+        question: "Choose the correct answers about Beth's gift: What did she want to give Mr Laurence? Who paid for the material? Who helped her deliver the gift? Why did Beth leave the house on the second day?",
+        questionAr: "اختر الإجابات الصحيحة عن هدية بيث: ماذا أرادت أن تهدي السيد لورنس؟ من دفع ثمن المواد؟ من ساعدها في إيصال الهدية؟ ولماذا خرجت في اليوم الثاني؟",
+        answer: "A pair of slippers; Mother paid for the material; Laurie helped Beth put the slippers on the study table; Beth went out to do something for her mother.",
+        answerAr: "زوج من النعال؛ دفعت الأم ثمن المواد؛ ساعد لوري بيث على وضع النعال على طاولة الدراسة؛ خرجت بيث لتقوم بعمل من أجل أمها.",
+        year: "كتاب النشاط ص 170",
+        keyHint: "slippers; Mother; Laurie; to help her mother"
+      },
+      {
+        id: "lw-source-ex-14",
+        question: "Put the four events from the Christmas extract in the correct order.",
+        questionAr: "رتب الأحداث الأربعة في مقطع عيد الميلاد ترتيباً صحيحاً.",
+        answer: "1) The sisters complain about not having a proper Christmas. 2) They say what they would want to buy. 3) They complain about their jobs. 4) Jo suggests buying themselves presents.",
+        answerAr: "1) تشتكي الأخوات من عدم وجود عيد ميلاد مناسب. 2) يذكرن ما يرغبن في شرائه. 3) يشتكين من أعمالهن. 4) تقترح جو شراء هدايا لأنفسهن.",
+        year: "كتاب النشاط ص 168",
+        keyHint: "3 → 1 → 2 → 4"
+      },
     ]
   },
   {
@@ -171,23 +294,20 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
     titleAr: "العاصفة (مسرحية)",
     author: "William Shakespeare",
     authorAr: "وليم شكسبير",
-    authorYears: "1564 - 1616",
     authorBioEn: [
-      "William Shakespeare was an English playwright, poet, and actor, widely regarded as the greatest dramatist in the English language and the world's pre-eminent poet.",
-      "He was born in Stratford-upon-Avon, Warwickshire, and wrote 'The Tempest' around 1610-1611, regarded as his last solitary play and profound dramatic farewell.",
-      "His works explore universal human themes of power, justice, betrayal, forgiveness, romantic love, and the transience of mortal existence."
+      "William Shakespeare is described in the booklet as one of the greatest playwrights. He wrote famous works including Romeo and Juliet, Hamlet, Macbeth and The Merchant of Venice.",
+      "He was born in Stratford-upon-Avon, in the centre of England. As a young man he worked as an actor before becoming a writer.",
+      "He wrote at least 37 plays, 154 sonnets and two narrative poems. His plays are performed around the world in many languages, and his poetry has been widely translated. The booklet notes that he was born and died on 23 April, 52 years apart."
     ],
     authorBioAr: [
-      "وليم شكسبير كاتب مسرحي وشاعر وممثل إنجليزي، يُعتبر بالإجماع أعظم كاتب مسرحي في تاريخ اللغة الإنكليزية وشاعر العالم الأبرز.",
-      "ولد في بلدة ستراتفورد-أبون-أفون، وكتب مسرحية 'العاصفة' في حدود عام 1610-1611، وتُعتبر آخر مسرحية كتبها منفرداً ووداعه الدرامي والمسرحي العظيم.",
-      "تتناول أعماله قضايا كونية خالدة حول السلطة، والعدالة، والخيانة، والغفران والتسامح، والحب، وزوال الدنيا."
+      "يصف الكتاب وليم شكسبير بأنه من أعظم كتّاب المسرح، ومن أشهر أعماله روميو وجولييت وهاملت وماكبث وتاجر البندقية.",
+      "ولد في ستراتفورد-أبون-أفون وسط إنجلترا، وعمل ممثلاً في شبابه قبل أن يصبح كاتباً.",
+      "كتب ما لا يقل عن 37 مسرحية و154 سونيتة وقصيدتين سرديتين. وتُعرض مسرحياته في أنحاء العالم بلغات عديدة، كما تُرجمت أشعاره على نطاق واسع. وتشير الملزمة إلى أنه ولد وتوفي في 23 أبريل، بفارق 52 عاماً بين التاريخين."
     ],
-    authorPrizes: [
-      "The National Poet of England (The Bard of Avon)",
-      "Universal cornerstone of global world literature"
-    ],
-    genre: "Jacobean Dramatic Romance / Romantic Comedy",
-    genreAr: "مسرحية رومانسية درامية خيالية (العصر اليعقوبي)",
+    historicalContextEn: "The play was first performed for King James and was later performed again to celebrate the marriage of his daughter Elizabeth. Its story takes place in a single day. The booklet describes it as Shakespeare's farewell to the stage and probably the last play he wrote alone. Although considered a comedy, it deals with colonialism, revenge and forgiveness.",
+    historicalContextAr: "عُرضت المسرحية للمرة الأولى أمام الملك جيمس، ثم عُرضت مرة أخرى للاحتفال بزواج ابنته إليزابيث. وتجري أحداثها خلال يوم واحد. وتصفها الملزمة بأنها وداع شكسبير للمسرح، وربما آخر مسرحية كتبها منفرداً. وعلى الرغم من تصنيفها كوميديا، فإنها تتناول الاستعمار والانتقام والغفران.",
+    genre: "Comedy",
+    genreAr: "كوميديا",
     image: "/assets/images/the_tempest_scene_1794251373907.jpg",
     imageCaptionAr: "الساحر بروسبيرو يرفع عصاه على صخور الجزيرة السحرية مستحضراً العاصفة، بجانبه روح الهواء أرييل وابنته الرقيقة ميراندا.",
     imageCaptionEn: "Sorcerer Prospero raising his magical staff on the island cliff summoning the tempest, with spirit Ariel and compassionate Miranda.",
@@ -324,7 +444,70 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         answerAr: "كسر عصاه السحرية ودفنها في باطن الأرض، وأغرق كتاب سحره في أعمق نقطة من مياه البحر ليعود إنساناً وحاكماً عادلاً.",
         year: "الملزمة ص 211",
         keyHint: "Broke his staff and drowned his book in the sea"
-      }
+      },
+      {
+        id: "temp-source-ex-1",
+        question: "What happened to the ship and its crew after Prospero raised the tempest?",
+        questionAr: "ماذا حدث للسفينة وطاقمها بعد أن أثار بروسبيرو العاصفة؟",
+        answer: "The ship and its crew were saved; the passengers were brought safely to shore, and the crew was put under a spell.",
+        answerAr: "أُنقذت السفينة وطاقمها؛ ونُقل الركاب بأمان إلى الشاطئ ووُضع الطاقم تحت تأثير تعويذة.",
+        year: "كتاب الطالب ص 204-205",
+        keyHint: "The ship was saved with its crew; passengers brought to shore"
+      },
+      {
+        id: "temp-source-ex-2",
+        question: "Match the seven characters with their descriptions.",
+        questionAr: "طابق الشخصيات السبع مع أوصافها.",
+        answer: "Prospero — a man with magical powers who wants revenge; Miranda — Prospero's daughter, a princess who does not know it; Antonio — Prospero's brother who betrayed him; Alonso — a powerful king; Ferdinand — the king's son; Caliban — Prospero's slave, treated badly; Ariel — a spirit with great magical powers.",
+        answerAr: "بروسبيرو — رجل يمتلك قوى سحرية ويريد الانتقام؛ ميراندا — ابنة بروسبيرو والأميرة التي لا تعرف ذلك؛ أنطونيو — أخو بروسبيرو الذي خانه؛ ألونسو — ملك قوي؛ فرديناند — ابن الملك؛ كاليبان — عبد بروسبيرو الذي يعامله بقسوة؛ أرييل — روح ذات قوى سحرية عظيمة.",
+        year: "كتاب النشاط ص 174",
+        keyHint: "Prospero/d; Miranda/g; Antonio/a; Alonso/f; Ferdinand/c; Caliban/b; Ariel/e"
+      },
+      {
+        id: "temp-source-ex-3",
+        question: "Answer the six multiple-choice questions about Caliban: Who is Sycorax? Why does Caliban think he owns the island? How was the relationship at first? What did Caliban teach Prospero? What did Prospero teach Caliban? Where does Caliban live?",
+        questionAr: "أجب عن أسئلة الاختيار الستة حول كاليبان.",
+        answer: "Sycorax is Caliban's mother; Caliban thinks he owns the island because he was there first; their relationship was initially friendly; Caliban showed Prospero the island and where things were; Prospero taught Caliban to speak English; Caliban lives in a cave.",
+        answerAr: "سيكوراكس هي أم كاليبان؛ يعتقد كاليبان أن الجزيرة ملكه لأنه كان فيها أولاً؛ كانت العلاقة ودية في البداية؛ دلّ كاليبان بروسبيرو على الجزيرة وأماكن الأشياء فيها؛ علّم بروسبيرو كاليبان التحدث بالإنجليزية؛ ويعيش كاليبان في كهف.",
+        year: "كتاب النشاط ص 176",
+        keyHint: "Caliban's mother; first inhabitant; initially friendly; showed the island; English; cave"
+      },
+      {
+        id: "temp-source-ex-4",
+        question: "Mark the eight statements about Caliban and Prospero True or False.",
+        questionAr: "حدد الصح والخطأ في العبارات الثماني عن كاليبان وبروسبيرو.",
+        answer: "1 True; 2 False; 3 True; 4 True; 5 False; 6 True; 7 True; 8 False.",
+        answerAr: "1 صح؛ 2 خطأ؛ 3 صح؛ 4 صح؛ 5 خطأ؛ 6 صح؛ 7 صح؛ 8 خطأ.",
+        year: "كتاب النشاط ص 176",
+        keyHint: "Caliban accuses Prospero of stealing the island; English only lets him curse"
+      },
+      {
+        id: "temp-source-ex-5",
+        question: "What is the central point of Prospero's final speech?",
+        questionAr: "ما الفكرة الأساسية في خطاب بروسبيرو الأخير؟",
+        answer: "Prospero says his magical powers are gone and asks the audience to release him through their applause and forgiveness, so he can return to Naples.",
+        answerAr: "يقول بروسبيرو إن قواه السحرية انتهت ويطلب من الجمهور أن يحرره بالتصفيق والعفو حتى يتمكن من العودة إلى نابولي.",
+        year: "كتاب الطالب ص 211",
+        keyHint: "His spells are gone; he asks the audience to set him free"
+      },
+      {
+        id: "temp-source-ex-6",
+        question: "Why can Prospero and Caliban's relationship be compared to colonialism?",
+        questionAr: "لماذا يمكن مقارنة علاقة بروسبيرو وكاليبان بالاستعمار؟",
+        answer: "Prospero takes control of the island and treats Caliban as a slave, while Caliban believes the island belongs to him because he was there first. This reflects colonizers taking control of the land of its original inhabitants.",
+        answerAr: "يسيطر بروسبيرو على الجزيرة ويعامل كاليبان كعبد، بينما يعتقد كاليبان أن الجزيرة ملكه لأنه كان فيها أولاً. وهذا يشبه سيطرة المستعمرين على أرض السكان الأصليين.",
+        year: "كتاب الطالب ص 205",
+        keyHint: "Prospero takes the island; Caliban is its original inhabitant"
+      },
+      {
+        id: "temp-source-ex-7",
+        question: "Complete the Activity Book vocabulary exercise: find the old-English words or phrases meaning taken, in it, didn't, your, were, had and would.",
+        questionAr: "أكمل تمرين المفردات في كتاب النشاط: استخرج من النص الإنكليزي القديم الكلمات أو العبارات التي تعني taken وin it وdidn't وyour وwere وhad وwould.",
+        answer: "The source pages include this vocabulary exercise but do not provide a printed answer key for the seven items. Keep it as a learner exercise rather than inserting an unverified answer list.",
+        answerAr: "تتضمن صفحات المصدر هذا التمرين، لكنها لا تعرض مفتاح إجابة مطبوعاً للعناصر السبعة. لذلك يُحفظ بوصفه تمريناً للطالب ولا تُضاف إليه إجابات غير متحققة.",
+        year: "كتاب النشاط ص 177",
+        keyHint: "Old English vocabulary — source exercise; no printed key in the referenced page"
+      },
     ]
   }
 ];

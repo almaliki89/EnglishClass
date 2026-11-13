@@ -798,6 +798,169 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
     ]
   },
   {
+    id: 104,
+    number: 4,
+    titleAr: "الوحدة الرابعة: قصة إبراهيم وقطعة النمور الفارسية",
+    titleEn: "Unit 4: Ibrahim's Life Story & Too Few Leopards",
+    description: "محتوى الوحدة الرابعة كما ورد في الملزمة: مفردات الأضداد، ترتيب الأسئلة، صيغ to go / go / going، الماضي البسيط، الضمائر وصفات الملكية، الشرطية الأولى، إعادة الصياغة والمبني للمجهول، قصة إبراهيم وقطعة Too Few Leopards.",
+    accentColor: "bg-cobalt text-surface",
+    bgGradient: "bg-blue-mist border-ink",
+    sourcePages: "82-88",
+    academicYear: "2025",
+    lessons: [
+      {
+        id: "3rd-u4-l1",
+        unitId: 104,
+        lessonNumber: 1,
+        titleAr: "مراجعة المفردات والتراكيب",
+        titleEn: "Vocabulary, Word Order & Verb Forms",
+        category: "vocabulary",
+        summary: "تمارين الملزمة على الأضداد، ترتيب الأسئلة، to go / go / going، والماضي البسيط والضمائر.",
+        sourcePages: "82-83",
+        detailedContent: [
+          "Opposites: fast/slow, awful/fantastic, expensive/cheap, ugly/beautiful, dangerous/safe, noisy/quiet, sad/happy, young/old, bright/dark, lazy/hard-working.",
+          "Question order: What colour is his hair? / Where does he live? / What does he wear? / Can he play football well? / Is he good at maths and science?",
+          "Choose the correct form: I'd love to go; I'd rather go; How about going; Let's go.",
+          "Past simple forms in the source exercise: want/wanted, is/was, say/said, arrive/arrived, laugh/laughed, land/landed, send/sent, lose/lost, fly/flew, set/set, get/got, put/put.",
+          "Complete sentences with the correct pronoun or possessive adjective, then choose the correct word in first conditional sentences."
+        ],
+        teacherNotes: ["المحتوى أعلاه من تمارين كتاب النشاط التي أوردتها الملزمة في الصفحات 82-84، وليس قاعدة إضافية من خارج المصدر."],
+        commonMistakes: [],
+        examples: [
+          { en: "I'd love to go to summer school this year.", ar: "أود الذهاب إلى المدرسة الصيفية هذا العام.", highlight: "to go" },
+          { en: "I'd rather go to the library.", ar: "أفضل الذهاب إلى المكتبة.", highlight: "go" },
+          { en: "How about going fishing?", ar: "ما رأيك بالذهاب للصيد؟", highlight: "going" }
+        ],
+        exercises: [
+          { id: "3u4-l1-ex1", question: "I'd love (go / to go / going) to summer school this year.", options: ["go", "to go", "going"], correctAnswer: "to go", explanation: "الإجابة وفق تمرين الملزمة.", type: "mcq", sourcePages: "83" },
+          { id: "3u4-l1-ex2", question: "I'd rather (go / to go / going) to the library.", options: ["go", "to go", "going"], correctAnswer: "go", explanation: "الإجابة وفق تمرين الملزمة.", type: "mcq", sourcePages: "83" },
+          { id: "3u4-l1-ex3", question: "How about (go / to go / going) fishing?", options: ["go", "to go", "going"], correctAnswer: "going", explanation: "الإجابة وفق تمرين الملزمة.", type: "mcq", sourcePages: "83" },
+          { id: "3u4-l1-ex4", question: "OK. Let's (go / to go / going) fishing.", options: ["go", "to go", "going"], correctAnswer: "go", explanation: "الإجابة وفق تمرين الملزمة.", type: "mcq", sourcePages: "83" },
+          { id: "3u4-l1-ex5", question: "Complete: If you (eat / will eat) too many sweets, you will feel ill.", options: ["eat", "will eat"], correctAnswer: "eat", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" },
+
+          { id: "3u4-l1-ex6", question: "Match the ten opposite pairs listed on page 82.", correctAnswer: "fast–slow; awful–fantastic; expensive–cheap; ugly–beautiful; dangerous–safe; noisy–quiet; sad–happy; young–old; bright–dark; lazy–hard-working.", explanation: "الأزواج كما وردت في جدول الأضداد.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex7", question: "Re-order: his / colour / What / ? / is / hair", correctAnswer: "What colour is his hair?", explanation: "ترتيب السؤال كما ورد في تمرين الملزمة.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex8", question: "Re-order: he / does / ? / Where / live", correctAnswer: "Where does he live?", explanation: "ترتيب السؤال كما ورد في تمرين الملزمة.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex9", question: "Re-order: does / wear / What / he / ?", correctAnswer: "What does he wear?", explanation: "ترتيب السؤال كما ورد في تمرين الملزمة.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex10", question: "Re-order: ? / football / play / well / he / Can", correctAnswer: "Can he play football well?", explanation: "ترتيب السؤال كما ورد في تمرين الملزمة.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex11", question: "Re-order: he / ? / Is / science / good / at / and / maths", correctAnswer: "Is he good at maths and science?", explanation: "ترتيب السؤال كما ورد في تمرين الملزمة.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex12", question: "Write these verbs in the past simple: want, is, say, arrive, laugh, land, send, lose, fly, set, get, put.", correctAnswer: "wanted; was; said; arrived; laughed; landed; sent; lost; flew; set; got; put.", explanation: "التصريفات كما وردت في تمرين الملزمة.", type: "fill", sourcePages: "83" },
+          { id: "3u4-l1-ex13", question: "Complete the five sentences in the pronoun / possessive adjective exercise on page 83.", correctAnswer: "mine; his; your; us; her.", explanation: "الكلمات المستهدفة في الجمل الخمس كما تظهر في نص التمرين.", type: "fill", sourcePages: "83" }
+
+        ]
+      },
+      {
+        id: "3rd-u4-l2",
+        unitId: 104,
+        lessonNumber: 2,
+        titleAr: "إعادة الصياغة والشرطية والمبني للمجهول",
+        titleEn: "First Conditional & Sentence Transformation",
+        category: "grammar",
+        summary: "تمارين الشرطية الأولى وإعادة صياغة الجمل بالمقارنة والمبني للمجهول وصيغة السؤال المبني للمجهول.",
+        sourcePages: "84",
+        grammarRuleFormula: "First conditional exercises: If + present simple, will + base verb.\nThe source also asks students to rewrite equivalent sentences, comparative sentences, passive voice, and passive questions.",
+        detailedContent: [
+          "The workbook exercise asks students to select the correct first-conditional form.",
+          "Rewrite equivalent statements: There would be more insects if there were no spiders. / There are more birds than before. / A rat is bigger than a mouse.",
+          "Passive transformations in the source: Small animals and birds are eaten by falcons. / Where can wild flamingos be found?"
+        ],
+        teacherNotes: ["حافظ على صياغة أسئلة الملزمة؛ لا تُحوّل هذه التمارين إلى قواعد أخرى غير واردة في الصفحات المشار إليها."],
+        commonMistakes: [],
+        examples: [
+          { en: "Falcons eat small animals and birds. → Small animals and birds are eaten by falcons.", ar: "تأكل الصقور الحيوانات الصغيرة والطيور ← تُؤكل الحيوانات الصغيرة والطيور بواسطة الصقور.", highlight: "are eaten" }
+        ],
+        exercises: [
+          { id: "3u4-l2-ex1", question: "You (won't do well / don't do well) on your test if you don't study.", options: ["won't do well", "don't do well"], correctAnswer: "won't do well", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" },
+          { id: "3u4-l2-ex2", question: "If I bake a cake, (will you / do you) have some?", options: ["will you", "do you"], correctAnswer: "will you", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" },
+          { id: "3u4-l2-ex3", question: "Your sister will miss the bus if she (won't / doesn't) get up soon.", options: ["won't", "doesn't"], correctAnswer: "doesn't", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" },
+          { id: "3u4-l2-ex4", question: "Rewrite in the passive: Falcons eat small animals and birds.", correctAnswer: "Small animals and birds are eaten by falcons.", explanation: "الإجابة كما وردت في تمرين إعادة الصياغة.", type: "fill", sourcePages: "84" },
+          { id: "3u4-l2-ex5", question: "Rewrite in the passive: Where can you find wild flamingos?", correctAnswer: "Where can wild flamingos be found?", explanation: "الإجابة كما وردت في تمرين إعادة الصياغة.", type: "fill", sourcePages: "84" },
+
+          { id: "3u4-l2-ex6", question: "Rewrite: There would be more insects if there were no spiders.", correctAnswer: "If there were no spiders, there would be more insects.", explanation: "إعادة صياغة الجملة كما وردت في الملزمة.", type: "fill", sourcePages: "84" },
+          { id: "3u4-l2-ex7", question: "Rewrite: The number of birds has gone up.", correctAnswer: "There are more birds than before.", explanation: "إعادة صياغة الجملة كما وردت في الملزمة.", type: "fill", sourcePages: "84" },
+          { id: "3u4-l2-ex8", question: "Rewrite: A mouse is not as big as a rat.", correctAnswer: "A rat is bigger than a mouse.", explanation: "إعادة صياغة الجملة كما وردت في الملزمة.", type: "fill", sourcePages: "84" }
+
+        ]
+      },
+      {
+        id: "3rd-u4-l3",
+        unitId: 104,
+        lessonNumber: 3,
+        titleAr: "قصة حياة إبراهيم",
+        titleEn: "Ibrahim's Life Story",
+        category: "reading",
+        summary: "قصة إبراهيم الذي نشأ في قرية جنوب العراق، اهتم بالحيوانات، انتقل إلى بغداد عام 1990، تعلم الفرنسية من بيير، ودرس علم الحيوان في جامعة القاهرة.",
+        sourcePages: "85-87",
+        detailedContent: [
+          "Ibrahim lived in a small village in the south of Iraq when he was a child. He loved the sea and he often went fishing with his father. From an early age, he was interested in animals. He was forever asking questions about animals, for example, 'Why do flies have wings?' and 'Why do fish live in the sea?'",
+          "His father had goats and chickens and Ibrahim liked to look after them. He talked to them as if they were friends. His brothers used to laugh at him.",
+          "When he went to school, Ibrahim learned to read quickly. He liked reading and he was always asking his father for books. He did not like television, so he spent a lot of time reading. He learnt that there were lots of different animals in other countries.",
+          "In 1990, Ibrahim's father got a new job with Iraq Petroleum and the family moved to Baghdad. Life was very different in the city. At first, Ibrahim did not like it, but after a few months, he found that there was a lot to do for a 16-year-old boy.",
+          "One day, at the mall, he met a French boy called Pierre. Ibrahim learned to speak some French with him. He also learned about France. The boys used to talk about what they wanted to do when they left school. One day, Ibrahim said 'I think I'll be a zoologist. Then I can study animals in different countries.'",
+          "When Ibrahim left school, he studied zoology at Cairo University. Now he is a well-known zoologist. He works in France and he is writing a book about animals in Africa."
+        ],
+        teacherNotes: ["العمر المذكور في النص عند الانتقال إلى بغداد هو 16 عاماً، وليس 17 عاماً."],
+        commonMistakes: ["الخلط بين وقت اهتمام إبراهيم بالحيوانات: منذ سن مبكرة، وليس بعد دخوله المدرسة."],
+        examples: [
+          { en: "He studied zoology at Cairo University.", ar: "درس علم الحيوان في جامعة القاهرة.", highlight: "Cairo University" }
+        ],
+        exercises: [
+          { id: "3u4-l3-ex1", question: "Where was Ibrahim's village?", correctAnswer: "It was in the south of Iraq.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex2", question: "What did he look after for his father?", correctAnswer: "He looked after his father's goats and chickens.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex3", question: "Why did Ibrahim ask lots of questions?", correctAnswer: "Because he was interested in animals.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex4", question: "Why did Ibrahim ask his father for books?", correctAnswer: "Because he liked reading.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex5", question: "Why did Ibrahim move to Baghdad?", correctAnswer: "Because his father got a new job there with Iraq Petroleum.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex6", question: "What did he learn from Pierre?", correctAnswer: "He learnt to speak French and he learnt about France.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex7", question: "Why did Ibrahim want to be a zoologist?", correctAnswer: "So that he could study animals in different countries.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex8", question: "Where is Ibrahim writing his book?", correctAnswer: "He is writing his book in France.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+
+          { id: "3u4-l3-ex9", question: "True or False: Ibrahim was not interested in animals until he went to school.", options: ["True", "False"], correctAnswer: "False", explanation: "كان مهتماً بالحيوانات منذ سن مبكرة.", type: "mcq", sourcePages: "86-87" },
+          { id: "3u4-l3-ex10", question: "True or False: He found out about animals from television.", options: ["True", "False"], correctAnswer: "False", explanation: "لم يكن يحب التلفزيون وكان يقضي وقتاً في القراءة.", type: "mcq", sourcePages: "86-87" },
+          { id: "3u4-l3-ex11", question: "True or False: He moved to Baghdad when he was 17.", options: ["True", "False"], correctAnswer: "False", explanation: "النص يذكر أنه كان في السادسة عشرة.", type: "mcq", sourcePages: "86-87" },
+          { id: "3u4-l3-ex12", question: "True or False: Pierre helped Ibrahim learn French.", options: ["True", "False"], correctAnswer: "True", explanation: "تعلم إبراهيم التحدث ببعض الفرنسية مع بيير.", type: "mcq", sourcePages: "86-87" },
+          { id: "3u4-l3-ex13", question: "True or False: Ibrahim wrote a book at university.", options: ["True", "False"], correctAnswer: "False", explanation: "النص يقول إنه يعمل في فرنسا ويكتب كتاباً عن حيوانات أفريقيا.", type: "mcq", sourcePages: "86-87" },
+          { id: "3u4-l3-ex14", question: "True or False: From an early age, Ibrahim was interested in animals.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق لما ورد في أسئلة الملزمة الوزارية.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex15", question: "True or False: Ibrahim lived in a small village in the south of Iraq when he was a child.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق للنص.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex16", question: "True or False: Ibrahim moved to Baghdad when he was 17.", options: ["True", "False"], correctAnswer: "False", explanation: "كان عمره 16 عاماً.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex17", question: "True or False: When Ibrahim left school, he studied zoology at Cairo University.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق للنص.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex18", question: "True or False: Ibrahim was not interested in animals before he went to school.", options: ["True", "False"], correctAnswer: "False", explanation: "كان مهتماً بها منذ سن مبكرة.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex19", question: "True or False: Ibrahim was interested in animals from an early age.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق للنص.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex20", question: "True or False: Ibrahim's small village was in the south of Iraq when he was a child.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق للنص.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex21", question: "True or False: Pierre helped Ibrahim to speak some French with him.", options: ["True", "False"], correctAnswer: "True", explanation: "تعلم إبراهيم التحدث ببعض الفرنسية مع بيير.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex22", question: "True or False: Pierre helped Ibrahim learn French.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق للنص.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex23", question: "What did Ibrahim look after for his father?", correctAnswer: "Goats and chickens.", explanation: "الإجابة الواردة في سؤال الوزاريات.", type: "fill", sourcePages: "87" }
+
+        ]
+      },
+      {
+        id: "3rd-u4-l4",
+        unitId: 104,
+        lessonNumber: 4,
+        titleAr: "النمور الفارسية: أعداد قليلة",
+        titleEn: "Too Few Leopards",
+        category: "reading",
+        summary: "نص عن تناقص أعداد النمور الفارسية في العراق، أسباب التراجع، وجهود الأخوين نباز وبهاز فاروق علي لحمايتها.",
+        sourcePages: "88",
+        detailedContent: [
+          "There used to be many Persian Leopards living in Iraq. However, in 2022, there were only about 25 leopards left in the country. Today, conservationists are increasing efforts to protect the remaining leopards. The loss of habitat, hunting and war has caused a big decrease in leopard numbers.",
+          "The leopards are endangered, and it is against the law to hunt them. People do not hunt the leopards, but they do hunt wild goats for food. Unfortunately, this is removing the natural food of the leopards.",
+          "Two Iraqi brothers, Nabaz and Bahaz Faruq Ali, want to save the leopards. They believe that the leopards are an important part of Iraqi culture and identity. They are determined to save the leopards, and they have successfully taken photos of the leopards in the Bamo mountain area. Bamo mountain is remote, so the brothers believe it is the perfect place for the leopards to breed and increase their numbers."
+        ],
+        teacherNotes: ["يذكر النص أن العدد المتبقي كان نحو 25 نمراً في عام 2022."],
+        commonMistakes: [],
+        examples: [
+          { en: "The leopards are endangered.", ar: "النمور مهددة بالانقراض.", highlight: "endangered" }
+        ],
+        exercises: [
+          { id: "3u4-l4-ex1", question: "Why was there a big decrease in numbers?", correctAnswer: "Because of the loss of habitat, hunting and war.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "88" },
+          { id: "3u4-l4-ex2", question: "Why do the brothers want to save the leopards?", correctAnswer: "Because they are an important part of Iraqi culture and identity.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "88" },
+          { id: "3u4-l4-ex3", question: "Why can't people hunt leopards?", correctAnswer: "Because they are endangered and it is against the law to hunt them.", explanation: "ورد السببان في إجابة الملزمة.", type: "fill", sourcePages: "88" },
+          { id: "3u4-l4-ex4", question: "Why is Bamo Mountain the perfect place for leopards?", correctAnswer: "Because it is remote.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "88" }
+        ]
+      }
+    ]
+  },
+  {
     id: 105,
     number: 5,
     titleAr: "الوحدة الخامسة: الإعلام وأخبار الصباح والماضي والمستقبل",
@@ -1341,6 +1504,95 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
             ministerialYear: "وزاري 2021 تمهيدي"
           }
         ]
+      },
+      {
+        id: "3rd-u7-app-vocabulary",
+        unitId: 107,
+        lessonNumber: 5,
+        titleAr: "ملحق نهاية الملزمة: بنك المفردات والتعاريف",
+        titleEn: "Booklet Appendix: Vocabulary & Definitions Bank",
+        category: "vocabulary",
+        summary: "ملحق المفردات في الصفحات 144-167: التعاريف، إكمال الفراغات، الاختيارات، ومفتاح الإجابة في الصفحات 156-167. هذا ملحق عام بعد الوحدات وليس وحدة ثامنة.",
+        sourcePages: "144-167",
+        detailedContent: [
+          "هذا ملحق عام في نهاية الملزمة، ولا يغيّر عدد الوحدات الرسمية البالغ سبع وحدات.",
+          "مفردات المصدر تشمل: airbags, wages, spectacles, look after, hunt, naughty, hobby, falcon, sports, adverts, toothbrush, crops, engine, adults, comedy, refinery, advertisement, exports, weather forecast, quiz show, predator, queue, flat, top, deserts, patience, ancient, talk show, interested, actress, patients, fishing, hard-working, gum, species, grow, regulate, author, reporter, episode, population, transport, survivor, vet, lawyer, cooking, scored, documentary, fuel, keep cool, poet, cartoons, narrow, character, healthy, brush, fawn, praised, equipment, zoology, concert, pilot, drawing, GPS, raise, facilities, awful, houbara, firefighter, fantastic, translated, dangerous, lightning, astronauts, sand viper, saving up, underground, officer, imaginative, clumsy, queuing, next to, profit, review, connection, definitely.",
+          "الصفحات 156-167 هي مفتاح إجابة تمارين المفردات المقابلة للصفحات 144-155. حافظ على ترتيب الإجابات في كل مجموعة ولا تخلط إجابات المجموعات المتشابهة."
+        ],
+        teacherNotes: ["المرجع هو ملحق المفردات في الملزمة نفسها؛ لا تنسب كلمات إضافية إلى هذا الملحق ما لم ترد فيه."],
+        commonMistakes: ["الخلط بين advert وadvertisement، وبين weather وweather forecast، وبين look for وlook after.", "الخلط بين careful وcarefully.", "الخلط بين interested in وinteresting."],
+        examples: [
+          { en: "A mechanic repairs cars.", ar: "الميكانيكي يصلح السيارات.", highlight: "mechanic" },
+          { en: "A falcon is a bird of prey.", ar: "الصقر طائر جارح.", highlight: "falcon" },
+          { en: "The wages in some jobs are not very high.", ar: "الأجور في بعض الوظائف ليست مرتفعة جداً.", highlight: "wages" }
+        ],
+        exercises: [
+          { id: "3u7-app-v1", question: "Complete using: (look after, wages, airbags, hunt, careful, naughty, spectacles). 1. Cars have ____ so people can be safe in a crash. 2. The ____ in some jobs are not very high. 3. I need ____ to see clearly. 4. I have to ____ my sick mother. 5. Owls ____ small animals at night. 6. My brother is very ____.", correctAnswer: "1 airbags; 2 wages; 3 spectacles; 4 look after; 5 hunt; 6 naughty. 'careful' is the extra word.", explanation: "مفتاح الإجابة في الملزمة ص 156.", type: "fill", sourcePages: "144, 156" },
+          { id: "3u7-app-v2", question: "Give the words for these definitions: something you do in your spare time; the fastest bird in the world; activities like running and swimming; words and pictures to help sell things; a thing used to clean teeth; rice and wheat.", correctAnswer: "hobby; falcon; sports; adverts; toothbrush; crops.", explanation: "مفتاح الإجابة في الملزمة ص 156.", type: "fill", sourcePages: "144, 156" },
+          { id: "3u7-app-v3", question: "Give the words for these definitions: it makes cars, boats and planes move; people who are not children; a funny book, film or play; a factory for changing sugar or oil from its natural state.", correctAnswer: "an engine; adults; comedy; refinery.", explanation: "مفتاح الإجابة في الملزمة ص 156.", type: "fill", sourcePages: "144, 156" },
+          { id: "3u7-app-v4", question: "Choose the correct words: The panther is (quite / really) fast. Cars have GPS so that you (can't / can) be lost. A bat can (fly / bite). I am too (strong / weak) to carry the box. A (pilot / mechanic) repairs cars. Drive (careful / carefully).", correctAnswer: "really; can't; fly; weak; mechanic; carefully.", explanation: "مفتاح الإجابة في الملزمة ص 156.", type: "fill", sourcePages: "144, 156" },
+          { id: "3u7-app-v5", question: "Give the words for these definitions: words and pictures to help sell things; things a country produces and sells to other countries; information about sun, rain and temperature; a question-and-answer programme; a bird that hunts other birds; three or more people waiting in a line.", correctAnswer: "advertisement; exports; weather forecast; quiz show; predator; queue.", explanation: "مفتاح الإجابة في الملزمة ص 156.", type: "fill", sourcePages: "144, 156" },
+          { id: "3u7-app-v6", question: "Complete using: (patience, deserts, of, careful, look after, flat, top). 1. Holland is very ____, so people often ride bicycles. 2. Football is the ____ sport in many countries. 3. Falconers arrive in the ____ and valleys of Muthanna. 4. Ali has a lot of ____ with young children. 5. Sarah has to ____ her sick mother. 6. Rafal is afraid ____ dogs.", correctAnswer: "flat; top; deserts; patience; look after; of. 'careful' is the extra word.", explanation: "مفتاح الإجابة في الملزمة ص 157.", type: "fill", sourcePages: "145, 157" },
+          { id: "3u7-app-v7", question: "Choose the correct words: My house is (next to / over) the park. If you get a better job, you can (pay / earn) more money. Ibrahim was (interesting / interested) in animals. Lucy is an (actor / actress). Nurses look after (patients / doctors). My favourite team (won / lost).", correctAnswer: "next to; earn; interested; actress; patients; won.", explanation: "مفتاح الإجابة في الملزمة ص 157.", type: "fill", sourcePages: "145, 157" },
+          { id: "3u7-app-v8", question: "Complete using: (grow, regulate, species, hard-working, gum, look after). 1. Elephants ____ very big, but it takes many years. 2. The Caliph needed Ibn Al-Haitham to ____ the flooding of the Nile. 3. Forty ____ of birds can be found in the marshlands. 4. My brother is very ____. 5. Sudan is the world's main producer of ____ Arabic. 6. Nurses ____ the patients.", correctAnswer: "grow; regulate; species; hard-working; gum; look after.", explanation: "مفتاح الإجابة في الملزمة ص 157.", type: "fill", sourcePages: "145, 157" },
+          { id: "3u7-app-v9", question: "Give the words for these definitions: the fastest bird in the world; a question-and-answer programme; another word for a writer; someone who writes about events for a newspaper; a factory for changing sugar or oil; it makes cars, boats and planes move.", correctAnswer: "falcon; quiz show; author; reporter; refinery; engine.", explanation: "مفتاح الإجابة في الملزمة ص 157-158.", type: "fill", sourcePages: "145-146, 157-158" },
+          { id: "3u7-app-v10", question: "Choose the correct words: A vet takes care of sick animals. A lawyer studies law. Salwa is (cooking / painting) dinner. Hazim (played / scored) a goal. A bat can (walk / fly). Cars have CD players so drivers can (sing / listen to music).", correctAnswer: "vet; lawyer; cooking; scored; fly; listen to music.", explanation: "مفتاح الإجابة في الملزمة ص 158.", type: "fill", sourcePages: "146, 158" },
+          { id: "3u7-app-v11", question: "Give the words for these definitions: a kind of glue; a conversation between famous people; the fastest bird in the world; words or pictures to help sell things; rice and wheat; three or more people waiting in line.", correctAnswer: "gum Arabic; talk show; falcon; advertisement; crops; queue.", explanation: "مفتاح الإجابة في الملزمة ص 158.", type: "fill", sourcePages: "146, 158" },
+          { id: "3u7-app-v12", question: "Choose the correct words: Eating too many sweets is (good / bad) for teeth. A (reporter / firefighter) writes about events. Cars have airbags so you (can / can't) be safe in a crash. Drive (careful / carefully). Fatin looks (after / at) her sick mother. Sitting by a river with a long rod is (swimming / fishing).", correctAnswer: "bad; reporter; can; carefully; after; fishing.", explanation: "مفتاح الإجابة في الملزمة ص 158.", type: "fill", sourcePages: "146, 158" },
+          { id: "3u7-app-v13", question: "Give the words for these definitions: three or more people waiting in a line; a scary book, film or play; a documentary; travelling on a horse or camel; a business's money after expenses; always having silly accidents.", correctAnswer: "queue; horror; documentary; ride; profit; clumsy.", explanation: "مفتاح الإجابة في الملزمة ص 168.", type: "fill", sourcePages: "155, 168" },
+          { id: "3u7-app-v14", question: "Complete using: (zoology, hunt, sporty, connection, cost, definitely). My uncle is very ____. The seats ____ 15,000 IQD. Owls ____ and kill small animals. It is ____ a good idea to study hard. He studied ____ at Cairo University. The car has a Bluetooth ____.", correctAnswer: "sporty; cost; hunt; definitely; zoology; connection.", explanation: "مفتاح الإجابة في الملزمة ص 168.", type: "fill", sourcePages: "155, 168" },
+          { id: "3u7-app-v15", question: "Choose the correct words: If you get a better job, you can (earn / give) more money. He was pleased when he won first (poem / prize). If you drive (dangerously / carefully), you might have an accident. My brother (falls / drops) in the pool. Cows and goats (grow / produce) milk. She is really (creative / sporty).", correctAnswer: "earn; prize; dangerously; falls; produce; creative.", explanation: "مفتاح الإجابة في الملزمة ص 167.", type: "fill", sourcePages: "154, 167" },
+          { id: "3u7-app-v16", question: "Give the words for these definitions: a conversation between famous people; things farmers grow; information about sun, rain and temperature; something used to clean teeth; activities like running and swimming; goods sold by one country to another.", correctAnswer: "talk show; crops; weather forecast; brush; athletics; exports.", explanation: "مفتاح الإجابة في الملزمة ص 160.", type: "fill", sourcePages: "148, 160" },
+          { id: "3u7-app-v17", question: "Complete using: (look after, of, so that, episode, population, vet). Cars have CD players ____ drivers can listen to music. Lucy enjoyed filming the latest ____. A person who takes care of sick animals is a ____. Fareed is afraid ____ dogs. Mariam should ____ her brother. Most of the ____ in Libya live near Tripoli.", correctAnswer: "so that; episode; vet; of; look after; population.", explanation: "مفتاح الإجابة في الملزمة ص 160.", type: "fill", sourcePages: "148, 160" },
+          { id: "3u7-app-v18", question: "Give the words for these definitions: another word for a writer; the fastest bird in the world; a young deer in its first year; things farmers grow; three or more people in a line; information about one subject.", correctAnswer: "author; falcon; fawn; crops; queue; documentary.", explanation: "مفتاح الإجابة في الملزمة ص 160.", type: "fill", sourcePages: "148, 160" },
+          { id: "3u7-app-v19", question: "Choose the correct words: A vet (takes care of / sells) sick animals. Rafal is (cooking / drawing) pictures. Cars have (airbags / GPS) so drivers cannot get lost. Marsh Arabs (raise / grow) buffaloes. The old man needs (spectacles / wheelchair) because he cannot see clearly. The player (kicked / scored) a goal.", correctAnswer: "takes care of; drawing; GPS; raise; spectacles; scored.", explanation: "مفتاح الإجابة في الملزمة ص 161.", type: "fill", sourcePages: "149, 161" },
+          { id: "3u7-app-v20", question: "Give the words for these definitions: a word for a young deer; a factory for changing sugar or oil; very old; a person in a book, film or play; it tells a funny story; words or pictures that help sell things.", correctAnswer: "fawn; refinery; ancient; character; comedy; advertisement.", explanation: "مفتاح الإجابة في الملزمة ص 161.", type: "fill", sourcePages: "149, 161" },
+          { id: "3u7-app-v21", question: "Choose the correct words: The Panther 3.0D is (quite / really) fast. Universities have sports (facilities / difficulties). You can (lose / earn) more money in a better job. Look (for / after) your teeth. Firas (won / scored) a silver medal. The tea tasted (awful / delicious).", correctAnswer: "really; facilities; earn; after; won; awful.", explanation: "مفتاح الإجابة في الملزمة ص 161.", type: "fill", sourcePages: "149, 161" },
+          { id: "3u7-app-v22", question: "Complete the definitions with: (crops, flat, waiter, athletics, helpful, hobby). Activities like running and swimming; a person who helps others; something you do in spare time; things farmers grow; a person who takes food orders; without mountains.", correctAnswer: "athletics; helpful; hobby; crops; waiter; flat.", explanation: "مفتاح الإجابة في الملزمة ص 162.", type: "fill", sourcePages: "149, 162" },
+          { id: "3u7-app-v23", question: "Choose the correct words: Ibrahim was interested (at / in) animals. A (reporter / lawyer) writes about events. The trip was (terrible / boring / fantastic). Cars have (CD players / airbags / GPS) for safety in an accident. Ibn Al-Haitham's works are (translated / written / read) into Latin. Selma looked (for / after / at) her little brother.", correctAnswer: "in; reporter; fantastic; airbags; translated; after.", explanation: "مفتاح الإجابة في الملزمة ص 162.", type: "fill", sourcePages: "150, 162" },
+          { id: "3u7-app-v24", question: "Match the words with their definitions: quiz show; sports; ride; adverts; gum; adults.", correctAnswer: "quiz show — a question-and-answer programme; sports — activities like running, jumping and swimming; ride — sit and travel on a horse; adverts — words and pictures that help sell things; gum — a kind of glue; adults — people who are not children.", explanation: "مفتاح الإجابة في الملزمة ص 163.", type: "fill", sourcePages: "150, 163" },
+          { id: "3u7-app-v25", question: "Complete using: (assortment, title, facilities, wheelchair, hunt, prefer). Universities have good sports ____. Someone unable to walk easily may need a ____. Could you provide an ____ of sandwiches? The introduction explains the ____. Tell me if you ____ Thursday or Friday. Owls ____ and kill small animals.", correctAnswer: "facilities; wheelchair; assortment; title; prefer; hunt.", explanation: "مفتاح الإجابة في الملزمة ص 164.", type: "fill", sourcePages: "151, 164" },
+          { id: "3u7-app-v26", question: "Complete using: (saving up, underground, turn, strange, sand viper, queue, weak). When you get to the blue house ____ left. The ____ lives in hot, dry countries. I have been ____ for six months. I am too ____ to carry the box. This horror story was ____. People in London travel by ____. The ____ was so long it came out of the door.", correctAnswer: "turn; sand viper; saving up; weak; strange; underground; queue.", explanation: "مفتاح الإجابة في الملزمة ص 164.", type: "fill", sourcePages: "151, 164" },
+          { id: "3u7-app-v27", question: "Match the words with their definitions: crops; documentary; quiz show; helpful; character; ride.", correctAnswer: "crops — things farmers grow; documentary — gives information about one subject; quiz show — a question-and-answer programme; helpful — a person who helps others; character — a person in a book, film or play; ride — sit and travel on a horse or camel.", explanation: "مفتاح الإجابة في الملزمة ص 165.", type: "fill", sourcePages: "152, 165" },
+          { id: "3u7-app-v28", question: "Complete the common word pairs: swimming ____; score ____; save ____; sun ____; borrow ____; video ____.", correctAnswer: "pool; tennis; lives; roof; a book; game.", explanation: "مفتاح الإجابة في الملزمة ص 165.", type: "fill", sourcePages: "152, 165" },
+          { id: "3u7-app-v29", question: "Choose the correct words: News about art, plays and paintings (fashion / arts); Samara's brother is (older / younger); conversations between famous people (quiz show / talk show); fastest bird (falcon / flamingo); goods sold abroad (exports / imports); I am (painting / watching) a picture.", correctAnswer: "arts; younger; talk show; falcon; exports; painting.", explanation: "مفتاح الإجابة في الملزمة ص 166.", type: "fill", sourcePages: "153, 166" },
+          { id: "3u7-app-v30", question: "Give the words for these definitions: the editor's ideas about recent news; someone who helps sick people in a hospital; activities like running and swimming; it makes cars, boats and planes move; an animal that kills and eats other animals; information about sun, rain and temperature.", correctAnswer: "opinion; doctor; sports; an engine; predator; weather.", explanation: "مفتاح الإجابة في الملزمة ص 166.", type: "fill", sourcePages: "153, 166" },
+          { id: "3u7-app-v31", question: "Give the words for these definitions: words and pictures that help sell things; a funny book, film or play; sit and travel on a horse or camel; without mountains; gives information about one subject; someone who takes orders for food in a restaurant.", correctAnswer: "adverts; comedy; ride; flat; documentary; waiter.", explanation: "مفتاح الإجابة في الملزمة ص 166.", type: "fill", sourcePages: "153, 166" },
+          { id: "3u7-app-v32", question: "Choose the correct words: Salma (waits / comes) in a queue. Modern universities have good sports (earn / facilities).", correctAnswer: "waits; facilities.", explanation: "مفتاح الإجابة في الملزمة ص 167.", type: "fill", sourcePages: "153, 167" }
+
+        ]
+      },
+      {
+        id: "3rd-u7-app-spelling",
+        unitId: 107,
+        lessonNumber: 6,
+        titleAr: "ملحق نهاية الملزمة: الإملاء والحروف الكبيرة وعلامات الترقيم",
+        titleEn: "Booklet Appendix: Spelling, Capital Letters & Punctuation",
+        category: "spelling",
+        summary: "ملحق الإملاء في الصفحات 168-169: الحروف الكبيرة، الاختصارات، علامات الترقيم، والتعبير عن الموافقة باستخدام So / Neither.",
+        sourcePages: "168-169",
+        detailedContent: [
+          "هذا ملحق عام في نهاية الملزمة وليس وحدة ثامنة.",
+          "Contractions shown in the booklet: im → I'm; theyre → they're; hes → he's; shes → she's; thats → that's; cant → can't; id like → I'd like; wont → won't; dont → don't; doesnt → doesn't.",
+          "Agreement responses in the source: Neither am I; Neither do I; So am I; So do I. Match the auxiliary verb to the statement: be → am/is/are; do → do/does.",
+          "The source sentences use capital letters at the beginning of sentences and for proper names, nationalities and places; they also use apostrophes in contractions and question marks at the end of direct questions."
+        ],
+        teacherNotes: ["استخدم صياغة الجمل في الصفحة 169 كما هي، ولا تستبدل الاختصارات بصيغ أخرى غير الواردة في الملزمة."],
+        commonMistakes: ["كتابة im بدلاً من I'm.", "الخلط بين So am I وSo do I.", "نسيان علامة الاستفهام في السؤال المباشر."],
+        examples: [
+          { en: "I don't like horror stories. Neither do I.", ar: "أنا لا أحب قصص الرعب. وأنا أيضاً لا أحبها.", highlight: "Neither do I" },
+          { en: "My mother is afraid of dogs. So am I.", ar: "أمي تخاف من الكلاب. وأنا أيضاً.", highlight: "So am I" }
+        ],
+        exercises: [
+          { id: "3u7-app-s1", question: "Write the correct contractions: im; theyre; hes; shes; thats; cant; id like; wont; dont; doesnt.", correctAnswer: "I'm; they're; he's; she's; that's; can't; I'd like; won't; don't; doesn't.", explanation: "الاختصارات كما وردت في الملزمة ص 168.", type: "fill", sourcePages: "168" },
+          { id: "3u7-app-s2", question: "Choose the correct response: I don't like horror stories. (Neither do I / So am I).", options: ["Neither do I", "So am I"], correctAnswer: "Neither do I", explanation: "نستخدم Neither do I لموافقة جملة منفية بفعل عادي.", type: "mcq", sourcePages: "168-169" },
+          { id: "3u7-app-s3", question: "Choose the correct response: My mother is afraid of dogs. (Neither do I / So am I).", options: ["Neither do I", "So am I"], correctAnswer: "So am I", explanation: "نستخدم So am I لموافقة جملة مثبتة بفعل be.", type: "mcq", sourcePages: "168-169" },
+          { id: "3u7-app-s4", question: "Choose the correct response: They're not afraid of spiders. (Neither am I / So am I).", options: ["Neither am I", "So am I"], correctAnswer: "Neither am I", explanation: "نستخدم Neither am I لموافقة جملة منفية بفعل be.", type: "mcq", sourcePages: "169" },
+          { id: "3u7-app-s5", question: "Complete: Would you like to swim in the pool? Yes, I'd ____ to.", correctAnswer: "love", explanation: "الجملة كما وردت في الملزمة ص 169.", type: "fill", sourcePages: "169" },
+          { id: "3u7-app-s6", question: "Rewrite with correct capitals and punctuation: what did you do ali i watched liverpool on television", correctAnswer: "What did you do, Ali? I watched Liverpool on television.", explanation: "تطبيق الحروف الكبيرة وعلامات الترقيم على الجملة في الملزمة ص 169.", type: "fill", sourcePages: "169" },
+          { id: "3u7-app-s7", question: "Rewrite with correct capitals and punctuation: ali and ahmed are from england", correctAnswer: "Ali and Ahmed are from England.", explanation: "تطبيق الحروف الكبيرة على الأسماء واسم البلد.", type: "fill", sourcePages: "169" },
+          { id: "3u7-app-s8", question: "Rewrite all the dialogue and sentences from page 169 using the correct capital letters and punctuation.", correctAnswer: "Are you tired of your mobile phone? Yes, I am.\nMom, why do I have to go to the school, but you don't?\nI don't like horror stories. Neither do I.\nMy mother is afraid of dogs. So am I.\nThey're not afraid of spiders. Neither am I.\nWould you like to swim in the pool? Yes, I'd love to.\nMy favourite TV show is on Friday and Monday at 6 o'clock.\nWhat did you do, Ali? I watched Liverpool on television.\nAli and Ahmed are from England.", explanation: "الجمل التسع كما تظهر في ملحق الإملاء ص 169، مع تصحيح علامات الترقيم والحروف الكبيرة.", type: "fill", sourcePages: "169" }
+        ]
       }
     ]
   }
@@ -1470,7 +1722,7 @@ export const DEFAULT_PRELOADED_3RD_MALZAMA: UploadedMalzama = {
   fileType: "application/pdf",
   grade: "third-intermediate",
   unitsCount: 7,
-  summary: "الملزمة الشاملة والمعتمدة للأستاذ عمار غالب لمرحلة الثالث المتوسط 2025: تغطي كافة القواعد بأسلوب مبسط، قطع استيعابية (سيارة البانثر، الهوايات، الأهوار، لوسي، ابن الهيثم)، المفردات والتعاريف والتوصيلات، قصص الأدب (كريم وشاعر النواب، كرم ولاعب السلة، ملء الفراغ، إبراهيم، سلام أحمد، داليا، تنظيف المدرسة، سيرة علي)، والإنشاءات الوزارية النموذجية العشرة.",
+  summary: "ملزمة الأستاذ عمار غالب للثالث المتوسط 2025: تشمل الوحدات السبع، ومنها الوحدة الرابعة (قصة إبراهيم وقطعة Too Few Leopards)، والقطع والقصص والمفردات والقواعد وتمارين الإملاء، وقسم الإنشاءات في الصفحات 134-143.",
   extractedRules: [
     {
       title: "الوصف المكاني (There is / There are / It has)",
@@ -1543,5 +1795,5 @@ export const DEFAULT_PRELOADED_3RD_MALZAMA: UploadedMalzama = {
       type: "Grammar"
     }
   ],
-  rawContentPreview: "جمهورية العراق - وزارة التربية • منهج اللغة الإنكليزية للصف الثالث المتوسط (English for Iraq - 3rd Intermediate) • ملزمة النموذجية للأستاذ عمار غالب 2025 • تغطية شاملة لجميع الوحدات وقصص المنهج الثمانية والإنشاءات الوزارية من ص 134 إلى ص 143 مع بنك الأسئلة الوزارية لسنوات 2017 - 2025."
+  rawContentPreview: "ملزمة الأستاذ عمار غالب للثالث المتوسط 2025 • الوحدات السبع • الوحدة الرابعة: Ibrahim’s Life Story وToo Few Leopards • القصص الثماني • قسم الإنشاءات والكتابة ص 134-143 • المفردات والإملاء ص 144-169."
 };

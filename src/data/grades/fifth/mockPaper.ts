@@ -1,16 +1,16 @@
 import { MockExamPaper } from '../../mockExamPapers';
 
 // =========================================================================
-// النموذج الامتحاني النهائي الشامل للصف الخامس الإعدادي (100 درجة)
-// مستخرج نصاً وتوزيعاً من ملزمة الأستاذ عمار غالب 2026 (ص 186 - 187)
+// نموذج تدريبي إضافي للصف الخامس الإعدادي (100 درجة)
+// نموذج تدريبي مُنشأ للمنصة؛ ليس ورقة امتحان منقولة من الملزمة. لا تُنسب أسئلته إلى الصفحتين 186-187.
 // =========================================================================
 
 export const FIFTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
-  id: "mock-5th-prep-final-2026",
-  title: "الامتحان النهائي الشامل لمادة اللغة الإنكليزية - الخامس الإعدادي (100 درجة)",
-  subtitle: "مبني وفق نموذج الأسئلة الامتحانية في ملزمة الأستاذ عمار غالب 2026 (ص 186-187)",
-  year: "2025-2026",
-  session: "الدور الأول - الامتحان النهائي العام",
+  id: "mock-5th-prep-supplementary-2026",
+  title: "نموذج تدريبي إضافي لمادة اللغة الإنكليزية - الخامس الإعدادي (100 درجة)",
+  subtitle: "تدريب إضافي من إعداد المنصة؛ ليس ورقة امتحان منقولة من الملزمة.",
+  year: "تدريب إضافي",
+  session: "نموذج تدريبي غير وزاري",
   durationMinutes: 150,
   totalMarks: 100,
   sections: [
@@ -253,21 +253,21 @@ export const FIFTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
     {
       id: "5th-mock-essay-a",
       optionLetter: "A",
-      titleEn: "Ramadan Traditions and Hospitality in Iraq",
-      titleAr: "إنشاء (أ): تقاليد شهر رمضان المبارك وكرم الضيافة في العراق (الوحدة الأولى - ص 212)",
-      prompt: "Write a well-organized composition about the spiritual and social traditions of Ramadan in Iraq, including family Iftar and the game of Mheibes.",
-      suggestedModel: "The Holy Month of Ramadan is the most sacred and cherished season for Muslims across Iraq. During this blessed month, believers abstain from dawn to sunset, cultivating self-discipline, patience, and empathy. Families gather around tables filled with dates, lentil soup (Shorbat Adas), and traditional dishes. Mosques organize collective banquets for the needy. In the evening, people visit relatives and play the traditional game of Mheibes in historic cafes, showcasing centuries of Iraqi warmth and solidarity.",
-      keywords: ["sacred season", "abstain", "Shorbat Adas", "Iftar banquets", "Mheibes game", "solidarity"],
+      titleEn: "My Friend",
+      titleAr: "تدريب كتابي إضافي: My Friend — راجع النص الأصلي في قسم الإنشاءات",
+      prompt: "Write a paragraph about a close friend, describing his or her personality and why you value the friendship.",
+      suggestedModel: "My friend Ahmed is a quiet person who doesn’t talk much. He is really funny and always makes me laugh. He is honest and never lies, even if the truth is hard to hear. He is also very shy and doesn’t like being around too many people. Ahmed can be a bit lazy sometimes, he prefers staying in bed all day than go outside. He is a great friend and always there when I need him.",
+      keywords: ["quiet", "funny", "honest", "shy", "friendship", "lazy"],
       maxScore: 20
     },
     {
       id: "5th-mock-essay-b",
       optionLetter: "B",
-      titleEn: "Preserving Endangered Wildlife from Extinction",
-      titleAr: "إنشاء (ب): حماية الحيوانات المهددة بالانقراض (الوحدة الثالثة - ص 215)",
-      prompt: "Write a composition highlighting endangered species (like the Right Whale, Black Rhino, and Panda) and explain practical ways governments and individuals can protect them.",
-      suggestedModel: "Our planet is currently experiencing a biodiversity crisis, with thousands of species facing extinction. Magnificent creatures such as the Northern Right Whale, the Giant Panda, and marine turtles are dwindling due to deforestation, illegal poaching, and pollution. To preserve them, governments must establish protected nature sanctuaries and enforce strict anti-poaching penalties. Raising community awareness is vital to protect our natural heritage for future generations.",
-      keywords: ["biodiversity crisis", "deforestation", "poaching", "nature sanctuaries", "ecological balance"],
+      titleEn: "How Can We Save Water?",
+      titleAr: "تدريب كتابي إضافي: How Can We Save Water? — راجع النص الأصلي في قسم الإنشاءات",
+      prompt: "Write a composition explaining practical ways to save water in daily life and protect water for future generations.",
+      suggestedModel: "Water is one of the most important resources on Earth, and we must use it wisely. There are many ways to save water in daily life. One simple way is to turn off taps when we are not using them. Having showers instead of baths also helps, as showers use less water. Another great solution is recycling water. Water used for washing vegetables or cleaning can be reused for watering gardens and parks. We should also think about others and use only what we need. If we waste water, less is available for everyone. In the future, saving water will be even more important as the population grows. Cities will use better systems to recycle water, and people will be more careful. If we all take small steps now, we can protect water for future generations.",
+      keywords: ["save water", "turn off taps", "showers", "recycling water", "future generations"],
       maxScore: 20
     }
   ]
