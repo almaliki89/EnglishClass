@@ -158,9 +158,9 @@ export const FOURTH_PREPARATORY_QUESTIONS: MinisterialExamQuestion[] = [
     provenanceVerified: false
   },
 
-  // --- Unit 6: Future Continuous & Reported Speech ---
+  // --- Unit 5: Future Continuous; Unit 6: Reported Speech ---
   {
-    id: "4th-q-u6-1",
+    id: "4th-q-u5-2",
     unitId: 45,
     topic: "Future Continuous",
     year: "تدريبي",
