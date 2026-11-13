@@ -798,6 +798,137 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
     ]
   },
   {
+    id: 104,
+    number: 4,
+    titleAr: "الوحدة الرابعة: قصص إبراهيم والنمور الفارسية",
+    titleEn: "Unit 4: Ibrahim's Life Story & Too Few Leopards",
+    description: "محتوى الوحدة الرابعة كما ورد في الملزمة: مفردات الأضداد، ترتيب الأسئلة، صيغ to go / go / going، الماضي البسيط، الضمائر وصفات الملكية، الشرطية الأولى، إعادة الصياغة والمبني للمجهول، وقصتا إبراهيم والنمور الفارسية.",
+    accentColor: "bg-cobalt text-surface",
+    bgGradient: "bg-blue-mist border-ink",
+    sourcePages: "82-88",
+    academicYear: "2025",
+    lessons: [
+      {
+        id: "3rd-u4-l1",
+        unitId: 104,
+        lessonNumber: 1,
+        titleAr: "مراجعة المفردات والتراكيب",
+        titleEn: "Vocabulary, Word Order & Verb Forms",
+        category: "vocabulary",
+        summary: "تمارين الملزمة على الأضداد، ترتيب الأسئلة، to go / go / going، والماضي البسيط والضمائر.",
+        sourcePages: "82-83",
+        detailedContent: [
+          "Opposites: fast/slow, awful/fantastic, expensive/cheap, ugly/beautiful, dangerous/safe, noisy/quiet, sad/happy, young/old, bright/dark, lazy/hard-working.",
+          "Question order: What colour is his hair? / Where does he live? / What does he wear? / Can he play football well? / Is he good at maths and science?",
+          "Choose the correct form: I'd love to go; I'd rather go; How about going; Let's go.",
+          "Past simple forms in the source exercise: want/wanted, is/was, say/said, arrive/arrived, laugh/laughed, land/landed, send/sent, lose/lost, fly/flew, set/set, get/got, put/put.",
+          "Complete sentences with the correct pronoun or possessive adjective, then choose the correct word in first conditional sentences."
+        ],
+        teacherNotes: ["المحتوى أعلاه من تمارين كتاب النشاط التي أوردتها الملزمة في الصفحات 82-84، وليس قاعدة إضافية من خارج المصدر."],
+        commonMistakes: [],
+        examples: [
+          { en: "I'd love to go to summer school this year.", ar: "أود الذهاب إلى المدرسة الصيفية هذا العام.", highlight: "to go" },
+          { en: "I'd rather go to the library.", ar: "أفضل الذهاب إلى المكتبة.", highlight: "go" },
+          { en: "How about going fishing?", ar: "ما رأيك بالذهاب للصيد؟", highlight: "going" }
+        ],
+        exercises: [
+          { id: "3u4-l1-ex1", question: "I'd love (go / to go / going) to summer school this year.", options: ["go", "to go", "going"], correctAnswer: "to go", explanation: "الإجابة وفق تمرين الملزمة.", type: "mcq", sourcePages: "83" },
+          { id: "3u4-l1-ex2", question: "I'd rather (go / to go / going) to the library.", options: ["go", "to go", "going"], correctAnswer: "go", explanation: "الإجابة وفق تمرين الملزمة.", type: "mcq", sourcePages: "83" },
+          { id: "3u4-l1-ex3", question: "How about (go / to go / going) fishing?", options: ["go", "to go", "going"], correctAnswer: "going", explanation: "الإجابة وفق تمرين الملزمة.", type: "mcq", sourcePages: "83" },
+          { id: "3u4-l1-ex4", question: "OK. Let's (go / to go / going) fishing.", options: ["go", "to go", "going"], correctAnswer: "go", explanation: "الإجابة وفق تمرين الملزمة.", type: "mcq", sourcePages: "83" },
+          { id: "3u4-l1-ex5", question: "Complete: If you (eat / will eat) too many sweets, you will feel ill.", options: ["eat", "will eat"], correctAnswer: "eat", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" }
+        ]
+      },
+      {
+        id: "3rd-u4-l2",
+        unitId: 104,
+        lessonNumber: 2,
+        titleAr: "إعادة الصياغة والشرطية والمبني للمجهول",
+        titleEn: "First Conditional & Sentence Transformation",
+        category: "grammar",
+        summary: "تمارين الشرطية الأولى وإعادة صياغة الجمل بالمقارنة والمبني للمجهول وصيغة السؤال المبني للمجهول.",
+        sourcePages: "84",
+        grammarRuleFormula: "First conditional exercises: If + present simple, will + base verb.\nThe source also asks students to rewrite equivalent sentences, comparative sentences, passive voice, and passive questions.",
+        detailedContent: [
+          "The workbook exercise asks students to select the correct first-conditional form.",
+          "Rewrite equivalent statements: There would be more insects if there were no spiders. / There are more birds than before. / A rat is bigger than a mouse.",
+          "Passive transformations in the source: Small animals and birds are eaten by falcons. / Where can wild flamingos be found?"
+        ],
+        teacherNotes: ["حافظ على صياغة أسئلة الملزمة؛ لا تُحوّل هذه التمارين إلى قواعد أخرى غير واردة في الصفحات المشار إليها."],
+        commonMistakes: [],
+        examples: [
+          { en: "Falcons eat small animals and birds. → Small animals and birds are eaten by falcons.", ar: "تأكل الصقور الحيوانات الصغيرة والطيور ← تُؤكل الحيوانات الصغيرة والطيور بواسطة الصقور.", highlight: "are eaten" }
+        ],
+        exercises: [
+          { id: "3u4-l2-ex1", question: "You (won't do well / don't do well) on your test if you don't study.", options: ["won't do well", "don't do well"], correctAnswer: "won't do well", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" },
+          { id: "3u4-l2-ex2", question: "If I bake a cake, (will you / do you) have some?", options: ["will you", "do you"], correctAnswer: "will you", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" },
+          { id: "3u4-l2-ex3", question: "Your sister will miss the bus if she (won't / doesn't) get up soon.", options: ["won't", "doesn't"], correctAnswer: "doesn't", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" },
+          { id: "3u4-l2-ex4", question: "Rewrite in the passive: Falcons eat small animals and birds.", correctAnswer: "Small animals and birds are eaten by falcons.", explanation: "الإجابة كما وردت في تمرين إعادة الصياغة.", type: "fill", sourcePages: "84" },
+          { id: "3u4-l2-ex5", question: "Rewrite in the passive: Where can you find wild flamingos?", correctAnswer: "Where can wild flamingos be found?", explanation: "الإجابة كما وردت في تمرين إعادة الصياغة.", type: "fill", sourcePages: "84" }
+        ]
+      },
+      {
+        id: "3rd-u4-l3",
+        unitId: 104,
+        lessonNumber: 3,
+        titleAr: "قصة حياة إبراهيم",
+        titleEn: "Ibrahim's Life Story",
+        category: "reading",
+        summary: "قصة إبراهيم الذي نشأ في قرية جنوب العراق، اهتم بالحيوانات، انتقل إلى بغداد عام 1990، تعلم الفرنسية من بيير، ودرس علم الحيوان في جامعة القاهرة.",
+        sourcePages: "85-87",
+        detailedContent: [
+          "Ibrahim lived in a small village in the south of Iraq when he was a child. He loved the sea and he often went fishing with his father. From an early age, he was interested in animals. He was forever asking questions about animals, for example, 'Why do flies have wings?' and 'Why do fish live in the sea?'",
+          "His father had goats and chickens and Ibrahim liked to look after them. He talked to them as if they were friends. His brothers used to laugh at him.",
+          "When he went to school, Ibrahim learned to read quickly. He liked reading and he was always asking his father for books. He did not like television, so he spent a lot of time reading. He learnt that there were lots of different animals in other countries.",
+          "In 1990, Ibrahim's father got a new job with Iraq Petroleum and the family moved to Baghdad. Life was very different in the city. At first, Ibrahim did not like it, but after a few months, he found that there was a lot to do for a 16-year-old boy.",
+          "One day, at the mall, he met a French boy called Pierre. Ibrahim learned to speak some French with him. He also learned about France. The boys used to talk about what they wanted to do when they left school. One day, Ibrahim said 'I think I'll be a zoologist. Then I can study animals in different countries.'",
+          "When Ibrahim left school, he studied zoology at Cairo University. Now he is a well-known zoologist. He works in France and he is writing a book about animals in Africa."
+        ],
+        teacherNotes: ["العمر المذكور في النص عند الانتقال إلى بغداد هو 16 عاماً، وليس 17 عاماً."],
+        commonMistakes: ["الخلط بين وقت اهتمام إبراهيم بالحيوانات: منذ سن مبكرة، وليس بعد دخوله المدرسة."],
+        examples: [
+          { en: "He studied zoology at Cairo University.", ar: "درس علم الحيوان في جامعة القاهرة.", highlight: "Cairo University" }
+        ],
+        exercises: [
+          { id: "3u4-l3-ex1", question: "Where was Ibrahim's village?", correctAnswer: "It was in the south of Iraq.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex2", question: "What did he look after for his father?", correctAnswer: "He looked after his father's goats and chickens.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex3", question: "Why did Ibrahim ask lots of questions?", correctAnswer: "Because he was interested in animals.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex4", question: "Why did Ibrahim ask his father for books?", correctAnswer: "Because he liked reading.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex5", question: "Why did Ibrahim move to Baghdad?", correctAnswer: "Because his father got a new job there with Iraq Petroleum.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex6", question: "What did he learn from Pierre?", correctAnswer: "He learnt to speak French and he learnt about France.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex7", question: "Why did Ibrahim want to be a zoologist?", correctAnswer: "So that he could study animals in different countries.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+          { id: "3u4-l3-ex8", question: "Where is Ibrahim writing his book?", correctAnswer: "He is writing his book in France.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" }
+        ]
+      },
+      {
+        id: "3rd-u4-l4",
+        unitId: 104,
+        lessonNumber: 4,
+        titleAr: "النمور الفارسية: أعداد قليلة",
+        titleEn: "Too Few Leopards",
+        category: "reading",
+        summary: "نص عن تناقص أعداد النمور الفارسية في العراق، أسباب التراجع، وجهود الأخوين نباز وبهاز فاروق علي لحمايتها.",
+        sourcePages: "88",
+        detailedContent: [
+          "There used to be many Persian Leopards living in Iraq. However, in 2022, there were only about 25 leopards left in the country. Today, conservationists are increasing efforts to protect the remaining leopards. The loss of habitat, hunting and war has caused a big decrease in leopard numbers.",
+          "The leopards are endangered, and it is against the law to hunt them. People do not hunt the leopards, but they do hunt wild goats for food. Unfortunately, this is removing the natural food of the leopards.",
+          "Two Iraqi brothers, Nabaz and Bahaz Faruq Ali, want to save the leopards. They believe that the leopards are an important part of Iraqi culture and identity. They are determined to save the leopards, and they have successfully taken photos of the leopards in the Bamo mountain area. Bamo mountain is remote, so the brothers believe it is the perfect place for the leopards to breed and increase their numbers."
+        ],
+        teacherNotes: ["يذكر النص أن العدد المتبقي كان نحو 25 نمراً في عام 2022."],
+        commonMistakes: [],
+        examples: [
+          { en: "The leopards are endangered.", ar: "النمور مهددة بالانقراض.", highlight: "endangered" }
+        ],
+        exercises: [
+          { id: "3u4-l4-ex1", question: "Why was there a big decrease in numbers?", correctAnswer: "Because of the loss of habitat, hunting and war.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "88" },
+          { id: "3u4-l4-ex2", question: "Why do the brothers want to save the leopards?", correctAnswer: "Because they are an important part of Iraqi culture and identity.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "88" },
+          { id: "3u4-l4-ex3", question: "Why can't people hunt leopards?", correctAnswer: "Because they are endangered and it is against the law to hunt them.", explanation: "ورد السببان في إجابة الملزمة.", type: "fill", sourcePages: "88" },
+          { id: "3u4-l4-ex4", question: "Why is Bamo Mountain the perfect place for leopards?", correctAnswer: "Because it is remote.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "88" }
+        ]
+      }
+    ]
+  },
+  {
     id: 105,
     number: 5,
     titleAr: "الوحدة الخامسة: الإعلام وأخبار الصباح والماضي والمستقبل",
