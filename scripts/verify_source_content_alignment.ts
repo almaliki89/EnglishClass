@@ -7,6 +7,7 @@ import { FIFTH_PREPARATORY_ESSAYS } from '../src/data/grades/fifth/essays';
 import { FIFTH_PREPARATORY_QUESTIONS } from '../src/data/grades/fifth/questions';
 import { FIFTH_PREPARATORY_MOCK_PAPER } from '../src/data/grades/fifth/mockPaper';
 import { IRREGULAR_VERBS } from '../src/data/verbsData';
+import { FIFTH_PREPARATORY_LITERATURE } from '../src/data/grades/fifth/literature';
 
 const thirdNumbers = THIRD_INTERMEDIATE_UNITS.map((unit) => unit.number);
 assert.deepEqual(thirdNumbers, [1, 2, 3, 4, 5, 6, 7], 'Third intermediate must contain exactly seven consecutive units');
@@ -50,5 +51,12 @@ assert.ok(FIFTH_PREPARATORY_QUESTIONS.every((question) => question.year === 'ت�
 assert.ok(FIFTH_PREPARATORY_QUESTIONS.every((question) => question.sourceReference?.includes('لم يُتحقق')), 'Supplementary questions must not claim unverified booklet page references');
 assert.ok(FIFTH_PREPARATORY_MOCK_PAPER.id.includes('supplementary'), 'Fifth-grade mock must be identified as supplementary');
 assert.ok(FIFTH_PREPARATORY_MOCK_PAPER.subtitle.includes('ليس ورقة امتحان'), 'Fifth-grade mock must not claim to be copied from booklet pages 186-187');
+
+const littleWomen = FIFTH_PREPARATORY_LITERATURE.find((item) => item.id === 'lit-5th-little-women');
+const tempest = FIFTH_PREPARATORY_LITERATURE.find((item) => item.id === 'lit-5th-the-tempest');
+assert.ok(littleWomen && littleWomen.ministerialQA.length >= 17, 'Little Women must include its source reading questions and Activity Book exercises');
+assert.ok(tempest && tempest.ministerialQA.length >= 10, 'The Tempest must include its source reading questions and Activity Book exercises');
+assert.ok(littleWomen.ministerialQA.some((item) => item.id === 'lw-source-ex-12'), 'Little Women final-section vocabulary exercise must be represented');
+assert.ok(tempest.ministerialQA.some((item) => item.id === 'temp-source-ex-4'), 'The Tempest true/false exercise must be represented');
 
 console.log('Source content alignment passed: 7 third-grade units, Unit 4 readings, 15 fifth-grade written items, 96 unique source verbs, and correctly labeled supplementary assessments.');
