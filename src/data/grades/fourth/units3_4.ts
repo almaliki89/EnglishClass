@@ -1,8 +1,8 @@
 import { Unit } from '../../../types';
 
 // =========================================================================
-// الوحدة الثالثة والرابعة - ملزمة الرابع الإعدادي (2025-2026)
-// مرجع الصفحات: ص 53 - 74
+// الوحدة الثالثة والرابعة - ملزمة الرابع الإعدادي (طبعة 2025)
+// مرجع الصفحات: ص 53 - 73
 // =========================================================================
 
 export const FOURTH_PREPARATORY_UNITS_3_4: Unit[] = [
@@ -14,8 +14,8 @@ export const FOURTH_PREPARATORY_UNITS_3_4: Unit[] = [
     description: "استخدام المضارع التام البسيط مع ever/never/just/already/yet، الفروق بين for و since، المضارع التام المستمر، تلوث المياه وحمايتها، واختراعات غيرت وجه الحياة.",
     accentColor: "bg-soft-mint text-ink",
     bgGradient: "bg-paper border-ink",
-    sourcePages: "الملزمة ص 53 - 69",
-    academicYear: "2025-2026",
+    sourcePages: "الملزمة ص 53 - 68",
+    academicYear: "2025",
     lessons: [
       {
         id: "4th-u3-l1",
@@ -174,7 +174,7 @@ export const FOURTH_PREPARATORY_UNITS_3_4: Unit[] = [
         titleEn: "Lesson 5: Life-Changing Inventions & Comprehensive Unit 3 Test",
         category: "reading",
         summary: "استعراض أهم الاختراعات العلمية والتكنولوجية واختبار الوحدة الثالثة الشامل.",
-        sourcePages: "الملزمة ص 68 - 69",
+        sourcePages: "الملزمة ص 68",
         detailedContent: [
           "الاختراعات الكبرى: المصباح الكهربائي، الهاتف، الحواسيب، والإنترنت.",
           "اختبار الوحدة الثالثة الشامل في القواعد والمفردات وقواعد for/since والتام المستمر."
@@ -207,126 +207,109 @@ export const FOURTH_PREPARATORY_UNITS_3_4: Unit[] = [
   {
     id: 44,
     number: 4,
-    titleAr: "الوحدة الرابعة: المراجعة الشاملة للفصل الأول (Semester 1 Comprehensive Revision)",
-    titleEn: "Unit 4: Semester 1 Consolidation, Iraqi Wedding Customs & Mid-Year Exam",
-    description: "مراجعة كبرى ومكثفة لجميع قواعد وقراءات ومفردات الوحدات 1 و2 و3: مراجعة عادات الزفاف في العراق، دمج الأزمنة، والامتحان التحريري الشامل لنصف السنة (100 درجة).",
-    accentColor: "bg-yellow text-ink",
-    bgGradient: "bg-paper border-ink",
-    sourcePages: "الملزمة ص 69 - 74",
-    academicYear: "2025-2026",
+    titleAr: 'الوحدة الرابعة: سنة الفجوة والسفر والواجبات',
+    titleEn: 'Unit 4: Taking a Gap Year, Travel and Obligation',
+    description: 'تبدأ الوحدة بقراءة Taking a Gap Year وما يرتبط بها من تغيرات في حياة الناس والدراسة والعمل، ثم تعرض have to وdo not have to للتعبير عن الواجب وعدم الوجوب، ومفردات السفر.',
+    accentColor: 'bg-yellow text-ink',
+    bgGradient: 'bg-paper border-ink',
+    sourcePages: 'الملزمة ص 69 - 73',
+    academicYear: '2025',
     lessons: [
       {
-        id: "4th-u4-l1",
+        id: '4th-u4-l1',
         unitId: 44,
         lessonNumber: 1,
-        titleAr: "الدرس الأول: مراجعة عادات وتقاليد الزفاف في العراق (Iraqi Wedding Customs Revision)",
-        titleEn: "Lesson 1: Revision of Wedding Customs & Cultural Celebrations",
-        category: "reading",
-        summary: "مراجعة استيعابية مكثفة لقطعة عادات الزفاف في العراق، نقش الحناء، والزي التراثي للعروسين.",
-        sourcePages: "الملزمة ص 69 - 71",
+        titleAr: 'الدرس الأول: سنة الفجوة والتغيرات في الحياة',
+        titleEn: 'Lesson 1: Taking a Gap Year and Changing Situations',
+        category: 'reading',
+        summary: 'قراءة عن أخذ سنة فجوة قبل متابعة الدراسة أو العمل، مع تمارين مرتبطة بالتغيرات التي تحدث بمرور الوقت.',
+        sourcePages: 'الملزمة ص 69 - 70',
         detailedContent: [
-          "مراجعة تفاصيل الزفاف العراقي (Student's Book p. 40): مراسم يوم الخميس، ليلة الحناء، والبدلة وفستان الزفاف الأبيض والمأدبة الجماعية.",
-          "تمرين التوصيل المفاهيمي الشامل في كتاب النشاط."
+          'تتناول القراءة فكرة Taking a Gap Year والأسباب أو المزايا التي قد تدفع بعض الأشخاص إلى أخذ سنة فاصلة.',
+          'تتبع القراءة تمارين فهم وأسئلة حول مزايا سنة الفجوة وما إذا كان الطالب يرغب في تجربتها.',
+          'تظهر في تمارين الوحدة جمل عن تغيرات مستمرة باستخدام المضارع المستمر، مثل ازدياد أعداد الدارسين في الخارج أو ارتفاع درجات الحرارة.'
         ],
         teacherNotes: [
-          "أسئلة المراجعة بالملزمة ص 70:",
-          "1. On which day do people usually get married in Iraq? -> On Thursday.",
-          "2. What does the bride's white dress symbolize? -> Purity."
+          'هذا محتوى الوحدة الرابعة بحسب صفحات الملزمة؛ لا تصف هذه الصفحات مراجعة عادات الزفاف أو امتحان نصف السنة.'
         ],
         examples: [
-          {
-            en: "Relatives and friends give valuable gifts to the new bride and groom.",
-            ar: "يقدم الأقارب والأصدقاء هدايا قيمة للعروسين الجديدين.",
-            highlight: "bride and groom",
-            note: "مصطلحات الزفاف التراثية"
-          }
+          { en: 'More and more people are studying abroad.', ar: 'يدرس عدد متزايد من الناس في الخارج.', highlight: 'are studying', note: 'المضارع المستمر لوصف تغير متزايد' }
         ],
         exercises: [
           {
-            id: "4u4-ex1",
-            question: "In Iraqi weddings, the white dress worn by the bride symbolizes ______.",
-            options: ["purity", "wealth", "anger", "speed"],
-            correctAnswer: "purity",
-            explanation: "يرمز الفستان الأبيض للعروس إلى النقاء والبراءة (purity) (الملزمة ص 70).",
-            type: "mcq",
-            sourcePages: "الملزمة ص 70"
+            id: '4u4-ex1',
+            question: 'More and more people ______ abroad as part of their university degree.',
+            options: ['are studying', 'studies', 'studied', 'has studied'],
+            correctAnswer: 'are studying',
+            explanation: 'تُستخدم صيغة المضارع المستمر للتغير الذي يحدث بصورة متزايدة.',
+            type: 'mcq',
+            sourcePages: 'الملزمة ص 69 - 70',
+            contentOrigin: 'ai_generated'
           }
         ]
       },
       {
-        id: "4th-u4-l2",
+        id: '4th-u4-l2',
         unitId: 44,
         lessonNumber: 2,
-        titleAr: "الدرس الثاني: مراجعة القواعد التراكمية للفصل الأول (Cumulative Grammar Revision)",
-        titleEn: "Lesson 2: Revision of Present & Past Tenses, Indirect Questions & Present Perfect",
-        category: "grammar",
-        summary: "مراجعة شاملة لجميع صيغ القواعد المدروسة في الوحدات 1 و2 و3 استعداداً لامتحان نصف السنة المدرسي.",
-        sourcePages: "الملزمة ص 71 - 73",
-        grammarRuleFormula: "Semester 1 Grammar Summary:\n1) Present Simple vs Present Continuous\n2) Indirect Questions (Could you tell me...)\n3) -ed vs -ing Adjectives\n4) Past Narrative: Past Simple vs Continuous (while / when)\n5) used to + Infinitive for past habits\n6) Adverbs of Manner (Adjective + ly & irregulars)\n7) Present Perfect Simple (ever/never/just/already/yet)\n8) Duration with for & since\n9) Present Perfect Continuous",
+        titleAr: 'الدرس الثاني: have to وdo not have to',
+        titleEn: 'Lesson 2: Obligation and No Obligation',
+        category: 'grammar',
+        summary: 'التعبير عن الواجب أو الضرورة باستخدام have to، والتعبير عن عدم الوجوب باستخدام do not have to / does not have to.',
+        sourcePages: 'الملزمة ص 71 - 72',
+        grammarRuleFormula: 'Affirmative: Subject + have / has to + base verb.\\nNegative: Subject + do not / does not have to + base verb.\\nQuestion: Do / Does + subject + have to + base verb?',
         detailedContent: [
-          "جدول القواعد والمقارنات النحوية الشامل بالملزمة ص 72.",
-          "تمارين اختيارات مجمعة من امتحانات نصف السنة السابقة."
+          'تشرح القاعدة استعمال have to للتعبير عن واجب أو ضرورة.',
+          'تُستخدم do not have to أو does not have to للدلالة على أن الفعل ليس واجباً أو ضرورياً.',
+          'تتضمن الصفحات أمثلة وتمارين لإكمال الجمل بالصيغة الصحيحة.'
         ],
         teacherNotes: [
-          "نصيحة الملزمة ص 73: ركز جيداً على قاعدة الأسئلة غير المباشرة وfor/since والتصريف الثالث للأفعال الشاذه."
+          'لا تخلط بين عدم الوجوب (do not have to) والمنع (must not)، فهما ليسا المعنى نفسه.'
         ],
         examples: [
-          {
-            en: "Could you tell me where the library is?",
-            ar: "هل يمكن أن تخبرني أين تقع المكتبة؟",
-            highlight: "where the library is",
-            note: "تطبيق الأسئلة غير المباشرة"
-          }
+          { en: 'You have to show your passport.', ar: 'يجب عليك إظهار جواز سفرك.', highlight: 'have to', note: 'واجب أو ضرورة' },
+          { en: 'You do not have to pay today.', ar: 'ليس عليك أن تدفع اليوم.', highlight: 'do not have to', note: 'عدم الوجوب' }
         ],
         exercises: [
           {
-            id: "4u4-ex2",
-            question: "She has been working in this company ______ 2018.",
-            options: ["since", "for", "ago", "from"],
-            correctAnswer: "since",
-            explanation: "وجود سنة محددة بالرقم 2018 يوجب استخدام since (الملزمة ص 72).",
-            type: "mcq",
-            sourcePages: "الملزمة ص 72"
+            id: '4u4-ex2',
+            question: 'You ______ bring your own food; the hotel provides meals.',
+            options: ['do not have to', 'has to', 'having to', 'does has to'],
+            correctAnswer: 'do not have to',
+            explanation: 'الجملة تنفي وجود ضرورة لإحضار الطعام.',
+            type: 'mcq',
+            sourcePages: 'الملزمة ص 71 - 72',
+            contentOrigin: 'ai_generated'
           }
         ]
       },
       {
-        id: "4th-u4-l3",
+        id: '4th-u4-l3',
         unitId: 44,
         lessonNumber: 3,
-        titleAr: "الدرس الثالث: الاختبار التحريري الشامل لنصف السنة (Semester 1 Comprehensive Exam)",
-        titleEn: "Lesson 3: Official 100-Mark Mid-Year Examination Model Paper",
-        category: "reading",
-        summary: "النموذج الامتحاني الشامل المكتوب في الملزمة ص 74 لنصف السنة (100 درجة كاملة) موزع وفق معايير وزارة التربية العراقية.",
-        sourcePages: "الملزمة ص 74",
+        titleAr: 'الدرس الثالث: مفردات السفر والرحلات',
+        titleEn: 'Lesson 3: Travel Vocabulary',
+        category: 'vocabulary',
+        summary: 'مفردات مرتبطة بالسفر والحجوزات والأمتعة والتوقف بين الرحلات، مع تمارين توظيف الكلمات في سياقها.',
+        sourcePages: 'الملزمة ص 72 - 73',
         detailedContent: [
-          "توزيع درجات امتحان نصف السنة الرسمي (100 درجة):",
-          "1. السؤال الأول (20 درجة): قطعة خارجية ونصوص الكتاب المقررة (كندا، اليونيسيف، الزفاف).",
-          "2. السؤال الثاني (30 درجة): القواعد والوظائف اللغوية (الأزمنة، الأسئلة غير المباشرة، used to، for/since).",
-          "3. السؤال الثالث (20 درجة): المفردات والإملاء وتصانيف الكلمات وضروف الطريقة.",
-          "4. السؤال الرابع (10 درجات): الأدب المقرّر (قصة جزيرة الكنز لروبرت لويس ستيفنسون).",
-          "5. السؤال الخامس (20 درجة): الإنشاء التحريري (استمارة المعلومات أو رحلة أربيل أو اليونيسيف)."
-        ],
-        teacherNotes: [
-          "توجيه الملزمة ص 74: وزع وقت الامتحان البالغ ساعتين ونصف بدقة، وابدأ بإجابة القواعد والإنشاء الضامنة للدرجات."
+          'تتضمن الصفحات مفردات السفر مثل receipt وborrow وporter وform وreturn ticket وstopover وalmost.',
+          'تُستخدم المفردات في جمل وتمارين تتعلق بالسفر والفنادق والحجوزات والرحلات.',
+          'تشير إحالات الحلول في نهاية الملزمة إلى تمارين الوحدة الرابعة ضمن صفحات الحلول.'
         ],
         examples: [
-          {
-            en: "An official 100-mark mid-year exam tests all linguistic and functional skills.",
-            ar: "يختبر امتحان نصف السنة الرسمي المكون من 100 درجة جميع المهارات اللغوية والوظيفية.",
-            highlight: "100-mark exam",
-            note: "الدرجة الكلية الرسمية"
-          }
+          { en: 'There is a two-hour stopover in Kuwait City.', ar: 'هناك توقف لمدة ساعتين في مدينة الكويت.', highlight: 'stopover', note: 'مفردة في سياق السفر' }
         ],
         exercises: [
           {
-            id: "4u4-ex3",
-            question: "The standard total mark for the official Iraqi mid-year exam is ______ marks.",
-            options: ["100", "50", "75", "120"],
-            correctAnswer: "100",
-            explanation: "الدرجة الكلية الرسمية للامتحان التحريري النهائي لنصف السنة هي 100 درجة (الملزمة ص 74).",
-            type: "mcq",
-            sourcePages: "الملزمة ص 74"
+            id: '4u4-ex3',
+            question: 'There is a two-hour ______ in Kuwait City.',
+            options: ['stopover', 'receipt', 'porter', 'surname'],
+            correctAnswer: 'stopover',
+            explanation: 'stopover تعني توقفاً مؤقتاً أثناء الرحلة.',
+            type: 'mcq',
+            sourcePages: 'الملزمة ص 72 - 73',
+            contentOrigin: 'ai_generated'
           }
         ]
       }
