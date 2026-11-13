@@ -375,8 +375,9 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
                     <div className="flex items-center justify-between pt-2">
                       <div className="flex items-center gap-3">
                         <button
+                          type="button"
                           onClick={() => toggleRevealSolution(q.id)}
-                          className="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1.5 cursor-pointer"
+                          className="text-xs font-bold text-[#405DE6] hover:text-[#202124] hover:underline underline-offset-4 flex items-center gap-1.5 cursor-pointer py-1 px-1 rounded-[4px]"
                         >
                           <Sparkles className="w-3.5 h-3.5" />
                           <span>{isRevealed ? 'إخفاء الحل' : 'كشف الحل والتعليل النموذجي'}</span>
@@ -463,31 +464,33 @@ export const ExamEngine: React.FC<ExamEngineProps> = ({
             <div className="space-y-6">
               
               {/* Sticky Top Status Bar */}
-              <div className="sticky top-20 z-30 p-4 rounded-xs bg-[#202124] text-white border-2 border-[#202124] shadow-[3.5px_3.5px_0px_#202124] flex items-center justify-between">
+              <div className="sticky top-20 z-30 p-3.5 sm:p-4 rounded-[6px] bg-[#202124] text-white border-2 border-[#202124] shadow-[3.5px_3.5px_0px_#202124] flex flex-wrap items-center justify-between gap-2.5">
                 <div className="flex items-center gap-3">
-                  <div className="flex items-center gap-1.5 text-[#F3E6A5] font-mono font-black text-base">
+                  <div className="flex items-center gap-1.5 text-[#F3E6A5] font-mono font-black text-base tabular-nums">
                     <Clock className="w-5 h-5 animate-pulse" />
                     <span>{formatTime(timeLeft)}</span>
                   </div>
                   <span className="text-xs font-mono font-bold text-white/70 hidden sm:inline">الوقت المتبقي</span>
                 </div>
 
-                <div className="text-xs font-mono font-bold text-white/90">
+                <div className="text-xs font-mono font-bold text-white/90 tabular-nums">
                   تمت الإجابة على {Object.keys(userExamAnswers).length} من {examQuestions.length}
                 </div>
 
                 {!examSubmitted ? (
                   <button
+                    type="button"
                     id="submit-mock-exam-btn"
                     onClick={handleSubmitMockExam}
-                    className="px-4 py-2 rounded-xs bg-[#F3E6A5] hover:bg-[#ebdca0] text-[#202124] border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124] cursor-pointer active:translate-x-0.5 active:translate-y-0.5 transition-all"
+                    className="px-4 py-2 rounded-[4px] bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124] cursor-pointer active:translate-x-0.5 active:translate-y-0.5 transition-all"
                   >
                     تسليم الدفتر الامتحاني
                   </button>
                 ) : (
                   <button
+                    type="button"
                     onClick={handleStartMockExam}
-                    className="px-4 py-2 rounded-xs bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124] cursor-pointer active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center gap-1.5"
+                    className="px-4 py-2 rounded-[4px] bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] font-black text-xs shadow-[2px_2px_0px_#202124] cursor-pointer active:translate-x-0.5 active:translate-y-0.5 transition-all flex items-center gap-1.5"
                   >
                     <RotateCcw className="w-3.5 h-3.5" />
                     <span>إعادة اختبار جديد</span>

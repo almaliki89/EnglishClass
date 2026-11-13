@@ -133,33 +133,33 @@ export const IrregularVerbsLab: React.FC<IrregularVerbsLabProps> = ({
               handleStartSpeedTest();
             }
           }}
-          className="px-5 py-3 bg-[#F3E6A5] hover:bg-[#E6D99A] text-[#202124] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none font-black text-xs sm:text-sm transition-all flex items-center gap-2 shrink-0 cursor-pointer"
+          className="px-5 py-3 bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] active:translate-x-[2px] active:translate-y-[2px] active:shadow-none rounded-[4px] font-black text-xs sm:text-sm transition-all flex items-center gap-2 shrink-0 cursor-pointer"
         >
-          <Zap className="w-4 h-4 text-[#F2A18E] fill-[#F2A18E]" />
+          <Zap className="w-4 h-4 text-[#202124] fill-[#F2A18E]" />
           <span>{isTestMode ? 'العودة لجدول الأفعال' : 'تحدي اختبار السرعة'}</span>
         </button>
       </div>
 
       {/* ================= SPEED TEST GAME ================= */}
       {isTestMode ? (
-        <div className="p-6 sm:p-10 rounded-3xl bg-white border border-slate-200 shadow-xs max-w-xl mx-auto text-center space-y-6">
+        <div className="p-6 sm:p-10 rounded-[6px] bg-white border-3 border-[#202124] shadow-[5px_5px_0px_#202124] max-w-xl mx-auto text-center space-y-6">
           
-          <div className="flex items-center justify-between">
-            <span className="text-xs font-bold text-slate-500">تحدي تصريف الأفعال</span>
-            <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 text-amber-900 text-xs font-bold">
-              <Trophy className="w-3.5 h-3.5 text-amber-600" />
+          <div className="flex items-center justify-between gap-2 flex-wrap">
+            <span className="text-xs font-mono font-bold text-[#747474]">تحدي تصريف الأفعال</span>
+            <div className="flex items-center gap-1.5 px-3 py-1 rounded-[4px] bg-[#F3E6A5] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-[#202124] text-xs font-black tabular-nums">
+              <Trophy className="w-3.5 h-3.5 text-[#202124]" />
               <span>التتابع الصحيح: {testStreak}</span>
             </div>
           </div>
 
-          <div className="space-y-2 p-6 rounded-2xl bg-slate-50 border border-slate-200">
-            <p className="text-xs font-bold text-indigo-600">
+          <div className="space-y-2 p-6 rounded-[6px] bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124]">
+            <p className="text-xs font-bold text-[#405DE6]">
               ما هو تصريف ({testTargetForm === 'past' ? 'الماضي البسيط Past' : 'التصريف الثالث Past Participle P.P'}) للفعل:
             </p>
-            <p dir="ltr" className="text-3xl sm:text-4xl font-black font-mono text-slate-900 text-center bidi-en">
+            <p dir="ltr" className="text-3xl sm:text-4xl font-black font-mono text-[#202124] text-center bidi-en">
               {currentTestVerb.base}
             </p>
-            <p className="text-xs text-slate-500">
+            <p className="text-xs font-bold text-[#747474]">
               المعنى بالعربية: {currentTestVerb.arabicMeaning}
             </p>
           </div>
@@ -172,13 +172,13 @@ export const IrregularVerbsLab: React.FC<IrregularVerbsLabProps> = ({
               placeholder="Type the verb form..."
               value={userTestInput}
               onChange={(e) => setUserTestInput(e.target.value)}
-              className="w-full px-5 py-3.5 rounded-2xl bg-slate-100 border border-slate-200 text-center font-mono font-bold text-lg focus:outline-hidden focus:border-rose-500 focus:bg-white transition-all"
+              className="w-full px-5 py-3.5 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] text-center font-mono font-bold text-lg text-[#202124] placeholder:text-[#747474] focus:outline-none focus:bg-white focus:shadow-[2px_2px_0px_#202124] transition-all"
             />
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-2.5">
               <button
                 type="submit"
-                className="flex-1 py-3.5 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm shadow-md shadow-rose-200 transition-all"
+                className="flex-1 py-3.5 rounded-[4px] bg-[#405DE6] hover:bg-[#334DC6] text-white font-black text-sm border-2 border-[#202124] shadow-[3px_3px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer"
               >
                 تحقق من الإجابة
               </button>
@@ -186,7 +186,7 @@ export const IrregularVerbsLab: React.FC<IrregularVerbsLabProps> = ({
               <button
                 type="button"
                 onClick={pickRandomVerb}
-                className="px-4 py-3.5 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-600 text-xs font-bold transition-all"
+                className="px-4 py-3.5 rounded-[4px] bg-[#F7F5EF] hover:bg-white text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer"
                 title="تخطي لفعل آخر"
               >
                 تخطي
@@ -195,8 +195,8 @@ export const IrregularVerbsLab: React.FC<IrregularVerbsLabProps> = ({
           </form>
 
           {testFeedback && (
-            <div className={`p-4 rounded-2xl text-xs sm:text-sm font-bold ${
-              testFeedback.isCorrect ? 'bg-emerald-50 text-emerald-800 border border-emerald-200' : 'bg-rose-50 text-rose-800 border border-rose-200'
+            <div className={`p-4 rounded-[4px] text-xs sm:text-sm font-black border-2 border-[#202124] shadow-[2px_2px_0px_#202124] ${
+              testFeedback.isCorrect ? 'bg-[#D7E9DA] text-[#202124]' : 'bg-[#FDF6F4] text-[#B83A3A]'
             }`}>
               {testFeedback.message}
             </div>
@@ -208,49 +208,53 @@ export const IrregularVerbsLab: React.FC<IrregularVerbsLabProps> = ({
         <div className="space-y-4">
           
           {/* Controls Bar */}
-          <div className="p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 shadow-xs space-y-4">
+          <div className="p-4 sm:p-5 rounded-[6px] bg-white border-3 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-4">
             
             <div className="relative">
-              <Search className="w-4 h-4 text-slate-400 absolute right-3.5 top-3.5" />
+              <Search className="w-4 h-4 text-[#747474] absolute right-3.5 top-1/2 -translate-y-1/2 pointer-events-none" />
               <input
                 type="text"
                 placeholder="ابحث عن فعل، ماضيه، أو معناه بالعربية (مثلاً: see, saw, رأى)..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full pr-10 pl-4 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-sm focus:outline-hidden focus:border-rose-500"
+                className="w-full pr-10 pl-4 py-2.5 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] text-sm font-bold text-[#202124] placeholder:text-[#747474] focus:outline-none focus:bg-white transition-colors"
               />
             </div>
 
             {/* Filter Tabs */}
-            <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar w-full text-xs font-bold">
+            <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar w-full text-xs font-black">
               <button
+                type="button"
                 onClick={() => setActiveGroup('all')}
-                className={`px-3.5 py-2 rounded-xl transition-all whitespace-nowrap shrink-0 ${
-                  activeGroup === 'all' ? 'bg-rose-600 text-white shadow-xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                className={`px-3.5 py-2 rounded-[4px] border-2 transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+                  activeGroup === 'all' ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' : 'bg-[#F7F5EF] text-[#202124] border-[#202124] hover:bg-white'
                 }`}
               >
                 الكل ({IRREGULAR_VERBS.length})
               </button>
               <button
+                type="button"
                 onClick={() => setActiveGroup('all-same')}
-                className={`px-3.5 py-2 rounded-xl transition-all whitespace-nowrap shrink-0 ${
-                  activeGroup === 'all-same' ? 'bg-rose-600 text-white shadow-xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                className={`px-3.5 py-2 rounded-[4px] border-2 transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+                  activeGroup === 'all-same' ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' : 'bg-[#F7F5EF] text-[#202124] border-[#202124] hover:bg-white'
                 }`}
               >
                 المجموعة 1: متطابقة (cost / cut)
               </button>
               <button
+                type="button"
                 onClick={() => setActiveGroup('two-same')}
-                className={`px-3.5 py-2 rounded-xl transition-all whitespace-nowrap shrink-0 ${
-                  activeGroup === 'two-same' ? 'bg-rose-600 text-white shadow-xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                className={`px-3.5 py-2 rounded-[4px] border-2 transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+                  activeGroup === 'two-same' ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' : 'bg-[#F7F5EF] text-[#202124] border-[#202124] hover:bg-white'
                 }`}
               >
                 المجموعة 2: شكلان متطابقان (buy / bought)
               </button>
               <button
+                type="button"
                 onClick={() => setActiveGroup('all-different')}
-                className={`px-3.5 py-2 rounded-xl transition-all whitespace-nowrap shrink-0 ${
-                  activeGroup === 'all-different' ? 'bg-rose-600 text-white shadow-xs' : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                className={`px-3.5 py-2 rounded-[4px] border-2 transition-all whitespace-nowrap shrink-0 cursor-pointer ${
+                  activeGroup === 'all-different' ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]' : 'bg-[#F7F5EF] text-[#202124] border-[#202124] hover:bg-white'
                 }`}
               >
                 المجموعة 3: 3 أشكال مختلفة (break / broke / broken)
@@ -260,42 +264,44 @@ export const IrregularVerbsLab: React.FC<IrregularVerbsLabProps> = ({
           </div>
 
           {/* Table Container */}
-          <div className="bg-white rounded-3xl border border-slate-200 shadow-xs overflow-hidden">
+          <div className="bg-white rounded-[6px] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] overflow-hidden">
             <div className="overflow-x-auto no-scrollbar">
               <table className="w-full text-right text-xs sm:text-sm min-w-[560px]">
                 <thead>
-                  <tr className="bg-slate-50 border-b border-slate-200 text-slate-700 font-extrabold text-xs">
-                    <th className="p-3.5 sm:p-4 text-center w-12">#</th>
-                    <th dir="ltr" className="p-3.5 sm:p-4 text-left">Base (المصدر)</th>
-                    <th dir="ltr" className="p-3.5 sm:p-4 text-left">Past (الماضي)</th>
-                    <th dir="ltr" className="p-3.5 sm:p-4 text-left">P.P (التصريف الثالث)</th>
+                  <tr className="bg-[#F7F5EF] border-b-2 border-[#202124] text-[#202124] font-black text-xs">
+                    <th className="p-3.5 sm:p-4 text-center w-12 font-mono">#</th>
+                    <th dir="ltr" className="p-3.5 sm:p-4 text-left font-mono">Base (المصدر)</th>
+                    <th dir="ltr" className="p-3.5 sm:p-4 text-left font-mono">Past (الماضي)</th>
+                    <th dir="ltr" className="p-3.5 sm:p-4 text-left font-mono">P.P (التصريف الثالث)</th>
                     <th className="p-3.5 sm:p-4 text-right">المعنى بالعربية</th>
                     <th className="p-3.5 sm:p-4 text-center w-16">نطق</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100">
+                <tbody className="divide-y divide-[#202124]/15">
                   {filteredVerbs.map((verb, idx) => (
-                    <tr key={idx} className="hover:bg-slate-50/80 transition-colors">
-                      <td className="p-3.5 sm:p-4 text-center text-slate-400 font-mono text-xs">
+                    <tr key={idx} className="hover:bg-[#F7F5EF]/70 transition-colors">
+                      <td className="p-3.5 sm:p-4 text-center text-[#747474] font-mono font-bold text-xs tabular-nums">
                         {idx + 1}
                       </td>
-                      <td dir="ltr" className="p-3.5 sm:p-4 font-mono font-bold text-indigo-900 text-left">
+                      <td dir="ltr" className="p-3.5 sm:p-4 font-mono font-black text-[#405DE6] text-left">
                         {verb.base}
                       </td>
-                      <td dir="ltr" className="p-3.5 sm:p-4 font-mono font-bold text-amber-800 text-left">
+                      <td dir="ltr" className="p-3.5 sm:p-4 font-mono font-black text-[#202124] text-left">
                         {verb.past}
                       </td>
-                      <td dir="ltr" className="p-3.5 sm:p-4 font-mono font-bold text-emerald-800 text-left">
+                      <td dir="ltr" className="p-3.5 sm:p-4 font-mono font-black text-[#287A52] text-left">
                         {verb.pastParticiple}
                       </td>
-                      <td className="p-3.5 sm:p-4 font-medium text-slate-700">
+                      <td className="p-3.5 sm:p-4 font-bold text-[#202124]">
                         {verb.arabicMeaning}
                       </td>
                       <td className="p-3.5 sm:p-4 text-center">
                         <button
+                          type="button"
                           onClick={() => speakWord(`${verb.base}, ${verb.past}, ${verb.pastParticiple}`)}
-                          className="p-2 rounded-xl bg-slate-100 hover:bg-rose-50 hover:text-rose-600 text-slate-500 transition-colors"
+                          className="p-2 rounded-[4px] bg-[#F7F5EF] hover:bg-[#F3E6A5] text-[#202124] border border-[#202124] shadow-[1.5px_1.5px_0px_#202124] transition-colors cursor-pointer"
                           title="استمع للنطق الإنجليزي"
+                          aria-label={`استمع لنطق الفعل ${verb.base}`}
                         >
                           <Volume2 className="w-3.5 h-3.5" />
                         </button>

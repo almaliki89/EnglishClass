@@ -5,33 +5,33 @@ import { Home, Compass, AlertCircle } from 'lucide-react';
 export const NotFound: React.FC = () => {
   return (
     <div className="min-h-[60vh] flex items-center justify-center p-4 text-center" dir="rtl">
-      <div className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-3xl p-8 sm:p-12 max-w-lg w-full shadow-lg space-y-6">
-        <div className="w-16 h-16 rounded-2xl bg-rose-50 dark:bg-rose-950/50 text-rose-600 dark:text-rose-400 flex items-center justify-center mx-auto shadow-sm">
+      <div className="bg-white border-2 border-[#202124] rounded-[6px] p-8 sm:p-12 max-w-lg w-full shadow-[4px_4px_0px_#202124] space-y-6">
+        <div className="w-16 h-16 rounded-[6px] bg-[#FDF6F4] border-2 border-[#202124] text-[#B83A3A] flex items-center justify-center mx-auto shadow-[2px_2px_0px_#202124]">
           <AlertCircle className="w-8 h-8" />
         </div>
 
         <div className="space-y-2">
-          <span className="text-5xl font-black text-rose-600 font-mono tracking-wider block">404</span>
-          <h1 className="text-3xl font-black text-slate-900 dark:text-white">الصفحة غير موجودة</h1>
-          <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-            عذراً، الرابط الذي تحاول الوصول إليه غير متاح أو تم نقله. يمكنك العودة إلى الرئيسية أو تصفح المواد الدراسية.
+          <span className="text-5xl font-black text-[#B83A3A] font-mono tracking-wider tabular-nums block">404</span>
+          <h1 className="text-3xl font-black text-[#202124]">الصفحة غير موجودة</h1>
+          <p className="text-sm text-[#747474] font-medium leading-relaxed">
+            عذراً، الرابط الذي تحاول الوصول إليه غير متاح أو تم نقله. يمكنك العودة إلى الرئيسية أو تصفح الصفوف الدراسية.
           </p>
         </div>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-3 pt-2">
           <Link
-            to="/"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-sm shadow-md transition-all"
+            to="/grades"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[4px] bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] font-extrabold text-sm shadow-[2px_2px_0px_#202124] transition-all"
           >
             <Home className="w-4 h-4" />
             <span>العودة للرئيسية</span>
           </Link>
           <Link
-            to="/subjects"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 font-bold text-sm transition-all"
+            to="/grades"
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 rounded-[4px] bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-2 border-[#202124] font-extrabold text-sm shadow-[2px_2px_0px_#202124] transition-all"
           >
             <Compass className="w-4 h-4" />
-            <span>المواد الدراسية</span>
+            <span>بوابة الصفوف</span>
           </Link>
         </div>
       </div>

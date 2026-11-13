@@ -204,31 +204,32 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
             <span className="text-xl sm:text-2xl font-black text-[#405DE6] font-mono">{accuracyRate}%</span>
           </div>
           <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center rounded-xs">
-            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">أسئلة محفوظة</span>
-            <span className="text-xl sm:text-2xl font-black text-[#F2A18E] font-mono">{bookmarkedQuestions.length}</span>
+            <span className="text-xs font-mono font-bold text-[#747474] block mb-1">أسئلة محفوظة</span>
+            <span className="text-xl sm:text-2xl font-black text-[#B83A3A] font-mono tabular-nums">{bookmarkedQuestions.length}</span>
           </div>
-          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center rounded-xs">
-            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">دروس متبقية</span>
-            <span className="text-xl sm:text-2xl font-black text-[#202124] font-mono">{incompleteLessons.length}</span>
+          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center rounded-[4px]">
+            <span className="text-xs font-mono font-bold text-[#747474] block mb-1">دروس متبقية</span>
+            <span className="text-xl sm:text-2xl font-black text-[#202124] font-mono tabular-nums">{incompleteLessons.length}</span>
           </div>
-          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center rounded-xs">
-            <span className="text-xs font-mono font-bold text-[#202124]/70 block mb-1">ملاحظات مدونة</span>
-            <span className="text-xl sm:text-2xl font-black text-[#202124] font-mono">{studentState.notes?.length || 0}</span>
+          <div className="bg-[#F7F5EF] p-3.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] text-center rounded-[4px]">
+            <span className="text-xs font-mono font-bold text-[#747474] block mb-1">ملاحظات مدونة</span>
+            <span className="text-xl sm:text-2xl font-black text-[#202124] font-mono tabular-nums">{studentState.notes?.length || 0}</span>
           </div>
         </div>
       </div>
 
       {/* 2. Navigation Tabs */}
-      <div className="flex gap-2 p-1.5 bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] overflow-x-auto no-scrollbar rounded-xs">
+      <div className="flex gap-2 p-1.5 bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] overflow-x-auto no-scrollbar rounded-[4px]">
         <button
+          type="button"
           onClick={() => setActiveTab('weak-topics')}
-          className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-bold transition-all shrink-0 cursor-pointer border rounded-xs ${
+          className={`flex items-center gap-2 px-4 py-2 text-xs md:text-sm font-bold transition-all shrink-0 cursor-pointer border rounded-[4px] ${
             activeTab === 'weak-topics'
               ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
               : 'bg-transparent text-[#202124] border-transparent hover:bg-white'
           }`}
         >
-          <AlertTriangle className="w-4 h-4 text-[#F2A18E]" />
+          <AlertTriangle className={`w-4 h-4 ${activeTab === 'weak-topics' ? 'text-[#F3E6A5]' : 'text-[#B83A3A]'}`} />
           <span>المواضيع المحتاجة لتقوية ({weakTopicsList.length})</span>
         </button>
 
@@ -292,18 +293,18 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
                   </span>
                 </div>
 
-                <div className="w-full bg-[#EEECE6] h-2.5 border border-[#202124] overflow-hidden rounded-xs">
+                <div className="w-full bg-[#EAE8E1] h-2.5 border border-[#202124] overflow-hidden rounded-[4px]">
                   <div 
                     className={`h-full transition-all ${item.accuracy >= 80 ? 'bg-[#287A52]' : item.accuracy >= 50 ? 'bg-[#F3E6A5]' : 'bg-[#F2A18E]'}`}
                     style={{ width: `${item.accuracy}%` }}
                   />
                 </div>
 
-                <div className="flex items-center justify-between text-xs text-[#777873] pt-2 border-t border-[#202124]/15">
+                <div className="flex items-center justify-between text-xs text-[#747474] pt-2 border-t border-[#202124]/15">
                   <span>الأخطاء المسجلة: <strong className="text-[#B83A3A] font-mono">{item.mistakes}</strong></span>
                   <button
                     onClick={() => setActivePracticeTopic(item.topic === activePracticeTopic ? null : item.topic)}
-                    className="px-3 py-1.5 bg-[#405DE6] hover:bg-[#324ec8] text-white border border-[#202124] shadow-[1.5px_1.5px_0px_#202124] font-bold text-xs flex items-center gap-1 cursor-pointer transition-colors rounded-xs"
+                    className="px-3 py-1.5 bg-[#405DE6] hover:bg-[#334DC6] text-white border border-[#202124] shadow-[1.5px_1.5px_0px_#202124] font-bold text-xs flex items-center gap-1 cursor-pointer transition-colors rounded-xs"
                   >
                     <Target className="w-3.5 h-3.5" />
                     <span>{activePracticeTopic === item.topic ? 'إغلاق التمرين' : 'تمرن على هذا الموضوع'}</span>
@@ -333,7 +334,7 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
               </div>
 
               {practiceQuestionsForTopic.length === 0 ? (
-                <div className="text-center py-6 text-[#777873] text-xs font-bold">
+                <div className="text-center py-6 text-[#747474] text-xs font-bold">
                   جاري تجهيز أسئلة إضافية لهذا المحور... يمكنك مراجعة الدرس المتعلق به في قائمة الدروس.
                 </div>
               ) : (
@@ -347,7 +348,7 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
                       <div key={q.id} className="p-4 bg-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] space-y-3 rounded-xs">
                         <div className="flex items-center justify-between text-xs">
                           <span className="text-[#405DE6] font-mono font-bold">{q.year} • {q.session}</span>
-                          <span className="text-[#777873] font-bold">{q.category}</span>
+                          <span className="text-[#747474] font-bold">{q.category}</span>
                         </div>
                         <p dir="ltr" className="text-sm font-bold text-[#202124] text-left font-mono">{q.questionText}</p>
 
@@ -367,7 +368,7 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
                               const correct = cleanedU === cleanedT || (cleanedT.includes(cleanedU) && cleanedU.length > 2);
                               setPracticeResults(prev => ({ ...prev, [q.id]: correct }));
                             }}
-                            className="px-4 py-2 bg-[#405DE6] hover:bg-[#324ec8] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-bold text-xs rounded-xs cursor-pointer"
+                            className="px-4 py-2 bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-bold text-xs rounded-xs cursor-pointer"
                           >
                             تحقق
                           </button>
@@ -394,15 +395,15 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
       {activeTab === 'bookmarks' && (
         <div className="space-y-4">
           {bookmarkedQuestions.length === 0 ? (
-            <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-12 text-center text-[#777873]">
+            <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-12 text-center text-[#747474]">
               <Bookmark className="w-12 h-12 mx-auto mb-3 text-[#202124]/40" />
               <h3 className="text-lg font-bold text-[#202124] mb-1">لا توجد أسئلة محفوظة حتى الآن</h3>
-              <p className="text-sm text-[#777873] max-w-md mx-auto mb-5 leading-relaxed">
+              <p className="text-sm text-[#747474] max-w-md mx-auto mb-5 leading-relaxed">
                 يمكنك حفظ أي سؤال وزاري صعب أثناء خوض الاختبارات الوزارية من خلال النقر على أيقونة الإشارة المرجعية ليظهر هنا للمراجعة السريعة.
               </p>
               <button
                 onClick={() => onNavigateToTab('exam')}
-                className="px-5 py-2.5 bg-[#405DE6] hover:bg-[#324ec8] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-bold transition-all cursor-pointer rounded-xs"
+                className="px-5 py-2.5 bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-bold transition-all cursor-pointer rounded-xs"
               >
                 انتقل إلى بنك الأسئلة الوزارية
               </button>
@@ -471,8 +472,8 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
                 <h4 className="text-sm font-bold text-[#202124] group-hover:text-[#405DE6] transition-colors">
                   {lesson.titleAr}
                 </h4>
-                <p dir="ltr" className="text-xs font-mono text-[#F2A18E] text-left">{lesson.titleEn}</p>
-                <p className="text-xs text-[#777873] line-clamp-1 mt-0.5">{lesson.summary}</p>
+                <p dir="ltr" className="text-xs font-mono text-[#405DE6] text-left">{lesson.titleEn}</p>
+                <p className="text-xs text-[#747474] line-clamp-1 mt-0.5">{lesson.summary}</p>
               </div>
               <ArrowLeft className="w-4 h-4 text-[#405DE6] group-hover:-translate-x-1 transition-transform shrink-0" />
             </div>
@@ -486,7 +487,7 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
             <h3 className="text-sm font-bold text-[#202124]">دفتر الملاحظات والأفكار الذهبية</h3>
             <button
               onClick={() => setIsAddingNote(!isAddingNote)}
-              className="px-3.5 py-1.5 bg-[#405DE6] hover:bg-[#324ec8] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-bold text-xs flex items-center gap-1.5 cursor-pointer rounded-xs"
+              className="px-3.5 py-1.5 bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-bold text-xs flex items-center gap-1.5 cursor-pointer rounded-xs"
             >
               <Plus className="w-3.5 h-3.5" />
               <span>إضافة ملاحظة</span>
@@ -521,7 +522,7 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
                 </button>
                 <button
                   type="submit"
-                  className="px-4 py-1.5 bg-[#405DE6] hover:bg-[#324ec8] text-white border-2 border-[#202124] shadow-[1.5px_1.5px_0px_#202124] font-bold text-xs rounded-xs cursor-pointer"
+                  className="px-4 py-1.5 bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] shadow-[1.5px_1.5px_0px_#202124] font-bold text-xs rounded-xs cursor-pointer"
                 >
                   حفظ في الملف
                 </button>
@@ -530,10 +531,10 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
           )}
 
           {(!studentState.notes || studentState.notes.length === 0) ? (
-            <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-12 text-center text-[#777873]">
+            <div className="bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] rounded-xs p-12 text-center text-[#747474]">
               <Award className="w-12 h-12 mx-auto mb-3 text-[#202124]/40" />
               <h3 className="text-lg font-bold text-[#202124] mb-1">لا توجد ملاحظات مدونة بعد</h3>
-              <p className="text-sm text-[#777873] max-w-md mx-auto leading-relaxed">
+              <p className="text-sm text-[#747474] max-w-md mx-auto leading-relaxed">
                 أثناء تصفح الدروس والمراجعة، يمكنك تدوين أي ملاحظة أو فكرة ذهبية في ملفك السحابي لحفظها والرجوع إليها ليلة الامتحان.
               </p>
             </div>
@@ -543,13 +544,13 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
                 <div>
                   <h4 className="font-bold text-sm text-[#405DE6] mb-1">{note.title}</h4>
                   <p className="text-xs text-[#202124] leading-relaxed whitespace-pre-wrap">{note.content}</p>
-                  <span className="text-[10px] font-mono text-[#777873] mt-2 block">{new Date(note.createdAt).toLocaleDateString('ar-IQ')}</span>
+                  <span className="text-[10px] font-mono text-[#747474] mt-2 block">{new Date(note.createdAt).toLocaleDateString('ar-IQ')}</span>
                 </div>
                 {onSaveNotes && (
                   <button
                     type="button"
                     onClick={() => handleDeleteNote(note.id)}
-                    className="p-1.5 text-[#777873] hover:text-[#B83A3A] transition-colors cursor-pointer"
+                    className="p-1.5 text-[#747474] hover:text-[#B83A3A] transition-colors cursor-pointer"
                     title="حذف الملاحظة"
                   >
                     <Trash2 className="w-4 h-4" />

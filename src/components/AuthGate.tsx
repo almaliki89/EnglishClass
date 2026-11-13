@@ -172,7 +172,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
           <div className="grid grid-cols-2 gap-3 pt-2">
             <div className="p-3 bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124]">
               <div className="flex items-center gap-2 mb-1.5">
-                <div className="w-6 h-6 bg-[#F2A18E] text-white border border-[#202124] flex items-center justify-center font-black text-xs">
+                <div className="w-6 h-6 bg-[#F2A18E] text-[#202124] border border-[#202124] flex items-center justify-center font-black text-xs">
                   ★
                 </div>
                 <h4 className="text-xs font-black text-[#202124]">محاكي الوزاري 100د</h4>
@@ -309,9 +309,9 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               <motion.div 
                 initial={{ opacity: 0, y: -5 }} 
                 animate={{ opacity: 1, y: 0 }} 
-                className="mb-4 p-3 bg-[#F2A18E]/15 border-2 border-[#F2A18E] flex items-start gap-2 text-[#202124] text-xs font-bold"
+                className="mb-4 p-3 bg-[#FDF6F4] border-2 border-[#B83A3A] flex items-start gap-2 text-[#202124] text-xs font-bold"
               >
-                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-[#F2A18E]" />
+                <AlertCircle className="w-4 h-4 shrink-0 mt-0.5 text-[#B83A3A]" />
                 <span>{error}</span>
               </motion.div>
             )}
@@ -431,7 +431,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               <button
                 type="submit"
                 disabled={loading || googleLoading}
-                className="w-full py-3.5 bg-[#405DE6] hover:bg-[#203cc5] text-white font-black text-sm border-2 border-[#202124] shadow-[4px_4px_0px_#202124] hover:shadow-[2px_2px_0px_#202124] hover:translate-x-0.5 hover:translate-y-0.5 flex items-center justify-center gap-2 transition-all mt-4 disabled:opacity-50 cursor-pointer"
+                className="w-full py-3.5 bg-[#405DE6] hover:bg-[#334DC6] text-white font-black text-sm border-2 border-[#202124] shadow-[4px_4px_0px_#202124] hover:shadow-[2px_2px_0px_#202124] hover:translate-x-0.5 hover:translate-y-0.5 flex items-center justify-center gap-2 transition-all mt-4 disabled:opacity-50 cursor-pointer rounded-[4px]"
               >
                 {loading ? (
                   <Loader2 className="w-5 h-5 animate-spin" />

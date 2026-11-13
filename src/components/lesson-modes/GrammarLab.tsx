@@ -267,7 +267,7 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
               <span className="px-2.5 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] text-[10px] font-mono font-bold uppercase tracking-wider">
                 INTERACTIVE GRAMMAR LAB
               </span>
-              <span className="text-xs font-mono font-bold text-[#777873]">• معمل القواعد الذكي</span>
+              <span className="text-xs font-mono font-bold text-[#747474]">• معمل القواعد الذكي</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-extrabold text-[#202124] mt-1 tracking-tight">
               الخوارزمية الوزارية وحل القواعد خطوة بخطوة
@@ -322,7 +322,7 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
                 <Sparkles className="w-4 h-4 text-[#405DE6]" />
                 الصيغة الرياضية المعتمدة في الامتحان الوزاري
               </span>
-              <span className="text-[11px] font-mono font-bold text-[#777873]">RULE SYNTAX MATRIX</span>
+              <span className="text-[11px] font-mono font-bold text-[#747474]">RULE SYNTAX MATRIX</span>
             </div>
 
             <div className="font-mono text-base sm:text-lg font-bold text-[#202124] bg-white p-4 border border-[#202124] overflow-x-auto whitespace-pre-wrap leading-relaxed shadow-[2px_2px_0px_#202124] rounded">
@@ -344,7 +344,7 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
                       <p className="font-mono font-bold text-sm text-[#202124] dir-ltr text-right">
                         {ex.en}
                       </p>
-                      <p className="text-xs font-bold text-[#777873]">
+                      <p className="text-xs font-bold text-[#747474]">
                         {ex.ar}
                       </p>
                     </div>
@@ -382,7 +382,7 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
             <span className="text-xs font-bold text-[#202124]">
               تتبع خطوات الحل بنفس الطريقة المطلوبة في الدفتر الامتحاني:
             </span>
-            <div className="flex items-center gap-1 text-xs font-mono font-bold text-[#777873]">
+            <div className="flex items-center gap-1 text-xs font-mono font-bold text-[#747474]">
               <span>STEP {activeStep + 1} OF {steps.length}</span>
             </div>
           </div>
@@ -466,10 +466,10 @@ export const GrammarLab: React.FC<GrammarLabProps> = ({ lesson }) => {
         <div className="space-y-4">
           <div className="flex items-center justify-between border-b border-[#202124]/20 pb-2">
             <span className="text-xs font-bold text-[#202124] flex items-center gap-1.5">
-              <Zap className="w-4 h-4 text-[#F2A18E]" />
+              <Zap className="w-4 h-4 text-[#202124] fill-[#F2A18E]" />
               رادار الكلمات المفتاحية والدلائل الوزارية القاطعة
             </span>
-            <span className="text-[11px] font-mono font-bold text-[#777873]">RADAR KEYWORDS</span>
+            <span className="text-[11px] font-mono font-bold text-[#747474]">RADAR KEYWORDS</span>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

@@ -33,7 +33,7 @@ export const GradeSelectorBar: React.FC<GradeSelectorBarProps> = ({
             </div>
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#F2A18E]">
+                <span className="font-mono text-[10px] font-bold uppercase tracking-widest text-[#405DE6]">
                   CURRICULUM DIRECTORY // دليل المراحل
                 </span>
                 <span className="text-[10px] px-1.5 py-0.2 bg-[#202124] text-[#F3E6A5] font-mono font-bold hidden sm:inline-block">
@@ -108,7 +108,7 @@ export const GradeSelectorBar: React.FC<GradeSelectorBarProps> = ({
                 </div>
 
                 <div className={`flex items-center justify-between w-full pt-1.5 border-t text-[10px] font-mono ${
-                  isSelected ? 'border-white/30 text-white/90' : 'border-[#202124]/15 text-[#777873]'
+                  isSelected ? 'border-white/30 text-white/90' : 'border-[#202124]/15 text-[#747474]'
                 }`}>
                   <span>
                     {meta.stage === 'intermediate' ? 'متوسطة' : 'إعدادية'}

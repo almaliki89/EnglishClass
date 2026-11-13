@@ -185,18 +185,18 @@ export const Dashboard: React.FC<DashboardProps> = ({
           <h2 className="text-lg sm:text-xl font-extrabold text-[var(--ds-ink)]">خريطة المنهج الدراسي</h2>
           <p className="text-sm text-[var(--ds-ink-muted)]">استكشف وحدات {gradeMeta.nameAr} واختر أي درس مباشرة.</p>
         </div>
-        <div className="flex items-center gap-1 p-1 bg-[var(--ds-surface-muted)] border border-[var(--ds-line)] rounded-md">
+        <div className="flex items-center gap-1 p-1 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-[4px]">
           <button
             type="button"
             aria-pressed={viewMode === 'quest-map'}
             onClick={() => setViewMode('quest-map')}
-            className={`px-3 py-2 text-xs font-bold border rounded transition-colors ${viewMode === 'quest-map' ? 'bg-white text-[var(--ds-primary)] border-[var(--ds-line)] shadow-sm' : 'border-transparent text-[var(--ds-ink-muted)] hover:text-[var(--ds-ink)]'}`}
+            className={`px-3 py-2 text-xs font-bold border rounded-[4px] transition-colors cursor-pointer ${viewMode === 'quest-map' ? 'bg-[#405DE6] text-white border-[#202124] shadow-[1.5px_1.5px_0px_#202124]' : 'border-transparent text-[#747474] hover:text-[#202124]'}`}
           >خريطة الوحدات</button>
           <button
             type="button"
             aria-pressed={viewMode === 'pin-feed'}
             onClick={() => setViewMode('pin-feed')}
-            className={`px-3 py-2 text-xs font-bold border rounded transition-colors ${viewMode === 'pin-feed' ? 'bg-white text-[var(--ds-primary)] border-[var(--ds-line)] shadow-sm' : 'border-transparent text-[var(--ds-ink-muted)] hover:text-[var(--ds-ink)]'}`}
+            className={`px-3 py-2 text-xs font-bold border rounded-[4px] transition-colors cursor-pointer ${viewMode === 'pin-feed' ? 'bg-[#405DE6] text-white border-[#202124] shadow-[1.5px_1.5px_0px_#202124]' : 'border-transparent text-[#747474] hover:text-[#202124]'}`}
           >ملخصات مرئية</button>
         </div>
       </div>
@@ -226,7 +226,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                     playFanfare();
                     triggerCelebration();
                   }}
-                  className="px-2.5 py-1 bg-[#F3E6A5] hover:bg-[#e8da98] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer flex items-center gap-1 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none rounded-xs"
+                  className="px-2.5 py-1 bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer flex items-center gap-1 active:translate-x-[1px] active:translate-y-[1px] active:shadow-none rounded-[4px]"
                   title="احتفل بتقدمك الدراسي!"
                 >
                   <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
@@ -251,8 +251,9 @@ export const Dashboard: React.FC<DashboardProps> = ({
               {searchQuery && (
                 <button
                   type="button"
+                  aria-label="مسح البحث"
                   onClick={() => setSearchQuery('')}
-                  className="absolute left-2.5 top-1/2 -translate-y-1/2 p-1 text-[#202124] hover:text-[#F2A18E] cursor-pointer"
+                  className="absolute left-2.5 top-1/2 -translate-y-1/2 p-1 text-[#202124] hover:text-[#B83A3A] cursor-pointer"
                 >
                   <X className="w-3.5 h-3.5" />
                 </button>
@@ -352,7 +353,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                             0{unit.number}
                           </span>
                           <div>
-                            <span className="text-[10px] font-mono font-bold text-[#F2A18E] block">
+                            <span className="text-[10px] font-mono font-bold text-[#747474] block">
                               الوحدة {unit.number} · المنهج الرسمي
                             </span>
                             <h3 className="text-base sm:text-lg font-black text-[#202124]">

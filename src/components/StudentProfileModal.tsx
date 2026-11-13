@@ -80,8 +80,10 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
           </div>
 
           <button
+            type="button"
+            aria-label="إغلاق نافذة الملف الشخصي"
             onClick={onClose}
-            className="p-2 bg-white text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer"
+            className="p-2 bg-white text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all cursor-pointer rounded-[4px]"
           >
             <X className="w-5 h-5" />
           </button>
@@ -119,21 +121,23 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
 
             {user ? (
               <button
+                type="button"
                 onClick={async () => {
                   await logout();
                 }}
-                className="px-3 py-1.5 bg-white text-[#F2A18E] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] active:shadow-none text-xs font-black flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer"
+                className="px-3 py-1.5 bg-white hover:bg-[#F2A18E] text-[#B83A3A] hover:text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] active:shadow-none rounded-[4px] text-xs font-black flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer"
               >
                 <LogOut className="w-3.5 h-3.5" />
                 <span>خروج</span>
               </button>
             ) : (
               <button
+                type="button"
                 onClick={() => {
                   onClose();
                   onOpenAuth();
                 }}
-                className="px-3.5 py-2 bg-[#405DE6] hover:bg-[#344EC7] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] active:shadow-none text-xs font-black flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer"
+                className="px-3.5 py-2 bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] active:shadow-none rounded-[4px] text-xs font-black flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer"
               >
                 <LogIn className="w-3.5 h-3.5" />
                 <span>دخول / تسجيل</span>
@@ -208,12 +212,12 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
 
             <div className="flex items-center gap-2.5 self-end sm:self-auto">
               <div className="text-center px-4 py-2 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
-                <p className="text-[10px] font-mono font-bold text-[#202124]/60">XP POINTS</p>
-                <p className="text-xl font-black font-mono text-[#405DE6]">{studentState.xp} XP</p>
+                <p className="text-[10px] font-mono font-bold text-[#747474]">XP POINTS</p>
+                <p className="text-xl font-black font-mono text-[#405DE6] tabular-nums">{studentState.xp} XP</p>
               </div>
               <div className="text-center px-4 py-2 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
-                <p className="text-[10px] font-mono font-bold text-[#202124]/60">STREAK</p>
-                <p className="text-xl font-black font-mono text-[#F2A18E]">{studentState.streakDays}D</p>
+                <p className="text-[10px] font-mono font-bold text-[#747474]">STREAK</p>
+                <p className="text-xl font-black font-mono text-[#B83A3A] tabular-nums">{studentState.streakDays}D</p>
               </div>
             </div>
           </div>
@@ -221,16 +225,16 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
           {/* Stats Bar */}
           <div className="grid grid-cols-3 gap-3 text-center">
             <div className="p-3 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
-              <p className="text-xs font-mono font-bold text-[#202124]/70">LESSONS</p>
-              <p className="text-2xl font-black font-mono text-[#202124] mt-1">{studentState.completedLessonIds.length}</p>
+              <p className="text-xs font-mono font-bold text-[#747474]">LESSONS</p>
+              <p className="text-2xl font-black font-mono text-[#202124] mt-1 tabular-nums">{studentState.completedLessonIds.length}</p>
             </div>
             <div className="p-3 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
-              <p className="text-xs font-mono font-bold text-[#202124]/70">ACCURACY</p>
-              <p className="text-2xl font-black font-mono text-[#405DE6] mt-1">{accuracy}%</p>
+              <p className="text-xs font-mono font-bold text-[#747474]">ACCURACY</p>
+              <p className="text-2xl font-black font-mono text-[#405DE6] mt-1 tabular-nums">{accuracy}%</p>
             </div>
             <div className="p-3 bg-[#F7F5EF] border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
-              <p className="text-xs font-mono font-bold text-[#202124]/70">QUESTIONS</p>
-              <p className="text-2xl font-black font-mono text-[#F2A18E] mt-1">{studentState.totalQuestionsAttempted}</p>
+              <p className="text-xs font-mono font-bold text-[#747474]">QUESTIONS</p>
+              <p className="text-2xl font-black font-mono text-[#287A52] mt-1 tabular-nums">{studentState.totalQuestionsAttempted}</p>
             </div>
           </div>
 
@@ -286,12 +290,13 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
           <div className="pt-4 border-t-2 border-[#202124] flex flex-wrap items-center justify-between gap-3 text-xs text-[#202124]/70 font-mono">
             <span>{user ? '● البيانات متزامنة سحابياً مع حسابك' : '○ البيانات محفوظة محلياً في متصفحك'}</span>
             <button
+              type="button"
               onClick={() => {
                 if (window.confirm('هل أنت متأكد من تصفير تقدمك بالكامل؟')) {
                   onResetProgress();
                 }
               }}
-              className="bg-white hover:bg-[#F2A18E] hover:text-white text-[#F2A18E] border-2 border-[#202124] px-3 py-1 font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-[2px_2px_0px_#202124]"
+              className="bg-white hover:bg-[#F2A18E] hover:text-[#202124] text-[#B83A3A] border-2 border-[#202124] rounded-[4px] px-3 py-1 font-bold flex items-center gap-1.5 cursor-pointer transition-all shadow-[2px_2px_0px_#202124]"
             >
               <RotateCcw className="w-3.5 h-3.5" />
               <span>تصفير التقدم الدراسي</span>

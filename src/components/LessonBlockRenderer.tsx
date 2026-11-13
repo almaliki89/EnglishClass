@@ -684,7 +684,7 @@ const FlashcardBlockView: React.FC<{ block: FlashcardBlock; onSpeak: (t: string)
         <button
           type="button"
           onClick={() => onSpeak(card.audioText || card.front)}
-          className="p-2 bg-[#F3E6A5] hover:bg-[#ebdca0] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs text-xs cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
+          className="p-2 bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-[4px] text-xs cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
           title="استمع"
         >
           <Volume2 className="w-4 h-4" />

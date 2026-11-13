@@ -237,7 +237,7 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
               <BookOpen className="w-5 h-5" />
             </span>
             <div>
-              <div className="font-mono text-[10px] font-black uppercase text-[#F2A18E] tracking-widest">
+              <div className="font-mono text-[10px] font-black uppercase text-[#405DE6] tracking-widest">
                 SYLLABUS MODULES // الوحدات الرسمية
               </div>
               <h2 className="text-xl sm:text-2xl font-black text-[#202124] tracking-tight">
@@ -332,8 +332,9 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
           />
           {searchQuery && (
             <button
+              type="button"
               onClick={() => setSearchQuery('')}
-              className="absolute left-3 top-2.5 text-xs text-[#202124] hover:text-[#F2A18E] font-black cursor-pointer"
+              className="absolute left-3 top-2.5 text-xs text-[#202124] hover:text-[#B83A3A] font-black cursor-pointer"
             >
               مسح
             </button>
@@ -343,15 +344,16 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
 
       {/* 3. Empty State if no units match */}
       {filteredUnits.length === 0 && (
-        <div className="p-12 text-center bg-white rounded-3xl border border-slate-200 space-y-3">
-          <BookMarked className="w-12 h-12 text-slate-300 mx-auto" />
-          <h3 className="text-base font-bold text-slate-800">لم يتم العثور على وحدات مطابقة للبحث</h3>
-          <p className="text-xs text-slate-500 max-w-md mx-auto">
+        <div className="p-12 text-center bg-white rounded-[6px] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3">
+          <BookMarked className="w-12 h-12 text-[#747474] mx-auto" />
+          <h3 className="text-base font-bold text-[#202124]">لم يتم العثور على وحدات مطابقة للبحث</h3>
+          <p className="text-xs text-[#747474] max-w-md mx-auto">
             جرب البحث بكلمات عامة مثل: While, Passive, Used to, أو اختر تبويب "جميع الوحدات".
           </p>
           <button
+            type="button"
             onClick={() => { setFilterTerm('all'); setSearchQuery(''); }}
-            className="px-4 py-2 bg-indigo-50 text-indigo-700 font-bold text-xs rounded-xl hover:bg-indigo-100 transition-colors"
+            className="px-4 py-2 bg-[#405DE6] hover:bg-[#334DC6] text-white font-black text-xs rounded-[4px] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] transition-colors cursor-pointer"
           >
             إعادة تعيين البحث
           </button>
@@ -432,21 +434,21 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
                     {unit.titleAr}
                   </h3>
                   
-                  <p dir="ltr" className="text-xs text-slate-400 font-mono mt-1 text-left font-medium">
+                  <p dir="ltr" className="text-xs text-[#747474] font-mono mt-1 text-left font-bold bidi-en">
                     {unit.titleEn}
                   </p>
 
-                  <p className="text-xs text-slate-600 mt-2.5 line-clamp-2 leading-relaxed font-normal">
+                  <p className="text-xs text-[#747474] mt-2.5 line-clamp-2 leading-relaxed font-medium">
                     {unit.description}
                   </p>
                 </div>
 
                 {/* Thematic Pillars (Grammar, Reading, Essay) */}
-                <div className="p-5 sm:p-6 py-4 space-y-3 bg-slate-50/40">
+                <div className="p-5 sm:p-6 py-4 space-y-3 bg-[#F7F5EF]">
                   
                   {/* Grammar Highlights */}
                   <div>
-                    <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1.5">
+                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#747474] block mb-1.5">
                       أبرز القواعد والموضوعات:
                     </span>
                     <div className="flex flex-wrap gap-1.5">
@@ -454,7 +456,7 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
                         <span
                           key={idx}
                           dir="ltr"
-                          className="px-2.5 py-1 rounded-lg bg-white border border-slate-200 text-slate-700 text-[11px] font-semibold text-left bidi-en"
+                          className="px-2.5 py-1 rounded-[4px] bg-white border border-[#202124] text-[#202124] text-[11px] font-bold text-left bidi-en"
                         >
                           {rule}
                         </span>
@@ -465,14 +467,14 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
                   {/* Reading Passages */}
                   {displayReadingPassages.length > 0 && (
                     <div className="pt-1">
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                      <span className="text-[10px] font-extrabold uppercase tracking-wider text-[#747474] block mb-1">
                         قطع الكتاب والاستيعاب:
                       </span>
                       <div className="flex flex-wrap gap-1.5">
                         {displayReadingPassages.map((story, sIdx) => (
                           <span
                             key={sIdx}
-                            className="px-2.5 py-1 rounded-lg bg-blue-50/80 border border-blue-100 text-blue-800 text-[11px] font-semibold"
+                            className="px-2.5 py-1 rounded-[4px] bg-[#E9ECFA] border border-[#202124] text-[#202124] text-[11px] font-bold"
                           >
                             📖 {story}
                           </span>
@@ -483,14 +485,14 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
 
                   {/* Essay Indicator */}
                   {unitEssays.length > 0 && (
-                    <div className="pt-1 flex items-center justify-between p-2.5 rounded-xl bg-emerald-50/70 border border-emerald-100 text-emerald-900 text-xs">
+                    <div className="pt-1 flex items-center justify-between p-2.5 rounded-[4px] bg-[#D7E9DA] border-2 border-[#202124] text-[#202124] text-xs">
                       <div className="flex items-center gap-2 truncate">
-                        <FileText className="w-4 h-4 text-emerald-600 shrink-0" />
+                        <FileText className="w-4 h-4 text-[#287A52] shrink-0" />
                         <span className="truncate font-bold">
                           الإنشاء: {unitEssays[0].titleAr}
                         </span>
                       </div>
-                      <span className="text-[10px] font-black bg-emerald-600 text-white px-2 py-0.5 rounded-md shrink-0">
+                      <span className="text-[10px] font-black bg-[#287A52] text-white px-2 py-0.5 rounded-[4px] border border-[#202124] shrink-0 tabular-nums">
                         20 درجة
                       </span>
                     </div>
@@ -499,19 +501,19 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
                 </div>
 
                 {/* Progress Bar & Quick Lessons Accordion */}
-                <div className="p-5 sm:p-6 pt-3 border-t border-slate-100 space-y-3 bg-white">
+                <div className="p-5 sm:p-6 pt-3 border-t-2 border-[#202124] space-y-3 bg-white">
                   
                   {/* Progress Line */}
                   <div>
-                    <div className="flex items-center justify-between text-xs text-slate-500 font-medium mb-1.5">
+                    <div className="flex items-center justify-between text-xs text-[#747474] font-bold mb-1.5">
                       <span className="text-[11px] font-bold">
                         نسبة إنجاز الوحدة ({completedInUnit} من {unit.lessons.length} دروس)
                       </span>
-                      <span className="font-mono font-black text-slate-900 text-xs">{progressRatio}%</span>
+                      <span className="font-mono font-black text-[#202124] text-xs tabular-nums">{progressRatio}%</span>
                     </div>
-                    <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                    <div className="w-full bg-[#EAE8E1] border border-[#202124] h-2.5 rounded-[4px] overflow-hidden">
                       <div 
-                        className={`h-full rounded-full transition-all duration-300 ${meta.color.progress}`}
+                        className="h-full bg-[#405DE6] transition-all duration-300"
                         style={{ width: `${progressRatio}%` }}
                       />
                     </div>
@@ -520,9 +522,10 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
                   {/* Expandable Lessons Drawer Button */}
                   <div className="flex items-center justify-between pt-1">
                     <button
+                      type="button"
                       id={`unit-${unit.id}-toggle-lessons`}
                       onClick={(e) => toggleUnitLessons(unit.number, e)}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-indigo-600 transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#202124] hover:text-[#405DE6] transition-colors cursor-pointer"
                     >
                       <span>قائمة الدروس ({unit.lessons.length})</span>
                       {isExpanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
@@ -530,9 +533,10 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
 
                     {/* Launch Action */}
                     <button
+                      type="button"
                       id={`enter-unit-${unit.id}-btn`}
                       onClick={() => onSelectUnit(unit)}
-                      className="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-slate-900 hover:bg-indigo-600 text-white text-xs font-bold shadow-xs hover:shadow-md transition-all group/btn"
+                      className="inline-flex items-center gap-2 px-4 py-2 rounded-[4px] bg-[#405DE6] hover:bg-[#334DC6] text-white border-2 border-[#202124] text-xs font-extrabold shadow-[2px_2px_0px_#202124] transition-all group/btn cursor-pointer"
                     >
                       <span>دخول الوحدة</span>
                       <ChevronLeft className="w-3.5 h-3.5 group-hover/btn:-translate-x-1 transition-transform" />
@@ -541,36 +545,44 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
 
                   {/* Expanded Lessons List */}
                   {isExpanded && (
-                    <div className="pt-3 border-t border-slate-100 space-y-2 max-h-64 overflow-y-auto pr-1">
+                    <div className="pt-3 border-t-2 border-[#202124]/15 space-y-2 max-h-64 overflow-y-auto pr-1">
                       {unit.lessons.map((lesson) => {
                         const isLessonDone = studentState.completedLessonIds.includes(lesson.id);
                         return (
                           <div
                             key={lesson.id}
                             id={`lesson-item-${lesson.id}`}
+                            role="button"
+                            tabIndex={0}
                             onClick={() => onSelectLesson(lesson)}
-                            className={`p-2.5 rounded-xl border text-xs cursor-pointer flex items-center justify-between gap-3 transition-all ${
+                            onKeyDown={(e) => {
+                              if (e.key === 'Enter' || e.key === ' ') {
+                                e.preventDefault();
+                                onSelectLesson(lesson);
+                              }
+                            }}
+                            className={`p-2.5 rounded-[4px] border-2 border-[#202124] text-xs cursor-pointer flex items-center justify-between gap-3 transition-all ${
                               isLessonDone
-                                ? 'bg-emerald-50/40 border-emerald-200/60 hover:bg-emerald-100/50 text-slate-800'
-                                : 'bg-slate-50/70 border-slate-200/70 hover:bg-indigo-50/60 hover:border-indigo-200 text-slate-700'
+                                ? 'bg-[#F4F8F5] hover:bg-[#D7E9DA] text-[#202124]'
+                                : 'bg-[#F7F5EF] hover:bg-[#E9ECFA] text-[#202124]'
                             }`}
                           >
                             <div className="flex items-center gap-2.5 min-w-0">
-                              <span className="w-5 h-5 rounded-md bg-white border border-slate-200 flex items-center justify-center font-bold text-[10px] text-slate-600 shrink-0">
+                              <span className="w-5 h-5 rounded-[4px] bg-white border border-[#202124] flex items-center justify-center font-bold text-[10px] text-[#202124] shrink-0 tabular-nums">
                                 {lesson.lessonNumber}
                               </span>
                               <div className="truncate">
                                 <span className="font-bold block truncate">{lesson.titleAr}</span>
-                                <span dir="ltr" className="text-[10px] text-slate-400 font-mono block truncate text-left">{lesson.titleEn}</span>
+                                <span dir="ltr" className="text-[10px] text-[#747474] font-mono block truncate text-left bidi-en">{lesson.titleEn}</span>
                               </div>
                             </div>
 
                             <div className="flex items-center gap-2 shrink-0">
-                              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-md ${
-                                lesson.category === 'grammar' ? 'bg-indigo-100 text-indigo-700' :
-                                lesson.category === 'reading' ? 'bg-blue-100 text-blue-700' :
-                                lesson.category === 'vocabulary' ? 'bg-emerald-100 text-emerald-700' :
-                                'bg-purple-100 text-purple-700'
+                              <span className={`text-[10px] font-bold px-2 py-0.5 rounded-[4px] border border-[#202124] ${
+                                lesson.category === 'grammar' ? 'bg-[#E9ECFA] text-[#405DE6]' :
+                                lesson.category === 'reading' ? 'bg-[#F3E6A5] text-[#202124]' :
+                                lesson.category === 'vocabulary' ? 'bg-[#D7E9DA] text-[#287A52]' :
+                                'bg-[#DCD8FA] text-[#202124]'
                               }`}>
                                 {lesson.category === 'grammar' ? 'قواعد' :
                                  lesson.category === 'reading' ? 'استيعابية' :
@@ -578,9 +590,9 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
                               </span>
 
                               {isLessonDone ? (
-                                <CheckCircle className="w-4 h-4 text-emerald-600" />
+                                <CheckCircle className="w-4 h-4 text-[#287A52]" />
                               ) : (
-                                <ChevronLeft className="w-3.5 h-3.5 text-slate-400" />
+                                <ChevronLeft className="w-3.5 h-3.5 text-[#747474]" />
                               )}
                             </div>
                           </div>
@@ -600,15 +612,15 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
       {/* 5. MODE B: CHRONOLOGICAL ROADMAP VIEW */}
       {viewMode === 'roadmap' && filteredUnits.length > 0 && (
         <div className="space-y-4">
-          <div className="p-4 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-between text-xs text-indigo-900 font-semibold">
+          <div className="p-4 rounded-[6px] bg-[#E9ECFA] border-2 border-[#202124] flex items-center justify-between text-xs text-[#202124] font-bold">
             <div className="flex items-center gap-2">
-              <Compass className="w-4 h-4 text-indigo-600" />
+              <Compass className="w-4 h-4 text-[#405DE6] shrink-0" />
               <span>المسار التتابعي المنهجي: الوحدات مرتبة تسلسلياً لضمان تغطية المنهاج الوزاري خطوة بخطوة.</span>
             </div>
           </div>
 
-          <div className="relative border-r-2 border-slate-200 mr-4 sm:mr-8 space-y-6 pr-6 sm:pr-8 py-2">
-            {filteredUnits.map((unit, index) => {
+          <div className="relative border-r-2 border-[#202124] mr-4 sm:mr-8 space-y-6 pr-6 sm:pr-8 py-2">
+            {filteredUnits.map((unit) => {
               const meta = UNIT_META[unit.number] || UNIT_META[1];
               const completedInUnit = unit.lessons.filter(l => studentState.completedLessonIds.includes(l.id)).length;
               const progressRatio = unit.lessons.length > 0 ? Math.round((completedInUnit / unit.lessons.length) * 100) : 0;
@@ -618,53 +630,61 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
                 <div key={unit.id} className="relative">
                   
                   {/* Timeline Dot */}
-                  <div className={`absolute -right-[33px] sm:-right-[41px] top-4 w-6 h-6 rounded-full border-4 border-white shadow-xs flex items-center justify-center text-white ${
-                    isDone ? 'bg-emerald-600' : completedInUnit > 0 ? 'bg-indigo-600' : 'bg-slate-300'
+                  <div className={`absolute -right-[33px] sm:-right-[41px] top-4 w-6 h-6 rounded-full border-2 border-[#202124] flex items-center justify-center text-white ${
+                    isDone ? 'bg-[#287A52]' : completedInUnit > 0 ? 'bg-[#405DE6]' : 'bg-[#EAE8E1] text-[#202124]'
                   }`}>
                     {isDone && <Check className="w-3 h-3 stroke-[3]" />}
                   </div>
 
                   {/* Content Box */}
                   <div 
+                    role="button"
+                    tabIndex={0}
                     onClick={() => onSelectUnit(unit)}
-                    className="p-5 sm:p-6 rounded-3xl bg-white border border-slate-200/90 hover:border-indigo-400 hover:shadow-md transition-all cursor-pointer group"
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        onSelectUnit(unit);
+                      }
+                    }}
+                    className="p-5 sm:p-6 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] hover:bg-[#F7F5EF] transition-all cursor-pointer group"
                   >
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-2">
-                      <div className="flex items-center gap-2">
-                        <span className={`px-2.5 py-1 rounded-lg text-xs font-black ${meta.color.badge}`}>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className={`px-2.5 py-1 rounded-[4px] border border-[#202124] text-xs font-black ${meta.color.badge}`}>
                           الوحدة {unit.number}
                         </span>
-                        <h3 className="font-black text-slate-900 text-base sm:text-lg group-hover:text-indigo-600 transition-colors">
+                        <h3 className="font-black text-[#202124] text-base sm:text-lg group-hover:text-[#405DE6] transition-colors">
                           {unit.titleAr}
                         </h3>
                       </div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-amber-800 bg-amber-50 px-2.5 py-1 rounded-lg border border-amber-200">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-xs font-bold text-[#202124] bg-[#F3E6A5] px-2.5 py-1 rounded-[4px] border border-[#202124]">
                           {meta.ministerialWeight}
                         </span>
-                        <span className="text-xs font-bold text-slate-500">
+                        <span className="text-xs font-bold text-[#747474] tabular-nums">
                           {completedInUnit}/{unit.lessons.length} دروس
                         </span>
                       </div>
                     </div>
 
-                    <p className="text-xs text-slate-500 font-normal leading-relaxed">
+                    <p className="text-xs text-[#747474] font-medium leading-relaxed">
                       {unit.description}
                     </p>
 
-                    <div className="mt-4 flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-slate-100">
+                    <div className="mt-4 flex flex-wrap items-center justify-between gap-3 pt-3 border-t-2 border-[#202124]/15">
                       <div className="flex flex-wrap gap-1.5">
                         {meta.keyGrammar.slice(0, 3).map((g, gi) => (
-                          <span key={gi} className="text-[10px] font-bold px-2 py-0.5 bg-slate-100 text-slate-700 rounded-md">
+                          <span key={gi} className="text-[10px] font-bold px-2 py-0.5 bg-[#F7F5EF] border border-[#202124]/30 text-[#202124] rounded-[4px]">
                             {g}
                           </span>
                         ))}
                       </div>
 
-                      <button className="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-600 group-hover:text-indigo-700">
+                      <span className="inline-flex items-center gap-1.5 text-xs font-extrabold text-[#405DE6]">
                         <span>استعراض محتوى الوحدة</span>
                         <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
-                      </button>
+                      </span>
                     </div>
 
                   </div>

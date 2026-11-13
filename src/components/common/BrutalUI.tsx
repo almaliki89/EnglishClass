@@ -5,23 +5,21 @@ import { ChevronDown, ChevronUp, ChevronLeft, Lightbulb, AlertTriangle, Sparkles
 // Official Design System Tokens
 // -------------------------------------------------------------
 export const BRUTAL_COLORS = {
-  paper: '#F7F5EF',
-  surface: '#FFFFFF',
-  white: '#FFFFFF',
-  ink: '#202124',
-  cobalt: '#405DE6',
-  yellow: '#F3E6A5',
-  acidYellow: '#F3E6A5',
-  coral: '#F2A18E',
-  vermilion: '#F2A18E',
-  lavender: '#DCD8FA',
-  skyBlue: '#DCD8FA',
-  blueMist: '#E9ECFA',
-  softMint: '#D7E9DA',
-  mint: '#D7E9DA',
-  softBorder: '#E5E3DC',
-  success: '#287A52',
-  error: '#B83A3A',
+  paper: 'var(--token-paper)',
+  surface: 'var(--token-surface)',
+  white: 'var(--token-surface)',
+  ink: 'var(--token-ink)',
+  cobalt: 'var(--token-cobalt)',
+  yellow: 'var(--token-yellow)',
+  coral: 'var(--token-coral)',
+  lavender: 'var(--token-lavender)',
+  blueMist: 'var(--token-blue-mist)',
+  softMint: 'var(--token-mint)',
+  mint: 'var(--token-mint)',
+  muted: 'var(--token-muted)',
+  softBorder: 'var(--token-border)',
+  success: 'var(--token-success)',
+  error: 'var(--token-error)',
 } as const;
 
 // -------------------------------------------------------------
@@ -69,7 +67,7 @@ export const BrutalCard: React.FC<BrutalCardProps> = ({
 
   return (
     <div
-      className={`${bgClasses} ${borderClass} ${shadowClass} rounded-xs transition-all duration-150 ${className}`}
+      className={`${bgClasses} ${borderClass} ${shadowClass} rounded-[6px] transition-all duration-150 ${className}`}
       {...props}
     >
       {children}
@@ -96,23 +94,23 @@ export const BrutalButton: React.FC<BrutalButtonProps> = ({
 }) => {
   const variantClasses = {
     primary: 'bg-[#405DE6] text-white hover:bg-[#334DC6]',
-    secondary: 'bg-[#F2A18E] text-[#202124] hover:bg-[#e48e7b]',
-    yellow: 'bg-[#F3E6A5] text-[#202124] hover:bg-[#ebdca0]',
-    sky: 'bg-[#DCD8FA] text-[#202124] hover:bg-[#cdb2f5]',
-    mint: 'bg-[#D7E9DA] text-[#202124] hover:bg-[#c2dec6]',
+    secondary: 'bg-[#F2A18E] text-[#202124] hover:bg-[#E58E7A]',
+    yellow: 'bg-[#F3E6A5] text-[#202124] hover:bg-[#E5D792]',
+    sky: 'bg-[#DCD8FA] text-[#202124] hover:bg-[#C9C3F2]',
+    mint: 'bg-[#D7E9DA] text-[#202124] hover:bg-[#C2DEC6]',
     white: 'bg-white text-[#202124] hover:bg-[#F7F5EF]',
     outline: 'bg-transparent text-[#202124] hover:bg-[#202124]/5',
   }[variant];
 
   const sizeClasses = {
-    sm: 'px-3 py-1.5 text-xs font-bold gap-1.5',
-    md: 'px-4 py-2 text-sm font-bold gap-2',
-    lg: 'px-6 py-3 text-base font-bold gap-2.5',
+    sm: 'px-3 py-1.5 text-xs font-bold gap-1.5 min-h-[36px]',
+    md: 'px-4 py-2 text-sm font-bold gap-2 min-h-[40px]',
+    lg: 'px-6 py-3 text-base font-bold gap-2.5 min-h-[44px]',
   }[size];
 
   return (
     <button
-      className={`border-2 border-[#202124] rounded-xs shadow-[2.5px_2.5px_0px_#202124] active:shadow-[1px_1px_0px_#202124] active:translate-x-0.5 active:translate-y-0.5 focus-visible:outline-3 focus-visible:outline-[#405DE6] transition-all inline-flex items-center justify-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${variantClasses} ${sizeClasses} ${className}`}
+      className={`border-2 border-[#202124] rounded-[4px] shadow-[2.5px_2.5px_0px_#202124] active:shadow-[1px_1px_0px_#202124] active:translate-x-0.5 active:translate-y-0.5 focus-visible:outline-3 focus-visible:outline-[#405DE6] focus-visible:outline-offset-2 transition-all inline-flex items-center justify-center cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed ${variantClasses} ${sizeClasses} ${className}`}
       {...props}
     >
       {children}
@@ -147,7 +145,7 @@ export const BrutalBadge: React.FC<BrutalBadgeProps> = ({
 
   return (
     <span
-      className={`px-2.5 py-0.5 border border-[#202124] rounded-xs text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider inline-flex items-center gap-1 shadow-[1.5px_1.5px_0px_#202124] ${variantClasses} ${className}`}
+      className={`px-2.5 py-0.5 border border-[#202124] rounded-[4px] text-[10px] sm:text-xs font-mono font-bold uppercase tracking-wider inline-flex items-center gap-1 shadow-[1.5px_1.5px_0px_#202124] ${variantClasses} ${className}`}
     >
       {children}
     </span>
@@ -180,7 +178,7 @@ export const SectionHeader: React.FC<SectionHeaderProps> = ({
     <div className={`flex flex-wrap items-center justify-between gap-4 border-b-2 border-[#202124] pb-4 ${className}`}>
       <div className="flex items-center gap-3">
         {icon && (
-          <div className="w-11 h-11 sm:w-12 sm:h-12 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs flex items-center justify-center font-black text-lg shrink-0">
+          <div className="w-11 h-11 sm:w-12 sm:h-12 bg-[#405DE6] text-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-[4px] flex items-center justify-center font-black text-lg shrink-0">
             {icon}
           </div>
         )}
@@ -258,7 +256,7 @@ export const CalloutBox: React.FC<CalloutBoxProps> = ({
 
   return (
     <div
-      className={`${config.bg} ${config.text} ${config.border} ${config.shadow} p-4 rounded-xs space-y-2 ${className}`}
+      className={`${config.bg} ${config.text} ${config.border} ${config.shadow} p-4 rounded-[6px] space-y-2 ${className}`}
     >
       <div className="flex items-center gap-2 font-black text-sm sm:text-base border-b-2 border-[#202124]/20 pb-1.5">
         {config.icon}
@@ -293,29 +291,30 @@ export const AccordionBlock: React.FC<AccordionBlockProps> = ({
 
   return (
     <div
-      className={`bg-white border-2 border-[#202124] shadow-[3.5px_3.5px_0px_#202124] rounded-xs transition-all ${className}`}
+      className={`bg-white border-2 border-[#202124] shadow-[3.5px_3.5px_0px_#202124] rounded-[6px] transition-all overflow-hidden ${className}`}
     >
       <button
         type="button"
+        aria-expanded={isOpen}
         onClick={() => setIsOpen(!isOpen)}
         className="w-full p-4 flex items-center justify-between gap-3 text-right bg-[#F7F5EF] hover:bg-[#E9ECFA] border-b-2 border-[#202124] cursor-pointer transition-colors"
       >
         <div className="flex items-center gap-3">
           {icon && (
-            <div className="w-8 h-8 bg-[#405DE6] text-white border border-[#202124] rounded-xs flex items-center justify-center shrink-0 font-black">
+            <div className="w-8 h-8 bg-[#405DE6] text-white border border-[#202124] rounded-[4px] flex items-center justify-center shrink-0 font-black">
               {icon}
             </div>
           )}
           <div>
             {badge && (
-              <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] rounded-xs text-[10px] font-mono font-black uppercase tracking-wider mb-1 inline-block">
+              <span className="px-2 py-0.5 bg-[#F3E6A5] text-[#202124] border border-[#202124] rounded-[4px] text-[10px] font-mono font-black uppercase tracking-wider mb-1 inline-block">
                 {badge}
               </span>
             )}
             <h3 className="text-sm sm:text-base font-black text-[#202124]">{title}</h3>
           </div>
         </div>
-        <div className="w-8 h-8 bg-white border border-[#202124] rounded-xs flex items-center justify-center shrink-0 text-[#202124]">
+        <div className="w-8 h-8 bg-white border border-[#202124] rounded-[4px] flex items-center justify-center shrink-0 text-[#202124]">
           {isOpen ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
         </div>
       </button>
@@ -341,26 +340,26 @@ interface BreadcrumbsNavProps {
 
 export const BreadcrumbsNav: React.FC<BreadcrumbsNavProps> = ({ items, className = '' }) => {
   return (
-    <nav className={`flex items-center flex-wrap gap-1.5 text-xs sm:text-sm font-mono font-bold text-[#202124] ${className}`}>
+    <nav aria-label="مسار التنقل" className={`flex items-center flex-wrap gap-1.5 text-xs sm:text-sm font-mono font-bold text-[#202124] ${className}`}>
       {items.map((item, idx) => {
         const isLast = idx === items.length - 1;
         return (
           <React.Fragment key={idx}>
-            {idx > 0 && <ChevronLeft className="w-4 h-4 text-[#F2A18E] shrink-0" />}
+            {idx > 0 && <ChevronLeft className="w-4 h-4 text-[#747474] shrink-0" />}
             {isLast ? (
-              <span className="px-2 py-0.5 bg-[#F3E6A5] border border-[#202124] rounded-xs font-black text-[#202124]">
+              <span className="px-2 py-0.5 bg-[#F3E6A5] border border-[#202124] rounded-[4px] font-black text-[#202124]">
                 {item.label}
               </span>
             ) : item.onClick ? (
               <button
                 type="button"
                 onClick={item.onClick}
-                className="hover:underline hover:text-[#405DE6] cursor-pointer"
+                className="hover:underline hover:text-[#405DE6] cursor-pointer py-1 px-1 rounded-[4px]"
               >
                 {item.label}
               </button>
             ) : item.href ? (
-              <a href={item.href} className="hover:underline hover:text-[#405DE6]">
+              <a href={item.href} className="hover:underline hover:text-[#405DE6] py-1 px-1 rounded-[4px]">
                 {item.label}
               </a>
             ) : (

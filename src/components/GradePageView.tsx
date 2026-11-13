@@ -95,8 +95,9 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
 
         <div className="flex items-center gap-3">
           <button
+            type="button"
             onClick={() => navigate('/grades')}
-            className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#F3E6A5] hover:bg-[#E6D99A] text-[#202124] border-2 border-[#202124] text-xs font-black shadow-[2px_2px_0px_#202124] transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
+            className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-2 border-[#202124] rounded-[4px] text-xs font-black shadow-[2px_2px_0px_#202124] transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5"
             title="الخروج إلى صفحة اختيار الصفوف الرئيسية"
           >
             <ArrowRight className="w-4 h-4" />
@@ -228,7 +229,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
               </div>
               <div>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-xs font-black uppercase text-[#F2A18E]">
+                  <span className="font-mono text-xs font-black uppercase text-[#747474]">
                     OFFICIAL CURRICULUM
                   </span>
                   <BrutalBadge variant="yellow">ENGLISH FOR IRAQ</BrutalBadge>
@@ -241,16 +242,16 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
 
             <div className="flex flex-wrap items-center gap-4 text-xs font-mono font-black">
               <div className="p-2 bg-[#F7F5EF] border border-[#202124] text-center min-w-[90px]">
-                <span className="text-[10px] text-[#202124]/60 block">الوحدات</span>
-                <span className="text-sm font-black text-[#202124]">{units.length} وحدات</span>
+                <span className="text-[10px] text-[#747474] block">الوحدات</span>
+                <span className="text-sm font-black text-[#202124] tabular-nums">{units.length} وحدات</span>
               </div>
               <div className="p-2 bg-[#F7F5EF] border border-[#202124] text-center min-w-[90px]">
-                <span className="text-[10px] text-[#202124]/60 block">إجمالي الدروس</span>
-                <span className="text-sm font-black text-[#405DE6]">{allGradeLessons.length} درساً</span>
+                <span className="text-[10px] text-[#747474] block">إجمالي الدروس</span>
+                <span className="text-sm font-black text-[#405DE6] tabular-nums">{allGradeLessons.length} درساً</span>
               </div>
               <div className="p-2 bg-[#F7F5EF] border border-[#202124] text-center min-w-[90px]">
-                <span className="text-[10px] text-[#202124]/60 block">نسبة الإنجاز</span>
-                <span className="text-sm font-black text-[#F2A18E]">{progressPct}%</span>
+                <span className="text-[10px] text-[#747474] block">نسبة الإنجاز</span>
+                <span className="text-sm font-black text-[#287A52] tabular-nums">{progressPct}%</span>
               </div>
             </div>
           </div>
@@ -268,7 +269,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
         <div className="border-b-3 border-[#202124] pb-3 flex items-center justify-between">
           <div>
             <h2 className="text-xl sm:text-2xl font-black text-[#202124] flex items-center gap-2">
-              <Layers className="w-6 h-6 text-[#F2A18E]" />
+              <Layers className="w-6 h-6 text-[#405DE6]" />
               <span>الوحدات الدراسية لـ {gradeMeta.nameAr} ({units.length} وحدات)</span>
             </h2>
             <p className="text-xs font-mono font-bold text-[#202124]/70 mt-0.5">
@@ -307,7 +308,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
                     <h3 className="text-base sm:text-lg font-black text-[#202124] leading-tight">
                       {unit.titleAr}
                     </h3>
-                    <p className="text-xs font-mono font-bold text-[#F2A18E] mt-0.5" dir="ltr">
+                    <p className="text-xs font-mono font-bold text-[#405DE6] mt-0.5" dir="ltr">
                       {unit.titleEn}
                     </p>
                   </div>
@@ -367,7 +368,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
           {/* Exam Simulator */}
           <BrutalCard variant="white" borderSize="3" shadowSize="md" className="p-5 flex flex-col justify-between space-y-3">
             <div className="space-y-2">
-              <div className="w-10 h-10 bg-[#F2A18E] text-white border-2 border-[#202124] flex items-center justify-center font-black">
+              <div className="w-10 h-10 bg-[#F2A18E] text-[#202124] border-2 border-[#202124] flex items-center justify-center font-black">
                 <Award className="w-5 h-5" />
               </div>
               <h3 className="text-base font-black text-[#202124]">

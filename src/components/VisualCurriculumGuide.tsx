@@ -132,7 +132,7 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
                     <h4 className="text-base sm:text-lg font-black text-[#202124] group-hover:text-[#405DE6] transition-colors">
                       {unit.titleAr}
                     </h4>
-                    <p className="text-xs font-mono font-bold text-[#F2A18E] mt-0.5" dir="ltr">
+                    <p className="text-xs font-mono font-bold text-[#405DE6] mt-0.5" dir="ltr">
                       {unit.titleEn}
                     </p>
                     <p className="text-xs font-bold text-[#202124]/80 mt-3 line-clamp-2 bg-[#F7F5EF] p-3 border-2 border-[#202124]">
@@ -163,7 +163,7 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
           <div className="space-y-6">
             <div className="flex items-center justify-between border-b-2 border-[#202124]/20 pb-2">
               <h3 className="text-lg font-black text-[#202124] flex items-center gap-2">
-                <Lightbulb className="w-5 h-5 text-[#F2A18E]" />
+                <Lightbulb className="w-5 h-5 text-[#202124] fill-[#F3E6A5]" />
                 <span>أبرز قواعد وبطاقات الشرح البصري لـ {gradeMeta.nameAr}</span>
               </h3>
               <BrutalBadge variant="yellow">مبسطة بالأمثلة الوزارية</BrutalBadge>
@@ -186,15 +186,15 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
               </BrutalCard>
 
               <BrutalCard variant="white" borderSize="3" shadowSize="md" className="p-5 space-y-4">
-                <div className="flex items-center gap-2 font-black text-sm text-[#F2A18E]">
-                  <CheckCircle2 className="w-5 h-5 text-[#F2A18E]" />
+                <div className="flex items-center gap-2 font-black text-sm text-[#B83A3A]">
+                  <CheckCircle2 className="w-5 h-5 text-[#B83A3A]" />
                   <span>الأخطاء الشائعة في الامتحانات الوزارية</span>
                 </div>
                 <p className="text-xs sm:text-sm font-bold text-[#202124] leading-relaxed">
                   تجنب الأخطاء الإملائية الشائعة في إضافة (-ed) أو (-ing) والتصريفات الشاذة للأفعال مع مراعاة التنقيط السليم للجملة.
                 </p>
                 <CalloutBox type="ministerial_trap" title="احذر من الأخطاء الإملائية والترميز">
-                  <div dir="ltr" className="font-mono text-xs text-white">
+                  <div dir="ltr" className="font-mono font-bold text-xs text-[#202124]">
                     ✓ Always double-check punctuation marks (capital letters & full stops).
                   </div>
                 </CalloutBox>
@@ -239,7 +239,7 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
           <div className="space-y-6">
             <div className="flex items-center justify-between border-b-2 border-[#202124]/20 pb-2">
               <h3 className="text-lg font-black text-[#202124] flex items-center gap-2">
-                <Award className="w-5 h-5 text-[#F2A18E]" />
+                <Award className="w-5 h-5 text-[#405DE6]" />
                 <span>هيكلية وتوزيع درجات الامتحان الوزاري (100 درجة كاملة)</span>
               </h3>
               <BrutalBadge variant="cobalt">{gradeMeta.nameAr}</BrutalBadge>
@@ -262,7 +262,7 @@ export const VisualCurriculumGuide: React.FC<VisualCurriculumGuideProps> = ({
                 <BrutalCard key={i} variant="white" borderSize="2" shadowSize="sm" className="p-4 text-center space-y-2">
                   <BrutalBadge variant="yellow">{item.q}</BrutalBadge>
                   <h4 className="text-sm font-black text-[#202124]">{item.title}</h4>
-                  <p className="text-xs font-mono font-black text-[#F2A18E]">{item.marks}</p>
+                  <p className="text-xs font-mono font-black text-[#B83A3A]">{item.marks}</p>
                 </BrutalCard>
               ))}
             </div>

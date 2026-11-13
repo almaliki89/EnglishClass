@@ -264,31 +264,29 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
       {/* LENS 1: CONCEPT DISSECTION (التفكيك المفهومي الذكي) */}
       {activeLens === 'dissect' && (
         <div className="space-y-4">
-          
-          {/* High-yield filter toggle & Quick actions */}
-          <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-white border border-slate-200 shadow-2xs">
+          <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-[6px] bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124]">
             <div className="flex items-center gap-2">
-              <span className="text-xs font-bold text-slate-800">
+              <span className="text-xs font-black text-[#202124]">
                 طريقة التفكيك المفهومي: بطاقات تفاعلية مستقلة مع ميزة الفحص الذاتي
               </span>
             </div>
 
             <div className="flex items-center gap-2">
               <button
+                type="button"
                 onClick={() => setHighYieldOnly(!highYieldOnly)}
-                className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 border ${
+                className={`px-3 py-1.5 rounded-[4px] text-xs font-black transition-all flex items-center gap-1.5 border-2 border-[#202124] cursor-pointer ${
                   highYieldOnly 
-                    ? 'bg-amber-500 text-slate-950 border-amber-400 font-black' 
-                    : 'bg-slate-50 text-slate-600 border-slate-200 hover:bg-slate-100'
+                    ? 'bg-[#F3E6A5] text-[#202124] shadow-[2px_2px_0px_#202124]' 
+                    : 'bg-[#F7F5EF] text-[#202124] hover:bg-white'
                 }`}
               >
-                <Zap className="w-3.5 h-3.5" />
+                <Zap className="w-3.5 h-3.5 text-[#405DE6]" />
                 <span>{highYieldOnly ? 'إظهار كامل التفاصيل' : 'تفعيل وضع الزبدة الوزارية'}</span>
               </button>
             </div>
           </div>
 
-          {/* Dissected Content Cards */}
           <div className="grid grid-cols-1 gap-3.5">
             {filteredDetailedContent.map((point, idx) => {
               const isHidden = hiddenNotes[idx] || false;
@@ -297,254 +295,231 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
               return (
                 <div 
                   key={idx}
-                  className={`p-5 rounded-3xl border transition-all duration-200 shadow-xs space-y-3.5 ${
-                    isUnderstood 
-                      ? 'bg-emerald-50/50 border-emerald-200' 
-                      : 'bg-white border-slate-200/90 hover:border-slate-300'
+                  className={`p-5 rounded-[6px] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] transition-all duration-200 space-y-3.5 ${
+                    isUnderstood ? 'bg-[#D7E9DA]/35' : 'bg-white'
                   }`}
                 >
-                  <div className="flex items-center justify-between gap-3">
-                    
-                    <div className="flex items-center gap-2.5">
-                      <div className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black shrink-0 ${
-                        isUnderstood ? 'bg-emerald-600 text-white' : 'bg-slate-900 text-white'
+                  <div className="flex flex-wrap items-center justify-between gap-3">
+                    <div className="flex flex-wrap items-center gap-2.5">
+                      <div className={`w-7 h-7 rounded-[4px] border-2 border-[#202124] flex items-center justify-center text-xs font-mono font-black shrink-0 tabular-nums ${
+                        isUnderstood ? 'bg-[#287A52] text-white' : 'bg-[#202124] text-white'
                       }`}>
                         {idx + 1}
                       </div>
                       
-                      <span className="text-xs font-black text-slate-800">
+                      <span className="text-xs font-black text-[#202124]">
                         {idx === 0 ? 'القاعدة التأسيسية للموضوع' : `الفرع والتطبيق الوزاري رقم (${idx + 1})`}
                       </span>
 
                       {point.includes('ص') && (
-                        <span className="text-[10px] px-2 py-0.5 rounded-md bg-amber-50 text-amber-800 border border-amber-200/60 font-bold">
+                        <span className="text-[10px] px-2 py-0.5 rounded-[4px] bg-[#F3E6A5] text-[#202124] border border-[#202124] font-black">
                           توثيق ملزمة الوزاري
                         </span>
                       )}
                     </div>
 
                     <div className="flex items-center gap-1.5">
-                      {/* Self-Test Shield Button */}
                       <button
+                        type="button"
                         onClick={() => toggleHidden(idx)}
-                        className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-all flex items-center gap-1"
+                        className="p-2 rounded-[4px] bg-[#F7F5EF] hover:bg-white border-2 border-[#202124] text-[#202124] text-xs font-black transition-all flex items-center gap-1 cursor-pointer"
+                        aria-label={isHidden ? 'إظهار الشرح' : 'إخفاء الشرح لاختبار الاستذكار'}
                         title={isHidden ? 'إظهار الشرح' : 'إخفاء الشرح لاختبار الاستذكار'}
                       >
-                        {isHidden ? <Eye className="w-3.5 h-3.5 text-indigo-600" /> : <EyeOff className="w-3.5 h-3.5 text-slate-500" />}
+                        {isHidden ? <Eye className="w-3.5 h-3.5 text-[#405DE6]" /> : <EyeOff className="w-3.5 h-3.5 text-[#747474]" />}
                         <span className="hidden sm:inline text-[11px]">{isHidden ? 'كشف' : 'تسميع ذهني'}</span>
                       </button>
 
-                      {/* Speak Text */}
                       <button
+                        type="button"
                         onClick={() => handleSpeak(point)}
-                        className="p-2 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 transition-all"
+                        className="p-2 rounded-[4px] bg-[#F7F5EF] hover:bg-white border-2 border-[#202124] text-[#202124] transition-all cursor-pointer"
+                        aria-label="استماع صوتي"
                         title="استماع صوتي"
                       >
-                        <Volume2 className="w-3.5 h-3.5" />
+                        <Volume2 className="w-3.5 h-3.5 text-[#405DE6]" />
                       </button>
 
-                      {/* Mastery Check Button */}
                       <button
+                        type="button"
                         onClick={() => toggleUnderstood(idx)}
-                        className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
+                        className={`px-3 py-1.5 rounded-[4px] border-2 border-[#202124] text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer ${
                           isUnderstood 
-                            ? 'bg-emerald-600 text-white shadow-2xs font-black' 
-                            : 'bg-slate-100 hover:bg-slate-200 text-slate-700'
+                            ? 'bg-[#287A52] text-white shadow-[2px_2px_0px_#202124]' 
+                            : 'bg-[#F7F5EF] hover:bg-white text-[#202124]'
                         }`}
                       >
                         <Check className="w-3.5 h-3.5" />
                         <span>{isUnderstood ? 'تم الاستيعاب ✓' : 'تأكيد الفهم'}</span>
                       </button>
                     </div>
-
                   </div>
 
-                  {/* Body Content with conditional blur for active self-testing */}
-                  <div className={`transition-all duration-300 ${isHidden ? 'filter blur-md select-none opacity-40' : ''}`}>
-                    <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-normal">
+                  <div className={`transition-all duration-300 lesson-reading ${isHidden ? 'filter blur-md select-none opacity-40' : ''}`}>
+                    <p className="text-sm sm:text-base text-[#202124] leading-relaxed font-medium">
                       {point}
                     </p>
                   </div>
 
                   {isHidden && (
-                    <div className="p-3 rounded-2xl bg-indigo-50 border border-indigo-200 text-center">
-                      <p className="text-xs font-bold text-indigo-900">
+                    <div className="p-3 rounded-[4px] bg-[#E9ECFA] border-2 border-[#202124] text-center">
+                      <p className="text-xs font-black text-[#405DE6]">
                         🔒 النص مخفي الآن. حاول استذكار القاعدة وشروطها غيباً ثم اضغط "كشف" للمطابقة.
                       </p>
                     </div>
                   )}
-
                 </div>
               );
             })}
           </div>
-
         </div>
       )}
 
       {/* LENS 2: VISUAL LOGIC MINDMAP (الخريطة الذهنية والشجرة المنطقية) */}
       {activeLens === 'mindmap' && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-xs space-y-6">
-          
-          <div className="flex items-center justify-between">
+        <div className="p-6 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-6">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <GitBranch className="w-5 h-5 text-indigo-600" />
-              <h3 className="text-base font-black text-slate-900">
+              <GitBranch className="w-5 h-5 text-[#405DE6]" />
+              <h3 className="text-base font-black text-[#202124]">
                 الشجرة المنطقية والخريطة الهيكلية للدرس
               </h3>
             </div>
-            <span className="text-xs text-slate-500">اضغط على أي عقدة لاستعراض تفاصيلها</span>
+            <span className="text-xs font-bold text-[#747474]">اضغط على أي عقدة لاستعراض تفاصيلها</span>
           </div>
 
-          {/* Visual Node Grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            
-            {/* Root Hub Node */}
             <div 
+              role="button"
+              tabIndex={0}
               onClick={() => setSelectedMindNode(0)}
-              className={`p-5 rounded-2xl border-2 cursor-pointer transition-all ${
-                selectedMindNode === 0 
-                  ? 'border-indigo-600 bg-indigo-50/80 shadow-md ring-2 ring-indigo-600/20' 
-                  : 'border-slate-200 hover:border-slate-400 bg-white'
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedMindNode(0); }}
+              className={`p-5 rounded-[6px] border-2 border-[#202124] cursor-pointer transition-all ${
+                selectedMindNode === 0 ? 'bg-[#E9ECFA] shadow-[4px_4px_0px_#202124]' : 'bg-white hover:bg-[#F7F5EF]'
               }`}
             >
-              <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md bg-indigo-600 text-white">
+              <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-[#405DE6] text-white border border-[#202124]">
                 الجذر المركزي
               </span>
-              <h4 className="text-base font-black text-slate-900 mt-2">
-                {lesson.titleAr}
-              </h4>
-              <p className="text-xs text-slate-500 mt-1 line-clamp-2">
-                {lesson.summary}
-              </p>
+              <h4 className="text-base font-black text-[#202124] mt-2">{lesson.titleAr}</h4>
+              <p className="text-xs text-[#747474] font-bold mt-1 line-clamp-2">{lesson.summary}</p>
             </div>
 
-            {/* Branch Nodes */}
             {mindNodes.slice(1, 4).map((node) => (
               <div 
                 key={node.id}
+                role="button"
+                tabIndex={0}
                 onClick={() => setSelectedMindNode(node.id)}
-                className={`p-5 rounded-2xl border-2 cursor-pointer transition-all ${
-                  selectedMindNode === node.id 
-                    ? 'border-indigo-600 bg-indigo-50/80 shadow-md ring-2 ring-indigo-600/20' 
-                    : 'border-slate-200 hover:border-slate-400 bg-white'
+                onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedMindNode(node.id); }}
+                className={`p-5 rounded-[6px] border-2 border-[#202124] cursor-pointer transition-all ${
+                  selectedMindNode === node.id ? 'bg-[#E9ECFA] shadow-[4px_4px_0px_#202124]' : 'bg-white hover:bg-[#F7F5EF]'
                 }`}
               >
-                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md bg-slate-100 text-slate-700">
+                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-[#F3E6A5] text-[#202124] border border-[#202124]">
                   {node.badge}
                 </span>
-                <h4 className="text-sm font-black text-slate-900 mt-2">
-                  {node.title}
-                </h4>
-                <p className="text-xs text-slate-500 mt-1 line-clamp-2">
-                  {node.summary}
-                </p>
+                <h4 className="text-sm font-black text-[#202124] mt-2">{node.title}</h4>
+                <p className="text-xs text-[#747474] font-bold mt-1 line-clamp-2">{node.summary}</p>
               </div>
             ))}
 
-            {/* Traps Node */}
             <div 
+              role="button"
+              tabIndex={0}
               onClick={() => setSelectedMindNode(5)}
-              className={`p-5 rounded-2xl border-2 cursor-pointer transition-all ${
-                selectedMindNode === 5 
-                  ? 'border-rose-600 bg-rose-50/80 shadow-md ring-2 ring-rose-600/20' 
-                  : 'border-rose-200 hover:border-rose-400 bg-rose-50/30'
+              onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setSelectedMindNode(5); }}
+              className={`p-5 rounded-[6px] border-2 border-[#202124] cursor-pointer transition-all ${
+                selectedMindNode === 5 ? 'bg-[#FDF6F4] shadow-[4px_4px_0px_#202124]' : 'bg-[#FDF6F4]/50 hover:bg-[#FDF6F4]'
               }`}
             >
-              <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-md bg-rose-600 text-white">
+              <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-[4px] bg-[#B83A3A] text-white border border-[#202124]">
                 الفخاخ والشواذ
               </span>
-              <h4 className="text-sm font-black text-rose-950 mt-2">
-                محاذير الامتحان الوزاري
-              </h4>
-              <p className="text-xs text-rose-700 mt-1 line-clamp-2">
-                تجنب الأخطاء الشائعة والشواذ.
-              </p>
+              <h4 className="text-sm font-black text-[#202124] mt-2">محاذير الامتحان الوزاري</h4>
+              <p className="text-xs text-[#B83A3A] font-bold mt-1 line-clamp-2">تجنب الأخطاء الشائعة والشواذ.</p>
             </div>
-
           </div>
 
-          {/* Active Node Detail Inspector */}
           {selectedMindNode !== null && (
-            <div className="p-5 rounded-2xl bg-slate-900 text-white border border-slate-800 space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-bold text-amber-300">
+            <div className="p-5 rounded-[6px] bg-[#F7F5EF] text-[#202124] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3">
+              <div className="flex items-center justify-between gap-2">
+                <span className="text-xs font-black text-[#405DE6]">
                   تفصيل العقدة المختارة في الخريطة الذهنية:
                 </span>
                 <button
+                  type="button"
                   onClick={() => handleSpeak(mindNodes[selectedMindNode]?.details || '')}
-                  className="p-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white text-xs flex items-center gap-1"
+                  className="p-1.5 px-2.5 rounded-[4px] bg-white hover:bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] text-xs font-black flex items-center gap-1 cursor-pointer"
                 >
-                  <Volume2 className="w-3.5 h-3.5" />
+                  <Volume2 className="w-3.5 h-3.5 text-[#405DE6]" />
                   <span>استماع</span>
                 </button>
               </div>
-
-              <p className="text-sm sm:text-base leading-relaxed text-slate-100 font-medium">
+              <p className="text-sm sm:text-base leading-relaxed text-[#202124] font-bold">
                 {mindNodes[selectedMindNode]?.details}
               </p>
             </div>
           )}
-
         </div>
       )}
 
       {/* LENS 3: DUAL CONTRAST & COMPARISON MATRIX (مصفوفة المقارنة والفروقات) */}
       {activeLens === 'contrast' && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-xs space-y-6">
+        <div className="p-6 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-6">
           
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <ArrowLeftRight className="w-5 h-5 text-indigo-600" />
-              <h3 className="text-base font-black text-slate-900">
+              <ArrowLeftRight className="w-5 h-5 text-[#405DE6]" />
+              <h3 className="text-base font-black text-[#202124]">
                 مصفوفة المقارنة المزدوجة والفروقات الدقيقة
               </h3>
             </div>
-            <span className="text-xs text-slate-500">حسم حالات الشك الوزارية</span>
+            <span className="text-xs font-bold text-[#747474]">حسم حالات الشك الوزارية</span>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             
             {/* Left Case */}
-            <div className="p-5 rounded-2xl bg-blue-50/60 border border-blue-200 space-y-3">
+            <div className="p-5 rounded-[6px] bg-[#E9ECFA]/70 border-2 border-[#202124] space-y-3">
               <div className="flex items-center justify-between">
-                <span className="px-2.5 py-1 rounded-lg bg-blue-600 text-white text-xs font-black">
+                <span className="px-2.5 py-1 rounded-[4px] bg-[#405DE6] text-white border border-[#202124] text-xs font-black">
                   الحالة الأولى [أ]
                 </span>
-                <span className="text-xs font-bold text-blue-900">الصيغة والشرط</span>
+                <span className="text-xs font-black text-[#405DE6]">الصيغة والشرط</span>
               </div>
 
-              <h4 className="text-base font-black text-blue-950">
+              <h4 className="text-base font-black text-[#202124]">
                 {contrast.leftTitle}
               </h4>
 
-              <p className="text-xs sm:text-sm text-blue-900 leading-relaxed font-medium">
+              <p className="text-xs sm:text-sm text-[#202124] leading-relaxed font-medium">
                 {contrast.leftRule}
               </p>
 
-              <div dir="ltr" className="p-3 rounded-xl bg-white border border-blue-200 text-xs font-mono font-bold text-blue-950 text-left en-sentence">
+              <div dir="ltr" className="p-3 rounded-[4px] bg-white border-2 border-[#202124] text-xs font-mono font-black text-[#202124] text-left en-sentence">
                 {contrast.leftExample}
               </div>
             </div>
 
             {/* Right Case */}
-            <div className="p-5 rounded-2xl bg-emerald-50/60 border border-emerald-200 space-y-3">
+            <div className="p-5 rounded-[6px] bg-[#D7E9DA]/50 border-2 border-[#202124] space-y-3">
               <div className="flex items-center justify-between">
-                <span className="px-2.5 py-1 rounded-lg bg-emerald-600 text-white text-xs font-black">
+                <span className="px-2.5 py-1 rounded-[4px] bg-[#287A52] text-white border border-[#202124] text-xs font-black">
                   الحالة المقابلة [ب]
                 </span>
-                <span className="text-xs font-bold text-emerald-900">الصيغة والشرط</span>
+                <span className="text-xs font-black text-[#287A52]">الصيغة والشرط</span>
               </div>
 
-              <h4 className="text-base font-black text-emerald-950">
+              <h4 className="text-base font-black text-[#202124]">
                 {contrast.rightTitle}
               </h4>
 
-              <p className="text-xs sm:text-sm text-emerald-900 leading-relaxed font-medium">
+              <p className="text-xs sm:text-sm text-[#202124] leading-relaxed font-medium">
                 {contrast.rightRule}
               </p>
 
-              <div dir="ltr" className="p-3 rounded-xl bg-white border border-emerald-200 text-xs font-mono font-bold text-emerald-950 text-left en-sentence">
+              <div dir="ltr" className="p-3 rounded-[4px] bg-white border-2 border-[#202124] text-xs font-mono font-black text-[#202124] text-left en-sentence">
                 {contrast.rightExample}
               </div>
             </div>
@@ -552,13 +527,13 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
           </div>
 
           {/* Golden Trap Alert */}
-          <div className="p-4 rounded-2xl bg-rose-50 border border-rose-200 flex items-start gap-3">
-            <AlertTriangle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
+          <div className="p-4 rounded-[4px] bg-[#FDF6F4] border-2 border-[#202124] flex items-start gap-3">
+            <AlertTriangle className="w-5 h-5 text-[#B83A3A] shrink-0 mt-0.5" />
             <div>
-              <span className="text-xs font-black text-rose-950 block">
+              <span className="text-xs font-black text-[#B83A3A] block">
                 الفخ الوزاري الحاسم للمقارنة:
               </span>
-              <p className="text-xs sm:text-sm text-rose-900 mt-0.5 leading-relaxed font-medium">
+              <p className="text-xs sm:text-sm text-[#202124] mt-0.5 leading-relaxed font-bold">
                 {contrast.trap}
               </p>
             </div>
@@ -569,16 +544,16 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
 
       {/* LENS 4: STEPPER PROBLEM SOLVER (خوارزمية الحل الوزاري بالخطوات) */}
       {activeLens === 'stepper' && (
-        <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/90 shadow-xs space-y-6">
+        <div className="p-6 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-6">
           
-          <div className="flex items-center justify-between">
+          <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <Target className="w-5 h-5 text-indigo-600" />
-              <h3 className="text-base font-black text-slate-900">
+              <Target className="w-5 h-5 text-[#405DE6]" />
+              <h3 className="text-base font-black text-[#202124]">
                 خوارزمية التفكير للحل النموذجي بالدفتر الامتحاني
               </h3>
             </div>
-            <span className="text-xs text-slate-500">4 خطوات ذهبية لضمان الدرجة الكاملة</span>
+            <span className="text-xs font-bold text-[#747474]">4 خطوات ذهبية لضمان الدرجة الكاملة</span>
           </div>
 
           {/* Stepper Interactive Timeline */}
@@ -589,33 +564,36 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
               return (
                 <div 
                   key={step.stepNumber}
+                  role="button"
+                  tabIndex={0}
                   onClick={() => setActiveStepIdx(idx)}
-                  className={`p-4 rounded-2xl border-2 cursor-pointer transition-all flex flex-col justify-between ${
+                  onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setActiveStepIdx(idx); }}
+                  className={`p-4 rounded-[6px] border-2 border-[#202124] cursor-pointer transition-all flex flex-col justify-between ${
                     isActive 
-                      ? 'border-indigo-600 bg-indigo-50/90 shadow-md ring-2 ring-indigo-600/20' 
-                      : 'border-slate-200 hover:border-slate-300 bg-white'
+                      ? 'bg-[#E9ECFA] shadow-[4px_4px_0px_#202124]' 
+                      : 'bg-white hover:bg-[#F7F5EF]'
                   }`}
                 >
                   <div>
                     <div className="flex items-center justify-between mb-2">
-                      <span className="font-mono font-black text-xs px-2 py-0.5 rounded-md bg-slate-900 text-white">
+                      <span className="font-mono font-black text-xs px-2 py-0.5 rounded-[4px] bg-[#202124] text-white tabular-nums">
                         خطوة {step.stepNumber}
                       </span>
                       {isActive && (
-                        <span className="w-2 h-2 rounded-full bg-indigo-600 animate-ping" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-[#405DE6] border border-[#202124]" />
                       )}
                     </div>
 
-                    <h4 className="text-xs sm:text-sm font-black text-slate-900 leading-snug">
+                    <h4 className="text-xs sm:text-sm font-black text-[#202124] leading-snug">
                       {step.title}
                     </h4>
 
-                    <p className="text-xs text-slate-600 mt-2 leading-relaxed">
+                    <p className="text-xs text-[#747474] font-bold mt-2 leading-relaxed">
                       {step.desc}
                     </p>
                   </div>
 
-                  <div className="mt-4 pt-2.5 border-t border-slate-100 text-[11px] font-bold text-indigo-700">
+                  <div className="mt-4 pt-2.5 border-t border-[#202124]/15 text-[11px] font-black text-[#405DE6]">
                     💡 {step.tip}
                   </div>
                 </div>
@@ -624,14 +602,14 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
           </div>
 
           {/* Stepper Active Simulation Preview */}
-          <div className="p-5 rounded-2xl bg-slate-900 text-white border border-slate-800 space-y-3">
-            <span className="text-xs font-bold text-amber-300 block">
+          <div className="p-5 rounded-[6px] bg-[#F7F5EF] text-[#202124] border-3 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3">
+            <span className="text-xs font-black text-[#405DE6] block">
               تطبيق خوارزمية الحل على مثال وزاري من الدرس:
             </span>
-            <p dir="ltr" className="font-mono text-xs sm:text-sm text-emerald-300 bg-slate-950 p-3 rounded-xl border border-slate-800 text-left en-sentence">
+            <p dir="ltr" className="font-mono text-xs sm:text-sm text-[#287A52] font-black bg-white p-3 rounded-[4px] border-2 border-[#202124] text-left en-sentence">
               Example: {lesson.examples[0]?.en || 'I was walking when I saw the accident.'}
             </p>
-            <p className="text-xs text-slate-300">
+            <p className="text-xs text-[#202124] font-bold">
               المعنى والتعليل: {lesson.examples[0]?.ar || 'تم التحويل بتطبيق قاعدة الدرس نصاً ومطابقة الأدوات المعطاة.'}
             </p>
           </div>
@@ -653,7 +631,7 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
           <div className="space-y-2.5">
             {lesson.teacherNotes.map((note, idx) => (
               <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#202124] font-bold leading-relaxed bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124]">
-                <span className="text-[#F2A18E] font-mono font-black shrink-0 text-base">✦</span>
+                <span className="text-[#B83A3A] font-mono font-black shrink-0 text-base">✦</span>
                 <p>{note}</p>
               </div>
             ))}
@@ -665,17 +643,17 @@ export const AcademicExplorationEngine: React.FC<AcademicExplorationEngineProps>
       {lesson.commonMistakes && lesson.commonMistakes.length > 0 && (
         <div 
           id="common-mistakes-box"
-          className="p-6 sm:p-7 bg-[#F2A18E]/15 border-4 border-[#202124] shadow-[6px_6px_0px_#202124] space-y-3.5"
+          className="p-6 sm:p-7 bg-[#FDF6F4] border-4 border-[#202124] shadow-[6px_6px_0px_#202124] space-y-3.5"
         >
           <div className="flex items-center gap-2 text-[#202124] font-black text-sm sm:text-base border-b-2 border-[#202124] pb-2">
-            <ShieldAlert className="w-5 h-5 text-[#F2A18E]" />
+            <ShieldAlert className="w-5 h-5 text-[#B83A3A]" />
             <span>فخاخ وزارية شائعة احذر الوقوع بها في الدفتر الامتحاني</span>
           </div>
 
           <div className="space-y-2.5">
             {lesson.commonMistakes.map((mistake, idx) => (
               <div key={idx} className="flex items-start gap-2.5 text-xs sm:text-sm text-[#202124] leading-relaxed bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] font-bold">
-                <X className="w-4 h-4 text-[#F2A18E] shrink-0 mt-0.5 font-black" />
+                <X className="w-4 h-4 text-[#B83A3A] shrink-0 mt-0.5 font-black" />
                 <p>{mistake}</p>
               </div>
             ))}

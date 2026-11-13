@@ -182,7 +182,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
             return (
               <span
                 key={i}
-                className="font-bold text-amber-700 bg-amber-100/90 px-1 py-0.5 rounded border-b-2 border-amber-400 select-all"
+                className="font-bold text-[#202124] bg-[#F3E6A5] px-1.5 py-0.5 rounded-[4px] border-b-2 border-[#202124] select-all"
                 title="أداة ربط / رابط تسلسلي وزاري يمنح درجات إضافية"
               >
                 {part}
@@ -211,7 +211,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
             return (
               <span 
                 key={i}
-                className="inline-block px-1 py-0.5 rounded filter blur-sm hover:blur-none active:blur-none bg-emerald-100/70 text-slate-800 transition-all cursor-pointer select-none"
+                className="inline-block px-1 py-0.5 rounded-[4px] filter blur-sm hover:blur-none active:blur-none bg-[#D7E9DA] text-[#202124] border border-[#202124]/25 transition-all cursor-pointer select-none"
                 title="المس أو مرر المؤشر لكشف الكلمة"
               >
                 {chunk}
@@ -236,11 +236,11 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
             return (
               <span 
                 key={i} 
-                className="inline-block group relative cursor-pointer mx-0.5 hover:text-emerald-700 transition-colors"
+                className="inline-block group relative cursor-pointer mx-0.5 hover:text-[#405DE6] transition-colors"
                 title={`الكلمة: ${chunk}`}
               >
-                <strong className="text-emerald-800 font-bold">{firstChar}</strong>
-                <span className="text-slate-400 font-semibold">{blanks}</span>
+                <strong className="text-[#405DE6] font-extrabold">{firstChar}</strong>
+                <span className="text-[#747474] font-semibold">{blanks}</span>
                 {punct}
               </span>
             );
@@ -269,13 +269,13 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           return (
             <span 
               key={i}
-              className="inline-block group cursor-pointer text-emerald-800 bg-emerald-50 border-b border-dashed border-emerald-400 px-1 py-0.5 rounded font-mono mx-0.5"
+              className="inline-block group cursor-pointer text-[#202124] bg-[#E9ECFA] border-b-2 border-dashed border-[#405DE6] px-1 py-0.5 rounded-[4px] font-mono mx-0.5"
               title={`انقر للتأكد: ${chunk}`}
             >
-              <span className="group-hover:hidden select-none tracking-widest text-emerald-600">
+              <span className="group-hover:hidden select-none tracking-widest text-[#405DE6]">
                 {'•'.repeat(Math.min(6, word.length))}
               </span>
-              <span className="hidden group-hover:inline font-bold text-emerald-950">
+              <span className="hidden group-hover:inline font-bold text-[#202124]">
                 {word}
               </span>
               {punct}
@@ -297,10 +297,10 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
   
   // Word count evaluation
   const getWordCountStatus = (count: number) => {
-    if (count === 0) return { label: 'ابدأ بالكتابة', color: 'text-slate-400', bg: 'bg-slate-100', progress: 0 };
-    if (count < 90) return { label: 'قصير جداً (أقل من الحد الأدنى 100)', color: 'text-amber-600', bg: 'bg-amber-100', progress: Math.min(100, (count / 100) * 80) };
-    if (count >= 100 && count <= 135) return { label: 'مثالي وزارياً (100-130 كلمة) ✔', color: 'text-emerald-700 font-black', bg: 'bg-emerald-100', progress: 100 };
-    return { label: 'طويل نسبياً (تجنب الإطالة الزائدة)', color: 'text-blue-600', bg: 'bg-blue-100', progress: 100 };
+    if (count === 0) return { label: 'ابدأ بالكتابة', color: 'text-[#747474]', bg: 'bg-[#F7F5EF] border border-[#202124]/25', progress: 0 };
+    if (count < 90) return { label: 'قصير جداً (أقل من الحد الأدنى 100)', color: 'text-[#202124]', bg: 'bg-[#F3E6A5] border border-[#202124]', progress: Math.min(100, (count / 100) * 80) };
+    if (count >= 100 && count <= 135) return { label: 'مثالي وزارياً (100-130 كلمة) ✔', color: 'text-[#287A52] font-black', bg: 'bg-[#D7E9DA] border border-[#202124]', progress: 100 };
+    return { label: 'طويل نسبياً (تجنب الإطالة الزائدة)', color: 'text-[#405DE6]', bg: 'bg-[#E9ECFA] border border-[#202124]', progress: 100 };
   };
 
   const studentCountStatus = getWordCountStatus(studentWordCount);
@@ -393,19 +393,20 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           </div>
 
           {/* Unit Filter Chips */}
-          <div className="space-y-2 pt-1 border-t-2 border-[#202124]">
-            <div className="flex items-center gap-2 text-xs font-mono font-bold text-[#F2A18E]">
+          <div className="space-y-2 pt-2 border-t-2 border-[#202124]">
+            <div className="flex items-center gap-2 text-xs font-mono font-black text-[#B83A3A]">
               <Filter className="w-3.5 h-3.5 shrink-0" />
               <span>فرز حسب الوحدة الدراسية:</span>
             </div>
             <div className="flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar w-full">
               <button
+                type="button"
                 id="filter-essay-all"
                 onClick={() => setSelectedUnitFilter('all')}
-                className={`px-3 py-1 text-xs font-black transition-all whitespace-nowrap shrink-0 border-2 cursor-pointer ${
+                className={`px-3 py-1.5 rounded-[4px] text-xs font-black transition-all whitespace-nowrap shrink-0 border-2 border-[#202124] cursor-pointer tabular-nums ${
                   selectedUnitFilter === 'all'
-                    ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
-                    : 'bg-[#F7F5EF] hover:bg-white text-[#202124] border-[#202124]'
+                    ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]'
+                    : 'bg-[#F7F5EF] hover:bg-white text-[#202124]'
                 }`}
               >
                 جميع الوحدات ({currentEssaysList.length})
@@ -414,6 +415,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                 const count = currentEssaysList.filter((e: EssayItem) => e.unitId === unitNum).length;
                 return (
                   <button
+                    type="button"
                     key={unitNum}
                     id={`filter-essay-u${unitNum}`}
                     onClick={() => {
@@ -423,10 +425,10 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                         setSelectedEssayId(firstInUnit.id);
                       }
                     }}
-                    className={`px-3 py-1 text-xs font-black transition-all flex items-center gap-1 whitespace-nowrap shrink-0 border-2 cursor-pointer ${
+                    className={`px-3 py-1.5 rounded-[4px] text-xs font-black transition-all flex items-center gap-1 whitespace-nowrap shrink-0 border-2 border-[#202124] cursor-pointer tabular-nums ${
                       selectedUnitFilter === unitNum
-                        ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
-                        : 'bg-[#F7F5EF] hover:bg-white text-[#202124] border-[#202124]'
+                        ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]'
+                        : 'bg-[#F7F5EF] hover:bg-white text-[#202124]'
                     }`}
                   >
                     <span>الوحدة {unitNum}</span>
@@ -438,23 +440,24 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           </div>
 
           {/* Quick Select Buttons for Essays */}
-          <div className="pt-2 border-t border-white/10">
+          <div className="pt-3 border-t-2 border-[#202124]">
             <div className="flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar w-full">
               {filteredEssays.map((essay) => {
                 const isSelected = currentEssay.id === essay.id;
                 return (
                   <button
+                    type="button"
                     key={essay.id}
                     id={`essay-tab-${essay.id}`}
                     onClick={() => setSelectedEssayId(essay.id)}
-                    className={`px-3.5 py-2 rounded-2xl text-xs font-bold transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
+                    className={`px-3.5 py-2 rounded-[4px] text-xs font-black transition-all flex items-center gap-2 whitespace-nowrap shrink-0 border-2 border-[#202124] cursor-pointer ${
                       isSelected
-                        ? 'bg-white text-emerald-950 shadow-xl scale-102 ring-2 ring-emerald-300 font-black'
-                        : 'bg-white/15 text-white hover:bg-white/25'
+                        ? 'bg-[#405DE6] text-white shadow-[3px_3px_0px_#202124]'
+                        : 'bg-[#F7F5EF] text-[#202124] hover:bg-white'
                     }`}
                   >
-                    <span className={`text-[10px] px-1.5 py-0.5 rounded font-black ${
-                      isSelected ? 'bg-emerald-100 text-emerald-800' : 'bg-white/20 text-emerald-200'
+                    <span className={`text-[10px] px-1.5 py-0.5 rounded-[4px] border border-[#202124] font-mono font-black tabular-nums ${
+                      isSelected ? 'bg-[#F3E6A5] text-[#202124]' : 'bg-white text-[#202124]'
                     }`}>
                       وحدة {essay.unitId}
                     </span>
@@ -469,47 +472,47 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
       </div>
 
       {/* ================= MAIN INTERACTIVE ESSAY CARD ================= */}
-      <div className="rounded-3xl bg-white border border-slate-200 shadow-sm overflow-hidden">
+      <div className="rounded-[6px] bg-white border-3 border-[#202124] shadow-[5px_5px_0px_#202124] overflow-hidden">
         
         {/* Essay Info Bar & Toolbar */}
-        <div className="p-6 sm:p-7 border-b border-slate-100 space-y-4">
+        <div className="p-5 sm:p-7 border-b-2 border-[#202124] space-y-4">
           <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
             <div>
               <div className="flex flex-wrap items-center gap-2 mb-2">
-                <span className="text-xs font-black px-2.5 py-0.5 rounded-lg bg-emerald-50 text-emerald-800 border border-emerald-200">
+                <span className="text-xs font-black px-2.5 py-0.5 rounded-[4px] bg-[#D7E9DA] text-[#202124] border border-[#202124] tabular-nums">
                   الوحدة {currentEssay.unitId}
                 </span>
-                <span className="text-xs font-semibold text-slate-500 bg-slate-50 px-2.5 py-0.5 rounded-lg border border-slate-200">
+                <span className="text-xs font-bold text-[#747474] bg-[#F7F5EF] px-2.5 py-0.5 rounded-[4px] border border-[#202124]">
                   {currentEssay.ministerialWeight}
                 </span>
-                <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded-lg bg-teal-50 text-teal-800 border border-teal-200">
+                <span className="text-xs font-mono font-black px-2.5 py-0.5 rounded-[4px] bg-[#F3E6A5] text-[#202124] border border-[#202124] tabular-nums">
                   {totalEnglishWords} كلمة (مطابق للوزاري)
                 </span>
               </div>
 
-              <h2 className="text-xl sm:text-3xl font-black text-slate-900 tracking-tight">
+              <h2 className="text-xl sm:text-3xl font-black text-[#202124] tracking-tight">
                 {currentEssay.titleAr}
               </h2>
 
-              <p dir="ltr" className="text-sm sm:text-base font-mono text-emerald-700 font-extrabold text-left mt-1">
+              <p dir="ltr" className="text-sm sm:text-base font-mono text-[#405DE6] font-black text-left mt-1">
                 {currentEssay.titleEn}
               </p>
             </div>
 
             {/* Quick Actions & Speech Control */}
             <div className="flex flex-wrap items-center gap-2">
-              {/* Full Speech Audio Play */}
-              <div className="inline-flex items-center gap-1 p-1 rounded-xl bg-slate-100 border border-slate-200">
+              <div className="inline-flex items-center gap-1 p-1 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124]">
                 <button
+                  type="button"
                   id="speak-full-essay-btn"
                   onClick={() => {
                     const fullEnglish = `${currentEssay.titleEn}. ${currentEssay.paragraphsEn.join('. ')}`;
                     speakText(fullEnglish, null);
                   }}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                  className={`px-3 py-1.5 rounded-[4px] border border-[#202124] text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer ${
                     isSpeaking && speakingParagraphIndex === null
-                      ? 'bg-rose-600 text-white shadow-xs animate-pulse'
-                      : 'bg-white text-slate-700 hover:text-emerald-700 shadow-xs'
+                      ? 'bg-[#B83A3A] text-white'
+                      : 'bg-white text-[#202124] hover:bg-[#F3E6A5]'
                   }`}
                   title="استمع للنص كاملاً بصوت واضح"
                 >
@@ -520,17 +523,17 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                     </>
                   ) : (
                     <>
-                      <Volume2 className="w-3.5 h-3.5 text-emerald-600" />
+                      <Volume2 className="w-3.5 h-3.5 text-[#405DE6]" />
                       <span>استماع للإنشاء كاملاً</span>
                     </>
                   )}
                 </button>
 
-                {/* Speed selector */}
                 <select
                   value={speechRate}
                   onChange={(e) => setSpeechRate(parseFloat(e.target.value))}
-                  className="bg-transparent text-[11px] font-bold text-slate-600 px-1 py-1 rounded focus:outline-hidden cursor-pointer"
+                  aria-label="سرعة النطق"
+                  className="bg-transparent text-[11px] font-black text-[#202124] px-1.5 py-1 rounded focus:outline-none cursor-pointer"
                   title="سرعة النطق"
                 >
                   <option value="0.75">0.75x بطيء</option>
@@ -540,33 +543,34 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                 </select>
               </div>
 
-              {/* Copy Menu */}
-              <div className="relative inline-flex items-center gap-1">
+              <div className="relative inline-flex items-center gap-1.5">
                 <button
+                  type="button"
                   onClick={() => handleCopy('english')}
-                  className="px-3 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold transition-all flex items-center gap-1.5"
+                  className="px-3 py-2 rounded-[4px] bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer"
                   title="نسخ الإنشاء الإنجليزي للحافظة"
                 >
                   {copyFeedback === 'english' ? (
                     <>
-                      <Check className="w-3.5 h-3.5 text-emerald-600" />
-                      <span className="text-emerald-700">تم النسخ!</span>
+                      <Check className="w-3.5 h-3.5 text-[#287A52]" />
+                      <span className="text-[#287A52]">تم النسخ!</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-3.5 h-3.5 text-slate-500" />
+                      <Copy className="w-3.5 h-3.5 text-[#405DE6]" />
                       <span>نسخ الإنجليزي</span>
                     </>
                   )}
                 </button>
 
                 <button
+                  type="button"
                   onClick={() => handleCopy('bilingual')}
-                  className="px-3 py-2 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 border border-slate-200 text-xs font-bold transition-all hidden sm:flex items-center gap-1"
+                  className="px-3 py-2 rounded-[4px] bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all hidden sm:flex items-center gap-1 cursor-pointer"
                   title="نسخ مع الترجمة العربية"
                 >
                   {copyFeedback === 'bilingual' ? (
-                    <span className="text-emerald-700">تم النسخ!</span>
+                    <span className="text-[#287A52]">تم النسخ!</span>
                   ) : (
                     <span>+ الترجمة</span>
                   )}
@@ -576,170 +580,116 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           </div>
 
           {/* ================= SIX INTERACTIVE STUDY MODES NAVIGATION ================= */}
-          <div className="pt-2 flex items-center gap-1.5 overflow-x-auto pb-1 no-scrollbar w-full border-t border-slate-100">
-            <button
-              id="mode-dual-btn"
-              onClick={() => setActiveMode('dual')}
-              className={`px-3 sm:px-3.5 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
-                activeMode === 'dual'
-                  ? 'bg-emerald-600 text-white shadow-md'
-                  : 'bg-slate-100 hover:bg-slate-200/80 text-slate-700'
-              }`}
-            >
-              <BookOpen className="w-3.5 h-3.5 shrink-0" />
-              <span>الوضع النموذجي والمتوازي</span>
-            </button>
-
-            <button
-              id="mode-memory-btn"
-              onClick={() => setActiveMode('memory')}
-              className={`px-3 sm:px-3.5 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
-                activeMode === 'memory'
-                  ? 'bg-emerald-600 text-white shadow-md'
-                  : 'bg-slate-100 hover:bg-slate-200/80 text-slate-700'
-              }`}
-            >
-              <Brain className="w-3.5 h-3.5 shrink-0" />
-              <span>مختبر الحفظ والتعتيم الذكي</span>
-            </button>
-
-            <button
-              id="mode-simulator-btn"
-              onClick={() => setActiveMode('simulator')}
-              className={`px-3 sm:px-3.5 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
-                activeMode === 'simulator'
-                  ? 'bg-emerald-600 text-white shadow-md'
-                  : 'bg-slate-100 hover:bg-slate-200/80 text-slate-700'
-              }`}
-            >
-              <PenTool className="w-3.5 h-3.5 shrink-0" />
-              <span>محاكي الدفتر الوزاري والتسميع</span>
-            </button>
-
-            <button
-              id="mode-cloze-btn"
-              onClick={() => setActiveMode('cloze')}
-              className={`px-3 sm:px-3.5 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
-                activeMode === 'cloze'
-                  ? 'bg-emerald-600 text-white shadow-md'
-                  : 'bg-slate-100 hover:bg-slate-200/80 text-slate-700'
-              }`}
-            >
-              <Sparkles className="w-3.5 h-3.5 shrink-0" />
-              <span>اختبار الفراغات (Cloze)</span>
-            </button>
-
-            <button
-              id="mode-cards-btn"
-              onClick={() => setActiveMode('cards')}
-              className={`px-3 sm:px-3.5 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
-                activeMode === 'cards'
-                  ? 'bg-emerald-600 text-white shadow-md'
-                  : 'bg-slate-100 hover:bg-slate-200/80 text-slate-700'
-              }`}
-            >
-              <Layers className="w-3.5 h-3.5 shrink-0" />
-              <span>بطاقات المفردات (Flashcards)</span>
-            </button>
-
-            <button
-              id="mode-rubric-btn"
-              onClick={() => setActiveMode('rubric')}
-              className={`px-3 sm:px-3.5 py-2 rounded-xl text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
-                activeMode === 'rubric'
-                  ? 'bg-emerald-600 text-white shadow-md'
-                  : 'bg-slate-100 hover:bg-slate-200/80 text-slate-700'
-              }`}
-            >
-              <ListChecks className="w-3.5 h-3.5 shrink-0" />
-              <span>دليل الـ 20 درجة الوزارية</span>
-            </button>
+          <div className="pt-3 flex items-center gap-2 overflow-x-auto pb-1 no-scrollbar w-full border-t-2 border-[#202124]">
+            {[
+              { id: 'mode-dual-btn', mode: 'dual' as const, label: 'الوضع النموذجي والمتوازي', Icon: BookOpen },
+              { id: 'mode-memory-btn', mode: 'memory' as const, label: 'مختبر الحفظ والتعتيم الذكي', Icon: Brain },
+              { id: 'mode-simulator-btn', mode: 'simulator' as const, label: 'محاكي الدفتر الوزاري والتسميع', Icon: PenTool },
+              { id: 'mode-cloze-btn', mode: 'cloze' as const, label: 'اختبار الفراغات (Cloze)', Icon: Sparkles },
+              { id: 'mode-cards-btn', mode: 'cards' as const, label: 'بطاقات المفردات (Flashcards)', Icon: Layers },
+              { id: 'mode-rubric-btn', mode: 'rubric' as const, label: 'دليل الـ 20 درجة الوزارية', Icon: ListChecks },
+            ].map(({ id, mode, label, Icon }) => {
+              const isActive = activeMode === mode;
+              return (
+                <button
+                  type="button"
+                  key={id}
+                  id={id}
+                  onClick={() => setActiveMode(mode)}
+                  className={`px-3 sm:px-3.5 py-2 rounded-[4px] border-2 border-[#202124] text-xs font-black transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer ${
+                    isActive
+                      ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]'
+                      : 'bg-[#F7F5EF] hover:bg-white text-[#202124]'
+                  }`}
+                >
+                  <Icon className={`w-3.5 h-3.5 shrink-0 ${isActive ? 'text-[#F3E6A5]' : 'text-[#405DE6]'}`} />
+                  <span>{label}</span>
+                </button>
+              );
+            })}
           </div>
         </div>
 
         {/* Content Body based on Active Mode */}
-        <div className="p-6 sm:p-8">
+        <div className="p-5 sm:p-8">
 
           {/* ================= 1. MODE: DUAL PARALLEL READING ================= */}
           {activeMode === 'dual' && (
             <div className="space-y-6">
               
               {/* Dual Mode Sub-Toolbar */}
-              <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-2xl bg-slate-50 border border-slate-200 text-xs">
-                <div className="flex flex-wrap items-center gap-3">
+              <div className="flex flex-wrap items-center justify-between gap-3 p-3.5 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] text-xs">
+                <div className="flex flex-wrap items-center gap-2.5">
                   <button
+                    type="button"
                     onClick={() => setShowTranslation(!showTranslation)}
-                    className={`px-3 py-1.5 rounded-xl font-bold transition-all flex items-center gap-1.5 ${
+                    className={`px-3 py-1.5 rounded-[4px] border-2 border-[#202124] font-black transition-all flex items-center gap-1.5 cursor-pointer ${
                       showTranslation
-                        ? 'bg-emerald-100 text-emerald-800 border border-emerald-300'
-                        : 'bg-white text-slate-600 border border-slate-200'
+                        ? 'bg-[#D7E9DA] text-[#202124]'
+                        : 'bg-white text-[#202124]'
                     }`}
                   >
-                    {showTranslation ? <Eye className="w-3.5 h-3.5" /> : <EyeOff className="w-3.5 h-3.5" />}
+                    {showTranslation ? <Eye className="w-3.5 h-3.5 text-[#287A52]" /> : <EyeOff className="w-3.5 h-3.5 text-[#747474]" />}
                     <span>{showTranslation ? 'الترجمة مفعلة' : 'إخفاء الترجمة (تحدي)'}</span>
                   </button>
 
                   <button
+                    type="button"
                     onClick={() => setHighlightConnectors(!highlightConnectors)}
-                    className={`px-3 py-1.5 rounded-xl font-bold transition-all flex items-center gap-1.5 ${
+                    className={`px-3 py-1.5 rounded-[4px] border-2 border-[#202124] font-black transition-all flex items-center gap-1.5 cursor-pointer ${
                       highlightConnectors
-                        ? 'bg-amber-100 text-amber-900 border border-amber-300'
-                        : 'bg-white text-slate-600 border border-slate-200'
+                        ? 'bg-[#F3E6A5] text-[#202124]'
+                        : 'bg-white text-[#202124]'
                     }`}
                   >
-                    <Wand2 className="w-3.5 h-3.5 text-amber-600" />
+                    <Wand2 className="w-3.5 h-3.5 text-[#405DE6]" />
                     <span>{highlightConnectors ? 'مظلل أدوات الربط نشط' : 'إلغاء تظليل الروابط'}</span>
                   </button>
                 </div>
 
                 {/* Font Sizer */}
-                <div className="flex items-center gap-1 bg-white p-1 rounded-xl border border-slate-200">
-                  <button
-                    onClick={() => setFontSize('sm')}
-                    className={`px-2 py-1 rounded text-xs font-bold ${fontSize === 'sm' ? 'bg-slate-200 text-slate-900' : 'text-slate-500'}`}
-                  >
-                    A-
-                  </button>
-                  <button
-                    onClick={() => setFontSize('base')}
-                    className={`px-2 py-1 rounded text-xs font-bold ${fontSize === 'base' ? 'bg-slate-200 text-slate-900' : 'text-slate-500'}`}
-                  >
-                    A
-                  </button>
-                  <button
-                    onClick={() => setFontSize('lg')}
-                    className={`px-2 py-1 rounded text-xs font-bold ${fontSize === 'lg' ? 'bg-slate-200 text-slate-900' : 'text-slate-500'}`}
-                  >
-                    A+
-                  </button>
+                <div className="flex items-center gap-1 bg-white p-1 rounded-[4px] border-2 border-[#202124]">
+                  {(['sm', 'base', 'lg'] as const).map((sz, i) => (
+                    <button
+                      type="button"
+                      key={sz}
+                      onClick={() => setFontSize(sz)}
+                      className={`px-2 py-1 rounded-[4px] text-xs font-mono font-black cursor-pointer ${
+                        fontSize === sz ? 'bg-[#405DE6] text-white' : 'text-[#202124] hover:bg-[#F7F5EF]'
+                      }`}
+                    >
+                      {i === 0 ? 'A-' : i === 1 ? 'A' : 'A+'}
+                    </button>
+                  ))}
                 </div>
               </div>
 
               {/* Key Vocabulary Bar */}
               <div className="space-y-2">
-                <h3 className="text-xs font-black text-slate-500 uppercase tracking-wider flex items-center gap-1.5">
-                  <BookOpen className="w-3.5 h-3.5 text-emerald-600" />
+                <h3 className="text-xs font-black text-[#747474] uppercase tracking-wider flex items-center gap-1.5">
+                  <BookOpen className="w-3.5 h-3.5 text-[#405DE6]" />
                   <span>المفردات الوزارية المفتاحية للإنشاء (Key Vocabulary)</span>
                 </h3>
                 <div className="flex flex-wrap gap-2">
                   {currentEssay.keywords.map((kw, i) => (
-                    <div 
+                    <button
+                      type="button"
                       key={i}
                       onClick={() => speakText(kw.word)}
-                      className="px-3 py-1.5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-2 text-xs hover:border-emerald-400 hover:bg-emerald-50/40 transition-all cursor-pointer group"
+                      className="px-3 py-1.5 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] flex items-center gap-2 text-xs hover:bg-[#F3E6A5] transition-all cursor-pointer group"
                       title="انقر للاستماع لنطق الكلمة"
                     >
-                      <Volume2 className="w-3 h-3 text-slate-400 group-hover:text-emerald-600 transition-colors" />
-                      <span dir="ltr" className="font-mono font-bold text-emerald-800 text-left bidi-en">{kw.word}</span>
-                      <span className="text-slate-300">•</span>
-                      <span className="text-slate-600">{kw.meaning}</span>
-                    </div>
+                      <Volume2 className="w-3 h-3 text-[#405DE6]" />
+                      <span dir="ltr" className="font-mono font-black text-[#202124] text-left bidi-en">{kw.word}</span>
+                      <span className="text-[#747474]">•</span>
+                      <span className="text-[#202124] font-bold">{kw.meaning}</span>
+                    </button>
                   ))}
                 </div>
               </div>
 
               {/* Dual Paragraphs */}
-              <div className="space-y-5">
+              <div className="space-y-5 lesson-reading">
                 {currentEssay.paragraphsEn.map((paraEn, idx) => {
                   const paraAr = currentEssay.paragraphsAr[idx];
                   const isThisParaSpeaking = isSpeaking && speakingParagraphIndex === idx;
@@ -751,47 +701,43 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                   return (
                     <div 
                       key={idx}
-                      className={`p-6 rounded-3xl border transition-all space-y-4 relative ${
+                      className={`p-5 sm:p-6 rounded-[6px] border-2 border-[#202124] transition-all space-y-4 relative ${
                         isThisParaSpeaking
-                          ? 'bg-emerald-50/80 border-emerald-400 shadow-md ring-2 ring-emerald-300/60'
-                          : 'bg-slate-50/70 border-slate-200 hover:border-emerald-300'
+                          ? 'bg-[#D7E9DA]/45 shadow-[4px_4px_0px_#202124]'
+                          : 'bg-[#F7F5EF]'
                       }`}
                     >
-                      {/* Paragraph Header */}
-                      <div className="flex items-center justify-between text-xs font-bold text-slate-500">
+                      <div className="flex items-center justify-between text-xs font-black text-[#747474]">
                         <div className="flex items-center gap-2">
-                          <span className="px-2.5 py-0.5 rounded-lg bg-white border border-slate-200 text-slate-700 font-extrabold">
+                          <span className="px-2.5 py-0.5 rounded-[4px] bg-white border border-[#202124] text-[#202124] font-black tabular-nums">
                             الفقرة {idx + 1}
                           </span>
-                          <span className="text-slate-400 text-[11px]">
+                          <span className="text-[#747474] text-[11px] font-bold">
                             {idx === 0 ? 'المقدمة (Introduction)' : idx === currentEssay.paragraphsEn.length - 1 ? 'الخاتمة (Conclusion)' : 'متن الموضوع (Body)'}
                           </span>
                         </div>
 
-                        <div className="flex items-center gap-1">
-                          <button
-                            onClick={() => speakText(paraEn, idx)}
-                            className={`p-1.5 rounded-lg border text-xs font-bold transition-all flex items-center gap-1 ${
-                              isThisParaSpeaking
-                                ? 'bg-rose-600 text-white border-rose-600'
-                                : 'bg-white hover:bg-slate-100 text-slate-600 border-slate-200'
-                            }`}
-                            title={isThisParaSpeaking ? "إيقاف الصوت" : "استمع لهذه الفقرة"}
-                          >
-                            <Volume2 className="w-3.5 h-3.5" />
-                            <span className="hidden sm:inline">{isThisParaSpeaking ? "إيقاف" : "استماع"}</span>
-                          </button>
-                        </div>
+                        <button
+                          type="button"
+                          onClick={() => speakText(paraEn, idx)}
+                          className={`p-1.5 px-2.5 rounded-[4px] border-2 border-[#202124] text-xs font-black transition-all flex items-center gap-1 cursor-pointer ${
+                            isThisParaSpeaking
+                              ? 'bg-[#B83A3A] text-white'
+                              : 'bg-white hover:bg-[#F3E6A5] text-[#202124]'
+                          }`}
+                          title={isThisParaSpeaking ? "إيقاف الصوت" : "استمع لهذه الفقرة"}
+                        >
+                          <Volume2 className="w-3.5 h-3.5" />
+                          <span className="hidden sm:inline">{isThisParaSpeaking ? "إيقاف" : "استماع"}</span>
+                        </button>
                       </div>
 
-                      {/* English Paragraph */}
-                      <p dir="ltr" className={`font-sans ${fontSizeClass} text-slate-900 leading-relaxed text-left font-medium tracking-normal en-sentence`}>
+                      <p dir="ltr" className={`font-sans ${fontSizeClass} text-[#202124] leading-relaxed text-left font-medium tracking-normal en-sentence`}>
                         {renderFormattedParagraph(paraEn)}
                       </p>
 
-                      {/* Arabic Translation */}
                       {showTranslation && (
-                        <p className="text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-200/80 pt-3 font-normal">
+                        <p className="text-xs sm:text-sm text-[#747474] leading-relaxed border-t border-[#202124]/15 pt-3 font-bold">
                           {paraAr}
                         </p>
                       )}
@@ -801,15 +747,15 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
               </div>
 
               {/* Golden Ministerial Tips */}
-              <div className="p-6 rounded-3xl bg-amber-50/80 border border-amber-200 space-y-3">
-                <div className="flex items-center gap-2 text-amber-900 font-black text-sm">
-                  <Lightbulb className="w-5 h-5 text-amber-600 fill-amber-500 shrink-0" />
+              <div className="p-6 rounded-[6px] bg-[#F3E6A5]/35 border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3">
+                <div className="flex items-center gap-2 text-[#202124] font-black text-sm">
+                  <Lightbulb className="w-5 h-5 text-[#405DE6] fill-[#F3E6A5] shrink-0" />
                   <span>نصائح الأستاذ مصطفى تركي الذهبية لنيل 20/20 كاملة في هذا الإنشاء</span>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                   {currentEssay.goldenTips.map((tip, idx) => (
-                    <div key={idx} className="p-3 rounded-xl bg-white/80 border border-amber-200/70 text-xs sm:text-sm text-amber-950 flex items-start gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <div key={idx} className="p-3 rounded-[4px] bg-white border-2 border-[#202124] text-xs sm:text-sm text-[#202124] font-bold flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-[#287A52] shrink-0 mt-0.5" />
                       <span className="leading-relaxed">{tip}</span>
                     </div>
                   ))}
@@ -823,58 +769,63 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           {activeMode === 'memory' && (
             <div className="space-y-6">
               
-              <div className="p-5 rounded-3xl bg-gradient-to-r from-emerald-900 to-teal-950 text-white space-y-3 border border-emerald-800/40">
-                <div className="flex items-center gap-2 text-emerald-300 font-black text-sm">
+              <div className="p-5 rounded-[6px] bg-[#F7F5EF] text-[#202124] space-y-3 border-2 border-[#202124] shadow-[4px_4px_0px_#202124]">
+                <div className="flex items-center gap-2 text-[#405DE6] font-black text-sm">
                   <Brain className="w-4 h-4" />
                   <span>مختبر الاسترجاع النشط (Active Recall & Memory Fade)</span>
                 </div>
-                <p className="text-xs sm:text-sm text-emerald-100 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#202124] font-medium leading-relaxed">
                   هذه التقنية هي أسرع طريقة مثبتة علمياً لحفظ الإنشاءات الإنجليزية: تدرج في إخفاء الكلمات، واستخدم <strong>تقنية الحرف الأول</strong> لاختبار قدرتك على تذكر السطور غيباً!
                 </p>
 
                 {/* Level Buttons */}
                 <div className="pt-2 flex flex-wrap items-center gap-2">
                   <button
+                    type="button"
                     onClick={() => setMemoryLevel('100')}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      memoryLevel === '100' ? 'bg-white text-emerald-950 shadow-md font-black' : 'bg-white/10 hover:bg-white/20 text-white'
+                    className={`px-3 py-1.5 rounded-[4px] text-xs font-extrabold border-2 border-[#202124] transition-all cursor-pointer ${
+                      memoryLevel === '100' ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]' : 'bg-white hover:bg-[#F3E6A5] text-[#202124]'
                     }`}
                   >
                     100% (النص كامل)
                   </button>
 
                   <button
+                    type="button"
                     onClick={() => setMemoryLevel('75')}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      memoryLevel === '75' ? 'bg-white text-emerald-950 shadow-md font-black' : 'bg-white/10 hover:bg-white/20 text-white'
+                    className={`px-3 py-1.5 rounded-[4px] text-xs font-extrabold border-2 border-[#202124] transition-all cursor-pointer ${
+                      memoryLevel === '75' ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]' : 'bg-white hover:bg-[#F3E6A5] text-[#202124]'
                     }`}
                   >
                     75% (إخفاء خفيف)
                   </button>
 
                   <button
+                    type="button"
                     onClick={() => setMemoryLevel('50')}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      memoryLevel === '50' ? 'bg-white text-emerald-950 shadow-md font-black' : 'bg-white/10 hover:bg-white/20 text-white'
+                    className={`px-3 py-1.5 rounded-[4px] text-xs font-extrabold border-2 border-[#202124] transition-all cursor-pointer ${
+                      memoryLevel === '50' ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]' : 'bg-white hover:bg-[#F3E6A5] text-[#202124]'
                     }`}
                   >
                     50% (إخفاء نصف الكلمات)
                   </button>
 
                   <button
+                    type="button"
                     onClick={() => setMemoryLevel('first-letter')}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 ${
-                      memoryLevel === 'first-letter' ? 'bg-amber-400 text-amber-950 shadow-md font-black ring-2 ring-amber-300' : 'bg-white/10 hover:bg-white/20 text-amber-200'
+                    className={`px-3 py-1.5 rounded-[4px] text-xs font-extrabold border-2 border-[#202124] transition-all flex items-center gap-1.5 cursor-pointer ${
+                      memoryLevel === 'first-letter' ? 'bg-[#F3E6A5] text-[#202124] shadow-[2px_2px_0px_#202124]' : 'bg-white hover:bg-[#F3E6A5] text-[#202124]'
                     }`}
                   >
-                    <Sparkles className="w-3.5 h-3.5" />
+                    <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
                     <span>تقنية الحرف الأول (الأقوى للتسميع)</span>
                   </button>
 
                   <button
+                    type="button"
                     onClick={() => setMemoryLevel('blur')}
-                    className={`px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
-                      memoryLevel === 'blur' ? 'bg-white text-emerald-950 shadow-md font-black' : 'bg-white/10 hover:bg-white/20 text-white'
+                    className={`px-3 py-1.5 rounded-[4px] text-xs font-extrabold border-2 border-[#202124] transition-all cursor-pointer ${
+                      memoryLevel === 'blur' ? 'bg-[#405DE6] text-white shadow-[2px_2px_0px_#202124]' : 'bg-white hover:bg-[#F3E6A5] text-[#202124]'
                     }`}
                   >
                     التعتيم الشامل (المس للكشف)
@@ -887,20 +838,21 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                 {currentEssay.paragraphsEn.map((paraEn, idx) => (
                   <div 
                     key={idx}
-                    className="p-6 rounded-3xl bg-white border border-slate-200 shadow-xs space-y-3"
+                    className="p-6 rounded-[6px] bg-white border-2 border-[#202124] shadow-[3px_3px_0px_#202124] space-y-3"
                   >
-                    <div className="flex items-center justify-between text-xs font-bold text-slate-400 border-b border-slate-100 pb-2">
-                      <span>الفقرة {idx + 1}</span>
+                    <div className="flex items-center justify-between text-xs font-bold text-[#747474] border-b-2 border-[#202124]/15 pb-2">
+                      <span className="tabular-nums">الفقرة {idx + 1}</span>
                       <button
+                        type="button"
                         onClick={() => speakText(paraEn, idx)}
-                        className="text-emerald-700 hover:text-emerald-800 flex items-center gap-1 text-[11px]"
+                        className="text-[#405DE6] hover:underline flex items-center gap-1 text-[11px] font-bold cursor-pointer"
                       >
                         <Volume2 className="w-3.5 h-3.5" />
                         <span>استمع للفقرة</span>
                       </button>
                     </div>
 
-                    <div className="text-sm sm:text-base text-slate-900 dir-ltr text-left">
+                    <div dir="ltr" className="text-sm sm:text-base text-[#202124] text-left en-sentence">
                       {renderMemoryParagraph(paraEn, memoryLevel)}
                     </div>
                   </div>
@@ -914,49 +866,51 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           {activeMode === 'simulator' && (
             <div className="space-y-6">
               
-              <div className="p-5 rounded-3xl bg-slate-900 text-white space-y-2 border border-slate-800">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center gap-2 text-emerald-400 font-black text-sm">
+              <div className="p-5 rounded-[6px] bg-[#E9ECFA] text-[#202124] space-y-2 border-2 border-[#202124] shadow-[4px_4px_0px_#202124]">
+                <div className="flex flex-wrap items-center justify-between gap-2">
+                  <div className="flex items-center gap-2 text-[#405DE6] font-black text-sm">
                     <PenTool className="w-4 h-4" />
                     <span>محاكي الدفتر الامتحاني الوزاري (Exam Booklet Simulator)</span>
                   </div>
-                  <span className="text-xs bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded border border-emerald-500/30 font-bold">
+                  <span className="text-xs bg-[#F3E6A5] text-[#202124] px-2.5 py-0.5 rounded-[4px] border-2 border-[#202124] font-black">
                     السؤال الخامس
                   </span>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#202124] font-medium leading-relaxed">
                   اكتب الإنشاء غيباً هنا كما لو كنت في القاعة الامتحانية. سيقوم المحاكي باحتساب الكلمات بدقة ومقارنة كتابتك مع النموذج الوزاري للأستاذ مصطفى تركي!
                 </p>
               </div>
 
               {/* Word Count Live Gauge */}
-              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
-                <div className="flex items-center gap-3">
+              <div className="p-4 rounded-[6px] bg-[#F7F5EF] border-2 border-[#202124] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs">
+                <div className="flex flex-wrap items-center gap-3">
                   <div className="flex items-baseline gap-1">
-                    <span className="text-2xl font-black text-slate-900 font-mono">{studentWordCount}</span>
-                    <span className="text-slate-500 font-bold">/ 100-130 كلمة</span>
+                    <span className="text-2xl font-black text-[#202124] font-mono tabular-nums">{studentWordCount}</span>
+                    <span className="text-[#747474] font-bold">/ 100-130 كلمة</span>
                   </div>
-                  <span className={`px-2.5 py-1 rounded-lg text-xs font-bold ${studentCountStatus.bg} ${studentCountStatus.color}`}>
+                  <span className={`px-2.5 py-1 rounded-[4px] text-xs font-bold ${studentCountStatus.bg} ${studentCountStatus.color}`}>
                     {studentCountStatus.label}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-2">
+                <div className="flex flex-wrap items-center gap-2">
                   <button
+                    type="button"
                     onClick={() => setStudentWriting('')}
-                    className="px-3 py-1.5 rounded-lg bg-white border border-slate-200 text-slate-600 hover:text-rose-600 text-xs font-bold transition-all flex items-center gap-1"
+                    className="px-3 py-1.5 rounded-[4px] bg-white border-2 border-[#202124] text-[#202124] hover:bg-[#FDF6F4] hover:text-[#B83A3A] text-xs font-bold transition-all flex items-center gap-1 cursor-pointer"
                   >
                     <RotateCcw className="w-3 h-3" />
                     <span>مسح الدفتر</span>
                   </button>
 
                   <button
+                    type="button"
                     onClick={() => setShowModelComparison(!showModelComparison)}
                     disabled={!studentWriting.trim()}
-                    className={`px-3 py-1.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
+                    className={`px-3 py-1.5 rounded-[4px] text-xs font-extrabold border-2 border-[#202124] transition-all flex items-center gap-1.5 ${
                       !studentWriting.trim()
-                        ? 'opacity-50 cursor-not-allowed bg-slate-200 text-slate-500'
-                        : 'bg-emerald-600 hover:bg-emerald-700 text-white shadow-xs'
+                        ? 'opacity-50 cursor-not-allowed bg-[#EAE8E1] text-[#747474]'
+                        : 'bg-[#405DE6] hover:bg-[#334DC6] text-white shadow-[2px_2px_0px_#202124] cursor-pointer'
                     }`}
                   >
                     <Sparkles className="w-3 h-3" />
@@ -966,32 +920,33 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
               </div>
 
               {/* Exam Notepad Paper Styled Container */}
-              <div className="relative rounded-3xl border-2 border-slate-300 bg-amber-50/20 overflow-hidden shadow-inner">
+              <div className="relative rounded-[6px] border-2 border-[#202124] bg-white overflow-hidden shadow-[4px_4px_0px_#202124]">
                 {/* Ministerial booklet header decoration */}
-                <div className="bg-slate-100 border-b border-slate-200 p-3 px-5 flex items-center justify-between text-xs text-slate-600 font-mono">
-                  <span>جمهورية العراق - وزارة التربية</span>
-                  <span className="font-bold text-slate-800 font-sans">Q5: Writing / الإنشاء (20 Marks)</span>
-                  <span>الدفتر الامتحاني</span>
+                <div className="bg-[#F7F5EF] border-b-2 border-[#202124] p-3 px-4 sm:px-5 flex flex-wrap items-center justify-between gap-2 text-xs text-[#202124] font-mono">
+                  <span className="font-bold">جمهورية العراق - وزارة التربية</span>
+                  <span className="font-black text-[#405DE6] font-sans">Q5: Writing / الإنشاء (20 Marks)</span>
+                  <span className="font-bold">الدفتر الامتحاني</span>
                 </div>
 
                 {/* Title Line */}
-                <div className="p-4 border-b border-slate-200/80 bg-white/50 text-center font-serif">
-                  <div className="text-xs text-slate-400 font-bold mb-1">اكتب عنوان الإنشاء في منتصف السطر الأول مع وضع خط تحته</div>
-                  <div className="text-base sm:text-lg font-bold text-slate-800 underline decoration-slate-400 underline-offset-4">
+                <div className="p-4 border-b-2 border-[#202124]/20 bg-[#F8F7F2] text-center font-serif">
+                  <div className="text-xs text-[#747474] font-bold mb-1 font-sans">اكتب عنوان الإنشاء في منتصف السطر الأول مع وضع خط تحته</div>
+                  <div dir="ltr" className="text-base sm:text-lg font-bold text-[#202124] underline decoration-[#202124] underline-offset-4 bidi-en">
                     {currentEssay.titleEn}
                   </div>
                 </div>
 
                 {/* Notepad Textarea with Lined Background Effect */}
-                <div className="p-5 sm:p-7 relative min-h-[300px]">
+                <div className="p-4 sm:p-7 relative min-h-[300px]">
                   <textarea
                     id="ministerial-notepad-input"
+                    dir="ltr"
                     value={studentWriting}
                     onChange={(e) => setStudentWriting(e.target.value)}
-                    placeholder="ابدأ بكتابة مسودة الإنشاء باللغة الإنجليزية هنا... (اترك مسافة بادئة للفقرة الأولى)"
-                    className="w-full h-80 bg-transparent resize-y border-none focus:outline-hidden font-mono text-sm sm:text-base text-slate-900 leading-8 dir-ltr text-left placeholder:text-slate-400 placeholder:dir-rtl"
+                    placeholder="Start writing your English essay draft here..."
+                    className="w-full h-80 bg-transparent resize-y border-none focus:outline-hidden font-mono text-sm sm:text-base text-[#202124] leading-8 text-left placeholder:text-[#747474]"
                     style={{
-                      backgroundImage: 'repeating-linear-gradient(transparent, transparent 31px, #e2e8f0 31px, #e2e8f0 32px)',
+                      backgroundImage: 'repeating-linear-gradient(transparent, transparent 31px, #EAE8E1 31px, #EAE8E1 32px)',
                       lineHeight: '32px'
                     }}
                   />
@@ -1000,31 +955,31 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
 
               {/* Comparison & Diagnostics Section */}
               {showModelComparison && (
-                <div className="p-6 rounded-3xl bg-white border border-emerald-200 shadow-md space-y-4">
-                  <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-                    <h4 className="text-sm font-black text-slate-900 flex items-center gap-2">
-                      <Sparkles className="w-4 h-4 text-emerald-600" />
+                <div className="p-6 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-4">
+                  <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#202124]/15 pb-3">
+                    <h4 className="text-sm font-black text-[#202124] flex items-center gap-2">
+                      <Sparkles className="w-4 h-4 text-[#405DE6]" />
                       <span>تقرير المطابقة مع النموذج الوزاري:</span>
                     </h4>
                     <div className="flex items-center gap-2">
-                      <span className="text-xs text-slate-500 font-bold">نسبة تطابق المفردات:</span>
-                      <span className="text-sm font-black text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-md border border-emerald-200 font-mono">
+                      <span className="text-xs text-[#747474] font-bold">نسبة تطابق المفردات:</span>
+                      <span className="text-sm font-black text-[#287A52] bg-[#D7E9DA] px-2.5 py-0.5 rounded-[4px] border-2 border-[#202124] font-mono tabular-nums">
                         {overlapScore}%
                       </span>
                     </div>
                   </div>
 
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
-                    <div className="p-4 rounded-2xl bg-slate-50 border border-slate-200 space-y-2">
-                      <div className="font-bold text-slate-700">كتابتك الحالية:</div>
-                      <p className="dir-ltr text-left font-mono text-slate-800 whitespace-pre-wrap leading-relaxed">
+                    <div className="p-4 rounded-[6px] bg-[#F7F5EF] border-2 border-[#202124] space-y-2">
+                      <div className="font-bold text-[#202124]">كتابتك الحالية:</div>
+                      <p dir="ltr" className="text-left font-mono text-[#202124] whitespace-pre-wrap leading-relaxed en-sentence">
                         {studentWriting || '(لم يتم إدخال نص)'}
                       </p>
                     </div>
 
-                    <div className="p-4 rounded-2xl bg-emerald-50/50 border border-emerald-200 space-y-2">
-                      <div className="font-bold text-emerald-900">النموذج الوزاري المعتمد:</div>
-                      <div className="dir-ltr text-left font-mono text-slate-800 space-y-2 leading-relaxed">
+                    <div className="p-4 rounded-[6px] bg-[#F4F8F5] border-2 border-[#202124] space-y-2">
+                      <div className="font-bold text-[#287A52]">النموذج الوزاري المعتمد:</div>
+                      <div dir="ltr" className="text-left font-mono text-[#202124] space-y-2 leading-relaxed en-sentence">
                         {currentEssay.paragraphsEn.map((p, i) => (
                           <p key={i}>{p}</p>
                         ))}
@@ -1041,15 +996,16 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           {activeMode === 'cloze' && (
             <div className="space-y-6">
               
-              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs sm:text-sm text-emerald-900">
+              <div className="p-4 rounded-[6px] bg-[#D7E9DA] border-2 border-[#202124] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs sm:text-sm text-[#202124]">
                 <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 text-emerald-600 shrink-0" />
+                  <Sparkles className="w-4 h-4 text-[#287A52] shrink-0" />
                   <span><strong>اختبار التثبيت السريع:</strong> اختر الكلمة المفقودة الصحيحة لترسيخ حفظ الجمل المفتاحية للإنشاء!</span>
                 </div>
                 {Object.keys(clozeAnswers).length > 0 && (
                   <button
+                    type="button"
                     onClick={() => setClozeAnswers({})}
-                    className="px-3 py-1 rounded-lg bg-emerald-600 text-white font-bold text-xs hover:bg-emerald-700 transition-colors flex items-center gap-1"
+                    className="px-3 py-1 rounded-[4px] bg-[#405DE6] text-white font-bold text-xs border-2 border-[#202124] shadow-[2px_2px_0px_#202124] hover:bg-[#334DC6] transition-colors flex items-center gap-1 cursor-pointer"
                   >
                     <RotateCcw className="w-3 h-3" />
                     <span>إعادة المحاولة</span>
@@ -1066,26 +1022,26 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                   return (
                     <div 
                       key={idx}
-                      className={`p-5 rounded-2xl border transition-all space-y-3.5 ${
+                      className={`p-5 rounded-[6px] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] transition-all space-y-3.5 ${
                         isAnswered
                           ? isCorrect 
-                            ? 'bg-emerald-50/50 border-emerald-300' 
-                            : 'bg-rose-50/50 border-rose-300'
-                          : 'bg-slate-50 border-slate-200'
+                            ? 'bg-[#F4F8F5]' 
+                            : 'bg-[#FDF6F4]'
+                          : 'bg-[#F7F5EF]'
                       }`}
                     >
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-slate-400">سؤال {idx + 1}</span>
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <span className="text-xs font-extrabold text-[#747474] tabular-nums">سؤال {idx + 1}</span>
                         {isAnswered && (
-                          <span className={`text-xs font-bold px-2 py-0.5 rounded-md ${
-                            isCorrect ? 'bg-emerald-100 text-emerald-800' : 'bg-rose-100 text-rose-800'
+                          <span className={`text-xs font-extrabold px-2.5 py-0.5 rounded-[4px] border border-[#202124] ${
+                            isCorrect ? 'bg-[#D7E9DA] text-[#287A52]' : 'bg-[#FDF6F4] text-[#B83A3A]'
                           }`}>
                             {isCorrect ? 'إجابة صحيحة! أحسنت' : `الكلمة الصحيحة: ${cloze.missingWord}`}
                           </span>
                         )}
                       </div>
 
-                      <p dir="ltr" className="font-mono text-sm sm:text-base font-bold text-slate-900 text-left en-sentence">
+                      <p dir="ltr" className="font-mono text-sm sm:text-base font-bold text-[#202124] text-left en-sentence">
                         {cloze.textWithBlanks}
                       </p>
 
@@ -1094,19 +1050,20 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                           const isThisSelected = userChoice === opt;
                           const isThisCorrect = opt === cloze.missingWord;
 
-                          let style = "bg-white border-slate-200 text-slate-700 hover:border-emerald-400 hover:bg-emerald-50/30";
+                          let style = "bg-white border-2 border-[#202124] text-[#202124] hover:bg-[#E9ECFA]";
                           if (isAnswered) {
                             if (isThisCorrect) {
-                              style = "bg-emerald-600 text-white font-bold border-emerald-600 shadow-xs";
+                              style = "bg-[#287A52] text-white font-bold border-2 border-[#202124] shadow-[2px_2px_0px_#202124]";
                             } else if (isThisSelected) {
-                              style = "bg-rose-600 text-white font-bold border-rose-600";
+                              style = "bg-[#B83A3A] text-white font-bold border-2 border-[#202124]";
                             } else {
-                              style = "bg-white/60 opacity-50";
+                              style = "bg-white/70 border-2 border-[#202124]/40 text-[#747474] opacity-60";
                             }
                           }
 
                           return (
                             <button
+                              type="button"
                               key={opt}
                               disabled={isAnswered}
                               onClick={() => {
@@ -1116,7 +1073,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                                   triggerCelebration();
                                 }
                               }}
-                              className={`p-3 rounded-xl border text-xs sm:text-sm font-medium transition-all ${style}`}
+                              className={`p-3 rounded-[4px] text-xs sm:text-sm font-bold transition-all cursor-pointer disabled:cursor-default ${style}`}
                             >
                               {opt}
                             </button>
@@ -1134,9 +1091,9 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           {/* ================= 5. MODE: FLASHCARDS (VOCABULARY) ================= */}
           {activeMode === 'cards' && (
             <div className="space-y-6">
-              <div className="flex items-center justify-between text-xs text-slate-500 font-bold">
+              <div className="flex flex-wrap items-center justify-between gap-2 text-xs text-[#747474] font-bold">
                 <span>انقر على أي بطاقة لقلبها واكتشاف المعنى أو اللفظ</span>
-                <span>إجمالي الكلمات: {currentEssay.keywords.length}</span>
+                <span className="tabular-nums">إجمالي الكلمات: {currentEssay.keywords.length}</span>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -1146,27 +1103,37 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                   return (
                     <div
                       key={i}
+                      role="button"
+                      tabIndex={0}
                       onClick={() => setFlippedCards(prev => ({ ...prev, [i]: !prev[i] }))}
-                      className={`h-40 rounded-3xl p-6 border transition-all cursor-pointer select-none flex flex-col justify-between shadow-xs hover:shadow-md ${
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          setFlippedCards(prev => ({ ...prev, [i]: !prev[i] }));
+                        }
+                      }}
+                      className={`h-40 rounded-[6px] p-5 border-2 border-[#202124] transition-all cursor-pointer select-none flex flex-col justify-between shadow-[3px_3px_0px_#202124] hover:translate-y-[-1px] ${
                         isFlipped 
-                          ? 'bg-emerald-950 text-white border-emerald-800' 
-                          : 'bg-slate-50 hover:bg-emerald-50/40 text-slate-900 border-slate-200'
+                          ? 'bg-[#405DE6] text-white' 
+                          : 'bg-[#F7F5EF] hover:bg-[#F3E6A5] text-[#202124]'
                       }`}
                     >
                       <div className="flex items-center justify-between">
-                        <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full ${
-                          isFlipped ? 'bg-emerald-800 text-emerald-200' : 'bg-white border border-slate-200 text-slate-600'
+                        <span className={`text-[10px] font-extrabold px-2 py-0.5 rounded-[4px] border border-[#202124] ${
+                          isFlipped ? 'bg-[#F3E6A5] text-[#202124]' : 'bg-white text-[#202124]'
                         }`}>
                           {isFlipped ? 'الترجمة العربية' : 'English Term'}
                         </span>
 
                         <button
+                          type="button"
                           onClick={(e) => {
                             e.stopPropagation();
                             speakText(kw.word);
                           }}
-                          className={`p-1.5 rounded-full transition-colors ${
-                            isFlipped ? 'hover:bg-emerald-800 text-emerald-300' : 'hover:bg-white text-slate-500'
+                          aria-label={`استمع للفظ ${kw.word}`}
+                          className={`p-1.5 rounded-[4px] border border-[#202124] transition-colors cursor-pointer ${
+                            isFlipped ? 'bg-white text-[#405DE6] hover:bg-[#F3E6A5]' : 'bg-white text-[#202124] hover:bg-[#E9ECFA]'
                           }`}
                           title="استمع للفظ"
                         >
@@ -1176,17 +1143,17 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
 
                       <div className="text-center py-2">
                         {isFlipped ? (
-                          <div className="text-lg sm:text-xl font-black text-emerald-200 font-sans">
+                          <div className="text-lg sm:text-xl font-black text-white font-sans">
                             {kw.meaning}
                           </div>
                         ) : (
-                          <div dir="ltr" className="text-lg sm:text-xl font-bold font-mono text-emerald-800 text-center bidi-en">
+                          <div dir="ltr" className="text-lg sm:text-xl font-black font-mono text-[#202124] text-center bidi-en">
                             {kw.word}
                           </div>
                         )}
                       </div>
 
-                      <div className="text-center text-[11px] text-slate-400 font-medium">
+                      <div className={`text-center text-[11px] font-bold ${isFlipped ? 'text-white/90' : 'text-[#747474]'}`}>
                         {isFlipped ? 'انقر للعودة للإنجليزية' : 'انقر لقلب البطاقة ومعرفة المعنى'}
                       </div>
                     </div>
@@ -1200,63 +1167,63 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
           {activeMode === 'rubric' && (
             <div className="space-y-6">
               
-              <div className="p-6 rounded-3xl bg-slate-900 text-white space-y-3 border border-slate-800">
-                <div className="flex items-center gap-2 text-emerald-400 font-black text-base">
-                  <Award className="w-5 h-5" />
+              <div className="p-6 rounded-[6px] bg-[#F3E6A5] text-[#202124] space-y-3 border-2 border-[#202124] shadow-[4px_4px_0px_#202124]">
+                <div className="flex items-center gap-2 text-[#202124] font-black text-base">
+                  <Award className="w-5 h-5 text-[#405DE6]" />
                   <span>ميزان التصحيح الوزاري المعتمد (20 درجة كاملة)</span>
                 </div>
-                <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#202124] font-medium leading-relaxed">
                   كيف يمنحك المصحح الوزاري 20/20 كاملة في السؤال الخامس؟ إليك التوزيع الرسمي للدرجات وقائمة المراجعة الذاتية لتتأكد من مطابقة دفترك قبل تسليم الامتحان:
                 </p>
               </div>
 
               {/* Rubric Points Cards */}
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="p-5 rounded-2xl bg-amber-50/80 border border-amber-200 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-black text-amber-900">العنوان والتنظيم</span>
-                    <span className="text-xs font-black px-2 py-0.5 rounded bg-amber-200 text-amber-950 font-mono">2 درجات</span>
+                <div className="p-5 rounded-[6px] bg-[#F3E6A5] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-black text-[#202124]">العنوان والتنظيم</span>
+                    <span className="text-xs font-black px-2 py-0.5 rounded-[4px] bg-white border border-[#202124] text-[#202124] font-mono tabular-nums">2 درجات</span>
                   </div>
-                  <p className="text-xs text-amber-900/80 leading-relaxed">
+                  <p className="text-xs text-[#202124] font-medium leading-relaxed">
                     كتابة العنوان في منتصف السطر الأول، ترك فراغ كلمة في بداية كل فقرة (Indentation).
                   </p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-emerald-50/80 border border-emerald-200 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-black text-emerald-900">المضمون والأفكار</span>
-                    <span className="text-xs font-black px-2 py-0.5 rounded bg-emerald-200 text-emerald-950 font-mono">8 درجات</span>
+                <div className="p-5 rounded-[6px] bg-[#D7E9DA] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-black text-[#202124]">المضمون والأفكار</span>
+                    <span className="text-xs font-black px-2 py-0.5 rounded-[4px] bg-white border border-[#202124] text-[#287A52] font-mono tabular-nums">8 درجات</span>
                   </div>
-                  <p className="text-xs text-emerald-900/80 leading-relaxed">
+                  <p className="text-xs text-[#202124] font-medium leading-relaxed">
                     ترابط الأفكار وتغطية الموضوع بالكامل، وتحقيق عدد الكلمات المطلوب (100 إلى 130 كلمة).
                   </p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-teal-50/80 border border-teal-200 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-black text-teal-900">القواعد والتراكيب</span>
-                    <span className="text-xs font-black px-2 py-0.5 rounded bg-teal-200 text-teal-950 font-mono">5 درجات</span>
+                <div className="p-5 rounded-[6px] bg-[#E9ECFA] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-black text-[#202124]">القواعد والتراكيب</span>
+                    <span className="text-xs font-black px-2 py-0.5 rounded-[4px] bg-white border border-[#202124] text-[#405DE6] font-mono tabular-nums">5 درجات</span>
                   </div>
-                  <p className="text-xs text-teal-900/80 leading-relaxed">
+                  <p className="text-xs text-[#202124] font-medium leading-relaxed">
                     صحة الأزمنة النحوية، تماسك الجمل واستخدام أدوات الربط (Furthermore, In conclusion).
                   </p>
                 </div>
 
-                <div className="p-5 rounded-2xl bg-indigo-50/80 border border-indigo-200 space-y-2">
-                  <div className="flex items-center justify-between">
-                    <span className="text-xs font-black text-indigo-900">الإملاء والترقيم</span>
-                    <span className="text-xs font-black px-2 py-0.5 rounded bg-indigo-200 text-indigo-950 font-mono">5 درجات</span>
+                <div className="p-5 rounded-[6px] bg-[#DCD8FA] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] space-y-2">
+                  <div className="flex items-center justify-between gap-2">
+                    <span className="text-xs font-black text-[#202124]">الإملاء والترقيم</span>
+                    <span className="text-xs font-black px-2 py-0.5 rounded-[4px] bg-white border border-[#202124] text-[#202124] font-mono tabular-nums">5 درجات</span>
                   </div>
-                  <p className="text-xs text-indigo-900/80 leading-relaxed">
+                  <p className="text-xs text-[#202124] font-medium leading-relaxed">
                     خلو الكلمات من الأخطاء الإملائية، الحروف الكبيرة (Capitalization) والنقاط والفواصل.
                   </p>
                 </div>
               </div>
 
               {/* Interactive Self-Checklist */}
-              <div className="p-6 rounded-3xl bg-slate-50 border border-slate-200 space-y-4">
-                <h4 className="text-sm font-black text-slate-900 flex items-center gap-2">
-                  <ListChecks className="w-4 h-4 text-emerald-600" />
+              <div className="p-6 rounded-[6px] bg-[#F7F5EF] border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-4">
+                <h4 className="text-sm font-black text-[#202124] flex items-center gap-2">
+                  <ListChecks className="w-4 h-4 text-[#405DE6]" />
                   <span>قائمة التدقيق الذاتي قبل تسليم الدفتر الامتحاني:</span>
                 </h4>
 
@@ -1273,15 +1240,17 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                     return (
                       <label 
                         key={item.id}
-                        className="flex items-center gap-3 p-3 rounded-2xl bg-white border border-slate-200 hover:border-emerald-300 transition-all cursor-pointer select-none"
+                        className={`flex items-center gap-3 p-3 rounded-[6px] border-2 border-[#202124] transition-all cursor-pointer select-none ${
+                          isChecked ? 'bg-[#D7E9DA]' : 'bg-white hover:bg-[#E9ECFA]'
+                        }`}
                       >
                         <input
                           type="checkbox"
                           checked={isChecked}
                           onChange={() => setCheckedRubricItems(prev => ({ ...prev, [item.id]: !prev[item.id] }))}
-                          className="w-4 h-4 text-emerald-600 rounded border-slate-300 focus:ring-emerald-500 cursor-pointer"
+                          className="w-4 h-4 accent-[#405DE6] rounded-[4px] border-2 border-[#202124] cursor-pointer"
                         />
-                        <span className={`text-xs sm:text-sm font-medium ${isChecked ? 'text-slate-900 line-through text-slate-400' : 'text-slate-700'}`}>
+                        <span className={`text-xs sm:text-sm font-bold ${isChecked ? 'line-through text-[#747474]' : 'text-[#202124]'}`}>
                           {item.label}
                         </span>
                       </label>

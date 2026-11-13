@@ -384,7 +384,7 @@ export const VocabularyArena: React.FC<VocabularyArenaProps> = ({ lesson }) => {
               <span className="px-2.5 py-0.5 bg-[#D7E9DA] text-[#202124] border border-[#202124] text-[10px] font-mono font-bold uppercase tracking-wider">
                 Vocabulary & Collocations Arena
               </span>
-              <span className="text-xs font-mono font-bold text-[#777873]">• ساحة المفردات والإسقاطات والمتلازمات</span>
+              <span className="text-xs font-mono font-bold text-[#747474]">• ساحة المفردات والإسقاطات والمتلازمات</span>
             </div>
             <h2 className="text-xl sm:text-2xl font-extrabold text-[#202124] mt-1 tracking-tight">
               مختبر المفردات والمتلازمات الوزارية الذكية

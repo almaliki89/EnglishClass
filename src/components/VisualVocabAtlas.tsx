@@ -466,7 +466,7 @@ export const VisualVocabAtlas: React.FC<VisualVocabAtlasProps> = ({
                 className={`px-6 py-2.5 font-black text-xs transition-all flex items-center gap-1.5 border-2 border-[#202124] shadow-[3px_3px_0px_#202124] cursor-pointer active:translate-x-0.5 active:translate-y-0.5 ${
                   isMastered
                     ? 'bg-[#287A52] text-white'
-                    : 'bg-[#405DE6] text-white hover:bg-[#344EC7]'
+                    : 'bg-[#405DE6] text-white hover:bg-[#334DC6]'
                 }`}
               >
                 <Check className="w-4 h-4" />

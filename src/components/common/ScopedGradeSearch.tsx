@@ -95,8 +95,10 @@ export const ScopedGradeSearch: React.FC<ScopedGradeSearchProps> = ({
         />
         {query && (
           <button
+            type="button"
+            aria-label="مسح البحث"
             onClick={() => setQuery('')}
-            className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#202124]/60 hover:text-[#F2A18E] cursor-pointer"
+            className="absolute inset-y-0 left-0 pl-3 flex items-center text-[#747474] hover:text-[#B83A3A] cursor-pointer"
             title="مسح البحث"
           >
             <X className="w-5 h-5" />
@@ -179,7 +181,7 @@ export const ScopedGradeSearch: React.FC<ScopedGradeSearchProps> = ({
                       <h4 className="text-sm sm:text-base font-black text-[#202124] group-hover:text-[#405DE6]">
                         {lesson.titleAr}
                       </h4>
-                      <p className="text-xs font-mono text-[#F2A18E]" dir="ltr">
+                      <p className="text-xs font-mono font-bold text-[#405DE6]" dir="ltr">
                         {lesson.titleEn}
                       </p>
                       <p className="text-xs text-[#202124]/70 line-clamp-1">{lesson.summary}</p>

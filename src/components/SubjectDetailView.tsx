@@ -88,15 +88,15 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
             <button
               type="button"
               onClick={() => navigate('/mock')}
-              className="flex items-center gap-2 px-5 py-3 bg-[#F3E6A5] hover:bg-[#E6D99A] text-[#202124] border-3 border-[#202124] font-black text-sm shadow-[4px_4px_0px_#202124] hover:shadow-[2px_2px_0px_#202124] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
+              className="flex items-center gap-2 px-5 py-3 bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-3 border-[#202124] rounded-[4px] font-black text-sm shadow-[4px_4px_0px_#202124] hover:shadow-[2px_2px_0px_#202124] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
             >
-              <Award className="w-4 h-4 text-[#F2A18E]" />
+              <Award className="w-4 h-4 text-[#202124]" />
               <span>محاكي الامتحان الوزاري 100د</span>
             </button>
             <button
               type="button"
               onClick={() => navigate('/exam')}
-              className="flex items-center gap-2 px-5 py-3 bg-[#405DE6] hover:bg-[#344EC7] text-white border-3 border-[#202124] font-black text-sm shadow-[4px_4px_0px_#202124] hover:shadow-[2px_2px_0px_#202124] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
+              className="flex items-center gap-2 px-5 py-3 bg-[#405DE6] hover:bg-[#334DC6] text-white border-3 border-[#202124] rounded-[4px] font-black text-sm shadow-[4px_4px_0px_#202124] hover:shadow-[2px_2px_0px_#202124] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
             >
               <FileText className="w-4 h-4 text-[#F3E6A5]" />
               <span>بنك الأسئلة الوزارية</span>

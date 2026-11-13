@@ -166,7 +166,7 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
             {gradeMeta.nameAr}
           </span>
           {gradeMeta.isMinisterial && (
-            <span className="px-2 py-0.5 bg-[#F2A18E] text-white font-mono font-black text-xs border border-[#202124]">
+            <span className="px-2 py-0.5 bg-[#F2A18E] text-[#202124] font-mono font-black text-xs border-2 border-[#202124] rounded-[4px]">
               ★ وزاري معتمد
             </span>
           )}
@@ -206,7 +206,7 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
                     : 'bg-white hover:bg-[#F7F5EF] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
                 }`}
               >
-                <span className={`text-[10px] font-mono font-bold block ${isActive ? 'text-[#F3E6A5]' : 'text-[#F2A18E]'}`}>
+                <span className={`text-[10px] font-mono font-bold block ${isActive ? 'text-[#F3E6A5]' : 'text-[#B83A3A]'}`}>
                   {badgeText}
                 </span>
                 <span className="font-black text-sm block mt-0.5">
@@ -222,69 +222,74 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
       </div>
 
       {/* Sub-Navigation Tabs */}
-      <div className="flex items-center gap-1.5 overflow-x-auto pb-1 border-b border-stone-200 text-xs sm:text-sm font-bold no-scrollbar w-full">
+      <div className="flex items-center gap-2 overflow-x-auto p-1.5 bg-[#F7F5EF] border-2 border-[#202124] rounded-[6px] shadow-[3px_3px_0px_#202124] text-xs sm:text-sm font-black no-scrollbar w-full">
         <button
+          type="button"
           id="subtab-overview"
           onClick={() => setSubTab('overview')}
-          className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
+          className={`px-3.5 sm:px-4 py-2 rounded-[4px] border-2 transition-all flex items-center gap-2 whitespace-nowrap shrink-0 cursor-pointer ${
             subTab === 'overview'
-              ? 'bg-stone-900 text-white shadow-sm'
-              : 'text-stone-600 hover:bg-stone-100'
+              ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+              : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
           }`}
         >
-          <BookOpen className="w-4 h-4 text-amber-400 shrink-0" />
+          <BookOpen className={`w-4 h-4 shrink-0 ${subTab === 'overview' ? 'text-[#F3E6A5]' : 'text-[#405DE6]'}`} />
           <span>القصة والحبكة والصور</span>
         </button>
 
         <button
+          type="button"
           id="subtab-author"
           onClick={() => setSubTab('author')}
-          className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
+          className={`px-3.5 sm:px-4 py-2 rounded-[4px] border-2 transition-all flex items-center gap-2 whitespace-nowrap shrink-0 cursor-pointer ${
             subTab === 'author'
-              ? 'bg-stone-900 text-white shadow-sm'
-              : 'text-stone-600 hover:bg-stone-100'
+              ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+              : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
           }`}
         >
-          <Feather className="w-4 h-4 text-amber-400 shrink-0" />
+          <Feather className={`w-4 h-4 shrink-0 ${subTab === 'author' ? 'text-[#F3E6A5]' : 'text-[#405DE6]'}`} />
           <span>سيرة الكاتب وجوائزه</span>
         </button>
 
         <button
+          type="button"
           id="subtab-characters"
           onClick={() => setSubTab('characters')}
-          className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
+          className={`px-3.5 sm:px-4 py-2 rounded-[4px] border-2 transition-all flex items-center gap-2 whitespace-nowrap shrink-0 cursor-pointer ${
             subTab === 'characters'
-              ? 'bg-stone-900 text-white shadow-sm'
-              : 'text-stone-600 hover:bg-stone-100'
+              ? 'bg-[#405DE6] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+              : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
           }`}
         >
-          <User className="w-4 h-4 text-amber-400 shrink-0" />
+          <User className={`w-4 h-4 shrink-0 ${subTab === 'characters' ? 'text-[#F3E6A5]' : 'text-[#405DE6]'}`} />
           <span>الشخصيات والتحليل</span>
         </button>
 
         <button
+          type="button"
           id="subtab-ministerial"
           onClick={() => setSubTab('ministerialQA')}
-          className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
+          className={`px-3.5 sm:px-4 py-2 rounded-[4px] border-2 transition-all flex items-center gap-2 whitespace-nowrap shrink-0 cursor-pointer tabular-nums ${
             subTab === 'ministerialQA'
-              ? 'bg-amber-600 text-white shadow-sm'
-              : 'text-stone-600 hover:bg-stone-100'
+              ? 'bg-[#F3E6A5] text-[#202124] border-[#202124] shadow-[2px_2px_0px_#202124]'
+              : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
           }`}
         >
-          <HelpCircle className="w-4 h-4 text-amber-200 shrink-0" />
+          <HelpCircle className="w-4 h-4 text-[#B83A3A] shrink-0" />
           <span>الأسئلة الوزارية ({activeLiterature.ministerialQA.length})</span>
         </button>
 
         <button
+          type="button"
           id="subtab-quiz"
           onClick={() => setSubTab('quiz')}
-          className={`px-3.5 sm:px-4 py-2 sm:py-2.5 rounded-2xl transition-all flex items-center gap-2 whitespace-nowrap shrink-0 ${
+          className={`px-3.5 sm:px-4 py-2 rounded-[4px] border-2 transition-all flex items-center gap-2 whitespace-nowrap shrink-0 cursor-pointer ${
             subTab === 'quiz'
-              ? 'bg-emerald-700 text-white shadow-sm'
-              : 'text-stone-600 hover:bg-stone-100'
+              ? 'bg-[#287A52] text-white border-[#202124] shadow-[2px_2px_0px_#202124]'
+              : 'bg-white text-[#202124] border-transparent hover:border-[#202124]'
           }`}
         >
-          <Sparkles className="w-4 h-4 text-emerald-300 shrink-0" />
+          <Sparkles className={`w-4 h-4 shrink-0 ${subTab === 'quiz' ? 'text-[#F3E6A5]' : 'text-[#287A52]'}`} />
           <span>مختبر الحفظ الذاتي</span>
         </button>
       </div>
@@ -294,7 +299,7 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
         <div className="space-y-6">
           
           {/* Visual Artwork Card with Multi-Scene Selector */}
-          <div className="rounded-3xl bg-white border border-stone-200 overflow-hidden shadow-sm">
+          <div className="rounded-[6px] bg-white border-3 border-[#202124] shadow-[5px_5px_0px_#202124] overflow-hidden">
             <div className="relative group">
               <img
                 src={currentImage}
@@ -302,35 +307,37 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
                 referrerPolicy="no-referrer"
                 className="w-full h-72 sm:h-[420px] object-cover object-center transition-all duration-500"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-transparent flex flex-col justify-end p-5 sm:p-8 text-white">
+              <div className="absolute inset-0 bg-gradient-to-t from-[#202124]/95 via-[#202124]/45 to-transparent flex flex-col justify-end p-5 sm:p-8 text-white">
                 <div className="flex flex-wrap items-center gap-2 mb-2">
-                  <span className="px-3 py-1 rounded-full bg-amber-500 text-stone-950 font-black text-xs">
+                  <span className="px-3 py-1 rounded-[4px] bg-[#F3E6A5] text-[#202124] border-2 border-[#202124] font-black text-xs">
                     {activeLiterature.genreAr || activeLiterature.genre}
                   </span>
-                  <span className="px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm text-white font-bold text-xs">
+                  <span className="px-3 py-1 rounded-[4px] bg-[#202124]/80 border border-white/40 text-white font-mono font-bold text-xs">
                     {activeLiterature.genre}
                   </span>
                 </div>
                 
-                <h2 className="text-2xl sm:text-4xl font-black text-amber-50 flex items-center gap-3">
+                <h2 className="text-2xl sm:text-4xl font-black text-white flex flex-wrap items-center gap-3">
                   <span>{activeLiterature.titleAr}</span>
-                  <span className="text-xl sm:text-2xl text-amber-300 font-serif font-normal">
+                  <span className="text-xl sm:text-2xl text-[#F3E6A5] font-mono font-bold" dir="ltr">
                     — {activeLiterature.title}
                   </span>
                   <button
+                    type="button"
                     onClick={() => playAudio(activeLiterature.title)}
+                    aria-label="استمع للنطق الإنجليزي"
                     title="استمع للنطق الإنجليزي"
-                    className="p-1.5 rounded-full bg-white/20 hover:bg-amber-400 hover:text-stone-950 transition-colors"
+                    className="p-2 rounded-[4px] bg-white text-[#202124] border-2 border-[#202124] hover:bg-[#F3E6A5] transition-colors cursor-pointer"
                   >
                     <Volume2 className="w-4 h-4" />
                   </button>
                 </h2>
 
-                <p className="text-xs sm:text-sm text-stone-200 mt-2 max-w-3xl leading-relaxed">
+                <p className="text-xs sm:text-sm text-[#F7F5EF] mt-2 max-w-3xl leading-relaxed font-medium">
                   {langMode === 'en' ? currentImageCaptionEn : currentImageCaptionAr}
                 </p>
                 {langMode === 'bilingual' && currentImageCaptionEn && (
-                  <p dir="ltr" className="text-xs text-stone-300 mt-1 italic text-left en-sentence">
+                  <p dir="ltr" className="text-xs text-[#F3E6A5] mt-1 italic text-left en-sentence">
                     "{currentImageCaptionEn}"
                   </p>
                 )}
@@ -339,19 +346,21 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
 
             {/* Scene Selector Thumbnails if available */}
             {activeLiterature.galleryImages && activeLiterature.galleryImages.length > 1 && (
-              <div className="p-3 bg-stone-900 flex items-center gap-3 overflow-x-auto border-t border-stone-800">
-                <span className="text-xs font-bold text-amber-400 whitespace-nowrap flex items-center gap-1.5 px-2">
-                  <ImageIcon className="w-3.5 h-3.5" />
+              <div className="p-3 bg-[#F7F5EF] flex items-center gap-3 overflow-x-auto border-t-2 border-[#202124]">
+                <span className="text-xs font-black text-[#202124] whitespace-nowrap flex items-center gap-1.5 px-2">
+                  <ImageIcon className="w-3.5 h-3.5 text-[#405DE6]" />
                   <span>معرض المشاهد واللوحات:</span>
                 </span>
                 {activeLiterature.galleryImages.map((img, idx) => (
                   <button
+                    type="button"
                     key={idx}
                     onClick={() => setActiveImageIdx(idx)}
-                    className={`relative rounded-xl overflow-hidden border-2 transition-all shrink-0 ${
+                    aria-label={img.captionAr || img.captionEn}
+                    className={`relative rounded-[4px] overflow-hidden border-2 transition-all shrink-0 cursor-pointer ${
                       activeImageIdx === idx
-                        ? 'border-amber-400 scale-105 shadow-md'
-                        : 'border-white/20 opacity-70 hover:opacity-100'
+                        ? 'border-[#405DE6] shadow-[2px_2px_0px_#202124]'
+                        : 'border-[#202124]/40 opacity-75 hover:opacity-100 hover:border-[#202124]'
                     }`}
                   >
                     <img
@@ -361,8 +370,8 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
                       className="w-16 sm:w-20 h-10 sm:h-12 object-cover"
                     />
                     {activeImageIdx === idx && (
-                      <div className="absolute inset-0 bg-amber-500/20 flex items-center justify-center">
-                        <Check className="w-3 h-3 text-white" />
+                      <div className="absolute inset-0 bg-[#405DE6]/30 flex items-center justify-center">
+                        <Check className="w-4 h-4 text-white drop-shadow" />
                       </div>
                     )}
                   </button>
@@ -371,46 +380,48 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
             )}
 
             {/* Quick Metadata Bar */}
-            <div className="p-4 sm:p-5 bg-stone-50 border-t border-stone-200 flex flex-wrap items-center justify-between gap-4 text-xs">
+            <div className="p-4 sm:p-5 bg-[#F7F5EF] border-t-2 border-[#202124] flex flex-wrap items-center justify-between gap-4 text-xs">
               <div className="flex items-center gap-2">
-                <Feather className="w-4 h-4 text-amber-600" />
-                <span className="font-bold text-stone-600">المؤلف:</span>
-                <span className="font-black text-stone-900">{activeLiterature.authorAr} ({activeLiterature.author})</span>
+                <Feather className="w-4 h-4 text-[#405DE6]" />
+                <span className="font-bold text-[#747474]">المؤلف:</span>
+                <span className="font-black text-[#202124]">{activeLiterature.authorAr} ({activeLiterature.author})</span>
               </div>
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-amber-600" />
-                <span className="font-bold text-stone-600">الفترة الزمنية:</span>
-                <span className="font-mono font-bold text-stone-800">{activeLiterature.authorYears}</span>
+                <Calendar className="w-4 h-4 text-[#405DE6]" />
+                <span className="font-bold text-[#747474]">الفترة الزمنية:</span>
+                <span className="font-mono font-bold text-[#202124] tabular-nums">{activeLiterature.authorYears}</span>
               </div>
               <div className="flex items-center gap-2">
-                <Award className="w-4 h-4 text-amber-600" />
-                <span className="font-bold text-stone-600">الوزن الوزاري:</span>
-                <span className="font-bold text-amber-700 bg-amber-100 px-2.5 py-0.5 rounded-md">السؤال الرابع • 10 درجات</span>
+                <Award className="w-4 h-4 text-[#405DE6]" />
+                <span className="font-bold text-[#747474]">الوزن الوزاري:</span>
+                <span className="font-black text-[#202124] bg-[#F3E6A5] border border-[#202124] px-2.5 py-0.5 rounded-[4px] tabular-nums">السؤال الرابع • 10 درجات</span>
               </div>
             </div>
           </div>
 
           {/* Historical & Literary Context */}
           {(activeLiterature.historicalContextAr || activeLiterature.historicalContextEn) && (
-            <div className="p-5 sm:p-6 rounded-3xl bg-amber-50/60 border border-amber-200/80 space-y-3">
-              <h3 className="text-sm sm:text-base font-black text-amber-950 flex items-center gap-2">
-                <Flame className="w-4 h-4 text-amber-600" />
+            <div className="p-5 sm:p-6 rounded-[6px] bg-[#F3E6A5]/30 border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3">
+              <h3 className="text-sm sm:text-base font-black text-[#202124] flex items-center gap-2">
+                <Flame className="w-4 h-4 text-[#B83A3A]" />
                 <span>الظرف التاريخي والظهور الأدبي (Historical Context)</span>
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm leading-relaxed">
                 {(langMode === 'bilingual' || langMode === 'ar') && activeLiterature.historicalContextAr && (
-                  <div className="p-4 rounded-2xl bg-white/80 border border-amber-200 text-stone-800 space-y-1">
-                    <p className="font-bold text-amber-900 text-xs">الظرف التاريخي بالعربية:</p>
+                  <div className="p-4 rounded-[4px] bg-white border-2 border-[#202124] text-[#202124] space-y-1">
+                    <p className="font-black text-[#405DE6] text-xs">الظرف التاريخي بالعربية:</p>
                     <p>{activeLiterature.historicalContextAr}</p>
                   </div>
                 )}
                 {(langMode === 'bilingual' || langMode === 'en') && activeLiterature.historicalContextEn && (
-                  <div dir="ltr" className="p-4 rounded-2xl bg-white/80 border border-amber-200 text-stone-800 space-y-1 text-left">
+                  <div dir="ltr" className="p-4 rounded-[4px] bg-white border-2 border-[#202124] text-[#202124] space-y-1 text-left">
                     <div className="flex items-center justify-between">
-                      <p className="font-bold text-amber-900 text-xs font-mono">Historical Background:</p>
+                      <p className="font-black text-[#405DE6] text-xs font-mono">Historical Background:</p>
                       <button
+                        type="button"
                         onClick={() => playAudio(activeLiterature.historicalContextEn!)}
-                        className="text-amber-700 hover:text-amber-950"
+                        aria-label="Listen to historical background"
+                        className="text-[#405DE6] hover:text-[#202124] p-1 cursor-pointer"
                       >
                         <Volume2 className="w-3.5 h-3.5" />
                       </button>
@@ -423,43 +434,44 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
           )}
 
           {/* Plot Summary */}
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-xs space-y-4">
+          <div className="p-6 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-4">
             <div className="flex items-center justify-between">
-              <h3 className="text-base sm:text-lg font-black text-stone-900 flex items-center gap-2">
-                <BookOpen className="w-5 h-5 text-amber-600" />
+              <h3 className="text-base sm:text-lg font-black text-[#202124] flex items-center gap-2">
+                <BookOpen className="w-5 h-5 text-[#405DE6]" />
                 <span>ملخص الأحداث والحبكة (Plot & Story Summary)</span>
               </h3>
             </div>
 
-            <div className="space-y-4">
+            <div className="space-y-4 lesson-reading">
               {(langMode === 'bilingual' || langMode === 'ar') && (
-                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200 space-y-2">
+                <div className="p-5 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] space-y-2">
                   <div className="flex items-center justify-between">
-                    <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-stone-200 text-stone-800">
+                    <span className="text-xs font-black px-2.5 py-0.5 rounded-[4px] bg-[#F3E6A5] border border-[#202124] text-[#202124]">
                       الملخص المعتمد باللغة العربية
                     </span>
                   </div>
-                  <div className="text-xs sm:text-sm text-stone-700 leading-relaxed font-normal whitespace-pre-line">
+                  <div className="text-xs sm:text-sm text-[#202124] leading-relaxed font-medium whitespace-pre-line">
                     {activeLiterature.summaryAr}
                   </div>
                 </div>
               )}
 
               {(langMode === 'bilingual' || langMode === 'en') && activeLiterature.summaryEn && (
-                <div className="p-5 rounded-2xl bg-stone-50 border border-stone-200 space-y-2 dir-ltr text-right">
-                  <div className="flex items-center justify-between">
+                <div className="p-5 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] space-y-2 dir-ltr text-left">
+                  <div className="flex items-center justify-between gap-2">
                     <button
+                      type="button"
                       onClick={() => playAudio(activeLiterature.summaryEn!)}
-                      className="text-xs font-bold text-amber-700 hover:text-amber-900 flex items-center gap-1"
+                      className="text-xs font-black text-[#405DE6] hover:text-[#202124] flex items-center gap-1 cursor-pointer"
                     >
                       <Volume2 className="w-3.5 h-3.5" />
                       <span>Listen to Summary</span>
                     </button>
-                    <span className="text-xs font-bold px-2 py-0.5 rounded-md bg-stone-200 text-stone-800">
+                    <span className="text-xs font-black px-2.5 py-0.5 rounded-[4px] bg-[#E9ECFA] border border-[#202124] text-[#202124]">
                       Standard English Plot Summary
                     </span>
                   </div>
-                  <div className="text-xs sm:text-sm text-stone-700 leading-relaxed font-normal whitespace-pre-line">
+                  <div className="text-xs sm:text-sm text-[#202124] leading-relaxed font-normal whitespace-pre-line en-sentence">
                     {activeLiterature.summaryEn}
                   </div>
                 </div>
@@ -470,19 +482,19 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
           {/* Moral Lesson & Key Themes */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {/* Moral Lesson */}
-            <div className="p-5 sm:p-6 rounded-3xl bg-emerald-50/70 border border-emerald-200 space-y-3">
-              <h4 className="text-sm sm:text-base font-black text-emerald-950 flex items-center gap-2">
-                <Award className="w-4 h-4 text-emerald-600" />
+            <div className="p-5 sm:p-6 rounded-[6px] bg-[#D7E9DA]/35 border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3">
+              <h4 className="text-sm sm:text-base font-black text-[#202124] flex items-center gap-2">
+                <Award className="w-4 h-4 text-[#287A52]" />
                 <span>الدرس الأخلاقي والرسالة الإنسانية (Moral Lesson)</span>
               </h4>
               <div className="space-y-2 text-xs sm:text-sm">
                 {(langMode === 'bilingual' || langMode === 'ar') && activeLiterature.moralLessonAr && (
-                  <p className="text-emerald-900 leading-relaxed font-medium bg-white/70 p-3.5 rounded-xl border border-emerald-100">
+                  <p className="text-[#202124] leading-relaxed font-medium bg-white p-3.5 rounded-[4px] border-2 border-[#202124]">
                     {activeLiterature.moralLessonAr}
                   </p>
                 )}
                 {(langMode === 'bilingual' || langMode === 'en') && activeLiterature.moralLessonEn && (
-                  <p dir="ltr" className="text-emerald-950 leading-relaxed font-medium bg-white/70 p-3.5 rounded-xl border border-emerald-100 text-left en-sentence">
+                  <p dir="ltr" className="text-[#202124] leading-relaxed font-medium bg-white p-3.5 rounded-[4px] border-2 border-[#202124] text-left en-sentence">
                     {activeLiterature.moralLessonEn}
                   </p>
                 )}
@@ -490,22 +502,22 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
             </div>
 
             {/* Key Themes */}
-            <div className="p-5 sm:p-6 rounded-3xl bg-indigo-50/70 border border-indigo-200 space-y-3">
-              <h4 className="text-sm sm:text-base font-black text-indigo-950 flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-indigo-600" />
+            <div className="p-5 sm:p-6 rounded-[6px] bg-[#E9ECFA]/60 border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3">
+              <h4 className="text-sm sm:text-base font-black text-[#202124] flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-[#405DE6]" />
                 <span>الثيمات والأفكار المركزية (Key Themes)</span>
               </h4>
               <div className="space-y-2 text-xs leading-relaxed">
                 {activeLiterature.keyThemes.map((theme, i) => (
-                  <div key={i} className="p-3 rounded-xl bg-white/80 border border-indigo-100 space-y-1">
+                  <div key={i} className="p-3 rounded-[4px] bg-white border-2 border-[#202124] space-y-1">
                     {(langMode === 'bilingual' || langMode === 'ar') && (
-                      <p className="font-bold text-indigo-950">
-                        <span className="text-indigo-600 font-extrabold ml-1.5">✦</span>
+                      <p className="font-bold text-[#202124]">
+                        <span className="text-[#405DE6] font-extrabold ml-1.5">✦</span>
                         {theme}
                       </p>
                     )}
                     {(langMode === 'bilingual' || langMode === 'en') && activeLiterature.keyThemesEn && activeLiterature.keyThemesEn[i] && (
-                      <p dir="ltr" className="text-indigo-800 font-medium text-left en-sentence">
+                      <p dir="ltr" className="text-[#405DE6] font-bold text-left en-sentence">
                         • {activeLiterature.keyThemesEn[i]}
                       </p>
                     )}
@@ -517,29 +529,31 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
 
           {/* Key Vocabulary */}
           {activeLiterature.keyVocabulary && activeLiterature.keyVocabulary.length > 0 && (
-            <div className="p-5 sm:p-6 rounded-3xl bg-white border border-stone-200 shadow-xs space-y-4">
-              <h4 className="text-sm sm:text-base font-black text-stone-900 flex items-center gap-2">
-                <Languages className="w-4 h-4 text-amber-600" />
+            <div className="p-5 sm:p-6 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-4">
+              <h4 className="text-sm sm:text-base font-black text-[#202124] flex items-center gap-2">
+                <Languages className="w-4 h-4 text-[#405DE6]" />
                 <span>المفردات والمصطلحات الوزارية الهامة (Key Literary Vocabulary)</span>
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
                 {activeLiterature.keyVocabulary.map((vocab, i) => (
-                  <div key={i} className="p-3.5 rounded-2xl bg-stone-50 border border-stone-200 space-y-1.5 hover:border-amber-300 transition-colors">
+                  <div key={i} className="p-3.5 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] space-y-1.5 hover:bg-white transition-colors">
                     <div className="flex items-center justify-between">
-                      <span className="font-bold text-sm text-stone-900 font-mono">{vocab.word}</span>
+                      <span className="font-black text-sm text-[#202124] font-mono" dir="ltr">{vocab.word}</span>
                       <button
+                        type="button"
                         onClick={() => playAudio(vocab.word)}
-                        className="text-stone-400 hover:text-amber-600 p-1"
+                        className="text-[#405DE6] hover:text-[#202124] p-1 cursor-pointer"
+                        aria-label="نطق المفردة"
                         title="نطق المفردة"
                       >
                         <Volume2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
-                    <p className="text-xs font-bold text-amber-800">{vocab.meaningAr}</p>
-                    <p dir="ltr" className="text-[11px] text-stone-600 font-medium text-left border-t border-stone-200/60 pt-1 en-sentence">
+                    <p className="text-xs font-black text-[#405DE6]">{vocab.meaningAr}</p>
+                    <p dir="ltr" className="text-[11px] text-[#202124] font-medium text-left border-t border-[#202124]/15 pt-1 en-sentence">
                       "{vocab.contextEn}"
                     </p>
-                    <p className="text-[11px] text-stone-500">
+                    <p className="text-[11px] text-[#747474] font-bold">
                       «{vocab.contextAr}»
                     </p>
                   </div>
@@ -550,25 +564,26 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
 
           {/* Quotes Section */}
           {activeLiterature.quotes && activeLiterature.quotes.length > 0 && (
-            <div className="p-5 sm:p-6 rounded-3xl bg-stone-900 text-white space-y-4">
-              <h4 className="text-sm sm:text-base font-black text-amber-400 flex items-center gap-2">
-                <Quote className="w-4 h-4" />
+            <div className="p-5 sm:p-6 rounded-[6px] bg-[#DCD8FA]/35 border-3 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-4">
+              <h4 className="text-sm sm:text-base font-black text-[#202124] flex items-center gap-2">
+                <Quote className="w-4 h-4 text-[#405DE6]" />
                 <span>اقتباسات أدبية خالدة من النص (Immortal Quotes)</span>
               </h4>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {activeLiterature.quotes.map((quote, i) => (
-                  <div key={i} className="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
-                    <p dir="ltr" className="text-xs sm:text-sm text-stone-200 italic text-left font-serif en-sentence">
+                  <div key={i} className="p-4 rounded-[4px] bg-white border-2 border-[#202124] shadow-[2px_2px_0px_#202124] space-y-2">
+                    <p dir="ltr" className="text-xs sm:text-sm text-[#202124] font-bold italic text-left en-sentence">
                       "{quote.textEn}"
                     </p>
-                    <p className="text-xs text-amber-200 font-medium">
+                    <p className="text-xs text-[#405DE6] font-bold">
                       «{quote.textAr}»
                     </p>
-                    <div className="flex items-center justify-between pt-1 border-t border-white/10 text-[11px] text-stone-400 font-bold">
+                    <div className="flex items-center justify-between pt-2 border-t border-[#202124]/15 text-[11px] text-[#747474] font-bold">
                       <span>{quote.speaker}</span>
                       <button
+                        type="button"
                         onClick={() => playAudio(quote.textEn)}
-                        className="text-amber-400 hover:text-amber-300 flex items-center gap-1"
+                        className="text-[#405DE6] hover:text-[#202124] flex items-center gap-1 cursor-pointer"
                       >
                         <Volume2 className="w-3 h-3" />
                         <span>نطق</span>
@@ -586,29 +601,30 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
       {/* VIEW 2: AUTHOR BIOGRAPHY & PRIZES */}
       {subTab === 'author' && (
         <div className="space-y-6">
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-xs space-y-6">
-            <div className="border-b border-stone-100 pb-5 space-y-2">
-              <div className="flex items-center justify-between">
-                <h3 className="text-xl sm:text-2xl font-black text-stone-900">
+          <div className="p-6 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-6">
+            <div className="border-b-2 border-[#202124] pb-5 space-y-2">
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <h3 className="text-xl sm:text-2xl font-black text-[#202124]">
                   سيرة الكاتب: {activeLiterature.authorAr} ({activeLiterature.author})
                 </h3>
                 <button
+                  type="button"
                   onClick={() => playAudio(activeLiterature.author)}
-                  className="px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold flex items-center gap-1.5 transition-colors"
+                  className="px-3 py-1.5 rounded-[4px] bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black flex items-center gap-1.5 transition-colors cursor-pointer"
                 >
-                  <Volume2 className="w-4 h-4 text-amber-600" />
+                  <Volume2 className="w-4 h-4 text-[#202124]" />
                   <span>نطق الاسم</span>
                 </button>
               </div>
-              <p className="text-xs sm:text-sm text-stone-500 font-medium">
-                السنوات: <strong className="text-stone-800 font-mono">{activeLiterature.authorYears}</strong> • تصنيف الأدب: <strong className="text-stone-800">{activeLiterature.genreAr}</strong>
+              <p className="text-xs sm:text-sm text-[#747474] font-bold">
+                السنوات: <strong className="text-[#202124] font-mono tabular-nums">{activeLiterature.authorYears}</strong> • تصنيف الأدب: <strong className="text-[#202124]">{activeLiterature.genreAr}</strong>
               </p>
             </div>
 
             {/* Author Bio Points Side by Side */}
             <div className="space-y-3">
-              <h4 className="text-sm font-black text-stone-900 flex items-center gap-2">
-                <Bookmark className="w-4 h-4 text-amber-600" />
+              <h4 className="text-sm font-black text-[#202124] flex items-center gap-2">
+                <Bookmark className="w-4 h-4 text-[#405DE6]" />
                 <span>محطات حياة الكاتب وفق الملزمة الوزارية (Life Milestones)</span>
               </h4>
 
@@ -619,26 +635,28 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
                   return (
                     <div 
                       key={i} 
-                      className="p-4 sm:p-5 rounded-2xl bg-stone-50 border border-stone-200 space-y-2 hover:border-amber-300 transition-colors"
+                      className="p-4 sm:p-5 rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] space-y-2 hover:bg-white transition-colors"
                     >
                       <div className="flex items-start justify-between gap-3">
-                        <span className="w-6 h-6 rounded-full bg-amber-200 text-amber-950 font-black text-xs flex items-center justify-center shrink-0">
+                        <span className="w-7 h-7 rounded-[4px] bg-[#F3E6A5] border-2 border-[#202124] text-[#202124] font-mono font-black text-xs flex items-center justify-center shrink-0 tabular-nums">
                           {i + 1}
                         </span>
                         <div className="flex-1 space-y-2">
                           {(langMode === 'bilingual' || langMode === 'ar') && (
-                            <p className="text-xs sm:text-sm font-bold text-stone-800 leading-relaxed">
+                            <p className="text-xs sm:text-sm font-bold text-[#202124] leading-relaxed">
                               {pointAr}
                             </p>
                           )}
                           {(langMode === 'bilingual' || langMode === 'en') && pointEn && (
-                            <div dir="ltr" className="flex items-start justify-between gap-2 text-left pt-1 border-t border-stone-200/60">
-                              <p className="text-xs text-stone-600 font-medium leading-relaxed en-sentence">
+                            <div dir="ltr" className="flex items-start justify-between gap-2 text-left pt-2 border-t border-[#202124]/15">
+                              <p className="text-xs text-[#202124] font-medium leading-relaxed en-sentence">
                                 {pointEn}
                               </p>
                               <button
+                                type="button"
                                 onClick={() => playAudio(pointEn)}
-                                className="text-stone-400 hover:text-amber-600 shrink-0 p-1"
+                                className="text-[#405DE6] hover:text-[#202124] shrink-0 p-1 cursor-pointer"
+                                aria-label="استمع للنطق"
                                 title="استمع للنطق"
                               >
                                 <Volume2 className="w-3.5 h-3.5" />
@@ -655,15 +673,15 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
 
             {/* Prizes & Notable Works */}
             {activeLiterature.authorPrizes && (
-              <div className="p-5 sm:p-6 rounded-3xl bg-amber-50/70 border border-amber-200 space-y-3">
-                <h4 className="text-sm sm:text-base font-black text-amber-950 flex items-center gap-2">
-                  <Award className="w-4 h-4 text-amber-600" />
+              <div className="p-5 sm:p-6 rounded-[6px] bg-[#F3E6A5]/35 border-2 border-[#202124] space-y-3">
+                <h4 className="text-sm sm:text-base font-black text-[#202124] flex items-center gap-2">
+                  <Award className="w-4 h-4 text-[#405DE6]" />
                   <span>المكانة الأدبية وأبرز الإنجازات (Prizes & Legacy)</span>
                 </h4>
                 <div className="space-y-2">
                   {activeLiterature.authorPrizes.map((prize, idx) => (
-                    <div key={idx} className="p-3.5 rounded-xl bg-white border border-amber-200 text-xs sm:text-sm font-semibold text-stone-800 flex items-center gap-2">
-                      <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                    <div key={idx} className="p-3.5 rounded-[4px] bg-white border-2 border-[#202124] text-xs sm:text-sm font-bold text-[#202124] flex items-center gap-2">
+                      <CheckCircle2 className="w-4 h-4 text-[#287A52] shrink-0" />
                       <span>{prize}</span>
                     </div>
                   ))}
@@ -678,13 +696,13 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
       {/* VIEW 3: CHARACTERS ANALYSIS */}
       {subTab === 'characters' && (
         <div className="space-y-6">
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-xs space-y-6">
+          <div className="p-6 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-6">
             <div>
-              <h3 className="text-xl sm:text-2xl font-black text-stone-900 flex items-center gap-2">
-                <User className="w-6 h-6 text-amber-600" />
+              <h3 className="text-xl sm:text-2xl font-black text-[#202124] flex items-center gap-2">
+                <User className="w-6 h-6 text-[#405DE6]" />
                 <span>دليل الشخصيات الوزارية والتحليل النفسي والأدبي</span>
               </h3>
-              <p className="text-xs sm:text-sm text-stone-500 mt-1">
+              <p className="text-xs sm:text-sm text-[#747474] font-bold mt-1">
                 التركيز على صفات ودور كل شخصية كما ترد في أسئلة الامتحان الوزاري
               </p>
             </div>
@@ -693,44 +711,46 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
               {activeLiterature.characters.map((char, i) => (
                 <div 
                   key={i}
-                  className="p-5 rounded-3xl bg-stone-50 border border-stone-200 hover:border-amber-400 transition-all space-y-3 flex flex-col justify-between"
+                  className="p-5 rounded-[6px] bg-[#F7F5EF] border-2 border-[#202124] shadow-[3px_3px_0px_#202124] hover:bg-white transition-all space-y-3 flex flex-col justify-between"
                 >
                   <div className="space-y-2">
-                    <div className="flex items-center justify-between">
-                      <h4 className="text-base font-black text-stone-900 flex items-center gap-2">
+                    <div className="flex items-center justify-between gap-2">
+                      <h4 className="text-base font-black text-[#202124] flex flex-wrap items-center gap-2">
                         <span>{char.nameAr || char.name}</span>
-                        <span className="text-xs text-stone-400 font-normal">({char.name})</span>
+                        <span className="text-xs text-[#747474] font-mono font-bold" dir="ltr">({char.name})</span>
                       </h4>
                       <button
+                        type="button"
                         onClick={() => playAudio(char.name)}
-                        className="text-stone-400 hover:text-amber-600"
+                        className="text-[#405DE6] hover:text-[#202124] cursor-pointer"
+                        aria-label="نطق اسم الشخصية"
                         title="نطق اسم الشخصية"
                       >
                         <Volume2 className="w-3.5 h-3.5" />
                       </button>
                     </div>
 
-                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-amber-100 text-amber-900 text-xs font-bold">
+                    <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[4px] bg-[#F3E6A5] border border-[#202124] text-[#202124] text-xs font-black">
                       <span>{char.roleAr || char.role}</span>
-                      <span className="text-[10px] text-amber-700 font-mono">({char.role})</span>
+                      <span className="text-[10px] text-[#747474] font-mono">({char.role})</span>
                     </div>
 
                     {(langMode === 'bilingual' || langMode === 'ar') && (
-                      <p className="text-xs text-stone-700 leading-relaxed font-medium pt-1">
+                      <p className="text-xs text-[#202124] leading-relaxed font-medium pt-1">
                         {char.descriptionAr || char.description}
                       </p>
                     )}
 
                     {(langMode === 'bilingual' || langMode === 'en') && (
-                      <p dir="ltr" className="text-xs text-stone-600 leading-relaxed font-normal pt-1 border-t border-stone-200/60 text-left en-sentence">
+                      <p dir="ltr" className="text-xs text-[#202124]/85 leading-relaxed font-normal pt-2 border-t border-[#202124]/15 text-left en-sentence">
                         {char.description}
                       </p>
                     )}
                   </div>
 
-                  <div className="pt-2 border-t border-stone-200/60 flex items-center justify-between text-[11px] text-stone-500">
+                  <div className="pt-2 border-t border-[#202124]/15 flex items-center justify-between text-[11px] text-[#747474] font-bold">
                     <span>تحليل وزاري معتمد</span>
-                    <span className="text-emerald-700 font-bold">جاهز للامتحان</span>
+                    <span className="text-[#287A52] font-black">جاهز للامتحان ✓</span>
                   </div>
                 </div>
               ))}
@@ -744,38 +764,40 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
         <div className="space-y-6">
           
           {/* Controls Bar */}
-          <div className="p-5 rounded-3xl bg-white border border-stone-200 shadow-xs flex flex-wrap items-center justify-between gap-4">
+          <div className="p-5 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] flex flex-wrap items-center justify-between gap-4">
             
             {/* Search Input */}
-            <div className="relative flex-1 min-w-[240px]">
-              <Search className="w-4 h-4 text-stone-400 absolute right-3.5 top-1/2 -translate-y-1/2" />
+            <div className="relative flex-1 min-w-[220px]">
+              <Search className="w-4 h-4 text-[#747474] absolute right-3.5 top-1/2 -translate-y-1/2" />
               <input
                 id="search-literature-qa"
                 type="text"
                 value={searchQuery}
                 onChange={e => setSearchQuery(e.target.value)}
                 placeholder="ابحث في الأسئلة الوزارية، السنوات، أو الكلمات المفتاحية..."
-                className="w-full pl-4 pr-10 py-2.5 text-xs sm:text-sm rounded-2xl bg-stone-50 border border-stone-200 focus:outline-none focus:border-amber-500 focus:bg-white transition-all font-medium"
+                className="w-full pl-4 pr-10 py-2.5 text-xs sm:text-sm rounded-[4px] bg-[#F7F5EF] border-2 border-[#202124] focus:outline-none focus:bg-white transition-all font-bold text-[#202124] placeholder:text-[#747474]"
               />
             </div>
 
             {/* Quick Actions */}
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               <button
+                type="button"
                 id="reveal-all-qa-btn"
                 onClick={revealAllQA}
-                className="px-3.5 py-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 text-xs font-bold transition-all flex items-center gap-1.5"
+                className="px-3.5 py-2 rounded-[4px] bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer"
               >
-                <Eye className="w-3.5 h-3.5 text-amber-700" />
+                <Eye className="w-3.5 h-3.5 text-[#202124]" />
                 <span>إظهار جميع الأجوبة</span>
               </button>
 
               <button
+                type="button"
                 id="hide-all-qa-btn"
                 onClick={hideAllQA}
-                className="px-3.5 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 text-stone-800 text-xs font-bold transition-all flex items-center gap-1.5"
+                className="px-3.5 py-2 rounded-[4px] bg-white hover:bg-[#F7F5EF] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer"
               >
-                <EyeOff className="w-3.5 h-3.5 text-stone-600" />
+                <EyeOff className="w-3.5 h-3.5 text-[#747474]" />
                 <span>إخفاء الكل</span>
               </button>
             </div>
@@ -783,11 +805,11 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
 
           {/* QA List */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between px-1">
-              <p className="text-xs font-bold text-stone-500">
-                تم العثور على <strong className="text-stone-900">{filteredQA.length}</strong> أسئلة وزارية
+            <div className="flex flex-wrap items-center justify-between gap-2 px-1">
+              <p className="text-xs font-bold text-[#747474] tabular-nums">
+                تم العثور على <strong className="text-[#202124] font-black">{filteredQA.length}</strong> أسئلة وزارية
               </p>
-              <span className="text-xs text-amber-700 font-bold">
+              <span className="text-xs text-[#405DE6] font-black">
                 نمط الإجابة المعتمد لدى لجان التصحيح الوزاري
               </span>
             </div>
@@ -798,7 +820,7 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
               return (
                 <div 
                   key={qa.id || i}
-                  className="p-5 sm:p-6 rounded-3xl bg-white border border-stone-200 hover:border-amber-400 transition-all space-y-3 shadow-xs"
+                  className="p-5 sm:p-6 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-3"
                 >
                   {/* Question Header */}
                   <div className="flex items-start justify-between gap-3">
@@ -806,14 +828,16 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
                       
                       {/* English Question */}
                       <div dir="ltr" className="flex items-start justify-between gap-2 text-left">
-                        <p className="text-sm sm:text-base font-black text-stone-900 leading-snug en-sentence">
-                          <span className="text-amber-600 font-extrabold mr-2 font-mono">Q{i + 1}.</span>
+                        <p className="text-sm sm:text-base font-black text-[#202124] leading-snug en-sentence">
+                          <span className="text-[#405DE6] font-extrabold mr-2 font-mono tabular-nums">Q{i + 1}.</span>
                           {qa.question}
                         </p>
                         <button
+                          type="button"
                           onClick={() => playAudio(qa.question)}
+                          aria-label="استمع لنطق السؤال"
                           title="استمع لنطق السؤال"
-                          className="text-stone-400 hover:text-amber-600 p-1 shrink-0"
+                          className="text-[#405DE6] hover:text-[#202124] p-1 shrink-0 cursor-pointer"
                         >
                           <Volume2 className="w-4 h-4" />
                         </button>
@@ -821,65 +845,67 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
 
                       {/* Arabic Translation */}
                       {(langMode === 'bilingual' || langMode === 'ar') && qa.questionAr && (
-                        <p className="text-xs sm:text-sm font-bold text-stone-600 pr-1">
+                        <p className="text-xs sm:text-sm font-bold text-[#747474] pr-1">
                           «{qa.questionAr}»
                         </p>
                       )}
                     </div>
 
                     {/* Year Badge */}
-                    <span className="text-[11px] font-black px-2.5 py-1 rounded-xl bg-amber-100 text-amber-900 border border-amber-200 whitespace-nowrap shrink-0">
+                    <span className="text-[11px] font-mono font-black px-2.5 py-1 rounded-[4px] bg-[#F3E6A5] text-[#202124] border border-[#202124] whitespace-nowrap shrink-0 tabular-nums">
                       {qa.year}
                     </span>
                   </div>
 
                   {/* Toggle Button & Hint */}
-                  <div className="flex items-center justify-between pt-2 border-t border-stone-100">
+                  <div className="flex flex-wrap items-center justify-between gap-2 pt-2 border-t border-[#202124]/15">
                     <button
+                      type="button"
                       id={`toggle-qa-${i}`}
                       onClick={() => toggleQA(i)}
-                      className="text-xs font-bold text-amber-700 hover:text-amber-900 flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-50 hover:bg-amber-100 transition-colors"
+                      className="text-xs font-black text-[#202124] flex items-center gap-1.5 px-3 py-1.5 rounded-[4px] bg-[#E9ECFA] hover:bg-[#DCD8FA] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] transition-colors cursor-pointer"
                     >
-                      <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                      <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
                       <span>{isRevealed ? 'إخفاء الجواب النموذجي' : 'إظهار الجواب النموذجي والترجمة'}</span>
                     </button>
 
                     {qa.keyHint && (
-                      <span className="text-[11px] font-medium text-stone-500 hidden sm:inline">
-                        مفتاح الحل: <strong className="text-amber-800">{qa.keyHint}</strong>
+                      <span className="text-[11px] font-bold text-[#747474] hidden sm:inline">
+                        مفتاح الحل: <strong className="text-[#405DE6]">{qa.keyHint}</strong>
                       </span>
                     )}
                   </div>
 
                   {/* Revealed Answer */}
                   {isRevealed && (
-                    <div className="p-4 sm:p-5 rounded-2xl bg-stone-900 text-white space-y-3 mt-2 border border-stone-800">
+                    <div className="lesson-answer space-y-3 mt-2">
                       
                       {/* English Model Answer */}
                       <div dir="ltr" className="space-y-1 text-left">
-                        <div className="flex items-center justify-between text-xs font-bold text-amber-400">
+                        <div className="flex flex-wrap items-center justify-between gap-2 text-xs font-black text-[#405DE6]">
                           <div className="flex items-center gap-1.5">
-                            <span className="font-mono">Model Answer:</span>
-                            <span className="text-stone-300 font-normal">(الجواب المعتمد بالكنترول)</span>
+                            <span className="font-mono uppercase">Model Answer:</span>
+                            <span className="text-[#747474] font-bold">(الجواب المعتمد بالكنترول)</span>
                           </div>
                           <button
+                            type="button"
                             onClick={() => playAudio(qa.answer)}
-                            className="text-stone-300 hover:text-white flex items-center gap-1 bg-white/10 px-2 py-0.5 rounded-md"
+                            className="text-[#202124] hover:bg-[#F3E6A5] flex items-center gap-1 bg-white border border-[#202124] px-2 py-0.5 rounded-[4px] cursor-pointer"
                           >
-                            <Volume2 className="w-3.5 h-3.5 text-amber-400" />
+                            <Volume2 className="w-3.5 h-3.5 text-[#405DE6]" />
                             <span>استمع للإجابة</span>
                           </button>
                         </div>
-                        <p className="font-mono text-xs sm:text-sm font-semibold text-emerald-300 leading-relaxed en-sentence">
+                        <p className="font-mono text-xs sm:text-sm font-black text-[#202124] leading-relaxed en-sentence">
                           {qa.answer}
                         </p>
                       </div>
 
                       {/* Arabic Translation of Answer */}
                       {(langMode === 'bilingual' || langMode === 'ar') && qa.answerAr && (
-                        <div className="pt-2 border-t border-stone-800 space-y-1">
-                          <p className="text-[11px] font-bold text-stone-400">الترجمة والتفسير العربي:</p>
-                          <p className="text-xs sm:text-sm text-stone-200 leading-relaxed font-medium">
+                        <div className="pt-2 border-t border-[#202124]/15 space-y-1">
+                          <p className="text-[11px] font-black text-[#747474]">الترجمة والتفسير العربي:</p>
+                          <p className="text-xs sm:text-sm text-[#202124] leading-relaxed font-bold">
                             {qa.answerAr}
                           </p>
                         </div>
@@ -899,24 +925,24 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
       {/* VIEW 5: INTERACTIVE FLASHCARDS & QUIZ MODE */}
       {subTab === 'quiz' && (
         <div className="space-y-6">
-          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-stone-200 shadow-xs space-y-6 text-center">
+          <div className="p-6 sm:p-8 rounded-[6px] bg-white border-2 border-[#202124] shadow-[4px_4px_0px_#202124] space-y-6 text-center">
             
             <div className="max-w-md mx-auto space-y-1">
-              <h3 className="text-xl font-black text-stone-900 flex items-center justify-center gap-2">
-                <Sparkles className="w-5 h-5 text-emerald-600" />
+              <h3 className="text-xl font-black text-[#202124] flex items-center justify-center gap-2">
+                <Sparkles className="w-5 h-5 text-[#287A52]" />
                 <span>مختبر الحفظ والاسترجاع السريع</span>
               </h3>
-              <p className="text-xs text-stone-500">
+              <p className="text-xs text-[#747474] font-bold">
                 اقلب البطاقة لاختبار مدى جاهزيتك للإجابة عن السؤال باللغتين قبل الامتحان
               </p>
             </div>
 
             {/* Card Progress */}
-            <div className="flex items-center justify-center gap-2 text-xs font-bold text-stone-600">
+            <div className="flex items-center justify-center gap-3 text-xs font-black text-[#202124] tabular-nums">
               <span>السؤال {quizIndex + 1} من {activeLiterature.ministerialQA.length}</span>
-              <div className="w-36 h-2 rounded-full bg-stone-100 overflow-hidden">
+              <div className="w-36 h-2.5 rounded-[4px] bg-[#EAE8E1] border border-[#202124] overflow-hidden">
                 <div 
-                  className="h-full bg-emerald-500 transition-all duration-300"
+                  className="h-full bg-[#287A52] transition-all duration-300"
                   style={{ width: `${((quizIndex + 1) / activeLiterature.ministerialQA.length) * 100}%` }}
                 />
               </div>
@@ -927,14 +953,16 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
               <div 
                 id="interactive-flashcard"
                 onClick={() => setIsFlipped(!isFlipped)}
-                className={`cursor-pointer min-h-[220px] sm:min-h-[260px] p-6 sm:p-8 rounded-3xl border-2 transition-all flex flex-col justify-between items-center text-center select-none shadow-md ${
+                className={`cursor-pointer min-h-[220px] sm:min-h-[260px] p-6 sm:p-8 rounded-[6px] border-3 border-[#202124] shadow-[5px_5px_0px_#202124] transition-all flex flex-col justify-between items-center text-center select-none ${
                   isFlipped
-                    ? 'bg-stone-900 border-stone-800 text-white'
-                    : 'bg-gradient-to-b from-amber-50 to-amber-100/50 border-amber-300 text-stone-900'
+                    ? 'bg-[#405DE6] text-white'
+                    : 'bg-[#F3E6A5]/45 text-[#202124]'
                 }`}
               >
-                <div className="w-full flex items-center justify-between text-xs font-bold opacity-80">
-                  <span className="px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-900">
+                <div className="w-full flex items-center justify-between text-xs font-black">
+                  <span className={`px-2.5 py-1 rounded-[4px] border border-[#202124] font-mono tabular-nums ${
+                    isFlipped ? 'bg-[#F3E6A5] text-[#202124]' : 'bg-white text-[#202124]'
+                  }`}>
                     {activeLiterature.ministerialQA[quizIndex].year}
                   </span>
                   <span className="text-[11px] underline">
@@ -945,11 +973,11 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
                 <div className="my-auto space-y-3 max-w-2xl">
                   {!isFlipped ? (
                     <div className="space-y-2">
-                      <p dir="ltr" className="text-base sm:text-xl font-black leading-snug text-left en-sentence">
+                      <p dir="ltr" className="text-base sm:text-xl font-black leading-snug text-left en-sentence text-[#202124]">
                         {activeLiterature.ministerialQA[quizIndex].question}
                       </p>
                       {activeLiterature.ministerialQA[quizIndex].questionAr && (
-                        <p className="text-xs sm:text-sm font-semibold text-stone-600">
+                        <p className="text-xs sm:text-sm font-bold text-[#747474]">
                           «{activeLiterature.ministerialQA[quizIndex].questionAr}»
                         </p>
                       )}
@@ -957,13 +985,13 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
                   ) : (
                     <div className="space-y-3">
                       <div dir="ltr" className="space-y-1 text-left">
-                        <span className="text-xs font-bold text-amber-400 font-mono">Model Answer:</span>
-                        <p className="text-sm sm:text-lg font-mono font-semibold text-emerald-300 leading-relaxed en-sentence">
+                        <span className="text-xs font-black text-[#F3E6A5] font-mono">Model Answer:</span>
+                        <p className="text-sm sm:text-lg font-mono font-black text-white leading-relaxed en-sentence">
                           {activeLiterature.ministerialQA[quizIndex].answer}
                         </p>
                       </div>
                       {activeLiterature.ministerialQA[quizIndex].answerAr && (
-                        <p className="text-xs sm:text-sm text-stone-300 font-medium">
+                        <p className="text-xs sm:text-sm text-[#F7F5EF] font-bold">
                           «{activeLiterature.ministerialQA[quizIndex].answerAr}»
                         </p>
                       )}
@@ -971,7 +999,7 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
                   )}
                 </div>
 
-                <div className="text-[11px] font-bold opacity-70">
+                <div className={`text-[11px] font-bold ${isFlipped ? 'text-[#F3E6A5]' : 'text-[#747474]'}`}>
                   {isFlipped ? 'الجواب الوزاري المعتمد' : 'اختبر حفظك ثم اقلب البطاقة'}
                 </div>
               </div>
@@ -980,32 +1008,35 @@ export const LiteratureSection: React.FC<LiteratureSectionProps> = ({
             {/* Card Nav Controls */}
             <div className="flex items-center justify-center gap-3 pt-2">
               <button
+                type="button"
                 id="prev-quiz-card-btn"
                 disabled={quizIndex === 0}
                 onClick={() => {
                   setQuizIndex(prev => Math.max(0, prev - 1));
                   setIsFlipped(false);
                 }}
-                className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 disabled:opacity-40 text-xs font-bold text-stone-700 transition-colors"
+                className="px-4 py-2 rounded-[4px] bg-white hover:bg-[#F7F5EF] disabled:opacity-40 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black text-[#202124] transition-colors cursor-pointer"
               >
                 السابق
               </button>
 
               <button
+                type="button"
                 onClick={() => setIsFlipped(!isFlipped)}
-                className="px-5 py-2 rounded-xl bg-amber-500 hover:bg-amber-600 text-stone-950 text-xs font-black transition-colors"
+                className="px-5 py-2 rounded-[4px] bg-[#F3E6A5] hover:bg-[#E5D792] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-[#202124] text-xs font-black transition-colors cursor-pointer"
               >
                 {isFlipped ? 'إظهار السؤال' : 'اقلب البطاقة'}
               </button>
 
               <button
+                type="button"
                 id="next-quiz-card-btn"
                 disabled={quizIndex === activeLiterature.ministerialQA.length - 1}
                 onClick={() => {
                   setQuizIndex(prev => Math.min(activeLiterature.ministerialQA.length - 1, prev + 1));
                   setIsFlipped(false);
                 }}
-                className="px-4 py-2 rounded-xl bg-stone-100 hover:bg-stone-200 disabled:opacity-40 text-xs font-bold text-stone-700 transition-colors"
+                className="px-4 py-2 rounded-[4px] bg-white hover:bg-[#F7F5EF] disabled:opacity-40 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black text-[#202124] transition-colors cursor-pointer"
               >
                 التالي
               </button>

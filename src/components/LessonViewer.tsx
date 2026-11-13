@@ -202,7 +202,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           <button
             id="toggle-quick-hints-btn"
             onClick={() => setShowQuickHints((prev) => !prev)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#F3E6A5] hover:bg-[#e6d895] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5 rounded-xs"
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer active:translate-x-0.5 active:translate-y-0.5 rounded-[4px]"
             title="عرض تلميحات سريعة للمراجعة"
           >
             <Sparkles className="w-3.5 h-3.5 text-[#405DE6]" />
@@ -213,7 +213,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
       {/* 2. Quick Hints Panel */}
       {showQuickHints && (
-        <div className="p-5 bg-[#F3E6A5]/25 border-3 border-[#202124] shadow-[5px_5px_0px_#202124] space-y-3 rounded-xs">
+        <div className="p-5 bg-[#F3E6A5]/25 border-3 border-[#202124] shadow-[5px_5px_0px_#202124] space-y-3 rounded-[6px]">
           <div className="flex items-center justify-between border-b-2 border-[#202124] pb-2">
             <div className="flex items-center gap-2 text-[#202124] font-black text-sm">
               <Lightbulb className="w-4 h-4 text-[#405DE6] fill-[#405DE6]" />
@@ -223,15 +223,15 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </div>
           
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs text-[#202124]">
-            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs">
+            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-[4px]">
               <span className="font-mono text-[10px] font-bold text-[#405DE6] block mb-1">01. القاعدة الأساسية</span>
               <p className="font-bold leading-relaxed">{lesson.grammarRuleFormula || lesson.summary}</p>
             </div>
-            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs">
-              <span className="font-mono text-[10px] font-bold text-[#F2A18E] block mb-1">02. الفخ الوزاري</span>
+            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-[4px]">
+              <span className="font-mono text-[10px] font-bold text-[#B83A3A] block mb-1">02. الفخ الوزاري</span>
               <p className="font-bold leading-relaxed">{lesson.commonMistakes?.[0] || 'راجع زمن الجملة ومحددات الفعل أولاً قبل كتابة الإجابة.'}</p>
             </div>
-            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-xs">
+            <div className="bg-white p-3 border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-[4px]">
               <span className="font-mono text-[10px] font-bold text-[#202124] block mb-1">03. مفتاح الحل</span>
               <p className="font-bold leading-relaxed">حل السؤال واستخرج الكلمة الدالة أولاً؛ لا تخمن الإجابة عشوائياً.</p>
             </div>
@@ -240,14 +240,14 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       )}
 
       {/* 3. Lesson Header Title & Subject-Adapted Hero Dossier */}
-      <div className="p-6 sm:p-8 bg-white border-2 border-[#202124] shadow-[5px_5px_0px_#202124] space-y-4 relative overflow-hidden">
+      <div className="p-6 sm:p-8 bg-white border-2 border-[#202124] shadow-[5px_5px_0px_#202124] rounded-[6px] space-y-4 relative overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-[#202124]/15 pb-3">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#405DE6] text-white border border-[#202124] text-xs font-mono font-bold shadow-[1.5px_1.5px_0px_#202124]">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className={`inline-flex items-center gap-1.5 px-3 py-1 border rounded-[4px] text-xs font-mono font-bold shadow-[1.5px_1.5px_0px_#202124] ${catConfig.badgeClass}`}>
               {catConfig.icon}
               <span>{catConfig.title}</span>
             </span>
-            <span className="text-xs font-mono font-bold text-[#777873]">
+            <span className="text-xs font-mono font-bold text-[#747474]">
               UNIT 0{unit.id} • L{lesson.lessonNumber}
             </span>
           </div>
@@ -473,7 +473,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                           if (isThisCorrect) {
                             btnStyle = "bg-[#405DE6] text-white border-[#202124] font-black shadow-[2px_2px_0px_#202124]";
                           } else if (isThisSelected) {
-                            btnStyle = "bg-[#F2A18E] text-white border-[#202124] font-black shadow-[2px_2px_0px_#202124]";
+                            btnStyle = "bg-[#F2A18E] text-[#202124] border-[#202124] font-black shadow-[2px_2px_0px_#202124]";
                           } else {
                             btnStyle = "bg-white/60 border-[#202124]/40 text-[#202124]/40 opacity-60";
                           }
@@ -484,11 +484,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                             key={opt}
                             disabled={isAnswered}
                             onClick={() => handleSelectOption(exercise, opt)}
-                            className={`p-3 border-2 text-sm font-bold text-left transition-all flex items-center justify-between cursor-pointer active:translate-x-0.5 active:translate-y-0.5 shadow-[2px_2px_0px_#202124] ${btnStyle}`}
+                            className={`p-3 border-2 rounded-[4px] text-sm font-bold text-left transition-all flex items-center justify-between cursor-pointer active:translate-x-0.5 active:translate-y-0.5 shadow-[2px_2px_0px_#202124] ${btnStyle}`}
                           >
                             <span dir="ltr">{opt}</span>
                             {isAnswered && isThisCorrect && <Check className="w-4 h-4 text-white shrink-0 ml-2" />}
-                            {isAnswered && isThisSelected && !isThisCorrect && <X className="w-4 h-4 text-white shrink-0 ml-2" />}
+                            {isAnswered && isThisSelected && !isThisCorrect && <X className="w-4 h-4 text-[#B83A3A] shrink-0 ml-2" />}
                           </button>
                         );
                       })}
@@ -554,7 +554,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           <button
             id="next-lesson-btn"
             onClick={() => onSelectLesson(nextLesson)}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#405DE6] hover:bg-[#203ecc] text-white font-black text-xs sm:text-sm border-3 border-[#202124] shadow-[3px_3px_0px_#202124] hover:shadow-[1px_1px_0px_#202124] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#405DE6] hover:bg-[#334DC6] text-white font-black text-xs sm:text-sm border-3 border-[#202124] rounded-[4px] shadow-[3px_3px_0px_#202124] hover:shadow-[1px_1px_0px_#202124] hover:translate-x-0.5 hover:translate-y-0.5 transition-all cursor-pointer"
           >
             <span>الدرس التالي: {nextLesson.titleAr}</span>
             <ArrowLeft className="w-4 h-4" />
@@ -562,7 +562,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         ) : (
           <button
             onClick={() => (grade ? navigate(`/grade/${grade}/unit/${unit.id}`) : onBackToDashboard())}
-            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#F3E6A5] hover:bg-[#d8ee43] text-[#202124] font-black text-xs sm:text-sm border-3 border-[#202124] shadow-[3px_3px_0px_#202124] transition-all cursor-pointer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] font-black text-xs sm:text-sm border-3 border-[#202124] rounded-[4px] shadow-[3px_3px_0px_#202124] transition-all cursor-pointer"
           >
             <CheckCircle2 className="w-4 h-4 text-[#405DE6]" />
             <span>أكملت جميع دروس هذه الوحدة!</span>

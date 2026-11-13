@@ -592,7 +592,7 @@ function MainAppContent() {
           <div>
             <span className="text-[11px] font-mono font-bold text-[#405DE6] block mb-1">المنصة الأكاديمية · جاري التهيئة</span>
             <h2 className="text-xl font-extrabold font-display text-[#202124]">النموذجية في الإنكليزية</h2>
-            <p className="text-xs text-[#777873] mt-1">إشراف الأستاذ مصطفى تركي • المنهج العراقي 2026</p>
+            <p className="text-xs text-[#747474] mt-1">إشراف الأستاذ مصطفى تركي • المنهج العراقي 2026</p>
           </div>
           <div className="flex items-center justify-center gap-2 pt-2 text-xs font-mono font-bold text-[#202124]">
             <Loader2 className="w-4 h-4 animate-spin text-[#405DE6]" />
@@ -616,7 +616,7 @@ function MainAppContent() {
 
   return (
     <div
-      className="min-h-screen bg-[#F7F5EF] text-[#202124] flex flex-col font-sans selection:bg-[#F3E6A5] selection:text-[#202124] paper-canvas"
+      className="min-h-screen w-full max-w-full min-w-0 bg-[#F7F5EF] text-[#202124] flex flex-col font-sans selection:bg-[#F3E6A5] selection:text-[#202124] paper-canvas"
       dir="rtl"
     >
       <Navbar
@@ -911,7 +911,7 @@ function MainAppContent() {
               <h3 className="text-xl sm:text-2xl font-extrabold font-display text-[#202124]">
                 النموذجية في الإنكليزية
               </h3>
-              <p className="text-xs text-[#777873] leading-relaxed font-medium max-w-md">
+              <p className="text-xs text-[#747474] leading-relaxed font-medium max-w-md">
                 المنصة الأكاديمية الشاملة لتدريس ومراجعة منهاج اللغة الإنكليزية لجميع المراحل المتوسطة والإعدادية في العراق وفق الكتب المعتمدة وزارياً، إشراف الأستاذ مصطفى تركي.
               </p>
             </div>
@@ -929,16 +929,16 @@ function MainAppContent() {
 
             {/* Column 3: Verification & Specs Stamp */}
             <div className="md:col-span-3 space-y-2 text-right">
-              <span className="text-[11px] font-mono font-bold text-[#F2A18E] block">التوثيق والاعتماد الوزاري</span>
+              <span className="text-[11px] font-mono font-bold text-[#405DE6] block">التوثيق والاعتماد الوزاري</span>
               <div className="p-3 bg-[#F7F5EF] border border-[#202124] shadow-[2px_2px_0px_#202124] text-[11px] font-mono space-y-1 rounded-xs">
                 <div>SPEC: <span className="font-bold">MOE-IRAQ-2026</span></div>
-                <div>EXAM: <span className="font-bold text-[#F2A18E]">100 PTS FULL SCALE</span></div>
+                <div>EXAM: <span className="font-bold text-[#B83A3A]">100 PTS FULL SCALE</span></div>
                 <div>AUTHOR: <span className="font-bold">MUSTAFA TURKI</span></div>
               </div>
             </div>
           </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-[#777873]">
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-[#747474]">
             <p>© 2026 النموذجية في الإنكليزية • جمهورية العراق — جميع الحقوق محفوظة.</p>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-[#F3E6A5] border border-[#202124] inline-block" />

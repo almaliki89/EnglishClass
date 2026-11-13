@@ -186,8 +186,9 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
 
           {nextUnit ? (
             <button
+              type="button"
               onClick={() => navigate(`/grade/${validGrade}/unit/${nextUnit.id}`)}
-              className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#F3E6A5] hover:bg-[#E6D99A] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] text-xs font-black transition-all cursor-pointer"
+              className="inline-flex items-center gap-2 px-3.5 py-2 bg-[#F3E6A5] hover:bg-[#E5D792] text-[#202124] border-2 border-[#202124] shadow-[2px_2px_0px_#202124] rounded-[4px] text-xs font-black transition-all cursor-pointer"
             >
               <span>الوحدة التالية: {nextUnit.titleAr}</span>
               <ArrowLeft className="w-4 h-4" />
@@ -272,7 +273,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
                     <h3 className="text-base sm:text-lg font-black text-[#202124] group-hover:text-[#405DE6] transition-colors leading-tight">
                       {lesson.titleAr}
                     </h3>
-                    <p className="text-xs font-mono font-bold text-[#F2A18E] mt-0.5" dir="ltr">
+                    <p className="text-xs font-mono font-bold text-[#405DE6] mt-0.5" dir="ltr">
                       {lesson.titleEn}
                     </p>
                   </div>
