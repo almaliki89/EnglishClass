@@ -6,19 +6,20 @@
   "scripts": {
     "dev": "tsx server.ts",
     "build": "vite build && esbuild server.ts --bundle --platform=node --format=cjs --packages=external --sourcemap --outfile=dist/server.cjs",
-    "build:e2e": "VITE_E2E_MODE=true npm run build",
+    "build:e2e": "node scripts/run-with-env.mjs VITE_E2E_MODE=true -- npm run build",
     "start": "node dist/server.cjs",
     "preview": "vite preview",
-    "clean": "rm -rf dist server.js",
+    "clean": "node scripts/clean.mjs",
     "lint": "tsc --noEmit",
     "test": "tsx scripts/verify_english_curriculum.ts",
     "test:audit": "tsx scripts/deep_architecture_audit.ts",
     "test:security": "tsx scripts/verify_security_hardening.ts",
     "test:e2e": "playwright test",
-    "test:acceptance": "npm run lint && npm run test && npm run test:audit && npm run test:security && npm run test:hierarchy && npm run build",
+    "test:acceptance": "npm run lint && npm run test && npm run test:audit && npm run test:security && npm run test:hierarchy && npm run test:source-alignment && npm run build && npm run test:e2e",
     "admin:bootstrap": "tsx scripts/bootstrap_admin.ts",
     "test:hierarchy": "tsx scripts/verify_curriculum_hierarchy.ts",
-    "test:source-alignment": "tsx scripts/verify_source_content_alignment.ts"
+    "test:source-alignment": "tsx scripts/verify_source_content_alignment.ts",
+    "test:rules": "tsx scripts/verify_firebase_rules.ts"
   },
   "dependencies": {
     "@google/genai": "^2.24.0",
