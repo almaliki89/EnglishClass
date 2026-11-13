@@ -23,6 +23,42 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Report Full Dependency Audit
+        shell: bash
+        run: |
+          npm audit --json > "$RUNNER_TEMP/npm-audit-full.json" || true
+          node - "$RUNNER_TEMP/npm-audit-full.json" <<'NODE'
+          const fs = require('node:fs');
+          const report = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
+          const packages = Object.entries(report.vulnerabilities ?? {}).map(([name, item]) => ({
+            name,
+            severity: item.severity,
+            isDirect: item.isDirect,
+            range: item.range,
+            via: (item.via ?? []).map((v) => typeof v === 'string' ? v : ({ name: v.name, title: v.title, url: v.url, range: v.range, severity: v.severity })),
+            fixAvailable: item.fixAvailable
+          }));
+          console.log(JSON.stringify({ scope: 'all', totals: report.metadata?.vulnerabilities, packages }, null, 2));
+          NODE
+
+      - name: Report Production Dependency Audit
+        shell: bash
+        run: |
+          npm audit --omit=dev --json > "$RUNNER_TEMP/npm-audit-production.json" || true
+          node - "$RUNNER_TEMP/npm-audit-production.json" <<'NODE'
+          const fs = require('node:fs');
+          const report = JSON.parse(fs.readFileSync(process.argv[2], 'utf8'));
+          const packages = Object.entries(report.vulnerabilities ?? {}).map(([name, item]) => ({
+            name,
+            severity: item.severity,
+            isDirect: item.isDirect,
+            range: item.range,
+            via: (item.via ?? []).map((v) => typeof v === 'string' ? v : ({ name: v.name, title: v.title, url: v.url, range: v.range, severity: v.severity })),
+            fixAvailable: item.fixAvailable
+          }));
+          console.log(JSON.stringify({ scope: 'production-only', totals: report.metadata?.vulnerabilities, packages }, null, 2));
+          NODE
+
       - name: Run TypeScript Typecheck (Linter)
         run: npm run lint
 
