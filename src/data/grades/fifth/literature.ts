@@ -129,9 +129,9 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         question: "Where was the March sisters' father during the events of the novel?",
         questionAr: "أين كان والد فتيات عائلة مارتش أثناء أحداث الرواية؟",
         answer: "He was away serving with the Union Army during the American Civil War.",
-        answerAr: "كان يخدم كقسيس في جيش الاتحاد خلال الحرب الأهلية الأمريكية.",
+        answerAr: "كان بعيداً يخدم مع جيش الاتحاد خلال الحرب الأهلية الأمريكية.",
         year: "الملزمة ص 191",
-        keyHint: "Chaplain in the American Civil War"
+        keyHint: "Serving with the Union Army during the American Civil War"
       },
       {
         id: "lw-qa-3",
@@ -267,7 +267,7 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         answerAr: "بمحبة؛ آمال فنية؛ يحقق؛ ظل؛ مندفع دون تفكير؛ طريقة/أسلوب.",
         year: "كتاب النشاط ص 173",
         keyHint: "lovingly; artistic hopes; fulfil/grant; shadow; impulsive; manner"
-      },,
+      },
       {
         id: "lw-source-ex-13",
         question: "Choose the correct answers about Beth's gift: What did she want to give Mr Laurence? Who paid for the material? Who helped her deliver the gift? Why did Beth leave the house on the second day?",
@@ -489,7 +489,7 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         answerAr: "يقول بروسبيرو إن قواه السحرية انتهت ويطلب من الجمهور أن يحرره بالتصفيق والعفو حتى يتمكن من العودة إلى نابولي.",
         year: "كتاب الطالب ص 211",
         keyHint: "His spells are gone; he asks the audience to set him free"
-      },,
+      },
       {
         id: "temp-source-ex-6",
         question: "Why can Prospero and Caliban's relationship be compared to colonialism?",
