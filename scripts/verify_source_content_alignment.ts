@@ -20,6 +20,11 @@ assert.ok(unitFour.lessons.every((lesson) => lesson.exercises.length > 0), 'Ever
 assert.ok(THIRD_INTERMEDIATE_STORIES.some((story) => story.id === '3rd-story-too-few-leopards'), 'Too Few Leopards must be in the story/reading library');
 assert.ok(THIRD_INTERMEDIATE_STORIES.some((story) => story.id === '3rd-story-ali-career' && story.author.includes('Unit Seven')), 'Ali career must not be assigned to a nonexistent Unit 8');
 assert.ok(THIRD_INTERMEDIATE_ESSAYS.every((essay) => essay.unitId !== 108), 'Third intermediate essays must not reference nonexistent Unit 8');
+const unitSeven = THIRD_INTERMEDIATE_UNITS.find((unit) => unit.number === 7);
+assert.ok(unitSeven?.lessons.some((lesson) => lesson.id === '3rd-u7-app-vocabulary' && lesson.sourcePages === '144-167'), 'Third-grade vocabulary appendix must cover its source pages');
+assert.ok(unitSeven?.lessons.some((lesson) => lesson.id === '3rd-u7-app-spelling' && lesson.sourcePages === '168-169'), 'Third-grade spelling appendix must cover its source pages');
+assert.ok((unitSeven?.lessons.find((lesson) => lesson.id === '3rd-u7-app-vocabulary')?.exercises.length ?? 0) >= 15, 'Vocabulary appendix must include the expanded source exercise set');
+assert.ok((unitSeven?.lessons.find((lesson) => lesson.id === '3rd-u7-app-spelling')?.exercises.length ?? 0) >= 8, 'Spelling appendix must include source examples and exercises');
 
 const fifthEssayTitles = FIFTH_PREPARATORY_ESSAYS.map((essay) => essay.titleEn);
 const expectedFifthEssays = [
