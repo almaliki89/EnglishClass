@@ -174,8 +174,8 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
     id: 46,
     number: 6,
     titleAr: 'الوحدة السادسة: المستقبل والتغذية والنوم والصحة والرياضة',
-    titleEn: 'Unit 6: Future Forms, Nutrition, Sleep, Health and Exercise',
-    description: 'تضم الوحدة المستقبل البسيط، مفردات الغذاء والعناصر الغذائية، النوم، الكلام المنقول، الشكاوى الصحية والنصيحة، التمارين والبادئات، may/might، كأس العالم، وفوائد التمارين للعقل والجسم.',
+    titleEn: 'Unit 6: Nutrition, Sleep, Health and Exercise',
+    description: 'تضم الوحدة قراءة الغداء الصحي والعناصر الغذائية ومجموعات الطعام، والنوم، والكلام المنقول، والشكاوى الصحية والنصيحة، والتمارين والبادئات، may/might، كأس العالم، وفوائد التمارين للعقل والجسم.',
     accentColor: 'bg-soft-mint text-ink',
     bgGradient: 'bg-blue-mist border-ink',
     sourcePages: 'الملزمة ص 97 - 118',
@@ -185,18 +185,18 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
         id: '4th-u6-l0',
         unitId: 46,
         lessonNumber: 1,
-        titleAr: 'الدرس الأول: المستقبل البسيط',
-        titleEn: 'Lesson 1: Future Simple',
-        category: 'grammar',
-        summary: 'التعبير عن أحداث مستقبلية باستخدام will وwill not مع المصدر المجرد، كما في أمثلة الوحدة عن الحفلات والعمل والزيارات.',
+        titleAr: 'الدرس الأول: الغداء الصحي ومجموعات الطعام',
+        titleEn: 'Lesson 1: A Healthy Lunch',
+        category: 'reading',
+        summary: 'قراءة تقارن بين وجبتين وتوضح أهمية تناول أطعمة متنوعة من مجموعات غذائية مختلفة للحفاظ على الصحة.',
         sourcePages: 'الملزمة ص 97',
-        grammarRuleFormula: 'Affirmative: Subject + will + base verb.\\nNegative: Subject + will not (won’t) + base verb.\\nQuestion: Will + subject + base verb?',
         detailedContent: [
-          'تبدأ الوحدة بأمثلة وتمارين على المستقبل البسيط، مثل الاعتذار عن عدم الحضور إلى حفلة، وبيان أن شخصاً لن يعمل خلال الأسبوع، وخطط أو أحداث ستقع لاحقاً.',
-          'يأتي الفعل بعد will بصيغته الأساسية دون s أو ed أو ing.'
+          'تختار القراءة الصورة الثانية بوصفها الغداء الأكثر صحة؛ لأنها تضم أطعمة من مجموعات غذائية أكثر من الصورة الأولى.',
+          'يشرح النص أن اللبن من مجموعة الألبان ويحتوي على الكالسيوم اللازم لصحة الأسنان والعظام، وأن الدجاج يوفر البروتين الذي يساعد على بناء العضلات.',
+          'تحتوي الفواكه والخضروات على الفيتامينات، ومنها فيتامين C، كما أن قلة السعرات فيها تجعلها مناسبة لمن يريد المحافظة على الرشاقة.'
         ],
-        examples: [{ en: 'I will not come to your party.', ar: 'لن آتي إلى حفلتك.', highlight: 'will not come', note: 'النفي في المستقبل البسيط' }],
-        exercises: [practice('4u6-ex0', 'Issam ______ this week because he is on holiday.', ['will not work', 'will not working', 'does not worked', 'not will work'], 'will not work', 'بعد will not يأتي الفعل بصيغته الأساسية', 'ص 97')]
+        examples: [{ en: 'The lunch in picture 2 has food from more food groups.', ar: 'يحتوي الغداء في الصورة الثانية على أطعمة من مجموعات غذائية أكثر.', highlight: 'more food groups', note: 'سبب اختيار الصورة الثانية في النص' }],
+        exercises: [practice('4u6-ex0', 'Which lunch is healthier according to the text?', ['Picture 1', 'Picture 2', 'Both are equally healthy', 'Neither lunch'], 'Picture 2', 'يذكر النص أن الصورة الثانية هي الأكثر صحة لأنها تضم أطعمة من مجموعات غذائية أكثر', 'ص 97')]
       }),
       makeLesson({
         id: '4th-u6-l1',
@@ -239,14 +239,14 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleEn: 'Lesson 4: Reported Speech',
         category: 'grammar',
         summary: 'تحويل الجمل والأسئلة من الكلام المباشر إلى الكلام المنقول، مع مراعاة تغير الضمائر والأزمنة وأفعال المساعدة.',
-        sourcePages: 'الملزمة ص 101 - 104',
+        sourcePages: 'الملزمة ص 100 - 104',
         grammarRuleFormula: 'Reported statements and questions: adjust pronouns, time expressions and verb forms to fit the reporting context. For yes/no questions, use if / whether and statement word order.',
         detailedContent: [
           'تشرح الصفحات تحويل الضمائر من المتكلم إلى الغائب، وتغيير بعض صيغ الأفعال عند نقل الكلام.',
           'تتناول الصفحات نقل الأسئلة التي تبدأ بأفعال مساعدة، واستعمال if في أسئلة نعم/لا مع ترتيب خبري.'
         ],
         examples: [{ en: 'My friend asked if I could swim.', ar: 'سألني صديقي إن كنت أستطيع السباحة.', highlight: 'asked if', note: 'سؤال منقول' }],
-        exercises: [practice('4u6-ex3', '“Can you swim?” My neighbour asked ______ I could swim.', ['if', 'what', 'where', 'who'], 'if', 'نستخدم if عند نقل سؤال نعم/لا', 'ص 101 - 104')]
+        exercises: [practice('4u6-ex3', '“Can you swim?” My neighbour asked ______ I could swim.', ['if', 'what', 'where', 'who'], 'if', 'نستخدم if عند نقل سؤال نعم/لا', 'ص 100 - 104')]
       }),
       makeLesson({
         id: '4th-u6-l4',

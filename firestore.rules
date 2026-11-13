@@ -116,9 +116,9 @@ service cloud.firestore {
       allow write: if isAdmin() && isValidId(teacherId);
     }
 
-    // Global leaderboards / public statistics (read-only for clients, writes secured)
+    // Leaderboard documents may be read only by signed-in users; never expose student records to anonymous visitors.
     match /leaderboard/{entry} {
-      allow read: if true;
+      allow read: if isAuthenticated();
       allow write: if isAdmin();
     }
 

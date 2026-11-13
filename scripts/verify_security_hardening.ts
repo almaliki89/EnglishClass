@@ -688,6 +688,17 @@ assert(
 );
 
 // ----------------------------------------------------------------------------
+assert(
+  /match \/leaderboard\/\{entry\}\s*\{\s*allow read: if isAuthenticated\(\);/.test(firestoreRulesContent),
+  'Security: Leaderboard reads require authentication; anonymous access is denied'
+);
+
+assert(
+  serverContent.includes('examTitle: gradeMeta.isMinisterial ?') &&
+  serverContent.includes('`اختبار تدريبي ${gradeMeta.nameAr}`'),
+  'Exam labels: Non-ministerial grades are saved as practice tests, not ministerial exams'
+);
+
 // SUMMARY REPORT
 // ----------------------------------------------------------------------------
 console.log('\n================================================================');

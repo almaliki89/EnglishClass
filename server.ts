@@ -11,7 +11,7 @@ import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
 import { CurriculumSourceDocument } from "./src/types/curriculumManagement";
-import { getUnitsForGrade, getQuestionsForGrade } from "./src/data/gradeContentResolver";
+import { getUnitsForGrade, getQuestionsForGrade, getGradeMeta } from "./src/data/gradeContentResolver";
 import { EducationalGrade } from "./src/types";
 import { parseCurriculumHierarchy } from "./src/utils/parseCurriculumHierarchy";
 
@@ -3531,6 +3531,7 @@ app.post(
         return res.status(400).json({ success: false, error: "مدة الامتحان غير صالحة." });
       }
 
+      const gradeMeta = getGradeMeta(grade as EducationalGrade);
       const officialQuestions = getQuestionsForGrade(grade as EducationalGrade);
       let correctCount = 0;
       const verifiedAnswersList: any[] = [];
@@ -3572,7 +3573,7 @@ app.post(
       const examRecord = {
         id: examResultId,
         examId,
-        examTitle: `امتحان ${grade} الوزاري`,
+        examTitle: gradeMeta.isMinisterial ? `امتحان ${gradeMeta.nameAr} الوزاري` : `اختبار تدريبي ${gradeMeta.nameAr}`,
         grade,
         score,
         maxScore: 100,

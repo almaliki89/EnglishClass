@@ -21,7 +21,7 @@ export default defineConfig({
   },
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
   webServer: {
-    command: 'PORT=3001 NODE_ENV=test npx tsx server.ts',
+    command: 'node scripts/start-e2e-server.mjs',
     url: 'http://127.0.0.1:3001/api/health',
     reuseExistingServer: false,
     timeout: 60000,
