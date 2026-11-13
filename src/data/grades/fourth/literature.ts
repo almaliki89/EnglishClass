@@ -1,9 +1,9 @@
 import { LiteratureItem } from '../../../types';
 
 // =========================================================================
-// الأدب المقرّر للصف الرابع الإعدادي - ملزمة النموذجية 2026
-// Literature Spot (ص 150 - 170)
-// 1. رواية جزيرة الكنز (Treasure Island) - رابرت لويس ستيفنسون (ص 150 - 160)
+// الأدب المقرّر للصف الرابع الإعدادي - ملزمة النموذجية (طبعة 2025)
+// Literature Spot (ص 149 - 170)
+// 1. رواية جزيرة الكنز (Treasure Island) - رابرت لويس ستيفنسون (ص 149 - 160)
 // 2. رواية حول العالم في 80 يوماً (Around the World in 80 Days) - جول فيرن (ص 161 - 170)
 // =========================================================================
 
@@ -17,20 +17,16 @@ export const FOURTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
     authorYears: "1850 - 1894",
     authorBioEn: [
       "Robert Louis Stevenson was a celebrated Scottish novelist, poet, and travel writer, best known for his classic adventure novels 'Treasure Island' (1883) and 'Strange Case of Dr Jekyll and Mr Hyde' (1886).",
-      "Born in Edinburgh, Scotland, Stevenson suffered from chronic lung illness throughout his life, travelling extensively across Europe and the Pacific in search of warmer climates.",
+      "The booklet notes that Stevenson moved to California with his wife Frances in 1879, was ranked the 26th most-translated author in the world, and died in Samoa in 1894 while living there.",
       "'Treasure Island' was originally published as a serialized story in the children's magazine 'Young Folks' between 1881 and 1882 before being published as a standalone novel in 1883, shaping modern pirate mythology."
     ],
     authorBioAr: [
       "رابرت لويس ستيفنسون روائي وشاعر وكاتب أدب رحلات اسكتلندي شهير، عرف بتأليف أشهر روايات المغامرات الكلاسيكية في العالم مثل 'جزيرة الكنز' (1883) و'الدكتور جيكل والمستر هايد' (1886).",
-      "ولد في أدنبرة باسكتلندا، وعانى من مرض رنوي مزمن طوال حياته، فارتحل عبر أوروبا والمحيط الهادئ بحثاً عن المناخ الدافئ.",
+      "تذكر الملزمة أنه انتقل إلى كاليفورنيا مع زوجته فرانسيس عام 1879، وصُنّف في المرتبة السادسة والعشرين بين أكثر المؤلفين ترجمة في العالم، وتوفي في ساموا عام 1894 أثناء إقامته هناك.",
       "نُشرت 'جزيرة الكنز' أولاً كمجموعة فصول متسلسلة في مجلة الأطفال 'Young Folks' بين عامي 1881 و 1882 قبل أن تصبح رواية قائمة بذاتها عام 1883، صانعة أسطورة القراصنة الحديثة."
     ],
-    authorPrizes: [
-      "Inducted into the Scottish Writers' Hall of Fame",
-      "One of the top 30 most translated authors worldwide"
-    ],
     genre: "Classic Nautical Pirate Adventure Novel",
-    genreAr: "رواية مغامرات قراصنة وأبحر كلاسيكية",
+    genreAr: "رواية مغامرات بحرية كلاسيكية عن القراصنة",
     image: "/assets/images/treasure_island_scene_1794251330821.jpg",
     imageCaptionAr: "جيم هوكينز مع القرصان لونغ جون سيلفر وخريطة كنز الكابتن فلينت على شاطئ الجزيرة الاستوائية وأمامهما سفينة هسبانيولا.",
     imageCaptionEn: "Jim Hawkins with pirate Long John Silver examining Captain Flint's treasure map on the island shore with the Hispaniola anchored in the bay.",
