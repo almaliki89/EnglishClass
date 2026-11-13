@@ -559,7 +559,7 @@ export const THIRD_INTERMEDIATE_STORIES: LiteratureItem[] = [
         year: "كتاب الطالب ص 131"
       }
     ]
-  }
+  },
   {
     id: "3rd-story-too-few-leopards",
     title: "Too Few Leopards",
