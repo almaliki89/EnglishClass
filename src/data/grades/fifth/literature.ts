@@ -228,7 +228,7 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         id: "lw-source-ex-8",
         question: "True or False: Mother never refused Beth's requests because she usually asked for things for others; Meg and Jo helped make the slippers; Amy was going to tell Beth about the piano but Jo stopped her; Beth's sisters had read Mr Laurence's letter before she got home; Mr Laurence cared for his granddaughter's possessions.",
         questionAr: "حدد الصح والخطأ في عبارات تمرين القسم الثاني.",
-        answer: "True; True; True; True; True; True. Beth thought Mr Laurence had not liked her gift before his letter arrived.",
+        answer: "True; True; True; True; True; True; True. Beth feared that Mr Laurence had not liked her gift before his letter arrived.",
         answerAr: "صح؛ صح؛ صح؛ صح؛ صح. أما العبارة التي تقول إن بيث اعتقدت أن السيد لورنس لم يعجبه إهداؤها فهي خطأ.",
         year: "كتاب النشاط ص 170",
         keyHint: "Beth feared that Mr Laurence had not liked the slippers before she received his letter"
@@ -268,6 +268,24 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         answerAr: "بمحبة؛ آمال فنية؛ يحقق؛ ظل؛ مندفع دون تفكير؛ طريقة/أسلوب.",
         year: "كتاب النشاط ص 173",
         keyHint: "lovingly; artistic hopes; fulfil/grant; shadow; impulsive; manner"
+      },,
+      {
+        id: "lw-source-ex-13",
+        question: "Choose the correct answers about Beth's gift: What did she want to give Mr Laurence? Who paid for the material? Who helped her deliver the gift? Why did Beth leave the house on the second day?",
+        questionAr: "اختر الإجابات الصحيحة عن هدية بيث: ماذا أرادت أن تهدي السيد لورنس؟ من دفع ثمن المواد؟ من ساعدها في إيصال الهدية؟ ولماذا خرجت في اليوم الثاني؟",
+        answer: "A pair of slippers; Mother paid for the material; Laurie helped Beth put the slippers on the study table; Beth went out to do something for her mother.",
+        answerAr: "زوج من النعال؛ دفعت الأم ثمن المواد؛ ساعد لوري بيث على وضع النعال على طاولة الدراسة؛ خرجت بيث لتقوم بعمل من أجل أمها.",
+        year: "كتاب النشاط ص 170",
+        keyHint: "slippers; Mother; Laurie; to help her mother"
+      },
+      {
+        id: "lw-source-ex-14",
+        question: "Put the four events from the Christmas extract in the correct order.",
+        questionAr: "رتب الأحداث الأربعة في مقطع عيد الميلاد ترتيباً صحيحاً.",
+        answer: "1) The sisters complain about not having a proper Christmas. 2) They say what they would want to buy. 3) They complain about their jobs. 4) Jo suggests buying themselves presents.",
+        answerAr: "1) تشتكي الأخوات من عدم وجود عيد ميلاد مناسب. 2) يذكرن ما يرغبن في شرائه. 3) يشتكين من أعمالهن. 4) تقترح جو شراء هدايا لأنفسهن.",
+        year: "كتاب النشاط ص 168",
+        keyHint: "3 → 1 → 2 → 4"
       },
     ]
   },
@@ -473,6 +491,15 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         answerAr: "يقول بروسبيرو إن قواه السحرية انتهت ويطلب من الجمهور أن يحرره بالتصفيق والعفو حتى يتمكن من العودة إلى نابولي.",
         year: "كتاب الطالب ص 211",
         keyHint: "His spells are gone; he asks the audience to set him free"
+      },,
+      {
+        id: "temp-source-ex-6",
+        question: "Why can Prospero and Caliban's relationship be compared to colonialism?",
+        questionAr: "لماذا يمكن مقارنة علاقة بروسبيرو وكاليبان بالاستعمار؟",
+        answer: "Prospero takes control of the island and treats Caliban as a slave, while Caliban believes the island belongs to him because he was there first. This reflects colonizers taking control of the land of its original inhabitants.",
+        answerAr: "يسيطر بروسبيرو على الجزيرة ويعامل كاليبان كعبد، بينما يعتقد كاليبان أن الجزيرة ملكه لأنه كان فيها أولاً. وهذا يشبه سيطرة المستعمرين على أرض السكان الأصليين.",
+        year: "كتاب الطالب ص 205",
+        keyHint: "Prospero takes the island; Caliban is its original inhabitant"
       },
     ]
   }
