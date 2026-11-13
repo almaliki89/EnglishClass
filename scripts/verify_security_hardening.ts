@@ -689,7 +689,7 @@ assert(
 
 // ----------------------------------------------------------------------------
 assert(
-  firestoreRulesContent.includes('allow read: if isAuthenticated();\\n      allow write: if isAdmin();'),
+  /match \/leaderboard\/\{entry\}\s*\{\s*allow read: if isAuthenticated\(\);/.test(firestoreRulesContent),
   'Security: Leaderboard reads require authentication; anonymous access is denied'
 );
 
