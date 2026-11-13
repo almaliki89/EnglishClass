@@ -33,7 +33,6 @@ async function main() {
 
   try {
     await testEnv.clearFirestore();
-    await testEnv.clearStorage();
 
     await testEnv.withSecurityRulesDisabled(async (context) => {
       const db = context.firestore();
