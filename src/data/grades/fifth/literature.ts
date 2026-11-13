@@ -14,23 +14,18 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
     titleAr: "نساء صغيرات (رواية)",
     author: "Louisa May Alcott",
     authorAr: "لويزا ماي ألكوت",
-    authorYears: "1832 - 1888",
+    authorYears: "ولدت في 29 نوفمبر 1832 وتوفيت عن عمر 55 عاماً",
     authorBioEn: [
-      "Louisa May Alcott was an acclaimed American novelist, short story writer, and poet, best known as the author of the novel 'Little Women' published in 1868.",
-      "She was born in Pennsylvania and raised in Boston and Concord, Massachusetts, growing up among prominent intellectuals like Ralph Waldo Emerson and Henry David Thoreau.",
-      "Her family was impoverished, and she worked as a teacher, seamstress, and nurse during the American Civil War before achieving immense literary and financial success with her autobiographical masterpiece."
+      "Louisa May Alcott was an American writer born in Germantown, Pennsylvania, on 29 November 1832. She was the second of four daughters, whose lives inspired Little Women.",
+      "Because her family was poor, she began working at a young age. During the American Civil War she volunteered as a nurse, caught typhoid, and recovered. Her short stories appeared in The Atlantic Monthly, and her later novels helped pay her family's debts.",
+      "She later lost her younger sister to scarlet fever and her oldest sister due to complications during childbirth. She raised her niece, who had the same name. Alcott died in Boston at the age of 55 after suffering from ill health."
     ],
     authorBioAr: [
-      "لويزا ماي ألكوت كاتبة وروائية وشاعرة أمريكية شهيرة، عُرفت عالمياً بتأليف روايتها الخالدة 'نساء صغيرات' المنشورة عام 1868.",
-      "ولدت في ولاية بنسلفانيا ونشأت في بوسطن وكونكورد بين كبار المفكرين الأمريكيين مثل إيمرسون وثورو.",
-      "عاشت عائلتها في فقر مدقع، فعملت معلمة وخياطة وممرضة في الحرب الأهلية الأمريكية قبل أن تحقق مجداً أدبياً واستقلالاً مالياً عبر روايتها التي عكست سيرة حياتها وحياة شقيقاتها."
-    ],
-    authorPrizes: [
-      "Inducted into the National Women's Hall of Fame (1996)",
-      "One of the best-selling works of American literature worldwide"
-    ],
-    genre: "Classic Semi-Autobiographical Coming-of-Age Novel",
-    genreAr: "رواية كلاسيكية شبه ذاتية عن النضج والنشأة الأدبية",
+      "لويزا ماي ألكوت كاتبة أمريكية ولدت في جيرمانتاون بولاية بنسلفانيا في 29 نوفمبر 1832. كانت الابنة الثانية من أربع بنات، وقد ألهمت حياتهن رواية نساء صغيرات.",
+      "بسبب فقر عائلتها بدأت العمل في سن مبكرة. وخلال الحرب الأهلية الأمريكية تطوعت ممرضة، وأصيبت بالتيفوئيد ثم تعافت. نُشرت قصصها القصيرة في مجلة The Atlantic Monthly، ثم ساعدت رواياتها اللاحقة على سداد ديون عائلتها.",
+      "فقدت شقيقتها الصغرى بسبب الحمى القرمزية وشقيقتها الكبرى بسبب مضاعفات الولادة، ثم تولت تربية ابنة أختها التي حملت الاسم نفسه. توفيت ألكوت في بوسطن عن عمر 55 عاماً بعد معاناة صحية."
+    ],\n    genre: "Novel",
+    genreAr: "رواية",
     image: "/assets/images/little_women_scene_1794251359174.jpg",
     imageCaptionAr: "الشقيقات الأربع من عائلة مارتش (ميغ، وجو تكتب مسرحياتها، وبيث تعزف البيانو، وإيمي ترسم) في منزلهن الدافئ بنيو إنغلاند.",
     imageCaptionEn: "The four March sisters (Meg, Jo writing her stories, Beth at the piano, and Amy painting) in their warm New England living room.",
@@ -41,8 +36,8 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         captionEn: "The March sisters in their living room: independent Jo writing with passion, Amy painting, and Beth playing music."
       }
     ],
-    summaryAr: "تروي الرواية قصة حياة أربع شقيقات من عائلة مارتش (ميغ، جو، بيث، وإيمي) أثناء غياب والدهن للخدمة كقسيس في الجيش خلال الحرب الأهلية الأمريكية. تناضل الفتيات مع والدتهن الحبيبة (مارمي) ضد الفقر والحرمان بروح ملؤها الكرم والمحبة والإيثار، ويتعلمن دروساً عميقة في التغلب على عيوبهن الشخصية وصنع الفرح من أبسط الأشياء مع جارهن الثري لوري وجده السيد لورنس.",
-    summaryEn: "Little Women chronicles the lives and moral growth of four sisters—Meg, Jo, Beth, and Amy March—living in modest circumstances in New England while their father serves as an army chaplain in the American Civil War. Guided by their affectionate mother (Marmee), the sisters navigate poverty, societal expectations, personal ambitions, and family devotion.",
+    summaryAr: "تروي الرواية قصة حياة أربع شقيقات من عائلة مارتش (ميغ، جو، بيث، وإيمي) أثناء غياب والدهن أُرسل للقتال مع جيش الاتحاد خلال الحرب الأهلية الأمريكية. تناضل الفتيات مع والدتهن الحبيبة (مارمي) ضد الفقر والحرمان بروح ملؤها الكرم والمحبة والإيثار، ويتعلمن دروساً عميقة في التغلب على عيوبهن الشخصية وصنع الفرح من أبسط الأشياء مع جارهن الثري لوري وجده السيد لورنس.",
+    summaryEn: "Little Women chronicles the lives and moral growth of four sisters—Meg, Jo, Beth, and Amy March—living in modest circumstances in New England while their father has been sent to fight for the Union Army during the American Civil War. Guided by their affectionate mother (Marmee), the sisters navigate poverty, societal expectations, personal ambitions, and family devotion.",
     keyThemes: [
       "التضامن الأسري والمحبة في مواجهة الفقر والحرب",
       "استقلالية المرأة وطموحها الإبداعي (شخصية جو مارتش الكاتبة)",
@@ -131,7 +126,7 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         id: "lw-qa-2",
         question: "Where was the March sisters' father during the events of the novel?",
         questionAr: "أين كان والد فتيات عائلة مارتش أثناء أحداث الرواية؟",
-        answer: "He was serving as a chaplain in the Union army during the American Civil War.",
+        answer: "He was away serving with the Union Army during the American Civil War.",
         answerAr: "كان يخدم كقسيس في جيش الاتحاد خلال الحرب الأهلية الأمريكية.",
         year: "الملزمة ص 191",
         keyHint: "Chaplain in the American Civil War"
@@ -281,21 +276,17 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
     authorAr: "وليم شكسبير",
     authorYears: "1564 - 1616",
     authorBioEn: [
-      "William Shakespeare was an English playwright, poet, and actor, widely regarded as the greatest dramatist in the English language and the world's pre-eminent poet.",
-      "He was born in Stratford-upon-Avon, Warwickshire, and wrote 'The Tempest' around 1610-1611, regarded as his last solitary play and profound dramatic farewell.",
-      "His works explore universal human themes of power, justice, betrayal, forgiveness, romantic love, and the transience of mortal existence."
+      "William Shakespeare is described in the booklet as one of the greatest playwrights. He wrote famous works including Romeo and Juliet, Hamlet, Macbeth and The Merchant of Venice.",
+      "He was born in Stratford-upon-Avon, in the centre of England. As a young man he worked as an actor before becoming a writer.",
+      "He wrote at least 37 plays, 154 sonnets and two narrative poems. His plays are performed around the world in many languages, and his poetry has been widely translated."
     ],
     authorBioAr: [
-      "وليم شكسبير كاتب مسرحي وشاعر وممثل إنجليزي، يُعتبر بالإجماع أعظم كاتب مسرحي في تاريخ اللغة الإنكليزية وشاعر العالم الأبرز.",
-      "ولد في بلدة ستراتفورد-أبون-أفون، وكتب مسرحية 'العاصفة' في حدود عام 1610-1611، وتُعتبر آخر مسرحية كتبها منفرداً ووداعه الدرامي والمسرحي العظيم.",
-      "تتناول أعماله قضايا كونية خالدة حول السلطة، والعدالة، والخيانة، والغفران والتسامح، والحب، وزوال الدنيا."
+      "يصف الكتاب وليم شكسبير بأنه من أعظم كتّاب المسرح، ومن أشهر أعماله روميو وجولييت وهاملت وماكبث وتاجر البندقية.",
+      "ولد في ستراتفورد-أبون-أفون وسط إنجلترا، وعمل ممثلاً في شبابه قبل أن يصبح كاتباً.",
+      "كتب ما لا يقل عن 37 مسرحية و154 سونيتة وقصيدتين سرديتين. وتُعرض مسرحياته في أنحاء العالم بلغات عديدة، كما تُرجمت أشعاره على نطاق واسع."
     ],
-    authorPrizes: [
-      "The National Poet of England (The Bard of Avon)",
-      "Universal cornerstone of global world literature"
-    ],
-    genre: "Jacobean Dramatic Romance / Romantic Comedy",
-    genreAr: "مسرحية رومانسية درامية خيالية (العصر اليعقوبي)",
+    genre: "Comedy",
+    genreAr: "كوميديا",
     image: "/assets/images/the_tempest_scene_1794251373907.jpg",
     imageCaptionAr: "الساحر بروسبيرو يرفع عصاه على صخور الجزيرة السحرية مستحضراً العاصفة، بجانبه روح الهواء أرييل وابنته الرقيقة ميراندا.",
     imageCaptionEn: "Sorcerer Prospero raising his magical staff on the island cliff summoning the tempest, with spirit Ariel and compassionate Miranda.",
