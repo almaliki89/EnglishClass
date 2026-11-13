@@ -6,7 +6,7 @@ import { MockExamPaper } from '../../mockExamPapers';
 // =========================================================================
 
 export const FIFTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
-  id: "mock-5th-prep-final-2026",
+  id: "mock-5th-prep-supplementary-2026",
   title: "الامتحان النهائي الشامل لمادة اللغة الإنكليزية - الخامس الإعدادي (100 درجة)",
   subtitle: "مبني وفق نموذج الأسئلة الامتحانية في ملزمة الأستاذ عمار غالب 2026 (ص 186-187)",
   year: "2025-2026",
