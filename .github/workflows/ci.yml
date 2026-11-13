@@ -38,6 +38,9 @@ jobs:
       - name: Run Curriculum Hierarchy Runtime Unit Tests
         run: npm run test:hierarchy
 
+      - name: Verify Source Content Alignment
+        run: npm run test:source-alignment
+
       - name: Build Production Bundle
         run: npm run build
 
