@@ -104,7 +104,7 @@ assert.ok(fourthUnit6?.lessons.some((lesson) => lesson.titleEn.includes('Reporte
 assert.ok(fourthUnit6?.lessons.some((lesson) => lesson.titleEn.includes('FIFA World Cup')), 'Unit 6 must include the FIFA World Cup reading');
 
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Al-Hammaar Marshes')), 'Unit 7 must include the Al-Hammaar Marshes reading');
-assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Refinery') && lesson.detailedContent.some((line) => line.toLowerCase().includes('petroleum'))), 'Unit 7 must include the source reading From the Earth to the Refinery about petroleum');
+assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Refinery') && lesson.examples.some((example) => example.en.includes('Petroleum was formed millions of years ago'))), 'Unit 7 must include the source reading From the Earth to the Refinery and its opening sentence');
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Hawksbill')), 'Unit 7 must include the hawksbill turtle reading');
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('Online Shopping')), 'Unit 7 must include the online shopping source content');
 assert.ok(fourthUnit7?.lessons.some((lesson) => lesson.titleEn.includes('International Space Station')), 'Unit 7 must include the International Space Station presentation');
