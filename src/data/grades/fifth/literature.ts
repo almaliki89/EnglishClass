@@ -162,7 +162,115 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         answerAr: "قصت وباعت شعرها الكستنائي الطويل الجميل لصانع شعر مستعار وحصلت على 25 دولاراً لمصاريف سفر والدتها لعلاج والدها.",
         year: "الملزمة ص 199",
         keyHint: "Sold her long hair for $25"
-      }
+      },
+      {
+        id: "lw-source-ex-1",
+        question: "Answer the four Activity Book questions on the Christmas extract: Why might the sisters not see their father for a long time? Why does Mother not want presents? How much money does each sister have? What does Jo suggest?",
+        questionAr: "أجب عن أسئلة مقطع عيد الميلاد الأربعة في كتاب النشاط.",
+        answer: "Their father is far away serving with the Union Army during the Civil War. Mother does not want presents because the winter will be hard and the family should not spend money for pleasure. Each sister has one dollar. Jo suggests that they buy presents for themselves.",
+        answerAr: "والدهن بعيد ويخدم مع جيش الاتحاد في الحرب الأهلية. لا تريد الأم هدايا لأن الشتاء سيكون صعباً ولا ينبغي إنفاق المال على الكماليات. لدى كل أخت دولار واحد. تقترح جو أن يشترين هدايا لأنفسهن.",
+        year: "كتاب النشاط ص 168",
+        keyHint: "Father away with the Union Army; hard winter; one dollar each; buy presents"
+      },
+      {
+        id: "lw-source-ex-2",
+        question: "Why can't Beth practise the piano, and why does Amy think she suffers the most?",
+        questionAr: "لماذا لا تستطيع بيث التدرب على البيانو؟ ولماذا تعتقد إيمي أنها الأكثر معاناة؟",
+        answer: "Beth's hands become rough and tired from washing dishes and doing housework. Amy says that girls at school make fun of her lessons, dresses and appearance, and that her father is not rich.",
+        answerAr: "تصبح يدا بيث خشنتين ومتعبتين بسبب غسل الصحون وأعمال المنزل. وتقول إيمي إن الفتيات في المدرسة يسخرن من دروسها وملابسها ومظهرها، وإن والدها ليس غنياً.",
+        year: "كتاب النشاط ص 168-169",
+        keyHint: "Beth: tired hands from housework; Amy: teased at school"
+      },
+      {
+        id: "lw-source-ex-3",
+        question: "Match each sister with the present she wants.",
+        questionAr: "طابق كل أخت مع الهدية التي تريدها.",
+        answer: "Jo — books; Beth — music; Amy — drawing materials; Meg — pretty things.",
+        answerAr: "جو — الكتب؛ بيث — الموسيقى؛ إيمي — أدوات الرسم؛ ميغ — الأشياء الجميلة.",
+        year: "كتاب النشاط ص 168",
+        keyHint: "Jo/books; Beth/music; Amy/drawing materials; Meg/pretty things"
+      },
+      {
+        id: "lw-source-ex-4",
+        question: "Give the words or phrases from the extract: without saying anything; not necessary, for fun; said loudly; talked about something they were annoyed with; unhappy; opposite of soft; mean; joke about.",
+        questionAr: "استخرج الكلمات والعبارات المطلوبة من مقطع نساء صغيرات.",
+        answer: "silently; for pleasure; cried; complained; upset; rough; unkind; make fun of.",
+        answerAr: "بصمت؛ من أجل المتعة؛ صاحت؛ اشتكت؛ منزعج؛ خشن؛ غير لطيف؛ يسخر من.",
+        year: "كتاب النشاط ص 169",
+        keyHint: "silently; for pleasure; cried; complained; upset; rough; unkind; make fun of"
+      },
+      {
+        id: "lw-source-ex-5",
+        question: "Which sister is a student, does the housework, is a teacher, and keeps an elderly person company?",
+        questionAr: "أي أخت تدرس، وأيهن تقوم بأعمال المنزل، وأيهن معلمة، وأيهن ترافق شخصاً مسناً؟",
+        answer: "Amy is a student; Beth does the housework; Meg is a teacher; Jo keeps an elderly person company.",
+        answerAr: "إيمي طالبة؛ بيث تقوم بأعمال المنزل؛ ميغ معلمة؛ جو ترافق شخصاً مسناً.",
+        year: "كتاب النشاط ص 169",
+        keyHint: "Amy/student; Beth/housework; Meg/teacher; Jo/elderly companion"
+      },
+      {
+        id: "lw-source-ex-6",
+        question: "Why did Jo read Mr Laurence's letter? Why did Mr Laurence give the piano to Beth?",
+        questionAr: "لماذا قرأت جو رسالة السيد لورنس؟ ولماذا أعطى السيد لورنس البيانو لبيث؟",
+        answer: "Jo read the letter to find out what it said before Beth arrived. Mr Laurence gave Beth the piano because he knew how much she loved playing it and wanted to make her happy.",
+        answerAr: "قرأت جو الرسالة لتعرف ما ورد فيها قبل وصول بيث. وأعطى السيد لورنس البيانو لبيث لأنه عرف مدى حبها للعزف وأراد إسعادها.",
+        year: "كتاب النشاط ص 170",
+        keyHint: "Jo read before Beth arrived; the piano was a gift for Beth"
+      },
+      {
+        id: "lw-source-ex-7",
+        question: "Give the seven words or phrases from the Section 2 extract: answered; the part behind (e.g. design or setting); with enthusiasm; without colour; not believing; not modern; thankful.",
+        questionAr: "استخرج مرادفات الكلمات السبعة من مقطع القسم الثاني.",
+        answer: "replied; background; eagerly; pale; incredulous; old-fashioned; grateful.",
+        answerAr: "أجاب؛ الخلفية؛ بحماس؛ شاحب؛ غير مصدق؛ قديم الطراز؛ ممتن.",
+        year: "كتاب النشاط ص 171",
+        keyHint: "replied; background; eagerly; pale; incredulous; old-fashioned; grateful"
+      },
+      {
+        id: "lw-source-ex-8",
+        question: "True or False: Mother never refused Beth's requests because she usually asked for things for others; Meg and Jo helped make the slippers; Amy was going to tell Beth about the piano but Jo stopped her; Beth's sisters had read Mr Laurence's letter before she got home; Mr Laurence cared for his granddaughter's possessions.",
+        questionAr: "حدد الصح والخطأ في عبارات تمرين القسم الثاني.",
+        answer: "True; True; True; True; True. The statement that Beth believed Mr Laurence had not liked her gift is False.",
+        answerAr: "صح؛ صح؛ صح؛ صح؛ صح. أما العبارة التي تقول إن بيث اعتقدت أن السيد لورنس لم يعجبه إهداؤها فهي خطأ.",
+        year: "كتاب النشاط ص 170",
+        keyHint: "Beth's concern about the gift is not evidence that Mr Laurence disliked it"
+      },
+      {
+        id: "lw-source-ex-9",
+        question: "What have Amy and Laurie come to realize? Why is harvest mentioned at the end of the passage?",
+        questionAr: "إلى ماذا توصلت إيمي ولوري؟ ولماذا ذُكر الحصاد في نهاية المقطع؟",
+        answer: "They understand that beauty, youth, luck and even love cannot prevent pain and loss. The harvest is a metaphor for the loving, patient work of their mother and the good lives her daughters have grown into.",
+        answerAr: "أدركا أن الجمال والشباب والحظ وحتى الحب لا تمنع الألم والفقد. والحصاد استعارة لعمل الأم المحب والصبور وللنتائج الطيبة التي أثمرتها تربيتها لبناتها.",
+        year: "كتاب الطالب ص 132 / كتاب النشاط ص 172",
+        keyHint: "Beauty, youth, luck and love cannot keep pain and loss away; harvest is a metaphor"
+      },
+      {
+        id: "lw-source-ex-10",
+        question: "Complete the six True/False statements about the final section and match Jo, Meg, Amy, Laurie and Mother with their actions.",
+        questionAr: "أكمل الصح والخطأ وطابق الشخصيات مع أفعالها في القسم الأخير.",
+        answer: "True; False; False; True; False; True. Matching: Jo — thinks she was selfish before; Meg — always wanted a family; Amy — wants to make a statue; Laurie — is becoming stronger and more serious; Mother — tells Amy to keep hope for her daughter.",
+        answerAr: "صح؛ خطأ؛ خطأ؛ صح؛ خطأ؛ صح. المطابقة: جو — ترى أنها كانت أنانية سابقاً؛ ميغ — كانت تريد دائماً عائلة؛ إيمي — تريد صنع تمثال؛ لوري — يصبح أقوى وأكثر جدية؛ الأم — تطلب من إيمي ألا تفقد الأمل بابنتها.",
+        year: "كتاب النشاط ص 172",
+        keyHint: "Jo/selfish before; Meg/family; Amy/statue; Laurie/stronger; Mother/hope"
+      },
+      {
+        id: "lw-source-ex-11",
+        question: "Answer the three questions about the final extract: What do the castles refer to? Why does Jo think she can write a better book? Why is Amy making a statue of a baby?",
+        questionAr: "أجب عن أسئلة المقطع الأخير: إلى ماذا تشير القصور؟ ولماذا تعتقد جو أنها ستكتب كتاباً أفضل؟ ولماذا تصنع إيمي تمثال طفل؟",
+        answer: "The castles refer to the sisters' dreams and ambitions. Jo believes her experiences have made her wiser and will help her write a better book. Amy is making a statue of a baby because she wants to preserve the image of her little daughter.",
+        answerAr: "تشير القصور إلى أحلام الأخوات وطموحاتهن. تعتقد جو أن تجاربها جعلتها أكثر حكمة وستساعدها على كتابة كتاب أفضل. وتصنع إيمي تمثالاً لطفل لأنها تريد الاحتفاظ بصورة ابنتها الصغيرة.",
+        year: "كتاب النشاط ص 172",
+        keyHint: "Castles = dreams; Jo's experiences; preserve her daughter's image"
+      },
+      {
+        id: "lw-source-ex-12",
+        question: "Give the six words or phrases from the final extract: with love; a wish to do art; make something happen; darkness; acting without thinking; way.",
+        questionAr: "استخرج الكلمات المطلوبة من المقطع الأخير.",
+        answer: "lovingly; artistic hopes; fulfil/grant; shadow; impulsive; manner.",
+        answerAr: "بمحبة؛ آمال فنية؛ يحقق؛ ظل؛ مندفع دون تفكير؛ طريقة/أسلوب.",
+        year: "كتاب النشاط ص 173",
+        keyHint: "lovingly; artistic hopes; fulfil/grant; shadow; impulsive; manner"
+      },
     ]
   },
   {
@@ -324,7 +432,52 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         answerAr: "كسر عصاه السحرية ودفنها في باطن الأرض، وأغرق كتاب سحره في أعمق نقطة من مياه البحر ليعود إنساناً وحاكماً عادلاً.",
         year: "الملزمة ص 211",
         keyHint: "Broke his staff and drowned his book in the sea"
-      }
+      },
+      {
+        id: "temp-source-ex-1",
+        question: "What happened to the ship and its crew after Prospero raised the tempest?",
+        questionAr: "ماذا حدث للسفينة وطاقمها بعد أن أثار بروسبيرو العاصفة؟",
+        answer: "The ship and its crew were saved; the passengers were brought safely to shore, and the crew was put under a spell.",
+        answerAr: "أُنقذت السفينة وطاقمها؛ ونُقل الركاب بأمان إلى الشاطئ ووُضع الطاقم تحت تأثير تعويذة.",
+        year: "كتاب الطالب ص 204-205",
+        keyHint: "The ship was saved with its crew; passengers brought to shore"
+      },
+      {
+        id: "temp-source-ex-2",
+        question: "Match the seven characters with their descriptions.",
+        questionAr: "طابق الشخصيات السبع مع أوصافها.",
+        answer: "Prospero — a man with magical powers who wants revenge; Miranda — Prospero's daughter, a princess who does not know it; Antonio — Prospero's brother who betrayed him; Alonso — a powerful king; Ferdinand — the king's son; Caliban — Prospero's slave, treated badly; Ariel — a spirit with great magical powers.",
+        answerAr: "بروسبيرو — رجل يمتلك قوى سحرية ويريد الانتقام؛ ميراندا — ابنة بروسبيرو والأميرة التي لا تعرف ذلك؛ أنطونيو — أخو بروسبيرو الذي خانه؛ ألونسو — ملك قوي؛ فرديناند — ابن الملك؛ كاليبان — عبد بروسبيرو الذي يعامله بقسوة؛ أرييل — روح ذات قوى سحرية عظيمة.",
+        year: "كتاب النشاط ص 174",
+        keyHint: "Prospero/d; Miranda/g; Antonio/a; Alonso/f; Ferdinand/c; Caliban/b; Ariel/e"
+      },
+      {
+        id: "temp-source-ex-3",
+        question: "Answer the six multiple-choice questions about Caliban: Who is Sycorax? Why does Caliban think he owns the island? How was the relationship at first? What did Caliban teach Prospero? What did Prospero teach Caliban? Where does Caliban live?",
+        questionAr: "أجب عن أسئلة الاختيار الستة حول كاليبان.",
+        answer: "Sycorax is Caliban's mother; Caliban thinks he owns the island because he was there first; their relationship was initially friendly; Caliban showed Prospero the island and where things were; Prospero taught Caliban to speak English; Caliban lives in a cave.",
+        answerAr: "سيكوراكس هي أم كاليبان؛ يعتقد كاليبان أن الجزيرة ملكه لأنه كان فيها أولاً؛ كانت العلاقة ودية في البداية؛ دلّ كاليبان بروسبيرو على الجزيرة وأماكن الأشياء فيها؛ علّم بروسبيرو كاليبان التحدث بالإنجليزية؛ ويعيش كاليبان في كهف.",
+        year: "كتاب النشاط ص 176",
+        keyHint: "Caliban's mother; first inhabitant; initially friendly; showed the island; English; cave"
+      },
+      {
+        id: "temp-source-ex-4",
+        question: "Mark the eight statements about Caliban and Prospero True or False.",
+        questionAr: "حدد الصح والخطأ في العبارات الثماني عن كاليبان وبروسبيرو.",
+        answer: "1 True; 2 False; 3 True; 4 True; 5 False; 6 True; 7 True; 8 False.",
+        answerAr: "1 صح؛ 2 خطأ؛ 3 صح؛ 4 صح؛ 5 خطأ؛ 6 صح؛ 7 صح؛ 8 خطأ.",
+        year: "كتاب النشاط ص 176",
+        keyHint: "Caliban accuses Prospero of stealing the island; English only lets him curse"
+      },
+      {
+        id: "temp-source-ex-5",
+        question: "What is the central point of Prospero's final speech?",
+        questionAr: "ما الفكرة الأساسية في خطاب بروسبيرو الأخير؟",
+        answer: "Prospero says his magical powers are gone and asks the audience to release him through their applause and forgiveness, so he can return to Naples.",
+        answerAr: "يقول بروسبيرو إن قواه السحرية انتهت ويطلب من الجمهور أن يحرره بالتصفيق والعفو حتى يتمكن من العودة إلى نابولي.",
+        year: "كتاب الطالب ص 211",
+        keyHint: "His spells are gone; he asks the audience to set him free"
+      },
     ]
   }
 ];
