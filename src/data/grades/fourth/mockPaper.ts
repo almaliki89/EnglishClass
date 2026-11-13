@@ -67,9 +67,9 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           number: 4,
           questionText: "According to Dr Ibrahim Ansari, how many hours of sleep do teenagers need per night?",
           type: "choice",
-          options: ["Between 8 and 10 hours", "4 hours", "12 hours", "6 hours"],
-          correctAnswer: "Between 8 and 10 hours",
-          explanation: "تتناول قراءة النوم حاجة المراهقين إلى النوم وآثاره. (الملزمة ص 99–100).",
+          options: ["Eight hours per night", "Four hours", "Twelve hours", "Six hours"],
+          correctAnswer: "Eight hours per night",
+          explanation: "يذكر النص أن المراهقين ينبغي أن يناموا بمعدل ثماني ساعات في الليلة. (الملزمة ص 99–100).",
           maxScore: 4
         },
         {
@@ -78,13 +78,13 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           questionText: "What are the Al-Hammaar Marshes in southern Iraq recognized as?",
           type: "choice",
           options: [
-            "One of the largest wetland ecosystems and a UNESCO World Heritage site",
+            "One of the largest and most important wetlands in the world",
             "A dry desert without water",
             "A modern airport runway",
-            "A industrial oil refining station"
+            "An industrial oil refining station"
           ],
-          correctAnswer: "One of the largest wetland ecosystems and a UNESCO World Heritage site",
-          explanation: "تصف الملزمة أهوار الحمار بأنها من أهم المناطق الرطبة وتعرض مشروع استعادتها. (الملزمة ص 127–128).",
+          correctAnswer: "One of the largest and most important wetlands in the world",
+          explanation: "تصف القراءة أهوار الحمار بأنها من أكبر وأهم المناطق الرطبة في العالم. (الملزمة ص 127–128).",
           maxScore: 4
         }
       ]
