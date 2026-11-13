@@ -1,16 +1,16 @@
 import { MockExamPaper } from '../../mockExamPapers';
 
 // =========================================================================
-// النموذج الامتحاني النهائي الشامل للصف الرابع الإعدادي (100 درجة)
-// مستخرج نصاً وتوزيعاً من ملزمة النموذجية 2026 (ص 149 - 150)
+// محاكاة تدريبية من إعداد المنصة لمراجعة موضوعات ملزمة الرابع الإعدادي (طبعة 2025).
+// توزيع النقاط والزمن إعداد تدريبي داخلي، وليس نموذجاً وزارياً أو توزيع درجات رسمياً.
 // =========================================================================
 
 export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
-  id: "mock-4th-prep-final-2026",
-  title: "الامتحان النهائي الشامل لمادة اللغة الإنكليزية - الرابع الإعدادي (100 درجة)",
-  subtitle: "مبني وفق نموذج الأسئلة الامتحانية في ملزمة النموذجية 2026 (ص 149)",
-  year: "2025-2026",
-  session: "الدور الأول - الامتحان النهائي العام",
+  id: "training-4th-prep-review-2025",
+  title: "نموذج تدريبي شامل للرابع الإعدادي (100 نقطة تدريبية)",
+  subtitle: "محاكاة أعدتها المنصة للمراجعة من موضوعات الملزمة المرفقة؛ ليست ورقة وزارية أو توزيع درجات رسمياً.",
+  year: "تدريبي - مصدر المحتوى طبعة 2025",
+  session: "تدريب إضافي - غير رسمي",
   durationMinutes: 150,
   totalMarks: 100,
   sections: [
@@ -54,13 +54,13 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           questionText: "Where is the National Museum of Iraq located, and what is its famous winged bull called?",
           type: "choice",
           options: [
-            "Located in Al-Alawi, Baghdad, and the winged bull is Lamassu",
+            "Located in Al-Salihiya, Al-Karkh, Baghdad, and the winged bull is Lamassu",
             "Located in Erbil, and the bull is Sphinx",
             "Located in Mosul, and the bull is Babylon",
             "Located in Basra, and the bull is Pharaoh"
           ],
-          correctAnswer: "Located in Al-Alawi, Baghdad, and the winged bull is Lamassu",
-          explanation: "يقع المتحف في العلاوي ببغداد واسم الثور المجنح هو Lamassu (الملزمة ص 84).",
+          correctAnswer: "Located in Al-Salihiya, Al-Karkh, Baghdad, and the winged bull is Lamassu",
+          explanation: "تقع بناية المتحف في الصالحية ضمن الكرخ في بغداد، واسم الثور المجنح Lamassu (الملزمة ص 92 - 93).",
           maxScore: 4
         },
         {
@@ -68,24 +68,24 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           number: 4,
           questionText: "According to Dr Ibrahim Ansari, how many hours of sleep do teenagers need per night?",
           type: "choice",
-          options: ["Between 8 and 10 hours", "4 hours", "12 hours", "6 hours"],
-          correctAnswer: "Between 8 and 10 hours",
-          explanation: "يحتاج المراهقون بين 8 إلى 10 ساعات نوم ليلية (الملزمة ص 102).",
+          options: ["An average of eight hours", "Four hours", "Twelve hours", "Six hours"],
+          correctAnswer: "An average of eight hours",
+          explanation: "يذكر النص أن المراهقين ينبغي أن يناموا بمعدل ثماني ساعات في الليلة (الملزمة ص 99 - 100).",
           maxScore: 4
         },
         {
           id: "4th-mock-q1-5",
           number: 5,
-          questionText: "What are the Al-Hammaar Marshes in southern Iraq recognized as?",
+          questionText: "How does the booklet describe the Al-Hammaar Marshes in southern Iraq?",
           type: "choice",
           options: [
-            "One of the largest wetland ecosystems and a UNESCO World Heritage site",
+            "One of the largest and most important wetlands in the world",
             "A dry desert without water",
             "A modern airport runway",
             "A industrial oil refining station"
           ],
-          correctAnswer: "One of the largest wetland ecosystems and a UNESCO World Heritage site",
-          explanation: "أهوار الحمار هي منطقة رطبة عالمية وموقع تراث عالمي لليونسكو (الملزمة ص 130).",
+          correctAnswer: "One of the largest and most important wetlands in the world",
+          explanation: "يصف نص الملزمة أهوار الحمار بأنها من أكبر المناطق الرطبة وأكثرها أهمية في العالم (الملزمة ص 127 - 128).",
           maxScore: 4
         }
       ]
@@ -161,7 +161,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["will be taking", "will take", "am taking", "took"],
           correctAnswer: "will be taking",
-          explanation: "مستقبل مستمر لوجود وقت محدد صباح غدٍ (At 10:00 AM tomorrow) (الملزمة ص 98).",
+          explanation: "مستقبل مستمر لوجود وقت محدد صباح غدٍ (At 10:00 AM tomorrow) (الملزمة ص 85 - 87).",
           maxScore: 5
         }
       ]
@@ -198,11 +198,11 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
         {
           id: "4th-mock-q3-3",
           number: 3,
-          questionText: "The acronym 'DOB' on an application form stands for Date of ______.",
+          questionText: "The application form asks for the date of ______.",
           type: "choice",
-          options: ["Birth", "Business", "Bachelor", "Booking"],
-          correctAnswer: "Birth",
-          explanation: "الرمز DOB يعني Date of Birth (تاريخ الميلاد) (الملزمة ص 23).",
+          options: ["birth", "business", "travel", "arrival"],
+          correctAnswer: "birth",
+          explanation: "تتضمن استمارة التقديم في الملزمة حقلاً بعنوان Date of birth (الملزمة ص 171).",
           maxScore: 5
         },
         {
@@ -263,21 +263,21 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
     {
       id: "4th-mock-essay-a",
       optionLetter: "A",
-      titleEn: "Traditional Wedding Customs and Celebrations in Iraq",
-      titleAr: "إنشاء (أ): عادات وتقاليد الزفاف والأعراس في العراق (الوحدة الرابعة - ص 176)",
-      prompt: "Write a paragraph describing Iraqi wedding customs, including Thursday celebrations, henna decorations, formal clothing, and family hospitality.",
-      suggestedModel: "Wedding customs differ from one culture to another, but in Iraq, marriage celebrations are steeped in deep joy and family hospitality. Weddings usually take place on Thursday. A day before, female relatives gather at the bride's house to decorate her hands with henna. On the wedding day, the groom wears a suit while the bride wears a white dress symbolizing purity. The groom's family hosts a grand feast for friends and relatives where traditional Iraqi food is served, and guests bring thoughtful presents to wish the couple happiness.",
-      keywords: ["henna night", "Thursday", "bride & groom", "purity", "hospitality"],
+      titleEn: "Wedding Customs in Iraq",
+      titleAr: "تدريب كتابة (أ): عادات الزواج في العراق — النص الوارد في الملزمة ص 174",
+      prompt: "Write about wedding customs in Iraq using the ideas in the source text. This is a practice prompt, not an official exam question.",
+      suggestedModel: "Wedding customs differ from country to country. In Iraq, a person usually gets married on Thursday. A day before the wedding, the bride’s hands and feet are decorated with henna. On the wedding day, the groom usually wears a suit, and the bride wears a white dress which symbolizes purity. The groom’s family invites friends and relatives to the wedding party. Sometimes food is served on the wedding day, but some families serve it a day before the wedding. Friends and relatives visit the bride and the groom and give them presents.",
+      keywords: ["Thursday", "henna", "bride", "groom", "purity", "presents"],
       maxScore: 20
     },
     {
       id: "4th-mock-essay-b",
       optionLetter: "B",
-      titleEn: "A Package Holiday Experience in Erbil and Northern Iraq",
-      titleAr: "إنشاء (ب): رحلة سياحية جماعية شاملة إلى أربيل وشمال العراق (الوحدة الثانية - ص 173)",
-      prompt: "Write a letter to a friend describing a package holiday trip to Erbil, mentioning the hotel, visited sights (Erbil Citadel, waterfalls), food, and overall experience.",
-      suggestedModel: "Dear Alex, Last month I went with my family on an amazing package holiday to Erbil in northern Iraq. The trip cost $200 per person and included travel fare, tours, and full accommodation. We stayed in a modern 5-star hotel near the city centre. According to our programme, we visited the historic Citadel of Erbil, local bazaars, and beautiful mountain waterfalls at Gali Ali Bag. In the evening, we enjoyed traditional Iraqi kebab in a luxurious restaurant. It was a fantastic holiday! Best wishes, Ammar",
-      keywords: ["package holiday", "Erbil Citadel", "accommodation", "waterfalls", "traditional kebab"],
+      titleEn: "Hello from Erbil",
+      titleAr: "تدريب كتابة (ب): رسالة من أربيل — النص الوارد في الملزمة ص 173",
+      prompt: "Write an email to a friend about a holiday in Erbil, using the source model as a guide. This is a practice prompt, not an official exam question.",
+      suggestedModel: "From: Ammar\nTo: Farah\nSubject: Hello from Erbil\n\nHi Farah,\nHow are you?\nLast month I went with my family on a holiday to the north of Iraq. It was a package deal and cost us $200 each.\nWe stayed in a five-star hotel in Erbil. It has big rooms, a wonderful restaurant and two swimming pools. It was clean and tidy. According to the program of the holiday, they took us to several places including the malls, mosques, museums and a free tour. In the evening, we visited the castle of Erbil and had supper in a luxurious restaurant.\nThe best thing about the holiday was that we visited a variety of places, old and modern. The weather was wonderful and the holiday was really fantastic.\nWhat about you? Tell me your news.\nBest wishes\nAmmar",
+      keywords: ["package deal", "Erbil", "five-star hotel", "castle", "holiday"],
       maxScore: 20
     }
   ]
