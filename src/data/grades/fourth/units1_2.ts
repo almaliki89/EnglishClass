@@ -1,7 +1,7 @@
 import { Unit } from '../../../types';
 
 // =========================================================================
-// الوحدة الأولى والثانية - ملزمة الرابع الإعدادي (2025-2026)
+// الوحدة الأولى والثانية - ملزمة الرابع الإعدادي (طبعة 2025)
 // مرجع الصفحات: ص 1 - 53
 // =========================================================================
 
@@ -14,8 +14,8 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
     description: "مفردات مراكز التعلم الذاتي، المضارع البسيط والمستمر، أفعال الحالة (Stative Verbs)، اللغات الرسمية لكندا، الأسئلة غير المباشرة المهذبة، صفات ed/ing، وتأطير البرامج الصيفية.",
     accentColor: "bg-lavender text-ink",
     bgGradient: "bg-blue-mist border-ink",
-    sourcePages: "الملزمة ص 1 - 25",
-    academicYear: "2025-2026",
+    sourcePages: "الملزمة ص 1 - 24",
+    academicYear: "2025",
     lessons: [
       {
         id: "4th-u1-l1",
@@ -290,7 +290,7 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
     description: "الماضي البسيط والماضي المستمر مع الربط بـ when/while، الاعتياد في الماضي بـ used to، منظمة يونيسيف (UNICEF) وحماية الأطفال، عادات الأعراس، ظروف الطريقة، ورحلة أربيل الجماعية.",
     accentColor: "bg-cobalt text-surface",
     bgGradient: "bg-blue-mist border-ink",
-    sourcePages: "الملزمة ص 25 - 53",
+    sourcePages: "الملزمة ص 25 - 52",
     academicYear: "2025-2026",
     lessons: [
       {
