@@ -910,7 +910,13 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
                 <div className="flex flex-wrap items-center gap-3">
                   <div className="flex items-baseline gap-1">
                     <span className="text-2xl font-black text-ink font-mono tabular-nums">{studentWordCount}</span>
-                    <span className="text-muted-gray font-bold">/ 100-130 كلمة</span>
+                    <span className="text-muted-gray font-bold">
+                      {grade === 'fourth-preparatory'
+                        ? (currentEssay.wordCountMin && currentEssay.wordCountMax
+                          ? `/ ${currentEssay.wordCountMin}–${currentEssay.wordCountMax} كلمة`
+                          : 'لا يوجد حد كلمات محدد في الملزمة')
+                        : '/ 100-130 كلمة'}
+                    </span>
                   </div>
                   <span className={`px-2.5 py-1 rounded-[4px] text-xs font-bold ${studentCountStatus.bg} ${studentCountStatus.color}`}>
                     {studentCountStatus.label}
