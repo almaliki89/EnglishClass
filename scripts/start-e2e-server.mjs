@@ -3,7 +3,7 @@ import { spawn } from 'node:child_process';
 const npmExec = process.platform === 'win32' ? 'npx.cmd' : 'npx';
 const child = spawn(npmExec, ['tsx', 'server.ts'], {
   cwd: process.cwd(),
-  env: { ...process.env, PORT: '3001', NODE_ENV: 'test' },
+  env: { ...process.env, PORT: '3001', NODE_ENV: 'test', VITE_E2E_MODE: 'true' },
   stdio: 'inherit',
   shell: process.platform === 'win32',
 });
