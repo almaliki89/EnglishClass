@@ -74,6 +74,18 @@ jobs:
       - name: Run Deep Architecture Audit
         run: npx tsx scripts/deep_architecture_audit.ts
 
+      - name: Install Firebase Rules Emulator tooling
+        run: npm install --no-save --package-lock=false --prefer-offline @firebase/rules-unit-testing firebase-tools
+
+      - name: Setup Java 21 for Firebase Emulator
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Run Firestore and Storage Security Rules Emulator Tests
+        run: npx firebase emulators:exec --project demo-englishclass-rules-test --only firestore,storage "npm run test:rules"
+
       - name: Run V6 Security & Hardening Regression Suite
         run: npm run test:security
 
