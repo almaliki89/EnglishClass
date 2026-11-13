@@ -18,8 +18,8 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
       sectionCode: "Q1",
       titleAr: "السؤال الأول: استيعاب القطع ونصوص الكتاب",
       titleEn: "Question 1: Reading Comprehension & Texts",
-      instructionsAr: "السؤال الأول: القطعة الخارجية ونصوص الكتاب المقررة (20 درجة):",
-      instructionsEn: "Question 1: Unseen Reading Passage & Textbook Comprehension (20 Marks):",
+      instructionsAr: "السؤال الأول: قراءات الملزمة المقررة (20 درجة):",
+      instructionsEn: "Question 1: Booklet Reading Comprehension (20 Marks):",
       totalMarks: 20,
       items: [
         {
@@ -53,12 +53,12 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           questionText: "Where is the National Museum of Iraq located, and what is its famous winged bull called?",
           type: "choice",
           options: [
-            "Located in Al-Alawi, Baghdad, and the winged bull is Lamassu",
+            "Located in Al-Salihiya, Al-Karkh, Baghdad, and the winged bull is Lamassu",
             "Located in Erbil, and the bull is Sphinx",
             "Located in Mosul, and the bull is Babylon",
             "Located in Basra, and the bull is Pharaoh"
           ],
-          correctAnswer: "Located in Al-Alawi, Baghdad, and the winged bull is Lamassu",
+          correctAnswer: "Located in Al-Salihiya, Al-Karkh, Baghdad, and the winged bull is Lamassu",
           explanation: "تتناول قراءة المتحف الوطني العراقي ومقتنياته في هذا القسم. (الملزمة ص 92–94).",
           maxScore: 4
         },
@@ -120,7 +120,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
           type: "choice",
           options: ["were walking", "walked", "are walking", "walks"],
           correctAnswer: "were walking",
-          explanation: "ماضي مستمر بعد أداة الربط While (were walking) (الملزمة ص 27).",
+          explanation: "يصف الماضي المستمر فعلاً كان جارياً عندما وقع حدث آخر. (الملزمة ص 40–42).",
           maxScore: 5
         },
         {
@@ -177,7 +177,7 @@ export const FOURTH_PREPARATORY_MOCK_PAPER: MockExamPaper = {
         {
           id: "4th-mock-q3-1",
           number: 1,
-          questionText: "Ali is a good player; he plays football very ______.",
+          questionText: "Can I ______ your book? I left mine at home.",
           type: "choice",
           options: ["well", "goodly", "good", "better"],
           correctAnswer: "well",
