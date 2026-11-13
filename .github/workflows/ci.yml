@@ -59,6 +59,12 @@ jobs:
           console.log(JSON.stringify({ scope: 'production-only', totals: report.metadata?.vulnerabilities, packages }, null, 2));
           NODE
 
+      - name: Enforce Full Dependency Audit Gate
+        run: npm audit --audit-level=low
+
+      - name: Enforce Production Dependency Audit Gate
+        run: npm audit --omit=dev --audit-level=low
+
       - name: Run TypeScript Typecheck (Linter)
         run: npm run lint
 
