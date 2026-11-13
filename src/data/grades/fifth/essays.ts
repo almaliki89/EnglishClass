@@ -1,8 +1,7 @@
 import { EssayItem } from '../../../types';
 
 // Source-verified written component from the 2026 booklet, printed pages 212-221.
-// Exactly 15 items are represented below. Arabic translations/extra exercises are
-// intentionally left empty unless verified separately against the source.
+// Exactly 15 source texts are represented below with Arabic study translations.
 
 export const FIFTH_PREPARATORY_ESSAYS: EssayItem[] = [
   {
