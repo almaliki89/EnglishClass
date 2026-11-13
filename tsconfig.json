@@ -27,5 +27,8 @@
     "noEmit": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true
-  }
+  },
+  "exclude": [
+    "scripts/verify_firebase_rules.ts"
+  ]
 }
