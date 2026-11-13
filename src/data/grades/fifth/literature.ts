@@ -25,6 +25,8 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
       "بسبب فقر عائلتها بدأت العمل في سن مبكرة. وخلال الحرب الأهلية الأمريكية تطوعت ممرضة، وأصيبت بالتيفوئيد ثم تعافت. نُشرت قصصها القصيرة في مجلة The Atlantic Monthly، ثم ساعدت رواياتها اللاحقة على سداد ديون عائلتها.",
       "فقدت شقيقتها الصغرى بسبب الحمى القرمزية وشقيقتها الكبرى بسبب مضاعفات الولادة، ثم تولت تربية ابنة أختها التي حملت الاسم نفسه. توفيت ألكوت في بوسطن عن عمر 55 عاماً بعد معاناة صحية."
     ],
+    historicalContextEn: "Little Women was unusual compared with Alcott's usual work. She preferred short stories for adults and did not enjoy writing for children, but an editor at Roberts Brothers persuaded her to write a book for young girls inspired by her life with her sisters. She wrote it in just over two months and it was first published in two parts. The book became an immediate success, was translated into more than 50 languages, and was adapted for theatre, silent films, television, major films and anime. The booklet also notes the 2019 film adaptation directed by Greta Gerwig.",
+    historicalContextAr: "كانت رواية نساء صغيرات مختلفة عن أعمال ألكوت المعتادة؛ فقد كانت تفضل القصص القصيرة للكبار ولم تكن تستمتع بالكتابة للأطفال، لكن محرراً في دار روبرتس براذرز أقنعها بكتابة كتاب للفتيات مستوحى من حياتها مع شقيقاتها. كتبته في أكثر قليلاً من شهرين ونُشر أولاً في جزأين. حقق نجاحاً فورياً وتُرجم إلى أكثر من 50 لغة، واقتُبس للمسرح والأفلام الصامتة والتلفزيون والأفلام السينمائية والأنمي. وتشير الملزمة أيضاً إلى الفيلم المقتبس عام 2019 بإخراج غريتا غيرويغ.",
     genre: "Novel",
     genreAr: "رواية",
     image: "/assets/images/little_women_scene_1794251359174.jpg",
@@ -286,6 +288,8 @@ export const FIFTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
       "ولد في ستراتفورد-أبون-أفون وسط إنجلترا، وعمل ممثلاً في شبابه قبل أن يصبح كاتباً.",
       "كتب ما لا يقل عن 37 مسرحية و154 سونيتة وقصيدتين سرديتين. وتُعرض مسرحياته في أنحاء العالم بلغات عديدة، كما تُرجمت أشعاره على نطاق واسع."
     ],
+    historicalContextEn: "The play was first performed for King James and was later performed again to celebrate the marriage of his daughter Elizabeth. Its story takes place in a single day. The booklet describes it as Shakespeare's farewell to the stage and probably the last play he wrote alone. Although considered a comedy, it deals with colonialism, revenge and forgiveness.",
+    historicalContextAr: "عُرضت المسرحية للمرة الأولى أمام الملك جيمس، ثم عُرضت مرة أخرى للاحتفال بزواج ابنته إليزابيث. وتجري أحداثها خلال يوم واحد. وتصفها الملزمة بأنها وداع شكسبير للمسرح، وربما آخر مسرحية كتبها منفرداً. وعلى الرغم من تصنيفها كوميديا، فإنها تتناول الاستعمار والانتقام والغفران.",
     genre: "Comedy",
     genreAr: "كوميديا",
     image: "/assets/images/the_tempest_scene_1794251373907.jpg",
