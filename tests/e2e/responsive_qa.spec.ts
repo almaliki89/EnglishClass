@@ -115,8 +115,48 @@ test.describe('Responsive QA Across Required Viewports (360px - 1440px)', () => 
       await assertNavbarVisibleWithoutClipping(page, vp.width, `${vp.name} exam-engine`);
       await assertNoHorizontalOverflow(page, `${vp.name} exam-engine`);
       await saveQaScreenshot(page, vp.name, '06-exam-engine.png');
+
+      // 7. Unit-Organized Essays Directory (5th Preparatory has 15 essays across 7 units)
+      await page.goto('/grade/fifth-preparatory/essays');
+      await page.waitForLoadState('networkidle');
+      await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
+      await expect(page.locator('#unit-essays-heading-51')).toBeVisible();
+      await expect(page.locator('#filter-essay-u1')).toBeVisible();
+      await assertNavbarVisibleWithoutClipping(page, vp.width, `${vp.name} essays-directory`);
+      await assertNoHorizontalOverflow(page, `${vp.name} essays-directory`);
+      await saveQaScreenshot(page, vp.name, '07-essays-directory.png');
     });
   }
+
+  test('Essays directory groups essays cleanly by unit across grades without raw unitIds', async ({ page }) => {
+    await page.setViewportSize({ width: 1280, height: 900 });
+
+    // 3rd Intermediate (uses internal unitIds 101..107)
+    await page.goto('/grade/third-intermediate/essays');
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator('#filter-essay-u1')).toBeVisible();
+    await expect(page.locator('#unit-essays-heading-101')).toBeVisible();
+    await expect(page.locator('#unit-essays-heading-102')).toBeVisible();
+    const thirdContent = await page.locator('main, #root').first().innerText();
+    expect(thirdContent).not.toContain('الوحدة 101');
+    expect(thirdContent).not.toContain('وحدة 101');
+
+    // Filter to Unit 2 (2 essays in 3rd intermediate)
+    await page.locator('#filter-essay-u2').click();
+    await expect(page.locator('#unit-essays-heading-102')).toBeVisible();
+    await expect(page.locator('#unit-essays-heading-101')).toHaveCount(0);
+    await expect(page.locator('#essay-tab-3rd-essay-u2-invitation')).toBeVisible();
+    await expect(page.locator('#essay-tab-3rd-essay-u2-film')).toBeVisible();
+
+    // 4th Preparatory (uses internal unitIds 41..47)
+    await page.goto('/grade/fourth-preparatory/essays');
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator('#filter-essay-u1')).toBeVisible();
+    await expect(page.locator('#unit-essays-heading-41')).toBeVisible();
+    const fourthContent = await page.locator('#root').innerText();
+    expect(fourthContent).not.toContain('الوحدة 41');
+    expect(fourthContent).not.toContain('وحدة 41');
+  });
 
   test('Keyboard interaction and reduced-motion accessibility check', async ({ page }) => {
     await page.emulateMedia({ reducedMotion: 'reduce' });
