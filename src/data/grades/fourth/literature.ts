@@ -1,10 +1,10 @@
 import { LiteratureItem } from '../../../types';
 
 // =========================================================================
-// الأدب المقرّر للصف الرابع الإعدادي - ملزمة النموذجية 2026
-// Literature Spot (ص 150 - 170)
-// 1. رواية جزيرة الكنز (Treasure Island) - رابرت لويس ستيفنسون (ص 150 - 160)
-// 2. رواية حول العالم في 80 يوماً (Around the World in 80 Days) - جول فيرن (ص 161 - 170)
+// الأدب الوارد في ملزمة النموذجية للصف الرابع الإعدادي (نسخة الغلاف 2025).
+// فهرس الملزمة يبدأ الأدب في ص 149: Treasure Island ص 149–158، و
+// Around the World in 80 Days ص 159–169. ص 170 يبدأ ملحق الأفعال الشاذة.
+// التوسعات السيرية والملخصات الإضافية في هذا الملف مواد إثرائية، وليست كلها نصاً من الملزمة.
 // =========================================================================
 
 export const FOURTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
@@ -108,7 +108,7 @@ export const FOURTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         questionAr: "من هو مؤلف رواية 'جزيرة الكنز' وفي أي عام نُشرت رسمياً كرواية؟",
         answer: "It was written by the Scottish author Robert Louis Stevenson and published as a novel in 1883.",
         answerAr: "كتبها المؤلف الاسكتلندي رابرت لويس ستيفنسون ونُشرت كرواية كاملة عام 1883.",
-        year: "الملزمة ص 150",
+        year: "الملزمة ص 149–158",
         keyHint: "Robert Louis Stevenson - 1883"
       },
       {
@@ -126,7 +126,7 @@ export const FOURTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         questionAr: "من هو بن غان، وكم من الوقت مضى عليه معزولاً ومتروكاً في الجزيرة؟",
         answer: "He was a former pirate from Flint's crew who had been marooned on the island alone for three years.",
         answerAr: "كان بحاراً وقرصاناً سابقاً في طاقم فلينت، تركه القراصنة معزولاً في الجزيرة بمفرده لمدة ثلاث سنوات.",
-        year: "الملزمة ص 156",
+        year: "الملزمة ص 157–158",
         keyHint: "Marooned pirate on the island for 3 years"
       },
       {
@@ -135,7 +135,7 @@ export const FOURTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         questionAr: "ماذا فعل بن غان بكنز الكابتن فلينت المدفون قبل وصول سفينة هسبانيولا؟",
         answer: "During his lonely years on the island, Ben Gunn found Flint's skeleton guide, dug up the treasure, and carried it slowly to his cave for safekeeping.",
         answerAr: "خلال سنوات عزلته، عثر بن غان على مكان الكنز وحفر الحفرة واستخرج الذهب ونقله حجر بحجر إلى كهفه الآمن.",
-        year: "الملزمة ص 159",
+        year: "الملزمة ص 157–158",
         keyHint: "Dug up the treasure and stored it in his cave"
       }
     ]
@@ -240,7 +240,7 @@ export const FOURTH_PREPARATORY_LITERATURE: LiteratureItem[] = [
         questionAr: "من هو مؤلف رواية 'حول العالم في 80 يوماً' وفي أي عام نُشرت لأول مرة؟",
         answer: "It was written by the famous French science-fiction novelist Jules Verne and first published in 1872.",
         answerAr: "كتبها الروائي الفرنسي الشهير جول فيرن ونُشرت لأول مرة عام 1872.",
-        year: "الملزمة ص 161",
+        year: "الملزمة ص 159–169",
         keyHint: "Jules Verne - 1872"
       },
       {
