@@ -800,9 +800,9 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
   {
     id: 104,
     number: 4,
-    titleAr: "الوحدة الرابعة: قصص إبراهيم والنمور الفارسية",
+    titleAr: "الوحدة الرابعة: قصة إبراهيم وقطعة النمور الفارسية",
     titleEn: "Unit 4: Ibrahim's Life Story & Too Few Leopards",
-    description: "محتوى الوحدة الرابعة كما ورد في الملزمة: مفردات الأضداد، ترتيب الأسئلة، صيغ to go / go / going، الماضي البسيط، الضمائر وصفات الملكية، الشرطية الأولى، إعادة الصياغة والمبني للمجهول، وقصتا إبراهيم والنمور الفارسية.",
+    description: "محتوى الوحدة الرابعة كما ورد في الملزمة: مفردات الأضداد، ترتيب الأسئلة، صيغ to go / go / going، الماضي البسيط، الضمائر وصفات الملكية، الشرطية الأولى، إعادة الصياغة والمبني للمجهول، قصة إبراهيم وقطعة Too Few Leopards.",
     accentColor: "bg-cobalt text-surface",
     bgGradient: "bg-blue-mist border-ink",
     sourcePages: "82-88",
