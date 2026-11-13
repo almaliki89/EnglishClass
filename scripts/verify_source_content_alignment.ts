@@ -16,6 +16,7 @@ const unitFour = THIRD_INTERMEDIATE_UNITS.find((unit) => unit.number === 4);
 assert.ok(unitFour, 'Third intermediate Unit 4 must exist');
 assert.ok(unitFour.lessons.some((lesson) => lesson.titleEn.includes("Ibrahim's Life Story")), 'Unit 4 must include Ibrahim reading');
 assert.ok(unitFour.lessons.some((lesson) => lesson.titleEn === 'Too Few Leopards'), 'Unit 4 must include Too Few Leopards');
+assert.ok(unitFour.lessons.every((lesson) => lesson.exercises.length > 0), 'Every Unit 4 lesson must contain its source-linked exercises');
 assert.ok(THIRD_INTERMEDIATE_STORIES.some((story) => story.id === '3rd-story-too-few-leopards'), 'Too Few Leopards must be in the story/reading library');
 assert.ok(THIRD_INTERMEDIATE_STORIES.some((story) => story.id === '3rd-story-ali-career' && story.author.includes('Unit Seven')), 'Ali career must not be assigned to a nonexistent Unit 8');
 assert.ok(THIRD_INTERMEDIATE_ESSAYS.every((essay) => essay.unitId !== 108), 'Third intermediate essays must not reference nonexistent Unit 8');
@@ -46,16 +47,23 @@ const uniqueVerbs = new Set(IRREGULAR_VERBS.map((verb) => verb.base));
 assert.equal(IRREGULAR_VERBS.length, 96, 'Irregular verb appendix has 96 unique verbs (97 printed rows with duplicate lose)');
 assert.equal(uniqueVerbs.size, 96, 'Irregular verb list must not contain duplicates');
 assert.ok(!uniqueVerbs.has('begin') && !uniqueVerbs.has('become'), 'Do not add verbs absent from the source appendix');
+const verbByBase = new Map(IRREGULAR_VERBS.map((verb) => [verb.base, verb]));
+assert.equal(verbByBase.get('rise')?.group, 'all-different', 'rise/rose/risen has three different forms');
+assert.equal(verbByBase.get('light')?.group, 'two-same', 'light/lit/lit has two identical forms');
+assert.equal(verbByBase.get('set')?.group, 'all-same', 'set/set/set has identical forms');
 
 assert.ok(FIFTH_PREPARATORY_QUESTIONS.every((question) => question.year === 'تدريب إضافي' && question.session === 'تدريب إضافي'), 'Unverified question-bank items must be labeled supplementary, not ministerial exam years');
 assert.ok(FIFTH_PREPARATORY_QUESTIONS.every((question) => question.sourceReference?.includes('لم يُتحقق')), 'Supplementary questions must not claim unverified booklet page references');
 assert.ok(FIFTH_PREPARATORY_MOCK_PAPER.id.includes('supplementary'), 'Fifth-grade mock must be identified as supplementary');
 assert.ok(FIFTH_PREPARATORY_MOCK_PAPER.subtitle.includes('ليس ورقة امتحان'), 'Fifth-grade mock must not claim to be copied from booklet pages 186-187');
+assert.deepEqual(FIFTH_PREPARATORY_MOCK_PAPER.essayOptions.map((essay) => essay.titleEn), ['My Friend', 'How Can We Save Water?'], 'Supplementary writing prompts must use source-matched topics');
 
 const littleWomen = FIFTH_PREPARATORY_LITERATURE.find((item) => item.id === 'lit-5th-little-women');
 const tempest = FIFTH_PREPARATORY_LITERATURE.find((item) => item.id === 'lit-5th-the-tempest');
 assert.ok(littleWomen && littleWomen.ministerialQA.length >= 17, 'Little Women must include its source reading questions and Activity Book exercises');
 assert.ok(tempest && tempest.ministerialQA.length >= 10, 'The Tempest must include its source reading questions and Activity Book exercises');
+assert.ok(littleWomen?.historicalContextEn?.includes('more than 50 languages'), 'Little Women context must reflect the booklet');
+assert.ok(tempest?.historicalContextEn?.includes('King James'), 'The Tempest context must reflect the booklet');
 assert.ok(littleWomen.ministerialQA.some((item) => item.id === 'lw-source-ex-12'), 'Little Women final-section vocabulary exercise must be represented');
 assert.ok(tempest.ministerialQA.some((item) => item.id === 'temp-source-ex-4'), 'The Tempest true/false exercise must be represented');
 
