@@ -836,7 +836,17 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           { id: "3u4-l1-ex2", question: "I'd rather (go / to go / going) to the library.", options: ["go", "to go", "going"], correctAnswer: "go", explanation: "الإجابة وفق تمرين الملزمة.", type: "mcq", sourcePages: "83" },
           { id: "3u4-l1-ex3", question: "How about (go / to go / going) fishing?", options: ["go", "to go", "going"], correctAnswer: "going", explanation: "الإجابة وفق تمرين الملزمة.", type: "mcq", sourcePages: "83" },
           { id: "3u4-l1-ex4", question: "OK. Let's (go / to go / going) fishing.", options: ["go", "to go", "going"], correctAnswer: "go", explanation: "الإجابة وفق تمرين الملزمة.", type: "mcq", sourcePages: "83" },
-          { id: "3u4-l1-ex5", question: "Complete: If you (eat / will eat) too many sweets, you will feel ill.", options: ["eat", "will eat"], correctAnswer: "eat", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" }
+          { id: "3u4-l1-ex5", question: "Complete: If you (eat / will eat) too many sweets, you will feel ill.", options: ["eat", "will eat"], correctAnswer: "eat", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" },
+
+          { id: "3u4-l1-ex6", question: "Match the ten opposite pairs listed on page 82.", correctAnswer: "fast–slow; awful–fantastic; expensive–cheap; ugly–beautiful; dangerous–safe; noisy–quiet; sad–happy; young–old; bright–dark; lazy–hard-working.", explanation: "الأزواج كما وردت في جدول الأضداد.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex7", question: "Re-order: his / colour / What / ? / is / hair", correctAnswer: "What colour is his hair?", explanation: "ترتيب السؤال كما ورد في تمرين الملزمة.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex8", question: "Re-order: he / does / ? / Where / live", correctAnswer: "Where does he live?", explanation: "ترتيب السؤال كما ورد في تمرين الملزمة.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex9", question: "Re-order: does / wear / What / he / ?", correctAnswer: "What does he wear?", explanation: "ترتيب السؤال كما ورد في تمرين الملزمة.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex10", question: "Re-order: ? / football / play / well / he / Can", correctAnswer: "Can he play football well?", explanation: "ترتيب السؤال كما ورد في تمرين الملزمة.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex11", question: "Re-order: he / ? / Is / science / good / at / and / maths", correctAnswer: "Is he good at maths and science?", explanation: "ترتيب السؤال كما ورد في تمرين الملزمة.", type: "fill", sourcePages: "82" },
+          { id: "3u4-l1-ex12", question: "Write these verbs in the past simple: want, is, say, arrive, laugh, land, send, lose, fly, set, get, put.", correctAnswer: "wanted; was; said; arrived; laughed; landed; sent; lost; flew; set; got; put.", explanation: "التصريفات كما وردت في تمرين الملزمة.", type: "fill", sourcePages: "83" },
+          { id: "3u4-l1-ex13", question: "Complete the five sentences in the pronoun / possessive adjective exercise on page 83.", correctAnswer: "mine; his; your; us; her.", explanation: "الكلمات المستهدفة في الجمل الخمس كما تظهر في نص التمرين.", type: "fill", sourcePages: "83" }
+
         ]
       },
       {
@@ -864,7 +874,12 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           { id: "3u4-l2-ex2", question: "If I bake a cake, (will you / do you) have some?", options: ["will you", "do you"], correctAnswer: "will you", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" },
           { id: "3u4-l2-ex3", question: "Your sister will miss the bus if she (won't / doesn't) get up soon.", options: ["won't", "doesn't"], correctAnswer: "doesn't", explanation: "الإجابة وفق تمرين الشرطية الأولى في الملزمة.", type: "mcq", sourcePages: "84" },
           { id: "3u4-l2-ex4", question: "Rewrite in the passive: Falcons eat small animals and birds.", correctAnswer: "Small animals and birds are eaten by falcons.", explanation: "الإجابة كما وردت في تمرين إعادة الصياغة.", type: "fill", sourcePages: "84" },
-          { id: "3u4-l2-ex5", question: "Rewrite in the passive: Where can you find wild flamingos?", correctAnswer: "Where can wild flamingos be found?", explanation: "الإجابة كما وردت في تمرين إعادة الصياغة.", type: "fill", sourcePages: "84" }
+          { id: "3u4-l2-ex5", question: "Rewrite in the passive: Where can you find wild flamingos?", correctAnswer: "Where can wild flamingos be found?", explanation: "الإجابة كما وردت في تمرين إعادة الصياغة.", type: "fill", sourcePages: "84" },
+
+          { id: "3u4-l2-ex6", question: "Rewrite: There would be more insects if there were no spiders.", correctAnswer: "If there were no spiders, there would be more insects.", explanation: "إعادة صياغة الجملة كما وردت في الملزمة.", type: "fill", sourcePages: "84" },
+          { id: "3u4-l2-ex7", question: "Rewrite: The number of birds has gone up.", correctAnswer: "There are more birds than before.", explanation: "إعادة صياغة الجملة كما وردت في الملزمة.", type: "fill", sourcePages: "84" },
+          { id: "3u4-l2-ex8", question: "Rewrite: A mouse is not as big as a rat.", correctAnswer: "A rat is bigger than a mouse.", explanation: "إعادة صياغة الجملة كما وردت في الملزمة.", type: "fill", sourcePages: "84" }
+
         ]
       },
       {
@@ -897,7 +912,24 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
           { id: "3u4-l3-ex5", question: "Why did Ibrahim move to Baghdad?", correctAnswer: "Because his father got a new job there with Iraq Petroleum.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
           { id: "3u4-l3-ex6", question: "What did he learn from Pierre?", correctAnswer: "He learnt to speak French and he learnt about France.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
           { id: "3u4-l3-ex7", question: "Why did Ibrahim want to be a zoologist?", correctAnswer: "So that he could study animals in different countries.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
-          { id: "3u4-l3-ex8", question: "Where is Ibrahim writing his book?", correctAnswer: "He is writing his book in France.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" }
+          { id: "3u4-l3-ex8", question: "Where is Ibrahim writing his book?", correctAnswer: "He is writing his book in France.", explanation: "إجابة الملزمة.", type: "fill", sourcePages: "86" },
+
+          { id: "3u4-l3-ex9", question: "True or False: Ibrahim was not interested in animals until he went to school.", options: ["True", "False"], correctAnswer: "False", explanation: "كان مهتماً بالحيوانات منذ سن مبكرة.", type: "mcq", sourcePages: "86-87" },
+          { id: "3u4-l3-ex10", question: "True or False: He found out about animals from television.", options: ["True", "False"], correctAnswer: "False", explanation: "لم يكن يحب التلفزيون وكان يقضي وقتاً في القراءة.", type: "mcq", sourcePages: "86-87" },
+          { id: "3u4-l3-ex11", question: "True or False: He moved to Baghdad when he was 17.", options: ["True", "False"], correctAnswer: "False", explanation: "النص يذكر أنه كان في السادسة عشرة.", type: "mcq", sourcePages: "86-87" },
+          { id: "3u4-l3-ex12", question: "True or False: Pierre helped Ibrahim learn French.", options: ["True", "False"], correctAnswer: "True", explanation: "تعلم إبراهيم التحدث ببعض الفرنسية مع بيير.", type: "mcq", sourcePages: "86-87" },
+          { id: "3u4-l3-ex13", question: "True or False: Ibrahim wrote a book at university.", options: ["True", "False"], correctAnswer: "False", explanation: "النص يقول إنه يعمل في فرنسا ويكتب كتاباً عن حيوانات أفريقيا.", type: "mcq", sourcePages: "86-87" },
+          { id: "3u4-l3-ex14", question: "True or False: From an early age, Ibrahim was interested in animals.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق لما ورد في أسئلة الملزمة الوزارية.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex15", question: "True or False: Ibrahim lived in a small village in the south of Iraq when he was a child.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق للنص.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex16", question: "True or False: Ibrahim moved to Baghdad when he was 17.", options: ["True", "False"], correctAnswer: "False", explanation: "كان عمره 16 عاماً.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex17", question: "True or False: When Ibrahim left school, he studied zoology at Cairo University.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق للنص.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex18", question: "True or False: Ibrahim was not interested in animals before he went to school.", options: ["True", "False"], correctAnswer: "False", explanation: "كان مهتماً بها منذ سن مبكرة.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex19", question: "True or False: Ibrahim was interested in animals from an early age.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق للنص.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex20", question: "True or False: Ibrahim's small village was in the south of Iraq when he was a child.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق للنص.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex21", question: "True or False: Pierre helped Ibrahim to speak some French with him.", options: ["True", "False"], correctAnswer: "True", explanation: "تعلم إبراهيم التحدث ببعض الفرنسية مع بيير.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex22", question: "True or False: Pierre helped Ibrahim learn French.", options: ["True", "False"], correctAnswer: "True", explanation: "مطابق للنص.", type: "mcq", sourcePages: "87" },
+          { id: "3u4-l3-ex23", question: "What did Ibrahim look after for his father?", correctAnswer: "Goats and chickens.", explanation: "الإجابة الواردة في سؤال الوزاريات.", type: "fill", sourcePages: "87" }
+
         ]
       },
       {
