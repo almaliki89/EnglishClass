@@ -28,11 +28,13 @@ test.describe('Iraqi English Curriculum Platform - Critical Architecture & Secur
 
     // "Explore grades" should scroll to the grade choices, not navigate to an identical page.
     await page.getByRole('button', { name: 'استكشف الصفوف' }).click();
-    const thirdGradeCard = page.getByRole('link', { name: 'دخول منصة الثالث المتوسط' });
+    const thirdGradeCard = page.locator('article.grade-portal-card').filter({
+      has: page.getByRole('heading', { name: 'الثالث المتوسط', exact: true }),
+    });
     await expect(thirdGradeCard).toBeVisible();
     await expect(thirdGradeCard).toBeInViewport();
 
-    // The entire grade card is a link, not only its small bottom action label.
+    // Clicking the grade title (not only the bottom action button) enters the grade.
     await thirdGradeCard.getByRole('heading', { name: 'الثالث المتوسط', exact: true }).click();
     await expect(page).toHaveURL(/\/grade\/third-intermediate$/);
     await expect(page.getByRole('heading', { name: /منصة الثالث المتوسط/ })).toBeVisible();
