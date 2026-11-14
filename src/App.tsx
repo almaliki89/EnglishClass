@@ -896,10 +896,14 @@ function MainAppContent() {
                 <MentorPortrait size="md" accent="yellow" withGeometricBackdrop />
                 <div className="min-w-0 space-y-1.5">
                   <h3 className="text-xl sm:text-2xl font-extrabold font-display text-ink">
-                    النموذجية في الإنكليزية
+                    <span dir="ltr" className="tracking-[0.06em]">LINGORA</span>
+                    <span className="mr-2 text-cobalt">لينغورا</span>
                   </h3>
+                  <p className="text-[10px] font-mono font-bold uppercase tracking-wider text-cobalt">
+                    Your Language. Your World.
+                  </p>
                   <p className="text-xs text-muted-gray leading-relaxed font-medium max-w-md">
-                    المنصة الأكاديمية الشاملة لتدريس ومراجعة منهاج اللغة الإنكليزية للمراحل المتوسطة والإعدادية في العراق، إعداد وإشراف الأستاذ مصطفى تركي.
+                    منصة LINGORA التعليمية لتدريس ومراجعة اللغة الإنكليزية للمراحل المتوسطة والإعدادية في العراق، إعداد وإشراف الأستاذ مصطفى تركي.
                   </p>
                 </div>
               </div>
@@ -928,7 +932,7 @@ function MainAppContent() {
           </div>
 
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-muted-gray">
-            <p>© 2026 النموذجية في الإنكليزية • جمهورية العراق — جميع الحقوق محفوظة.</p>
+            <p>© 2026 LINGORA — لينغورا • جمهورية العراق — جميع الحقوق محفوظة.</p>
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 bg-yellow border border-ink inline-block" />
               <span>RETRO NEO-BRUTALISM × SWISS EDITORIAL EDITION</span>
