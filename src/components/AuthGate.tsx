@@ -157,10 +157,12 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
             </div>
 
             <div className="space-y-3">
-              <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-ink">
-                المنصة النموذجية <br />
+              <h1 id="auth-brand-heading" className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-ink">
+                <span dir="ltr" className="inline-block tracking-[0.04em]">LINGORA</span>
+                <span className="mr-2 text-cobalt">لينغورا</span>
+                <br />
                 <span className="bg-cobalt text-surface px-2 py-0.5 inline-block -rotate-1 mt-1">
-                  اللغة الإنكليزية
+                  تعلّم اللغة الإنكليزية
                 </span>
               </h1>
               <div className="flex items-center gap-3.5 rounded-[6px] border-2 border-ink bg-paper p-3 shadow-brutal-sm">
@@ -455,7 +457,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
 
             <div className="mt-4 pt-3 border-t-2 border-ink text-center">
               <p className="text-[11px] font-mono text-ink/70">
-                منصة النموذجية • بوابة تسجيل الطلبة 2026/2027
+                LINGORA — لينغورا • بوابة الطلبة 2026/2027
               </p>
             </div>
 
