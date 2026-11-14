@@ -111,7 +111,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
       </BrutalCard>
 
       {/* 2. Grid of 4 Active Educational Environments */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="grade-portal-grid grid grid-cols-1 md:grid-cols-2 gap-8">
         {ORDERED_GRADES.map((gId, idx) => {
           const meta = ALL_GRADES_META[gId];
           const units = getUnitsForGrade(gId);
@@ -127,7 +127,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
               variant="white"
               borderSize="3"
               shadowSize="lg"
-              className={`p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:-translate-y-1 transition-transform ${
+              className={`grade-portal-card p-6 sm:p-8 flex flex-col justify-between space-y-6 hover:-translate-y-1 transition-transform ${
                 isCurrentActive ? 'border-cobalt ring-2 ring-cobalt/30' : ''
               }`}
             >
