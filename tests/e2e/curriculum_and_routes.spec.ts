@@ -343,4 +343,20 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByRole('heading', { name: 'رحلة التعلم خطوة بخطوة' })).toBeVisible();
   });
 
+  test('13. Students can browse and enter grades without signing in', async ({ page }) => {
+    await page.goto('/?forceSignedOut=true');
+    await page.waitForLoadState('networkidle');
+
+    await expect(page.getByRole('heading', { name: /تعلّم، العب، وتقدّم/ })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'أيّ عالم ستكتشف اليوم؟' })).toBeVisible();
+
+    await page.getByRole('button', { name: /دخول منصة الثالث/ }).click();
+    await expect(page).toHaveURL(/\\/grade\\/third-intermediate$/);
+    await expect(page.getByRole('heading', { name: /منصة الثالث المتوسط/ })).toBeVisible();
+
+    // Account creation remains optional and is available only when the student requests it.
+    await page.goto('/login?forceSignedOut=true');
+    await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toBeVisible();
+  });
+
 });
