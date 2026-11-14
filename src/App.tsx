@@ -15,6 +15,7 @@ import { StudentProfileModal } from './components/StudentProfileModal';
 import { AuthGate } from './components/AuthGate';
 import { GradeSelectorBar } from './components/GradeSelectorBar';
 import { MentorPortrait } from './components/common/MentorPortrait';
+import { MentorSocialLinks } from './components/common/MentorSocialLinks';
 import { NotFound } from './components/NotFound';
 
 const LessonViewer = React.lazy(() => import('./components/LessonViewer').then((m) => ({ default: m.LessonViewer })));
@@ -885,58 +886,36 @@ function MainAppContent() {
 
       {/* Swiss Editorial Footer */}
       <footer className="mt-auto border-t-2 border-ink bg-surface text-ink">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start pb-8 border-b border-ink/15">
-            {/* Column 1: Identity & Stamp */}
-            <div className="md:col-span-5 space-y-3">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow border border-ink shadow-brutal-xs text-xs font-mono font-bold uppercase rounded-xs">
-                <span>منهاج اللغة الإنكليزية 2026</span>
-              </div>
-              <div className="flex items-start gap-4">
-                <MentorPortrait size="md" accent="yellow" withGeometricBackdrop />
-                <div className="min-w-0 space-y-1.5">
-                  <h3 className="text-xl sm:text-2xl font-extrabold font-display text-ink">
-                    <span dir="ltr" className="tracking-[0.06em]">LINGORA</span>
-                    <span className="mr-2 text-cobalt">لينغورا</span>
-                  </h3>
-                  <p className="text-[10px] font-mono font-bold uppercase tracking-wider text-cobalt">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-5 pb-5 border-b border-ink/15">
+            <div className="flex items-center gap-3.5 min-w-0">
+              <MentorPortrait size="sm" accent="yellow" />
+              <div className="min-w-0 space-y-0.5">
+                <div className="flex flex-wrap items-baseline gap-2">
+                  <span dir="ltr" className="font-display text-lg font-black tracking-[0.05em] text-ink">
+                    LINGORA
+                  </span>
+                  <span className="text-sm font-black text-cobalt">لينغورا</span>
+                  <span dir="ltr" className="text-[11px] font-mono text-muted-gray">
                     Your Language. Your World.
-                  </p>
-                  <p className="text-xs text-muted-gray leading-relaxed font-medium max-w-md">
-                    منصة LINGORA التعليمية لتدريس ومراجعة اللغة الإنكليزية للمراحل المتوسطة والإعدادية في العراق، إعداد وإشراف الأستاذ مصطفى تركي.
-                  </p>
+                  </span>
                 </div>
+                <p className="text-xs font-bold text-muted-gray">
+                  إعداد وإشراف الأستاذ مصطفى تركي
+                </p>
               </div>
             </div>
 
-            {/* Column 2: Grades Quick Matrix (Strictly 4 Active Grades) */}
-            <div className="md:col-span-4 space-y-2">
-              <span className="text-[11px] font-mono font-bold text-cobalt block">المراحل والصفوف المشمولة</span>
-              <div className="flex flex-wrap gap-1.5 pt-1 font-mono">
-                <span className="px-2.5 py-1 bg-yellow border border-ink text-xs font-bold text-ink rounded-xs">المتوسطة (3rd وزاري)</span>
-                <span className="px-2.5 py-1 bg-paper border border-ink text-xs font-bold text-ink rounded-xs">الإعدادية (4th عام)</span>
-                <span className="px-2.5 py-1 bg-paper border border-ink text-xs font-bold text-ink rounded-xs">الإعدادية (5th متقدم)</span>
-                <span className="px-2.5 py-1 bg-cobalt text-surface border border-ink text-xs font-bold rounded-xs">البكالوريا (6th وزاري)</span>
-              </div>
-            </div>
-
-            {/* Column 3: Platform Specs Stamp */}
-            <div className="md:col-span-3 space-y-2 text-right">
-              <span className="text-[11px] font-mono font-bold text-cobalt block">مواصفات المنصة الدراسية</span>
-              <div className="p-3 bg-paper border border-ink shadow-brutal-sm text-[11px] font-mono space-y-1 rounded-xs">
-                <div>CURRICULUM: <span className="font-bold">IRAQ-ENG-2026</span></div>
-                <div>EXAM: <span className="font-bold text-semantic-error">100 PTS FULL SCALE</span></div>
-                <div>AUTHOR: <span className="font-bold">MUSTAFA TURKI</span></div>
-              </div>
-            </div>
+            <MentorSocialLinks variant="footer" />
           </div>
 
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-mono text-muted-gray">
-            <p>© 2026 LINGORA — لينغورا • جمهورية العراق — جميع الحقوق محفوظة.</p>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 bg-yellow border border-ink inline-block" />
-              <span>RETRO NEO-BRUTALISM × SWISS EDITORIAL EDITION</span>
-            </div>
+          <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-muted-gray">
+            <p className="font-bold text-ink text-center sm:text-right">
+              جمهورية العراق - البصرة - الزبير
+            </p>
+            <p className="font-bold text-muted-gray text-center sm:text-left">
+              © 2026 جميع الحقوق محفوظة للأستاذ مصطفى تركي — منصة LINGORA (لينغورا)
+            </p>
           </div>
         </div>
       </footer>

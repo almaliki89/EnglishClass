@@ -28,6 +28,7 @@ import {
 } from '../data/gradeContentResolver';
 import { BrutalButton, BrutalBadge } from './common/BrutalUI';
 import { MentorPortrait } from './common/MentorPortrait';
+import { MentorSocialLinks } from './common/MentorSocialLinks';
 import { playPopSound } from '../utils/cartoonAudio';
 import { speakEnglish } from '../utils/speech';
 
@@ -655,6 +656,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
               <p className="mx-auto max-w-xs text-[11px] font-semibold leading-6 text-surface/75">
                 منهجية متدرجة تجمع بين وضوح الشرح العربي، الأمثلة الناطقة، وبنوك الأسئلة المنظمة لكل صف.
               </p>
+              <MentorSocialLinks variant="spotlight" className="pt-2" />
             </div>
           </div>
 
