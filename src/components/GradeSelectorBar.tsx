@@ -24,8 +24,8 @@ export const GradeSelectorBar: React.FC<GradeSelectorBarProps> = ({
   const navigate = useNavigate();
 
   return (
-    <div className="bg-paper border-b-2 border-ink/20 py-4 px-3 sm:px-6 select-none">
-      <div className="max-w-7xl mx-auto">
+    <div className="bg-paper border-b-2 border-ink/20 py-4 px-3 sm:px-6 lg:px-10 xl:px-12 select-none">
+      <div className="w-full mx-auto">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 mb-3">
           <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 bg-yellow text-ink border-2 border-ink shadow-brutal-sm flex items-center justify-center font-bold text-sm shrink-0">

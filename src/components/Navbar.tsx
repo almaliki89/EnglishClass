@@ -103,7 +103,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   return (
     <header className="sticky top-0 z-40 w-full max-w-full min-w-0 overflow-hidden bg-surface border-b-2 border-ink shadow-brutal-nav">
       {/* Top Header Row: Identity & Actions */}
-      <div className="max-w-7xl w-full mx-auto px-2 sm:px-6 lg:px-8">
+      <div className="w-full mx-auto px-2 sm:px-6 lg:px-10 xl:px-12">
         <div className="flex items-center justify-between h-16 gap-1.5 sm:gap-3 min-w-0 w-full">
           
           {/* Right Zone: Logo & Grade Identity (STRICT ISOLATION) */}
@@ -278,7 +278,7 @@ export const Navbar: React.FC<NavbarProps> = ({
       {/* Dedicated Navigation Sub-Bar (Shown ONLY when inside a selected grade) */}
       {isInsideGrade && (
         <div className="w-full max-w-full min-w-0 overflow-hidden bg-paper border-t border-ink/15">
-          <div className="max-w-7xl w-full mx-auto px-2 sm:px-6 lg:px-8 min-w-0">
+          <div className="w-full mx-auto px-2 sm:px-6 lg:px-10 xl:px-12 min-w-0">
             <nav aria-label="أقسام الصف" className="flex flex-wrap items-center gap-1.5 py-1.5 w-full min-w-0">
               {navItems.map((item) => {
                 const active = isItemActive(item);

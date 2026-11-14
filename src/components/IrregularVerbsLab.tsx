@@ -98,7 +98,7 @@ export const IrregularVerbsLab: React.FC<IrregularVerbsLabProps> = ({
   });
 
   return (
-    <div className="space-y-6 pb-20 max-w-5xl mx-auto">
+    <div className="space-y-6 pb-20 w-full">
       
       {/* Header Banner */}
       <div className="p-6 sm:p-8 bg-surface border-3 border-ink shadow-brutal-lg text-ink space-y-4 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">

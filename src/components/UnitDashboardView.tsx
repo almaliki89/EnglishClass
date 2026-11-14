@@ -100,7 +100,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
   ];
 
   return (
-    <div className="space-y-8 pb-24 max-w-7xl mx-auto w-full text-ink" dir="rtl">
+    <div className="space-y-8 pb-24 w-full text-ink" dir="rtl">
       {/* 1. Breadcrumb & Scoped Isolation Header */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-surface p-4 border-3 border-ink shadow-brutal-action">
         <BreadcrumbsNav items={breadcrumbs} />

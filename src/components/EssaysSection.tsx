@@ -404,7 +404,7 @@ export const EssaysSection: React.FC<EssaysSectionProps> = ({
   const overlapScore = calculateOverlap();
 
   return (
-    <div className="space-y-6 pb-24 max-w-5xl mx-auto px-2 sm:px-0">
+    <div className="space-y-6 pb-24 w-full px-1 sm:px-0">
 
       {speechNotice && (
         <div role="status" className="p-3 rounded-[4px] bg-answer-review-bg border-2 border-ink text-semantic-error text-xs font-black flex items-center justify-between gap-3">

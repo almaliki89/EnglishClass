@@ -185,4 +185,19 @@ test.describe('Responsive QA Across Required Viewports (360px - 1440px)', () => 
     await page.waitForLoadState('networkidle');
     await expect(page).toHaveURL(/\/grade\/third-intermediate/);
   });
+
+  test('Wide desktop 1920px fills horizontal viewport without excessive side gutters', async ({ page }) => {
+    await page.setViewportSize({ width: 1920, height: 1080 });
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const heroBox = await page.locator('main section').first().boundingBox();
+    expect(heroBox).not.toBeNull();
+    if (heroBox) {
+      expect(heroBox.width).toBeGreaterThanOrEqual(1760);
+    }
+
+    await assertNoHorizontalOverflow(page, '1920px /');
+    await saveQaScreenshot(page, '1920px', '01-grades-portal.png');
+  });
 });

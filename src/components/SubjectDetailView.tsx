@@ -52,7 +52,7 @@ export const SubjectDetailView: React.FC<SubjectDetailViewProps> = ({
   };
 
   return (
-    <div className="space-y-8 pb-20 max-w-7xl mx-auto w-full text-ink">
+    <div className="space-y-8 pb-20 w-full text-ink">
       {/* Subject Header Banner */}
       <div className="relative overflow-hidden bg-surface border-4 border-ink p-6 sm:p-10 shadow-brutal-hero">
         <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">

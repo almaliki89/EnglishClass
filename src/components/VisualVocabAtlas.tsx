@@ -126,7 +126,7 @@ export const VisualVocabAtlas: React.FC<VisualVocabAtlasProps> = ({
   ];
 
   return (
-    <div className="space-y-8 pb-16 max-w-7xl mx-auto text-ink">
+    <div className="space-y-8 pb-16 w-full text-ink">
       
       {/* 1. Header Banner */}
       <div className="relative overflow-hidden bg-surface border-3 border-ink shadow-brutal-modal p-6 sm:p-8">

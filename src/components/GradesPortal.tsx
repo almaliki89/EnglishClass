@@ -243,7 +243,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
   };
 
   return (
-    <div className="space-y-8 pb-24 max-w-7xl mx-auto w-full text-ink" dir="rtl">
+    <div className="space-y-8 pb-24 w-full text-ink" dir="rtl">
       {/* Welcome hero and next learning mission */}
       <section className="relative isolate overflow-hidden rounded-[8px] border-3 border-ink bg-cobalt text-surface shadow-brutal-hero">
         <div
@@ -509,7 +509,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
           <BrutalBadge variant="yellow">4 عوالم تعليمية</BrutalBadge>
         </div>
 
-        <div className="grade-portal-grid grid grid-cols-1 md:grid-cols-2 gap-5 sm:gap-6">
+        <div className="grade-portal-grid grid grid-cols-1 md:grid-cols-2 2xl:grid-cols-4 gap-5 sm:gap-6">
           {ORDERED_GRADES.map((gradeId, index) => {
             const meta = ALL_GRADES_META[gradeId];
             const units = getUnitsForGrade(gradeId);

@@ -87,7 +87,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
   ];
 
   return (
-    <div className="space-y-8 pb-24 max-w-7xl mx-auto w-full text-ink" dir="rtl">
+    <div className="space-y-8 pb-24 w-full text-ink" dir="rtl">
       
       {/* 1. Scoped Navigation Bar with Exit Button to Grades Portal */}
       <div className="bg-surface border-3 border-ink shadow-brutal-action p-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
