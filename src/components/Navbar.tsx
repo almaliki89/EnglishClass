@@ -4,7 +4,6 @@ import {
   Sparkles, 
   Trophy, 
   Flame, 
-  GraduationCap, 
   User as UserIcon, 
   Volume2, 
   VolumeX, 
@@ -114,14 +113,19 @@ export const Navbar: React.FC<NavbarProps> = ({
               to="/"
               className="flex items-center gap-2 sm:gap-2.5 group shrink-0 rounded-[4px]"
             >
-              <div className="w-9 h-9 sm:w-10 sm:h-10 bg-cobalt text-surface border-2 border-ink rounded-[4px] shadow-brutal-sm flex items-center justify-center shrink-0 group-hover:-translate-y-0.5 group-hover:-translate-x-0.5 group-hover:shadow-brutal-callout transition-all">
-                <GraduationCap className="w-5 h-5" />
-              </div>
-              <div className="shrink-0 text-right">
+              <img
+                src="/lingora-mark.svg"
+                alt="LINGORA — لينغورا"
+                className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-[4px] border-2 border-ink shadow-brutal-sm group-hover:-translate-y-0.5 group-hover:-translate-x-0.5 transition-all"
+                width="40"
+                height="40"
+              />
+              <div className="shrink-0 text-right" aria-label="LINGORA — لينغورا">
                 <div className="flex items-center gap-1.5">
-                  <span className="font-display font-extrabold text-sm sm:text-lg text-ink tracking-tight whitespace-nowrap">
-                    النموذجية
+                  <span className="font-mono font-black text-sm sm:text-lg text-ink tracking-[0.06em] whitespace-nowrap">
+                    LINGORA
                   </span>
+                  <span className="text-[10px] font-bold text-cobalt hidden sm:inline">لينغورا</span>
                   {isInsideGrade && (
                     <>
                       <span className="text-xs text-muted-gray font-mono hidden sm:inline">/</span>
@@ -133,7 +137,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
                 <div className="hidden xs:flex items-center gap-1.5">
                   <span className="text-[10px] font-mono uppercase bg-yellow text-ink border border-ink rounded-[3px] px-1 py-0.2 font-bold">
-                    IRAQ ED. 2026
+                    YOUR LANGUAGE • YOUR WORLD
                   </span>
                   <span className="text-[11px] text-muted-gray font-medium whitespace-nowrap hidden md:inline">
                     إشراف الأستاذ مصطفى تركي
