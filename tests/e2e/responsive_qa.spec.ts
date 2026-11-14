@@ -82,6 +82,9 @@ test.describe('Responsive QA Across Required Viewports (360px - 1440px)', () => 
       await page.waitForLoadState('networkidle');
       await expect(page.getByRole('heading', { level: 1 })).toBeVisible();
 
+      // The default lesson view is now the guided journey; open the full exercise bank for this layout check.
+      await page.getByRole('button', { name: /التمارين \(/ }).click();
+
       // Trigger first exercise option to verify .lesson-answer card layout across breakpoints
       const firstExerciseCard = page.locator('[id^="exercise-card-"]').first();
       await expect(firstExerciseCard).toBeVisible();
