@@ -351,7 +351,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByRole('heading', { name: 'أيّ عالم ستكتشف اليوم؟' })).toBeVisible();
 
     await page.getByRole('button', { name: /دخول منصة الثالث/ }).click();
-    await expect(page).toHaveURL(/\\/grade\\/third-intermediate$/);
+    await expect(page).toHaveURL(/\/grade\/third-intermediate$/);
     await expect(page.getByRole('heading', { name: /منصة الثالث المتوسط/ })).toBeVisible();
 
     // Account creation remains optional and is available only when the student requests it.
