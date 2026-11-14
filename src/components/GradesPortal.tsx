@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useRef, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
   ArrowRight,
@@ -26,7 +26,7 @@ import {
   getUnitsForGrade,
   getGradeMeta,
 } from '../data/gradeContentResolver';
-import { BrutalButton, BrutalBadge } from './common/BrutalUI';
+import { BrutalBadge } from './common/BrutalUI';
 import { playPopSound } from '../utils/cartoonAudio';
 import { speakEnglish } from '../utils/speech';
 
@@ -105,6 +105,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
   onSelectGrade,
 }) => {
   const navigate = useNavigate();
+  const gradeGridRef = useRef<HTMLElement>(null);
   const [showChallengeTranslation, setShowChallengeTranslation] = useState(false);
 
   const activeGrade: EducationalGrade =
@@ -157,12 +158,6 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
     0
   );
 
-  const handleEnterGrade = (gradeId: EducationalGrade) => {
-    playPopSound();
-    onSelectGrade(gradeId);
-    navigate(`/grade/${gradeId}`);
-  };
-
   const handleStartLearning = () => {
     playPopSound();
     onSelectGrade(activeGrade);
@@ -173,6 +168,11 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
       return;
     }
     navigate(`/grade/${activeGrade}/review`);
+  };
+
+  const handleExploreGrades = () => {
+    playPopSound();
+    gradeGridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   };
 
   const handleOpenActivity = (activityId: string) => {
@@ -237,7 +237,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
               </button>
               <button
                 type="button"
-                onClick={() => navigate('/grades')}
+                onClick={handleExploreGrades}
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[4px] border-2 border-white/70 bg-white/10 px-4 py-3 text-sm font-black text-white transition-colors hover:bg-white/20"
               >
                 <GraduationCap className="h-5 w-5" />
@@ -414,7 +414,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
       </section>
 
       {/* Pick a grade adventure */}
-      <section className="space-y-5">
+      <section ref={gradeGridRef} id="grade-selection" className="space-y-5 scroll-mt-24">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="mb-2 flex items-center gap-2 text-xs font-black text-cobalt">
@@ -444,12 +444,21 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
             const isCurrentActive = activeGrade === gradeId;
 
             return (
-              <article
+              <Link
                 key={gradeId}
-                className={`grade-portal-card group overflow-hidden rounded-[7px] border-3 border-ink bg-surface shadow-brutal-lg transition-all duration-200 hover:-translate-y-1 hover:shadow-brutal-hero motion-reduce:transition-none ${
-                  isCurrentActive ? 'ring-2 ring-cobalt ring-offset-2' : ''
-                }`}
+                to={`/grade/${gradeId}`}
+                onClick={() => {
+                  playPopSound();
+                  onSelectGrade(gradeId);
+                }}
+                aria-label={`دخول منصة ${meta.shortName}`}
+                className="block rounded-[7px] cursor-pointer focus-visible:outline-3 focus-visible:outline-cobalt focus-visible:outline-offset-4"
               >
+                <article
+                  className={`grade-portal-card group overflow-hidden rounded-[7px] border-3 border-ink bg-surface shadow-brutal-lg transition-all duration-200 hover:-translate-y-1 hover:shadow-brutal-hero motion-reduce:transition-none ${
+                    isCurrentActive ? 'ring-2 ring-cobalt ring-offset-2' : ''
+                  }`}
+                >
                 <div className={`relative flex min-h-[122px] items-center justify-between overflow-hidden border-b-2 border-ink px-4 py-3 sm:px-6 ${visual.accentBg}`}>
                   <div className="relative z-10 space-y-1">
                     <span className="inline-flex items-center gap-1 rounded-sm border border-ink bg-white/80 px-2 py-1 text-[10px] font-mono font-black text-ink">
@@ -516,17 +525,19 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
                     </div>
                   </div>
 
-                  <BrutalButton
-                    variant={isCurrentActive ? 'yellow' : 'primary'}
-                    size="md"
-                    onClick={() => handleEnterGrade(gradeId)}
-                    className="w-full justify-between"
+                  <span
+                    className={`inline-flex min-h-10 w-full items-center justify-between rounded-[4px] border-2 border-ink px-4 py-2 text-sm font-black shadow-brutal-btn transition-all ${
+                      isCurrentActive
+                        ? 'bg-yellow text-ink hover:bg-yellow-hover'
+                        : 'bg-cobalt text-white hover:bg-cobalt-hover'
+                    }`}
                   >
                     <span>دخول منصة {meta.shortName}</span>
                     <ArrowLeft className="h-4 w-4" />
-                  </BrutalButton>
+                  </span>
                 </div>
-              </article>
+                </article>
+              </Link>
             );
           })}
         </div>
