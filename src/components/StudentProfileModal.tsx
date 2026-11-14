@@ -123,13 +123,15 @@ export const StudentProfileModal: React.FC<StudentProfileModalProps> = ({
             {user ? (
               <button
                 type="button"
+                id="modal-logout-btn"
                 onClick={async () => {
                   await logout();
+                  onClose();
                 }}
                 className="px-3 py-1.5 bg-surface hover:bg-coral text-semantic-error hover:text-ink border-2 border-ink shadow-brutal-sm active:shadow-none rounded-[4px] text-xs font-black flex items-center gap-1.5 shrink-0 transition-colors cursor-pointer"
               >
                 <LogOut className="w-3.5 h-3.5" />
-                <span>خروج</span>
+                <span>تسجيل الخروج</span>
               </button>
             ) : (
               <button

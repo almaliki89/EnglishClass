@@ -4,7 +4,6 @@ import {
   Sparkles, 
   Trophy, 
   Flame, 
-  User as UserIcon, 
   Volume2, 
   VolumeX, 
   Home, 
@@ -15,7 +14,8 @@ import {
   FileText, 
   Layers, 
   Zap, 
-  ArrowRight
+  ArrowRight,
+  LogOut
 } from 'lucide-react';
 import { StudentState, EducationalGrade } from '../types';
 import { useAuth } from '../context/AuthContext';
@@ -45,7 +45,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenProfile,
   onOpenAuth,
 }) => {
-  const { user } = useAuth();
+  const { user, logout } = useAuth();
   const location = useLocation();
   const navigate = useNavigate();
   const [isSoundOn, setIsSoundOn] = useState(() => isSoundEnabled());
@@ -212,24 +212,28 @@ export const Navbar: React.FC<NavbarProps> = ({
               </div>
             </button>
 
-            {/* Cloud User / Sign In */}
+            {/* Direct Sign Out / Sign In */}
             {user ? (
               <button
                 type="button"
-                id="cloud-user-btn"
-                onClick={onOpenProfile}
-                aria-label="ملف الطالب السحابي"
-                className="p-2 bg-surface hover:bg-paper text-ink border-2 border-ink rounded-[4px] shadow-brutal-sm active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all shrink-0 cursor-pointer"
-                title={`مسجل دخول: ${user.displayName || user.email || 'طالب'}`}
+                id="logout-btn"
+                onClick={async () => {
+                  playPopSound();
+                  await logout();
+                }}
+                aria-label="تسجيل الخروج"
+                className="flex items-center gap-1.5 px-2 sm:px-2.5 py-1.5 sm:py-1.5 bg-surface hover:bg-coral text-semantic-error hover:text-ink border-2 border-ink rounded-[4px] shadow-brutal-sm active:translate-x-[1px] active:translate-y-[1px] active:shadow-none transition-all shrink-0 cursor-pointer text-xs font-black whitespace-nowrap"
+                title={`تسجيل الخروج (${user.displayName || user.email || 'طالب'})`}
               >
-                <UserIcon className="w-4 h-4 text-cobalt" />
+                <LogOut className="w-4 h-4 shrink-0" />
+                <span className="hidden sm:inline">تسجيل الخروج</span>
               </button>
             ) : (
               <button
                 type="button"
                 id="auth-gate-btn"
                 onClick={onOpenAuth}
-                className="px-2.5 py-1.5 bg-cobalt hover:bg-cobalt-hover text-surface border-2 border-ink rounded-[4px] shadow-brutal-sm active:translate-x-[1px] active:translate-y-[1px] text-xs font-bold transition-all shrink-0 cursor-pointer"
+                className="px-2.5 py-1.5 bg-cobalt hover:bg-cobalt-hover text-surface border-2 border-ink rounded-[4px] shadow-brutal-sm active:translate-x-[1px] active:translate-y-[1px] text-xs font-bold transition-all shrink-0 cursor-pointer whitespace-nowrap"
               >
                 دخول
               </button>

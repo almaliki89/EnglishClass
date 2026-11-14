@@ -410,4 +410,18 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByRole('heading', { name: 'عشرون دقيقة يومياً تصنع التفوق' })).toBeVisible();
   });
 
+  test('15. Direct logout button in Navbar signs user out cleanly', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const logoutBtn = page.locator('#logout-btn');
+    await expect(logoutBtn).toBeVisible();
+    await expect(logoutBtn).toContainText('تسجيل الخروج');
+
+    await logoutBtn.click();
+    await expect(page.locator('#auth-gate-btn')).toBeVisible();
+    await expect(page.locator('#auth-gate-btn')).toContainText('دخول');
+  });
+
 });
