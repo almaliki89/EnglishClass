@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
   ArrowRight,
@@ -26,7 +26,7 @@ import {
   getUnitsForGrade,
   getGradeMeta,
 } from '../data/gradeContentResolver';
-import { BrutalBadge } from './common/BrutalUI';
+import { BrutalButton, BrutalBadge } from './common/BrutalUI';
 import { playPopSound } from '../utils/cartoonAudio';
 import { speakEnglish } from '../utils/speech';
 
@@ -157,6 +157,12 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
       ),
     0
   );
+
+  const handleEnterGrade = (gradeId: EducationalGrade) => {
+    playPopSound();
+    onSelectGrade(gradeId);
+    navigate(`/grade/${gradeId}`);
+  };
 
   const handleStartLearning = () => {
     playPopSound();
@@ -444,21 +450,13 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
             const isCurrentActive = activeGrade === gradeId;
 
             return (
-              <Link
+              <article
                 key={gradeId}
-                to={`/grade/${gradeId}`}
-                onClick={() => {
-                  playPopSound();
-                  onSelectGrade(gradeId);
-                }}
-                aria-label={`دخول منصة ${meta.shortName}`}
-                className="block rounded-[7px] cursor-pointer focus-visible:outline-3 focus-visible:outline-cobalt focus-visible:outline-offset-4"
+                onClick={() => handleEnterGrade(gradeId)}
+                className={`grade-portal-card group cursor-pointer overflow-hidden rounded-[7px] border-3 border-ink bg-surface shadow-brutal-lg transition-all duration-200 hover:-translate-y-1 hover:shadow-brutal-hero motion-reduce:transition-none ${
+                  isCurrentActive ? 'ring-2 ring-cobalt ring-offset-2' : ''
+                }`}
               >
-                <article
-                  className={`grade-portal-card group overflow-hidden rounded-[7px] border-3 border-ink bg-surface shadow-brutal-lg transition-all duration-200 hover:-translate-y-1 hover:shadow-brutal-hero motion-reduce:transition-none ${
-                    isCurrentActive ? 'ring-2 ring-cobalt ring-offset-2' : ''
-                  }`}
-                >
                 <div className={`relative flex min-h-[122px] items-center justify-between overflow-hidden border-b-2 border-ink px-4 py-3 sm:px-6 ${visual.accentBg}`}>
                   <div className="relative z-10 space-y-1">
                     <span className="inline-flex items-center gap-1 rounded-sm border border-ink bg-white/80 px-2 py-1 text-[10px] font-mono font-black text-ink">
@@ -525,19 +523,20 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
                     </div>
                   </div>
 
-                  <span
-                    className={`inline-flex min-h-10 w-full items-center justify-between rounded-[4px] border-2 border-ink px-4 py-2 text-sm font-black shadow-brutal-btn transition-all ${
-                      isCurrentActive
-                        ? 'bg-yellow text-ink hover:bg-yellow-hover'
-                        : 'bg-cobalt text-white hover:bg-cobalt-hover'
-                    }`}
+                  <BrutalButton
+                    variant={isCurrentActive ? 'yellow' : 'primary'}
+                    size="md"
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleEnterGrade(gradeId);
+                    }}
+                    className="w-full justify-between"
                   >
                     <span>دخول منصة {meta.shortName}</span>
                     <ArrowLeft className="h-4 w-4" />
-                  </span>
+                  </BrutalButton>
                 </div>
-                </article>
-              </Link>
+              </article>
             );
           })}
         </div>
