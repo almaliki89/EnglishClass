@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 export const MENTOR_PORTRAIT_SRC = '/assets/aistudio/photo_2026-11-14_19-25-09_02692711.jpg';
-export const MENTOR_PORTRAIT_ALT = 'الأستاذ مصطفى تركي — مشرف منصة النموذجية في اللغة الإنكليزية';
+export const MENTOR_PORTRAIT_ALT = 'الأستاذ مصطفى تركي — مشرف منصة LINGORA (لينغورا) لتعلّم اللغة الإنكليزية';
 
 export type MentorPortraitSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 export type MentorPortraitAccent = 'yellow' | 'coral' | 'cobalt' | 'lavender' | 'mint';
