@@ -200,6 +200,9 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
                 <Sparkles className="h-4 w-4" />
                 أهلاً بك في مغامرة التعلّم
               </span>
+              <span className="inline-flex items-center rounded-sm border border-white/50 bg-white/10 px-2.5 py-1 text-[10px] font-bold text-white">
+                منهاج اللغة الإنكليزية العراقي
+              </span>
               <span className="text-[10px] font-mono font-bold tracking-widest text-white/75">
                 IRAQI ENGLISH • 2026
               </span>
