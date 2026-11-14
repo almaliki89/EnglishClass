@@ -39,7 +39,7 @@ import {
   INITIAL_STUDENT_STATE,
 } from './utils/storage';
 import { isValidSubjectId } from './routes';
-import { GraduationCap, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 function SubjectDetailRouteWrapper({
   studentState,
@@ -290,7 +290,7 @@ function RouteLoadingFallback() {
 }
 
 function MainAppContent() {
-  const { user, loading, saveStudentToCloud, loadStudentFromCloud, submitExamResultToServer } = useAuth();
+  const { user, saveStudentToCloud, loadStudentFromCloud, submitExamResultToServer } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -579,41 +579,6 @@ function MainAppContent() {
     saveStudentState(INITIAL_STUDENT_STATE);
   };
 
-  if (loading) {
-    return (
-      <div
-        className="min-h-screen bg-paper text-ink flex flex-col items-center justify-center p-6 paper-canvas"
-        dir="rtl"
-      >
-        <div className="brutal-card p-8 max-w-sm w-full text-center space-y-4">
-          <div className="w-16 h-16 mx-auto bg-yellow border-2 border-ink shadow-brutal-callout flex items-center justify-center text-ink">
-            <GraduationCap className="w-8 h-8 text-ink" />
-          </div>
-          <div>
-            <span className="text-[11px] font-mono font-bold text-cobalt block mb-1">المنصة الأكاديمية · جاري التهيئة</span>
-            <h2 className="text-xl font-extrabold font-display text-ink">النموذجية في الإنكليزية</h2>
-            <p className="text-xs text-muted-gray mt-1">إشراف الأستاذ مصطفى تركي • المنهج العراقي 2026</p>
-          </div>
-          <div className="flex items-center justify-center gap-2 pt-2 text-xs font-mono font-bold text-ink">
-            <Loader2 className="w-4 h-4 animate-spin text-cobalt" />
-            <span>جاري مزامنة المحتوى الدراسي...</span>
-          </div>
-        </div>
-      </div>
-    );
-  }
-
-  if (!user) {
-    return (
-      <AuthGate
-        onSuccessfulAuth={(name, grade) => {
-          if (name) handleUpdateStudentName(name);
-          if (grade) handleSelectGrade(grade);
-        }}
-      />
-    );
-  }
-
   return (
     <div
       className="min-h-screen w-full max-w-full min-w-0 bg-paper text-ink flex flex-col font-sans selection:bg-yellow selection:text-ink paper-canvas"
@@ -631,6 +596,24 @@ function MainAppContent() {
       <main className="flex-1 max-w-7xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-6">
         <React.Suspense fallback={<RouteLoadingFallback />}>
           <Routes>
+          {/* Optional account route: curriculum browsing is available without sign-in. */}
+          <Route
+            path="/login"
+            element={
+              user ? (
+                <Navigate to="/" replace />
+              ) : (
+                <AuthGate
+                  onSuccessfulAuth={(name, grade) => {
+                    if (name) handleUpdateStudentName(name);
+                    if (grade) handleSelectGrade(grade);
+                    navigate("/", { replace: true });
+                  }}
+                />
+              )
+            }
+          />
+
           {/* Dedicated Grade Selection Portal */}
           <Route
             path="/grades"
@@ -893,8 +876,8 @@ function MainAppContent() {
           studentState={studentState}
           onUpdateName={handleUpdateStudentName}
           onResetProgress={handleResetProgress}
-          onOpenAuth={() => {}}
-          onSelectGrade={setSelectedGrade}
+          onOpenAuth={() => navigate('/login')}
+          onSelectGrade={handleSelectGrade}
         />
       )}
 

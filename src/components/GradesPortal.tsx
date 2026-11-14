@@ -219,6 +219,10 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
               <p className="max-w-xl text-sm sm:text-base font-semibold leading-8 text-white/85">
                 كل درس مغامرة جديدة. افهم الفكرة، استمع إلى الأمثلة، جرّب بنفسك، واجمع إنجازاتك في طريقك لإتقان الإنكليزية.
               </p>
+              <p className="inline-flex max-w-xl items-center gap-2 rounded-sm border border-white/40 bg-white/10 px-3 py-2 text-xs font-bold text-white">
+                <CheckCircle2 className="h-4 w-4 shrink-0 text-yellow" />
+                يمكنك دخول الصفوف وتصفح الدروس مباشرة دون تسجيل. الحساب اختياري لمزامنة تقدمك.
+              </p>
             </div>
 
             <div className="flex flex-wrap items-center gap-3">
