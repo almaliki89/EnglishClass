@@ -1,0 +1,16 @@
+{
+  "id": "/",
+  "name": "LINGORA — لينغورا",
+  "short_name": "LINGORA",
+  "description": "Your Language. Your World. منصة ذكية لتعلّم اللغة الإنكليزية.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#F7F5EF",
+  "theme_color": "#202124",
+  "icons": [
+    {"src": "/lingora-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+  ]
+}

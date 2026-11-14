@@ -256,6 +256,14 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
         <div className="relative grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-5 p-5 sm:p-7 lg:p-9">
           <div className="flex flex-col justify-center gap-5 py-1">
             <div className="flex flex-wrap items-center gap-2">
+              <span
+                id="lingora-brand-lockup"
+                className="inline-flex items-center gap-2 rounded-sm border-2 border-ink bg-ink px-3 py-1.5 text-xs font-black text-yellow shadow-brutal-sm"
+                aria-label="LINGORA — لينغورا"
+              >
+                <span dir="ltr" className="font-mono tracking-wider">LINGORA</span>
+                <span className="text-white">لينغورا</span>
+              </span>
               <span className="inline-flex items-center gap-2 rounded-sm border-2 border-ink bg-yellow px-3 py-1.5 text-xs font-black text-ink shadow-brutal-sm">
                 <Sparkles className="h-4 w-4" />
                 أهلاً بك في مغامرة التعلّم
@@ -286,6 +294,9 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
               </h1>
               <p className="max-w-xl text-sm sm:text-base font-semibold leading-8 text-white/85">
                 كل درس مغامرة جديدة. افهم الفكرة، استمع إلى الأمثلة، جرّب بنفسك، واجمع إنجازاتك في طريقك لإتقان الإنكليزية.
+              </p>
+              <p className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-yellow">
+                Your Language. Your World.
               </p>
               <p className="inline-flex max-w-xl items-center gap-2 rounded-sm border border-white/40 bg-white/10 px-3 py-2 text-xs font-bold text-white">
                 <CheckCircle2 className="h-4 w-4 shrink-0 text-yellow" />
@@ -639,7 +650,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
                 الأستاذ مصطفى تركي
               </h2>
               <p className="text-xs font-bold text-yellow">
-                معدّ ومشرف منصة النموذجية في اللغة الإنكليزية
+                معدّ ومشرف منصة LINGORA — لينغورا لتعلّم اللغة الإنكليزية
               </p>
               <p className="mx-auto max-w-xs text-[11px] font-semibold leading-6 text-surface/75">
                 منهجية متدرجة تجمع بين وضوح الشرح العربي، الأمثلة الناطقة، وبنوك الأسئلة المنظمة لكل صف.
