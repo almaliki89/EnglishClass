@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">LINGORA mark</title>
+  <desc id="desc">Geometric L monogram inspired by an open book and a language speech mark.</desc>
+  <rect width="128" height="128" rx="22" fill="#202124"/>
+  <path d="M24 24h18v62h62v18H24z" fill="#FFD65A"/>
+  <path d="M57 35h47v17H74v15h24v17H57z" fill="#7770E8"/>
+  <path d="M84 84h20v20H84z" fill="#FFFFFF"/>
+  <path d="M29 28h8v54h-8z" fill="#FFFFFF" opacity=".55"/>
+</svg>
