@@ -12,6 +12,7 @@ import { VocabularyArena } from './lesson-modes/VocabularyArena';
 import { SpellingForge } from './lesson-modes/SpellingForge';
 import { AcademicExplorationEngine } from './AcademicExplorationEngine';
 import { GroundedLessonTutor } from './GroundedLessonTutor';
+import { GuidedLessonJourney } from './GuidedLessonJourney';
 import { speakEnglish } from '../utils/speech';
 import { CartoonMascot } from './CartoonMascot';
 import { playPopSound, playSuccessChime, playFanfare, playBoingSound } from '../utils/cartoonAudio';
@@ -45,7 +46,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [revealedExplanations, setRevealedExplanations] = useState<Record<string, boolean>>({});
   const [showQuickHints, setShowQuickHints] = useState(false);
-  const [activeSectionView, setActiveSectionView] = useState<'all' | 'interactive' | 'academic' | 'exercises'>('all');
+  const [activeSectionView, setActiveSectionView] = useState<'guided' | 'all' | 'interactive' | 'academic' | 'exercises'>('guided');
   const [speakingText, setSpeakingText] = useState<string | null>(null);
 
   const handleSpeak = (text: string) => {
@@ -299,7 +300,19 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
         {/* View Mode Switcher Brutalist Tabs */}
         <div className="pt-3 border-t-2 border-ink flex flex-wrap items-center gap-2">
-          <span className="text-xs font-mono font-black text-ink ml-1">VIEW:</span>
+          <span className="text-xs font-mono font-black text-ink ml-1">طريقة التعلم:</span>
+          <button
+            type="button"
+            onClick={() => setActiveSectionView('guided')}
+            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
+              activeSectionView === 'guided'
+                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm'
+                : 'bg-paper hover:bg-surface text-ink border-ink'
+            }`}
+          >
+            <Sparkles className="w-3.5 h-3.5 text-yellow" />
+            <span>رحلة التعلم خطوة بخطوة</span>
+          </button>
           
           <button
             type="button"
@@ -310,7 +323,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 : 'bg-paper hover:bg-surface text-ink border-ink'
             }`}
           >
-            عرض شامل متكامل
+            كل أقسام الدرس
           </button>
 
           <button
@@ -353,6 +366,18 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </button>
         </div>
       </div>
+
+      {activeSectionView === 'guided' && (
+        <GuidedLessonJourney
+          key={lesson.id}
+          lesson={lesson}
+          grade={grade}
+          isCompleted={isCompleted}
+          onComplete={handleToggleComplete}
+          onAnswerExercise={onAnswerExercise}
+          onOpenActivities={() => setActiveSectionView('interactive')}
+        />
+      )}
 
       {/* 4. TOPIC-TAILORED INTERACTIVE ENGINE */}
       {(activeSectionView === 'all' || activeSectionView === 'interactive') && (
