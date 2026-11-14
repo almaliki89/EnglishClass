@@ -422,8 +422,8 @@ export const GuidedLessonJourney: React.FC<GuidedLessonJourneyProps> = ({
           {isSubmitted && (
             <div className={`mt-5 rounded-sm border-2 border-ink p-4 ${currentSubmission?.isCorrect ? 'bg-soft-mint' : 'bg-coral/40'}`}>
               <div className="flex items-center gap-2 font-black text-ink">
-                {currentSubmission.isCorrect ? <CheckCircle2 className="h-5 w-5" /> : <RotateCcw className="h-5 w-5" />}
-                {currentSubmission.isCorrect ? 'أحسنت! إجابة صحيحة' : 'محاولة جيدة؛ تعلّم من التصحيح'}
+                {currentSubmission?.isCorrect ? <CheckCircle2 className="h-5 w-5" /> : <RotateCcw className="h-5 w-5" />}
+                {currentSubmission?.isCorrect ? 'أحسنت! إجابة صحيحة' : 'محاولة جيدة؛ تعلّم من التصحيح'}
               </div>
               <p dir="ltr" className="mt-2 text-left font-mono text-sm font-black text-ink">{currentExercise.correctAnswer}</p>
               <p className="mt-2 text-sm font-semibold leading-7 text-ink">{currentExercise.explanation}</p>
