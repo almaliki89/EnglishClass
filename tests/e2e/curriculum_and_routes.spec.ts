@@ -34,7 +34,7 @@ test.describe('Iraqi English Curriculum Platform - Critical Architecture & Secur
 
     // The entire grade card is a link, not only its small bottom action label.
     await thirdGradeCard.getByRole('heading', { name: 'الثالث المتوسط', exact: true }).click();
-    await expect(page).toHaveURL(/\\/grade\\/third-intermediate$/);
+    await expect(page).toHaveURL(/\/grade\/third-intermediate$/);
     await expect(page.getByRole('heading', { name: /منصة الثالث المتوسط/ })).toBeVisible();
   });
 
