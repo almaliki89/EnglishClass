@@ -21,6 +21,23 @@ test.describe('Iraqi English Curriculum Platform - Critical Architecture & Secur
     expect(pageContent).not.toContain('الثاني المتوسط');
   });
 
+
+  test('10. Grade portal controls work with real clicks', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    // "Explore grades" should scroll to the grade choices, not navigate to an identical page.
+    await page.getByRole('button', { name: 'استكشف الصفوف' }).click();
+    const thirdGradeCard = page.getByRole('link', { name: 'دخول منصة الثالث المتوسط' });
+    await expect(thirdGradeCard).toBeVisible();
+    await expect(thirdGradeCard).toBeInViewport();
+
+    // The entire grade card is a link, not only its small bottom action label.
+    await thirdGradeCard.getByRole('heading', { name: 'الثالث المتوسط', exact: true }).click();
+    await expect(page).toHaveURL(/\\/grade\\/third-intermediate$/);
+    await expect(page.getByRole('heading', { name: /منصة الثالث المتوسط/ })).toBeVisible();
+  });
+
   test('2. Strict 404 routing: obsolete and invalid grades return NotFound page', async ({ page }) => {
     // Attempt navigating to obsolete First Intermediate
     await page.goto('/grade/first-intermediate');
