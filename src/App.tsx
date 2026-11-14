@@ -39,7 +39,7 @@ import {
   INITIAL_STUDENT_STATE,
 } from './utils/storage';
 import { isValidSubjectId } from './routes';
-import { GraduationCap, Loader2 } from 'lucide-react';
+import { Loader2 } from 'lucide-react';
 
 function SubjectDetailRouteWrapper({
   studentState,
