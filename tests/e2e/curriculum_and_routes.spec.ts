@@ -378,4 +378,36 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toBeVisible();
   });
 
+  test('14. Mentor portrait renders cleanly across portal and interactive principles switch', async ({ page, request }) => {
+    const portraitUrl = '/assets/aistudio/photo_2026-11-14_19-25-09_02692711.jpg';
+    const assetRes = await request.get(portraitUrl);
+    expect(assetRes.status()).toBe(200);
+    expect(assetRes.headers()['content-type']).toContain('image');
+
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    const spotlightHeading = page.getByRole('heading', { name: 'الأستاذ مصطفى تركي', exact: true });
+    await spotlightHeading.scrollIntoViewIfNeeded();
+    await expect(spotlightHeading).toBeVisible();
+    const headingColor = await spotlightHeading.evaluate((el) => getComputedStyle(el).color);
+    expect(headingColor).toBe('rgb(255, 255, 255)');
+
+    const portraitImages = page.locator(`img[src="${portraitUrl}"]`);
+    const count = await portraitImages.count();
+    expect(count).toBeGreaterThanOrEqual(2);
+
+    for (let i = 0; i < count; i++) {
+      const img = portraitImages.nth(i);
+      await img.scrollIntoViewIfNeeded();
+      await expect(img).toBeVisible();
+      const loaded = await img.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0);
+      expect(loaded, `Portrait image #${i} must decode with naturalWidth > 0`).toBe(true);
+    }
+
+    // Switch mentor guidance principle tab
+    await page.locator('#mentor-principle-tab-consistency').click();
+    await expect(page.getByRole('heading', { name: 'عشرون دقيقة يومياً تصنع التفوق' })).toBeVisible();
+  });
+
 });

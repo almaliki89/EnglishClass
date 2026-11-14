@@ -61,6 +61,11 @@ test.describe('Responsive QA Across Required Viewports (360px - 1440px)', () => 
       await assertNoHorizontalOverflow(page, `${vp.name} /grades`);
       await saveQaScreenshot(page, vp.name, '01-grades-portal.png');
 
+      const spotlightEl = page.locator('#mentor-spotlight-heading');
+      await spotlightEl.scrollIntoViewIfNeeded();
+      await expect(spotlightEl).toBeVisible();
+      await saveQaScreenshot(page, vp.name, '01b-mentor-spotlight.png');
+
       // 2. Grade Dashboard (6th Preparatory)
       await page.goto('/grade/sixth-preparatory');
       await page.waitForLoadState('networkidle');

@@ -14,6 +14,7 @@ import { Dashboard } from './components/Dashboard';
 import { StudentProfileModal } from './components/StudentProfileModal';
 import { AuthGate } from './components/AuthGate';
 import { GradeSelectorBar } from './components/GradeSelectorBar';
+import { MentorPortrait } from './components/common/MentorPortrait';
 import { NotFound } from './components/NotFound';
 
 const LessonViewer = React.lazy(() => import('./components/LessonViewer').then((m) => ({ default: m.LessonViewer })));
@@ -891,12 +892,17 @@ function MainAppContent() {
               <div className="inline-flex items-center gap-2 px-3 py-1 bg-yellow border border-ink shadow-brutal-xs text-xs font-mono font-bold uppercase rounded-xs">
                 <span>منهاج اللغة الإنكليزية 2026</span>
               </div>
-              <h3 className="text-xl sm:text-2xl font-extrabold font-display text-ink">
-                النموذجية في الإنكليزية
-              </h3>
-              <p className="text-xs text-muted-gray leading-relaxed font-medium max-w-md">
-                المنصة الأكاديمية الشاملة لتدريس ومراجعة منهاج اللغة الإنكليزية للمراحل المتوسطة والإعدادية في العراق، إعداد وإشراف الأستاذ مصطفى تركي.
-              </p>
+              <div className="flex items-start gap-4">
+                <MentorPortrait size="md" accent="yellow" withGeometricBackdrop />
+                <div className="min-w-0 space-y-1.5">
+                  <h3 className="text-xl sm:text-2xl font-extrabold font-display text-ink">
+                    النموذجية في الإنكليزية
+                  </h3>
+                  <p className="text-xs text-muted-gray leading-relaxed font-medium max-w-md">
+                    المنصة الأكاديمية الشاملة لتدريس ومراجعة منهاج اللغة الإنكليزية للمراحل المتوسطة والإعدادية في العراق، إعداد وإشراف الأستاذ مصطفى تركي.
+                  </p>
+                </div>
+              </div>
             </div>
 
             {/* Column 2: Grades Quick Matrix (Strictly 4 Active Grades) */}

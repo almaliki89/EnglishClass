@@ -20,6 +20,7 @@ import {
 import { useAuth } from '../context/AuthContext';
 import { EducationalGrade } from '../types';
 import { ORDERED_GRADES, ALL_GRADES_META } from '../data/gradeContentResolver';
+import { MentorPortrait } from './common/MentorPortrait';
 
 interface AuthGateProps {
   onSuccessfulAuth?: (name: string, grade: EducationalGrade) => void;
@@ -155,16 +156,19 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               <span className="font-mono">SEC. 2026 · STUDENT PORTAL</span>
             </div>
 
-            <div className="space-y-2">
+            <div className="space-y-3">
               <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-tight text-ink">
                 المنصة النموذجية <br />
                 <span className="bg-cobalt text-surface px-2 py-0.5 inline-block -rotate-1 mt-1">
                   اللغة الإنكليزية
                 </span>
               </h1>
-              <p className="text-sm sm:text-base text-ink/80 font-bold leading-relaxed pt-2">
-                إشراف وإعداد <span className="underline decoration-coral decoration-4">الأستاذ مصطفى تركي</span>. المنظومة الأكاديمية المتكاملة للتدريب الشامل والاستعداد للامتحان الوزاري وفق منهاج اللغة الإنكليزية العراقي.
-              </p>
+              <div className="flex items-center gap-3.5 rounded-[6px] border-2 border-ink bg-paper p-3 shadow-brutal-sm">
+                <MentorPortrait size="sm" accent="yellow" withGeometricBackdrop priority />
+                <p className="min-w-0 text-xs sm:text-sm text-ink/85 font-bold leading-relaxed">
+                  إشراف وإعداد <span className="underline decoration-coral decoration-4">الأستاذ مصطفى تركي</span> · <span className="font-black text-cobalt">العلمُ قوّة</span>. المنظومة الأكاديمية المتكاملة للتدريب الشامل والاستعداد للامتحان الوزاري وفق منهاج اللغة الإنكليزية العراقي.
+                </p>
+              </div>
             </div>
           </div>
 

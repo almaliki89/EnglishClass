@@ -615,10 +615,12 @@ textarea:focus-visible,
 }
 
 /* Headings with Swiss Precision */
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 800;
-  letter-spacing: -0.02em;
-  color: var(--token-ink);
+@layer base {
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    color: inherit;
+  }
 }
 
 @media (max-width: 640px) {

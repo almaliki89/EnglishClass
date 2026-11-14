@@ -27,6 +27,7 @@ import {
   getGradeMeta,
 } from '../data/gradeContentResolver';
 import { BrutalButton, BrutalBadge } from './common/BrutalUI';
+import { MentorPortrait } from './common/MentorPortrait';
 import { playPopSound } from '../utils/cartoonAudio';
 import { speakEnglish } from '../utils/speech';
 
@@ -100,6 +101,57 @@ const QUICK_ACTIVITIES = [
   },
 ] as const;
 
+const MENTOR_PRINCIPLES = [
+  {
+    id: 'knowledge',
+    code: '01',
+    tabLabel: 'العلمُ قوّة',
+    badge: 'شعار المنصة',
+    title: 'الفهم أولاً… ثم الحفظ الذكي',
+    advice:
+      'لا تحفظ القاعدة بمعزل عن الجملة. اربط كل زمن وكل أداة بمثال واقعي من الكتاب حتى تصبح الإجابة طبيعية وسريعة في الامتحان.',
+    quoteEn: 'Knowledge is power when you understand the reason behind every rule.',
+    quoteAr: 'العلمُ قوّة حين تفهم السبب الكامن وراء كل قاعدة.',
+    accent: 'bg-yellow',
+  },
+  {
+    id: 'consistency',
+    code: '02',
+    tabLabel: 'خطوة يومية',
+    badge: 'عادة المتفوقين',
+    title: 'عشرون دقيقة يومياً تصنع التفوق',
+    advice:
+      'الاستمرارية الهادئة تغلب الدراسة المتقطعة. أنجز درساً واحداً أو مجموعة تمارين قصيرة كل يوم، ودع النقاط والإنجازات تتراكم بثبات.',
+    quoteEn: 'Small daily steps build unstoppable fluency and exam confidence.',
+    quoteAr: 'الخطوات اليومية الصغيرة تبني طلاقةً وثقةً لا تُهزم في الامتحان.',
+    accent: 'bg-blue-mist',
+  },
+  {
+    id: 'listening',
+    code: '03',
+    tabLabel: 'النطق والاستماع',
+    badge: 'مهارة تطبيقية',
+    title: 'اسمع المثال وكرّره بصوت واضح',
+    advice:
+      'استخدم زر الاستماع في الدروس والمفردات بانتظام. تعوّد الأذن على النطق الصحيح يسهّل حفظ الإملاء ويمكّنك من تذكر المعنى سريعاً.',
+    quoteEn: 'Train your ear with clear examples and your memory will follow.',
+    quoteAr: 'درّب أذنك بالأمثلة الواضحة، وستتبعها ذاكرتك تلقائياً.',
+    accent: 'bg-soft-mint',
+  },
+  {
+    id: 'essays',
+    code: '04',
+    tabLabel: 'الإنشاء والأدب',
+    badge: 'الجاهزية الوزارية',
+    title: 'نظّم أفكارك في الإنشاء قبل الكتابة',
+    advice:
+      'في كل وحدة دراسية، اقرأ فكرة الإنشاء والأدب كقصة مترابطة: مقدمة واضحة، فكرتان مركزتان، وخاتمة أنيقة خالية من الأخطاء الإملائية.',
+    quoteEn: 'Clear structure turns complex ideas into memorable, high-scoring writing.',
+    quoteAr: 'التنظيم الواضح يحوّل الأفكار المركّبة إلى كتابة رصينة تحصد الدرجات.',
+    accent: 'bg-lavender',
+  },
+] as const;
+
 export const GradesPortal: React.FC<GradesPortalProps> = ({
   studentState,
   onSelectGrade,
@@ -107,6 +159,8 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
   const navigate = useNavigate();
   const gradeGridRef = useRef<HTMLElement>(null);
   const [showChallengeTranslation, setShowChallengeTranslation] = useState(false);
+  const [activePrincipleIdx, setActivePrincipleIdx] = useState(0);
+  const activePrinciple = MENTOR_PRINCIPLES[activePrincipleIdx] ?? MENTOR_PRINCIPLES[0];
 
   const activeGrade: EducationalGrade =
     studentState.selectedGrade && ORDERED_GRADES.includes(studentState.selectedGrade)
@@ -215,9 +269,17 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
             </div>
 
             <div className="space-y-3">
-              <p className="text-sm sm:text-base font-bold text-white/85">
-                مرحباً {studentState.name?.trim() || 'بطل الإنكليزية'}! 👋
-              </p>
+              <div className="inline-flex max-w-full items-center gap-3 rounded-[6px] border-2 border-white/30 bg-white/10 px-3 py-2 backdrop-blur-xs">
+                <MentorPortrait size="sm" accent="yellow" withGeometricBackdrop priority />
+                <div className="min-w-0 text-right">
+                  <p className="truncate text-xs font-black text-yellow">
+                    إشراف الأستاذ مصطفى تركي
+                  </p>
+                  <p className="truncate text-[11px] font-bold text-white/85">
+                    مرحباً {studentState.name?.trim() || 'بطل الإنكليزية'}! 👋 · العلمُ قوّة
+                  </p>
+                </div>
+              </div>
               <h1 className="max-w-2xl text-3xl sm:text-4xl lg:text-5xl font-black leading-[1.35] tracking-tight">
                 تعلّم، العب، وتقدّم
                 <span className="mt-1 block text-yellow">خطوة نحو التميّز!</span>
@@ -539,6 +601,145 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
               </article>
             );
           })}
+        </div>
+      </section>
+
+      {/* Mentor Spotlight: الأستاذ مصطفى تركي • العلمُ قوّة */}
+      <section
+        aria-labelledby="mentor-spotlight-heading"
+        className="overflow-hidden rounded-[8px] border-3 border-ink bg-surface shadow-brutal-lg"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-[0.9fr_1.35fr]">
+          {/* Studio Portrait Medallion Panel */}
+          <div className="relative flex flex-col items-center justify-center gap-5 border-b-3 lg:border-b-0 lg:border-l-3 border-ink bg-ink p-6 sm:p-8 text-center text-surface overflow-hidden">
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -right-12 -top-12 h-36 w-36 rounded-full border-[10px] border-cobalt/35"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute -bottom-14 -left-10 h-40 w-40 rotate-12 border-[10px] border-yellow/20"
+            />
+
+            <div className="relative z-10 inline-flex items-center gap-2 rounded-[4px] border-2 border-yellow bg-cobalt px-3 py-1 text-[11px] font-mono font-black text-surface shadow-brutal-sm">
+              <span>SUPERVISION • IRAQ 2026</span>
+            </div>
+
+            <div className="relative z-10 py-2">
+              <MentorPortrait
+                size="xl"
+                accent="yellow"
+                withGeometricBackdrop
+                stampText="العلمُ قوّة"
+              />
+            </div>
+
+            <div className="relative z-10 space-y-1.5 pt-2">
+              <h2 id="mentor-spotlight-heading" className="text-xl sm:text-2xl font-black text-surface">
+                الأستاذ مصطفى تركي
+              </h2>
+              <p className="text-xs font-bold text-yellow">
+                معدّ ومشرف منصة النموذجية في اللغة الإنكليزية
+              </p>
+              <p className="mx-auto max-w-xs text-[11px] font-semibold leading-6 text-surface/75">
+                منهجية متدرجة تجمع بين وضوح الشرح العربي، الأمثلة الناطقة، وبنوك الأسئلة المنظمة لكل صف.
+              </p>
+            </div>
+          </div>
+
+          {/* Interactive Mentor Guidance & Principles */}
+          <div className="flex flex-col justify-between gap-5 p-5 sm:p-7 min-w-0">
+            <div className="space-y-4">
+              <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink/15 pb-3">
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex items-center gap-1.5 rounded-[4px] border-2 border-ink bg-yellow px-2.5 py-1 text-xs font-black text-ink shadow-brutal-xs">
+                    <GraduationCap className="h-4 w-4" />
+                    ركن التوجيه الدراسي
+                  </span>
+                  <span className="text-xs font-mono font-bold text-muted-gray">
+                    {activePrinciple.badge}
+                  </span>
+                </div>
+                <span className="text-[11px] font-mono font-bold text-cobalt">
+                  {activePrinciple.code} / 04
+                </span>
+              </div>
+
+              {/* Interactive Principle Tabs */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-2" role="tablist" aria-label="نصائح الأستاذ مصطفى تركي">
+                {MENTOR_PRINCIPLES.map((item, idx) => {
+                  const isActive = idx === activePrincipleIdx;
+                  return (
+                    <button
+                      key={item.id}
+                      id={`mentor-principle-tab-${item.id}`}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      onClick={() => {
+                        playPopSound();
+                        setActivePrincipleIdx(idx);
+                      }}
+                      className={`flex items-center justify-center gap-1.5 rounded-[4px] border-2 border-ink px-2.5 py-2 text-xs font-black transition-all cursor-pointer ${
+                        isActive
+                          ? 'bg-cobalt text-surface shadow-brutal-sm -translate-y-0.5'
+                          : 'bg-paper text-ink hover:bg-yellow/60'
+                      }`}
+                    >
+                      <span className="font-mono text-[10px] opacity-80">{item.code}</span>
+                      <span className="truncate">{item.tabLabel}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Active Principle Card */}
+              <div className={`rounded-[6px] border-2 border-ink p-4 sm:p-5 shadow-brutal-sm space-y-3 ${activePrinciple.accent}`}>
+                <h3 className="text-lg sm:text-xl font-black text-ink">
+                  {activePrinciple.title}
+                </h3>
+                <p className="text-xs sm:text-sm font-bold leading-7 text-ink/85">
+                  {activePrinciple.advice}
+                </p>
+
+                {/* English Quote with Live Audio */}
+                <div className="rounded-[5px] border-2 border-ink bg-surface p-3.5 space-y-2">
+                  <div className="flex flex-wrap items-center justify-between gap-2">
+                    <span className="text-[10px] font-mono font-black uppercase tracking-wider text-cobalt">
+                      MENTOR MOTTO • AUDIO
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => {
+                        playPopSound();
+                        speakEnglish(activePrinciple.quoteEn);
+                      }}
+                      className="inline-flex items-center gap-1.5 rounded-[4px] border-2 border-ink bg-yellow px-2.5 py-1 text-[11px] font-black text-ink shadow-brutal-xs hover:bg-yellow-hover cursor-pointer"
+                    >
+                      <Headphones className="h-3.5 w-3.5" />
+                      استمع للنصيحة
+                    </button>
+                  </div>
+                  <p dir="ltr" className="text-left text-xs sm:text-sm font-mono font-black leading-6 text-ink">
+                    “{activePrinciple.quoteEn}”
+                  </p>
+                  <p className="text-xs font-bold text-muted-gray">
+                    {activePrinciple.quoteAr}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
+              <p className="text-xs font-bold text-muted-gray">
+                جاهز لتطبيق هذه النصيحة في صفك ({activeGradeMeta.shortName})؟
+              </p>
+              <BrutalButton variant="primary" size="sm" onClick={handleStartLearning}>
+                <span>ابدأ التطبيق الآن</span>
+                <ArrowLeft className="h-4 w-4" />
+              </BrutalButton>
+            </div>
+          </div>
         </div>
       </section>
 

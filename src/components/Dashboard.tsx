@@ -11,6 +11,7 @@ import { getUnitsForGrade, getGradeMeta, ORDERED_GRADES, ALL_GRADES_META } from 
 import { StudentState, Unit, Lesson, EducationalGrade } from '../types';
 import { PinterestPlatformFeed } from './PinterestPlatformFeed';
 import { CartoonMascot } from './CartoonMascot';
+import { MentorPortrait } from './common/MentorPortrait';
 import { playPopSound, playSuccessChime, playFanfare, playBoingSound } from '../utils/cartoonAudio';
 import { triggerCelebration } from '../utils/storage';
 
@@ -91,7 +92,13 @@ export const Dashboard: React.FC<DashboardProps> = ({
     <div className="learning-dashboard w-full space-y-7 pb-20">
       <section className="dashboard-continue text-right space-y-5">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[var(--ds-line)] pb-3">
-          <span className="text-xs font-bold tracking-wide text-[var(--ds-ink-muted)]">مساحة تعلمك الشخصية</span>
+          <div className="flex items-center gap-2.5 min-w-0">
+            <MentorPortrait size="xs" accent="yellow" />
+            <div className="min-w-0">
+              <span className="block text-xs font-black tracking-wide text-[var(--ds-ink)]">مساحة تعلمك الشخصية</span>
+              <span className="block text-[11px] font-bold text-[var(--ds-ink-muted)] truncate">بإشراف الأستاذ مصطفى تركي</span>
+            </div>
+          </div>
           <span className="ui-chip">{gradeMeta.nameAr}</span>
         </div>
 
