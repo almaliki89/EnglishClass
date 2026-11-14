@@ -87,15 +87,23 @@ export function getErrorMessage(error: unknown): string {
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
+  // The E2E suite can explicitly exercise the real signed-out browsing experience.
+  // This override is only honored in E2E builds and cannot disable auth in production.
+  const forceSignedOutPreview =
+    typeof window !== 'undefined' &&
+    import.meta.env.VITE_E2E_MODE === 'true' &&
+    new URLSearchParams(window.location.search).get('forceSignedOut') === 'true';
+
   const isE2EMode =
-    import.meta.env.VITE_E2E_MODE === 'true' ||
-    (typeof window !== 'undefined' &&
-      Boolean(
-        window.navigator.webdriver ||
-        window.location.search.includes('e2e=true') ||
-        window.location.search.includes('e2e_mode=true') ||
-        localStorage.getItem('e2e_mode') === 'true'
-      ));
+    !forceSignedOutPreview &&
+    (import.meta.env.VITE_E2E_MODE === 'true' ||
+      (typeof window !== 'undefined' &&
+        Boolean(
+          window.navigator.webdriver ||
+          window.location.search.includes('e2e=true') ||
+          window.location.search.includes('e2e_mode=true') ||
+          localStorage.getItem('e2e_mode') === 'true'
+        )));
 
   const [user, setUser] = useState<AppUser | null>(() => {
     if (isE2EMode) {
