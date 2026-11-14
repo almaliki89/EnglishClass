@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   ArrowLeft,
@@ -105,6 +105,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
   onSelectGrade,
 }) => {
   const navigate = useNavigate();
+  const gradeGridRef = useRef<HTMLElement>(null);
   const [showChallengeTranslation, setShowChallengeTranslation] = useState(false);
 
   const activeGrade: EducationalGrade =
@@ -175,6 +176,11 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
     navigate(`/grade/${activeGrade}/review`);
   };
 
+  const handleExploreGrades = () => {
+    playPopSound();
+    gradeGridRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   const handleOpenActivity = (activityId: string) => {
     playPopSound();
     onSelectGrade(activeGrade);
@@ -237,7 +243,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
               </button>
               <button
                 type="button"
-                onClick={() => navigate('/grades')}
+                onClick={handleExploreGrades}
                 className="inline-flex min-h-12 items-center justify-center gap-2 rounded-[4px] border-2 border-white/70 bg-white/10 px-4 py-3 text-sm font-black text-white transition-colors hover:bg-white/20"
               >
                 <GraduationCap className="h-5 w-5" />
@@ -414,7 +420,7 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
       </section>
 
       {/* Pick a grade adventure */}
-      <section className="space-y-5">
+      <section ref={gradeGridRef} id="grade-selection" className="space-y-5 scroll-mt-24">
         <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
           <div>
             <div className="mb-2 flex items-center gap-2 text-xs font-black text-cobalt">
@@ -446,7 +452,8 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
             return (
               <article
                 key={gradeId}
-                className={`grade-portal-card group overflow-hidden rounded-[7px] border-3 border-ink bg-surface shadow-brutal-lg transition-all duration-200 hover:-translate-y-1 hover:shadow-brutal-hero motion-reduce:transition-none ${
+                onClick={() => handleEnterGrade(gradeId)}
+                className={`grade-portal-card group cursor-pointer overflow-hidden rounded-[7px] border-3 border-ink bg-surface shadow-brutal-lg transition-all duration-200 hover:-translate-y-1 hover:shadow-brutal-hero motion-reduce:transition-none ${
                   isCurrentActive ? 'ring-2 ring-cobalt ring-offset-2' : ''
                 }`}
               >
@@ -519,7 +526,10 @@ export const GradesPortal: React.FC<GradesPortalProps> = ({
                   <BrutalButton
                     variant={isCurrentActive ? 'yellow' : 'primary'}
                     size="md"
-                    onClick={() => handleEnterGrade(gradeId)}
+                    onClick={(event) => {
+                      event.stopPropagation();
+                      handleEnterGrade(gradeId);
+                    }}
                     className="w-full justify-between"
                   >
                     <span>دخول منصة {meta.shortName}</span>
