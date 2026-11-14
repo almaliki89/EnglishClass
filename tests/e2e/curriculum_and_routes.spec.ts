@@ -323,4 +323,24 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByText('نفكك الدرس إلى أجزاء صغيرة')).toBeVisible();
   });
 
+  test('12. Homepage presents an interactive learning hub and working destinations', async ({ page }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+
+    await expect(page.getByRole('heading', { name: /تعلّم، العب، وتقدّم/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /ابدأ مهمة اليوم/ })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'أيّ عالم ستكتشف اليوم؟' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'الثالث المتوسط', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'الرابع الإعدادي', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'الخامس الإعدادي', exact: true })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'السادس الإعدادي', exact: true })).toBeVisible();
+
+    await page.getByRole('button', { name: /اكشف الترجمة/ }).click();
+    await expect(page.getByText('المعنى بالعربية')).toBeVisible();
+
+    await page.getByRole('button', { name: /ابدأ مهمة اليوم/ }).click();
+    await expect(page).toHaveURL(/\/grade\/sixth-preparatory\/unit\//);
+    await expect(page.getByRole('heading', { name: 'رحلة التعلم خطوة بخطوة' })).toBeVisible();
+  });
+
 });
