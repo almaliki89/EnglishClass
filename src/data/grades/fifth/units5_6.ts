@@ -424,7 +424,7 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleAr: "الدرس الثاني: حريق شارع كوين والمفردات الرسمية (Manchester Fire & Formal Words)",
         titleEn: "Lesson 2: News Report on Manchester Queen Street Fire & Formal vs Informal Vocabulary",
         category: "reading",
-        summary: "التقرير الإخباري لحريق مبنى متجر أثاث في شارع كوين بمدينة مانشستر، ومقارنة المفردات الإخبارية الرسمية بنظيراتها اليومية غير الرسمية.",
+        summary: "التقرير الإخباري عن حريق المبنى رقم 218 في شارع Queen Street في مانشستر، ومقارنة المفردات الرسمية المستخدمة في الخبر بنظيراتها غير الرسمية.",
         sourcePages: "الملزمة ص 131 - 133",
         readingPassage: {
           status: "verified",
@@ -432,35 +432,35 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
           sourcePages: "131",
           verificationNote: "تقرير Dan Williams عن حريق Queen Street في مانشستر، كما طُبع في صفحة 131.",
           originalText: [
-            "Manchester, Tuesday\nReporter: Dan Williams\nThe fire started on the ground floor of number 218 Queen Street at 10:10 a.m. and reached the fourth floor within minutes. The police and fire brigade arrived at 10:19 and they immediately began to evacuate everyone from number 218 and the buildings on either side.",
+            "Manchester, Tuesday\nReporter: Dan Williams\nThe fire started on the ground floor of number 218 Queen Street at 10:10 a.m. and reached the fourth floor within minutes. The police and fire brigade arrived at 10:19 and they immediately began to 12:00 p.m. everyone from number 218 and the buildings on either side.",
             "Three minutes later, there was a loud explosion. The police instructed the crowd in the street to move away from the building. They placed police vehicles at the end of Queen Street and they prevented members of the public from entering the street.",
             "The fire was brought under control around eleven o’clock, but the interior of the building had been completely destroyed by then. Ambulances took five people to hospital, but their condition was not serious."
           ]
         },
-        grammarRuleFormula: "Formal vs Informal News Equivalents:\n- occurred / took place = happened (حدث)\n- injured = hurt (أصيب / جُرح)\n- extinguished = put out (أخمد الحريق)\n- alerted = warned / told (أبلغ / حذر)\n- evacuated = cleared out (أخلى المكان)\n- residence = home (مسكن / منزل)\n- commence = start / begin (بدأ)\n- terminate = end (أنهى)",
+        grammarRuleFormula: "Formal vs Informal News Equivalents:\n- 10:10 a.m.red / took place = happened (حدث)\n- 11:00 a.m.d = hurt (أصيب / جُرح)\n- 10:19 a.m.ed = put out (أخمد الحريق)\n- alerted = warned / told (أبلغ / حذر)\n- 12:00 p.m.d = cleared out (أخلى المكان)\n- residence = home (مسكن / منزل)\n- commence = start / begin (بدأ)\n- terminate = end (أنهى)",
         detailedContent: [
-          "تقرير الحادث (AB p. 94): اندلع حريق في مستودع أثاث في مانشستر؛ وصلت فرق الإطفاء في غضون 6 دقائق وأخلت 25 شخصاً دون وقوع وفيات.",
-          "المقارنة اللغوية: تستخدم الصحف ونشرات الأخبار ألفاظاً لاتينية الأصل أكثر رسمية ورصانة مقارنة بلغة الشارع اليومية.",
+          "بدأ الحريق في الطابق الأرضي من المبنى رقم 218 عند 10:10 صباحاً، ووصل إلى الطابق الرابع خلال دقائق. وصلت الشرطة والإطفاء 10:19، ثم وقع انفجار بعد ثلاث دقائق. أُخلي المبنى والمباني المجاورة، ونُقل خمسة أشخاص إلى المستشفى ولم تكن إصاباتهم خطيرة.",
+          "المفردات الرسمية في التقرير تشمل arrive و12:00 p.m. وexplosion وinstruct وmembers of the public وprevent وinterior وvehicles وreach.",
           "تمرين كتاب النشاط ص 95: استبدال الكلمات غير الرسمية بمرادفاتها الرسمية المعتمدة في الصحافة."
         ],
         teacherNotes: [
-          "تنبيه وزاري بالملزمة ص 134: يأتي هذا التمرين في سؤال المرادفات: write the formal equivalent of 'hurt' -> injured. / 'put out' -> extinguish."
+          "من مفردات التقرير: 12:00 p.m. تعني إخراج الناس من المبنى إلى مكان آمن، وprevent تعني منع الدخول، وinterior تعني الجزء الداخلي."
         ],
         examples: [
           {
-            en: "The blaze occurred late at night, but firefighters successfully extinguished the flames.",
-            ar: "وقع الحريق في وقت متأخر من الليل، لكن رجال الإطفاء نجحوا في إخماد ألسنة اللهب.",
-            highlight: "occurred / extinguished",
-            note: "مفردات رسمية رفيعة مستخدمة في نشرات الأخبار"
+            en: "The fire started on the ground floor of number 218 Queen Street at 10:10 a.m.",
+            ar: "بدأ الحريق في الطابق الأرضي من المبنى رقم 218 في شارع Queen Street عند الساعة 10:10 صباحاً.",
+            highlight: "10:10 a.m.red / 10:19 a.m.ed",
+            note: "تفصيل زمني مذكور في التقرير"
           }
         ],
         exercises: [
           {
             id: "5u6-ex2",
-            question: "The formal newspaper equivalent for the phrase 'put out the fire' is ______.",
-            options: ["extinguish", "occur", "injure", "evacuate"],
-            correctAnswer: "extinguish",
-            explanation: "المرادف الرسمي للفعل المركب put out (يخمد الحريق) هو extinguish (الملزمة ص 134).",
+            question: "At what time did the police and fire brigade arrive?",
+            options: ["10:19 a.m.", "10:10 a.m.", "11:00 a.m.", "12:00 p.m."],
+            correctAnswer: "10:19 a.m.",
+            explanation: "المرادف الرسمي للفعل المركب put out (يخمد الحريق) هو 10:19 a.m. (الملزمة ص 134).",
             type: "mcq",
             sourcePages: "الملزمة ص 134"
           }
