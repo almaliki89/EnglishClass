@@ -43,4 +43,36 @@ test.describe('Source-aware reading passages', () => {
     await page.getByRole('button', { name: 'ملف القصة والبطاقات القلابة' }).click().catch(() => {});
     await expect(page.getByText('زيد طارق (Zaid Tariq - 20 years old)')).toHaveCount(0);
   });
+  test('fifth preparatory shows the verified Harrods history and correct foundation year', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/57/lesson/5th-u7-l8');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('Harrods, which was founded in 1834');
+    await expect(page.locator('p[lang="en"]').last()).toContainText('Everything for Everybody Rich Everywhere');
+    await expect(page.getByText('ملزمة الخامس الإعدادي 2026')).toBeVisible();
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory shows the verified three-metre boa story without invented details', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/58/lesson/5th-u8-l3');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('The terrified residents of a block of flats in London');
+    await expect(page.locator('p[lang="en"]').nth(2)).toContainText('James Andrews');
+    await expect(page.locator('p[lang="en"]').last()).toContainText('the eighth floor of the building');
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory shows the original Olympics volunteer interview as a cloze dialogue', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/58/lesson/5th-u8-l4');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').last()).toContainText('The director asked me if I had any previous experience in sports management');
+    await expect(page.locator('p[lang="en"]').last()).toContainText('my __________');
+    await expect(page.getByText('الملزمة ص 184 - 185')).toBeVisible();
+  });
+
 });
