@@ -734,6 +734,20 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
         category: "reading",
         summary: "اكتشافات عالم الآثار د. أحمد عبد العزيز لشعب الألوالو (Aloalo) والتطور المذهل للهواتف النقالة من أجهزة بوزن 40 كغم في 1946 إلى الهواتف الذكية الحديثة.",
         sourcePages: "الملزمة ص 67 - 71",
+        readingPassage: {
+          status: "reconstructed",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "69–71",
+          verificationNote: "المقال الأصلي وارد بصيغة إكمال فراغات؛ أُعيد ترتيب الجمل الست وفق خيارات تمرين المطابقة في صفحات المصدر. راجع النسخة المطبوعة قبل اعتماد الترتيب النهائي.",
+          originalText: [
+            "The first mobile phone was used by the Swedish police in 1946. It wasn’t anything like today’s mobile phones. It was only ‘mobile’ because it wasn’t plugged in. It didn’t even have its own battery. It used the car battery. After six calls, the car battery was flat. So it wasn’t a very useful thing and only the Swedish police had it.",
+            "The first public mobile phone network, called ARP (AutoRadioPuhelin, or Car Radio Phone in English), came much later. It was made in Finland in 1978. The different parts of the equipment necessary to operate it were very heavy and big. They took up a lot of space in the boot of a car and it was very expensive.",
+            "Today, mobile phones are small, light and easy to use. They are also everywhere: there are more than 15 billion mobile phones in use in the world. That means that there are nearly twice as many mobile phones on the planet than people! One reason the use of mobiles is rising so sharply is that they are becoming popular in China, India and Russia. These three countries have very big populations. In China there are now over 1.6 billion users – about 20% of the total number of users on the planet. India also has over a billion users and is the second largest phone market, while Russia has over 250 million users.",
+            "Without a doubt, mobile phones can be very useful and can even save lives. After the earthquake in Afghanistan in October 2023, hundreds of people were found and rescued because of their mobile phones. Rescue workers were able to trace them even when the people did not know where they were. Families could get in touch with loved ones using mobile phones when landlines were no longer working.",
+            "Mobile phones can cause problems as well. For example, it can be very annoying when someone’s mobile phone rings in a film, a concert or even an exam because the owner has forgotten to turn it off. But there are much more serious problems. A lot of car accidents have been caused by drivers talking on their mobiles. In most countries, it is now illegal to use a mobile while driving a car unless it is ‘hands-free’ (that means that you don’t hold the mobile in your hand). But many people think that even hands-free mobile phones are dangerous in cars. They say that drivers don’t think about the road and the traffic if they are talking on a mobile. They say it is different from talking to another person in a car. Another person in the car can see the traffic problems and will stop talking when the driver is in difficulty. But someone on the phone can’t see the driver’s situation.",
+            "Love them or hate them, mobile phones are here to stay. And every year there are more things you can do with a mobile phone. You can use them to record videos, take photos, go on your social media and stream music and video. They are completely different from the Swedish police mobiles of 1946!"
+          ]
+        },
         detailedContent: [
           "دراسات د. أحمد عبد العزيز: عالم الآثار الذي استخدم التقنيات الحديثة وأجهزة تحديد المواقع للكشف عن بقايا الحضارات وتماثيل الألوالو القديمة.",
           "تاريخ الهواتف النقالة (AB p. 34): أول هاتف سيارة تجريبي ظهر عام 1946 وكان يزن 40 كيلوغراماً؛ وفي 1973 أجرى مارتن كوبر أول مكالمة بهاتف محمول باليد؛ وفي التسعينات انتشرت رسائل SMS والجيل الثاني، وصولاً إلى شاشات اللمس والذكاء الاصطناعي اليوم.",
