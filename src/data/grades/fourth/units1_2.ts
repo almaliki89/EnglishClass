@@ -282,7 +282,6 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
         ]
       },
       {
-              {
         id: "4th-u1-reading-history",
         unitId: 41,
         lessonNumber: 7,
@@ -342,7 +341,8 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
           }
         ]
       },
-id: "4th-u1-l6",
+      {
+        id: "4th-u1-l6",
         unitId: 41,
         lessonNumber: 6,
         titleAr: "الدرس السادس: استمارة المعومات واختبار الوحدة الأولى (Information Form & Unit 1 Test)",
