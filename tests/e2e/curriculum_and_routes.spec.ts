@@ -429,7 +429,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     const gradeCases = [
       {
         grade: 'third-intermediate',
-        expectedCount: 7,
+        expectedCount: 8,
         expectedPassage: 'Car of the Year: Panther 3.0D',
         excludedLessonIds: ['3rd-u3-l3', '3rd-u6-l2', '3rd-u7-l3'],
       },
@@ -477,6 +477,32 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       expect(unitsBox).not.toBeNull();
       expect(libraryBox!.y).toBeLessThan(unitsBox!.y);
     }
+  });
+
+  test('third intermediate lists falcons and Marsh Arabs as separate passages and opens each source text', async ({ page }) => {
+    await page.goto('/grade/third-intermediate');
+    await page.waitForLoadState('networkidle');
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitThree = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="103"]');
+    await expect(unitThree).toBeVisible();
+    await unitThree.getByRole('button').click();
+
+    const falconsCard = library.getByTestId('book-passage-card').filter({ hasText: 'The Fastest Living Thing — Falcons' });
+    await expect(falconsCard).toBeVisible();
+    await falconsCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByTestId('original-passage-section')).toContainText('Have you ever watched a falcon diving down from the sky?');
+    await expect(page.getByTestId('passage-translation-section')).toContainText('هل سبق لك أن شاهدت صقرًا ينقض من السماء؟');
+
+    await page.goto('/grade/third-intermediate');
+    await page.waitForLoadState('networkidle');
+    const marshLibrary = page.getByTestId('grade-book-passage-library');
+    const marshUnit = marshLibrary.locator('[data-testid="book-passage-unit-group"][data-unit-id="103"]');
+    await marshUnit.getByRole('button').click();
+    const marshCard = marshLibrary.getByTestId('book-passage-card').filter({ hasText: 'Life on the Marshes — Marsh Arabs' });
+    await expect(marshCard).toBeVisible();
+    await marshCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByTestId('original-passage-section')).toContainText('Marsh Arabs can still be found living a traditional life');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('How many species of birds can be found in the marshlands?');
   });
 
   test('the fifth-grade dialogue/interview and fourth-grade supplementary reading stay outside the textbook-passage index', async ({ page }) => {
