@@ -381,7 +381,7 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
     number: 8,
     titleAr: "الوحدة الثامنة: المراجعة الشاملة للفصل الثاني (Semester 2 Comprehensive Revision)",
     titleEn: "Unit 8: Semester 2 Consolidation, London Boa Constrictor & Final Examination",
-    description: "مراجعة كبرى ومكثفة لجميع قواعد وقراءات ومفردات الفصل الثاني: مراجعة ضمائر الوصل، الشرطية الثانية، قصة صيد الأصلة العاصرة (Boa Constrictor) في شقق لندن، مقابلة متطوع الألعاب الأولمبية، والامتحان التحريري الشامل النهائي لنهاية العام (100 درجة).",
+    description: "مراجعة شاملة لقواعد الفصل الثاني وقراءاته: التعاريف بضمائر الوصل، الشرطية الثانية، قصة الأصلة العاصرة في شقق لندن، ومقابلة هدى للتطوع في الأولمبياد مع تدريبات الكلام المنقول.",
     accentColor: "bg-soft-mint text-ink",
     bgGradient: "bg-paper border-ink",
     sourcePages: "الملزمة ص 179 - 187",
@@ -519,40 +519,50 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
         id: "5th-u8-l4",
         unitId: 58,
         lessonNumber: 4,
-        titleAr: "الدرس الرابع: مقابلة متطوع الأولمبياد والاختبار الشامل النهائي (Olympics Volunteer & Final Exam)",
-        titleEn: "Lesson 4: Olympics Volunteer Interview, Reported Questions & Official 100-Mark Final Exam",
+        titleAr: "الدرس الرابع: مقابلة هدى للتطوع في الأولمبياد (Olympics Volunteer Interview)",
+        titleEn: "Lesson 4: Olympics Volunteer Interview & Reported Questions",
         category: "reading",
-        summary: "مقابلة متطوع دورة الألعاب الأولمبية ونقل أسئلته بالكلام المنقول، والنموذج الامتحاني الشامل المكتوب في الملزمة ص 185-187 للامتحان النهائي لنهاية العام الدراسي (100 درجة كاملة).",
-        sourcePages: "الملزمة ص 185 - 187",
+        summary: "حوار قصير عن مقابلة Huda للتطوع في دورة الألعاب الأولمبية، يتضمن أسئلة المقابلة وتدريباً على تحويلها إلى الكلام المنقول.",
+        sourcePages: "الملزمة ص 184 - 185",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "184–185",
+          verificationNote: "حوار Huda وAmeena في الصفحة 184، مع تدريبات تحويل أسئلة المقابلة إلى reported questions في الصفحتين 184–185. أبقينا الفراغات كما في نشاط كتاب الطالب مع إظهار صندوق الكلمات.",
+          originalText: [
+            "Word box: headteacher | interview | job | volunteer",
+            "Huda: I had my __________ this morning.\nAmeena: What for?\nHuda: You know! I applied to be a __________ at the next Olympics.\nAmeena: Oh, yes. Sorry, I forgot. What did they ask you?\nHuda: The director asked me if I had any previous experience in sports management. And he also asked me how many foreign languages I spoke. Then his assistant asked me if I enjoyed meeting new people.\nAmeena: Do you think you’ll get the __________?\nHuda: I think so. At the end of the interview, the director asked me if he could get a reference from my __________."
+          ]
+        },
         detailedContent: [
-          "مقابلة متطوع الأولمبياد (AB p. 146): شاب يروي تجربته التطوعية في مساعدة الرياضيين والوفود وتطبيق نقل الأسئلة: 'The interviewer asked him why he had applied for the volunteer post'.",
-          "النموذج الامتحاني الوزاري النهائي لنهاية العام (الملزمة ص 186-187):",
-          "1. Question 1 (20 Marks): قطعتان خارجيتان واستيعاب حول فندق الجليد السويدي ومتجر هارودز وأصلة لندن.",
-          "2. Question 2 (30 Marks): القواعد النحوية والوظائف (المبني للمجهول، have/get السببية، ضمائر الوصل، الكلام المنقول، التمني والندم).",
-          "3. Question 3 (20 Marks): المفردات والتوصيل والبادئات (un-, in-, im-, il-, ir-) واللواحق (-ful, -less) والصفات القوية.",
-          "4. Question 4 (10 Marks): الأدب المقرّر (رواية نساء صغيرات للويزا ماي ألكوت ومسرحية العاصفة لشكسبير).",
-          "5. Question 5 (20 Marks): الإنشاء المنهجي (كتابة مراجعة فيلم، أو نصيحة لشخص يريد وظيفة، أو فوائد التدوير)."
+          "مقابلة Huda: تقدمت لتكون متطوعة في الأولمبياد القادم. سألها المدير عن خبرتها السابقة في إدارة الرياضة وعدد اللغات الأجنبية التي تتحدثها، وسألتها مساعدته إن كانت تستمتع بالتعرف على أشخاص جدد. وفي النهاية طلب المدير مرجعاً من مديرة مدرستها.",
+          "نشاط الكلام المنقول من المقابلة: يحوّل الطالب أسئلة مباشرة مثل What computer programs are used in your current job? إلى reported questions.",
+          "1. The director asked Huda if she had any previous experience in sports management.",
+          "2. He asked her how many foreign languages she spoke.",
+          "3. His assistant asked her if she enjoyed meeting new people.",
+          "4. The director asked if he could get a reference from her headteacher.",
+          "لا يعرض هذا المقطع توزيع درجات امتحان نهائي؛ إنه نشاط مقابلة وكلام منقول."
         ],
         teacherNotes: [
-          "توجيه الأستاذ مصطفى تركي بالملزمة ص 187: هذا الاختبار النهائي يمثل محاكاة تدريبية شاملة للاختبار التحريري في المدارس العراقية لمرحلة الخامس الإعدادي."
+          "مرجع النشاط: حوار المقابلة في الصفحة 184، وتحويل الأسئلة إلى كلام منقول في الصفحة 185."
         ],
         examples: [
           {
-            en: "Mastering the end-of-year comprehensive model exam guarantees academic excellence in the preparatory stage.",
-            ar: "إن إتقان الامتحان النموذجي الشامل لنهاية العام يضمن التفوق الأكاديمي في المرحلة الإعدادية.",
-            highlight: "comprehensive model exam",
+            en: "The director asked Huda if she had any previous experience in sports management.",
+            ar: "سأل المدير هدى إن كانت لديها خبرة سابقة في إدارة الرياضة.",
+            highlight: "reported questions",
             note: "الهدف التعليمي للامتحان النهائي"
           }
         ],
         exercises: [
           {
             id: "5u8-ex4",
-            question: "The comprehensive final examination paper for 5th Preparatory carries a total of ______ marks.",
-            options: ["100", "50", "80", "120"],
-            correctAnswer: "100",
-            explanation: "الامتحان النهائي الشامل لكتاب اللغة الإنكليزية للصف الخامس الإعدادي يوزع على 100 درجة كاملة (الملزمة ص 187).",
+            question: "What post had Huda applied for?",
+            options: ["A volunteer at the next Olympics", "A sports manager", "A reporter", "A tennis coach"],
+            correctAnswer: "A volunteer at the next Olympics",
+            explanation: "تقدمت هدى لتكون متطوعة في دورة الألعاب الأولمبية القادمة (الملزمة ص 184).",
             type: "mcq",
-            sourcePages: "الملزمة ص 187"
+            sourcePages: "الملزمة ص 184"
           }
         ]
       }
