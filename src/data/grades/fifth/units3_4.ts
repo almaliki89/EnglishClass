@@ -507,6 +507,19 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         category: "reading",
         summary: "قصة مباراة التنس المشوقة والإصابة المفاجئة، مع دمج وتطبيق الأزمنة السردية (الماضي البسيط والماضي المستمر وأدوات الربط).",
         sourcePages: "الملزمة ص 99 - 100",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "99",
+          verificationNote: "المشهد الحواري المصوّر في صفحة المصدر 99 بين Helen وZeina. لا تعرض هذه الصفحة قصة Hossam أو التواء الكاحل.",
+          originalText: [
+            "Helen: Come on, Helen. I know you’re joking. Don’t waste time.\nHelen: I’m not wasting time. I’ve hurt my knee. It hurts so much that I can’t stand up.",
+            "Zeina: Shall I help you walk to that seat?\nHelen: Yes, please, Zeina.",
+            "Zeina: If you put your arm around my shoulder, you’ll be able to walk.\nHelen: Ow! It feels really terrible if I move it.",
+            "Zeina: You look very white. Would you like me to get you a glass of water?\nHelen: No, I’d prefer you to stay here with me.",
+            "Helen: I think I’ve broken my leg, Zeina. If it is broken, I won’t be able to play in the tennis competition on Saturday."
+          ]
+        },
         detailedContent: [
           "أحداث القصة (AB p. 60): أثناء مباراة التنس الحاسمة، كان حسام يلعب بمهارة ويسدد الكرة بقوة نحو الزاوية البعيدة، وفجأة وهو يركض لصد ضربة المنافس، التوت كاحل قدمه وسقط متألماً.",
           "المصطلحات الطبية والرياضية: ankle sprain (التواء الكاحل)، court (ملعب التنس)، racket (المضرب)، referee (الحكم).",
