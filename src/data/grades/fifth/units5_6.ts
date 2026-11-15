@@ -425,7 +425,18 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleEn: "Lesson 2: News Report on Manchester Queen Street Fire & Formal vs Informal Vocabulary",
         category: "reading",
         summary: "التقرير الإخباري لحريق مبنى متجر أثاث في شارع كوين بمدينة مانشستر، ومقارنة المفردات الإخبارية الرسمية بنظيراتها اليومية غير الرسمية.",
-        sourcePages: "الملزمة ص 133 - 135",
+        sourcePages: "الملزمة ص 131 - 133",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "131",
+          verificationNote: "تقرير Dan Williams عن حريق Queen Street في مانشستر، كما طُبع في صفحة 131.",
+          originalText: [
+            "Manchester, Tuesday\nReporter: Dan Williams\nThe fire started on the ground floor of number 218 Queen Street at 10:10 a.m. and reached the fourth floor within minutes. The police and fire brigade arrived at 10:19 and they immediately began to evacuate everyone from number 218 and the buildings on either side.",
+            "Three minutes later, there was a loud explosion. The police instructed the crowd in the street to move away from the building. They placed police vehicles at the end of Queen Street and they prevented members of the public from entering the street.",
+            "The fire was brought under control around eleven o’clock, but the interior of the building had been completely destroyed by then. Ambulances took five people to hospital, but their condition was not serious."
+          ]
+        },
         grammarRuleFormula: "Formal vs Informal News Equivalents:\n- occurred / took place = happened (حدث)\n- injured = hurt (أصيب / جُرح)\n- extinguished = put out (أخمد الحريق)\n- alerted = warned / told (أبلغ / حذر)\n- evacuated = cleared out (أخلى المكان)\n- residence = home (مسكن / منزل)\n- commence = start / begin (بدأ)\n- terminate = end (أنهى)",
         detailedContent: [
           "تقرير الحادث (AB p. 94): اندلع حريق في مستودع أثاث في مانشستر؛ وصلت فرق الإطفاء في غضون 6 دقائق وأخلت 25 شخصاً دون وقوع وفيات.",
@@ -544,7 +555,20 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleEn: "Lesson 5: Critical Film Review of 'The Spanish Captain' & Evaluative Adjectives",
         category: "reading",
         summary: "مراجعة نقدية لفيلم المغامرات التاريخية 'القبطان الإسباني'، وتعلم الصفات المستخدمة في تقييم الأعمال السينمائية وأداء الممثلين.",
-        sourcePages: "الملزمة ص 142 - 143",
+        sourcePages: "الملزمة ص 140",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "140",
+          verificationNote: "مراجعة فيلم The Spanish Captain بقلم Sarah Osborne، ومذكور اسم المخرج Pedro Garcia في بداية النص.",
+          originalText: [
+            "The Spanish Captain\nDirected by Pedro Garcia",
+            "I was very disappointed by this film. They said it was a beautiful story, but in fact it is a rather ridiculous story. As his new wife Mary is English, Captain Santos is worried about going to war against the English. However, he is an officer. The king tells him to go, so he goes. Then Mary is forgotten and we move on to ships, storms and fighting. The first ten minutes of the film are romantic. From then on, it is a war film.",
+            "The special effects are extremely good. The storm at sea is totally realistic. I have no idea how they did it. There seemed to be about 200 ships in the sea battles. It is very clever, but these scenes are too long. After 40 minutes, I was bored.",
+            "I used to think Jo McGregor was a great actor. Now I am not so sure. He looks good, as always, but it is difficult to believe that he is a Spanish sea captain. Emma Knightly is not bad, but we only see her for five minutes. There was one thing which I did love about the film – David Williams’ music is superb. I have already streamed the album.",
+            "Teenage boys might enjoy this film, but it is not for me.\nBy SARAH OSBORNE"
+          ]
+        },
         detailedContent: [
           "قصة الفيلم (The Spanish Captain): مغامرة بحرية تدور في القرن السادس عشر حول سفينة إسبانية تبحث عن كنز مفقود وسط العواصف وقراصنة المحيط الأطلسي.",
           "عناصر المراجعة النقدية (Film Review): عنوان الفيلم، المخرج، الأبطال، ملخص الحبكة دون إفساد النهاية (no spoilers)، وتقييم الإخراج والموسيقى التصويرية.",
@@ -624,7 +648,19 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleEn: "Lesson 7: Four Unusual News Headlines (Boy Bites Snake, Golf in Gulf, Thames Oil, Top Camel)",
         category: "reading",
         summary: "أربعة تقارير إخبارية طريفة وغريبة من صحف العالم: طفل يعض أفعى سامة في الهند وينجو، بطولة غولف شاطئية في الخليج، تسرب نفطي في نهر التايمز، ومسابقة ملكة جمال الإبل.",
-        sourcePages: "الملزمة ص 146 - 147",
+        sourcePages: "الملزمة ص 142 - 143",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "142–143",
+          verificationNote: "النص يجمع أربعة أخبار قصيرة: Boy Bites Snake، Golf Professionals in the Gulf، 5,000 Litres of Petrol in River، وTop Price for Top Camel.",
+          originalText: [
+            "BOY BITES SNAKE\nA little South African boy had a very lucky escape yesterday. Sitting by a river near Cape Town, Mrs Betty Paton saw her three-year-old son Max holding a snake and biting it. ‘I was terrified,’ she said. ‘It was a poisonous snake, but Max had almost bitten the head off.’ Mrs Paton took Max to hospital, but doctors said that the snake had not bitten him.",
+            "GOLF PROFESSIONALS IN THE GULF\nSome of the world’s best golf players have arrived in the Gulf States for a ten-day tour. The aim of the tour is to promote the sport among local young people. The professionals will play a round or two with keen young members of golf clubs and give them tips on how to improve their game. Don’t miss this fantastic opportunity.",
+            "5,000 LITRES OF PETROL IN RIVER: FISH DIE\nThousands of fish have died in the River Thames, near London, after a traffic accident on a bridge. A petrol tanker carrying 10,000 litres of petrol hit another lorry as they were crossing the narrow bridge in Richmond. A hole was made in the side of the tanker and at least 50% of the petrol poured onto the road and then down into the river. This is the worst case of pollution in the Thames since 1992.",
+            "TOP PRICE FOR TOP CAMEL\nA camel has been sold for $150,000 in the United Arab Emirates (UAE). This is not just an ordinary camel, of course! It is top-quality, racing camel – it has already won more than 50 races. Camel racing is very popular in the UAE and high prices are often paid for the best animals. The new owner is a businessman from Dubai, Omar Abdel Hamid. He said, ‘Yes, this is an expensive camel. But I’m sure that I’ll make a lot of money with it.’"
+          ]
+        },
         detailedContent: [
           "طفل يعض ثعباناً (Boy bites snake): طفل هندي في الثامنة تعرض للدغة كوبرا فقام بعض الثعبان دفاعاً عن نفسه فمات الثعبان ونجا الطفل بعد تلقي المصل المضاد في المستشفى.",
           "مسابقة مزاين الإبل (Top Camel): مهرجان تراثي خليجي لاختيار أجمل الإبل الأصيلة بمشاركة ملاك الإبل وجوائز بملايين الدولارات.",
@@ -700,7 +736,21 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleEn: "Lesson 9: The Evolution of Satellite Television & Comprehensive Unit 6 Test",
         category: "reading",
         summary: "تاريخ إطلاق الأقمار الصناعية للاتصالات (تيلستار 1962) وثورة البث التلفزيوني الفضائي المباشر في المنازل، مع الاختبار الشامل للوحدة السادسة.",
-        sourcePages: "الملزمة ص 149",
+        sourcePages: "الملزمة ص 148",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "148",
+          verificationNote: "المقال It’s a small world – with satellite TV! بقلم Mariam Azzawi، من صفحة المصدر 148.",
+          originalText: [
+            "It’s a small world – with satellite TV!\nFrom our media correspondent\nMariam Azzawi",
+            "In many parts of the world – the Middle East, China and Europe, for example – satellite dishes on roofs or in gardens are a common sight. Programmes in different languages from countries all over the world can be seen on one TV set. Because we are used to this, it is easy to forget that it is quite a new thing.",
+            "How long have we had satellite TV? Well, let’s go back to the beginning of the story. You could say that it all started when the Russians sent the first satellite into space – the Sputnik in 1957. That was an experiment to test the technology. It went round and round the Earth, not doing much.",
+            "The first communication satellites were launched in 1963, but these also moved round the Earth. That is not good for communication – you can use the satellite for a few hours and then it disappears. Two years later, the problem was solved. Early Bird (correct name Intelsat 1) went round the Earth at the same speed as the Earth itself goes round, so it appeared to stay still. The distance of Early Bird from the Earth was 37,000 km – the same as today’s communication satellites.",
+            "At first, these satellites were used by TV companies to send news and sport programmes long distances, for example, across the Atlantic. People in their homes continued to receive their TV in the normal way, with an aerial.",
+            "In the early 1980s, people started to get satellite dishes at home and to receive programmes from satellite TV stations. People soon understood the great advantages of this system. With satellites, you can receive TV programmes in the middle of the desert, in the mountains, or on small, faraway islands. You can get your programmes from stations in other countries. As a result, more people can receive TV and everyone gets more choice."
+          ]
+        },
         detailedContent: [
           "تاريخ التلفزيون الفضائي (Satellite Broadcasting): في عام 1962 أُطلق القمر الصناعي تلستار (Telstar) لينقل أول بث تلفزيوني حي عبر المحيط الأطلسي بين الولايات المتحدة وأوروبا.",
           "ثورة الصحن اللاقط (Satellite dishes): في الثمانينيات والتسعينيات تحولت أجهزة الاستقبال من صحون ضخمة بقطر أمتار إلى أطباق منزلية صغيرة وملايين القنوات الرقمية المشفرة والمفتوحة.",
