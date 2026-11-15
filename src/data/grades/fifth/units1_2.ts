@@ -334,6 +334,19 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
         category: "reading",
         summary: "القطعة الاستيعابية الوزارية الأهم في الوحدة الأولى حول مهرجان بابل الدولي للثقافة والفنون، مسارحه التاريخية وفعالياته العالمية.",
         sourcePages: "الملزمة ص 34 - 36",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "32–33",
+          verificationNote: "يتضمن المصدر مقال مهرجان بابل الدولي ورسالة Bilal إلى Mike والبرنامج المرفق للفعاليات.",
+          originalText: [
+            "The Babylon International Festival for International Arts and Cultures is held each year in the ancient city of Babylon, which is about 85 kilometres south of Baghdad. Ever since the first Festival in 1987, the event has attracted many excellent groups from all regions of Iraq and all over the world. They come to perform many types of music, especially folk music, musical theatre, opera and ballet. Famous writers and poets come to discuss and read their works, and there are many lectures and seminars held on a wide range of literary, artistic, cultural and archeological topics. The Festival has become a popular media event and is now discussed in print and on television and on the internet by a very wide audience.",
+            "The beautiful and historic city of Babylon is the perfect venue for this kind of international festival. There are three main theatres, all equipped with modern sound and lighting equipment, recording and transmission systems, and the best facilities for the artists to use to prepare for their performances.",
+            "The Babylonian Theatre is the biggest amphitheatre in the city and has kept its ancient atmosphere. The Al Arsh (Throne) Auditorium is the largest hall in historical Babylon. It was once the administrative centre of the Babylonian Empire, used to receive kings and victorious military leaders.",
+            "Ninimach Temple Hall was once the private temple of Ninimach, the ‘Great Lady of the Heavens’, who used to worship there. It is now used for some of the smaller but very high quality performances in the Festival.",
+            "Dear Mike,\nThanks for your email. I’m having a great time at the moment. We’ve got the Babylon International Festival here this month so there’s lots to see and do.\nI’ve been to three plays so far this week! Two of the plays were by Iraqi writers. They were both excellent. One was by a Lebanese writer and had the famous Tunisian artist Latifa in it. At one point she started chanting a really popular poem and some people behind us joined in. My father got really annoyed with them and told them to be quiet! I was really embarrassed.\nI’ve also attended an interesting seminar on the history of Babylon and how the Festival came to be. It had a lot of interesting videos and pictures that amazed me. In fact, I actually bought the documentary CD because I knew my sister would enjoy learning more about the fabulous history of Babylon.\nI’ve also been to a really good photo exhibition. It’s given me some brilliant new ideas. I’ve decided I want to be a professional photographer one day. So when the school holidays start, I’m going to practise all day long with my new camera!\nWrite to me soon,\nBilal\nPS I’m sending you a magazine article about the Babylon International Festival and a programme of the events."
+          ]
+        },
         detailedContent: [
           "نبذة المهرجان (Babylon Festival): مهرجان ثقافي وفني سنوي انطلق عام 1987 وتوقف لفترة ثم عاد بقوة؛ يقام في مدينة بابل الأثرية على بعد حوالي 85 كم جنوب بغداد.",
           "المسارح والقاعات (Venues):",
