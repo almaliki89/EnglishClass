@@ -424,34 +424,35 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleAr: "الدرس الثاني: حريق شارع كوين والمفردات الرسمية (Manchester Fire & Formal Words)",
         titleEn: "Lesson 2: News Report on Manchester Queen Street Fire & Formal vs Informal Vocabulary",
         category: "reading",
-        summary: "التقرير الإخباري عن حريق المبنى رقم 218 في شارع Queen Street في مانشستر، ومقارنة المفردات الرسمية المستخدمة في الخبر بنظيراتها غير الرسمية.",
+        summary: "التقرير الإخباري عن حريق المبنى رقم 218 في شارع Queen Street في مانشستر، وأحداث الإخلاء والانفجار والاستجابة الطارئة، مع مفردات رسمية وغير رسمية.",
         sourcePages: "الملزمة ص 131 - 133",
         readingPassage: {
           status: "verified",
           sourceTitle: "ملزمة الخامس الإعدادي 2026",
           sourcePages: "131",
-          verificationNote: "تقرير Dan Williams عن حريق Queen Street في مانشستر، كما طُبع في صفحة 131.",
+          verificationNote: "تقرير Dan Williams عن حريق Queen Street في مانشستر، كما طُبع في الصفحة 131.",
           originalText: [
-            "Manchester, Tuesday\nReporter: Dan Williams\nThe fire started on the ground floor of number 218 Queen Street at 10:10 a.m. and reached the fourth floor within minutes. The police and fire brigade arrived at 10:19 and they immediately began to 12:00 p.m. everyone from number 218 and the buildings on either side.",
+            "Manchester, Tuesday\nReporter: Dan Williams\nThe fire started on the ground floor of number 218 Queen Street at 10:10 a.m. and reached the fourth floor within minutes. The police and fire brigade arrived at 10:19 and they immediately began to evacuate everyone from number 218 and the buildings on either side.",
             "Three minutes later, there was a loud explosion. The police instructed the crowd in the street to move away from the building. They placed police vehicles at the end of Queen Street and they prevented members of the public from entering the street.",
             "The fire was brought under control around eleven o’clock, but the interior of the building had been completely destroyed by then. Ambulances took five people to hospital, but their condition was not serious."
           ]
         },
-        grammarRuleFormula: "Formal vs Informal News Equivalents:\n- 10:10 a.m.red / took place = happened (حدث)\n- 11:00 a.m.d = hurt (أصيب / جُرح)\n- 10:19 a.m.ed = put out (أخمد الحريق)\n- alerted = warned / told (أبلغ / حذر)\n- 12:00 p.m.d = cleared out (أخلى المكان)\n- residence = home (مسكن / منزل)\n- commence = start / begin (بدأ)\n- terminate = end (أنهى)",
+        grammarRuleFormula: "Formal / informal equivalents from the activity (p. 132): arrive = get here; enter = go into; evacuate = get out of; explosion = bang; instruct = tell; members of the public = people; move = get away; not serious = OK; place = put; prevent = stop; interior = inside; vehicles = cars; reach = get up to; a lot of = lots.",
         detailedContent: [
-          "بدأ الحريق في الطابق الأرضي من المبنى رقم 218 عند 10:10 صباحاً، ووصل إلى الطابق الرابع خلال دقائق. وصلت الشرطة والإطفاء 10:19، ثم وقع انفجار بعد ثلاث دقائق. أُخلي المبنى والمباني المجاورة، ونُقل خمسة أشخاص إلى المستشفى ولم تكن إصاباتهم خطيرة.",
-          "المفردات الرسمية في التقرير تشمل arrive و12:00 p.m. وexplosion وinstruct وmembers of the public وprevent وinterior وvehicles وreach.",
-          "تمرين كتاب النشاط ص 95: استبدال الكلمات غير الرسمية بمرادفاتها الرسمية المعتمدة في الصحافة."
+          "التسلسل الزمني: بدأ الحريق عند 10:10 صباحاً، ووصلت الشرطة والإطفاء عند 10:19. وبعد ثلاث دقائق وقع انفجار، ثم تمت السيطرة على الحريق قرابة الساعة الحادية عشرة.",
+          "النتائج: تضرر الجزء الداخلي للمبنى بالكامل، ونُقل خمسة أشخاص إلى المستشفى، لكن حالتهم لم تكن خطيرة.",
+          "مفردات النشاط: evacuate = get out of، explosion = bang، members of the public = people، prevent = stop، interior = inside، vehicles = cars."
         ],
         teacherNotes: [
-          "من مفردات التقرير: 12:00 p.m. تعني إخراج الناس من المبنى إلى مكان آمن، وprevent تعني منع الدخول، وinterior تعني الجزء الداخلي."
+          "لا تخلط بين وقت بداية الحريق (10:10) ووقت وصول الشرطة والإطفاء (10:19).",
+          "في مطابقة المفردات الرسمية وغير الرسمية، evacuate تقابل get out of وprevent تقابل stop وinterior تقابل inside."
         ],
         examples: [
           {
-            en: "The fire started on the ground floor of number 218 Queen Street at 10:10 a.m.",
-            ar: "بدأ الحريق في الطابق الأرضي من المبنى رقم 218 في شارع Queen Street عند الساعة 10:10 صباحاً.",
-            highlight: "10:10 a.m.red / 10:19 a.m.ed",
-            note: "تفصيل زمني مذكور في التقرير"
+            en: "The police instructed the crowd in the street to move away from the building.",
+            ar: "أمرت الشرطة الحشد في الشارع بالابتعاد عن المبنى.",
+            highlight: "instructed / move away",
+            note: "تفصيل من التقرير الإخباري"
           }
         ],
         exercises: [
@@ -460,9 +461,9 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
             question: "At what time did the police and fire brigade arrive?",
             options: ["10:19 a.m.", "10:10 a.m.", "11:00 a.m.", "12:00 p.m."],
             correctAnswer: "10:19 a.m.",
-            explanation: "المرادف الرسمي للفعل المركب put out (يخمد الحريق) هو 10:19 a.m. (الملزمة ص 134).",
+            explanation: "يذكر التقرير أن الشرطة وفرق الإطفاء وصلتا عند الساعة 10:19 صباحاً.",
             type: "mcq",
-            sourcePages: "الملزمة ص 134"
+            sourcePages: "الملزمة ص 131"
           }
         ]
       },
@@ -560,7 +561,7 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
           status: "verified",
           sourceTitle: "ملزمة الخامس الإعدادي 2026",
           sourcePages: "140",
-          verificationNote: "مراجعة فيلم The Spanish Captain بقلم Sarah Osborne، ومذكور اسم المخرج Pedro Garcia في بداية النص.",
+          verificationNote: "مراجعة فيلم The Spanish Captain بقلم Sarah Osborne، ويظهر اسم المخرج Pedro Garcia في بداية النص.",
           originalText: [
             "The Spanish Captain\nDirected by Pedro Garcia",
             "I was very disappointed by this film. They said it was a beautiful story, but in fact it is a rather ridiculous story. As his new wife Mary is English, Captain Santos is worried about going to war against the English. However, he is an officer. The king tells him to go, so he goes. Then Mary is forgotten and we move on to ships, storms and fighting. The first ten minutes of the film are romantic. From then on, it is a war film.",
@@ -570,18 +571,19 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
           ]
         },
         detailedContent: [
-          "تدور القصة حول Captain Santos الذي يتردد في خوض حرب ضد الإنجليز لأن زوجته الجديدة Mary إنجليزية، لكن الملك يأمره بالذهاب؛ ويتحول الفيلم بعد بدايته الرومانسية إلى فيلم حرب.",
-          "تنتقد Sarah Osborne طول مشاهد المعارك البحرية بعد 40 دقيقة، وتذكر إعجابها بموسيقى David Williams، مع ملاحظات حول أداء Jo McGregor وEmma Knightly.",
-          "تتضمن المراجعة ألفاظ تقييم مثل disappointed وridiculous وromantic وrealistic وclever وbored وsuperb."
+          "تدور القصة حول Captain Santos الذي يقلق من خوض حرب ضد الإنجليز لأن زوجته الجديدة Mary إنجليزية، لكن الملك يأمره بالذهاب؛ ويتحول الفيلم بعد بدايته الرومانسية إلى فيلم حرب.",
+          "تصف Sarah Osborne المؤثرات الخاصة والعاصفة البحرية بأنها جيدة وواقعية، لكنها ترى أن مشاهد المعارك طويلة ومملة.",
+          "تعجب الكاتبة بموسيقى David Williams، وتبدي تحفظاً على مدى إقناع أداء Jo McGregor ومدة ظهور Emma Knightly."
         ],
         teacherNotes: [
-          "فكرة القراءة: تميّز المراجعة بين الإعجاب بالمؤثرات الخاصة والموسيقى وبين عدم اقتناع الكاتبة بالقصة وبعض أداء الممثلين."
+          "مفردات التقييم كما تظهر في المراجعة: disappointed، ridiculous، romantic، realistic، clever، bored، superb.",
+          "ذكرت الكاتبة أنها شعرت بالملل بعد 40 دقيقة من الفيلم."
         ],
         examples: [
           {
             en: "The storm at sea is totally realistic. The special effects are extremely good.",
             ar: "العاصفة في البحر واقعية تماماً، والمؤثرات الخاصة جيدة للغاية.",
-            highlight: "spectacular / convincing",
+            highlight: "totally realistic / extremely good",
             note: "عبارات تقييم من المراجعة"
           }
         ],
@@ -591,7 +593,7 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
             question: "After how many minutes did Sarah Osborne say she was bored?",
             options: ["40 minutes", "10 minutes", "20 minutes", "60 minutes"],
             correctAnswer: "40 minutes",
-            explanation: "العمل المشوق والمثير الذي يشد انتباه المشاهد بالكامل يوصف بـ 40 minutes (الملزمة ص 140).",
+            explanation: "ورد في المراجعة: After 40 minutes, I was bored.",
             type: "mcq",
             sourcePages: "الملزمة ص 140"
           }
@@ -662,19 +664,19 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
           ]
         },
         detailedContent: [
-          "طفل يعض ثعباناً (Boy Bites Snake): رأت Betty Paton ابنها Max البالغ ثلاث سنوات يمسك ثعباناً ساماً ويعضه قرب Cape Town في جنوب أفريقيا؛ وأفاد الأطباء أن الثعبان لم يلدغ الطفل.",
-          "الجمل الأغلى (Top Price for Top Camel): بيع جمل سباق عالي الجودة بمبلغ 150,000 دولار في الإمارات، وكان قد فاز بأكثر من 50 سباقاً.",
-          "تسرب نهر التايمز: اصطدمت ناقلة تحمل 10,000 لتر من البنزين بشاحنة أخرى على جسر ضيق في Richmond؛ وانسكب ما لا يقل عن 50% من الوقود في النهر.",
-          "تتضمن الأخبار أيضاً جولة غولف تستمر عشرة أيام وتهدف إلى تشجيع الشباب المحلي على ممارسة اللعبة."
+          "طفل يعض ثعباناً: رأت Betty Paton ابنها Max البالغ ثلاث سنوات يمسك ثعباناً ساماً ويعضه قرب Cape Town في جنوب أفريقيا؛ وأفاد الأطباء أن الثعبان لم يلدغ الطفل.",
+          "جولة الغولف: وصل لاعبون محترفون إلى دول الخليج في جولة تستمر عشرة أيام لتشجيع الشباب المحلي على ممارسة اللعبة.",
+          "تلوث نهر التايمز: اصطدمت ناقلة تحمل 10,000 لتر من البنزين بشاحنة أخرى على جسر ضيق في Richmond؛ وانسكب ما لا يقل عن 50% من الوقود في النهر.",
+          "الجمل الأغلى: بيع جمل سباق بمبلغ 150,000 دولار في الإمارات، وكان قد فاز بأكثر من 50 سباقاً."
         ],
         teacherNotes: [
-          "ملاحظة الملزمة ص 142: عناوين الصحف في الإنكليزية (Newspaper Headlines) تكتب عادة بالمضارع البسيط وتحذف منها أدوات التعريف والتنكير والأفعال المساعدة للاختصار وجذب الانتباه."
+          "تُقرأ الأخبار الأربع بوصفها تقارير منفصلة؛ لا تخلط بين حادث الطفل وخبر تلوث نهر التايمز أو خبر الجمل."
         ],
         examples: [
           {
             en: "A three-year-old boy named Max was seen holding and biting a poisonous snake near Cape Town.",
             ar: "شاهدت Betty Paton ابنها Max البالغ ثلاث سنوات يمسك ثعباناً ساماً ويعضه قرب Cape Town.",
-            highlight: "made global headlines",
+            highlight: "three-year-old / poisonous snake",
             note: "تفصيل من الخبر الأول"
           }
         ],
@@ -733,47 +735,47 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         unitId: 56,
         lessonNumber: 9,
         titleAr: "الدرس التاسع: تاريخ البث الفضائي واختبار الوحدة (Satellite TV & Unit 6 Test)",
-        titleEn: "Lesson 9: The Evolution of Satellite Television & Comprehensive Unit 6 Test",
+        titleEn: "Lesson 9: The Evolution of Satellite Television & Unit 6 Reading Review",
         category: "reading",
-        summary: "تاريخ البث الفضائي من إطلاق Intelsat 1 عام 1957، إلى أقمار الاتصالات عام 1963، ثم Early Bird (Intelsat 1) عام 1965، وانتشار الأطباق المنزلية في أوائل الثمانينيات.",
+        summary: "تاريخ البث الفضائي من إطلاق Sputnik عام 1957، إلى أقمار الاتصالات عام 1963، ثم Early Bird (Intelsat 1) عام 1965، وانتشار الأطباق المنزلية في أوائل الثمانينيات.",
         sourcePages: "الملزمة ص 148",
         readingPassage: {
           status: "verified",
           sourceTitle: "ملزمة الخامس الإعدادي 2026",
           sourcePages: "148",
-          verificationNote: "المقال It’s a small world – with satellite TV! بقلم Mariam Azzawi، من صفحة المصدر 148.",
+          verificationNote: "المقال It’s a small world – with satellite TV! بقلم Mariam Azzawi، من الصفحة المطبوعة 148.",
           originalText: [
             "It’s a small world – with satellite TV!\nFrom our media correspondent\nMariam Azzawi",
             "In many parts of the world – the Middle East, China and Europe, for example – satellite dishes on roofs or in gardens are a common sight. Programmes in different languages from countries all over the world can be seen on one TV set. Because we are used to this, it is easy to forget that it is quite a new thing.",
-            "How long have we had satellite TV? Well, let’s go back to the beginning of the story. You could say that it all started when the Russians sent the first satellite into space – the Intelsat 1 in 1957. That was an experiment to test the technology. It went round and round the Earth, not doing much.",
+            "How long have we had satellite TV? Well, let’s go back to the beginning of the story. You could say that it all started when the Russians sent the first satellite into space – the Sputnik in 1957. That was an experiment to test the technology. It went round and round the Earth, not doing much.",
             "The first communication satellites were launched in 1963, but these also moved round the Earth. That is not good for communication – you can use the satellite for a few hours and then it disappears. Two years later, the problem was solved. Early Bird (correct name Intelsat 1) went round the Earth at the same speed as the Earth itself goes round, so it appeared to stay still. The distance of Early Bird from the Earth was 37,000 km – the same as today’s communication satellites.",
             "At first, these satellites were used by TV companies to send news and sport programmes long distances, for example, across the Atlantic. People in their homes continued to receive their TV in the normal way, with an aerial.",
             "In the early 1980s, people started to get satellite dishes at home and to receive programmes from satellite TV stations. People soon understood the great advantages of this system. With satellites, you can receive TV programmes in the middle of the desert, in the mountains, or on small, faraway islands. You can get your programmes from stations in other countries. As a result, more people can receive TV and everyone gets more choice."
           ]
         },
         detailedContent: [
-          "بدأت القصة بإطلاق Intelsat 1 عام 1957 لاختبار التقنية؛ وأُطلقت أقمار الاتصالات الأولى عام 1963، ثم حلّ Early Bird (Intelsat 1) مشكلة بقائها في موضع ثابت ظاهرياً عام 1965.",
-          "في أوائل الثمانينيات بدأ الناس بتركيب أطباق استقبال في المنازل، وأصبح بالإمكان استقبال برامج من محطات تلفزيونية في بلدان مختلفة وحتى في المناطق الصحراوية والجبال والجزر البعيدة.",
-          "اختبار الوحدة السادسة الشامل: يغطي أنواع الأفلام، المفردات الرسمية، الكلام المنقول، والأسئلة المنقولة والأوامر."
+          "بدأت القصة بإطلاق Sputnik عام 1957 لاختبار التقنية. وأُطلقت أقمار الاتصالات الأولى عام 1963، ثم ظهر Early Bird (Intelsat 1) عام 1965، فبدا ثابتاً فوق موضع محدد بسبب دورانه بالسرعة نفسها التي تدور بها الأرض.",
+          "في أوائل الثمانينيات بدأ الناس بتركيب أطباق استقبال في المنازل، وأصبح بالإمكان استقبال برامج من محطات تلفزيونية في بلدان مختلفة، حتى في الصحارى والجبال والجزر البعيدة.",
+          "توضح القراءة أن الأقمار سهّلت وصول البرامج إلى مناطق أكثر ومنحت المشاهدين خيارات أوسع."
         ],
         teacherNotes: [
-          "سؤال فهم مستند إلى النص: In which year did the Russians send the first satellite, Intelsat 1, into space? -> 1957."
+          "احفظ ترتيب الأحداث كما ورد في القطعة: Sputnik (1957)، أقمار الاتصالات الأولى (1963)، Early Bird / Intelsat 1 (1965)، ثم انتشار الأطباق المنزلية في أوائل الثمانينيات."
         ],
         examples: [
           {
-            en: "Early Bird (Intelsat 1) went round the Earth at the same speed as the Earth itself goes round, so it appeared to stay still.",
-            ar: "دار القمر Early Bird (Intelsat 1) حول الأرض بالسرعة نفسها التي تدور بها الأرض، ولذلك بدا ثابتاً.",
-            highlight: "revolutionized global news",
-            note: "معلومة تقنية مذكورة في النص"
+            en: "Early Bird (correct name Intelsat 1) went round the Earth at the same speed as the Earth itself goes round, so it appeared to stay still.",
+            ar: "دار القمر Early Bird، واسمه الصحيح Intelsat 1، حول الأرض بالسرعة نفسها التي تدور بها الأرض، ولذلك بدا ثابتاً.",
+            highlight: "Early Bird / Intelsat 1",
+            note: "تفصيل تقني من الفقرة الرابعة"
           }
         ],
         exercises: [
           {
             id: "5u6-ex9",
-            question: "The first satellite sent into space by the Russians was ______ in 1957.",
-            options: ["Intelsat 1", "Early Bird", "Intelsat 1", "Telstar"],
-            correctAnswer: "Intelsat 1",
-            explanation: "بدأت القصة بإطلاق Sputnik عام 1957، ثم أُطلقت أقمار الاتصالات عام 1963، وجاء Early Bird (Intelsat 1) عام 1965 (الملزمة ص 148).",
+            question: "Which satellite did the Russians send into space in 1957?",
+            options: ["Sputnik", "Early Bird", "Intelsat 1", "Telstar"],
+            correctAnswer: "Sputnik",
+            explanation: "تذكر القطعة أن الروس أرسلوا Sputnik إلى الفضاء عام 1957 لاختبار التقنية.",
             type: "mcq",
             sourcePages: "الملزمة ص 148"
           }
