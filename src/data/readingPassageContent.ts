@@ -426,19 +426,41 @@ const READING_PASSAGE_CONTENT: Record<string, ReadingPassage> = {
       'كيف يبدو مستقبل اللياقة البدنية؟ من الصعب القول، لكن المؤكد أن التكنولوجيا ستواصل مساعدتك على الحفاظ على لياقتك أكثر فأكثر، سواء في المنزل أو في صالة رياضية ذكية.'
     ],
     exerciseSets: [
-      {
-        id: '6p-u4-fitness-tech-ab',
-        source: 'activity_book',
-        sourceTitle: 'Exercise B — Choose the correct option',
-        sourcePages: 'كتاب النشاط ص 78',
-        instruction: 'Choose the correct option.',
-        instructionTranslation: 'اختر الخيار الصحيح.',
-        items: [
-          { id: 'fitness-b1', question: 'Nowadays, more and more people are working out (at the gym / from home).', answer: 'from home.' },
-          { id: 'fitness-b2', question: 'Online exercise communities allow people to exercise with others (without leaving home / only at a sports club).', answer: 'without leaving home.' }
-        ]
-      }
+  {
+    id: '6p-u4-fitness-tech-ab-a', source: 'activity_book', sourceTitle: 'Exercise A — Answer the questions', sourcePages: 'كتاب النشاط ص 78',
+    instruction: 'Answer the questions.', instructionTranslation: 'أجب عن الأسئلة.',
+    items: [
+      { id: 'fitness-a1', question: 'Why is it now easier for people to work out from home?', answer: 'It’s easier thanks to new technologies and equipment.' },
+      { id: 'fitness-a2', question: 'What are some ways technology has changed fitness?', answer: 'Online lessons, fitness apps, etc.' },
+      { id: 'fitness-a3', question: 'How do modern fitness apps help people track their workouts?', answer: 'They can measure how fast your heart is beating, how many calories you burn and how well you sleep.' },
+      { id: 'fitness-a4', question: 'Who do gym owners have to compete with nowadays?', answer: 'They have to compete with online and home gyms.' },
+      { id: 'fitness-a5', question: 'Where can people use workout mirrors to improve their exercise routines?', answer: 'They can use them at the gym because they are too expensive to buy.' }
     ]
+  },
+  {
+    id: '6p-u4-fitness-tech-ab-b', source: 'activity_book', sourceTitle: 'Exercise B — Choose the correct option', sourcePages: 'كتاب النشاط ص 78',
+    instruction: 'Choose the correct option.', instructionTranslation: 'اختر الخيار الصحيح.',
+    items: [
+      { id: 'fitness-b1', question: 'Nowadays, more and more people are working out (at the gym / from home).', answer: 'from home.' },
+      { id: 'fitness-b2', question: '(The first / Modern) fitness apps measured just how far you ran and how fast.', answer: 'The first.' },
+      { id: 'fitness-b3', question: 'Experts say it’s (easier / harder) than before for gym owners now.', answer: 'harder.' },
+      { id: 'fitness-b4', question: 'In the past, gyms only used to have (other gyms / home gyms) to compete with.', answer: 'other gyms.' },
+      { id: 'fitness-b5', question: 'The writer believes there will be (less / more) technology in fitness in the future.', answer: 'more.' }
+    ]
+  },
+  {
+    id: '6p-u4-fitness-tech-ab-c', source: 'activity_book', sourceTitle: 'Exercise C — Complete the sentences', sourcePages: 'كتاب النشاط ص 78–79',
+    instruction: 'Complete the sentences with words from the article.', instructionTranslation: 'أكمل الجمل بكلمات من المقال.',
+    items: [
+      { id: 'fitness-c1', question: 'Before, people used to be part of a club to cycle with others.', answer: 'club' },
+      { id: 'fitness-c2', question: 'Modern fitness apps can even measure the quality of your sleep.', answer: 'quality' },
+      { id: 'fitness-c3', question: 'Gyms now have equipment that most clients can’t afford to buy themselves.', answer: 'equipment' },
+      { id: 'fitness-c4', question: 'Some mirrors now can teach people how to exercise.', answer: 'mirrors' },
+      { id: 'fitness-c5', question: 'Personal trainers now have to be more familiar with technology to do their job.', answer: 'technology' },
+      { id: 'fitness-c6', question: 'AI is providing a lot of data about the clients of a gym.', answer: 'data' }
+    ]
+  }
+]
   },
 
   '6p-u5-kerkennah': {
@@ -462,7 +484,44 @@ const READING_PASSAGE_CONTENT: Record<string, ReadingPassage> = {
       'لم نشعر بالملل لحظة واحدة. في أحد الأيام استأجرنا سيارة أجرة وقمنا بجولة في الجزيرة. شاهدنا القرى التي يصطاد فيها الصيادون الأخطبوط في أوانٍ فخارية. وفي يوم آخر ركبنا الجمال على الشاطئ، واستأجرنا ألواح ركوب الأمواج من الفندق وتعلمنا ركوب الأمواج بالرياح. كما ركبنا عربة يجرها حمار وتجولنا في بعض القرى. أكثر ما أثار إعجابي هو ضيافة السكان المحليين. دعا العديد من سكان الجزيرة إلى منازلهم لتناول شاي النعناع والكعك. كما استقللنا العبارة عائدين إلى البر الرئيسي لمشاهدة المسرح الروماني الرائع في الجم. ومن الأشياء الأخرى التي استمتعنا بها حقًا الترفيه المجاني في الفندق بعد العشاء. في إحدى الأمسيات قدم أحد الفقراء وفريقه عرضًا مذهلًا تضمن الاستلقاء على سرير من المسامير والزجاج، والمشي فوق الجمر الساخن، ونفث النار، وترك العقارب تمشي على وجوههم! بالتأكيد لن ننسى تلك العطلة أبدًا.',
       'آنا جونسون، ريدينغ، بيركشاير.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+  {
+    id: '6p-u5-kerkennah-ab-a', source: 'activity_book', sourceTitle: 'Exercise A — Answer these questions', sourcePages: 'كتاب النشاط ص 96',
+    instruction: 'Answer these questions.', instructionTranslation: 'أجب عن هذه الأسئلة.',
+    items: [
+      { id: 'kerkennah-a1', question: 'Where did Anna and her cousin go on holiday?', answer: 'Kerkennah Islands.' },
+      { id: 'kerkennah-a2', question: 'How long did they stay?', answer: 'Two weeks / a fortnight.' },
+      { id: 'kerkennah-a3', question: 'How much did it cost?', answer: '£300.' },
+      { id: 'kerkennah-a4', question: 'What was the name of the nearest airport to the islands?', answer: 'Sfax.' },
+      { id: 'kerkennah-a5', question: 'What sports facilities were there at the hotel?', answer: 'A swimming pool and tennis courts.' },
+      { id: 'kerkennah-a6', question: 'What was the local seafood speciality?', answer: 'Octopus.' },
+      { id: 'kerkennah-a7', question: 'Where did they go by taxi?', answer: 'On a tour of the island.' }
+    ]
+  },
+  {
+    id: '6p-u5-kerkennah-ab-b', source: 'activity_book', sourceTitle: 'Exercise B — Read and answer', sourcePages: 'كتاب النشاط ص 96',
+    instruction: 'Read the text carefully and answer these questions.', instructionTranslation: 'اقرأ النص بعناية وأجب عن هذه الأسئلة.',
+    items: [
+      { id: 'kerkennah-b1', question: 'What did the cost of the holiday include?', answer: 'The flight, transfers, accommodation, breakfast and dinner, and entertainment.' },
+      { id: 'kerkennah-b2', question: 'How far from the beach was the hotel?', answer: 'Very close / a short walk.' },
+      { id: 'kerkennah-b3', question: 'What did Anna really like about the hotel?', answer: 'The peaceful atmosphere.' },
+      { id: 'kerkennah-b4', question: 'Name three activities Anna and her cousin did during the day.', answer: 'They toured the island in a taxi, went for a camel ride, learnt to windsurf, rode in a donkey cart, and visited the Roman theatre.' },
+      { id: 'kerkennah-b5', question: 'What did they do when they didn’t go out in the evening?', answer: 'They watched the free entertainment at the hotel.' }
+    ]
+  },
+  {
+    id: '6p-u5-kerkennah-ab-c', source: 'activity_book', sourceTitle: 'Exercise C — Find words in the text', sourcePages: 'كتاب النشاط ص 96',
+    instruction: 'Find words in the text that mean the following.', instructionTranslation: 'جد كلمات في النص تحمل المعاني التالية.',
+    items: [
+      { id: 'kerkennah-c1', question: 'a boat that transports people and goods', answer: 'ferry' },
+      { id: 'kerkennah-c2', question: 'extremely comfortable', answer: 'luxurious' },
+      { id: 'kerkennah-c3', question: 'something which is wonderful to look at', answer: 'spectacular' },
+      { id: 'kerkennah-c4', question: 'something special to a locality', answer: 'speciality' },
+      { id: 'kerkennah-c5', question: 'a fine welcome', answer: 'hospitality' },
+      { id: 'kerkennah-c6', question: 'a show/performance', answer: 'display' }
+    ]
+  }
+]
   },
 
   '6p-u5-holidays': {
@@ -486,7 +545,57 @@ const READING_PASSAGE_CONTENT: Record<string, ReadingPassage> = {
       'يخاطر أشخاص كهؤلاء بالإضرار بصحتهم وكذلك بعلاقاتهم الشخصية. يحتاج الجميع إلى قضاء وقت مع العائلة أو الأصدقاء، وينبغي أن يكون هذا الوقت أكثر من ساعة عابرة تُقتنص من حين إلى آخر. يحتاج المقربون منا إلى معرفة أننا نهتم بهم. ومنحهم قدرًا كبيرًا من وقتنا هو الطريقة التي نظهر بها ذلك. ويمكن أن يمنحنا وقت العطلة هذه الفرصة.',
       'العطل مهمة للجميع، وليس لرجال الأعمال فقط. نحتاج جميعًا إلى تغيير المكان وتغيير وتيرة الحياة. نحتاج إلى الاسترخاء وإبعاد أذهاننا عن العمل أو المدرسة أو المنزل أو أي مشكلات تقلقنا في ذلك الوقت. لا يهم إن اخترنا قضاء هذا الوقت مستلقين على الشاطئ أو متجولين في الغابات المطيرة أو مشاهدين للمعالم السياحية. المهم هو التغيير. غالبًا ما يساعد تغيير الروتين على النظر إلى حياتنا بطريقة مختلفة. العطل ضرورية لرفاهيتنا العامة. وإبقاء الهاتف المحمول مغلقًا أمر ضروري أيضًا!'
     ],
-    exerciseSets: []
+    exerciseSets: [
+  {
+    id: '6p-u5-holidays-ab-a', source: 'activity_book', sourceTitle: 'Exercise A — Circle the correct answer', sourcePages: 'كتاب النشاط ص 102',
+    instruction: 'Read the text on page 51 of the Student’s Book and circle the correct answer.', instructionTranslation: 'اقرأ نص صفحة 51 من كتاب الطالب وضع دائرة حول الإجابة الصحيحة.',
+    items: [
+      { id: 'holidays-a1', question: 'The pressure of life will: (a) kill us. (b) cause health problems. (c) make us lose our jobs.', answer: 'cause health problems.' },
+      { id: 'holidays-a2', question: 'Some people don’t take holidays because: (a) they don’t think other people can do their work. (b) they want to make lots of money. (c) the company doesn’t let them.', answer: 'they don’t think other people can do their work.' },
+      { id: 'holidays-a3', question: 'Some people find out too late that: (a) they should have a different job. (b) work is not the only thing in life. (c) they missed their holiday.', answer: 'work is not the only thing in life.' },
+      { id: 'holidays-a4', question: 'We need to give families and friends: (a) a good holiday. (b) at least an hour of our time. (c) a lot of our time.', answer: 'a lot of our time.' },
+      { id: 'holidays-a5', question: 'Holidays can give us a chance to: (a) learn new activities. (b) stop thinking about our problems. (c) recover from illnesses.', answer: 'stop thinking about our problems.' }
+    ]
+  },
+  {
+    id: '6p-u5-holidays-ab-b', source: 'activity_book', sourceTitle: 'Exercise B — Complete the sentences', sourcePages: 'كتاب النشاط ص 102',
+    instruction: 'Read the text again and complete the sentences.', instructionTranslation: 'اقرأ النص مرة أخرى وأكمل الجمل.',
+    items: [
+      { id: 'holidays-b1', question: 'Today it is more important than ever to ensure that we take enough breaks and holidays.', answer: 'take enough breaks and holidays' },
+      { id: 'holidays-b2', question: 'If we are always on the move, we don’t always notice how far we push our bodies.', answer: 'how far we push our bodies' },
+      { id: 'holidays-b3', question: 'The human body cannot continue like this indefinitely.', answer: 'indefinitely' },
+      { id: 'holidays-b4', question: 'We all need a change of scene and a change of pace.', answer: 'a change of scene and a change of pace' },
+      { id: 'holidays-b5', question: 'A change of routine often helps us to look at our own lives in a different way.', answer: 'in a different way' }
+    ]
+  },
+  {
+    id: '6p-u5-holidays-ab-c', source: 'activity_book', sourceTitle: 'Exercise C — Find words or phrases', sourcePages: 'كتاب النشاط ص 103',
+    instruction: 'Find words or phrases in the text that mean the following.', instructionTranslation: 'جد كلمات أو عبارات في النص تحمل المعاني التالية.',
+    items: [
+      { id: 'holidays-c1', question: 'make certain', answer: 'ensure' },
+      { id: 'holidays-c2', question: 'forever', answer: 'indefinitely' },
+      { id: 'holidays-c3', question: 'a time limit', answer: 'deadline' },
+      { id: 'holidays-c4', question: 'about to happen', answer: 'around the corner' },
+      { id: 'holidays-c5', question: 'taken quickly', answer: 'snatched' },
+      { id: 'holidays-c6', question: 'health', answer: 'wellbeing' },
+      { id: 'holidays-c7', question: 'very important', answer: 'vital' }
+    ]
+  },
+  {
+    id: '6p-u5-holidays-ab-d', source: 'activity_book', sourceTitle: 'Exercise D — Complete the words with vowels', sourcePages: 'كتاب النشاط ص 103',
+    instruction: 'Complete the words from the text with vowels a, e, i, o or u.', instructionTranslation: 'أكمل الكلمات من النص مستخدمًا حروف العلة.',
+    items: [
+      { id: 'holidays-d1', question: 'A person who works too much is often called a workaholic.', answer: 'workaholic' },
+      { id: 'holidays-d2', question: 'When you go sightseeing, you visit interesting places as a tourist.', answer: 'sightseeing' },
+      { id: 'holidays-d3', question: 'If you walk a long distance in nature, you go trekking.', answer: 'trekking' },
+      { id: 'holidays-d4', question: 'Something that doesn’t happen very often is occasional.', answer: 'occasional' },
+      { id: 'holidays-d5', question: 'A severe problem is a very serious one.', answer: 'severe' },
+      { id: 'holidays-d6', question: 'If you are interrupted, you have to stop what you are doing.', answer: 'interrupted' },
+      { id: 'holidays-d7', question: 'If something is significant, it has an important effect.', answer: 'significant' },
+      { id: 'holidays-d8', question: 'When you are working a lot and you suddenly slow down, you have a change of pace.', answer: 'pace' }
+    ]
+  }
+]
   },
 
   '6p-u6-banker': {
@@ -553,7 +662,56 @@ const READING_PASSAGE_CONTENT: Record<string, ReadingPassage> = {
       'بدأ الناس يدركون قيمة شراء العقارات لتأجيرها. فيدفع الإيجار أقساط القرض أو الرهن العقاري، وعندما يحتاج المستثمر إلى المال يمكنه بيع العقار وتحقيق الربح. وهذا شائع خصوصًا بين الأشخاص الذين يرثون مبلغًا من المال ويريدون الاستفادة منه أكثر من تركه في حساب توفير.',
       'أيًا كانت الطريقة التي يختارها الناس لاستثمار أموالهم، سواء في حسابات التوفير أو خطط التقاعد أو الأسهم والحصص أو العقارات وغيرها، فهي أكثر منطقية من الاحتفاظ بها في صندوق تحت السرير كما اعتاد أجدادنا! وعلى الرغم من أن بعض الشباب لا يرون قيمة الادخار للشيخوخة وهم لا يزالون في العشرينات، فإن هناك كثيرًا من المتقاعدين اليوم يتمنون لو أنهم فعلوا المزيد بأموالهم عندما كانوا أصغر سنًا.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+  {
+    id: '6p-u6-making-money-ab-b', source: 'activity_book', sourceTitle: 'Exercise B — Choose the correct option', sourcePages: 'كتاب النشاط ص 126',
+    instruction: 'Choose the correct option to complete each sentence.', instructionTranslation: 'اختر الخيار الصحيح لإكمال كل جملة.',
+    items: [
+      { id: 'money-b1', question: 'When we are children: (a) we start to save for when we are older. (b) we are taught the value of saving. (c) we often buy big things.', answer: 'we are taught the value of saving.' },
+      { id: 'money-b2', question: 'We can get more interest: (a) if we keep our money in our account for a long time. (b) if we change accounts often. (c) if we put in a fixed amount.', answer: 'if we keep our money in our account for a long time.' },
+      { id: 'money-b3', question: 'Investing in stocks and shares: (a) is a good way for anyone to make money. (b) will always make a profit. (c) is fun for some people.', answer: 'is fun for some people.' },
+      { id: 'money-b4', question: 'If you buy property: (a) you can make a lot of profit from rent. (b) you don’t need a loan. (c) you may get a lot of money when you sell it.', answer: 'you may get a lot of money when you sell it.' }
+    ]
+  },
+  {
+    id: '6p-u6-making-money-ab-c', source: 'activity_book', sourceTitle: 'Exercise C — Answer the questions', sourcePages: 'كتاب النشاط ص 126',
+    instruction: 'Answer the questions.', instructionTranslation: 'أجب عن الأسئلة.',
+    items: [
+      { id: 'money-c1', question: 'What are we told to do when we start work?', answer: 'Put money into pension plans.' },
+      { id: 'money-c2', question: 'What is the best type of account for those who can forget they invested money?', answer: 'A savings account.' },
+      { id: 'money-c3', question: 'What profile of people invest in stocks and shares?', answer: 'Financially-minded people.' },
+      { id: 'money-c4', question: 'What do many people who receive money from relatives that died often do?', answer: 'Buy property.' },
+      { id: 'money-c5', question: 'What did our elder relatives use to do according to the text?', answer: 'Keep money in a box under the bed.' }
+    ]
+  },
+  {
+    id: '6p-u6-making-money-ab-d', source: 'activity_book', sourceTitle: 'Exercise D — Find a word or phrase', sourcePages: 'كتاب النشاط ص 127',
+    instruction: 'Find a word or phrase in the text that means the following.', instructionTranslation: 'جد كلمة أو عبارة في النص تحمل المعنى التالي.',
+    items: [
+      { id: 'money-d1', question: 'put in our minds gradually', answer: 'instilled' },
+      { id: 'money-d2', question: 'level of material comfort', answer: 'standard of living' },
+      { id: 'money-d3', question: 'money you pay for a loan', answer: 'interest' },
+      { id: 'money-d4', question: 'money that you make in a financial transaction', answer: 'profit' },
+      { id: 'money-d5', question: 'regular payments that you make to pay for something', answer: 'instalments' },
+      { id: 'money-d6', question: 'able to make good decisions', answer: 'sensible' }
+    ]
+  },
+  {
+    id: '6p-u6-making-money-ab-e', source: 'activity_book', sourceTitle: 'Exercise E — Complete the phrases', sourcePages: 'كتاب النشاط ص 127',
+    instruction: 'Find the words in the text that complete the following phrases.', instructionTranslation: 'جد الكلمات في النص التي تكمل العبارات التالية.',
+    items: [
+      { id: 'money-e1', question: 'put some ______', answer: 'aside' },
+      { id: 'money-e2', question: 'pension ______', answer: 'plans' },
+      { id: 'money-e3', question: 'regular ______', answer: 'savers' },
+      { id: 'money-e4', question: 'a fixed ______', answer: 'sum' },
+      { id: 'money-e5', question: 'financially ______', answer: 'minded' },
+      { id: 'money-e6', question: 'a risky ______', answer: 'business' },
+      { id: 'money-e7', question: 'major ______', answer: 'players' },
+      { id: 'money-e8', question: 'break ______', answer: 'even' },
+      { id: 'money-e9', question: 'realize the ______', answer: 'profit' }
+    ]
+  }
+]
   },
 
   '6p-u7-work-today': {
