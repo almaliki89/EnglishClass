@@ -6,6 +6,8 @@ type AuditRow = {
   passagesAttached: number;
   verified: number;
   reconstructed: number;
+  permissionRequired: number;
+  sourceRequired: number;
   pendingSource: number;
   pendingIds: string[];
 };
@@ -21,6 +23,8 @@ for (const grade of ORDERED_GRADES) {
 
   let verified = 0;
   let reconstructed = 0;
+  let permissionRequired = 0;
+  let sourceRequired = 0;
   let pendingSource = 0;
   let passagesAttached = 0;
   const pendingIds: string[] = [];
@@ -48,6 +52,12 @@ for (const grade of ORDERED_GRADES) {
 
     if (passage.status === 'verified') verified += 1;
     if (passage.status === 'reconstructed') reconstructed += 1;
+    if (passage.status === 'permission_required') {
+      permissionRequired += 1;
+      if (hasText) errors.push(`${grade}/${lesson.id}: permission_required must not embed source text.`);
+      if (!passage.sourceTitle.trim() || !passage.sourcePages.trim()) errors.push(`${grade}/${lesson.id}: permission_required must identify source and pages.`);
+    }
+    if (passage.status === 'source_required') sourceRequired += 1;
     if (passage.status === 'source_required' || passage.status === 'summary_only') {
       pendingSource += 1;
       pendingIds.push(lesson.id);
@@ -60,6 +70,8 @@ for (const grade of ORDERED_GRADES) {
     passagesAttached,
     verified,
     reconstructed,
+    permissionRequired,
+    sourceRequired,
     pendingSource,
     pendingIds,
   });
@@ -82,9 +94,18 @@ if (errors.length > 0) {
       readingLessons: acc.readingLessons + row.readingLessons,
       verified: acc.verified + row.verified,
       reconstructed: acc.reconstructed + row.reconstructed,
+      permissionRequired: acc.permissionRequired + row.permissionRequired,
+      sourceRequired: acc.sourceRequired + row.sourceRequired,
       pendingSource: acc.pendingSource + row.pendingSource,
     }),
     { readingLessons: 0, verified: 0, reconstructed: 0, pendingSource: 0 }
   );
+  const sixth = rows.find((row) => row.grade === 'sixth-preparatory');
+  if (!sixth || sixth.readingLessons !== 17 || sixth.permissionRequired !== 15 || sixth.sourceRequired !== 2) {
+    console.error('Sixth Preparatory source map changed unexpectedly.', sixth);
+    process.exitCode = 1;
+  } else {
+    console.log('Sixth Preparatory source map: 17 reading lessons; 15 source-located awaiting digital publication permission; 2 requiring the original textbook pages.');
+  }
   console.log('Reading-passage integrity checks passed.', totals);
 }
