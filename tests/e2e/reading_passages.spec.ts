@@ -125,7 +125,7 @@ test.describe('Source-aware reading passages', () => {
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
     await expect(page.locator('p[lang="en"]').first()).toContainText('I own a computer repair shop');
     await expect(page.locator('p[lang="en"]').last()).toContainText('With only lessons online');
-    await expect(page.getByText('Repair computers the organization receives, free of charge')).toBeVisible();
+    await expect(page.locator('p[lang="en"]').last()).toContainText('these students need help urgently');
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
   });
 
