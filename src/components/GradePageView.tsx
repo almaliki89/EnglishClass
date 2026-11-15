@@ -295,11 +295,17 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {units.map((unit) => {
-            const unitCompletedLessons = unit.lessons.filter((l) =>
-              studentState.completedLessonIds.includes(l.id)
+            const unitPassages = unit.lessons.filter((lesson) =>
+              lesson.category === 'reading' || Boolean(lesson.readingPassage)
+            );
+            const unitCourseLessons = unit.lessons.filter((lesson) =>
+              lesson.category !== 'reading' && !lesson.readingPassage
+            );
+            const unitCompletedLessons = unitCourseLessons.filter((lesson) =>
+              studentState.completedLessonIds.includes(lesson.id)
             ).length;
-            const unitProgress = unit.lessons.length > 0
-              ? Math.round((unitCompletedLessons / unit.lessons.length) * 100)
+            const unitProgress = unitCourseLessons.length > 0
+              ? Math.round((unitCompletedLessons / unitCourseLessons.length) * 100)
               : 0;
 
             return (
@@ -313,9 +319,16 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
                 <div className="space-y-3 min-w-0">
                   <div className="flex items-center justify-between gap-2">
                     <BrutalBadge variant="cobalt">الوحدة 0{unit.id}</BrutalBadge>
-                    <span className="font-mono text-xs font-bold text-ink/70 bg-paper px-2 py-0.5 border border-ink">
-                      {unit.lessons.length} دروس
-                    </span>
+                    <div className="flex items-center gap-1.5 flex-wrap justify-end">
+                      <span className="font-mono text-xs font-bold text-ink/70 bg-paper px-2 py-0.5 border border-ink">
+                        {unitCourseLessons.length} دروس
+                      </span>
+                      {unitPassages.length > 0 && (
+                        <span className="font-mono text-[10px] font-black text-cobalt bg-blue-mist px-2 py-0.5 border border-ink">
+                          {unitPassages.length} قطع في المكتبة
+                        </span>
+                      )}
+                    </div>
                   </div>
 
                   <div>
