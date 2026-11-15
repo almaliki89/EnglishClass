@@ -38,7 +38,7 @@ test.describe('Source-aware reading passages', () => {
 
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
     await expect(page.getByRole('heading', { name: 'لم يتم توثيق نص القطعة الأصلي بعد' })).toBeVisible();
-    await expect(page.getByText(/لن نعرضه على أنه نص الكتاب الأصلي/)).toBeVisible();
+    await expect(page.getByText(/الدرس موجود في المنهج، لكن نص القراءة الإنجليزي الكامل لم يُطابق مع مصدره بعد/)).toBeVisible();
 
     await page.getByRole('button', { name: 'ملف القصة والبطاقات القلابة' }).click().catch(() => {});
     await expect(page.getByText('زيد طارق (Zaid Tariq - 20 years old)')).toHaveCount(0);
@@ -48,7 +48,7 @@ test.describe('Source-aware reading passages', () => {
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
-    await expect(page.locator('p[lang="en"]').first()).toContainText('Harrods, which was founded in 1834');
+    await expect(page.locator('p[lang="en"]').nth(1)).toContainText('Harrods, which was founded in 1834');
     await expect(page.locator('p[lang="en"]').last()).toContainText('Everything for Everybody Rich Everywhere');
     await expect(page.getByText('ملزمة الخامس الإعدادي 2026')).toBeVisible();
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
@@ -72,7 +72,7 @@ test.describe('Source-aware reading passages', () => {
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
     await expect(page.locator('p[lang="en"]').last()).toContainText('The director asked me if I had any previous experience in sports management');
     await expect(page.locator('p[lang="en"]').last()).toContainText('my __________');
-    await expect(page.getByText('184–185')).toBeVisible();
+    await expect(page.getByText('184–185', { exact: true })).toBeVisible();
   });
 
   test('fifth preparatory shows Samira’s original Ramadan email and its phrase bank', async ({ page }) => {
@@ -82,7 +82,7 @@ test.describe('Source-aware reading passages', () => {
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
     await expect(page.locator('p[lang="en"]').first()).toContainText('To: Claire');
     await expect(page.locator('p[lang="en"]').first()).toContainText('It’s a 30-day religious fast from dawn to sunset');
-    await expect(page.locator('p[lang="en"]').first()).toContainText('all through the day');
+    await expect(page.locator('p[lang="en"]').last()).toContainText('all through the day');
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
   });
 
@@ -100,7 +100,7 @@ test.describe('Source-aware reading passages', () => {
     await page.goto('/grade/fifth-preparatory/unit/54/lesson/5th-u4-l4');
     await page.waitForLoadState('networkidle');
 
-    await expect(page.getByText('الدرس الرابع: اختبار الوحدة الرابعة (Unit Four Test)')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'الدرس الرابع: اختبار الوحدة الرابعة (Unit Four Test)' })).toBeVisible();
     await expect(page.getByText(/مراجعة اختبار الوحدة الرابعة كما ورد في الصفحتين 102–103/)).toBeVisible();
     await expect(page.getByRole('button', { name: 'نص القراءة الأصلي' })).toHaveCount(0);
     await expect(page.getByText(/100 درجة كاملة/)).toHaveCount(0);
