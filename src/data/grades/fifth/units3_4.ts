@@ -235,7 +235,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         titleAr: "الدرس السادس: التلوث النفطي والغازي في البصرة (Oil & Gas Pollution in Basra)",
         titleEn: "Lesson 6: Basra Gas Flaring, Environmental Pollution & Company Initiatives",
         category: "reading",
-        summary: "دراسة استيعابية حول حرق الغاز المصاحب لإنتاج النفط في حقول البصرة، آثاره الصحية على السكان، ومبادرات شركة غاز البصرة للحد من الانبعاثات الكربونية.",
+        summary: "رسالة سلمان أحمد عن أثر صناعة النفط والغاز في البيئة العراقية، مع أمثلة من الشعيبة والزبير والرميلة والبرجسية ومقاطع عن المراقبة البيئية.",
         sourcePages: "الملزمة ص 85 - 86",
         readingPassage: {
           status: "verified",
@@ -252,35 +252,35 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           ]
         },
         detailedContent: [
-          "مشكلة حرق الغاز (Gas Flaring): حرق الغاز الطبيعي المصاحب لاستخراج النفط الخام في حقول جنوب العراق يطلق أطناناً من غازات الدفيئة والمواد الملوثة في الهواء.",
-          "الآثار البيئية والصحية: يؤدي إلى أمراض تنفسية وزيادة درجات الحرارة وتلوث الأمطار.",
-          "الحلول والمشاريع: استثمار الغاز الطبيعي وتأسيس محطات لمعالجته وتوليد الكهرباء النظيفة بدلاً من حرقه في الهواء، مما يوفر مليارات الدولارات ويحمي سماء البصرة."
+          "الاحتباس الحراري: يذكر النص أن الوقود الأحفوري ينتج ثاني أكسيد الكربون والأوزون، وهما من غازات الدفيئة المرتبطة بتغير المناخ.",
+          "المواقع العراقية: يذكر سلمان الشعيبة والزبير والرميلة والبرجسية، ويقارن حالة الرميلة في التسعينيات بما شاهده بعد التطور الصناعي.",
+          "آثار الانبعاثات: قد تتضرر موائل الحياة البرية ومناطق تعشيش الطيور وتكاثرها، كما يمكن أن تتأثر السلسلة الغذائية."
         ],
         teacherNotes: [
-          "سؤال الملزمة ص 90: How does gas flaring affect the local environment? -> It causes air pollution, releases harmful greenhouse gases, and impacts residents' respiratory health."
+          "سؤال فهم مستند إلى النص: Which Basra locations does Salman mention? -> Shu’ayba, Zubair, Rumaila and Burjussia."
         ],
         examples: [
           {
-            en: "Capturing flared gas in Basra can generate electricity for thousands of Iraqi homes.",
-            ar: "إن حصر الغاز المحترق في البصرة يمكن أن يولد الكهرباء لآلاف المنازل العراقية.",
+            en: "Burning oil and gas releases pollution into the air.",
+            ar: "إن حرق النفط والغاز يطلق التلوث في الهواء.",
             highlight: "generate electricity",
-            note: "فائدة اقتصادية وبيئية كبرى للمشروع"
+            note: "جملة أساسية وردت في رسالة سلمان"
           }
         ],
         exercises: [
           {
             id: "5u3-ex6",
-            question: "Instead of burning associated gas in oilfields, companies should ______.",
+            question: "According to Salman, pollution from emissions may damage the ______ areas of birds.",
             options: [
-              "capture and process it for electricity generation",
+              "nesting and breeding",
               "pump it directly into rivers",
               "release it into the city atmosphere",
               "ignore the rising emissions"
             ],
-            correctAnswer: "capture and process it for electricity generation",
-            explanation: "الحل العلمي والبيئي الأمثل هو حصر الغاز ومعالجته لتوليد الطاقة الكهربائية (الملزمة ص 90).",
+            correctAnswer: "nesting and breeding",
+            explanation: "يذكر النص أن الانبعاثات قد تضر بمناطق تعشيش الطيور وتكاثرها.",
             type: "mcq",
-            sourcePages: "الملزمة ص 90"
+            sourcePages: "الملزمة ص 85"
           }
         ]
       },
