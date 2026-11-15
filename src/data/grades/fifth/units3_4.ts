@@ -236,7 +236,21 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         titleEn: "Lesson 6: Basra Gas Flaring, Environmental Pollution & Company Initiatives",
         category: "reading",
         summary: "دراسة استيعابية حول حرق الغاز المصاحب لإنتاج النفط في حقول البصرة، آثاره الصحية على السكان، ومبادرات شركة غاز البصرة للحد من الانبعاثات الكربونية.",
-        sourcePages: "الملزمة ص 89 - 91",
+        sourcePages: "الملزمة ص 85 - 86",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "85–86",
+          verificationNote: "النص رسالة سلمان أحمد إلى المحرر مع مواضع مطابقة مرقّمة، وتليها خمسة مقاطع (A–E) في صفحة المصدر 86. أبقينا مواضع المطابقة كما وردت ولم نخمّن ترتيب إدراجها داخل الرسالة.",
+          originalText: [
+            "Dear Editor,\nOil and gas are the main industries in Iraq, and I realize that our economy depends on them. However, I am concerned about the effect of these industries on the environment.\n[Paragraph 1]\nOne obvious problem is global warming. All fossil fuels produce carbon dioxide and ozone, which are two of the main greenhouse gases. The increase in greenhouse gases in our atmosphere may cause climate change.\nThere are other environmental problems in our country. Look at different places in Basra, like Shu’ayba, Zubair, Rumaila and Burjussia. I remember Rumaila as it was in the early nineties. It used to be a lovely, quiet place, full of wildlife, especially in the lakes. I went there two years ago and I saw how industrial development has changed the area.\n[Paragraph 2]\nI expect I would notice more changes if I went there today. How has this development affected the wildlife?\nBurning oil and gas releases pollution into the air.\n[Paragraph 3]\nYou can see flares and smoke around sites like Burjussia in Basra. [Paragraph 4] Pollution of the land caused by these emissions may also damage the habitats of wildlife, in particular the nesting and breeding areas of birds. My concern is how much all of this may affect the food chain – if you destroy one animal in the food chain, then other animals have nothing to eat.\nIraq is a very beautiful country. If we are not careful, we might damage the environment.\nYours sincerely,\nSalman Ahmad,\nBasra.",
+            "Paragraph A — Green Oil & Gas Company (GOGC) uses the latest technology to monitor the environment in Iraq. One type of technology used is satellite imagery.",
+            "Paragraph B — GOGC has built special stations to monitor air quality. They measure the quantity of gases in the air, such as sulphur dioxide (SO2), oxides of nitrogen, ozone and hydrocarbons.",
+            "Paragraph C — Smoke and flares can disturb the breeding patterns of birds. At Burjussia, GOGC has a programme to provide new nesting places, which is already bringing birds back to the area.",
+            "Paragraph D — Global warming is caused by CO2 – carbon dioxide. The good news about LNG (liquefied natural gas) is that it contains more hydrogen and less carbon than oil – so it produces much less CO2 when it is used.",
+            "Paragraph E — The lakes around Rumaila are a special environment. There is a lot of interesting life in these lakes. But it can easily be damaged by oil or other sorts of pollution. So GOGC has a team which monitors the quality of the lakewater at 15 places around Rumaila. Protecting the environment in this special area is very important to the company."
+          ]
+        },
         detailedContent: [
           "مشكلة حرق الغاز (Gas Flaring): حرق الغاز الطبيعي المصاحب لاستخراج النفط الخام في حقول جنوب العراق يطلق أطناناً من غازات الدفيئة والمواد الملوثة في الهواء.",
           "الآثار البيئية والصحية: يؤدي إلى أمراض تنفسية وزيادة درجات الحرارة وتلوث الأمطار.",
