@@ -111,7 +111,7 @@ export const UNIT_4: Unit = {
           en: "Modern fitness apps can measure heart rate, calories burned and sleep quality.",
           ar: "تستطيع تطبيقات اللياقة الحديثة قياس نبض القلب والسعرات المحروقة وجودة النوم.",
           highlight: "heart rate, calories burned and sleep quality",
-          note: "ص 85"
+          note: "ص 80 من ملزمة السادس 2027"
         }
       ],
       exercises: [
