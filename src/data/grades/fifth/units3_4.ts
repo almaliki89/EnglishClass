@@ -513,7 +513,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           sourcePages: "99",
           verificationNote: "المشهد الحواري المصوّر في صفحة المصدر 99 بين Helen وZeina. لا تعرض هذه الصفحة قصة Hossam أو التواء الكاحل.",
           originalText: [
-            "Helen: Come on, Helen. I know you’re joking. Don’t waste time.\nHelen: I’m not wasting time. I’ve hurt my knee. It hurts so much that I can’t stand up.",
+            "Zeina: Come on, Helen. I know you’re joking. Don’t waste time.\nHelen: I’m not wasting time. I’ve hurt my knee. It hurts so much that I can’t stand up.",
             "Zeina: Shall I help you walk to that seat?\nHelen: Yes, please, Zeina.",
             "Zeina: If you put your arm around my shoulder, you’ll be able to walk.\nHelen: Ow! It feels really terrible if I move it.",
             "Zeina: You look very white. Would you like me to get you a glass of water?\nHelen: No, I’d prefer you to stay here with me.",
