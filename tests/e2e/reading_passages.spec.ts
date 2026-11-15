@@ -6,7 +6,7 @@ test.describe('Source-aware reading passages', () => {
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
-    await expect(page.getByRole('heading', { name: 'Original English Passage' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'النص الإنجليزي الكامل' })).toBeVisible();
     await expect(page.locator('p[lang="en"]').first()).toContainText('Ibrahim lived in a small village in the south of Iraq');
     await expect(page.getByText('ملزمة الثالث المتوسط 2025')).toBeVisible();
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
@@ -37,9 +37,9 @@ test.describe('Source-aware reading passages', () => {
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
-    await expect(page.getByRole('heading', { name: 'لم يتم توثيق نص القطعة الأصلي بعد' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'النص الكامل غير متاح للنشر في هذه النسخة' })).toBeVisible();
     await expect(page.getByText('المصدر محدد — إذن النشر الرقمي مطلوب')).toBeVisible();
-    await expect(page.getByText(/تم تحديد نص القراءة وموضعه في الملزمة المرفوعة/)).toBeVisible();
+    await expect(page.getByText(/لم يتم إثبات موافقة النشر الرقمي/)).toBeVisible();
     await expect(page.getByText('ملزمة السادس 2027 — إعداد الأستاذ عمار غالب')).toBeVisible();
     await expect(page.getByText(/ص 10 من ملزمة السادس 2027/)).toBeVisible();
 
