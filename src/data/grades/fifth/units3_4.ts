@@ -589,36 +589,36 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         id: "5th-u4-l4",
         unitId: 54,
         lessonNumber: 4,
-        titleAr: "الدرس الرابع: الاختبار التحريري الشامل لنصف السنة (Semester 1 Comprehensive Exam)",
-        titleEn: "Lesson 4: Official 100-Mark Mid-Year Examination Model Paper",
-        category: "reading",
-        summary: "النموذج الامتحاني الشامل المكتوب في الملزمة ص 103 لنصف السنة (100 درجة كاملة) موزع وفق معايير وزارة التربية العراقية.",
-        sourcePages: "الملزمة ص 103",
+        titleAr: "الدرس الرابع: اختبار الوحدة الرابعة (Unit Four Test)",
+        titleEn: "Lesson 4: Unit Four Test — Past Tenses, Present Perfect & Future Forms",
+        category: "grammar",
+        summary: "مراجعة اختبار الوحدة الرابعة كما ورد في الصفحتين 102–103 من الملزمة، وتشمل الماضي البسيط والماضي المستمر، والمضارع التام البسيط والمستمر، واستخدام will وwon’t.",
+        sourcePages: "الملزمة ص 102 - 103",
         detailedContent: [
-          "السؤال الأول (Reading Comprehension - 20 درجة): قطعة خارجية غير مرئية وأسئلة حول سوق الشورجة ومهرجان بابل.",
-          "السؤال الثاني (Grammar & Functions - 30 درجة): الأزمنة، السؤال الذيلي، الشرطية الأولى، الاستنتاج، وعروض المساعدة.",
-          "السؤال الثالث (Vocabulary & Spelling - 20 درجة): إسقاطات معاني، تلازم الصفات وحروف الجر، وترتيب الصفات، والبادئة re-.",
-          "السؤال الرابع (Literature Spot - 10 درجات): أسئلة حول رواية نساء صغيرات للويزا ماي ألكوت.",
-          "السؤال الخامس (Writing / Composition - 20 درجة): كتابة إنشاء عن رمضان في العراق أو الحيوانات المهددة بالانقراض."
+          "تمرين A (ص 102): اختيار الصيغة الصحيحة بين المضارع البسيط والمضارع المستمر.",
+          "تمرين B (ص 102): إكمال جمل بالماضي البسيط أو الماضي المستمر، مع التمييز بين الحدث الجاري والحدث الذي قطعه.",
+          "تمرين C (ص 103): استخدام المضارع التام البسيط أو المضارع التام المستمر، مع for وnever وhow long وyet.",
+          "تمرين D (ص 103): إكمال جمل باستخدام will أو won’t وصيغة الفعل المناسبة.",
+          "تمرين E (ص 103): اختيار الصيغة الصحيحة للفعل في جمل بالمضارع التام."
         ],
         teacherNotes: [
-          "توجيه الملزمة ص 103: وزع وقت الامتحان البالغ ساعتين ونصف بدقة، وابدأ بالأسئلة التي تضمن إجابتها كاملة كالقواعد والإنشاء."
+          "مرجع المصدر: Unit Four Test، الصفحتان 102–103 من الملزمة. هذه صفحة اختبار وحدة تدريبية وليست ورقة امتحان نصف سنة موزعة على 100 درجة."
         ],
         examples: [
           {
-            en: "An official 100-mark mid-year exam tests all linguistic, lexical, and structural competencies.",
-            ar: "يختبر امتحان نصف السنة الرسمي المكون من 100 درجة جميع الكفايات اللغوية والمعجمية والتركيبية.",
-            highlight: "100-mark exam",
-            note: "توزيع الدرجات الرسمي"
+            en: "I have been reading this book for two months, but I still have not finished it.",
+            ar: "أقرأ هذا الكتاب منذ شهرين، لكنني لم أنتهِ منه بعد.",
+            highlight: "for two months / have been reading",
+            note: "مثال من تدريب المضارع التام المستمر في الصفحة 103"
           }
         ],
         exercises: [
           {
             id: "5u4-ex4",
-            question: "The standard total mark for the official Iraqi semester exam is ______ marks.",
-            options: ["100", "50", "75", "120"],
-            correctAnswer: "100",
-            explanation: "الدرجة الكلية الرسمية للامتحان التحريري النهائي لنصف السنة هي 100 درجة (الملزمة ص 103).",
+            question: "How long has the speaker been reading the book?",
+            options: ["For two months", "For two years", "For two weeks", "For two days"],
+            correctAnswer: "For two months",
+            explanation: "يذكر المتحدث أنه يقرأ الكتاب منذ شهرين: I have been reading this book for two months (الملزمة ص 103).",
             type: "mcq",
             sourcePages: "الملزمة ص 103"
           }
