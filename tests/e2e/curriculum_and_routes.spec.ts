@@ -430,17 +430,17 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       {
         grade: 'third-intermediate',
         expectedPassage: 'Car of the Year: Panther 3.0D',
-        forbiddenPassage: 'Canada & Official Languages',
+        forbiddenPassage: 'The Pregnant Deer',
       },
       {
         grade: 'fourth-preparatory',
         expectedPassage: 'كندا واللغات الرسمية',
-        forbiddenPassage: 'Ramadan in Iraq',
+        forbiddenPassage: 'تاريخ اللغة الإنكليزية',
       },
       {
         grade: 'fifth-preparatory',
         expectedPassage: 'Ramadan in Iraq',
-        forbiddenPassage: "Ammar's Story",
+        forbiddenPassage: 'Helen’s Knee Injury',
       },
       {
         grade: 'sixth-preparatory',
@@ -454,12 +454,20 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       await page.waitForLoadState('networkidle');
 
       const library = page.getByTestId('grade-book-passage-library');
-      await expect(library.getByRole('heading', { name: 'مكتبة قطع الكتاب' })).toBeVisible();
+      await expect(library.getByRole('heading', { name: 'قطع الكتاب' })).toBeVisible();
 
       const passageCards = library.getByTestId('book-passage-card');
       await expect(passageCards.first()).toBeVisible();
       await expect(passageCards.filter({ hasText: item.expectedPassage }).first()).toBeVisible();
       await expect(library).not.toContainText(item.forbiddenPassage);
+
+      if (item.grade === 'third-intermediate') {
+        await expect(library).not.toContainText('The Father of Optics');
+        await expect(library).not.toContainText('Life is Like a Cup of Coffee');
+      }
+      if (item.grade === 'fifth-preparatory') {
+        await expect(library).not.toContainText('Olympics Volunteer Interview');
+      }
 
       const libraryBox = await library.boundingBox();
       const unitsHeading = page.getByRole('heading', { name: /الوحدات الدراسية لـ/ });
@@ -468,6 +476,24 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       expect(unitsBox).not.toBeNull();
       expect(libraryBox!.y).toBeLessThan(unitsBox!.y);
     }
+  });
+
+  test('the fifth-grade dialogue/interview and fourth-grade supplementary reading stay outside the textbook-passage index', async ({ page }) => {
+    await page.goto('/grade/fourth-preparatory');
+    await page.waitForLoadState('networkidle');
+    const fourthLibrary = page.getByTestId('grade-book-passage-library');
+    await expect(fourthLibrary).not.toContainText('History of the English Language');
+
+    await page.goto('/grade/fifth-preparatory');
+    await page.waitForLoadState('networkidle');
+    const fifthLibrary = page.getByTestId('grade-book-passage-library');
+    await expect(fifthLibrary).not.toContainText('Helen’s Knee Injury');
+    await expect(fifthLibrary).not.toContainText('Olympics Volunteer Interview');
+
+    // These are still part of the actual unit lessons; they were not deleted.
+    await page.goto('/grade/fifth-preparatory/unit/54');
+    await page.waitForLoadState('networkidle');
+    await expect(page.getByText('إصابة هيلين في الركبة وحوار المساعدة')).toBeVisible();
   });
 
   test('the passage library filters by unit and opens the original lesson without duplicating it', async ({ page }) => {
