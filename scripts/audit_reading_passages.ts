@@ -77,6 +77,27 @@ for (const grade of ORDERED_GRADES) {
   });
 }
 
+const sixthLessons = getUnitsForGrade('sixth-preparatory').flatMap((unit) => unit.lessons);
+const fitnessLesson = sixthLessons.find((lesson) => lesson.id === 'u4-l2');
+const workTodayLesson = sixthLessons.find((lesson) => lesson.id === 'u7-l3');
+const moneyLesson = sixthLessons.find((lesson) => lesson.id === 'u6-l9');
+
+if (!fitnessLesson?.detailedContent.some((line) => line.includes('المجتمعات الرياضية عبر الإنترنت'))) {
+  errors.push('sixth-preparatory/u4-l2: Fitness Tech must cover online exercise communities.');
+}
+if (fitnessLesson?.detailedContent.some((line) => /wearable fitness trackers|تطبيقات الذكاء الاصطناعي/.test(line))) {
+  errors.push('sixth-preparatory/u4-l2: remove unsupported wearable trackers or AI fitness apps.');
+}
+if (!workTodayLesson?.detailedContent.some((line) => line.includes('تصميم المواقع'))) {
+  errors.push('sixth-preparatory/u7-l3: Work Today must cover web design.');
+}
+if (workTodayLesson?.detailedContent.some((line) => /telecommuting|العمل عن بعد/.test(line))) {
+  errors.push('sixth-preparatory/u7-l3: telecommuting is not in the uploaded passage.');
+}
+if (moneyLesson?.detailedContent.some((line) => /الأكثر أماناً|الأكثر أمانًا/.test(line))) {
+  errors.push('sixth-preparatory/u6-l9: property must not be presented as a guaranteed safest investment.');
+}
+
 console.table(rows.map(({ pendingIds, ...row }) => row));
 for (const row of rows) {
   if (row.pendingIds.length > 0) {
@@ -98,7 +119,7 @@ if (errors.length > 0) {
       sourceRequired: acc.sourceRequired + row.sourceRequired,
       pendingSource: acc.pendingSource + row.pendingSource,
     }),
-    { readingLessons: 0, verified: 0, reconstructed: 0, pendingSource: 0 }
+    { readingLessons: 0, verified: 0, reconstructed: 0, permissionRequired: 0, sourceRequired: 0, pendingSource: 0 }
   );
   const sixth = rows.find((row) => row.grade === 'sixth-preparatory');
   if (!sixth || sixth.readingLessons !== 17 || sixth.permissionRequired !== 15 || sixth.sourceRequired !== 2) {
