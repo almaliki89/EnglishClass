@@ -662,6 +662,18 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
         category: "reading",
         summary: "القطعة التاريخية المهمة حول اختراع شبكة الويب العالمية (WWW) على يد العالم تيم بيرنرز لي وروبرت كايو في مختبر سيرن بسويسرا.",
         sourcePages: "الملزمة ص 59 - 62",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "57",
+          verificationNote: "النص الكامل بعنوان Inventions That Have Changed the World / The Internet مطابق لصفحة المصدر 57.",
+          originalText: [
+            "What do you do if you want to know about a high school volleyball team in Beirut? Who can your brother ask if he wants to find a language school in Scotland where he can study English this summer? Where can your sister get the latest information if she has to write an essay about climate change? And what should you all do if you want to know about a festival? The answer is simple. You go onto the internet and look for a useful website.",
+            "The internet – sometimes called the world wide web (www) – is a huge international network of computers. It was invented in 1990 by two computer scientists – Tim Berners-Lee from Britain and Robert Cailliau from Belgium. At the time, they were both working at a physics laboratory in Switzerland. They invented the system to help scientists to share ideas and information. In 1993, the internet became public and it grew very fast. Today, it is used by billions of people all over the world and its use is still growing.",
+            "To go online, all you need is a computer and an internet router or Wi-Fi. And if you look at the statistics, all teenagers in the United States are connecting regularly. A recent survey showed that 97% of teenagers use the internet at least daily, and 46% say they use it ‘almost constantly’. They often go online on their phones, through a browser or via apps. Most of these also say that they frequently go online to play games (72%) and listen to music. Most American teens (51%) prefer to stream music these days, rather than download it (20%).",
+            "Another very popular online activity among teens is social media. Social media platforms like YouTube (95%) and TikTok (67%) are among the most popular with teens, while others like Facebook (32%) are now less used by teens. Teenagers often use social media to chat, post photos or exchange memes. They also follow their favourite celebrities and influencers to find out what they’re doing."
+          ]
+        },
         detailedContent: [
           "قصة الاختراع (The World Wide Web): في عام 1989، ابتكر العالم البريطاني تيم بيرنرز لي (Tim Berners-Lee) بالتعاون مع البلجيكي روبرت كايو (Robert Cailliau) في مركز الأبحاث CERN نظاماً لربط وتبادل المعلومات بين أجهزة الحاسوب عبر الروابط التشعبية (Hyperlinks).",
           "الفرق بين الإنترنت والويب: الإنترنت هو شبكة الأسلاك والأجهزة المتصلة عالمياً، بينما الويب (WWW) هو النظام والصفحات والروابط التي تتصفح من خلالها المعلومات.",
