@@ -131,7 +131,7 @@ export const UNIT_8: Unit = {
       summary: "قطعة الكتاب المقررة حول طاقة الرياح: تاريخ استخدامها، طريقة عمل توربينات الرياح، المزايا البيئية النظيفة، الانتقادات، وأثرها على الطيور وقوارب الصيد.",
       grammarRuleFormula: "Wind Power Key Points:\n- Used for thousands of years (windmills for grain and water)\n- Wind turbines: wind turns blades -> generates clean electricity\n- Advantages: renewable, green, no greenhouse gases, uses little land\n- Disadvantages: needs constant wind, visual impact, noise, danger to birds",
       detailedContent: [
-        "قطعة الكتاب المقررة: طاقة الرياح (ص 162 - 165 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: طاقة الرياح (المقال ص 145 والرسالة المنفصلة ص 146 من ملزمة السادس 2027، PDF ص 147 - 148):",
         "1. التاريخ: استُخدمت طاقة الرياح لآلاف السنين في تسيير السفن الشراعية، وفي طواحين الهواء القديمة لطحن الحبوب وضخ المياه من الآبار.",
         "2. توربينات الرياح الحديثة (Wind turbines): أبراج عملاقة مزودة بشفرات تديرها الرياح، تقوم بتدوير مولد يولد الكهرباء.",
         "3. مزايا طاقة الرياح (Advantages):",
@@ -190,7 +190,13 @@ export const UNIT_8: Unit = {
           type: "mcq",
           ministerialYear: "وزاري 2021 دور أول"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "المقال ص 145 والرسالة المنفصلة ص 146 من ملزمة السادس 2027 (PDF ص 147–148)",
+        verificationNote: "المقال A Renewable Resource في ص145، ورسالة An Angry Reader نص منفصل في ص146؛ يجب عدم دمج الرسالة بالمقال. النشر الرقمي للنصين يحتاج إلى إذن."
+      }
     },
     {
       id: "u8-l4",
@@ -271,7 +277,13 @@ export const UNIT_8: Unit = {
           type: "mcq",
           ministerialYear: "ص 87 كتاب الطالب"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "source_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "كتاب الطالب ص 87 (النص الكامل غير موجود في ملزمة السادس 2027 المرفوعة؛ يظهر تمرين مفردات مشتق منه فقط في الملزمة ص 149)",
+        verificationNote: "الملزمة المرفوعة لا تتضمن قطعة The Euphrates River كاملة، وإنما تمرين مفردات مرتبط بنص كتاب الطالب ص87. يلزم رفع صفحة الكتاب الأصلية."
+      }
     },
     {
       id: "u8-l5",

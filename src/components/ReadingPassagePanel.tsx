@@ -10,6 +10,7 @@ interface ReadingPassagePanelProps {
 const STATUS_LABELS: Record<ReadingPassageStatus, string> = {
   verified: 'نص مطابق للمصدر المرفق',
   reconstructed: 'نص معاد بناؤه — يحتاج مراجعة',
+  permission_required: 'المصدر محدد — إذن النشر الرقمي مطلوب',
   summary_only: 'المتاح ملخص وليس النص الأصلي',
   source_required: 'المصدر الأصلي مطلوب',
 };
@@ -17,6 +18,7 @@ const STATUS_LABELS: Record<ReadingPassageStatus, string> = {
 const STATUS_STYLES: Record<ReadingPassageStatus, string> = {
   verified: 'bg-soft-mint border-semantic-success text-ink',
   reconstructed: 'bg-yellow border-ink text-ink',
+  permission_required: 'bg-yellow border-ink text-ink',
   summary_only: 'bg-paper border-ink text-ink',
   source_required: 'bg-coral/20 border-ink text-ink',
 };
@@ -124,12 +126,16 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
             <h3 className="font-black">لم يتم توثيق نص القطعة الأصلي بعد</h3>
           </div>
           <p className="text-sm leading-7 text-ink/80">
-            {status === 'summary_only'
-              ? 'المحتوى المتاح لهذا الدرس شرح أو ملخص. لن نعرضه على أنه نص الكتاب الأصلي.'
-              : 'الدرس موجود في المنهج، لكن نص القراءة الإنجليزي الكامل لم يُطابق مع مصدره بعد. تبقى الأسئلة والشرح المتاحان منفصلين عن النص الأصلي.'}
+            {status === 'permission_required'
+              ? 'تم تحديد نص القراءة وموضعه في الملزمة المرفوعة، لكن الملف لا يوضح إذناً بإعادة نشره رقمياً. لن نعرض النص الكامل قبل تأكيد الإذن من صاحب الحقوق. تبقى الشروحات والتمارين المتاحة منفصلة عن النص الأصلي.'
+              : status === 'summary_only'
+                ? 'المحتوى المتاح لهذا الدرس شرح أو ملخص. لن نعرضه على أنه نص الكتاب الأصلي.'
+                : 'الدرس موجود في المنهج، لكن نص القراءة الإنجليزي الكامل لم يُطابق مع مصدره بعد. تبقى الأسئلة والشرح المتاحان منفصلين عن النص الأصلي.'}
           </p>
           <p className="text-xs leading-6 text-ink/65">
-            نحتاج نسخة كتاب الطالب أو الملزمة الخاصة بهذا الصف والصفحة المحددة حتى نضيف النص ونوثّق مطابقته. لا يتم توليد نص بديل أو اختراع فقرات لسد هذا النقص.
+            {status === 'permission_required'
+              ? 'يمكن تفعيل النص الكامل بعد الحصول على موافقة واضحة للنشر الرقمي. أما الدروس التي يظهر لها أن المصدر مطلوب، فنحتاج إلى رفع صفحة الكتاب المحددة.'
+              : 'نحتاج نسخة كتاب الطالب أو الملزمة الخاصة بهذا الصف والصفحة المحددة حتى نضيف النص ونوثّق مطابقته. لا يتم توليد نص بديل أو اختراع فقرات لسد هذا النقص.'}
           </p>
         </div>
       )}

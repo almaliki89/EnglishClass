@@ -149,7 +149,7 @@ export const UNIT_6: Unit = {
       summary: "قطعة الكتاب الوزارية لمهنة موظف البنك: تنوع المهام اليومية، إقناع الناس والشركات بفتح الحسابات، تقييم القروض والاستثمارات، ومهارات التواصل والرياضيات.",
       grammarRuleFormula: "Key Skills of a Banker:\n- Convince people to use the bank\n- Assess loan requests for businesses and homes\n- Good at maths and reading financial graphs\n- Excellent communicator with all types of clients",
       detailedContent: [
-        "قطعة الكتاب المقررة: موظف البنك (ص 129 - 132 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: موظف البنك (ص 112 - 113 من ملزمة السادس 2027، PDF ص 114 - 115):",
         "- لماذا يحب موظف البنك وظيفته؟ بسبب التنوع (variety)؛ فلا يوجد يومان متشابهان، ويتعامل مع أفراد وشركات من كافة الشرائح.",
         "- أهم المهام: إقناع الناس بفتح حسابات بنكية، تقديم العروض والخدمات الجديدة للعملاء والطلاب.",
         "- منح القروض (loans): مساعدة الناس على شراء منازل أو سيارات، ومساعدة أصحاب المشاريع والشركات على بدء أعمالهم أو توسعتها.",
@@ -190,7 +190,13 @@ export const UNIT_6: Unit = {
           type: "mcq",
           ministerialYear: "وزاري 2019 دور أول"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 112–113 من ملزمة السادس 2027 (PDF ص 114–115)",
+        verificationNote: "عُثر على نص Meet a Banker في ص112–113. النشر الرقمي للنص الكامل يحتاج إلى تأكيد الإذن."
+      }
     },
     {
       id: "u6-l4",
@@ -378,15 +384,15 @@ export const UNIT_6: Unit = {
       titleEn: "Lesson 9: Making Money & Investments (Reading Comprehension)",
       category: "reading",
       summary: "قطعة الكتاب المقررة حول طرق ادخار واستثمار الأموال: خطط التقاعد، حسابات التوفير، الأسهم والبورصة، والعقارات (Property).",
-      grammarRuleFormula: "Investment Options:\n- Savings accounts: pay interest over time, good for regular savers\n- Pension plans: save for old age and retirement\n- Stocks and shares: high risk, high potential profit or loss\n- Property: buying houses/land to rent or sell at higher value (safest long-term)",
+      grammarRuleFormula: "Investment Options:\n- Savings accounts: pay interest over time, good for regular savers\n- Pension plans: save for old age and retirement\n- Stocks and shares: high risk, high potential profit or loss\n- Property: potentially safe in the long term, but profit is not guaranteed; rent may pay loan or mortgage instalments",
       detailedContent: [
-        "قطعة الكتاب المقررة: كسب المال (ص 138 - 141 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: كسب المال (ص 121 - 122 من ملزمة السادس 2027، PDF ص 123 - 124):",
         "- ادخار المال للمستقبل ثقافة يتعلمها الناس منذ الطفولة لضمان حياة كريمة عند الكبر والتقاعد (retirement).",
         "- طرق استثمار المال الشائعة:",
         "1) حسابات التوفير البنكية (Savings accounts): تفيد من لا يحتاج المال فوراً وتدفع فائدة بمرور الوقت.",
         "2) خطط التقاعد (Pension plans): استقطاع مالي شهري منتظم للإنفاق منه بعد التقاعد.",
         "3) الأسهم والسندات (Stocks and shares): استثمار مالي تجاري في الشركات، فيه مخاطرة (risk)؛ فقد يربح الشخص أموالاً طائلة أو يخسر كل شيء (no guarantees).",
-        "4) العقارات (Property): شراء أراضٍ ومنازل، وهو الاستثمار الأكثر أماناً وشعبية في بريطانيا والعالم؛ لأن العقارات ترتفع قيمتها بمرور الوقت (goes up in value) وتدر عائداً شهرياً عبر الإيجار (rent).",
+        "4) العقارات (Property): شراء أراضٍ ومنازل، قد يكون الاستثمار في العقارات آمناً على المدى البعيد عموماً، لكن لا يوجد ضمان لتحقيق ربح أو حتى التعادل. وقد تُستخدم الإيجارات لسداد أقساط القرض أو الرهن العقاري، وأصبح هذا النوع أكثر شعبية في المملكة المتحدة.",
         "أسئلة وزارية نموذجية:",
         "- When we start work, we are encouraged to put money into (pension plans to save for our retirement).",
         "- Investing in stocks and shares is a risky business because (there are no guarantees; you can make or lose money).",
@@ -437,7 +443,13 @@ export const UNIT_6: Unit = {
           type: "mcq",
           ministerialYear: "وزاري 2020 دور أول"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 121–122 من ملزمة السادس 2027 (PDF ص 123–124)",
+        verificationNote: "عُثر على نص Making Money في ص121–122. النص يوضح أن الاستثمار في الأسهم والعقارات لا يضمن الربح؛ النشر الرقمي للنص الكامل يحتاج إلى إذن."
+      }
     }
   ]
 };

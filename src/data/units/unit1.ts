@@ -179,7 +179,7 @@ export const UNIT_1: Unit = {
       summary: "قطعة الكتاب المقررة للشاب عمار وحادث الجسر وتقنية روبوت الهيكل الخارجي (Exoskeleton)، قواعد الصفات المنتهية بـ ed و ing، وقواعد الصفات وظروف الحال (-ful / -fully).",
       grammarRuleFormula: "Feelings of a person/animal => -ed\nCause of the feeling => -ing\nAction Verb in sentence => Adverb (-fully)\nState/Linking Verb (is, was, seem) => Adjective (-ful)",
       detailedContent: [
-        "1. قطعة الكتاب: قصة عمار (Ammar) - ص 12 - 13 من الملزمة:",
+        "1. قطعة الكتاب: قصة عمار (Ammar) - ص 10 من ملزمة السادس 2027 (PDF ص 12):",
         "- عندما كان عمره 16 سنة كان في فريق السلة للمدرسة ولديه أصدقاء كثيرون.",
         "- في يوم مشمس قفز من فوق جسر إلى النهر، لكن النهر لم يكن عميقاً كفاية فارتطم بالقاع وأصيب ظهره إصابة خطيرة.",
         "- قال الأطباء إنه قد لا يمشي ثانية وبدأ العلاج الطبيعي على كرسي متحرك.",
@@ -257,7 +257,13 @@ export const UNIT_1: Unit = {
           type: "mcq",
           ministerialYear: "وزاري 2019 دور أول"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 10 من ملزمة السادس 2027 (PDF ص 12)",
+        verificationNote: "عُثر على قطعة عمار في ص10 من الملزمة. لا يُنشر نصها كاملاً رقمياً قبل تأكيد إذن صاحب الحقوق."
+      }
     },
     {
       id: "u1-l4",
@@ -529,7 +535,7 @@ export const UNIT_1: Unit = {
       summary: "نص القراءة الاستيعابي للدكتور سمير رمزي حول مسؤولية الفرد عن صحته، مخاطر السكر والدهون والسكري، السمنة في بريطانيا، وأثر قلة الحركة والتدخين.",
       grammarRuleFormula: "Key Vocabulary:\ndiet = what you eat\noverweight = weighing more than you should\nregular = when you do something often\nlungs = body part responsible for breathing",
       detailedContent: [
-        "نص القراءة: على الناس أن يتحملوا مسؤولية صحتهم - بقلم د. سمير رمزي (ص 27 - 29 من الملزمة):",
+        "نص القراءة: على الناس أن يتحملوا مسؤولية صحتهم - بقلم د. سمير رمزي (ص 25 من ملزمة السادس 2027، PDF ص 27):",
         "- تنفق الحكومة البريطانية ملايين الجنيهات سنوياً على الرعاية الصحية لأشخاص جلبوا الأمراض لأنفسهم بسبب سوء التغذية وقلة الرياضة والتدخين.",
         "- النظام الغذائي: 60% من البريطانيين يعانون من زيادة الوزن ومعرضون لخطر الإصابة بالسكري بسبب الإفراط في الدهون والسكريات والأملاح.",
         "- التمارين الرياضية: في الماضي كان الناس يمشون ويركبون الدراجات، والآن يركبون السيارات حتى للمسافات القصيرة، والأطفال يقضون ساعات أمام الشاشات.",
@@ -585,7 +591,13 @@ export const UNIT_1: Unit = {
           type: "mcq",
           ministerialYear: "تمرين C ص 17"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 25 من ملزمة السادس 2027 (PDF ص 27)",
+        verificationNote: "عُثر على نص Let's Start with Diet في ص25. لا يُنشر النص كاملاً رقمياً قبل تأكيد الإذن."
+      }
     },
     {
       id: "u1-l9",
@@ -597,7 +609,7 @@ export const UNIT_1: Unit = {
       summary: "قصة البطلة العراقية نجلة عماد لفتة، نجاتها من هجوم قنبلة في عمر الثالثة، تحدي الإعاقة واحتراف تنس الطاولة، والتتويج بذهبية الألعاب البارالمبية في باريس 2024.",
       grammarRuleFormula: "Key Fact:\nAge 3: lost right arm and both legs in bomb attack\nAge 10: discovered table tennis\nAge 12: joined Iraqi Paralympic team\nAge 16: Tokyo 2020 Paralympics\nAge 19: Paris 2024 Paralympic Gold Medal",
       detailedContent: [
-        "قطعة الكتاب المقررة: نجلة عماد لفتة (ص 29 - 31 من الملزمة):",
+        "قطعة الكتاب المقررة: نجلة عماد لفتة (ص 27 - 28 من ملزمة السادس 2027، PDF ص 29 - 30):",
         "- طفلة عراقية كانت تنتظر والدها على عتبة الباب، وفي عمر 3 سنوات انفجرت قنبلة بسيارة والدها ففقدت ذراعها اليمنى وكلا ساقيها.",
         "- نشأت وتكيفت مع الحياة على كرسي متحرك بدعم أسرتها ونظام الرعاية الصحية العراقي.",
         "- في عمر 10 سنوات: اكتشفت تنس الطاولة وتدربت بيدها اليسرى رغم أنها ولدت عسراء (right-handed أصلاً وتدربت باليسرى).",
@@ -667,7 +679,13 @@ export const UNIT_1: Unit = {
           type: "mcq",
           ministerialYear: "تمرين B ص 20"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 27–28 من ملزمة السادس 2027 (PDF ص 29–30)",
+        verificationNote: "عُثر على نص نجلة عماد لفتة في ص27–28. لا يُنشر النص كاملاً رقمياً قبل تأكيد الإذن."
+      }
     }
   ]
 };

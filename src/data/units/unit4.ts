@@ -73,7 +73,13 @@ export const UNIT_4: Unit = {
           type: "mcq",
           ministerialYear: "تمرين C ص 77"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "source_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "كتاب الطالب ص 42 (النص الكامل غير موجود في ملزمة السادس 2027 المرفوعة)؛ كتاب النشاط ص 76 للتمارين",
+        verificationNote: "لم يظهر نص Rashid & Rana Designs في الملف المرفوع؛ الموجود إحالة إلى كتاب الطالب ص42 وتمارين كتاب النشاط. نحتاج صفحة المصدر الأصلية."
+      }
     },
     {
       id: "u4-l2",
@@ -82,47 +88,41 @@ export const UNIT_4: Unit = {
       titleAr: "الدرس الثاني: قطعة تقنيات اللياقة البدنية (Fitness Tech)",
       titleEn: "Lesson 2: Fitness Technology & Smart Gyms",
       category: "reading",
-      summary: "قطعة استيعاب أحدث التقنيات الرقمية في ممارسة الرياضة: الساعات الذكية، تتبع ضربات القلب، السعرات الحرارية، مرايا اللياقة التفاعلية، والذكاء الاصطناعي في التمرين.",
-      grammarRuleFormula: "Fitness Tech Key Concepts:\n- Smart watches & trackers: monitor heart rate, sleep quality and burned calories\n- Smart fitness mirrors: interactive screens providing instant trainer feedback\n- AI workout apps: tailor personalized routines to personal fitness goals",
+      summary: "قطعة تقنيات اللياقة البدنية: التمرين المنزلي والمجتمعات الرياضية عبر الإنترنت، تطبيقات تقيس المسافة والسرعة ونبض القلب والسعرات وجودة النوم، مرايا التمرين الذكية، واستخدام الذكاء الاصطناعي في الصالات لبناء خطط التمرين ومتابعة التقدم.",
+      grammarRuleFormula: "Fitness Tech:\\n- Online exercise communities and stationary bikes with online lessons\\n- Fitness apps: distance, speed, heart rate, calories burned and sleep quality\\n- Workout mirrors: teach users how to work out\\n- Gym AI: uses client data to build workout plans and check progress",
       detailedContent: [
-        "قطعة تقنيات اللياقة البدنية (ص 84 - 86 من ملزمة الأستاذ مصطفى تركي):",
-        "- كيف غيرت التكنولوجيا الحديثة عالم اللياقة والتمارين البدنية في السنوات الأخيرة؟",
-        "- أجهزة التتبع القابلة للارتداء (Wearable fitness trackers): تقيس نبضات القلب، عدد الخطوات، جودة النوم، وحرق السعرات الحرارية بدقة عالية.",
-        "- المرايا الذكية (Smart mirrors): شاشات متطورة تعكس صورة المتدرب وتوفر له توجيهات فورية لتصحيح وضعية التمرين وحركات الجسد لمنع الإصابات.",
-        "- تطبيقات الذكاء الاصطناعي (AI fitness apps): تصمم برامج تدريبية مخصصة تناسب أهداف كل شخص وتتكيف مع تقدمه الرياضي.",
-        "- الهدف الرئيسي: تشجيع الناس على ممارسة النشاط البدني المنتظم ومكافحة نمط الحياة الخامل والسمنة."
+        "قطعة تقنيات اللياقة البدنية (Fitness Tech) - ص 80 من ملزمة السادس 2027:",
+        "كانت الصالات الرياضية في السابق المكان المعتاد للتمرين، لكن التقنيات الحديثة جعلت التمرين من المنزل أسهل.",
+        "المجتمعات الرياضية عبر الإنترنت: يمكن شراء دراجة ثابتة، وتلقي دروس عبر الإنترنت، والتمرين مع أشخاص آخرين دون مغادرة المنزل.",
+        "تطبيقات اللياقة: كانت التطبيقات الأولى تقيس المسافة والسرعة، ثم تطورت لتقيس سرعة نبض القلب والسعرات الحرارية المحروقة وجودة النوم.",
+        "أصبح أصحاب الصالات الرياضية ينافسون الصالات المنزلية والخدمات عبر الإنترنت؛ وتستمر الأندية التي تستفيد من التكنولوجيا الجديدة.",
+        "مرايا التمرين الذكية لا تقتصر على إظهار شكل المتدرب، بل تستطيع تعليمه كيفية أداء التمارين.",
+        "أنظمة الذكاء الاصطناعي في الصالات تجمع بيانات عن العملاء، وتبني خطة تمرين مناسبة لهم، وتتابع تقدمهم. لذلك أصبحت معرفة المدربين بالتكنولوجيا جزءاً أساسياً من عملهم.",
       ],
       teacherNotes: [
         "ملاحظة الأستاذ مصطفى تركي: قطعة اللياقة والتقنية الذكية من قطع الوحدة الرابعة الحديثة المضافة لمنهاج 2027.",
         "احفظ المفردات التقنية: monitor heart rate, burn calories, smart mirrors, personalized routines."
       ],
       commonMistakes: [
-        "الخلط بين وظيفة ساعة التتبع (wearable tracker) ووظيفة المرآة الذكية (fitness mirror)."
+        "الخلط بين وظيفة تطبيقات اللياقة (قياس مؤشرات الجسم) ووظيفة مرايا التمرين الذكية (تعليم أداء التمرين)."
       ],
       examples: [
         {
-          en: "Fitness trackers help users monitor their daily steps and heart rate.",
-          ar: "تساعد أجهزة تتبع اللياقة المستخدمين على مراقبة خطواتهم ونبضات قلوبهم اليومية.",
-          highlight: "monitor daily steps and heart rate",
-          note: "ص 85"
+          en: "Modern fitness apps can measure heart rate, calories burned and sleep quality.",
+          ar: "تستطيع تطبيقات اللياقة الحديثة قياس نبض القلب والسعرات المحروقة وجودة النوم.",
+          highlight: "heart rate, calories burned and sleep quality",
+          note: "ص 80 من ملزمة السادس 2027"
         }
       ],
       exercises: [
-        {
-          id: "u4-l2-ex1",
-          question: "What do wearable fitness trackers monitor?",
-          options: [
-            "Daily steps, heart rate, sleep and burned calories.",
-            "Car engine temperature and speed.",
-            "Weather forecasts for the month.",
-            "Bank account transactions."
-          ],
-          correctAnswer: "Daily steps, heart rate, sleep and burned calories.",
-          explanation: "تقيس أجهزة التتبع الخطوات والنبض وجودة النوم والسعرات الحرارية.",
-          type: "mcq",
-          ministerialYear: "منهاج 2027 الحديث"
-        }
-      ]
+        {"id":"u4-l2-ex1","question":"What can modern fitness apps measure?","options":["Heart rate, calories burned and sleep quality.","Only the number of gym members.","Only the weather.","The price of sports equipment."],"correctAnswer":"Heart rate, calories burned and sleep quality.","explanation":"يذكر نص الملزمة أن التطبيقات الحديثة تقيس سرعة نبض القلب والسعرات الحرارية المحروقة وجودة النوم.","type":"mcq","ministerialYear":"ملزمة السادس 2027، ص 80"},
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 80 من ملزمة السادس 2027 (PDF ص 82)",
+        verificationNote: "عُثر على نص Fitness Tech في ص80. موضوعاته الفعلية: التمرين المنزلي، مجتمعات الرياضة عبر الإنترنت، التطبيقات، مرايا التمرين والذكاء الاصطناعي في الصالات. النشر الرقمي للنص الكامل يحتاج إذناً."
+      }
     },
     {
       id: "u4-l3",

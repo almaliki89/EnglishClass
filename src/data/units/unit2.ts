@@ -85,7 +85,7 @@ export const UNIT_2: Unit = {
       summary: "قطعة استيعاب واجبات ضابط الشرطة (A police officer's duties)، وقواعد الإلزام (Must, Have to, Need to)، والمنع (Mustn't)، وعدم الإلزام (Don't have to, Needn't).",
       grammarRuleFormula: "Necessity (إلزام): must / have to / need to + base verb\nProhibition (منع قطعي): mustn't + base verb\nNo necessity (لا حاجة): don't have to / doesn't have to / needn't + base verb",
       detailedContent: [
-        "1. قطعة واجبات ضابط الشرطة (ص 32 - 35 من الملزمة):",
+        "1. قطعة واجبات ضابط الشرطة (ص 30 - 31 من ملزمة السادس 2027، PDF ص 32 - 33):",
         "- يجب على الناس اتباع القانون لكي نتمكن جميعاً من العيش بأمان (so that we can all live together safely).",
         "- واجبات ضباط الشرطة: تنظيم المرور (direct traffic)، قياس سرعة السيارات بالرادار (radar speed guns)، التأكد من ارتداء أحزمة الأمان (seat belts)، التحقيق في الجرائم (investigate crimes)، البحث عن الأدلة (evidence like fingerprints and footprints)، ومساعدة التائهين وإعطائهم الاتجاهات (ask for directions).",
         "2. قواعد الإلزام والمنع (ص 36 - 37):",
@@ -145,7 +145,13 @@ export const UNIT_2: Unit = {
           type: "mcq",
           ministerialYear: "وزاري 2020 دور أول"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 30–31 من ملزمة السادس 2027 (PDF ص 32–33)",
+        verificationNote: "عُثر على نص واجبات ضابط الشرطة في ص30–31. النشر الرقمي للنص الكامل يحتاج إلى تأكيد الإذن."
+      }
     },
     {
       id: "u2-l3",
@@ -487,7 +493,7 @@ export const UNIT_2: Unit = {
       summary: "نص القراءة الاستيعابي حول أمن وسلامة المنازل وحمايتها من اللصوص، أهمية الأقفال والنوافذ والأبواب القوية، وتعاريف المفردات المتعلقة بها.",
       grammarRuleFormula: "Key Vocabulary:\njewellery = expensive items like gold rings and necklaces\nsentimental = how you feel about an object\nmeasures = things you do for a specific reason\nburglars = thieves who break into homes\nessential = very important",
       detailedContent: [
-        "نص كتيب السالمة المنزلية (ص 51 - 52 من ملزمة الأستاذ مصطفى تركي):",
+        "نص كتيب السالمة المنزلية (ص 49 من ملزمة السادس 2027، PDF ص 51؛ تمارين النشاط ص 50):",
         "- في كل عام تُسرق منازل مئات الأشخاص، ويسرق اللصوص الأموال والمجوهرات والحواسيب والتلفزيونات ويبيعونها.",
         "- بعض الأشياء لا تعوض بالمال لو سرقت كالمجوهرات التي لها قيمة عاطفية (sentimental value) وساعات العمل على قرص الحاسوب.",
         "- أهم عوامل أمان المنزل: النوافذ والأبواب والأقفال الجيدة (good windows, doors and locks).",
@@ -542,7 +548,13 @@ export const UNIT_2: Unit = {
           type: "mcq",
           ministerialYear: "تمرين A ص 40"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 49 من ملزمة السادس 2027 (PDF ص 51)",
+        verificationNote: "عُثر على كتيب سلامة المنازل في ص49؛ تمارين النشاط مرتبطة بص50. النشر الرقمي للنص الكامل يحتاج إلى تأكيد الإذن."
+      }
     },
     {
       id: "u2-l9",
@@ -554,7 +566,7 @@ export const UNIT_2: Unit = {
       summary: "قطعة الكتاب الوزارية للرادار: تاريخ اختراعه، طريقة عمل مسدس السرعة، أنواع أجهزة الرادار، كواشف الرادار (Radar Detectors)، والصيانة وتدريب رجال الشرطة.",
       grammarRuleFormula: "Radar Key Facts:\n- Invented during WWII to detect enemy aircraft and ships\n- Police use: over 70 years ago to catch speeders\n- Mechanism: sends radio waves that bounce back from cars\n- Radar detectors: make a beeping sound when detecting radar",
       detailedContent: [
-        "قطعة الكتاب المقررة: الرادار (ص 53 - 56 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: الرادار (ص 51 من ملزمة السادس 2027، PDF ص 53؛ تمارين النشاط ص 52):",
         "1. الاختراع والتاريخ: اختُرع الرادار خلال الحرب العالمية الثانية (World War II) للكشف عن طائرات وسفن العدو، ثم استُخدم للتنبؤ بالطقس، وبدأ استخدامه من قبل الشرطة لضبط متجاوزي السرعة منذ أكثر من 70 عاماً (over 70 years ago).",
         "2. مبدأ العمل: يرسل موجات راديوية باتجاه السيارة وترتد نحوه. إذا كانت السيارة متحركة تتغير المسافة بين الموجات فيحسب سرعتها. يعمل عندما تتحرك السيارة باتجاهه أو مبتعدة عنه (moving towards or away from them).",
         "3. أنواع الرادار: بعضها محمول باليد يشبه البندقية، وبعضها يعمل من سيارات الشرطة المتحركة، وبعضها يلتقط صوراً للوحة ترخيص السيارة (number plate).",
@@ -623,7 +635,13 @@ export const UNIT_2: Unit = {
           type: "mcq",
           ministerialYear: "وزاري 2021 دور ثانٍ"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 51 من ملزمة السادس 2027 (PDF ص 53)",
+        verificationNote: "عُثر على نص الرادار في ص51 وتمارين النشاط في ص52. النشر الرقمي للنص الكامل يحتاج إلى تأكيد الإذن."
+      }
     }
   ]
 };
