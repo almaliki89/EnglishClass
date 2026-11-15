@@ -380,7 +380,7 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
     id: 58,
     number: 8,
     titleAr: "الوحدة الثامنة: المراجعة الشاملة للفصل الثاني (Semester 2 Comprehensive Revision)",
-    titleEn: "Unit 8: Semester 2 Consolidation, London Boa Constrictor & Final Examination",
+    titleEn: "Unit 8: Semester 2 Consolidation, London Boa Constrictor & Olympics Volunteer Interview",
     description: "مراجعة شاملة لقواعد الفصل الثاني وقراءاته: التعاريف بضمائر الوصل، الشرطية الثانية، قصة الأصلة العاصرة في شقق لندن، ومقابلة هدى للتطوع في الأولمبياد مع تدريبات الكلام المنقول.",
     accentColor: "bg-soft-mint text-ink",
     bgGradient: "bg-paper border-ink",
