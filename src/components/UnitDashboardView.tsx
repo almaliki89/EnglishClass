@@ -13,6 +13,9 @@ import {
   BrutalCard, BrutalButton, BrutalBadge, BreadcrumbsNav 
 } from './common/BrutalUI';
 
+const isBookPassageLesson = (lesson: Lesson): boolean =>
+  lesson.category === 'reading' || Boolean(lesson.readingPassage);
+
 interface UnitDashboardViewProps {
   studentState: StudentState;
   onSelectLesson: (lesson: Lesson) => void;
@@ -49,7 +52,9 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
   const [filterText, setFilterText] = useState('');
 
   // Unit completion stats
-  const lessons = currentUnit ? currentUnit.lessons : [];
+  const unitContent = currentUnit ? currentUnit.lessons : [];
+  const passageLessons = unitContent.filter(isBookPassageLesson);
+  const lessons = unitContent.filter((lesson) => !isBookPassageLesson(lesson));
   const completedLessons = useMemo(() => {
     return lessons.filter((l) => studentState.completedLessonIds.includes(l.id));
   }, [lessons, studentState.completedLessonIds]);
@@ -202,6 +207,31 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
           )}
         </div>
       </BrutalCard>
+
+      {passageLessons.length > 0 && (
+        <BrutalCard variant="paper" borderSize="3" shadowSize="md" className="p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex items-start gap-3">
+            <div className="w-10 h-10 shrink-0 bg-yellow border-2 border-ink flex items-center justify-center">
+              <BookOpen className="w-5 h-5 text-ink" />
+            </div>
+            <div>
+              <h2 className="text-base font-black text-ink">قطع هذه الوحدة في مكتبة الصف</h2>
+              <p className="text-xs leading-6 text-ink/70 font-bold mt-1">
+                {passageLessons.length} قطعة / نص أُخرجت من فهرس الدروس لتكون ضمن قسم مستقل أعلى صفحة {gradeMeta.nameAr}.
+                تظل مرتبطة بهذه الوحدة وتُفتح من مكتبة القطع.
+              </p>
+            </div>
+          </div>
+          <BrutalButton
+            variant="yellow"
+            size="sm"
+            onClick={() => navigate(`/grade/${validGrade}#grade-book-passage-library`)}
+          >
+            فتح مكتبة قطع الصف
+            <ArrowLeft className="w-3.5 h-3.5" />
+          </BrutalButton>
+        </BrutalCard>
+      )}
 
       {/* 3. Ordered Lessons List */}
       <div className="space-y-4">
