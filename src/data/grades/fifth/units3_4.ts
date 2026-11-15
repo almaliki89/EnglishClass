@@ -316,7 +316,17 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         titleEn: "Lesson 8: Eco-Friendly Hybrid Cars & Terry's Technological Experience",
         category: "reading",
         summary: "السيارات الهجينة الصديقة للبيئة، كيفية عمل المحرك المزدوج (بنزين + كهرباء)، ومقابلة تيري حول توفير الوقود وتقليل الانبعاثات.",
-        sourcePages: "الملزمة ص 94 - 95",
+        sourcePages: "الملزمة ص 88 - 89",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "88–89",
+          verificationNote: "يشمل النص إعلان Hybrid Car Sales L.A. ثم المقابلة الصحفية A Hybrid Car for Terry? كما وردا في المصدر.",
+          originalText: [
+            "HYBRID CAR SALES L.A.\nDo you want all the advantages of a petrol engine PLUS all the advantages of an electric motor?\nHave fun AND protect the environment. Get a hybrid!\nWe sell Honda, Toyota, Ford and General Motors hybrid cars.\nHybrid Car Sales, 9466 Beverly Boulevard, Los Angeles, CA 90048\nwww.hybridcarsales.com",
+            "A HYBRID CAR FOR TERRY?\nEVERY MONTH WE INTERVIEW A MEMBER OF THE PUBLIC. WE ASK ‘WHICH CAR ARE YOU GOING TO BUY? WHY?’\nWCTB: Terry, you’ve been looking at the new cars on the market. What do you think?\nTerry: Well, I like all the new hybrid cars.\nWCTB: They’re pretty expensive, aren’t they?\nTerry: They’re not cheap. But I expect I’ll buy one anyway. I live in Los Angeles, and we have a big pollution problem there.\nWCTB: The smog?\nTerry: Not just the smog. There are almost four million people in Los Angeles – and everyone drives a car.\nWCTB: Do you think hybrid cars will help?\nTerry: Oh, yes. They will definitely make things better. In the city, you use the electric motor, so there’s no pollution at all.\nWCTB: Why not get an all-electric car, then?\nTerry: Well, the batteries are not good enough for long journeys – that’s the problem. I often drive to my sister’s place in San Francisco, for example. That’s nearly 650 kilometres.\nWCTB: And the hybrid car uses its petrol engine on the open road?\nTerry: Exactly. You get the best of both worlds.\nWCTB: And can you afford the higher price?\nTerry: At the moment, yes. Unless I lose my job or something like that, I’ll certainly buy a hybrid.\nWCTB: Thank you for sharing your ideas with us."
+          ]
+        },
         detailedContent: [
           "مفهوم السيارة الهجينة (Hybrid Car): سيارة تعمل بمحركين معاً: محرك وقود بنزين ومحرك كهربائي متطور وبطارية قابلة لإعادة الشحن أثناء السير واستخدام المكابح.",
           "مزايا السيارات الهجينة: تقليل استهلاك البنزين إلى النصف، تقليل الانبعاثات الكربونية الضارة في المدن، والهدوء التام عند السرعات المنخفضة داخل الأحياء السكنية.",
