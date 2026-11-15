@@ -447,7 +447,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         titleAr: "الدرس الأول: كارتون بكار والمخرجة منى أبو النصر (Bakkar Cartoon & Mona Abu El Nasr)",
         titleEn: "Lesson 1: The Iconic Egyptian Cartoon 'Bakkar' & Animator Mona Abu El Nasr",
         category: "reading",
-        summary: "القطعة التراثية المقررة حول أول مسلسل رسوم متحركة مصري ثلاثي الأبعاد 'بكار' والماعز 'رشيدة' وإبداع المخرجة الرائدة منى أبو النصر.",
+        summary: "قراءة عن بكار، الطفل من صعيد مصر الذي يحب الفن والرسم ويهتم بالحيوانات، وعن موضوعات حلقاته ومسيرة المخرجة منى أبو النصر.",
         sourcePages: "الملزمة ص 97 - 98",
         readingPassage: {
           status: "verified",
@@ -463,22 +463,22 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           ]
         },
         detailedContent: [
-          "مسلسل بكار (Bakkar): مسلسل كرتوني تلفزيوني رمضاني أنتج عام 1998؛ يروي مغامرات طفل نوبي ذكي يدعى بكار ومعزته الأليفة (رشيدة) وصداقته وقيمه الأخلاقية في صعيد مصر.",
-          "المخرجة الدكتورة منى أبو النصر (Mona Abu El Nasr): أستاذة جامعية ومخرجة مصرية رائدة أسست استوديو الرسوم المتحركة الخاص بها وكانت أول من أدخل صناعة الكارتون العربي عالي الجودة إلى شاشات التلفزيون في رمضان وحصلت على جوائز دولية قبل وفاتها عام 2003.",
-          "أسئلة الاستيعاب المقررة (الملزمة ص 98): متى بدأ عرض المسلسل؟ من هي المخرجة؟ وما هي رسالته التربوية للأطفال؟"
+          "بكار طفل من صعيد مصر يعيش مع أمه، ويحب الفن والرسم ويهتم بالحيوانات؛ ويتحدث العربية بلكنة نوبية.",
+          "منى أبو النصر هي مبتكرة بكار؛ افتتحت Cairo Cartoon Studios سنة 1990، ثم أنتجت Kani Wa Mani وSinbad وBakkar.",
+          "أسئلة الاستيعاب المقررة (الملزمة ص 98): في أي بلدان أخرى اشتهر المسلسل؟ من هي Habiba؟ ومتى افتتحت منى أبو النصر الاستوديو؟"
         ],
         teacherNotes: [
           "أسئلة الملزمة ص 98:",
           "1. Who created Bakkar? -> The talented Egyptian director Dr. Mona Abu El Nasr.",
-          "2. Who is Rashida? -> Bakkar's pet goat who accompanies him everywhere.",
-          "3. When was Bakkar first broadcast? -> During Ramadan in 1998."
+          "2. In which other countries is the series popular? -> The United Arab Emirates, Oman and Tunisia.",
+          "3. When did Mona Abu El Nasr open Cairo Cartoon Studios? -> In 1990."
         ],
         examples: [
           {
-            en: "Bakkar became a beloved Ramadan television tradition for millions of Arab children.",
-            ar: "أصبح بكار تقليداً تلفزيونياً رمضانياً محبوباً لملايين الأطفال العرب.",
+            en: "Mona Abu El Nasr opened Cairo Cartoon Studios in 1990.",
+            ar: "افتتحت منى أبو النصر استوديو القاهرة للرسوم المتحركة سنة 1990.",
             highlight: "beloved Ramadan tradition",
-            note: "الأثر الثقافي للمسلسل الكارتوني"
+            note: "معلومة مؤرخة في نص القراءة"
           }
         ],
         exercises: [
