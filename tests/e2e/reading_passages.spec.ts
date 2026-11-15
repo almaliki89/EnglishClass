@@ -86,4 +86,24 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
   });
 
+  test('fifth preparatory attributes the opening line of the tennis dialogue to Zeina', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/54/lesson/5th-u4-l2');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('Zeina: Come on, Helen. I know you’re joking');
+    await expect(page.locator('p[lang="en"]').first()).not.toContainText('Helen: Come on, Helen');
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory Unit Four Test is not mislabeled as a reading passage or official 100-mark exam', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/54/lesson/5th-u4-l4');
+    await page.waitForLoadState('networkidle');
+
+    await expect(page.getByText('الدرس الرابع: اختبار الوحدة الرابعة (Unit Four Test)')).toBeVisible();
+    await expect(page.getByText(/مراجعة اختبار الوحدة الرابعة كما ورد في الصفحتين 102–103/)).toBeVisible();
+    await expect(page.getByRole('button', { name: 'نص القراءة الأصلي' })).toHaveCount(0);
+    await expect(page.getByText(/100 درجة كاملة/)).toHaveCount(0);
+  });
+
 });
