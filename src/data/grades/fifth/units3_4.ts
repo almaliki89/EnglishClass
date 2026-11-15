@@ -329,7 +329,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         titleAr: "الدرس الثامن: السيارات الهجينة ومقابلة تيري (Hybrid Cars & Terry Interview)",
         titleEn: "Lesson 8: Eco-Friendly Hybrid Cars & Terry's Technological Experience",
         category: "reading",
-        summary: "السيارات الهجينة الصديقة للبيئة، كيفية عمل المحرك المزدوج (بنزين + كهرباء)، ومقابلة تيري حول توفير الوقود وتقليل الانبعاثات.",
+        summary: "إعلان ومقابلة عن السيارات الهجينة، وقرار Terry بشراء سيارة هجينة بسبب مشكلة التلوث في لوس أنجلوس وحاجته إلى القيام برحلات طويلة.",
         sourcePages: "الملزمة ص 88 - 89",
         readingPassage: {
           status: "verified",
@@ -342,35 +342,35 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           ]
         },
         detailedContent: [
-          "مفهوم السيارة الهجينة (Hybrid Car): سيارة تعمل بمحركين معاً: محرك وقود بنزين ومحرك كهربائي متطور وبطارية قابلة لإعادة الشحن أثناء السير واستخدام المكابح.",
-          "مزايا السيارات الهجينة: تقليل استهلاك البنزين إلى النصف، تقليل الانبعاثات الكربونية الضارة في المدن، والهدوء التام عند السرعات المنخفضة داخل الأحياء السكنية.",
-          "مقابلة تيري (Student's Book p. 34): يروي تجربته مع سيارته الهجينة بعد سنتين من الاستخدام اليومي وكيف وفر مبالغ طائلة من تكاليف الوقود."
+          "يوضح الإعلان فكرة الجمع بين مزايا محرك البنزين والمحرك الكهربائي، ثم تعرض المقابلة استخدام المحرك الكهربائي داخل المدينة ومحرك البنزين على الطريق المفتوح.",
+          "يعتقد Terry أن السيارة الهجينة قد تحسّن الوضع في المدينة؛ ويذكر أن السيارة الكهربائية وحدها لا تناسب رحلاته الطويلة لأن البطاريات ليست جيدة بما يكفي لها.",
+          "تذكر المقابلة أن Terry يزور أخته في سان فرانسيسكو، وتبلغ المسافة إليها نحو 650 كيلومتراً، ولذلك يرى أن المحركين يمنحانه مزايا مختلفة بحسب الطريق."
         ],
         teacherNotes: [
-          "سؤال الملزمة ص 95: Why are hybrid cars better for the environment? -> Because they use less petrol and produce fewer harmful carbon emissions."
+          "سؤال فهم مستند إلى المقابلة: Why doesn’t Terry choose an all-electric car? -> The batteries are not good enough for long journeys."
         ],
         examples: [
           {
-            en: "Hybrid vehicles switch automatically between electricity and petrol to maximize fuel efficiency.",
-            ar: "تتحول المركبات الهجينة تلقائياً بين الكهرباء والبنزين لتحقيق أقصى قدر من كفاءة استهلاك الوقود.",
+            en: "A hybrid car uses its petrol engine on the open road.",
+            ar: "تستخدم السيارة الهجينة محرك البنزين على الطريق المفتوح.",
             highlight: "switch automatically",
-            note: "شرح تقنية المحرك المزدوج"
+            note: "معلومة وردت في مقابلة Terry"
           }
         ],
         exercises: [
           {
             id: "5u3-ex8",
-            question: "A hybrid car has ______ engines.",
+            question: "Why doesn’t Terry choose an all-electric car?",
             options: [
-              "two (petrol and electric)",
+              "Because the batteries are not good enough for long journeys",
               "only a petrol",
               "three diesel",
               "only a steam"
             ],
-            correctAnswer: "two (petrol and electric)",
-            explanation: "تحتوي السيارة الهجينة على محركين: محرك وقود بنزين ومحرك كهربائي (الملزمة ص 95).",
+            correctAnswer: "Because the batteries are not good enough for long journeys",
+            explanation: "يوضح Terry أن السيارة الكهربائية وحدها لا تناسب الرحلات الطويلة التي يقوم بها.",
             type: "mcq",
-            sourcePages: "الملزمة ص 95"
+            sourcePages: "الملزمة ص 89"
           }
         ]
       },
