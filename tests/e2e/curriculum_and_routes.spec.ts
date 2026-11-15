@@ -424,4 +424,75 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.locator('#auth-gate-btn')).toContainText('دخول');
   });
 
+
+  test('6. Each active grade has an independent book passage library above its unit list', async ({ page }) => {
+    const gradeCases = [
+      {
+        grade: 'third-intermediate',
+        expectedPassage: 'Car of the Year: Panther 3.0D',
+        forbiddenPassage: 'Canada & Official Languages',
+      },
+      {
+        grade: 'fourth-preparatory',
+        expectedPassage: 'Canada & Official Languages',
+        forbiddenPassage: 'Ramadan in Iraq',
+      },
+      {
+        grade: 'fifth-preparatory',
+        expectedPassage: 'Ramadan in Iraq',
+        forbiddenPassage: "Ammar's Story",
+      },
+      {
+        grade: 'sixth-preparatory',
+        expectedPassage: "Ammar's Story",
+        forbiddenPassage: 'Ramadan in Iraq',
+      },
+    ];
+
+    for (const item of gradeCases) {
+      await page.goto(`/grade/${item.grade}`);
+      await page.waitForLoadState('networkidle');
+
+      const library = page.getByTestId('grade-book-passage-library');
+      await expect(library.getByRole('heading', { name: 'مكتبة قطع الكتاب' })).toBeVisible();
+
+      const passageCards = library.getByTestId('book-passage-card');
+      await expect(passageCards.first()).toBeVisible();
+      await expect(passageCards.filter({ hasText: item.expectedPassage }).first()).toBeVisible();
+      await expect(library).not.toContainText(item.forbiddenPassage);
+
+      const libraryBox = await library.boundingBox();
+      const unitsHeading = page.getByRole('heading', { name: /الوحدات الدراسية لـ/ });
+      const unitsBox = await unitsHeading.boundingBox();
+      expect(libraryBox).not.toBeNull();
+      expect(unitsBox).not.toBeNull();
+      expect(libraryBox!.y).toBeLessThan(unitsBox!.y);
+    }
+  });
+
+  test('the passage library filters by unit and opens the original lesson without duplicating it', async ({ page }) => {
+    await page.goto('/grade/sixth-preparatory');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    await library.getByLabel('تصفية قطع الكتاب حسب الوحدة').selectOption('1');
+
+    const cards = library.getByTestId('book-passage-card');
+    await expect(cards.first()).toBeVisible();
+    const countForUnitOne = await cards.count();
+    expect(countForUnitOne).toBeGreaterThan(0);
+
+    for (let index = 0; index < countForUnitOne; index += 1) {
+      await expect(cards.nth(index)).toHaveAttribute('data-unit-id', '1');
+    }
+
+    await library.getByLabel('ابحث في قطع الكتاب').fill('Ammar');
+    const ammarCard = library.getByTestId('book-passage-card').filter({ hasText: 'Ammar' });
+    await expect(ammarCard).toHaveCount(1);
+    await ammarCard.getByRole('button', { name: 'فتح شرح القطعة' }).click();
+
+    await expect(page).toHaveURL(/\/grade\/sixth-preparatory\/unit\/1\/lesson\/u1-l3$/);
+    await expect(page.getByRole('heading', { name: /Ammar's Story/ })).toBeVisible();
+  });
+
 });
