@@ -469,25 +469,38 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
         titleAr: "الدرس الثالث: القبض على الأصلة العاصرة في لندن (Caught at Last! 3-Metre Boa Constrictor)",
         titleEn: "Lesson 3: The Sensational News Story: 3-Metre Boa Constrictor Captured in London Flats",
         category: "reading",
-        summary: "القصة الخبرية المشوقة لأصلة عاصرة بطول ثلاثة أمتار هربت من صاحبها واختبأت داخل نظام أنابيب شقق سكنية في لندن لشهور قبل الإمساك بها بسلام.",
-        sourcePages: "الملزمة ص 183 - 184",
+        summary: "قصة خبرية عن أصلة عاصرة بطول ثلاثة أمتار شوهدت في مراحيض مختلفة داخل مبنى شقق في لندن طوال ثلاثة أشهر، ثم عُثر عليها في حمام بالطابق الثامن وأُعيدت إلى حديقة الحيوان.",
+        sourcePages: "الملزمة ص 182 - 183",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "182–183",
+          verificationNote: "النص Caught at last! في الصفحة المطبوعة 182؛ وتتبعه أسئلة المبني للمجهول والمفردات في الصفحة 183.",
+          originalText: [
+            "Caught at last!\nThe terrified residents of a block of flats in London can finally sleep peacefully at night. An enormous snake that was living in toilet pipes in the block of flats has been caught last night.",
+            "The snake, a three-metre long boa constrictor, had been seen in different toilets in the building over the past three months. At first, no one knew where the animal had come from. Then, one of the residents saw a local news report about the escape of a boa constrictor from London Zoo.",
+            "The snake was first seen by James Andrews, ‘I got up in the night to go to the bathroom,’ Mr Andrews told reporters, ‘and I saw a huge snake in the toilet. It was horrible. I didn’t know what to do. I wondered if I was dreaming. My wife came to look and she was very frightened. We put some heavy books on the toilet seat and went back to bed. In the morning, the snake had gone.’",
+            "People in six other flats in the building also saw the snake, but they were all too frightened to try to catch it. On two occasions, the fire brigade were called, but when they arrived, the snake had already disappeared.",
+            "Finally, the snake was found last night on Mr and Mrs Mailer’s bathroom floor, on the eighth floor of the building. It was caught in a large bucket and the police were called. The snake was taken back to its home in the zoo, to everyone’s relief."
+          ]
+        },
         detailedContent: [
-          "قصة الثعبان الهارب (Student's Book p. 86): ثعبان ضخم من نوع الأصلة العاصرة (Boa Constrictor) يبلغ طوله 3 أمتار هرب من قفصه في عمارة سكنية بحي كينغستون في لندن؛ عاش في أنابيب الصرف والممرات الدافئة لثلاثة أشهر وكان السكان يبلغون عن أصوات غريبة.",
-          "عملية الإمساك (Caught at last!): قام خبير الزواحف بالتعاون مع فرق الإطفاء باستدراج الثعبان والإمساك به ونقله إلى حديقة حيوان آمنة دون إصابة أي شخص.",
-          "المفردات الصحفية: captured (تم الإمساك به)، reptile specialist (أخصائي زواحف)، terrified residents (سكان مرعوبون)."
+          "الثعبان أصلة عاصرة بطول ثلاثة أمتار شوهدت في مراحيض مختلفة بالمبنى خلال الأشهر الثلاثة السابقة. وذكر النص أن أحد السكان قرأ خبراً محلياً عن هروب أصلة من حديقة حيوان لندن.",
+          "شوهد الثعبان أولاً بواسطة James Andrews، ثم رآه سكان ست شقق أخرى. استُدعيت فرقة الإطفاء مرتين، لكنه كان يختفي قبل وصولها. وفي النهاية عُثر عليه في أرضية حمام السيد والسيدة Mailer بالطابق الثامن، وأُمسك به في دلو كبير وأعيد إلى حديقة الحيوان.",
+          "المفردات الصحفية في النص: terrified residents، block of flats، toilet pipes، news report، fire brigade، disappeared، bucket، relief."
         ],
         teacherNotes: [
-          "أسئلة الملزمة ص 184:",
-          "1. What kind of snake escaped in London? -> A three-metre boa constrictor.",
-          "2. How long was it missing? -> For about three months.",
-          "3. Was anyone hurt? -> No, it was captured safely without hurting anyone."
+          "أسئلة الفهم من القصة:",
+          "1. What kind of snake was seen in the block of flats? -> A three-metre boa constrictor.",
+          "2. For how long had the snake been seen in different toilets? -> Over the past three months.",
+          "3. Where was the snake finally found? -> On the bathroom floor of Mr and Mrs Mailer’s flat on the eighth floor."
         ],
         examples: [
           {
-            en: "The runaway boa constrictor was captured safely by a wildlife specialist after weeks of searching.",
-            ar: "تم الإمساك بالأصلة العاصرة الهاربة بسلام بواسطة أخصائي حياة برية بعد أسابيع من البحث.",
+            en: "The three-metre boa constrictor was caught in a large bucket and taken back to its home in the zoo.",
+            ar: "أُمسكت الأصلة العاصرة التي يبلغ طولها ثلاثة أمتار في دلو كبير وأُعيدت إلى موطنها في حديقة الحيوان.",
             highlight: "captured safely",
-            note: "ملخص أحداث القصة الخبرية"
+            note: "تفصيل صريح في الفقرة الأخيرة"
           }
         ],
         exercises: [
@@ -496,7 +509,7 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
             question: "The escaped boa constrictor in London was approximately ______ metres long.",
             options: ["3", "1", "6", "10"],
             correctAnswer: "3",
-            explanation: "كان طول الثعبان حوالي 3 أمتار (three metres long) (الملزمة ص 184).",
+            explanation: "كان طول الثعبان حوالي 3 أمتار (three metres long) (الملزمة ص 182).",
             type: "mcq",
             sourcePages: "الملزمة ص 184"
           }
