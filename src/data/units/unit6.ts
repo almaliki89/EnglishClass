@@ -149,7 +149,7 @@ export const UNIT_6: Unit = {
       summary: "قطعة الكتاب الوزارية لمهنة موظف البنك: تنوع المهام اليومية، إقناع الناس والشركات بفتح الحسابات، تقييم القروض والاستثمارات، ومهارات التواصل والرياضيات.",
       grammarRuleFormula: "Key Skills of a Banker:\n- Convince people to use the bank\n- Assess loan requests for businesses and homes\n- Good at maths and reading financial graphs\n- Excellent communicator with all types of clients",
       detailedContent: [
-        "قطعة الكتاب المقررة: موظف البنك (ص 129 - 132 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: موظف البنك (ص 112 - 113 من ملزمة السادس 2027، PDF ص 114 - 115):",
         "- لماذا يحب موظف البنك وظيفته؟ بسبب التنوع (variety)؛ فلا يوجد يومان متشابهان، ويتعامل مع أفراد وشركات من كافة الشرائح.",
         "- أهم المهام: إقناع الناس بفتح حسابات بنكية، تقديم العروض والخدمات الجديدة للعملاء والطلاب.",
         "- منح القروض (loans): مساعدة الناس على شراء منازل أو سيارات، ومساعدة أصحاب المشاريع والشركات على بدء أعمالهم أو توسعتها.",
@@ -190,7 +190,13 @@ export const UNIT_6: Unit = {
           type: "mcq",
           ministerialYear: "وزاري 2019 دور أول"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 112–113 من ملزمة السادس 2027 (PDF ص 114–115)",
+        verificationNote: "عُثر على نص Meet a Banker في ص112–113. النشر الرقمي للنص الكامل يحتاج إلى تأكيد الإذن."
+      }
     },
     {
       id: "u6-l4",
@@ -380,7 +386,7 @@ export const UNIT_6: Unit = {
       summary: "قطعة الكتاب المقررة حول طرق ادخار واستثمار الأموال: خطط التقاعد، حسابات التوفير، الأسهم والبورصة، والعقارات (Property).",
       grammarRuleFormula: "Investment Options:\n- Savings accounts: pay interest over time, good for regular savers\n- Pension plans: save for old age and retirement\n- Stocks and shares: high risk, high potential profit or loss\n- Property: buying houses/land to rent or sell at higher value (safest long-term)",
       detailedContent: [
-        "قطعة الكتاب المقررة: كسب المال (ص 138 - 141 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: كسب المال (ص 121 - 122 من ملزمة السادس 2027، PDF ص 123 - 124):",
         "- ادخار المال للمستقبل ثقافة يتعلمها الناس منذ الطفولة لضمان حياة كريمة عند الكبر والتقاعد (retirement).",
         "- طرق استثمار المال الشائعة:",
         "1) حسابات التوفير البنكية (Savings accounts): تفيد من لا يحتاج المال فوراً وتدفع فائدة بمرور الوقت.",
@@ -437,7 +443,13 @@ export const UNIT_6: Unit = {
           type: "mcq",
           ministerialYear: "وزاري 2020 دور أول"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 121–122 من ملزمة السادس 2027 (PDF ص 123–124)",
+        verificationNote: "عُثر على نص Making Money في ص121–122. النص يوضح أن الاستثمار في الأسهم والعقارات لا يضمن الربح؛ النشر الرقمي للنص الكامل يحتاج إلى إذن."
+      }
     }
   ]
 };
