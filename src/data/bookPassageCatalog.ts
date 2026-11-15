@@ -27,7 +27,8 @@ export const BOOK_PASSAGES_BY_GRADE: Record<EducationalGrade, BookPassageCatalog
   'third-intermediate': [
     { id: '3i-u1-panther', lessonId: '3rd-u1-l4', titleAr: 'سيارة العام: Panther 3.0D', titleEn: 'Car of the Year: Panther 3.0D' },
     { id: '3i-u2-lucy', lessonId: '3rd-u2-l3', titleAr: 'لوسي', titleEn: 'Lucy' },
-    { id: '3i-u3-falcon-marshes', lessonId: '3rd-u3-l5', titleAr: 'أسرع الكائنات الحية وعرب الأهوار', titleEn: 'The Fastest Living Thing & Life on the Marshes' },
+    { id: '3i-u3-falcons', lessonId: '3rd-u3-l5', titleAr: 'الصقور: أسرع الكائنات الحية', titleEn: 'The Fastest Living Thing — Falcons', sourcePages: '68' },
+    { id: '3i-u3-marsh-arabs', lessonId: '3rd-u3-l5', titleAr: 'عرب الأهوار', titleEn: 'Life on the Marshes — Marsh Arabs', sourcePages: '76–77' },
     { id: '3i-u4-ibrahim', lessonId: '3rd-u4-l3', titleAr: 'إبراهيم', titleEn: 'Ibrahim', sourcePages: '85–87' },
     { id: '3i-u4-leopards', lessonId: '3rd-u4-l4', titleAr: 'النمور الفارسية: أعداد قليلة', titleEn: 'Too Few Leopards', sourcePages: '88' },
     { id: '3i-u5-news', lessonId: '3rd-u5-l2', titleAr: 'أخبار الصباح العراقية', titleEn: 'Iraqi Morning News' },
