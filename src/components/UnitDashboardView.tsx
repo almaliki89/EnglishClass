@@ -9,12 +9,12 @@ import { EducationalGrade, StudentState, Unit, Lesson } from '../types';
 import { 
   getGradeMeta, getUnitsForGrade, ORDERED_GRADES 
 } from '../data/gradeContentResolver';
+import { isBookPassageLesson } from '../data/bookPassageCatalog';
 import { 
   BrutalCard, BrutalButton, BrutalBadge, BreadcrumbsNav 
 } from './common/BrutalUI';
 
-const isBookPassageLesson = (lesson: Lesson): boolean =>
-  lesson.category === 'reading' || Boolean(lesson.readingPassage);
+// Passage membership is controlled by the grade-specific curated textbook catalog.
 
 interface UnitDashboardViewProps {
   studentState: StudentState;
@@ -53,8 +53,12 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
 
   // Unit completion stats
   const unitContent = currentUnit ? currentUnit.lessons : [];
-  const passageLessons = unitContent.filter(isBookPassageLesson);
-  const lessons = unitContent.filter((lesson) => !isBookPassageLesson(lesson));
+  const passageLessons = unitContent.filter((lesson) =>
+    isBookPassageLesson(validGrade, lesson.id)
+  );
+  const lessons = unitContent.filter((lesson) =>
+    !isBookPassageLesson(validGrade, lesson.id)
+  );
   const completedLessons = useMemo(() => {
     return lessons.filter((l) => studentState.completedLessonIds.includes(l.id));
   }, [lessons, studentState.completedLessonIds]);

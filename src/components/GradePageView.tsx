@@ -18,6 +18,7 @@ import { ScopedGradeSearch } from './common/ScopedGradeSearch';
 import { VisualCurriculumGuide } from './VisualCurriculumGuide';
 import { GradeBookPassageLibrary } from './GradeBookPassageLibrary';
 import { NotFound } from './NotFound';
+import { isBookPassageLesson } from '../data/bookPassageCatalog';
 
 interface GradePageViewProps {
   studentState: StudentState;
@@ -206,10 +207,9 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
         gradeName={gradeMeta.nameAr}
         units={units}
         completedLessonIds={studentState.completedLessonIds}
-        onOpenPassage={(unit, lesson) => {
-          // Navigate directly to the canonical grade-scoped route. The lesson
-          // route wrapper records this visit once the target lesson is mounted.
-          navigate(`/grade/${validGrade}/unit/${unit.id}/lesson/${lesson.id}`);
+        onOpenPassage={(unit, lessonId) => {
+          // Open the exact lesson associated with the selected textbook passage.
+          navigate(`/grade/${validGrade}/unit/${unit.id}/lesson/${lessonId}`);
         }}
       />
 
@@ -296,10 +296,10 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {units.map((unit) => {
             const unitPassages = unit.lessons.filter((lesson) =>
-              lesson.category === 'reading' || Boolean(lesson.readingPassage)
+              isBookPassageLesson(validGrade, lesson.id)
             );
             const unitCourseLessons = unit.lessons.filter((lesson) =>
-              lesson.category !== 'reading' && !lesson.readingPassage
+              !isBookPassageLesson(validGrade, lesson.id)
             );
             const unitCompletedLessons = unitCourseLessons.filter((lesson) =>
               studentState.completedLessonIds.includes(lesson.id)

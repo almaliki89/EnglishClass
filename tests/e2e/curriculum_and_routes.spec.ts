@@ -429,23 +429,27 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     const gradeCases = [
       {
         grade: 'third-intermediate',
+        expectedCount: 7,
         expectedPassage: 'Car of the Year: Panther 3.0D',
-        forbiddenPassage: 'Canada & Official Languages',
+        excludedLessonIds: ['3rd-u3-l3', '3rd-u6-l2', '3rd-u7-l3'],
       },
       {
         grade: 'fourth-preparatory',
+        expectedCount: 28,
         expectedPassage: 'كندا واللغات الرسمية',
-        forbiddenPassage: 'Ramadan in Iraq',
+        excludedLessonIds: ['4th-u1-reading-history'],
       },
       {
         grade: 'fifth-preparatory',
+        expectedCount: 20,
         expectedPassage: 'Ramadan in Iraq',
-        forbiddenPassage: "Ammar's Story",
+        excludedLessonIds: ['5th-u4-l2', '5th-u8-l4'],
       },
       {
         grade: 'sixth-preparatory',
+        expectedCount: 18,
         expectedPassage: "Ammar's Story",
-        forbiddenPassage: 'Ramadan in Iraq',
+        excludedLessonIds: [],
       },
     ];
 
@@ -454,12 +458,17 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       await page.waitForLoadState('networkidle');
 
       const library = page.getByTestId('grade-book-passage-library');
-      await expect(library.getByRole('heading', { name: 'مكتبة قطع الكتاب' })).toBeVisible();
+      await expect(library.getByRole('heading', { name: 'قطع الكتاب' })).toBeVisible();
 
+      await expect(library).toHaveAttribute('data-passage-count', String(item.expectedCount));
       const passageCards = library.getByTestId('book-passage-card');
       await expect(passageCards.first()).toBeVisible();
       await expect(passageCards.filter({ hasText: item.expectedPassage }).first()).toBeVisible();
-      await expect(library).not.toContainText(item.forbiddenPassage);
+      const indexedLessonIds = await library.getAttribute('data-passage-lesson-ids');
+      expect(indexedLessonIds).not.toBeNull();
+      for (const excludedId of item.excludedLessonIds) {
+        expect(indexedLessonIds!.split(',')).not.toContain(excludedId);
+      }
 
       const libraryBox = await library.boundingBox();
       const unitsHeading = page.getByRole('heading', { name: /الوحدات الدراسية لـ/ });
@@ -468,6 +477,24 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       expect(unitsBox).not.toBeNull();
       expect(libraryBox!.y).toBeLessThan(unitsBox!.y);
     }
+  });
+
+  test('the fifth-grade dialogue/interview and fourth-grade supplementary reading stay outside the textbook-passage index', async ({ page }) => {
+    await page.goto('/grade/fourth-preparatory');
+    await page.waitForLoadState('networkidle');
+    const fourthLibrary = page.getByTestId('grade-book-passage-library');
+    await expect(fourthLibrary).not.toHaveAttribute('data-passage-lesson-ids', /4th-u1-reading-history/);
+
+    await page.goto('/grade/fifth-preparatory');
+    await page.waitForLoadState('networkidle');
+    const fifthLibrary = page.getByTestId('grade-book-passage-library');
+    await expect(fifthLibrary).not.toHaveAttribute('data-passage-lesson-ids', /5th-u4-l2/);
+    await expect(fifthLibrary).not.toHaveAttribute('data-passage-lesson-ids', /5th-u8-l4/);
+
+    // These are still part of the actual unit lessons; they were not deleted.
+    await page.goto('/grade/fifth-preparatory/unit/54');
+    await page.waitForLoadState('networkidle');
+    await expect(page.getByText('إصابة هيلين في الركبة وحوار المساعدة')).toBeVisible();
   });
 
   test('the passage library filters by unit and opens the original lesson without duplicating it', async ({ page }) => {
