@@ -32,19 +32,23 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
   });
 
-  test('sixth preparatory does not present the Ammar summary as an original passage', async ({ page }) => {
-    await page.goto('/grade/sixth-preparatory/unit/1/lesson/u1-l3');
+  test('sixth preparatory opens Ammar as a complete source-backed passage dossier', async ({ page }) => {
+    await page.goto('/grade/sixth-preparatory');
     await page.waitForLoadState('networkidle');
 
-    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
-    await expect(page.getByRole('heading', { name: 'النص الكامل غير متاح للنشر في هذه النسخة' })).toBeVisible();
-    await expect(page.getByText('المصدر محدد — إذن النشر الرقمي مطلوب')).toBeVisible();
-    await expect(page.getByText(/لم يتم إثبات موافقة النشر الرقمي/)).toBeVisible();
-    await expect(page.getByText('ملزمة السادس 2027 — إعداد الأستاذ عمار غالب')).toBeVisible();
-    await expect(page.getByText(/ص 10 من ملزمة السادس 2027/)).toBeVisible();
+    const library = page.getByTestId('grade-book-passage-library');
+    const ammarCard = library.getByTestId('book-passage-card').filter({ hasText: "Ammar's Story" });
+    await expect(ammarCard).toBeVisible();
+    await ammarCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
 
-    await page.getByRole('button', { name: 'ملف القصة والبطاقات القلابة' }).click().catch(() => {});
-    await expect(page.getByText('زيد طارق (Zaid Tariq - 20 years old)')).toHaveCount(0);
+    await expect(page.getByTestId('reading-passage-dossier')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'النص الإنجليزي الكامل' })).toBeVisible();
+    await expect(page.locator('[data-testid="original-passage-section"] p[lang="en"]').first()).toContainText('When I was 16, life was great!');
+    await expect(page.getByRole('heading', { name: 'الترجمة العربية الكاملة' })).toBeVisible();
+    await expect(page.getByTestId('passage-translation-section')).toContainText('عندما كنتُ في السادسة عشرة من عمري');
+    await expect(page.getByRole('heading', { name: 'أسئلة كتاب النشاط / الملزمة مع الإجابات' })).toBeVisible();
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('What was Ammar’s life like when he was 16?');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('It was great because he was finally part of the school basketball team');
   });
   test('fifth preparatory shows the verified Harrods history and correct foundation year', async ({ page }) => {
     await page.goto('/grade/fifth-preparatory/unit/57/lesson/5th-u7-l8');
