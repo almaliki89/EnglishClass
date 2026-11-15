@@ -141,14 +141,16 @@ export const UNIT_7: Unit = {
       titleAr: "الدرس الثالث: قطعة العمل اليوم (Work Today)",
       titleEn: "Lesson 3: Work Today (Reading & Tech Skills)",
       category: "reading",
-      summary: "قطعة استيعاب مهارات سوق العمل المعاصر: أهمية تعلم الحاسوب، الجداول الحسابية (spreadsheets)، التصميم الجرافيكي، والعمل عن بعد (telecommuting).",
-      grammarRuleFormula: "Key Vocabulary:\nspreadsheets = programs that arrange financial and numerical data\nweb design = creating websites\ntelecommuting = working from home using computers and the internet\nself-disciplined = able to manage your own time and work without supervision",
+      summary: "قطعة Work Today حول تحسين فرص العمل عبر مهارات الحاسوب: الجداول الإلكترونية، التصميم الرسومي الرقمي، تصميم المواقع، الدورات الحضورية والإلكترونية، والتعلم الذاتي.",
+      grammarRuleFormula: "Work Today:\\n- Computer classes improve job prospects and may support a career change\\n- Spreadsheets present information in tables, often financial data\\n- Digital graphic design supports illustration and media work\\n- Web design teaches creating and maintaining company websites\\n- Online classes offer flexible study; self-study requires discipline",
       detailedContent: [
-        "قطعة العمل اليوم (ص 130 من ملزمة السادس 2027، PDF ص 132):",
-        "- تغيرت متطلبات سوق العمل؛ فلم تعد الشهادة الجامعية وحدها كافية، بل باتت مهارات الحاسوب والتقنية أساسية لأي وظيفة.",
-        "- برامج الجداول الإلكترونية (Spreadsheets): تستخدمها الشركات في إدارة الحسابات المالية والموازنات والرسوم البيانية.",
-        "- تصميم المواقع (Web design): مهارة رقمية مطلوبة تمكن الأشخاص من العمل لحسابهم الخاص وتطوير واجهات رقمية للشركات.",
-        "- العمل عن بعد (Telecommuting): العمل من المنزل عبر الإنترنت؛ يوفر الوقت وتكلفة المواصلات، لكنه يتطلب انضباطاً ذاتياً عالياً (self-discipline) لإدارة الوقت وتفادي المشتتات."
+        "قطعة Work Today - ص 130 من ملزمة السادس 2027:",
+        "يمكن تحسين فرص العمل بالالتحاق بدورات الحاسوب؛ فالحاسوب مستخدم في قطاعات أكثر، وينبغي للباحثين عن عمل معرفة أساسياته.",
+        "الجداول الإلكترونية (Spreadsheets) شائعة لأنها تعرض المعلومات في شكل جداول، وتستخدم كثيراً لعرض المعلومات المالية.",
+        "قد يدرس المصورون والفنانون التصميم الرسومي الرقمي لإنشاء رسومات لدور النشر ووكالات الإعلان أو للعمل في التلفزيون.",
+        "تعلم تصميم المواقع (Web design) يعلّم إنشاء موقع الشركة وصيانته.",
+        "لا يشترط أن يكون المتعلم طالباً جامعياً؛ توجد دورات تعليم مستمر مسائية ودورات عبر الإنترنت يمكن دراستها من المنزل وفي الوقت المناسب.",
+        "يمكن للمنضبط ذاتياً التعلم من كتاب حاسوب، لكن الشروح قد تكون معقدة وتحتاج إلى تطبيق عملي.",
       ],
       teacherNotes: [
         "ملاحظة الأستاذ مصطفى تركي: قطعة العمل اليوم تركز على المفردات التقنية الحديثة وسوق العمل المعاصر لمنهاج 2027."
@@ -158,22 +160,14 @@ export const UNIT_7: Unit = {
       ],
       examples: [
         {
-          en: "Spreadsheets are useful programs used to manage financial numbers and budgets.",
-          ar: "الجداول الإلكترونية برامج مفيدة لإدارة الأرقام والموازنات المالية.",
-          highlight: "manage financial numbers",
+          en: "Spreadsheets are used in many businesses to show information in table form.",
+          ar: "تُستخدم الجداول الإلكترونية في شركات كثيرة لعرض المعلومات في شكل جداول.",
+          highlight: "show information in table form",
           note: "ص 148"
         }
       ],
       exercises: [
-        {
-          id: "u7-l3-ex1",
-          question: "Working from home using computers and the internet is called _________.",
-          options: ["telecommuting", "freelancing", "internship", "overtime"],
-          correctAnswer: "telecommuting",
-          explanation: "العمل من المنزل باستخدام الحواسيب والإنترنت يسمى telecommuting.",
-          type: "mcq",
-          ministerialYear: "منهاج 2027"
-        }
+        {"id":"u7-l3-ex1","question":"What are spreadsheets often used for in businesses?","options":["Showing information in table form, including financial information.","Measuring heart rate during exercise.","Teaching people how to swim.","Detecting speeding cars."],"correctAnswer":"Showing information in table form, including financial information.","explanation":"يوضح نص Work Today أن الجداول الإلكترونية تُستخدم في الشركات لعرض المعلومات على هيئة جداول، ومنها المعلومات المالية.","type":"mcq","ministerialYear":"ملزمة السادس 2027، ص 130"},
       ],
       readingPassage: {
         status: "permission_required",
