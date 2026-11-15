@@ -554,7 +554,7 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleAr: "الدرس الخامس: نقد فيلم القبطان الإسباني (The Spanish Captain Film Review)",
         titleEn: "Lesson 5: Critical Film Review of 'The Spanish Captain' & Evaluative Adjectives",
         category: "reading",
-        summary: "مراجعة نقدية لفيلم المغامرات التاريخية 'القبطان الإسباني'، وتعلم الصفات المستخدمة في تقييم الأعمال السينمائية وأداء الممثلين.",
+        summary: "مراجعة نقدية لفيلم The Spanish Captain من إخراج Pedro Garcia؛ تتناول رأي الكاتبة في القصة والمؤثرات الخاصة والتمثيل والموسيقى.",
         sourcePages: "الملزمة ص 140",
         readingPassage: {
           status: "verified",
@@ -570,30 +570,30 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
           ]
         },
         detailedContent: [
-          "قصة الفيلم (The Spanish Captain): مغامرة بحرية تدور في القرن السادس عشر حول سفينة إسبانية تبحث عن كنز مفقود وسط العواصف وقراصنة المحيط الأطلسي.",
-          "عناصر المراجعة النقدية (Film Review): عنوان الفيلم، المخرج، الأبطال، ملخص الحبكة دون إفساد النهاية (no spoilers)، وتقييم الإخراج والموسيقى التصويرية.",
-          "الصفات النقدية: gripping (شديد الإثارة والتشويق)، predictable (متوقع ومبتذل)، spectacular (مبهر بصرياً)، convincing (مقنع)."
+          "تدور القصة حول Captain Santos الذي يتردد في خوض حرب ضد الإنجليز لأن زوجته الجديدة Mary إنجليزية، لكن الملك يأمره بالذهاب؛ ويتحول الفيلم بعد بدايته الرومانسية إلى فيلم حرب.",
+          "تنتقد Sarah Osborne طول مشاهد المعارك البحرية بعد 40 دقيقة، وتذكر إعجابها بموسيقى David Williams، مع ملاحظات حول أداء Jo McGregor وEmma Knightly.",
+          "تتضمن المراجعة ألفاظ تقييم مثل disappointed وridiculous وromantic وrealistic وclever وbored وsuperb."
         ],
         teacherNotes: [
-          "ملاحظة الملزمة ص 143: عند كتابة إنشاء مراجعة فيلم، استخدم صفات تقييمية متنوعة مثل (gripping, visual effects, outstanding performance) للحصول على الدرجة الكاملة."
+          "فكرة القراءة: تميّز المراجعة بين الإعجاب بالمؤثرات الخاصة والموسيقى وبين عدم اقتناع الكاتبة بالقصة وبعض أداء الممثلين."
         ],
         examples: [
           {
-            en: "The special effects were spectacular, and the lead actor gave an exceptionally convincing performance.",
-            ar: "كانت المؤثرات البصرية مبهرة، وقدم الممثل الرئيسي أداءً مقنعاً للغاية.",
+            en: "The storm at sea is totally realistic. The special effects are extremely good.",
+            ar: "العاصفة في البحر واقعية تماماً، والمؤثرات الخاصة جيدة للغاية.",
             highlight: "spectacular / convincing",
-            note: "صفات تقييم نقد سينمائي"
+            note: "عبارات تقييم من المراجعة"
           }
         ],
         exercises: [
           {
             id: "5u6-ex5",
-            question: "A movie with a storyline so thrilling that it completely holds your attention is described as ______.",
-            options: ["gripping", "boring", "dull", "terrible"],
-            correctAnswer: "gripping",
-            explanation: "العمل المشوق والمثير الذي يشد انتباه المشاهد بالكامل يوصف بـ gripping (الملزمة ص 143).",
+            question: "After how many minutes did Sarah Osborne say she was bored?",
+            options: ["40 minutes", "10 minutes", "20 minutes", "60 minutes"],
+            correctAnswer: "40 minutes",
+            explanation: "العمل المشوق والمثير الذي يشد انتباه المشاهد بالكامل يوصف بـ 40 minutes (الملزمة ص 140).",
             type: "mcq",
-            sourcePages: "الملزمة ص 143"
+            sourcePages: "الملزمة ص 140"
           }
         ]
       },
