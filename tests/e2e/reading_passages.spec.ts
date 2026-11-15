@@ -101,7 +101,7 @@ test.describe('Source-aware reading passages', () => {
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByRole('heading', { name: 'الدرس الرابع: اختبار الوحدة الرابعة (Unit Four Test)' })).toBeVisible();
-    await expect(page.getByText(/مراجعة اختبار الوحدة الرابعة كما ورد في الصفحتين 102–103/)).toBeVisible();
+    await expect(page.getByText(/مراجعة اختبار الوحدة الرابعة كما ورد في الصفحتين 102–103/).first()).toBeVisible();
     await expect(page.getByRole('button', { name: 'نص القراءة الأصلي' })).toHaveCount(0);
     await expect(page.getByText(/100 درجة كاملة/)).toHaveCount(0);
   });
