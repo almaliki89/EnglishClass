@@ -16,6 +16,7 @@ import {
 } from './common/BrutalUI';
 import { ScopedGradeSearch } from './common/ScopedGradeSearch';
 import { VisualCurriculumGuide } from './VisualCurriculumGuide';
+import { GradeBookPassageLibrary } from './GradeBookPassageLibrary';
 import { NotFound } from './NotFound';
 
 interface GradePageViewProps {
@@ -198,6 +199,19 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
           </div>
         )}
       </BrutalCard>
+
+      {/* Independent, grade-scoped book passage library — separate from unit lesson lists */}
+      <GradeBookPassageLibrary
+        grade={validGrade}
+        gradeName={gradeMeta.nameAr}
+        units={units}
+        completedLessonIds={studentState.completedLessonIds}
+        onOpenPassage={(unit, lesson) => {
+          onSelectUnit(unit);
+          onSelectLesson(lesson);
+          navigate(`/grade/${validGrade}/unit/${unit.id}/lesson/${lesson.id}`);
+        }}
+      />
 
       {/* 3. Scoped Search Bar within this Grade */}
       <ScopedGradeSearch
