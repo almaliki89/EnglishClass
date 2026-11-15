@@ -71,7 +71,49 @@ export const ADDITIONAL_READING_PASSAGE_CONTENT: Record<string, ReadingPassage> 
           { id: 'samira-c3', question: 'Interpreters don’t use the ______ of a word or phrase if it won’t make sense to the listeners.', answer: 'literal translation' },
           { id: 'samira-c4', question: 'Most ______ interpreters work freelance so they can choose their clients.', answer: 'conference' },
           { id: 'samira-c5', question: 'You need to read about the topic of the event so that you know the ______ of the field.', answer: 'technical terms' },
-          { id: 'samira-c6', question: 'You need a ______ in interpreting after a degree in a language.', answer: 'diploma' }
+          { id: 'samira-c6', question: 'You don’t need to come from an international family to be an interpreter, as long as you have a ______ in interpreting.', answer: 'diploma' }
+        ]
+      }
+    ]
+  },
+
+  '6p-u4-rashid-rana': {
+    id: '6p-u4-rashid-rana',
+    titleAr: 'شركة راشد ورنا للأزياء',
+    titleEn: 'Rashid & Rana Designs',
+    status: 'source_required',
+    sourceTitle: 'كتاب الطالب للصف السادس الإعدادي',
+    sourcePages: 'كتاب الطالب ص 42؛ كتاب النشاط ص 76',
+    verificationNote: 'الملزمة السادسة 2027 المرفوعة لا تتضمن نص Rashid & Rana Designs من كتاب الطالب ص 42. لا نعرض ملخص الدرس على أنه النص الأصلي. يلزم توفير صفحة كتاب الطالب والصفحة المحددة من كتاب النشاط لمطابقة الأسئلة وإجاباتها.'
+  },
+
+  '6p-u8-euphrates': {
+    id: '6p-u8-euphrates',
+    titleAr: 'نهر الفرات',
+    titleEn: 'The Euphrates River',
+    status: 'source_required',
+    sourceTitle: 'كتاب الطالب للصف السادس الإعدادي',
+    sourcePages: 'كتاب الطالب ص 87؛ تمرين المفردات في الملزمة ص 149',
+    verificationNote: 'الملزمة المرفوعة لا تتضمن النص الكامل لنهر الفرات؛ المتاح فيها تمرين مفردات مرتبط بالنص فقط. أدرجنا التمرين المتوفر، وبقي النص والترجمة إلى حين توفير صفحة كتاب الطالب.',
+    exerciseSets: [
+      {
+        id: '6p-u8-euphrates-ab-d',
+        source: 'activity_book',
+        sourceTitle: 'Exercise D — Find words in the text',
+        sourcePages: 'كتاب النشاط ص 162؛ حلول الملزمة ص 149',
+        instruction: 'Find words in the text that have the following meanings.',
+        instructionTranslation: 'جد كلمات في النص تحمل المعاني التالية.',
+        items: [
+          { id: 'euphrates-d1', question: 'the opposite of lower', answer: 'upper' },
+          { id: 'euphrates-d2', question: 'deep valleys', answer: 'gorges' },
+          { id: 'euphrates-d3', question: 'the opposite of deep', answer: 'shallow' },
+          { id: 'euphrates-d4', question: 'where something or someone was born', answer: 'birthplace' },
+          { id: 'euphrates-d5', question: 'that belongs to a period of time many years in the past', answer: 'ancient' },
+          { id: 'euphrates-d6', question: 'the remains of a building', answer: 'ruins' },
+          { id: 'euphrates-d7', question: 'the sides of a river', answer: 'banks' },
+          { id: 'euphrates-d8', question: 'a barrier across a river to control the flow of water', answer: 'dam' },
+          { id: 'euphrates-d9', question: 'an area that contains water for distribution', answer: 'reservoir' },
+          { id: 'euphrates-d10', question: 'a general word for cotton, wheat, barley and so on', answer: 'crops' }
         ]
       }
     ]
