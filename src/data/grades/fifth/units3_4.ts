@@ -233,7 +233,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         unitId: 53,
         lessonNumber: 6,
         titleAr: "الدرس السادس: التلوث النفطي والغازي في البصرة (Oil & Gas Pollution in Basra)",
-        titleEn: "Lesson 6: Basra Gas Flaring, Environmental Pollution & Company Initiatives",
+        titleEn: "Lesson 6: Oil and Gas Industries and Environmental Effects in Basra",
         category: "reading",
         summary: "رسالة سلمان أحمد عن أثر صناعة النفط والغاز في البيئة العراقية، مع أمثلة من الشعيبة والزبير والرميلة والبرجسية ومقاطع عن المراقبة البيئية.",
         sourcePages: "الملزمة ص 85 - 86",
@@ -252,31 +252,27 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           ]
         },
         detailedContent: [
-          "الاحتباس الحراري: يذكر النص أن الوقود الأحفوري ينتج ثاني أكسيد الكربون والأوزون، وهما من غازات الدفيئة المرتبطة بتغير المناخ.",
+          "الاحتباس الحراري: يذكر النص أن الوقود الأحفوري ينتج ثاني أكسيد الكربون والأوزون، ويربط زيادة غازات الدفيئة بإمكان حدوث تغير مناخي.",
           "المواقع العراقية: يذكر سلمان الشعيبة والزبير والرميلة والبرجسية، ويقارن حالة الرميلة في التسعينيات بما شاهده بعد التطور الصناعي.",
           "آثار الانبعاثات: قد تتضرر موائل الحياة البرية ومناطق تعشيش الطيور وتكاثرها، كما يمكن أن تتأثر السلسلة الغذائية."
         ],
         teacherNotes: [
-          "سؤال فهم مستند إلى النص: Which Basra locations does Salman mention? -> Shu’ayba, Zubair, Rumaila and Burjussia."
+          "سؤال فهم مستند إلى النص: Which Basra locations does Salman mention? -> Shu’ayba, Zubair, Rumaila and Burjussia.",
+          "المقاطع A–E معلومات مساندة للمطابقة؛ لا تُدرج في مواضع الفقرات المرقمة من دون الرجوع إلى ترتيب النشاط الأصلي."
         ],
         examples: [
           {
             en: "Burning oil and gas releases pollution into the air.",
             ar: "إن حرق النفط والغاز يطلق التلوث في الهواء.",
-            highlight: "generate electricity",
-            note: "جملة أساسية وردت في رسالة سلمان"
+            highlight: "releases pollution into the air",
+            note: "جملة واردة في رسالة سلمان"
           }
         ],
         exercises: [
           {
             id: "5u3-ex6",
             question: "According to Salman, pollution from emissions may damage the ______ areas of birds.",
-            options: [
-              "nesting and breeding",
-              "pump it directly into rivers",
-              "release it into the city atmosphere",
-              "ignore the rising emissions"
-            ],
+            options: ["nesting and breeding", "feeding and sleeping", "hunting and hiding", "migration and resting"],
             correctAnswer: "nesting and breeding",
             explanation: "يذكر النص أن الانبعاثات قد تضر بمناطق تعشيش الطيور وتكاثرها.",
             type: "mcq",
@@ -327,7 +323,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         unitId: 53,
         lessonNumber: 8,
         titleAr: "الدرس الثامن: السيارات الهجينة ومقابلة تيري (Hybrid Cars & Terry Interview)",
-        titleEn: "Lesson 8: Eco-Friendly Hybrid Cars & Terry's Technological Experience",
+        titleEn: "Lesson 8: Hybrid Cars and Terry’s Interview",
         category: "reading",
         summary: "إعلان ومقابلة عن السيارات الهجينة، وقرار Terry بشراء سيارة هجينة بسبب مشكلة التلوث في لوس أنجلوس وحاجته إلى القيام برحلات طويلة.",
         sourcePages: "الملزمة ص 88 - 89",
@@ -342,9 +338,9 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           ]
         },
         detailedContent: [
-          "يوضح الإعلان فكرة الجمع بين مزايا محرك البنزين والمحرك الكهربائي، ثم تعرض المقابلة استخدام المحرك الكهربائي داخل المدينة ومحرك البنزين على الطريق المفتوح.",
+          "يوضح الإعلان الجمع بين مزايا محرك البنزين والمحرك الكهربائي، ثم تعرض المقابلة استخدام المحرك الكهربائي داخل المدينة ومحرك البنزين على الطريق المفتوح.",
           "يعتقد Terry أن السيارة الهجينة قد تحسّن الوضع في المدينة؛ ويذكر أن السيارة الكهربائية وحدها لا تناسب رحلاته الطويلة لأن البطاريات ليست جيدة بما يكفي لها.",
-          "تذكر المقابلة أن Terry يزور أخته في سان فرانسيسكو، وتبلغ المسافة إليها نحو 650 كيلومتراً، ولذلك يرى أن المحركين يمنحانه مزايا مختلفة بحسب الطريق."
+          "تذكر المقابلة أن Terry يزور أخته في سان فرانسيسكو، وتبلغ المسافة إليها نحو 650 كيلومتراً."
         ],
         teacherNotes: [
           "سؤال فهم مستند إلى المقابلة: Why doesn’t Terry choose an all-electric car? -> The batteries are not good enough for long journeys."
@@ -353,7 +349,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           {
             en: "A hybrid car uses its petrol engine on the open road.",
             ar: "تستخدم السيارة الهجينة محرك البنزين على الطريق المفتوح.",
-            highlight: "switch automatically",
+            highlight: "petrol engine on the open road",
             note: "معلومة وردت في مقابلة Terry"
           }
         ],
@@ -363,12 +359,12 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
             question: "Why doesn’t Terry choose an all-electric car?",
             options: [
               "Because the batteries are not good enough for long journeys",
-              "only a petrol",
-              "three diesel",
-              "only a steam"
+              "Because there are no electric cars in Los Angeles",
+              "Because he never drives outside the city",
+              "Because he does not like the colour of electric cars"
             ],
             correctAnswer: "Because the batteries are not good enough for long journeys",
-            explanation: "يوضح Terry أن السيارة الكهربائية وحدها لا تناسب الرحلات الطويلة التي يقوم بها.",
+            explanation: "يوضح Terry أن بطاريات السيارات الكهربائية ليست جيدة بما يكفي للرحلات الطويلة التي يقوم بها.",
             type: "mcq",
             sourcePages: "الملزمة ص 89"
           }
@@ -379,7 +375,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         unitId: 53,
         lessonNumber: 9,
         titleAr: "الدرس التاسع: عودة المها العربي واختبار الوحدة (The Oryx is Back & Unit 3 Test)",
-        titleEn: "Lesson 9: The Conservation Success of The Arabian Oryx & Comprehensive Unit 3 Test",
+        titleEn: "Lesson 9: The Oryx is Back and Unit 3 Review",
         category: "reading",
         summary: "قراءة The oryx is back عن تناقص أعداد المها العربي بسبب الصيد، وبرامج الإكثار في حدائق الحيوان وإعادته إلى البرية في عُمان والسعودية.",
         sourcePages: "الملزمة ص 90 - 91",
@@ -397,7 +393,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         detailedContent: [
           "المها (Oryx): حيوان صحراوي ذو قرنين طويلين؛ يوضح النص أن أعداده في شبه الجزيرة العربية كانت قليلة في الستينيات وأن الصيد بالسيارات ذات الدفع الرباعي سهّل مطاردته.",
           "استُخدمت حدائق الحيوان لزيادة أعداد المها، ثم أُعيد إطلاق بعض الحيوانات في البرية في عُمان سنة 1982، وتكرر البرنامج في السعودية سنة 1990؛ ويذكر النص أن صيده لم يعد مسموحاً.",
-          "اختبار الوحدة الثالثة الشامل: يغطي القواعد والحيوانات المهددة بالانقراض وعروض المساعدة وحفظ البيئة."
+          "يعرض النص مراحل تناقص الأعداد ثم الإكثار وإعادة الإطلاق في البرية."
         ],
         teacherNotes: [
           "سؤال فهم مستند إلى النص: When were oryx reintroduced into the wild in Oman? -> In 1982."
@@ -406,7 +402,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           {
             en: "They got the animals to breed, to build up their numbers.",
             ar: "عملت حدائق الحيوان على تكثير الحيوانات لزيادة أعدادها.",
-            highlight: "wildlife reserves",
+            highlight: "got the animals to breed",
             note: "عبارة من النص الأصلي"
           }
         ],
@@ -416,14 +412,14 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
             question: "How did zoos in the Middle East help the oryx?",
             options: [
               "They got the animals to breed, to build up their numbers",
-              "encouraging more desert hunting",
-              "moving them to polar regions",
-              "selling them as domestic pets"
+              "They encouraged more desert hunting",
+              "They moved the animals to polar regions",
+              "They sold the animals as domestic pets"
             ],
             correctAnswer: "They got the animals to breed, to build up their numbers",
-            explanation: "ساعدت حدائق الحيوان على تكثير المها، ثم أعيد إطلاقه في البرية في عُمان والسعودية.",
+            explanation: "يذكر النص أن حدائق الحيوان جعلت المها يتكاثر لزيادة أعداده، ثم أُعيد إطلاقه في البرية.",
             type: "mcq",
-            sourcePages: "الملزمة ص 96"
+            sourcePages: "الملزمة ص 91"
           }
         ]
       }
@@ -434,7 +430,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
     number: 4,
     titleAr: "الوحدة الرابعة: المراجعة الشاملة للفصل الأول (Semester 1 Comprehensive Revision)",
     titleEn: "Unit 4: Semester 1 Consolidation, Bakkar Cartoon & Comprehensive Mid-Year Exam",
-    description: "مراجعة كبرى ومكثفة لجميع قواعد وقراءات ومفردات الفصل الأول: قصة المسلسل الكارتوني الشهير 'بكار' للمخرجة منى أبو النصر، ومباراة التنس، ودمج الأزمنة والشرطية الأولى والاستنتاج، والامتحان التحريري الشامل لنصف السنة (100 درجة).",
+    description: "مراجعة لقواعد وقراءات الوحدة الرابعة: قراءة بكار والمخرجة منى أبو النصر، وحوار إصابة Helen في الركبة، ثم تدريبات واختبار الوحدة على القواعد والمفردات.",
     accentColor: "bg-yellow text-ink",
     bgGradient: "bg-paper border-ink",
     sourcePages: "الملزمة ص 97 - 103",
@@ -445,7 +441,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         unitId: 54,
         lessonNumber: 1,
         titleAr: "الدرس الأول: كارتون بكار والمخرجة منى أبو النصر (Bakkar Cartoon & Mona Abu El Nasr)",
-        titleEn: "Lesson 1: The Iconic Egyptian Cartoon 'Bakkar' & Animator Mona Abu El Nasr",
+        titleEn: "Lesson 1: Bakkar and Animator Mona Abu El Nasr",
         category: "reading",
         summary: "قراءة عن بكار، الطفل من صعيد مصر الذي يحب الفن والرسم ويهتم بالحيوانات، وعن موضوعات حلقاته ومسيرة المخرجة منى أبو النصر.",
         sourcePages: "الملزمة ص 97 - 98",
@@ -465,11 +461,11 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         detailedContent: [
           "بكار طفل من صعيد مصر يعيش مع أمه، ويحب الفن والرسم ويهتم بالحيوانات؛ ويتحدث العربية بلكنة نوبية.",
           "منى أبو النصر هي مبتكرة بكار؛ افتتحت Cairo Cartoon Studios سنة 1990، ثم أنتجت Kani Wa Mani وSinbad وBakkar.",
-          "أسئلة الاستيعاب المقررة (الملزمة ص 98): في أي بلدان أخرى اشتهر المسلسل؟ من هي Habiba؟ ومتى افتتحت منى أبو النصر الاستوديو؟"
+          "تتناول حلقات المسلسل موضوعات التعاطف مع الأقل حظاً والتعليم وحماية الحيوانات والمناطق البحرية المحمية."
         ],
         teacherNotes: [
-          "أسئلة الملزمة ص 98:",
-          "1. Who created Bakkar? -> The talented Egyptian director Dr. Mona Abu El Nasr.",
+          "أسئلة الفهم في الصفحة 98:",
+          "1. Who created Bakkar? -> Mona Abu El Nasr.",
           "2. In which other countries is the series popular? -> The United Arab Emirates, Oman and Tunisia.",
           "3. When did Mona Abu El Nasr open Cairo Cartoon Studios? -> In 1990."
         ],
@@ -477,24 +473,19 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           {
             en: "Mona Abu El Nasr opened Cairo Cartoon Studios in 1990.",
             ar: "افتتحت منى أبو النصر استوديو القاهرة للرسوم المتحركة سنة 1990.",
-            highlight: "beloved Ramadan tradition",
+            highlight: "Cairo Cartoon Studios in 1990",
             note: "معلومة مؤرخة في نص القراءة"
           }
         ],
         exercises: [
           {
             id: "5u4-ex1",
-            question: "Bakkar was created and directed by the pioneering animator ______.",
-            options: [
-              "Dr. Mona Abu El Nasr",
-              "Naguib Mahfouz",
-              "Umm Kulthum",
-              "Taha Hussein"
-            ],
-            correctAnswer: "Dr. Mona Abu El Nasr",
-            explanation: "ابتكرت المسلسل وأخرجته الدكتورة منى أبو النصر (الملزمة ص 98).",
+            question: "Bakkar was created by the Egyptian animator ______.",
+            options: ["Mona Abu El Nasr", "Naguib Mahfouz", "Umm Kulthum", "Taha Hussein"],
+            correctAnswer: "Mona Abu El Nasr",
+            explanation: "تذكر القطعة أن منى أبو النصر هي التي ابتكرت شخصية بكار.",
             type: "mcq",
-            sourcePages: "الملزمة ص 98"
+            sourcePages: "الملزمة ص 97"
           }
         ]
       },
@@ -502,8 +493,8 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         id: "5th-u4-l2",
         unitId: 54,
         lessonNumber: 2,
-        titleAr: "الدرس الثاني: مباراة التنس وإصابة الساق (Tennis Match & Leg Injury)",
-        titleEn: "Lesson 2: The Tennis Match, Sports Injuries & Narrative Tenses Consolidation",
+        titleAr: "الدرس الثاني: إصابة هيلين في الركبة وحوار المساعدة (Helen’s Knee Injury)",
+        titleEn: "Lesson 2: Helen’s Knee Injury and Offering Help",
         category: "reading",
         summary: "حوار مصوّر بين Helen وZeina عن إصابة Helen في الركبة وطلبها المساعدة، مع تعبيرات العرض والتفضيل والتنبؤ بالقدرة.",
         sourcePages: "الملزمة ص 99 - 100",
@@ -511,7 +502,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           status: "verified",
           sourceTitle: "ملزمة الخامس الإعدادي 2026",
           sourcePages: "99",
-          verificationNote: "المشهد الحواري المصوّر في صفحة المصدر 99 بين Helen وZeina. لا تعرض هذه الصفحة قصة Hossam أو التواء الكاحل.",
+          verificationNote: "المشهد الحواري المصوّر في صفحة المصدر 99 بين Helen وZeina؛ يبدأ بعرض Zeina المساعدة على Helen المصابة في ركبتها.",
           originalText: [
             "Zeina: Come on, Helen. I know you’re joking. Don’t waste time.\nHelen: I’m not wasting time. I’ve hurt my knee. It hurts so much that I can’t stand up.",
             "Zeina: Shall I help you walk to that seat?\nHelen: Yes, please, Zeina.",
@@ -521,7 +512,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           ]
         },
         detailedContent: [
-          "Helen تقول إنها آذت ركبتها ولا تستطيع الوقوف؛ وتساعدها Zeina على الوصول إلى مقعد، ثم تخشى Helen أن تكون قد كسرت ساقها وأن تفوّت مسابقة التنس يوم السبت.",
+          "تقول Helen إنها آذت ركبتها ولا تستطيع الوقوف؛ وتساعدها Zeina على الوصول إلى مقعد، ثم تخشى Helen أن تكون قد كسرت ساقها وأن تفوّت مسابقة التنس يوم السبت.",
           "تعبيرات الحوار: Shall I help you…? لعرض المساعدة، Would you like me to…? لتقديم عرض، I’d prefer you to… للتعبير عن التفضيل، وwon’t be able to للتعبير عن عدم القدرة مستقبلاً.",
           "يربط الحوار بين if والنتيجة المستقبلية: If it is broken, I won’t be able to play in the tennis competition on Saturday."
         ],
@@ -532,19 +523,24 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           {
             en: "If it is broken, I won’t be able to play in the tennis competition on Saturday.",
             ar: "إذا كانت مكسورة، فلن أتمكن من اللعب في مسابقة التنس يوم السبت.",
-            highlight: "if + present simple / will not be able to",
-            note: "مثال حرفي من الحوار المصوّر"
+            highlight: "If it is broken / won’t be able to",
+            note: "مثال من الحوار المصوّر"
           }
         ],
         exercises: [
           {
             id: "5u4-ex2",
             question: "Why can’t Helen stand up?",
-            options: ["Because she has hurt her knee.", "played", "is playing", "plays"],
+            options: [
+              "Because she has hurt her knee.",
+              "Because she has lost her tennis racket.",
+              "Because she is tired after a long match.",
+              "Because she has hurt her shoulder."
+            ],
             correctAnswer: "Because she has hurt her knee.",
-            explanation: "بعد أداة الربط While يأتي ماضي مستمر (Because she has hurt her knee.) (الملزمة ص 100).",
+            explanation: "تقول Helen إن ركبتها تؤلمها كثيراً لدرجة أنها لا تستطيع الوقوف.",
             type: "mcq",
-            sourcePages: "الملزمة ص 100"
+            sourcePages: "الملزمة ص 99"
           }
         ]
       },
