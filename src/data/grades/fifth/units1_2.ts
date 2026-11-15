@@ -82,14 +82,24 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
         titleAr: "الدرس الثاني: رمضان في العراق وصفات الشخصية (Ramadan in Iraq & Personality Adjectives)",
         titleEn: "Lesson 2: Ramadan in Iraq, Family Customs & Personality Adjectives",
         category: "reading",
-        summary: "قراءة استيعابية حول عادات شهر رمضان في بغداد والمحافظات، أوقات الإفطار والتراويح، ولعبة المحيبس، بالإضافة إلى صفات الشخصية السلبية والإيجابية.",
+        summary: "بريد سميرة إلى Claire عن صيام رمضان من الفجر إلى الغروب، وجبة الإفطار في منزلها، وكرم العائلة والتواصل الاجتماعي في البصرة، مع مفردات صفات الشخصية.",
         sourcePages: "الملزمة ص 7 - 11",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "كتاب الطالب ص 7؛ الملزمة ص 7",
+          verificationNote: "بريد Samira إلى Claire بعنوان Ramadan in Iraq. أبقينا الفراغات الست وبنك العبارات كما في تمرين المطابقة في صفحة المصدر 7.",
+          originalText: [
+            "To: Claire\nSubject: Ramadan in Iraq\n\nHi Claire,\nThanks for your email. You asked me about __________. Well, at the moment it’s Ramadan, so I’ll tell you about that. It’s a 30-day religious fast from dawn to sunset. So there’s no eating or drinking __________. It’s a time when we try to pray more, be more patient with each other, and be kind and generous to people who are less fortunate than us.\n\nAt sunset, we stop fasting, and after prayers, __________. It’s called iftar. My mother is a very traditional person. (She’s also a little bit bossy, __________!) Anyway, she makes sure that iftar in our home is a very traditional meal. We always start with a glass of yoghurt and dates, fruit juice and lentil soup. The main course is usually a stew with meat or chicken and vegetables, served with rice. Then we have tea and cakes. During Ramadan, we always have lots of pastries in the house __________. One thing I really like about Ramadan here in Basra is that people are more sociable. Families and friends __________ in the evenings.\n\nTowards the end of the month, some people get a bit bad-tempered because they’re thirsty, tired and hungry.\n\nI took a taxi yesterday, and the driver was very grumpy. He drove really badly, but you know me – I’m very easy-going. So I smiled and stayed calm!\n\nWrite back soon,\nSamira\n\nPS Here’s a photo of you and me in Liverpool last year!",
+            "Phrase bank:\na. all through the day\nb. we have an evening meal\nc. traditions in my country\nd. but that’s another story\ne. spend a lot more time with each other\nf. to offer visitors in the evening"
+          ]
+        },
         grammarRuleFormula: "Personality Adjectives (صفات الشخصية - ص 8):\n- Positive: generous (كريم), patient (صبور), sociable (اجتماعي), helpful (متعاون), cheerful (مبتهج)\n- Negative/Neutral: bossy (متسلط), stubborn (عنيد), lazy (كسول), shy (خجول), anxious (قلق)",
         detailedContent: [
-          "نص القراءة (Student's Book p. 7): رمضان هو الشهر التاسع في التقويم الهجري الإسلامي؛ يمتنع المسلمون خلاله عن الطعام والشراب من الفجر حتى الغروب.",
-          "وجبة الإفطار (Iftar): يبدأ العراقيون إفطارهم بالتمر واللبن وحساء العدس (Shorbat Adas) تتبعها وجبات الكبة والبرياني واللحم.",
-          "الصلوات والتواصل الاجتماعي: بعد الإفطار، يؤدي المصلون صلاة التراويح في المساجد، ثم تجتمع العوائل وتلعب لعبة المحيبس التراثية (Mheibes) في المقاهي والأحياء القديمة.",
-          "صفات الشخصية (AB p. 4): وصف الأفراد بصفات مثل generous (يعطي المال والمساعدة لمن يحتاج) و bossy (يأمر الناس بما يفعلونه دائماً)."
+          "نص القراءة (Student's Book p. 7): تصف سميرة رمضان بأنه صيام ديني لمدة 30 يوماً من الفجر إلى الغروب، وتمتنع فيه عن الأكل والشرب طوال اليوم.",
+          "وجبة الإفطار في بيت سميرة: تبدأ بكأس من اللبن والتمر وعصير الفاكهة وحساء العدس، ثم يخنة باللحم أو الدجاج والخضروات مع الأرز، وبعدها الشاي والكعك.",
+          "التواصل الاجتماعي: تذكر سميرة أن العائلات والأصدقاء يقضون وقتاً أطول معاً في أمسيات رمضان، وأن أهل بيتها يقدمون المعجنات للزوار مساءً.",
+          "صفات الشخصية (الملزمة ص 8): تتضمن كلمات patient وkind وgenerous وsociable وbad-tempered وgrumpy وeasy-going وbossy لوصف الأشخاص."
         ],
         teacherNotes: [
           "سؤال شهير بالملزمة ص 10: 'Why is Ramadan an important month for Muslims?' الجواب النموذجي: Because it is a month of fasting, spiritual devotion, generosity, and family bonding."
