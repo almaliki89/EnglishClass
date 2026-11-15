@@ -647,7 +647,7 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleAr: "الدرس السابع: أربعة أخبار صحفية غريبة (Four Bizarre News Stories)",
         titleEn: "Lesson 7: Four Unusual News Headlines (Boy Bites Snake, Golf in Gulf, Thames Oil, Top Camel)",
         category: "reading",
-        summary: "أربعة تقارير إخبارية طريفة وغريبة من صحف العالم: طفل يعض أفعى سامة في الهند وينجو، بطولة غولف شاطئية في الخليج، تسرب نفطي في نهر التايمز، ومسابقة ملكة جمال الإبل.",
+        summary: "أربعة أخبار قصيرة: طفل من جنوب أفريقيا يعض ثعباناً ساماً، جولة لاعبي غولف محترفين في دول الخليج، تسرب بنزين إلى نهر التايمز بعد حادث شاحنة، وبيع جمل سباق بمبلغ مرتفع في الإمارات.",
         sourcePages: "الملزمة ص 142 - 143",
         readingPassage: {
           status: "verified",
@@ -662,31 +662,31 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
           ]
         },
         detailedContent: [
-          "طفل يعض ثعباناً (Boy bites snake): طفل هندي في الثامنة تعرض للدغة كوبرا فقام بعض الثعبان دفاعاً عن نفسه فمات الثعبان ونجا الطفل بعد تلقي المصل المضاد في المستشفى.",
-          "مسابقة مزاين الإبل (Top Camel): مهرجان تراثي خليجي لاختيار أجمل الإبل الأصيلة بمشاركة ملاك الإبل وجوائز بملايين الدولارات.",
-          "تسرب نهر التايمز (Thames oil spill): قارب وقود تسرب منه الديزل قرب جسر البرج في لندن وتدخلت فرق الحماية البيئية لحماية البجع والطيور النهرية.",
-          "تمرين كتاب النشاط ص 107: استخراج الأفكار الرئيسية وكتابة عناوين صحفية مختصرة."
+          "طفل يعض ثعباناً (Boy Bites Snake): رأت Betty Paton ابنها Max البالغ ثلاث سنوات يمسك ثعباناً ساماً ويعضه قرب Cape Town في جنوب أفريقيا؛ وأفاد الأطباء أن الثعبان لم يلدغ الطفل.",
+          "الجمل الأغلى (Top Price for Top Camel): بيع جمل سباق عالي الجودة بمبلغ 150,000 دولار في الإمارات، وكان قد فاز بأكثر من 50 سباقاً.",
+          "تسرب نهر التايمز: اصطدمت ناقلة تحمل 10,000 لتر من البنزين بشاحنة أخرى على جسر ضيق في Richmond؛ وانسكب ما لا يقل عن 50% من الوقود في النهر.",
+          "تتضمن الأخبار أيضاً جولة غولف تستمر عشرة أيام وتهدف إلى تشجيع الشباب المحلي على ممارسة اللعبة."
         ],
         teacherNotes: [
-          "ملاحظة الملزمة ص 147: عناوين الصحف في الإنكليزية (Newspaper Headlines) تكتب عادة بالمضارع البسيط وتحذف منها أدوات التعريف والتنكير والأفعال المساعدة للاختصار وجذب الانتباه."
+          "ملاحظة الملزمة ص 142: عناوين الصحف في الإنكليزية (Newspaper Headlines) تكتب عادة بالمضارع البسيط وتحذف منها أدوات التعريف والتنكير والأفعال المساعدة للاختصار وجذب الانتباه."
         ],
         examples: [
           {
-            en: "An eight-year-old boy made global headlines after surviving a dangerous cobra bite.",
-            ar: "تصدر صبي يبلغ من العمر ثماني سنوات عناوين الأخبار العالمية بعد نجاته من لدغة كوبرا خطيرة.",
+            en: "A three-year-old boy named Max was seen holding and biting a poisonous snake near Cape Town.",
+            ar: "شاهدت Betty Paton ابنها Max البالغ ثلاث سنوات يمسك ثعباناً ساماً ويعضه قرب Cape Town.",
             highlight: "made global headlines",
-            note: "صياغة خبرية صحفية نموذجية"
+            note: "تفصيل من الخبر الأول"
           }
         ],
         exercises: [
           {
             id: "5u6-ex7",
-            question: "In newspaper headlines, articles (a, an, the) and auxiliary verbs are usually ______ to save space.",
-            options: ["omitted", "doubled", "capitalized", "italicized"],
-            correctAnswer: "omitted",
-            explanation: "في عناوين الأخبار الصحفية تحذف عادة أدوات التعريف والتنكير والأفعال المساعدة لتوفير المساحة وجذب النظر (الملزمة ص 147).",
+            question: "How much was the racing camel sold for in the UAE?",
+            options: ["$150,000", "$15,000", "$50,000", "$1,500"],
+            correctAnswer: "$150,000",
+            explanation: "يذكر الخبر أن الجمل بيع بمبلغ 150,000 دولار في الإمارات.",
             type: "mcq",
-            sourcePages: "الملزمة ص 147"
+            sourcePages: "الملزمة ص 142"
           }
         ]
       },
