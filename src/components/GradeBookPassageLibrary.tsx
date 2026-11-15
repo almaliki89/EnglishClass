@@ -2,7 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { AlertTriangle, ArrowLeft, BookOpen, CheckCircle2, ChevronDown, FileText, Search } from 'lucide-react';
 import { EducationalGrade, StudentState, Unit } from '../types';
 import { resolveBookPassages } from '../data/bookPassageCatalog';
-import { getBookPassageContent } from '../data/readingPassageContent';
+import { getBookPassageContent } from '../data/readingPassageContentRegistry';
 import { BrutalBadge, BrutalButton, BrutalCard } from './common/BrutalUI';
 
 interface GradeBookPassageLibraryProps {
