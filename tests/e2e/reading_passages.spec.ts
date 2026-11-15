@@ -50,6 +50,19 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByTestId('passage-exercises-section')).toContainText('What was Ammar’s life like when he was 16?');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('It was great because he was finally part of the school basketball team');
   });
+  test('sixth preparatory Samira passage includes its full translation and Activity Book answers', async ({ page }) => {
+    await page.goto('/grade/sixth-preparatory');
+    await page.waitForLoadState('networkidle');
+    const library = page.getByTestId('grade-book-passage-library');
+    const samiraCard = library.getByTestId('book-passage-card').filter({ hasText: 'Samira Al Mahmoud' });
+    await expect(samiraCard).toBeVisible();
+    await samiraCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByTestId('original-passage-section')).toContainText('The annual Arab Oil Industry Conference');
+    await expect(page.getByTestId('passage-translation-section')).toContainText('المؤتمر السنوي لصناعة النفط العربية');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('What languages can Samira speak? How did she learn them?');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Arabic and English; she was born in Britain');
+  });
+
   test('fifth preparatory shows the verified Harrods history and correct foundation year', async ({ page }) => {
     await page.goto('/grade/fifth-preparatory/unit/57/lesson/5th-u7-l8');
     await page.waitForLoadState('networkidle');
