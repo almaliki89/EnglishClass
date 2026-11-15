@@ -58,6 +58,10 @@ export interface ReadingPassageExerciseSet {
  * contain originalText; summaries must never be presented as textbook text.
  */
 export interface ReadingPassage {
+  /** Stable passage ID from bookPassageCatalog, used when one lesson contains multiple passages. */
+  id?: string;
+  titleAr?: string;
+  titleEn?: string;
   status: ReadingPassageStatus;
   sourceTitle: string;
   sourcePages: string;
