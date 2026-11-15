@@ -28,6 +28,21 @@ export interface Exercise {
   contentOrigin?: ContentOrigin;
 }
 
+export type ReadingPassageStatus = 'verified' | 'reconstructed' | 'summary_only' | 'source_required';
+
+/**
+ * Source-aware reading passage data. Only verified/reconstructed entries may
+ * contain originalText; summaries must never be presented as textbook text.
+ */
+export interface ReadingPassage {
+  status: ReadingPassageStatus;
+  sourceTitle: string;
+  sourcePages: string;
+  originalText?: string[];
+  translation?: string[];
+  verificationNote?: string;
+}
+
 export interface Lesson {
   id: string;
   unitId: number;
@@ -45,6 +60,8 @@ export interface Lesson {
   provenance?: SourceProvenance;
   pedagogy?: LessonPedagogyGuide;
   sourcePages?: string;
+  /** Exact source text, kept separate from summaries and teacher explanations. */
+  readingPassage?: ReadingPassage;
 }
 
 export interface Unit {
