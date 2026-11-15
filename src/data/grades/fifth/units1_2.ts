@@ -333,7 +333,7 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
           "الأنشطة والوفود: تحضر وفود من كافة قارات العالم لتقديم الفولكلور والمسرح والشعر والندوات الفكرية."
         ],
         teacherNotes: [
-          "أسئلة الملزمة النموذجية ص 35:",
+          "أسئلة المنهج الوزاري ص 35:",
           "1. When was the first Babylon Festival held? -> In 1987.",
           "2. How far is Babylon from Baghdad? -> About 85 kilometres south of Baghdad.",
           "3. How many people does the Babylonian amphitheatre hold? -> About 2,500 spectators."

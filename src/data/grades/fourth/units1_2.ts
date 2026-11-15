@@ -181,7 +181,7 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
           "أسئلة الاستيعاب المدرسية (الملزمة ص 17): ما هي عاصمة كندا؟ ما هما اللغتان الرسميتان؟ وما هي أكبر مدنها؟"
         ],
         teacherNotes: [
-          "أسئلة الملزمة النموذجية ص 17:",
+          "أسئلة المنهج الوزاري ص 17:",
           "1. What are the official languages of Canada? -> English and French.",
           "2. What is the capital of Canada? -> Ottawa.",
           "3. What is the largest city in Canada? -> Toronto."
