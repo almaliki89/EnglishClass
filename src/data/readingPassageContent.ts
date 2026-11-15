@@ -850,6 +850,22 @@ const READING_PASSAGE_CONTENT: Record<string, ReadingPassage> = {
     ],
     exerciseSets: [
       {
+        id: '6p-u8-wind-power-ab-a',
+        source: 'activity_book',
+        sourceTitle: 'Exercise A — Match',
+        sourcePages: 'كتاب النشاط ص 162',
+        instruction: 'Match the sentence halves.',
+        instructionTranslation: 'طابق نصفي الجمل.',
+        items: [
+          { id: 'wind-a1', question: 'Many wind turbines', answer: 'can be built on land or offshore.' },
+          { id: 'wind-a2', question: 'Building a wind turbine', answer: 'is an expensive project.' },
+          { id: 'wind-a3', question: 'Wind', answer: 'is caused by changes in temperature.' },
+          { id: 'wind-a4', question: 'Wind farms', answer: 'have been built in Europe.' },
+          { id: 'wind-a5', question: 'New technologies', answer: 'can make this type of energy quieter in the future.' },
+          { id: 'wind-a6', question: 'Scientists', answer: 'are researching ways to improve wind energy.' }
+        ]
+      },
+      {
         id: '6p-u8-wind-power-ab-b',
         source: 'activity_book',
         sourceTitle: 'Exercise B — Short answers',
@@ -857,9 +873,9 @@ const READING_PASSAGE_CONTENT: Record<string, ReadingPassage> = {
         instruction: 'Read the article more carefully and write short answers to the questions.',
         instructionTranslation: 'اقرأ المقال بعناية أكبر واكتب إجابات قصيرة عن الأسئلة.',
         items: [
-          { id: 'wind-b1', question: 'In what ways has wind power been used for thousands of years?', answer: 'To power sailing boats and grind corn into flour.' },
+          { id: 'wind-b1', question: 'In what ways has wind power been used for thousands of years?', answer: 'To power sailing boats and grind corn.' },
           { id: 'wind-b2', question: 'What is the most important aspect of wind power?', answer: 'It is clean energy.' },
-          { id: 'wind-b3', question: 'Why does the author say wind power is efficient?', answer: 'Because the land under the turbines can still be used for agriculture.' },
+          { id: 'wind-b3', question: 'Why does the author say wind power is efficient?', answer: 'Because the land under the turbines can also be used for agriculture.' },
           { id: 'wind-b4', question: 'What two complaints do people who live near wind turbines have about them?', answer: 'They are unattractive and noisy.' },
           { id: 'wind-b5', question: 'Why can’t we only use wind power to supply our energy?', answer: 'It can’t supply enough energy to meet our needs.' }
         ]
@@ -870,11 +886,29 @@ const READING_PASSAGE_CONTENT: Record<string, ReadingPassage> = {
         sourceTitle: 'Exercise C — Compare the email and article',
         sourcePages: 'كتاب النشاط ص 162',
         instruction: 'Read the email more carefully. What disadvantages of wind turbines does the writer mention that the writer of the article doesn’t mention?',
-        instructionTranslation: 'اقرأ البريد الإلكتروني بعناية. ما عيوب توربينات الرياح التي ذكرها الكاتب ولم يذكرها كاتب المقال؟',
+        instructionTranslation: 'اقرأ البريد الإلكتروني بعناية. ما عيوب توربينات الرياح التي ذكرها كاتب البريد ولم يذكرها كاتب المقال؟',
         items: [
           { id: 'wind-c1', question: 'What disadvantage affects birds?', answer: 'They are a danger to birds.' },
           { id: 'wind-c2', question: 'What disadvantage affects fishing?', answer: 'They scare away fish.' },
           { id: 'wind-c3', question: 'What other danger at sea is mentioned?', answer: 'They may interfere with boat radars.' }
+        ]
+      },
+      {
+        id: '6p-u8-wind-power-ab-d',
+        source: 'activity_book',
+        sourceTitle: 'Exercise D — Find a word or phrase',
+        sourcePages: 'كتاب النشاط ص 162',
+        instruction: 'Find a word or phrase in the article on page 86 of the Student’s Book that means the following.',
+        instructionTranslation: 'جد كلمة أو عبارة في مقال صفحة 86 من كتاب الطالب تحمل المعنى التالي.',
+        items: [
+          { id: 'wind-d1', question: 'material from nature', answer: 'natural resource' },
+          { id: 'wind-d2', question: 'give energy to make something work', answer: 'power' },
+          { id: 'wind-d3', question: 'substances in the atmosphere that harm the environment', answer: 'greenhouse gases' },
+          { id: 'wind-d4', question: 'that can be used again and again', answer: 'renewable' },
+          { id: 'wind-d5', question: 'end, finish', answer: 'run out' },
+          { id: 'wind-d6', question: 'ugly', answer: 'unattractive' },
+          { id: 'wind-d7', question: 'provide', answer: 'supply' },
+          { id: 'wind-d8', question: 'depend on', answer: 'rely on' }
         ]
       }
     ]
