@@ -529,7 +529,7 @@ export const UNIT_3: Unit = {
       summary: "قطعة الكتاب المقررة للمترجمة الفورية سميرة المحمود: مؤتمر النفط في أبوظبي، العمل الحر (freelance)، مهارات المترجم، الترجمة تحت الضغط، وأهمية اللغة العربية.",
       grammarRuleFormula: "Key Vocabulary:\nfreelance = working when you want and for the organization you want\nunder pressure = in a difficult situation\nconvey the sense = give an idea of the meaning\nbooth = box-like room where interpreters work\nheadphones = listen privately",
       detailedContent: [
-        "قطعة الكتاب المقررة: سميرة المحمود (ص 76 - 81 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: سميرة المحمود (ص 74 - 75 من ملزمة السادس 2027، PDF ص 76 - 77):",
         "- سميرة المحمود: مترجمة مؤتمرات فورية (conference interpreter) من الإنجليزية إلى العربية في فندق هيلتون بأبوظبي خلال مؤتمر النفط العربي السنوي.",
         "- ولدت في بريطانيا من والدين عراقيين، وتحدثت العربية في المنزل والإنجليزية في المدرسة.",
         "- حصلت على شهادة في اللغة العربية من جامعة لندن، ثم دبلوم دراسات عليا في الترجمة الفورية (postgraduate diploma in conference interpreting). كانت الدورة صعبة واجتازها 50% فقط من الطلاب.",
@@ -603,7 +603,13 @@ export const UNIT_3: Unit = {
           type: "mcq",
           ministerialYear: "تمرين D ص 69"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 74–75 من ملزمة السادس 2027 (PDF ص 76–77)",
+        verificationNote: "عُثر على نص سميرة المحمود في ص74–75. النشر الرقمي للنص الكامل يحتاج إلى تأكيد الإذن."
+      }
     }
   ]
 };
