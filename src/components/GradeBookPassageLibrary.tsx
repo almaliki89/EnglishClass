@@ -209,6 +209,7 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                     key={lesson.id}
                     data-testid="book-passage-card"
                     data-passage-id={lesson.id}
+                    data-unit-id={unit.id}
                     className="min-w-0"
                   >
                     <BrutalCard
