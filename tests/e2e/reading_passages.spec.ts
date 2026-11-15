@@ -1,0 +1,153 @@
+import { test, expect } from '@playwright/test';
+
+test.describe('Source-aware reading passages', () => {
+  test('third intermediate shows the verified Ibrahim original text', async ({ page }) => {
+    await page.goto('/grade/third-intermediate/unit/104/lesson/3rd-u4-l3');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.getByRole('heading', { name: 'Original English Passage' })).toBeVisible();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('Ibrahim lived in a small village in the south of Iraq');
+    await expect(page.getByText('ملزمة الثالث المتوسط 2025')).toBeVisible();
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fourth preparatory shows the verified Wedding Customs passage', async ({ page }) => {
+    await page.goto('/grade/fourth-preparatory/unit/45/lesson/4th-u5-l4');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('Weddings are different from country to country');
+    await expect(page.getByText('In Iraq, the bride wears white to symbolize purity.')).toBeVisible();
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory mixed reading/grammar lesson shows its full Souq Al-Shorja text', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/51/lesson/5th-u1-l3');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('Last week, I visited a very special place in Baghdad');
+    await expect(page.getByText('Souq Al-Shorja isn’t just a simple market')).toBeVisible();
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('sixth preparatory does not present the Ammar summary as an original passage', async ({ page }) => {
+    await page.goto('/grade/sixth-preparatory/unit/1/lesson/u1-l3');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.getByRole('heading', { name: 'لم يتم توثيق نص القطعة الأصلي بعد' })).toBeVisible();
+    await expect(page.getByText(/الدرس موجود في المنهج، لكن نص القراءة الإنجليزي الكامل لم يُطابق مع مصدره بعد/)).toBeVisible();
+
+    await page.getByRole('button', { name: 'ملف القصة والبطاقات القلابة' }).click().catch(() => {});
+    await expect(page.getByText('زيد طارق (Zaid Tariq - 20 years old)')).toHaveCount(0);
+  });
+  test('fifth preparatory shows the verified Harrods history and correct foundation year', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/57/lesson/5th-u7-l8');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').nth(1)).toContainText('Harrods, which was founded in 1834');
+    await expect(page.locator('p[lang="en"]').last()).toContainText('Everything for Everybody Rich Everywhere');
+    await expect(page.getByText('ملزمة الخامس الإعدادي 2026')).toBeVisible();
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory shows the verified three-metre boa story without invented details', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/58/lesson/5th-u8-l3');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('The terrified residents of a block of flats in London');
+    await expect(page.locator('p[lang="en"]').nth(2)).toContainText('James Andrews');
+    await expect(page.locator('p[lang="en"]').last()).toContainText('the eighth floor of the building');
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory shows the original Olympics volunteer interview as a cloze dialogue', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/58/lesson/5th-u8-l4');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').last()).toContainText('The director asked me if I had any previous experience in sports management');
+    await expect(page.locator('p[lang="en"]').last()).toContainText('my __________');
+    await expect(page.getByText('184–185', { exact: true })).toBeVisible();
+  });
+
+  test('fifth preparatory shows Samira’s original Ramadan email and its phrase bank', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/51/lesson/5th-u1-l2');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('To: Claire');
+    await expect(page.locator('p[lang="en"]').first()).toContainText('It’s a 30-day religious fast from dawn to sunset');
+    await expect(page.locator('p[lang="en"]').last()).toContainText('all through the day');
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory attributes the opening line of the tennis dialogue to Zeina', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/54/lesson/5th-u4-l2');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('Zeina: Come on, Helen. I know you’re joking');
+    await expect(page.locator('p[lang="en"]').first()).not.toContainText('Helen: Come on, Helen');
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory Unit Four Test is not mislabeled as a reading passage or official 100-mark exam', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/54/lesson/5th-u4-l4');
+    await page.waitForLoadState('networkidle');
+
+    await expect(page.getByRole('heading', { name: 'الدرس الرابع: اختبار الوحدة الرابعة (Unit Four Test)' })).toBeVisible();
+    await expect(page.getByText(/مراجعة اختبار الوحدة الرابعة كما ورد في الصفحتين 102–103/).first()).toBeVisible();
+    await expect(page.getByRole('button', { name: 'نص القراءة الأصلي' })).toHaveCount(0);
+    await expect(page.getByText(/100 درجة كاملة/)).toHaveCount(0);
+  });
+
+  test('fifth preparatory Babylon Festival reading avoids unsupported venue capacity claims', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/51/lesson/5th-u1-l8');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('the first Festival in 1987');
+    await expect(page.locator('p[lang="en"]').nth(1)).toContainText('There are three main theatres');
+    await expect(page.locator('p[lang="en"]').nth(2)).toContainText('The Babylonian Theatre is the biggest amphitheatre');
+    await expect(page.getByText('2,500 spectators')).toHaveCount(0);
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory digital poverty reading sticks to the Justin letter and source article', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/52/lesson/5th-u2-l3');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('I own a computer repair shop');
+    await expect(page.locator('p[lang="en"]').last()).toContainText('With only lessons online');
+    await expect(page.locator('p[lang="en"]').last()).toContainText('these students need help urgently');
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory internet reading follows the printed 1990 and 1993 dates', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/52/lesson/5th-u2-l6');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').nth(1)).toContainText('It was invented in 1990');
+    await expect(page.locator('p[lang="en"]').nth(1)).toContainText('In 1993, the internet became public');
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory mobile phone history is labeled reconstructed and has no invented archaeologist story', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/52/lesson/5th-u2-l8');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.getByText('نص معاد بناؤه — يحتاج مراجعة')).toBeVisible();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('The first mobile phone was used by the Swedish police in 1946');
+    await expect(page.locator('p[lang="en"]').first()).toContainText('After six calls, the car battery was flat');
+    await expect(page.getByText(/عالم الآثار|Aloalo|40 كيلوغراماً/)).toHaveCount(0);
+  });
+
+});

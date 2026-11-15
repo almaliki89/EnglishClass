@@ -107,6 +107,18 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         category: "reading",
         summary: "أدوار المنظمات غير الحكومية في حماية أبقار البحر (Dugongs)، وحملات توفير المياه النظيفة، والتمويل الأخضر لحماية الطبيعة.",
         sourcePages: "الملزمة ص 79 - 81",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "77–78",
+          verificationNote: "النصوص الأربعة A–D في المصدر تتناول فريق حماية الأطوم، توفير المياه، GreenMoney، والتطوع البيئي.",
+          originalText: [
+            "The Dugong Team\nWe are an organization who is trying to save the sweet dugong from extinction and urgently need your help. Did you know that dugongs only eat seagrass? Unfortunately, seagrass is disappearing because of pesticides in the water. Lack of food and hunting are the two main threats to the dugong. They should live up to 70 years, but if they don’t have enough food, they will die way before that.\nHow can you help?\nYou can give money once here, or you can adopt a dugong. It works like this: you choose a dugong from our gallery and pay a monthly fee to help take care of it and keep it safe. If you adopt a dugong, you will get a lovely dugong toy at home and every month you will get updates about your dugong.",
+            "We Need Water\nWe Need Water works hard to keep rivers, lakes and oceans clean, and makes sure people have access to drinking water. We work with governments and local communities on projects that make sure there is clean water nearby so people don’t have to risk their lives drinking dirty water. Water is essential to every human being, but there are still around two billion people on the planet that do not have safe access to drinking water. Some have to walk very long distances for water that may carry diseases. We Need Water is doing something about this problem. If you donate money to us, we will use it to build wells in small villages and take drinking water to those who really need it. With clean water, people live longer and healthier lives, and children can go to school to build their future.\nMake a donation today!\nGive once\nGive monthly\nSelect amount: £10 £20 £50 £100\nOther: ______",
+            "GREENMONEY\nGreenMoney takes your money and invests it in environmental projects around the world. You can choose from a number of different projects and, when the project is finished, you get your money back, or you can invest it again in another project. If you decide to reinvest, we will suggest the ideal project for you.\nStart investing in the planet today!\nWhich project would you like to help?\nHow much can you invest?\nWhen do you need your money back?",
+            "Work for Nature\nWe at Work for Nature don’t want your money, we need your time to make a better world. You can volunteer as much time as you can, from just a couple of hours a week (the more the better, of course!). What will you do in that time? We have a number of ‘green tasks’ to choose from according to your skills. You can do work in your community by, for example, planting trees or visiting schools. If you have skills or training, we will find a suitable job for you. You can also help promote our organization online – so you can help us without even leaving your house!\nIn your holidays, you can join one of our many preservation projects around the world. In our one- to three-month programmes, you will help protect animals by preserving their habitats."
+          ]
+        },
         detailedContent: [
           "فريق حماية بقر البحر (Dugong Team): حيوان ثديي بحري لطيف يتغذى على أعشاب البحر في الخليج العربي والبحر الأحمر، مهدد بشباك الصيد ومحركات القوارب السريعة.",
           "مشاريع المياه النظيفة (We Need Water): توفير آبار مياه ومحطات تنقية للمجتمعات الريفية التي تعاني من الجفاف.",
@@ -221,40 +233,50 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         unitId: 53,
         lessonNumber: 6,
         titleAr: "الدرس السادس: التلوث النفطي والغازي في البصرة (Oil & Gas Pollution in Basra)",
-        titleEn: "Lesson 6: Basra Gas Flaring, Environmental Pollution & Company Initiatives",
+        titleEn: "Lesson 6: Oil and Gas Industries and Environmental Effects in Basra",
         category: "reading",
-        summary: "دراسة استيعابية حول حرق الغاز المصاحب لإنتاج النفط في حقول البصرة، آثاره الصحية على السكان، ومبادرات شركة غاز البصرة للحد من الانبعاثات الكربونية.",
-        sourcePages: "الملزمة ص 89 - 91",
+        summary: "رسالة سلمان أحمد عن أثر صناعة النفط والغاز في البيئة العراقية، مع أمثلة من الشعيبة والزبير والرميلة والبرجسية ومقاطع عن المراقبة البيئية.",
+        sourcePages: "الملزمة ص 85 - 86",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "85–86",
+          verificationNote: "النص رسالة سلمان أحمد إلى المحرر مع مواضع مطابقة مرقّمة، وتليها خمسة مقاطع (A–E) في صفحة المصدر 86. أبقينا مواضع المطابقة كما وردت ولم نخمّن ترتيب إدراجها داخل الرسالة.",
+          originalText: [
+            "Dear Editor,\nOil and gas are the main industries in Iraq, and I realize that our economy depends on them. However, I am concerned about the effect of these industries on the environment.\n[Paragraph 1]\nOne obvious problem is global warming. All fossil fuels produce carbon dioxide and ozone, which are two of the main greenhouse gases. The increase in greenhouse gases in our atmosphere may cause climate change.\nThere are other environmental problems in our country. Look at different places in Basra, like Shu’ayba, Zubair, Rumaila and Burjussia. I remember Rumaila as it was in the early nineties. It used to be a lovely, quiet place, full of wildlife, especially in the lakes. I went there two years ago and I saw how industrial development has changed the area.\n[Paragraph 2]\nI expect I would notice more changes if I went there today. How has this development affected the wildlife?\nBurning oil and gas releases pollution into the air.\n[Paragraph 3]\nYou can see flares and smoke around sites like Burjussia in Basra. [Paragraph 4] Pollution of the land caused by these emissions may also damage the habitats of wildlife, in particular the nesting and breeding areas of birds. My concern is how much all of this may affect the food chain – if you destroy one animal in the food chain, then other animals have nothing to eat.\nIraq is a very beautiful country. If we are not careful, we might damage the environment.\nYours sincerely,\nSalman Ahmad,\nBasra.",
+            "Paragraph A — Green Oil & Gas Company (GOGC) uses the latest technology to monitor the environment in Iraq. One type of technology used is satellite imagery.",
+            "Paragraph B — GOGC has built special stations to monitor air quality. They measure the quantity of gases in the air, such as sulphur dioxide (SO2), oxides of nitrogen, ozone and hydrocarbons.",
+            "Paragraph C — Smoke and flares can disturb the breeding patterns of birds. At Burjussia, GOGC has a programme to provide new nesting places, which is already bringing birds back to the area.",
+            "Paragraph D — Global warming is caused by CO2 – carbon dioxide. The good news about LNG (liquefied natural gas) is that it contains more hydrogen and less carbon than oil – so it produces much less CO2 when it is used.",
+            "Paragraph E — The lakes around Rumaila are a special environment. There is a lot of interesting life in these lakes. But it can easily be damaged by oil or other sorts of pollution. So GOGC has a team which monitors the quality of the lakewater at 15 places around Rumaila. Protecting the environment in this special area is very important to the company."
+          ]
+        },
         detailedContent: [
-          "مشكلة حرق الغاز (Gas Flaring): حرق الغاز الطبيعي المصاحب لاستخراج النفط الخام في حقول جنوب العراق يطلق أطناناً من غازات الدفيئة والمواد الملوثة في الهواء.",
-          "الآثار البيئية والصحية: يؤدي إلى أمراض تنفسية وزيادة درجات الحرارة وتلوث الأمطار.",
-          "الحلول والمشاريع: استثمار الغاز الطبيعي وتأسيس محطات لمعالجته وتوليد الكهرباء النظيفة بدلاً من حرقه في الهواء، مما يوفر مليارات الدولارات ويحمي سماء البصرة."
+          "الاحتباس الحراري: يذكر النص أن الوقود الأحفوري ينتج ثاني أكسيد الكربون والأوزون، ويربط زيادة غازات الدفيئة بإمكان حدوث تغير مناخي.",
+          "المواقع العراقية: يذكر سلمان الشعيبة والزبير والرميلة والبرجسية، ويقارن حالة الرميلة في التسعينيات بما شاهده بعد التطور الصناعي.",
+          "آثار الانبعاثات: قد تتضرر موائل الحياة البرية ومناطق تعشيش الطيور وتكاثرها، كما يمكن أن تتأثر السلسلة الغذائية."
         ],
         teacherNotes: [
-          "سؤال الملزمة ص 90: How does gas flaring affect the local environment? -> It causes air pollution, releases harmful greenhouse gases, and impacts residents' respiratory health."
+          "سؤال فهم مستند إلى النص: Which Basra locations does Salman mention? -> Shu’ayba, Zubair, Rumaila and Burjussia.",
+          "المقاطع A–E معلومات مساندة للمطابقة؛ لا تُدرج في مواضع الفقرات المرقمة من دون الرجوع إلى ترتيب النشاط الأصلي."
         ],
         examples: [
           {
-            en: "Capturing flared gas in Basra can generate electricity for thousands of Iraqi homes.",
-            ar: "إن حصر الغاز المحترق في البصرة يمكن أن يولد الكهرباء لآلاف المنازل العراقية.",
-            highlight: "generate electricity",
-            note: "فائدة اقتصادية وبيئية كبرى للمشروع"
+            en: "Burning oil and gas releases pollution into the air.",
+            ar: "إن حرق النفط والغاز يطلق التلوث في الهواء.",
+            highlight: "releases pollution into the air",
+            note: "جملة واردة في رسالة سلمان"
           }
         ],
         exercises: [
           {
             id: "5u3-ex6",
-            question: "Instead of burning associated gas in oilfields, companies should ______.",
-            options: [
-              "capture and process it for electricity generation",
-              "pump it directly into rivers",
-              "release it into the city atmosphere",
-              "ignore the rising emissions"
-            ],
-            correctAnswer: "capture and process it for electricity generation",
-            explanation: "الحل العلمي والبيئي الأمثل هو حصر الغاز ومعالجته لتوليد الطاقة الكهربائية (الملزمة ص 90).",
+            question: "According to Salman, pollution from emissions may damage the ______ areas of birds.",
+            options: ["nesting and breeding", "feeding and sleeping", "hunting and hiding", "migration and resting"],
+            correctAnswer: "nesting and breeding",
+            explanation: "يذكر النص أن الانبعاثات قد تضر بمناطق تعشيش الطيور وتكاثرها.",
             type: "mcq",
-            sourcePages: "الملزمة ص 90"
+            sourcePages: "الملزمة ص 85"
           }
         ]
       },
@@ -301,40 +323,50 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         unitId: 53,
         lessonNumber: 8,
         titleAr: "الدرس الثامن: السيارات الهجينة ومقابلة تيري (Hybrid Cars & Terry Interview)",
-        titleEn: "Lesson 8: Eco-Friendly Hybrid Cars & Terry's Technological Experience",
+        titleEn: "Lesson 8: Hybrid Cars and Terry’s Interview",
         category: "reading",
-        summary: "السيارات الهجينة الصديقة للبيئة، كيفية عمل المحرك المزدوج (بنزين + كهرباء)، ومقابلة تيري حول توفير الوقود وتقليل الانبعاثات.",
-        sourcePages: "الملزمة ص 94 - 95",
+        summary: "إعلان ومقابلة عن السيارات الهجينة، وقرار Terry بشراء سيارة هجينة بسبب مشكلة التلوث في لوس أنجلوس وحاجته إلى القيام برحلات طويلة.",
+        sourcePages: "الملزمة ص 88 - 89",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "88–89",
+          verificationNote: "يشمل النص إعلان Hybrid Car Sales L.A. ثم المقابلة الصحفية A Hybrid Car for Terry? كما وردا في المصدر.",
+          originalText: [
+            "HYBRID CAR SALES L.A.\nDo you want all the advantages of a petrol engine PLUS all the advantages of an electric motor?\nHave fun AND protect the environment. Get a hybrid!\nWe sell Honda, Toyota, Ford and General Motors hybrid cars.\nHybrid Car Sales, 9466 Beverly Boulevard, Los Angeles, CA 90048\nwww.hybridcarsales.com",
+            "A HYBRID CAR FOR TERRY?\nEVERY MONTH WE INTERVIEW A MEMBER OF THE PUBLIC. WE ASK ‘WHICH CAR ARE YOU GOING TO BUY? WHY?’\nWCTB: Terry, you’ve been looking at the new cars on the market. What do you think?\nTerry: Well, I like all the new hybrid cars.\nWCTB: They’re pretty expensive, aren’t they?\nTerry: They’re not cheap. But I expect I’ll buy one anyway. I live in Los Angeles, and we have a big pollution problem there.\nWCTB: The smog?\nTerry: Not just the smog. There are almost four million people in Los Angeles – and everyone drives a car.\nWCTB: Do you think hybrid cars will help?\nTerry: Oh, yes. They will definitely make things better. In the city, you use the electric motor, so there’s no pollution at all.\nWCTB: Why not get an all-electric car, then?\nTerry: Well, the batteries are not good enough for long journeys – that’s the problem. I often drive to my sister’s place in San Francisco, for example. That’s nearly 650 kilometres.\nWCTB: And the hybrid car uses its petrol engine on the open road?\nTerry: Exactly. You get the best of both worlds.\nWCTB: And can you afford the higher price?\nTerry: At the moment, yes. Unless I lose my job or something like that, I’ll certainly buy a hybrid.\nWCTB: Thank you for sharing your ideas with us."
+          ]
+        },
         detailedContent: [
-          "مفهوم السيارة الهجينة (Hybrid Car): سيارة تعمل بمحركين معاً: محرك وقود بنزين ومحرك كهربائي متطور وبطارية قابلة لإعادة الشحن أثناء السير واستخدام المكابح.",
-          "مزايا السيارات الهجينة: تقليل استهلاك البنزين إلى النصف، تقليل الانبعاثات الكربونية الضارة في المدن، والهدوء التام عند السرعات المنخفضة داخل الأحياء السكنية.",
-          "مقابلة تيري (Student's Book p. 34): يروي تجربته مع سيارته الهجينة بعد سنتين من الاستخدام اليومي وكيف وفر مبالغ طائلة من تكاليف الوقود."
+          "يوضح الإعلان الجمع بين مزايا محرك البنزين والمحرك الكهربائي، ثم تعرض المقابلة استخدام المحرك الكهربائي داخل المدينة ومحرك البنزين على الطريق المفتوح.",
+          "يعتقد Terry أن السيارة الهجينة قد تحسّن الوضع في المدينة؛ ويذكر أن السيارة الكهربائية وحدها لا تناسب رحلاته الطويلة لأن البطاريات ليست جيدة بما يكفي لها.",
+          "تذكر المقابلة أن Terry يزور أخته في سان فرانسيسكو، وتبلغ المسافة إليها نحو 650 كيلومتراً."
         ],
         teacherNotes: [
-          "سؤال الملزمة ص 95: Why are hybrid cars better for the environment? -> Because they use less petrol and produce fewer harmful carbon emissions."
+          "سؤال فهم مستند إلى المقابلة: Why doesn’t Terry choose an all-electric car? -> The batteries are not good enough for long journeys."
         ],
         examples: [
           {
-            en: "Hybrid vehicles switch automatically between electricity and petrol to maximize fuel efficiency.",
-            ar: "تتحول المركبات الهجينة تلقائياً بين الكهرباء والبنزين لتحقيق أقصى قدر من كفاءة استهلاك الوقود.",
-            highlight: "switch automatically",
-            note: "شرح تقنية المحرك المزدوج"
+            en: "A hybrid car uses its petrol engine on the open road.",
+            ar: "تستخدم السيارة الهجينة محرك البنزين على الطريق المفتوح.",
+            highlight: "petrol engine on the open road",
+            note: "معلومة وردت في مقابلة Terry"
           }
         ],
         exercises: [
           {
             id: "5u3-ex8",
-            question: "A hybrid car has ______ engines.",
+            question: "Why doesn’t Terry choose an all-electric car?",
             options: [
-              "two (petrol and electric)",
-              "only a petrol",
-              "three diesel",
-              "only a steam"
+              "Because the batteries are not good enough for long journeys",
+              "Because there are no electric cars in Los Angeles",
+              "Because he never drives outside the city",
+              "Because he does not like the colour of electric cars"
             ],
-            correctAnswer: "two (petrol and electric)",
-            explanation: "تحتوي السيارة الهجينة على محركين: محرك وقود بنزين ومحرك كهربائي (الملزمة ص 95).",
+            correctAnswer: "Because the batteries are not good enough for long journeys",
+            explanation: "يوضح Terry أن بطاريات السيارات الكهربائية ليست جيدة بما يكفي للرحلات الطويلة التي يقوم بها.",
             type: "mcq",
-            sourcePages: "الملزمة ص 95"
+            sourcePages: "الملزمة ص 89"
           }
         ]
       },
@@ -343,40 +375,51 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         unitId: 53,
         lessonNumber: 9,
         titleAr: "الدرس التاسع: عودة المها العربي واختبار الوحدة (The Oryx is Back & Unit 3 Test)",
-        titleEn: "Lesson 9: The Conservation Success of The Arabian Oryx & Comprehensive Unit 3 Test",
+        titleEn: "Lesson 9: The Oryx is Back and Unit 3 Review",
         category: "reading",
-        summary: "قصة النجاح البيئي المذهلة لإنقاذ المها العربي ذي القرنين الجميلين من الانقراض وإعادته إلى موطنه الطبيعي، مع الاختبار الشامل للوحدة الثالثة.",
-        sourcePages: "الملزمة ص 96",
+        summary: "قراءة The oryx is back عن تناقص أعداد المها العربي بسبب الصيد، وبرامج الإكثار في حدائق الحيوان وإعادته إلى البرية في عُمان والسعودية.",
+        sourcePages: "الملزمة ص 90 - 91",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "90–91",
+          verificationNote: "النص The oryx is back في صفحة المصدر 90، وتتبعه أسئلة الفهم والمفردات في صفحة 91.",
+          originalText: [
+            "The oryx is back\nThe oryx is a beautiful antelope with two long horns. It is one of the few big animals that can live in the desert. It gets most of its water from plants; it eats at night when there is some water on the leaves. It walks hundreds of kilometres to find food.",
+            "In the 1960s, the population of oryx in the Arabian Peninsula was very small. The animal was endangered because of hunting. It was hunted for two reasons: the local Bedouin people hunted it for meat, and city people hunted it for sport. In the past, when the hunters were on horses, the oryx survived. But hunters in big four-wheel-drive cars were able to follow the oryx everywhere – it could not get away from them. In 1972, the last wild oryx was shot.",
+            "But, happily, that was not the end of the story. Zoos around the Middle East had quite a good number of oryx. They got the animals to breed, to build up their numbers. Then, in 1982, they put some oryx back into the wild in Oman. The programme was a success, and in 1990 they did the same thing in Saudi Arabia. Of course, hunting the oryx is no longer allowed. Experts say that today the wild population of these wonderful animals is over 1,000, 6,000–7,000 more in zoos and private collections."
+          ]
+        },
         detailedContent: [
-          "المها العربي (The Arabian Oryx): ظبي أبيض رشيق بقرون مستقيمة طويلة يعيش في صحاري شبه الجزيرة العربية والعراق، كاد أن ينقرض كلياً في ستينيات القرن العشرين بسبب الصيد بالسيارات الحديثة والبنادق الآلية.",
-          "عملية الإنقاذ (Operation Oryx): تم إطلاق برامج إكثار في المحميات الطبيعية وحدائق الحيوان ثم إعادة إطلاق القطعان في بيئتها الصحراوية المحمية بقوانين صارمة تمنع الصيد.",
-          "اختبار الوحدة الثالثة الشامل: يغطي القواعد والحيوانات المهددة بالانقراض وعروض المساعدة وحفظ البيئة."
+          "المها (Oryx): حيوان صحراوي ذو قرنين طويلين؛ يوضح النص أن أعداده في شبه الجزيرة العربية كانت قليلة في الستينيات وأن الصيد بالسيارات ذات الدفع الرباعي سهّل مطاردته.",
+          "استُخدمت حدائق الحيوان لزيادة أعداد المها، ثم أُعيد إطلاق بعض الحيوانات في البرية في عُمان سنة 1982، وتكرر البرنامج في السعودية سنة 1990؛ ويذكر النص أن صيده لم يعد مسموحاً.",
+          "يعرض النص مراحل تناقص الأعداد ثم الإكثار وإعادة الإطلاق في البرية."
         ],
         teacherNotes: [
-          "ملاحظة الملزمة ص 96: The story of the Arabian Oryx proves that human conservation efforts can save species from total extinction."
+          "سؤال فهم مستند إلى النص: When were oryx reintroduced into the wild in Oman? -> In 1982."
         ],
         examples: [
           {
-            en: "Thanks to protected wildlife reserves, the Arabian Oryx population has successfully recovered.",
-            ar: "بفضل المحميات الطبيعية المحمية، تعافت أعداد المها العربي بنجاح.",
-            highlight: "wildlife reserves",
-            note: "قصة نجاح الحفاظ على الحياة البرية"
+            en: "They got the animals to breed, to build up their numbers.",
+            ar: "عملت حدائق الحيوان على تكثير الحيوانات لزيادة أعدادها.",
+            highlight: "got the animals to breed",
+            note: "عبارة من النص الأصلي"
           }
         ],
         exercises: [
           {
             id: "5u3-ex9",
-            question: "The Arabian Oryx was saved from extinction mainly through ______.",
+            question: "How did zoos in the Middle East help the oryx?",
             options: [
-              "breeding programs in protected nature reserves",
-              "encouraging more desert hunting",
-              "moving them to polar regions",
-              "selling them as domestic pets"
+              "They got the animals to breed, to build up their numbers",
+              "They encouraged more desert hunting",
+              "They moved the animals to polar regions",
+              "They sold the animals as domestic pets"
             ],
-            correctAnswer: "breeding programs in protected nature reserves",
-            explanation: "تم إنقاذ المها العربي من خلال برامج الإكثار داخل المحميات الطبيعية وتطبيق قوانين حظر الصيد (الملزمة ص 96).",
+            correctAnswer: "They got the animals to breed, to build up their numbers",
+            explanation: "يذكر النص أن حدائق الحيوان جعلت المها يتكاثر لزيادة أعداده، ثم أُعيد إطلاقه في البرية.",
             type: "mcq",
-            sourcePages: "الملزمة ص 96"
+            sourcePages: "الملزمة ص 91"
           }
         ]
       }
@@ -387,7 +430,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
     number: 4,
     titleAr: "الوحدة الرابعة: المراجعة الشاملة للفصل الأول (Semester 1 Comprehensive Revision)",
     titleEn: "Unit 4: Semester 1 Consolidation, Bakkar Cartoon & Comprehensive Mid-Year Exam",
-    description: "مراجعة كبرى ومكثفة لجميع قواعد وقراءات ومفردات الفصل الأول: قصة المسلسل الكارتوني الشهير 'بكار' للمخرجة منى أبو النصر، ومباراة التنس، ودمج الأزمنة والشرطية الأولى والاستنتاج، والامتحان التحريري الشامل لنصف السنة (100 درجة).",
+    description: "مراجعة لقواعد وقراءات الوحدة الرابعة: قراءة بكار والمخرجة منى أبو النصر، وحوار إصابة Helen في الركبة، ثم تدريبات واختبار الوحدة على القواعد والمفردات.",
     accentColor: "bg-yellow text-ink",
     bgGradient: "bg-paper border-ink",
     sourcePages: "الملزمة ص 97 - 103",
@@ -398,43 +441,51 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         unitId: 54,
         lessonNumber: 1,
         titleAr: "الدرس الأول: كارتون بكار والمخرجة منى أبو النصر (Bakkar Cartoon & Mona Abu El Nasr)",
-        titleEn: "Lesson 1: The Iconic Egyptian Cartoon 'Bakkar' & Animator Mona Abu El Nasr",
+        titleEn: "Lesson 1: Bakkar and Animator Mona Abu El Nasr",
         category: "reading",
-        summary: "القطعة التراثية المقررة حول أول مسلسل رسوم متحركة مصري ثلاثي الأبعاد 'بكار' والماعز 'رشيدة' وإبداع المخرجة الرائدة منى أبو النصر.",
+        summary: "قراءة عن بكار، الطفل من صعيد مصر الذي يحب الفن والرسم ويهتم بالحيوانات، وعن موضوعات حلقاته ومسيرة المخرجة منى أبو النصر.",
         sourcePages: "الملزمة ص 97 - 98",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "97–98",
+          verificationNote: "النص Have you heard of Bakkar? في صفحة المصدر 97، وتتبعها تمارين الاستيعاب في صفحة 98.",
+          originalText: [
+            "HAVE YOU HEARD OF BAKKAR?\nBakkar is a young country boy in Upper Egypt. His father is dead and he lives with his mother. He loves art and drawing, and he cares for animals. He is not a hero, but he is a very kind and sociable child.",
+            "You might have watched Bakkar cartoons during Ramadan. In Egypt, 40 million Egyptians turn on their TVs to watch him every day of Ramadan. The series is also very popular in the United Arab Emirates, Oman and Tunisia. Mona Abu El Nasr, who invented and created Bakkar, explained why people of different ages and classes like watching the series during the month of Ramadan. She said it’s because people can recognize Bakkar’s Muslim values. She also said that he is a nice change from Western cartoon characters, and he speaks Arabic, even if he has got a funny Nubian accent.",
+            "The Bakkar shows often have serious topics. For example, one episode is about sympathy for less fortunate people. Habiba, a little blind girl, saves her school friends from danger. Another episode about education shows the importance of teaching everyone in society to read and write. In a more recent show, the main topic is environmental problems. Bakkar works with a Red Sea Ranger. They want to rescue endangered animals from a cruel zookeeper. The cartoon shows children that it’s a bad idea to go fishing or collect sea animals in protected areas.",
+            "Mona Abu El Nasr believed that it’s important for the Arab world to have its own cartoon characters. She opened Cairo Cartoon Studios in 1990, and she has been making Egyptian cartoons for TV since then. She started with Kani Wa Mani, then made Sinbad and finally Bakkar.",
+            "Perhaps the Bakkar character is so successful because it is the most similar to Mona Abu El Nasr herself. Bakkar loves art and Mona loved art. ‘Art is in my family,’ she said. Mona’s older sister was a painter, and her uncle was an art teacher. She herself always loved drawing funny characters in bright colours in her notebooks at school.\nIs there someone in your class who is good at drawing? Perhaps you have a future Mona Abu El Nasr in your class."
+          ]
+        },
         detailedContent: [
-          "مسلسل بكار (Bakkar): مسلسل كرتوني تلفزيوني رمضاني أنتج عام 1998؛ يروي مغامرات طفل نوبي ذكي يدعى بكار ومعزته الأليفة (رشيدة) وصداقته وقيمه الأخلاقية في صعيد مصر.",
-          "المخرجة الدكتورة منى أبو النصر (Mona Abu El Nasr): أستاذة جامعية ومخرجة مصرية رائدة أسست استوديو الرسوم المتحركة الخاص بها وكانت أول من أدخل صناعة الكارتون العربي عالي الجودة إلى شاشات التلفزيون في رمضان وحصلت على جوائز دولية قبل وفاتها عام 2003.",
-          "أسئلة الاستيعاب المقررة (الملزمة ص 98): متى بدأ عرض المسلسل؟ من هي المخرجة؟ وما هي رسالته التربوية للأطفال؟"
+          "بكار طفل من صعيد مصر يعيش مع أمه، ويحب الفن والرسم ويهتم بالحيوانات؛ ويتحدث العربية بلكنة نوبية.",
+          "منى أبو النصر هي مبتكرة بكار؛ افتتحت Cairo Cartoon Studios سنة 1990، ثم أنتجت Kani Wa Mani وSinbad وBakkar.",
+          "تتناول حلقات المسلسل موضوعات التعاطف مع الأقل حظاً والتعليم وحماية الحيوانات والمناطق البحرية المحمية."
         ],
         teacherNotes: [
-          "أسئلة الملزمة ص 98:",
-          "1. Who created Bakkar? -> The talented Egyptian director Dr. Mona Abu El Nasr.",
-          "2. Who is Rashida? -> Bakkar's pet goat who accompanies him everywhere.",
-          "3. When was Bakkar first broadcast? -> During Ramadan in 1998."
+          "أسئلة الفهم في الصفحة 98:",
+          "1. Who created Bakkar? -> Mona Abu El Nasr.",
+          "2. In which other countries is the series popular? -> The United Arab Emirates, Oman and Tunisia.",
+          "3. When did Mona Abu El Nasr open Cairo Cartoon Studios? -> In 1990."
         ],
         examples: [
           {
-            en: "Bakkar became a beloved Ramadan television tradition for millions of Arab children.",
-            ar: "أصبح بكار تقليداً تلفزيونياً رمضانياً محبوباً لملايين الأطفال العرب.",
-            highlight: "beloved Ramadan tradition",
-            note: "الأثر الثقافي للمسلسل الكارتوني"
+            en: "Mona Abu El Nasr opened Cairo Cartoon Studios in 1990.",
+            ar: "افتتحت منى أبو النصر استوديو القاهرة للرسوم المتحركة سنة 1990.",
+            highlight: "Cairo Cartoon Studios in 1990",
+            note: "معلومة مؤرخة في نص القراءة"
           }
         ],
         exercises: [
           {
             id: "5u4-ex1",
-            question: "Bakkar was created and directed by the pioneering animator ______.",
-            options: [
-              "Dr. Mona Abu El Nasr",
-              "Naguib Mahfouz",
-              "Umm Kulthum",
-              "Taha Hussein"
-            ],
-            correctAnswer: "Dr. Mona Abu El Nasr",
-            explanation: "ابتكرت المسلسل وأخرجته الدكتورة منى أبو النصر (الملزمة ص 98).",
+            question: "Bakkar was created by the Egyptian animator ______.",
+            options: ["Mona Abu El Nasr", "Naguib Mahfouz", "Umm Kulthum", "Taha Hussein"],
+            correctAnswer: "Mona Abu El Nasr",
+            explanation: "تذكر القطعة أن منى أبو النصر هي التي ابتكرت شخصية بكار.",
             type: "mcq",
-            sourcePages: "الملزمة ص 98"
+            sourcePages: "الملزمة ص 97"
           }
         ]
       },
@@ -442,36 +493,54 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         id: "5th-u4-l2",
         unitId: 54,
         lessonNumber: 2,
-        titleAr: "الدرس الثاني: مباراة التنس وإصابة الساق (Tennis Match & Leg Injury)",
-        titleEn: "Lesson 2: The Tennis Match, Sports Injuries & Narrative Tenses Consolidation",
+        titleAr: "الدرس الثاني: إصابة هيلين في الركبة وحوار المساعدة (Helen’s Knee Injury)",
+        titleEn: "Lesson 2: Helen’s Knee Injury and Offering Help",
         category: "reading",
-        summary: "قصة مباراة التنس المشوقة والإصابة المفاجئة، مع دمج وتطبيق الأزمنة السردية (الماضي البسيط والماضي المستمر وأدوات الربط).",
+        summary: "حوار مصوّر بين Helen وZeina عن إصابة Helen في الركبة وطلبها المساعدة، مع تعبيرات العرض والتفضيل والتنبؤ بالقدرة.",
         sourcePages: "الملزمة ص 99 - 100",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "99",
+          verificationNote: "المشهد الحواري المصوّر في صفحة المصدر 99 بين Helen وZeina؛ يبدأ بعرض Zeina المساعدة على Helen المصابة في ركبتها.",
+          originalText: [
+            "Zeina: Come on, Helen. I know you’re joking. Don’t waste time.\nHelen: I’m not wasting time. I’ve hurt my knee. It hurts so much that I can’t stand up.",
+            "Zeina: Shall I help you walk to that seat?\nHelen: Yes, please, Zeina.",
+            "Zeina: If you put your arm around my shoulder, you’ll be able to walk.\nHelen: Ow! It feels really terrible if I move it.",
+            "Zeina: You look very white. Would you like me to get you a glass of water?\nHelen: No, I’d prefer you to stay here with me.",
+            "Helen: I think I’ve broken my leg, Zeina. If it is broken, I won’t be able to play in the tennis competition on Saturday."
+          ]
+        },
         detailedContent: [
-          "أحداث القصة (AB p. 60): أثناء مباراة التنس الحاسمة، كان حسام يلعب بمهارة ويسدد الكرة بقوة نحو الزاوية البعيدة، وفجأة وهو يركض لصد ضربة المنافس، التوت كاحل قدمه وسقط متألماً.",
-          "المصطلحات الطبية والرياضية: ankle sprain (التواء الكاحل)، court (ملعب التنس)، racket (المضرب)، referee (الحكم).",
-          "التطبيق النحوي: الربط بين الحدث المستمر الطويل (was serving the ball) والحدث العارض المفاجئ (twisted his ankle)."
+          "تقول Helen إنها آذت ركبتها ولا تستطيع الوقوف؛ وتساعدها Zeina على الوصول إلى مقعد، ثم تخشى Helen أن تكون قد كسرت ساقها وأن تفوّت مسابقة التنس يوم السبت.",
+          "تعبيرات الحوار: Shall I help you…? لعرض المساعدة، Would you like me to…? لتقديم عرض، I’d prefer you to… للتعبير عن التفضيل، وwon’t be able to للتعبير عن عدم القدرة مستقبلاً.",
+          "يربط الحوار بين if والنتيجة المستقبلية: If it is broken, I won’t be able to play in the tennis competition on Saturday."
         ],
         teacherNotes: [
-          "ملاحظة الملزمة ص 100: هذا الدرس يختبر قدرتك على الجمع بين مفردات الرياضة وقواعد أدوات الربط (While, When) في جملة واحدة متسقة."
+          "من عبارات الحوار: عرض المساعدة باستخدام Shall I…? وWould you like me to…?، والتفضيل باستخدام I’d prefer you to…، والنتيجة المستقبلية باستخدام if."
         ],
         examples: [
           {
-            en: "While he was running towards the net, he slipped and injured his knee.",
-            ar: "بينما كان يركض باتجاه الشبكة، انزلق وأصاب ركبته.",
-            highlight: "While was running / slipped and injured",
-            note: "تطبيق قواعد الوحدة الأولى داخل سياق سردي رياضي"
+            en: "If it is broken, I won’t be able to play in the tennis competition on Saturday.",
+            ar: "إذا كانت مكسورة، فلن أتمكن من اللعب في مسابقة التنس يوم السبت.",
+            highlight: "If it is broken / won’t be able to",
+            note: "مثال من الحوار المصوّر"
           }
         ],
         exercises: [
           {
             id: "5u4-ex2",
-            question: "While Hussam ______ tennis, he twisted his ankle.",
-            options: ["was playing", "played", "is playing", "plays"],
-            correctAnswer: "was playing",
-            explanation: "بعد أداة الربط While يأتي ماضي مستمر (was playing) (الملزمة ص 100).",
+            question: "Why can’t Helen stand up?",
+            options: [
+              "Because she has hurt her knee.",
+              "Because she has lost her tennis racket.",
+              "Because she is tired after a long match.",
+              "Because she has hurt her shoulder."
+            ],
+            correctAnswer: "Because she has hurt her knee.",
+            explanation: "تقول Helen إن ركبتها تؤلمها كثيراً لدرجة أنها لا تستطيع الوقوف.",
             type: "mcq",
-            sourcePages: "الملزمة ص 100"
+            sourcePages: "الملزمة ص 99"
           }
         ]
       },
@@ -516,36 +585,36 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         id: "5th-u4-l4",
         unitId: 54,
         lessonNumber: 4,
-        titleAr: "الدرس الرابع: الاختبار التحريري الشامل لنصف السنة (Semester 1 Comprehensive Exam)",
-        titleEn: "Lesson 4: Official 100-Mark Mid-Year Examination Model Paper",
-        category: "reading",
-        summary: "النموذج الامتحاني الشامل المكتوب في الملزمة ص 103 لنصف السنة (100 درجة كاملة) موزع وفق معايير وزارة التربية العراقية.",
-        sourcePages: "الملزمة ص 103",
+        titleAr: "الدرس الرابع: اختبار الوحدة الرابعة (Unit Four Test)",
+        titleEn: "Lesson 4: Unit Four Test — Past Tenses, Present Perfect & Future Forms",
+        category: "grammar",
+        summary: "مراجعة اختبار الوحدة الرابعة كما ورد في الصفحتين 102–103 من الملزمة، وتشمل الماضي البسيط والماضي المستمر، والمضارع التام البسيط والمستمر، واستخدام will وwon’t.",
+        sourcePages: "الملزمة ص 102 - 103",
         detailedContent: [
-          "السؤال الأول (Reading Comprehension - 20 درجة): قطعة خارجية غير مرئية وأسئلة حول سوق الشورجة ومهرجان بابل.",
-          "السؤال الثاني (Grammar & Functions - 30 درجة): الأزمنة، السؤال الذيلي، الشرطية الأولى، الاستنتاج، وعروض المساعدة.",
-          "السؤال الثالث (Vocabulary & Spelling - 20 درجة): إسقاطات معاني، تلازم الصفات وحروف الجر، وترتيب الصفات، والبادئة re-.",
-          "السؤال الرابع (Literature Spot - 10 درجات): أسئلة حول رواية نساء صغيرات للويزا ماي ألكوت.",
-          "السؤال الخامس (Writing / Composition - 20 درجة): كتابة إنشاء عن رمضان في العراق أو الحيوانات المهددة بالانقراض."
+          "تمرين A (ص 102): اختيار الصيغة الصحيحة بين المضارع البسيط والمضارع المستمر.",
+          "تمرين B (ص 102): إكمال جمل بالماضي البسيط أو الماضي المستمر، مع التمييز بين الحدث الجاري والحدث الذي قطعه.",
+          "تمرين C (ص 103): استخدام المضارع التام البسيط أو المضارع التام المستمر، مع for وnever وhow long وyet.",
+          "تمرين D (ص 103): إكمال جمل باستخدام will أو won’t وصيغة الفعل المناسبة.",
+          "تمرين E (ص 103): اختيار الصيغة الصحيحة للفعل في جمل بالمضارع التام."
         ],
         teacherNotes: [
-          "توجيه الملزمة ص 103: وزع وقت الامتحان البالغ ساعتين ونصف بدقة، وابدأ بالأسئلة التي تضمن إجابتها كاملة كالقواعد والإنشاء."
+          "مرجع المصدر: Unit Four Test، الصفحتان 102–103 من الملزمة. هذه صفحة اختبار وحدة تدريبية وليست ورقة امتحان نصف سنة موزعة على 100 درجة."
         ],
         examples: [
           {
-            en: "An official 100-mark mid-year exam tests all linguistic, lexical, and structural competencies.",
-            ar: "يختبر امتحان نصف السنة الرسمي المكون من 100 درجة جميع الكفايات اللغوية والمعجمية والتركيبية.",
-            highlight: "100-mark exam",
-            note: "توزيع الدرجات الرسمي"
+            en: "I have been reading this book for two months, but I still have not finished it.",
+            ar: "أقرأ هذا الكتاب منذ شهرين، لكنني لم أنتهِ منه بعد.",
+            highlight: "for two months / have been reading",
+            note: "مثال من تدريب المضارع التام المستمر في الصفحة 103"
           }
         ],
         exercises: [
           {
             id: "5u4-ex4",
-            question: "The standard total mark for the official Iraqi semester exam is ______ marks.",
-            options: ["100", "50", "75", "120"],
-            correctAnswer: "100",
-            explanation: "الدرجة الكلية الرسمية للامتحان التحريري النهائي لنصف السنة هي 100 درجة (الملزمة ص 103).",
+            question: "How long has the speaker been reading the book?",
+            options: ["For two months", "For two years", "For two weeks", "For two days"],
+            correctAnswer: "For two months",
+            explanation: "يذكر المتحدث أنه يقرأ الكتاب منذ شهرين: I have been reading this book for two months (الملزمة ص 103).",
             type: "mcq",
             sourcePages: "الملزمة ص 103"
           }

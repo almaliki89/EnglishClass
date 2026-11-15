@@ -8,6 +8,7 @@ import {
 import { Unit, Lesson, Exercise, EducationalGrade } from '../types';
 import { GrammarLab } from './lesson-modes/GrammarLab';
 import { ReadingDossier } from './lesson-modes/ReadingDossier';
+import { ReadingPassagePanel } from './ReadingPassagePanel';
 import { VocabularyArena } from './lesson-modes/VocabularyArena';
 import { SpellingForge } from './lesson-modes/SpellingForge';
 import { AcademicExplorationEngine } from './AcademicExplorationEngine';
@@ -46,7 +47,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [revealedExplanations, setRevealedExplanations] = useState<Record<string, boolean>>({});
   const [showQuickHints, setShowQuickHints] = useState(false);
-  const [activeSectionView, setActiveSectionView] = useState<'guided' | 'all' | 'interactive' | 'academic' | 'exercises'>('guided');
+  const [activeSectionView, setActiveSectionView] = useState<'guided' | 'all' | 'interactive' | 'academic' | 'exercises' | 'passage'>('guided');
   const [speakingText, setSpeakingText] = useState<string | null>(null);
 
   const handleSpeak = (text: string) => {
@@ -352,6 +353,21 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             <span>شرح الملزمة والملاحظات</span>
           </button>
 
+          {(lesson.category === 'reading' || lesson.readingPassage) && (
+            <button
+              type="button"
+              onClick={() => setActiveSectionView('passage')}
+              className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
+                activeSectionView === 'passage'
+                  ? 'bg-cobalt text-surface border-ink shadow-brutal-sm'
+                  : 'bg-paper hover:bg-surface text-ink border-ink'
+              }`}
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              <span>نص القراءة الأصلي</span>
+            </button>
+          )}
+
           <button
             type="button"
             onClick={() => setActiveSectionView('exercises')}
@@ -366,6 +382,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </button>
         </div>
       </div>
+
+      {(activeSectionView === 'passage' || activeSectionView === 'all') &&
+        (lesson.category === 'reading' || lesson.readingPassage) && (
+          <ReadingPassagePanel lesson={lesson} />
+        )}
 
       {activeSectionView === 'guided' && (
         <GuidedLessonJourney

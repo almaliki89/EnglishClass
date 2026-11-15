@@ -6,6 +6,7 @@ import { THIRD_INTERMEDIATE_ESSAYS } from '../src/data/thirdIntermediateEssays';
 import { FIFTH_PREPARATORY_ESSAYS } from '../src/data/grades/fifth/essays';
 import { FIFTH_PREPARATORY_QUESTIONS } from '../src/data/grades/fifth/questions';
 import { FIFTH_PREPARATORY_MOCK_PAPER } from '../src/data/grades/fifth/mockPaper';
+import { FIFTH_PREPARATORY_UNITS } from '../src/data/grades/fifth/units';
 import { IRREGULAR_VERBS } from '../src/data/verbsData';
 import { FIFTH_PREPARATORY_LITERATURE } from '../src/data/grades/fifth/literature';
 import { FOURTH_PREPARATORY_UNITS } from '../src/data/grades/fourth/units';
@@ -29,6 +30,49 @@ assert.ok(unitSeven?.lessons.some((lesson) => lesson.id === '3rd-u7-app-vocabula
 assert.ok(unitSeven?.lessons.some((lesson) => lesson.id === '3rd-u7-app-spelling' && lesson.sourcePages === '168-169'), 'Third-grade spelling appendix must cover its source pages');
 assert.ok((unitSeven?.lessons.find((lesson) => lesson.id === '3rd-u7-app-vocabulary')?.exercises.length ?? 0) >= 32, 'Vocabulary appendix must include the expanded source exercise set');
 assert.ok((unitSeven?.lessons.find((lesson) => lesson.id === '3rd-u7-app-spelling')?.exercises.length ?? 0) >= 8, 'Spelling appendix must include source examples and exercises');
+
+const fifthLesson = (id: string) =>
+  FIFTH_PREPARATORY_UNITS.flatMap((unit) => unit.lessons).find((lesson) => lesson.id === id);
+
+// Reading lessons are checked against the actual printed passages, not plausible but unsupported summaries.
+const babylonReading = fifthLesson('5th-u1-l8');
+assert.ok(babylonReading?.readingPassage?.originalText?.some((paragraph) => paragraph.includes('There are three main theatres')), 'Babylon reading must retain the source statement that there are three main theatres');
+assert.ok(!babylonReading?.detailedContent.some((line) => /2,500|توقف لفترة|عاد بقوة/.test(line)), 'Babylon notes must not invent a theatre capacity or a festival suspension/revival');
+assert.ok(!babylonReading?.teacherNotes.some((line) => /2,500/.test(line)), 'Babylon comprehension notes must not invent a theatre capacity');
+
+const digitalAccessReading = fifthLesson('5th-u2-l3');
+assert.ok(digitalAccessReading?.readingPassage?.originalText?.some((paragraph) => paragraph.includes('I own a computer repair shop')), 'Digital-access reading must preserve Justin Cartwright’s offer');
+assert.ok(digitalAccessReading?.detailedContent.some((line) => line.includes('يصلح مجاناً')), 'Digital-access lesson must explain the free computer-repair offer');
+assert.ok(!digitalAccessReading?.detailedContent.some((line) => /مئات الطلاب|إعادة برمجتها|توزيعها مجاناً/.test(line)), 'Digital-access notes must not invent Rashid’s activities or outcomes absent from the source');
+
+const internetReading = fifthLesson('5th-u2-l6');
+assert.ok(internetReading?.readingPassage?.originalText?.some((paragraph) => paragraph.includes('It was invented in 1990')), 'Internet reading must preserve the 1990 date printed in the passage');
+assert.ok(internetReading?.teacherNotes.some((line) => line.includes('In 1990')), 'Internet comprehension notes must follow the date printed in the source');
+assert.ok(!internetReading?.teacherNotes.some((line) => line.includes('In 1989')), 'Internet comprehension notes must not replace the source date with 1989');
+
+const mobileReading = fifthLesson('5th-u2-l8');
+assert.equal(mobileReading?.readingPassage?.status, 'reconstructed', 'Mobile-phone fill-in passage must remain labelled reconstructed');
+assert.ok(mobileReading?.titleEn.includes('History of Mobile Phones'), 'Mobile-phone lesson title must reflect the printed reading');
+assert.ok(mobileReading?.readingPassage?.originalText?.some((paragraph) => paragraph.includes('After six calls, the car battery was flat')), 'Mobile-phone reading must preserve the six-calls battery detail');
+assert.ok(!/Archaeologist|Aloalo|40 kg|40 kilograms|Martin Cooper|1973/.test([
+  mobileReading?.titleEn,
+  mobileReading?.summary,
+  ...(mobileReading?.detailedContent ?? []),
+  ...(mobileReading?.teacherNotes ?? []),
+  ...(mobileReading?.examples ?? []).map((example) => example.en)
+].join(' ')), 'Mobile-phone lesson must not mix in unsupported archaeologist or 40kg/1973 claims');
+
+const satelliteReading = fifthLesson('5th-u6-l9');
+assert.ok(satelliteReading?.readingPassage?.originalText?.some((paragraph) => paragraph.includes('the Sputnik in 1957')), 'Satellite reading must identify Sputnik as the first satellite in the source chronology');
+assert.ok(satelliteReading?.exercises.some((item) => item.correctAnswer === 'Sputnik'), 'Satellite exercise must use Sputnik as the 1957 answer');
+
+const harrodsReading = fifthLesson('5th-u7-l8');
+assert.ok(harrodsReading?.readingPassage?.originalText?.some((paragraph) => paragraph.includes('founded in 1834')), 'Harrods reading must use the source foundation year 1834');
+assert.ok(!harrodsReading?.detailedContent.some((line) => /1898|سلم متحرك/.test(line)), 'Harrods notes must not add an escalator story absent from the passage');
+
+const unitFourTest = fifthLesson('5th-u4-l4');
+assert.equal(unitFourTest?.category, 'grammar', 'Fifth-grade Unit Four Test is a grammar review, not a reading passage');
+assert.ok(!/100-Mark|Official|Mid-Year Examination/i.test(unitFourTest?.titleEn ?? ''), 'Unit Four Test must not claim to be an official 100-mark mid-year paper');
 
 const fifthEssayTitles = FIFTH_PREPARATORY_ESSAYS.map((essay) => essay.titleEn);
 const expectedFifthEssays = [

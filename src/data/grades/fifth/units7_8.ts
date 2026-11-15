@@ -327,35 +327,48 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
         titleAr: "الدرس الثامن: تاريخ متجر هارودز واختبار الوحدة (Harrods Department Store & Unit 7 Test)",
         titleEn: "Lesson 8: The History of Harrods Department Store & Comprehensive Unit 7 Test",
         category: "reading",
-        summary: "القطعة الاستيعابية الشهيرة حول تاريخ متجر هارودز الفاخر في لندن منذ تأسيسه كدكان بقالة صغير عام 1849 حتى أصبح أعرق وأكبر متجر تجزئة في العالم، مع الاختبار الشامل للوحدة السابعة.",
-        sourcePages: "الملزمة ص 176 - 178",
+        summary: "قراءة عن متجر Harrods في لندن: تأسيسه سنة 1834 في شرق لندن، انتقاله إلى Knightsbridge بعد 15 سنة، توسع نشاطه، ومعلومات عن أقسامه وشعاره وزبائنه.",
+        sourcePages: "الملزمة ص 177 - 178",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "177–178",
+          verificationNote: "النص بعنوان LONDON’S MOST FAMOUS STORE في الصفحة المطبوعة 177، وتليه أسئلة الفهم في الصفحة 178.",
+          originalText: [
+            "LONDON’S MOST FAMOUS STORE\nWithout a doubt, Harrods is London’s most famous department store. It is situated in Knightsbridge, one of London’s most expensive areas.",
+            "Harrods, which was founded in 1834 by Charles Henry Harrod in East London, was moved to its current site in Knightsbridge, Central London, 15 years later. To begin with, the shop was just one room with two shop assistants and a messenger boy. By 1880, Harrod’s son, Charles Digby, had built up the business so that the shop sold medicines, perfumes, notebooks and paper, fruit and vegetables. In 1883, there was a fire and the shop burnt to the ground. A new building was immediately constructed, however, and since then Harrods has gone from strength to strength.",
+            "Today, Harrods is a huge department store with 35,000 customers every day. During the sales, there are 300,000 customers a day. The shop has 4,000 people working in the store. The food department sells 250 different kinds of cheese and 130 different types of bread. The confectionery department sells 100 tonnes of chocolate per year. The exterior of the store is lit by 12,500 bulbs and 300 of them have to be changed every day.",
+            "Harrods has a motto which is ‘Everything for Everybody Everywhere’. If you are rich enough, you can buy diamond-covered shoes which cost a million pounds! And there are many more true stories about unusual things which have been sold to important customers. In the early 1900s, wealthy customers could even buy planes and sailing boats from Harrods. Of course, they had to be ordered first, then paid for, then delivered. Later, in the 1930s, Harrods had on show one of the world’s first television sets. The famous British writer, Noel Coward, was once given an alligator which had been ordered and bought at Harrods as a Christmas gift. The American president, Ronald Regan, was given a baby elephant which had been bought at Harrods. The British film director, Alfred Hitchcock, used to have his favourite fresh fish flown out to him in America by Harrods.",
+            "While it is true that Harrods sells just about anything you could want, it is one of the most expensive shops in Britain. So perhaps Harrods should change their motto to ‘Everything for Everybody Rich Everywhere’!"
+          ]
+        },
         detailedContent: [
-          "تاريخ هارودز (Harrods): أسسه تشارلز هنري هارود عام 1849 في منطقة نايتسبريدج بلندن؛ بدأ كمتجر شاي وبقالة صغير بفتيين فقط لخدمة الزبائن.",
-          "التطور والشعار: توسع المتجر ليضم اليوم أكثر من 330 قسماً ومطعماً، وشعاره اللاتيني الشهير هو 'Omnia Omnibus Ubique' أي 'كل الأشياء، لكل الناس، في كل مكان'.",
-          "أول سلم متحرك (Escalator): كان هارودز أول متجر يركب سلماً كهربائياً متحركاً في بريطانيا عام 1898، وكان يقدم للزبائن الخائفين كأساً من البراندي أو الأملاح المهدئة في أعلى السلم لتهدئة روعهم!",
-          "اختبار الوحدة السابعة الشامل (الملزمة ص 177-178): يغطي المبني للمجهول، البادئات، الأفعال السببية، ضمائر الوصل، وتاريخ هارودز."
+          "تأسس Harrods سنة 1834 على يد Charles Henry Harrod في شرق لندن، وكان في البداية غرفة واحدة يعمل فيها مساعدا متجر وصبي مراسلة؛ ثم انتقل إلى موقعه الحالي في Knightsbridge بعد 15 سنة.",
+          "بحلول عام 1880 كان Charles Digby، ابن Harrod، قد وسّع النشاط ليبيع الأدوية والعطور والدفاتر والورق والفواكه والخضراوات. وشعار المتجر في النص هو ‘Everything for Everybody Everywhere’.",
+          "في عام 1883 احترق المتجر بالكامل، ثم شُيّد مبنى جديد. وتذكر القراءة أن المتجر يبيع اليوم 250 نوعاً من الجبن و130 نوعاً من الخبز، ويبيع قسم الحلويات 100 طن من الشوكولاتة سنوياً.",
+          "تذكر القراءة أن المتجر يستقبل 35,000 زبون يومياً، ويرتفع العدد إلى 300,000 أثناء التنزيلات، ويعمل فيه 4,000 شخص، وتضاء واجهته بـ12,500 مصباح."
         ],
         teacherNotes: [
-          "أسئلة الملزمة ص 177:",
-          "1. When was Harrods founded? -> In 1849 by Charles Henry Harrod.",
-          "2. What is Harrods' famous motto? -> 'All things for all people, everywhere'.",
-          "3. What historic innovation did Harrods introduce in 1898? -> One of the world's first moving stairs (escalators)."
+          "أسئلة فهم النص:",
+          "1. When was Harrods founded? -> In 1834 by Charles Henry Harrod.",
+          "2. Where was the original shop located? -> In East London.",
+          "3. Why was a new building constructed? -> Because the shop burnt to the ground in a fire in 1883."
         ],
         examples: [
           {
-            en: "Harrods introduced one of the world's very first escalators in 1898 to assist customers.",
-            ar: "قدم متجر هارودز واحداً من أوائل السلالم المتحركة في العالم عام 1898 لمساعدة الزبائن.",
-            highlight: "first escalators in 1898",
+            en: "The exterior of the store is lit by 12,500 bulbs.",
+            ar: "تضاء واجهة المتجر بـ12,500 مصباح.",
+            highlight: "12,500 bulbs",
             note: "حقيقة تاريخية بارزة من قطعة الكتاب"
           }
         ],
         exercises: [
           {
             id: "5u7-ex11",
-            question: "Harrods was founded in London in ______ by Charles Henry Harrod.",
-            options: ["1849", "1949", "1898", "1905"],
-            correctAnswer: "1849",
-            explanation: "تأسس متجر هارودز في لندن عام 1849 (الملزمة ص 177).",
+            question: "Harrods was founded in East London in ______ by Charles Henry Harrod.",
+            options: ["1834", "1849", "1883", "1930"],
+            correctAnswer: "1834",
+            explanation: "تأسس متجر Harrods في شرق لندن عام 1834 على يد Charles Henry Harrod (الملزمة ص 177).",
             type: "mcq",
             sourcePages: "الملزمة ص 177"
           }
@@ -367,8 +380,8 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
     id: 58,
     number: 8,
     titleAr: "الوحدة الثامنة: المراجعة الشاملة للفصل الثاني (Semester 2 Comprehensive Revision)",
-    titleEn: "Unit 8: Semester 2 Consolidation, London Boa Constrictor & Final Examination",
-    description: "مراجعة كبرى ومكثفة لجميع قواعد وقراءات ومفردات الفصل الثاني: مراجعة ضمائر الوصل، الشرطية الثانية، قصة صيد الأصلة العاصرة (Boa Constrictor) في شقق لندن، مقابلة متطوع الألعاب الأولمبية، والامتحان التحريري الشامل النهائي لنهاية العام (100 درجة).",
+    titleEn: "Unit 8: Semester 2 Consolidation, London Boa Constrictor & Olympics Volunteer Interview",
+    description: "مراجعة شاملة لقواعد الفصل الثاني وقراءاته: التعاريف بضمائر الوصل، الشرطية الثانية، قصة الأصلة العاصرة في شقق لندن، ومقابلة هدى للتطوع في الأولمبياد مع تدريبات الكلام المنقول.",
     accentColor: "bg-soft-mint text-ink",
     bgGradient: "bg-paper border-ink",
     sourcePages: "الملزمة ص 179 - 187",
@@ -456,25 +469,38 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
         titleAr: "الدرس الثالث: القبض على الأصلة العاصرة في لندن (Caught at Last! 3-Metre Boa Constrictor)",
         titleEn: "Lesson 3: The Sensational News Story: 3-Metre Boa Constrictor Captured in London Flats",
         category: "reading",
-        summary: "القصة الخبرية المشوقة لأصلة عاصرة بطول ثلاثة أمتار هربت من صاحبها واختبأت داخل نظام أنابيب شقق سكنية في لندن لشهور قبل الإمساك بها بسلام.",
-        sourcePages: "الملزمة ص 183 - 184",
+        summary: "قصة خبرية عن أصلة عاصرة بطول ثلاثة أمتار شوهدت في مراحيض مختلفة داخل مبنى شقق في لندن طوال ثلاثة أشهر، ثم عُثر عليها في حمام بالطابق الثامن وأُعيدت إلى حديقة الحيوان.",
+        sourcePages: "الملزمة ص 182 - 183",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "182–183",
+          verificationNote: "النص Caught at last! في الصفحة المطبوعة 182؛ وتتبعه أسئلة المبني للمجهول والمفردات في الصفحة 183.",
+          originalText: [
+            "Caught at last!\nThe terrified residents of a block of flats in London can finally sleep peacefully at night. An enormous snake that was living in toilet pipes in the block of flats has been caught last night.",
+            "The snake, a three-metre long boa constrictor, had been seen in different toilets in the building over the past three months. At first, no one knew where the animal had come from. Then, one of the residents saw a local news report about the escape of a boa constrictor from London Zoo.",
+            "The snake was first seen by James Andrews, ‘I got up in the night to go to the bathroom,’ Mr Andrews told reporters, ‘and I saw a huge snake in the toilet. It was horrible. I didn’t know what to do. I wondered if I was dreaming. My wife came to look and she was very frightened. We put some heavy books on the toilet seat and went back to bed. In the morning, the snake had gone.’",
+            "People in six other flats in the building also saw the snake, but they were all too frightened to try to catch it. On two occasions, the fire brigade were called, but when they arrived, the snake had already disappeared.",
+            "Finally, the snake was found last night on Mr and Mrs Mailer’s bathroom floor, on the eighth floor of the building. It was caught in a large bucket and the police were called. The snake was taken back to its home in the zoo, to everyone’s relief."
+          ]
+        },
         detailedContent: [
-          "قصة الثعبان الهارب (Student's Book p. 86): ثعبان ضخم من نوع الأصلة العاصرة (Boa Constrictor) يبلغ طوله 3 أمتار هرب من قفصه في عمارة سكنية بحي كينغستون في لندن؛ عاش في أنابيب الصرف والممرات الدافئة لثلاثة أشهر وكان السكان يبلغون عن أصوات غريبة.",
-          "عملية الإمساك (Caught at last!): قام خبير الزواحف بالتعاون مع فرق الإطفاء باستدراج الثعبان والإمساك به ونقله إلى حديقة حيوان آمنة دون إصابة أي شخص.",
-          "المفردات الصحفية: captured (تم الإمساك به)، reptile specialist (أخصائي زواحف)، terrified residents (سكان مرعوبون)."
+          "الثعبان أصلة عاصرة بطول ثلاثة أمتار شوهدت في مراحيض مختلفة بالمبنى خلال الأشهر الثلاثة السابقة. وذكر النص أن أحد السكان قرأ خبراً محلياً عن هروب أصلة من حديقة حيوان لندن.",
+          "شوهد الثعبان أولاً بواسطة James Andrews، ثم رآه سكان ست شقق أخرى. استُدعيت فرقة الإطفاء مرتين، لكنه كان يختفي قبل وصولها. وفي النهاية عُثر عليه في أرضية حمام السيد والسيدة Mailer بالطابق الثامن، وأُمسك به في دلو كبير وأعيد إلى حديقة الحيوان.",
+          "المفردات الصحفية في النص: terrified residents، block of flats، toilet pipes، news report، fire brigade، disappeared، bucket، relief."
         ],
         teacherNotes: [
-          "أسئلة الملزمة ص 184:",
-          "1. What kind of snake escaped in London? -> A three-metre boa constrictor.",
-          "2. How long was it missing? -> For about three months.",
-          "3. Was anyone hurt? -> No, it was captured safely without hurting anyone."
+          "أسئلة الفهم من القصة:",
+          "1. What kind of snake was seen in the block of flats? -> A three-metre boa constrictor.",
+          "2. For how long had the snake been seen in different toilets? -> Over the past three months.",
+          "3. Where was the snake finally found? -> On the bathroom floor of Mr and Mrs Mailer’s flat on the eighth floor."
         ],
         examples: [
           {
-            en: "The runaway boa constrictor was captured safely by a wildlife specialist after weeks of searching.",
-            ar: "تم الإمساك بالأصلة العاصرة الهاربة بسلام بواسطة أخصائي حياة برية بعد أسابيع من البحث.",
-            highlight: "captured safely",
-            note: "ملخص أحداث القصة الخبرية"
+            en: "The three-metre boa constrictor was caught in a large bucket and taken back to its home in the zoo.",
+            ar: "أُمسكت الأصلة العاصرة التي يبلغ طولها ثلاثة أمتار في دلو كبير وأُعيدت إلى موطنها في حديقة الحيوان.",
+            highlight: "caught in a large bucket",
+            note: "تفصيل صريح في الفقرة الأخيرة"
           }
         ],
         exercises: [
@@ -483,9 +509,9 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
             question: "The escaped boa constrictor in London was approximately ______ metres long.",
             options: ["3", "1", "6", "10"],
             correctAnswer: "3",
-            explanation: "كان طول الثعبان حوالي 3 أمتار (three metres long) (الملزمة ص 184).",
+            explanation: "كان طول الثعبان حوالي 3 أمتار (three metres long) (الملزمة ص 182).",
             type: "mcq",
-            sourcePages: "الملزمة ص 184"
+            sourcePages: "الملزمة ص 182"
           }
         ]
       },
@@ -493,40 +519,50 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
         id: "5th-u8-l4",
         unitId: 58,
         lessonNumber: 4,
-        titleAr: "الدرس الرابع: مقابلة متطوع الأولمبياد والاختبار الشامل النهائي (Olympics Volunteer & Final Exam)",
-        titleEn: "Lesson 4: Olympics Volunteer Interview, Reported Questions & Official 100-Mark Final Exam",
+        titleAr: "الدرس الرابع: مقابلة هدى للتطوع في الأولمبياد (Olympics Volunteer Interview)",
+        titleEn: "Lesson 4: Olympics Volunteer Interview & Reported Questions",
         category: "reading",
-        summary: "مقابلة متطوع دورة الألعاب الأولمبية ونقل أسئلته بالكلام المنقول، والنموذج الامتحاني الشامل المكتوب في الملزمة ص 185-187 للامتحان النهائي لنهاية العام الدراسي (100 درجة كاملة).",
-        sourcePages: "الملزمة ص 185 - 187",
+        summary: "حوار قصير عن مقابلة Huda للتطوع في دورة الألعاب الأولمبية، يتضمن أسئلة المقابلة وتدريباً على تحويلها إلى الكلام المنقول.",
+        sourcePages: "الملزمة ص 184 - 185",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "184–185",
+          verificationNote: "حوار Huda وAmeena في الصفحة 184، مع تدريبات تحويل أسئلة المقابلة إلى reported questions في الصفحتين 184–185. أبقينا الفراغات كما في نشاط كتاب الطالب مع إظهار صندوق الكلمات.",
+          originalText: [
+            "Word box: headteacher | interview | job | volunteer",
+            "Huda: I had my __________ this morning.\nAmeena: What for?\nHuda: You know! I applied to be a __________ at the next Olympics.\nAmeena: Oh, yes. Sorry, I forgot. What did they ask you?\nHuda: The director asked me if I had any previous experience in sports management. And he also asked me how many foreign languages I spoke. Then his assistant asked me if I enjoyed meeting new people.\nAmeena: Do you think you’ll get the __________?\nHuda: I think so. At the end of the interview, the director asked me if he could get a reference from my __________."
+          ]
+        },
         detailedContent: [
-          "مقابلة متطوع الأولمبياد (AB p. 146): شاب يروي تجربته التطوعية في مساعدة الرياضيين والوفود وتطبيق نقل الأسئلة: 'The interviewer asked him why he had applied for the volunteer post'.",
-          "النموذج الامتحاني الوزاري النهائي لنهاية العام (الملزمة ص 186-187):",
-          "1. Question 1 (20 Marks): قطعتان خارجيتان واستيعاب حول فندق الجليد السويدي ومتجر هارودز وأصلة لندن.",
-          "2. Question 2 (30 Marks): القواعد النحوية والوظائف (المبني للمجهول، have/get السببية، ضمائر الوصل، الكلام المنقول، التمني والندم).",
-          "3. Question 3 (20 Marks): المفردات والتوصيل والبادئات (un-, in-, im-, il-, ir-) واللواحق (-ful, -less) والصفات القوية.",
-          "4. Question 4 (10 Marks): الأدب المقرّر (رواية نساء صغيرات للويزا ماي ألكوت ومسرحية العاصفة لشكسبير).",
-          "5. Question 5 (20 Marks): الإنشاء المنهجي (كتابة مراجعة فيلم، أو نصيحة لشخص يريد وظيفة، أو فوائد التدوير)."
+          "مقابلة Huda: تقدمت لتكون متطوعة في الأولمبياد القادم. سألها المدير عن خبرتها السابقة في إدارة الرياضة وعدد اللغات الأجنبية التي تتحدثها، وسألتها مساعدته إن كانت تستمتع بالتعرف على أشخاص جدد. وفي النهاية طلب المدير مرجعاً من مديرة مدرستها.",
+          "نشاط الكلام المنقول من المقابلة: يحوّل الطالب أسئلة مباشرة مثل What computer programs are used in your current job? إلى reported questions.",
+          "1. The director asked Huda if she had any previous experience in sports management.",
+          "2. He asked her how many foreign languages she spoke.",
+          "3. His assistant asked her if she enjoyed meeting new people.",
+          "4. The director asked if he could get a reference from her headteacher.",
+          "لا يعرض هذا المقطع توزيع درجات امتحان نهائي؛ إنه نشاط مقابلة وكلام منقول."
         ],
         teacherNotes: [
-          "توجيه الأستاذ مصطفى تركي بالملزمة ص 187: هذا الاختبار النهائي يمثل محاكاة تدريبية شاملة للاختبار التحريري في المدارس العراقية لمرحلة الخامس الإعدادي."
+          "مرجع النشاط: حوار المقابلة في الصفحة 184، وتحويل الأسئلة إلى كلام منقول في الصفحة 185."
         ],
         examples: [
           {
-            en: "Mastering the end-of-year comprehensive model exam guarantees academic excellence in the preparatory stage.",
-            ar: "إن إتقان الامتحان النموذجي الشامل لنهاية العام يضمن التفوق الأكاديمي في المرحلة الإعدادية.",
-            highlight: "comprehensive model exam",
-            note: "الهدف التعليمي للامتحان النهائي"
+            en: "The director asked Huda if she had any previous experience in sports management.",
+            ar: "سأل المدير هدى إن كانت لديها خبرة سابقة في إدارة الرياضة.",
+            highlight: "reported questions",
+            note: "مثال على الكلام المنقول من المقابلة"
           }
         ],
         exercises: [
           {
             id: "5u8-ex4",
-            question: "The comprehensive final examination paper for 5th Preparatory carries a total of ______ marks.",
-            options: ["100", "50", "80", "120"],
-            correctAnswer: "100",
-            explanation: "الامتحان النهائي الشامل لكتاب اللغة الإنكليزية للصف الخامس الإعدادي يوزع على 100 درجة كاملة (الملزمة ص 187).",
+            question: "What post had Huda applied for?",
+            options: ["A volunteer at the next Olympics", "A sports manager", "A reporter", "A tennis coach"],
+            correctAnswer: "A volunteer at the next Olympics",
+            explanation: "تقدمت هدى لتكون متطوعة في دورة الألعاب الأولمبية القادمة (الملزمة ص 184).",
             type: "mcq",
-            sourcePages: "الملزمة ص 187"
+            sourcePages: "الملزمة ص 184"
           }
         ]
       }

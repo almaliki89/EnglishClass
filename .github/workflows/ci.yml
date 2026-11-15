@@ -98,6 +98,9 @@ jobs:
       - name: Verify Source Content Alignment
         run: npm run test:source-alignment
 
+      - name: Audit Reading Passage Provenance
+        run: npm run test:reading
+
       - name: Build Production Bundle
         run: npm run build
 

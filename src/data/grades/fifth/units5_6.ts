@@ -424,34 +424,46 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleAr: "الدرس الثاني: حريق شارع كوين والمفردات الرسمية (Manchester Fire & Formal Words)",
         titleEn: "Lesson 2: News Report on Manchester Queen Street Fire & Formal vs Informal Vocabulary",
         category: "reading",
-        summary: "التقرير الإخباري لحريق مبنى متجر أثاث في شارع كوين بمدينة مانشستر، ومقارنة المفردات الإخبارية الرسمية بنظيراتها اليومية غير الرسمية.",
-        sourcePages: "الملزمة ص 133 - 135",
-        grammarRuleFormula: "Formal vs Informal News Equivalents:\n- occurred / took place = happened (حدث)\n- injured = hurt (أصيب / جُرح)\n- extinguished = put out (أخمد الحريق)\n- alerted = warned / told (أبلغ / حذر)\n- evacuated = cleared out (أخلى المكان)\n- residence = home (مسكن / منزل)\n- commence = start / begin (بدأ)\n- terminate = end (أنهى)",
+        summary: "التقرير الإخباري عن حريق المبنى رقم 218 في شارع Queen Street في مانشستر، وأحداث الإخلاء والانفجار والاستجابة الطارئة، مع مفردات رسمية وغير رسمية.",
+        sourcePages: "الملزمة ص 131 - 133",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "131",
+          verificationNote: "تقرير Dan Williams عن حريق Queen Street في مانشستر، كما طُبع في الصفحة 131.",
+          originalText: [
+            "Manchester, Tuesday\nReporter: Dan Williams\nThe fire started on the ground floor of number 218 Queen Street at 10:10 a.m. and reached the fourth floor within minutes. The police and fire brigade arrived at 10:19 and they immediately began to evacuate everyone from number 218 and the buildings on either side.",
+            "Three minutes later, there was a loud explosion. The police instructed the crowd in the street to move away from the building. They placed police vehicles at the end of Queen Street and they prevented members of the public from entering the street.",
+            "The fire was brought under control around eleven o’clock, but the interior of the building had been completely destroyed by then. Ambulances took five people to hospital, but their condition was not serious."
+          ]
+        },
+        grammarRuleFormula: "Formal / informal equivalents from the activity (p. 132): arrive = get here; enter = go into; evacuate = get out of; explosion = bang; instruct = tell; members of the public = people; move = get away; not serious = OK; place = put; prevent = stop; interior = inside; vehicles = cars; reach = get up to; a lot of = lots.",
         detailedContent: [
-          "تقرير الحادث (AB p. 94): اندلع حريق في مستودع أثاث في مانشستر؛ وصلت فرق الإطفاء في غضون 6 دقائق وأخلت 25 شخصاً دون وقوع وفيات.",
-          "المقارنة اللغوية: تستخدم الصحف ونشرات الأخبار ألفاظاً لاتينية الأصل أكثر رسمية ورصانة مقارنة بلغة الشارع اليومية.",
-          "تمرين كتاب النشاط ص 95: استبدال الكلمات غير الرسمية بمرادفاتها الرسمية المعتمدة في الصحافة."
+          "التسلسل الزمني: بدأ الحريق عند 10:10 صباحاً، ووصلت الشرطة والإطفاء عند 10:19. وبعد ثلاث دقائق وقع انفجار، ثم تمت السيطرة على الحريق قرابة الساعة الحادية عشرة.",
+          "النتائج: تضرر الجزء الداخلي للمبنى بالكامل، ونُقل خمسة أشخاص إلى المستشفى، لكن حالتهم لم تكن خطيرة.",
+          "مفردات النشاط: evacuate = get out of، explosion = bang، members of the public = people، prevent = stop، interior = inside، vehicles = cars."
         ],
         teacherNotes: [
-          "تنبيه وزاري بالملزمة ص 134: يأتي هذا التمرين في سؤال المرادفات: write the formal equivalent of 'hurt' -> injured. / 'put out' -> extinguish."
+          "لا تخلط بين وقت بداية الحريق (10:10) ووقت وصول الشرطة والإطفاء (10:19).",
+          "في مطابقة المفردات الرسمية وغير الرسمية، evacuate تقابل get out of وprevent تقابل stop وinterior تقابل inside."
         ],
         examples: [
           {
-            en: "The blaze occurred late at night, but firefighters successfully extinguished the flames.",
-            ar: "وقع الحريق في وقت متأخر من الليل، لكن رجال الإطفاء نجحوا في إخماد ألسنة اللهب.",
-            highlight: "occurred / extinguished",
-            note: "مفردات رسمية رفيعة مستخدمة في نشرات الأخبار"
+            en: "The police instructed the crowd in the street to move away from the building.",
+            ar: "أمرت الشرطة الحشد في الشارع بالابتعاد عن المبنى.",
+            highlight: "instructed / move away",
+            note: "تفصيل من التقرير الإخباري"
           }
         ],
         exercises: [
           {
             id: "5u6-ex2",
-            question: "The formal newspaper equivalent for the phrase 'put out the fire' is ______.",
-            options: ["extinguish", "occur", "injure", "evacuate"],
-            correctAnswer: "extinguish",
-            explanation: "المرادف الرسمي للفعل المركب put out (يخمد الحريق) هو extinguish (الملزمة ص 134).",
+            question: "At what time did the police and fire brigade arrive?",
+            options: ["10:19 a.m.", "10:10 a.m.", "11:00 a.m.", "12:00 p.m."],
+            correctAnswer: "10:19 a.m.",
+            explanation: "يذكر التقرير أن الشرطة وفرق الإطفاء وصلتا عند الساعة 10:19 صباحاً.",
             type: "mcq",
-            sourcePages: "الملزمة ص 134"
+            sourcePages: "الملزمة ص 131"
           }
         ]
       },
@@ -543,33 +555,47 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleAr: "الدرس الخامس: نقد فيلم القبطان الإسباني (The Spanish Captain Film Review)",
         titleEn: "Lesson 5: Critical Film Review of 'The Spanish Captain' & Evaluative Adjectives",
         category: "reading",
-        summary: "مراجعة نقدية لفيلم المغامرات التاريخية 'القبطان الإسباني'، وتعلم الصفات المستخدمة في تقييم الأعمال السينمائية وأداء الممثلين.",
-        sourcePages: "الملزمة ص 142 - 143",
+        summary: "مراجعة نقدية لفيلم The Spanish Captain من إخراج Pedro Garcia؛ تتناول رأي الكاتبة في القصة والمؤثرات الخاصة والتمثيل والموسيقى.",
+        sourcePages: "الملزمة ص 140",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "140",
+          verificationNote: "مراجعة فيلم The Spanish Captain بقلم Sarah Osborne، ويظهر اسم المخرج Pedro Garcia في بداية النص.",
+          originalText: [
+            "The Spanish Captain\nDirected by Pedro Garcia",
+            "I was very disappointed by this film. They said it was a beautiful story, but in fact it is a rather ridiculous story. As his new wife Mary is English, Captain Santos is worried about going to war against the English. However, he is an officer. The king tells him to go, so he goes. Then Mary is forgotten and we move on to ships, storms and fighting. The first ten minutes of the film are romantic. From then on, it is a war film.",
+            "The special effects are extremely good. The storm at sea is totally realistic. I have no idea how they did it. There seemed to be about 200 ships in the sea battles. It is very clever, but these scenes are too long. After 40 minutes, I was bored.",
+            "I used to think Jo McGregor was a great actor. Now I am not so sure. He looks good, as always, but it is difficult to believe that he is a Spanish sea captain. Emma Knightly is not bad, but we only see her for five minutes. There was one thing which I did love about the film – David Williams’ music is superb. I have already streamed the album.",
+            "Teenage boys might enjoy this film, but it is not for me.\nBy SARAH OSBORNE"
+          ]
+        },
         detailedContent: [
-          "قصة الفيلم (The Spanish Captain): مغامرة بحرية تدور في القرن السادس عشر حول سفينة إسبانية تبحث عن كنز مفقود وسط العواصف وقراصنة المحيط الأطلسي.",
-          "عناصر المراجعة النقدية (Film Review): عنوان الفيلم، المخرج، الأبطال، ملخص الحبكة دون إفساد النهاية (no spoilers)، وتقييم الإخراج والموسيقى التصويرية.",
-          "الصفات النقدية: gripping (شديد الإثارة والتشويق)، predictable (متوقع ومبتذل)، spectacular (مبهر بصرياً)، convincing (مقنع)."
+          "تدور القصة حول Captain Santos الذي يقلق من خوض حرب ضد الإنجليز لأن زوجته الجديدة Mary إنجليزية، لكن الملك يأمره بالذهاب؛ ويتحول الفيلم بعد بدايته الرومانسية إلى فيلم حرب.",
+          "تصف Sarah Osborne المؤثرات الخاصة والعاصفة البحرية بأنها جيدة وواقعية، لكنها ترى أن مشاهد المعارك طويلة ومملة.",
+          "تعجب الكاتبة بموسيقى David Williams، وتبدي تحفظاً على مدى إقناع أداء Jo McGregor ومدة ظهور Emma Knightly."
         ],
         teacherNotes: [
-          "ملاحظة الملزمة ص 143: عند كتابة إنشاء مراجعة فيلم، استخدم صفات تقييمية متنوعة مثل (gripping, visual effects, outstanding performance) للحصول على الدرجة الكاملة."
+          "مفردات التقييم كما تظهر في المراجعة: disappointed، ridiculous، romantic، realistic، clever، bored، superb.",
+          "ذكرت الكاتبة أنها شعرت بالملل بعد 40 دقيقة من الفيلم."
         ],
         examples: [
           {
-            en: "The special effects were spectacular, and the lead actor gave an exceptionally convincing performance.",
-            ar: "كانت المؤثرات البصرية مبهرة، وقدم الممثل الرئيسي أداءً مقنعاً للغاية.",
-            highlight: "spectacular / convincing",
-            note: "صفات تقييم نقد سينمائي"
+            en: "The storm at sea is totally realistic. The special effects are extremely good.",
+            ar: "العاصفة في البحر واقعية تماماً، والمؤثرات الخاصة جيدة للغاية.",
+            highlight: "totally realistic / extremely good",
+            note: "عبارات تقييم من المراجعة"
           }
         ],
         exercises: [
           {
             id: "5u6-ex5",
-            question: "A movie with a storyline so thrilling that it completely holds your attention is described as ______.",
-            options: ["gripping", "boring", "dull", "terrible"],
-            correctAnswer: "gripping",
-            explanation: "العمل المشوق والمثير الذي يشد انتباه المشاهد بالكامل يوصف بـ gripping (الملزمة ص 143).",
+            question: "After how many minutes did Sarah Osborne say she was bored?",
+            options: ["40 minutes", "10 minutes", "20 minutes", "60 minutes"],
+            correctAnswer: "40 minutes",
+            explanation: "ورد في المراجعة: After 40 minutes, I was bored.",
             type: "mcq",
-            sourcePages: "الملزمة ص 143"
+            sourcePages: "الملزمة ص 140"
           }
         ]
       },
@@ -623,34 +649,46 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleAr: "الدرس السابع: أربعة أخبار صحفية غريبة (Four Bizarre News Stories)",
         titleEn: "Lesson 7: Four Unusual News Headlines (Boy Bites Snake, Golf in Gulf, Thames Oil, Top Camel)",
         category: "reading",
-        summary: "أربعة تقارير إخبارية طريفة وغريبة من صحف العالم: طفل يعض أفعى سامة في الهند وينجو، بطولة غولف شاطئية في الخليج، تسرب نفطي في نهر التايمز، ومسابقة ملكة جمال الإبل.",
-        sourcePages: "الملزمة ص 146 - 147",
+        summary: "أربعة أخبار قصيرة: طفل من جنوب أفريقيا يعض ثعباناً ساماً، جولة لاعبي غولف محترفين في دول الخليج، تسرب بنزين إلى نهر التايمز بعد حادث شاحنة، وبيع جمل سباق بمبلغ مرتفع في الإمارات.",
+        sourcePages: "الملزمة ص 142 - 143",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "142–143",
+          verificationNote: "النص يجمع أربعة أخبار قصيرة: Boy Bites Snake، Golf Professionals in the Gulf، 5,000 Litres of Petrol in River، وTop Price for Top Camel.",
+          originalText: [
+            "BOY BITES SNAKE\nA little South African boy had a very lucky escape yesterday. Sitting by a river near Cape Town, Mrs Betty Paton saw her three-year-old son Max holding a snake and biting it. ‘I was terrified,’ she said. ‘It was a poisonous snake, but Max had almost bitten the head off.’ Mrs Paton took Max to hospital, but doctors said that the snake had not bitten him.",
+            "GOLF PROFESSIONALS IN THE GULF\nSome of the world’s best golf players have arrived in the Gulf States for a ten-day tour. The aim of the tour is to promote the sport among local young people. The professionals will play a round or two with keen young members of golf clubs and give them tips on how to improve their game. Don’t miss this fantastic opportunity.",
+            "5,000 LITRES OF PETROL IN RIVER: FISH DIE\nThousands of fish have died in the River Thames, near London, after a traffic accident on a bridge. A petrol tanker carrying 10,000 litres of petrol hit another lorry as they were crossing the narrow bridge in Richmond. A hole was made in the side of the tanker and at least 50% of the petrol poured onto the road and then down into the river. This is the worst case of pollution in the Thames since 1992.",
+            "TOP PRICE FOR TOP CAMEL\nA camel has been sold for $150,000 in the United Arab Emirates (UAE). This is not just an ordinary camel, of course! It is top-quality, racing camel – it has already won more than 50 races. Camel racing is very popular in the UAE and high prices are often paid for the best animals. The new owner is a businessman from Dubai, Omar Abdel Hamid. He said, ‘Yes, this is an expensive camel. But I’m sure that I’ll make a lot of money with it.’"
+          ]
+        },
         detailedContent: [
-          "طفل يعض ثعباناً (Boy bites snake): طفل هندي في الثامنة تعرض للدغة كوبرا فقام بعض الثعبان دفاعاً عن نفسه فمات الثعبان ونجا الطفل بعد تلقي المصل المضاد في المستشفى.",
-          "مسابقة مزاين الإبل (Top Camel): مهرجان تراثي خليجي لاختيار أجمل الإبل الأصيلة بمشاركة ملاك الإبل وجوائز بملايين الدولارات.",
-          "تسرب نهر التايمز (Thames oil spill): قارب وقود تسرب منه الديزل قرب جسر البرج في لندن وتدخلت فرق الحماية البيئية لحماية البجع والطيور النهرية.",
-          "تمرين كتاب النشاط ص 107: استخراج الأفكار الرئيسية وكتابة عناوين صحفية مختصرة."
+          "طفل يعض ثعباناً: رأت Betty Paton ابنها Max البالغ ثلاث سنوات يمسك ثعباناً ساماً ويعضه قرب Cape Town في جنوب أفريقيا؛ وأفاد الأطباء أن الثعبان لم يلدغ الطفل.",
+          "جولة الغولف: وصل لاعبون محترفون إلى دول الخليج في جولة تستمر عشرة أيام لتشجيع الشباب المحلي على ممارسة اللعبة.",
+          "تلوث نهر التايمز: اصطدمت ناقلة تحمل 10,000 لتر من البنزين بشاحنة أخرى على جسر ضيق في Richmond؛ وانسكب ما لا يقل عن 50% من الوقود في النهر.",
+          "الجمل الأغلى: بيع جمل سباق بمبلغ 150,000 دولار في الإمارات، وكان قد فاز بأكثر من 50 سباقاً."
         ],
         teacherNotes: [
-          "ملاحظة الملزمة ص 147: عناوين الصحف في الإنكليزية (Newspaper Headlines) تكتب عادة بالمضارع البسيط وتحذف منها أدوات التعريف والتنكير والأفعال المساعدة للاختصار وجذب الانتباه."
+          "تُقرأ الأخبار الأربع بوصفها تقارير منفصلة؛ لا تخلط بين حادث الطفل وخبر تلوث نهر التايمز أو خبر الجمل."
         ],
         examples: [
           {
-            en: "An eight-year-old boy made global headlines after surviving a dangerous cobra bite.",
-            ar: "تصدر صبي يبلغ من العمر ثماني سنوات عناوين الأخبار العالمية بعد نجاته من لدغة كوبرا خطيرة.",
-            highlight: "made global headlines",
-            note: "صياغة خبرية صحفية نموذجية"
+            en: "A three-year-old boy named Max was seen holding and biting a poisonous snake near Cape Town.",
+            ar: "شاهدت Betty Paton ابنها Max البالغ ثلاث سنوات يمسك ثعباناً ساماً ويعضه قرب Cape Town.",
+            highlight: "three-year-old / poisonous snake",
+            note: "تفصيل من الخبر الأول"
           }
         ],
         exercises: [
           {
             id: "5u6-ex7",
-            question: "In newspaper headlines, articles (a, an, the) and auxiliary verbs are usually ______ to save space.",
-            options: ["omitted", "doubled", "capitalized", "italicized"],
-            correctAnswer: "omitted",
-            explanation: "في عناوين الأخبار الصحفية تحذف عادة أدوات التعريف والتنكير والأفعال المساعدة لتوفير المساحة وجذب النظر (الملزمة ص 147).",
+            question: "How much was the racing camel sold for in the UAE?",
+            options: ["$150,000", "$15,000", "$50,000", "$1,500"],
+            correctAnswer: "$150,000",
+            explanation: "يذكر الخبر أن الجمل بيع بمبلغ 150,000 دولار في الإمارات.",
             type: "mcq",
-            sourcePages: "الملزمة ص 147"
+            sourcePages: "الملزمة ص 142"
           }
         ]
       },
@@ -697,35 +735,49 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         unitId: 56,
         lessonNumber: 9,
         titleAr: "الدرس التاسع: تاريخ البث الفضائي واختبار الوحدة (Satellite TV & Unit 6 Test)",
-        titleEn: "Lesson 9: The Evolution of Satellite Television & Comprehensive Unit 6 Test",
+        titleEn: "Lesson 9: The Evolution of Satellite Television & Unit 6 Reading Review",
         category: "reading",
-        summary: "تاريخ إطلاق الأقمار الصناعية للاتصالات (تيلستار 1962) وثورة البث التلفزيوني الفضائي المباشر في المنازل، مع الاختبار الشامل للوحدة السادسة.",
-        sourcePages: "الملزمة ص 149",
+        summary: "تاريخ البث الفضائي من إطلاق Sputnik عام 1957، إلى أقمار الاتصالات عام 1963، ثم Early Bird (Intelsat 1) عام 1965، وانتشار الأطباق المنزلية في أوائل الثمانينيات.",
+        sourcePages: "الملزمة ص 148",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "148",
+          verificationNote: "المقال It’s a small world – with satellite TV! بقلم Mariam Azzawi، من الصفحة المطبوعة 148.",
+          originalText: [
+            "It’s a small world – with satellite TV!\nFrom our media correspondent\nMariam Azzawi",
+            "In many parts of the world – the Middle East, China and Europe, for example – satellite dishes on roofs or in gardens are a common sight. Programmes in different languages from countries all over the world can be seen on one TV set. Because we are used to this, it is easy to forget that it is quite a new thing.",
+            "How long have we had satellite TV? Well, let’s go back to the beginning of the story. You could say that it all started when the Russians sent the first satellite into space – the Sputnik in 1957. That was an experiment to test the technology. It went round and round the Earth, not doing much.",
+            "The first communication satellites were launched in 1963, but these also moved round the Earth. That is not good for communication – you can use the satellite for a few hours and then it disappears. Two years later, the problem was solved. Early Bird (correct name Intelsat 1) went round the Earth at the same speed as the Earth itself goes round, so it appeared to stay still. The distance of Early Bird from the Earth was 37,000 km – the same as today’s communication satellites.",
+            "At first, these satellites were used by TV companies to send news and sport programmes long distances, for example, across the Atlantic. People in their homes continued to receive their TV in the normal way, with an aerial.",
+            "In the early 1980s, people started to get satellite dishes at home and to receive programmes from satellite TV stations. People soon understood the great advantages of this system. With satellites, you can receive TV programmes in the middle of the desert, in the mountains, or on small, faraway islands. You can get your programmes from stations in other countries. As a result, more people can receive TV and everyone gets more choice."
+          ]
+        },
         detailedContent: [
-          "تاريخ التلفزيون الفضائي (Satellite Broadcasting): في عام 1962 أُطلق القمر الصناعي تلستار (Telstar) لينقل أول بث تلفزيوني حي عبر المحيط الأطلسي بين الولايات المتحدة وأوروبا.",
-          "ثورة الصحن اللاقط (Satellite dishes): في الثمانينيات والتسعينيات تحولت أجهزة الاستقبال من صحون ضخمة بقطر أمتار إلى أطباق منزلية صغيرة وملايين القنوات الرقمية المشفرة والمفتوحة.",
-          "اختبار الوحدة السادسة الشامل: يغطي أنواع الأفلام، المفردات الرسمية، الكلام المنقول، والأسئلة المنقولة والأوامر."
+          "بدأت القصة بإطلاق Sputnik عام 1957 لاختبار التقنية. وأُطلقت أقمار الاتصالات الأولى عام 1963، ثم ظهر Early Bird (Intelsat 1) عام 1965، فبدا ثابتاً فوق موضع محدد بسبب دورانه بالسرعة نفسها التي تدور بها الأرض.",
+          "في أوائل الثمانينيات بدأ الناس بتركيب أطباق استقبال في المنازل، وأصبح بالإمكان استقبال برامج من محطات تلفزيونية في بلدان مختلفة، حتى في الصحارى والجبال والجزر البعيدة.",
+          "توضح القراءة أن الأقمار سهّلت وصول البرامج إلى مناطق أكثر ومنحت المشاهدين خيارات أوسع."
         ],
         teacherNotes: [
-          "سؤال الملزمة ص 149: Telstar was launched in 1962 and relayed the very first live transatlantic television signal."
+          "احفظ ترتيب الأحداث كما ورد في القطعة: Sputnik (1957)، أقمار الاتصالات الأولى (1963)، Early Bird / Intelsat 1 (1965)، ثم انتشار الأطباق المنزلية في أوائل الثمانينيات."
         ],
         examples: [
           {
-            en: "The launch of communication satellites revolutionized global news coverage and home entertainment.",
-            ar: "أحدث إطلاق أقمار الاتصالات ثورة في التغطية الإخبارية العالمية والترفيه المنزلي.",
-            highlight: "revolutionized global news",
-            note: "الأثر التاريخي للأقمار الصناعية"
+            en: "Early Bird (correct name Intelsat 1) went round the Earth at the same speed as the Earth itself goes round, so it appeared to stay still.",
+            ar: "دار القمر Early Bird، واسمه الصحيح Intelsat 1، حول الأرض بالسرعة نفسها التي تدور بها الأرض، ولذلك بدا ثابتاً.",
+            highlight: "Early Bird / Intelsat 1",
+            note: "تفصيل تقني من الفقرة الرابعة"
           }
         ],
         exercises: [
           {
             id: "5u6-ex9",
-            question: "The very first satellite to relay live television pictures across the Atlantic Ocean was ______ in 1962.",
-            options: ["Telstar", "Apollo", "Sputnik", "Hubble"],
-            correctAnswer: "Telstar",
-            explanation: "القمر الصناعي تلستار (Telstar) أُطلق عام 1962 وكان أول قمر ينقل بثاً تلفزيونياً حياً عبر الأطلسي (الملزمة ص 149).",
+            question: "Which satellite did the Russians send into space in 1957?",
+            options: ["Sputnik", "Early Bird", "Intelsat 1", "Telstar"],
+            correctAnswer: "Sputnik",
+            explanation: "تذكر القطعة أن الروس أرسلوا Sputnik إلى الفضاء عام 1957 لاختبار التقنية.",
             type: "mcq",
-            sourcePages: "الملزمة ص 149"
+            sourcePages: "الملزمة ص 148"
           }
         ]
       }
