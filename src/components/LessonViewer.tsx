@@ -62,7 +62,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [speakingText, setSpeakingText] = useState<string | null>(null);
 
   const selectedPassage = navigationState?.passageId
-    ? getBookPassageContent(navigationState.passageId) || lesson.readingPassage
+    ? { ...(lesson.readingPassage || {}), ...(getBookPassageContent(navigationState.passageId) || {}) } as Lesson['readingPassage']
     : lesson.readingPassage;
 
   const handleSpeak = (text: string) => {
