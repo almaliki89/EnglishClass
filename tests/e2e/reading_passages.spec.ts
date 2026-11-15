@@ -40,7 +40,7 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByRole('heading', { name: 'لم يتم توثيق نص القطعة الأصلي بعد' })).toBeVisible();
     await expect(page.getByText(/لن نعرضه على أنه نص الكتاب الأصلي/)).toBeVisible();
 
-    await page.getByRole('button', { name: 'معمل القصة والبطاقات القلابة' }).click().catch(() => {});
+    await page.getByRole('button', { name: 'ملف القصة والبطاقات القلابة' }).click().catch(() => {});
     await expect(page.getByText('زيد طارق (Zaid Tariq - 20 years old)')).toHaveCount(0);
   });
 });
