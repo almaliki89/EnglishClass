@@ -103,6 +103,8 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
       id="grade-book-passage-library"
       data-testid="grade-book-passage-library"
       data-grade={grade}
+      data-passage-count={passages.length}
+      data-passage-lesson-ids={passages.map((item) => item.lesson.id).join(',')}
       className="space-y-4 scroll-mt-24"
       aria-labelledby="grade-book-passage-library-heading"
     >
