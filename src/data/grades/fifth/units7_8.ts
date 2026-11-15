@@ -327,35 +327,48 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
         titleAr: "الدرس الثامن: تاريخ متجر هارودز واختبار الوحدة (Harrods Department Store & Unit 7 Test)",
         titleEn: "Lesson 8: The History of Harrods Department Store & Comprehensive Unit 7 Test",
         category: "reading",
-        summary: "القطعة الاستيعابية الشهيرة حول تاريخ متجر هارودز الفاخر في لندن منذ تأسيسه كدكان بقالة صغير عام 1849 حتى أصبح أعرق وأكبر متجر تجزئة في العالم، مع الاختبار الشامل للوحدة السابعة.",
-        sourcePages: "الملزمة ص 176 - 178",
+        summary: "قراءة عن متجر Harrods في لندن: تأسيسه سنة 1834 في شرق لندن، انتقاله إلى Knightsbridge بعد 15 سنة، توسع نشاطه، ومعلومات عن أقسامه وشعاره وزبائنه.",
+        sourcePages: "الملزمة ص 177 - 178",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "177–178",
+          verificationNote: "النص بعنوان LONDON’S MOST FAMOUS STORE في الصفحة المطبوعة 177، وتليه أسئلة الفهم في الصفحة 178.",
+          originalText: [
+            "LONDON’S MOST FAMOUS STORE\nWithout a doubt, Harrods is London’s most famous department store. It is situated in Knightsbridge, one of London’s most expensive areas.",
+            "Harrods, which was founded in 1834 by Charles Henry Harrod in East London, was moved to its current site in Knightsbridge, Central London, 15 years later. To begin with, the shop was just one room with two shop assistants and a messenger boy. By 1880, Harrod’s son, Charles Digby, had built up the business so that the shop sold medicines, perfumes, notebooks and paper, fruit and vegetables. In 1883, there was a fire and the shop burnt to the ground. A new building was immediately constructed, however, and since then Harrods has gone from strength to strength.",
+            "Today, Harrods is a huge department store with 35,000 customers every day. During the sales, there are 300,000 customers a day. The shop has 4,000 people working in the store. The food department sells 250 different kinds of cheese and 130 different types of bread. The confectionery department sells 100 tonnes of chocolate per year. The exterior of the store is lit by 12,500 bulbs and 300 of them have to be changed every day.",
+            "Harrods has a motto which is ‘Everything for Everybody Everywhere’. If you are rich enough, you can buy diamond-covered shoes which cost a million pounds! And there are many more true stories about unusual things which have been sold to important customers. In the early 1900s, wealthy customers could even buy planes and sailing boats from Harrods. Of course, they had to be ordered first, then paid for, then delivered. Later, in the 1930s, Harrods had on show one of the world’s first television sets. The famous British writer, Noel Coward, was once given an alligator which had been ordered and bought at Harrods as a Christmas gift. The American president, Ronald Regan, was given a baby elephant which had been bought at Harrods. The British film director, Alfred Hitchcock, used to have his favourite fresh fish flown out to him in America by Harrods.",
+            "While it is true that Harrods sells just about anything you could want, it is one of the most expensive shops in Britain. So perhaps Harrods should change their motto to ‘Everything for Everybody Rich Everywhere’!"
+          ]
+        },
         detailedContent: [
-          "تاريخ هارودز (Harrods): أسسه تشارلز هنري هارود عام 1849 في منطقة نايتسبريدج بلندن؛ بدأ كمتجر شاي وبقالة صغير بفتيين فقط لخدمة الزبائن.",
-          "التطور والشعار: توسع المتجر ليضم اليوم أكثر من 330 قسماً ومطعماً، وشعاره اللاتيني الشهير هو 'Omnia Omnibus Ubique' أي 'كل الأشياء، لكل الناس، في كل مكان'.",
-          "أول سلم متحرك (Escalator): كان هارودز أول متجر يركب سلماً كهربائياً متحركاً في بريطانيا عام 1898، وكان يقدم للزبائن الخائفين كأساً من البراندي أو الأملاح المهدئة في أعلى السلم لتهدئة روعهم!",
-          "اختبار الوحدة السابعة الشامل (الملزمة ص 177-178): يغطي المبني للمجهول، البادئات، الأفعال السببية، ضمائر الوصل، وتاريخ هارودز."
+          "تأسس Harrods سنة 1834 على يد Charles Henry Harrod في شرق لندن، وكان في البداية غرفة واحدة يعمل فيها مساعدا متجر وصبي مراسلة؛ ثم انتقل إلى موقعه الحالي في Knightsbridge بعد 15 سنة.",
+          "بحلول عام 1880 كان Charles Digby، ابن Harrod، قد وسّع النشاط ليبيع الأدوية والعطور والدفاتر والورق والفواكه والخضراوات. وشعار المتجر في النص هو ‘Everything for Everybody Everywhere’.",
+          "في عام 1883 احترق المتجر بالكامل، ثم شُيّد مبنى جديد. وتذكر القراءة أن المتجر يبيع اليوم 250 نوعاً من الجبن و130 نوعاً من الخبز، ويبيع قسم الحلويات 100 طن من الشوكولاتة سنوياً.",
+          "تذكر القراءة أن المتجر يستقبل 35,000 زبون يومياً، ويرتفع العدد إلى 300,000 أثناء التنزيلات، ويعمل فيه 4,000 شخص، وتضاء واجهته بـ12,500 مصباح."
         ],
         teacherNotes: [
-          "أسئلة الملزمة ص 177:",
-          "1. When was Harrods founded? -> In 1849 by Charles Henry Harrod.",
-          "2. What is Harrods' famous motto? -> 'All things for all people, everywhere'.",
-          "3. What historic innovation did Harrods introduce in 1898? -> One of the world's first moving stairs (escalators)."
+          "أسئلة فهم النص:",
+          "1. When was Harrods founded? -> In 1834 by Charles Henry Harrod.",
+          "2. Where was the original shop located? -> In East London.",
+          "3. Why was a new building constructed? -> Because the shop burnt to the ground in a fire in 1883."
         ],
         examples: [
           {
-            en: "Harrods introduced one of the world's very first escalators in 1898 to assist customers.",
-            ar: "قدم متجر هارودز واحداً من أوائل السلالم المتحركة في العالم عام 1898 لمساعدة الزبائن.",
-            highlight: "first escalators in 1898",
+            en: "The exterior of the store is lit by 12,500 bulbs.",
+            ar: "تضاء واجهة المتجر بـ12,500 مصباح.",
+            highlight: "12,500 bulbs",
             note: "حقيقة تاريخية بارزة من قطعة الكتاب"
           }
         ],
         exercises: [
           {
             id: "5u7-ex11",
-            question: "Harrods was founded in London in ______ by Charles Henry Harrod.",
-            options: ["1849", "1949", "1898", "1905"],
-            correctAnswer: "1849",
-            explanation: "تأسس متجر هارودز في لندن عام 1849 (الملزمة ص 177).",
+            question: "Harrods was founded in East London in ______ by Charles Henry Harrod.",
+            options: ["1834", "1849", "1883", "1930"],
+            correctAnswer: "1834",
+            explanation: "تأسس متجر Harrods في شرق لندن عام 1834 على يد Charles Henry Harrod (الملزمة ص 177).",
             type: "mcq",
             sourcePages: "الملزمة ص 177"
           }
