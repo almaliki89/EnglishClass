@@ -74,7 +74,7 @@ test.describe('Source-aware reading passages', () => {
     const euphratesCard = library.getByTestId('book-passage-card').filter({ hasText: 'The Euphrates River' });
     await expect(euphratesCard).toBeVisible();
     await euphratesCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
-    await expect(page.getByRole('heading', { name: 'النص الكامل غير متاح للنشر في هذه النسخة' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'النص الإنجليزي الكامل غير متاح في المصدر المرفوع' })).toBeVisible();
     await expect(page.getByTestId('passage-exercises-section')).toContainText('Exercise D — Find words in the text');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('deep valleys');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('gorges');
