@@ -234,4 +234,130 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
     ],
     exerciseSets: []
   }
+,
+
+  '5p-u3-wildlife': {
+    id: '5p-u3-wildlife',
+    titleAr: 'ملفات حقائق الكائنات المهددة بالانقراض',
+    titleEn: 'Endangered Wildlife Factfiles',
+    sourceTitle: 'ملزمة الخامس الإعدادي 2026',
+    sourcePages: 'كتاب الطالب ص 35؛ كتاب النشاط ص 54',
+    status: 'verified',
+    originalText: [
+      'NORTH ATLANTIC RIGHT WHALE\nTwo hundred years ago, the Americans called it the “right” whale because it was the right whale to hunt. It is slow and easy to catch, and it has lots of oil in its body. Hunters killed almost all of them. Today, there are only about 350 in the North Atlantic. Hunting has stopped, but the population is not increasing. One reason may be pollution in the sea. Another reason may be the impact caused by commercial shipping and fishing. If we do not want the right whale to become extinct, we must protect their habitat.',
+      'GIANT PANDA\nPandas eat bamboo — sometimes 30 kilos per day of it! This means they can only live in places with lots of bamboo. So these beautiful animals need help: if we want pandas to be able to move to other places, we must stop destroying their habitat. And the bad news is — people are destroying their habitat. There are less than 2,000 wild pandas today. Zoos have about 650 and are trying to breed them.',
+      'BLACK RHINO\nBlack rhinos were hunted heavily between 1960 and 1995 because of their horns. These are used in traditional medicine. As a result, 98% of the rhinos were killed. Since then, however, their numbers have slowly grown, but they are still hunted and endangered. In fact, one of the types of black rhino, the Western black rhino, became extinct in 2011. Three more types still exist, and there are now around 5,630 rhinos in the wild. Most of these are in four countries: Kenya, Namibia, South Africa and Zimbabwe. If we want to make sure black rhinos survive, we need to provide them with a secure habitat.',
+      'HAWKSBILL TURTLE\nThe hawksbill turtle gets its name from its mouth, which looks like the beak of a hawk. It is very difficult to know exactly how many of these turtles there are in the wild because they travel a lot, but experts believe that there are around 20,000–23,000. In the last 30 years, the population fell by 80%, for several reasons. First, their habitat, the coral reefs, is disappearing because of global warming. Secondly, turtles are often caught in fishing nets. Finally, plastic pollution is also a problem for them: they often eat plastic and die. If we stop throwing litter in the sea, we can prevent turtles and other fish from dying.'
+    ],
+    translation: [
+      'حوت شمال الأطلسي الصائب\nقبل مئتي عام، أطلق الأمريكيون عليه اسم الحوت «الصائب» لأنه كان الحوت المناسب للصيد. فهو بطيء وسهل الإمساك به، كما يحتوي جسمه على كمية كبيرة من الزيت. وقد قتل الصيادون معظم هذه الحيتان. أما اليوم فلا يوجد سوى نحو 350 حوتًا في شمال الأطلسي. توقف الصيد، لكن أعدادها لا تزداد. وقد يكون أحد الأسباب تلوث البحر، وقد يكون السبب الآخر أثر النقل التجاري البحري وصيد الأسماك. وإذا كنا لا نريد لهذا الحوت أن ينقرض، فعلينا حماية موطنه.',
+      'الباندا العملاقة\nتأكل الباندا الخيزران، وأحيانًا ما يصل إلى 30 كيلوغرامًا منه يوميًا! وهذا يعني أنها لا تستطيع العيش إلا في أماكن يتوفر فيها الكثير من الخيزران. لذلك تحتاج هذه الحيوانات الجميلة إلى المساعدة: فإذا أردنا أن تتمكن الباندا من الانتقال إلى أماكن أخرى، فعلينا التوقف عن تدمير موطنها. والخبر السيئ هو أن الناس يدمرون موطنها. يوجد اليوم أقل من ألفي باندا برية. وتوجد نحو 650 باندا في حدائق الحيوان التي تحاول إكثارها.',
+      'وحيد القرن الأسود\nتعرضت حيوانات وحيد القرن الأسود للصيد المكثف بين عامي 1960 و1995 بسبب قرونها، التي تُستخدم في الطب التقليدي. ونتيجة لذلك قُتل 98% من هذه الحيوانات. ومنذ ذلك الحين، ازدادت أعدادها ببطء، لكنها لا تزال تُصاد وهي مهددة بالانقراض. وفي الواقع، انقرض أحد أنواع وحيد القرن الأسود، وهو وحيد القرن الأسود الغربي، عام 2011. ولا تزال ثلاثة أنواع أخرى موجودة، ويبلغ عدد حيوانات وحيد القرن في البرية الآن نحو 5,630. ويوجد معظمها في أربع دول: كينيا وناميبيا وجنوب أفريقيا وزيمبابوي. وإذا أردنا ضمان بقاء وحيد القرن الأسود، فعلينا توفير موطن آمن له.',
+      'سلحفاة صقرية المنقار\nحصلت سلحفاة صقرية المنقار على اسمها من فمها الذي يشبه منقار الصقر. ومن الصعب جدًا معرفة عدد هذه السلاحف في البرية بدقة لأنها كثيرة التنقل، لكن الخبراء يعتقدون أن عددها يتراوح بين 20,000 و23,000. وخلال السنوات الثلاثين الماضية انخفض عددها بنسبة 80% لعدة أسباب. أولًا، موطنها، وهو الشعاب المرجانية، آخذ في الاختفاء بسبب الاحتباس الحراري. ثانيًا، كثيرًا ما تقع السلاحف في شباك الصيد. وأخيرًا، يمثل التلوث البلاستيكي مشكلة لها أيضًا؛ فهي كثيرًا ما تأكل البلاستيك وتموت. وإذا توقفنا عن رمي النفايات في البحر، يمكننا منع موت السلاحف والأسماك الأخرى.'
+    ],
+    exerciseSets: [
+      {
+        id: '5p-u3-wildlife-ab-a',
+        source: 'activity_book',
+        sourceTitle: 'Exercise A — Answer from the factfiles',
+        sourcePages: 'كتاب النشاط ص 54؛ نص كتاب الطالب ص 35',
+        instruction: 'Read the questions and find the answers on page 35 of the Student’s Book.',
+        instructionTranslation: 'اقرأ الأسئلة وابحث عن الإجابات في صفحة 35 من كتاب الطالب.',
+        items: [
+          { id: 'wildlife-a1', question: 'Which animal became extinct in 2011?', answer: 'The Western black rhino.' },
+          { id: 'wildlife-a2', question: 'Which animal eats bamboo?', answer: 'The giant panda.' },
+          { id: 'wildlife-a3', question: 'Which animal gets its name from its mouth?', answer: 'The hawksbill turtle.' },
+          { id: 'wildlife-a4', question: 'Which animal is used in medicine?', answer: 'The black rhino’s horn is used in traditional medicine.' },
+          { id: 'wildlife-a5', question: 'Which animal is there less than four hundred of?', answer: 'The North Atlantic right whale.' },
+          { id: 'wildlife-a6', question: 'Which animal is there the most of?', answer: 'The hawksbill turtle.' }
+        ]
+      }
+    ]
+  },
+
+  '5p-u3-recycling': {
+    id: '5p-u3-recycling',
+    titleAr: 'إعادة التدوير ولماذا ينبغي أن نعيد التدوير',
+    titleEn: 'Why We Should Recycle',
+    sourceTitle: 'كتاب النشاط للصف الخامس الإعدادي',
+    sourcePages: 'كتاب النشاط ص 60؛ ملزمة الخامس 2026 ص 82–83',
+    status: 'verified',
+    originalText: [
+      'Why we should recycle\nby Professor Khaled Al Jaber\n\nPeople ask, “Why should we recycle things?” They say that recycling makes a lot of extra work — we have to take our rubbish to different bins. And things like paper and glass are cheap, so what’s the problem?\n\nWell, I say to those people: there are two good reasons why we should recycle paper, glass, metal — and perhaps other things, too. The first reason is this: the rubbish dumps near our towns and cities are getting bigger every year. These dumps are dirty and dangerous. We are destroying the beauty of our country.\n\nThe second is an economic reason: let’s take paper as an example. To make paper, they cut down trees in Norway or Canada, a very long way away. They make the paper, and then they carry it thousands of miles to us — that uses a lot of oil. We use the paper once, and then we throw it away. Instead, we should use the old paper to make new paper; it is a cheap and easy process. If we do this, we will save money and protect the environment.'
+    ],
+    translation: [
+      'لماذا ينبغي أن نعيد التدوير؟\nبقلم الأستاذ خالد الجابر\n\nيسأل الناس: «لماذا ينبغي أن نعيد تدوير الأشياء؟». ويقولون إن إعادة التدوير تتطلب عملًا إضافيًا كثيرًا، إذ علينا وضع نفاياتنا في حاويات مختلفة. كما أن أشياء مثل الورق والزجاج رخيصة، فما المشكلة إذن؟\n\nأقول لهؤلاء الناس إن هناك سببين جيدين يدعواننا إلى إعادة تدوير الورق والزجاج والمعادن، وربما أشياء أخرى أيضًا. السبب الأول هو أن مكبات النفايات القريبة من بلداتنا ومدننا تزداد حجمًا كل عام. وهذه المكبات قذرة وخطيرة، ونحن ندمر جمال بلدنا.\n\nأما السبب الثاني فهو اقتصادي: لنأخذ الورق مثالًا. لصناعة الورق، يقطعون الأشجار في النرويج أو كندا، وهما بلدان بعيدان جدًا. ثم يصنعون الورق وينقلونه آلاف الأميال إلينا، وهذا يستهلك الكثير من النفط. نستخدم الورق مرة واحدة ثم نرميه. وبدلًا من ذلك، ينبغي أن نستخدم الورق القديم لصنع ورق جديد؛ فهذه عملية رخيصة وسهلة. وإذا فعلنا ذلك، فسنوفر المال ونحمي البيئة.'
+    ],
+    exerciseSets: [
+      {
+        id: '5p-u3-recycling-ab-a',
+        source: 'activity_book',
+        sourceTitle: 'Exercise A — Complete the article',
+        sourcePages: 'كتاب النشاط ص 60',
+        instruction: 'Complete the article with the words from the box: bigger, cheap, destroying, environment, metal, process, thousands, throw, work.',
+        instructionTranslation: 'أكمل المقال بالكلمات الموجودة في الصندوق.',
+        items: [
+          { id: 'recycle-a1', question: 'Recycling makes a lot of extra ______.', answer: 'work' },
+          { id: 'recycle-a2', question: 'Things like paper and glass are ______.', answer: 'cheap' },
+          { id: 'recycle-a3', question: 'We should recycle paper, glass, ______ and perhaps other things.', answer: 'metal' },
+          { id: 'recycle-a4', question: 'The rubbish dumps near our towns and cities are getting ______ every year.', answer: 'bigger' },
+          { id: 'recycle-a5', question: 'We are ______ the beauty of our country.', answer: 'destroying' },
+          { id: 'recycle-a6', question: 'They carry the paper ______ of miles to us.', answer: 'thousands' },
+          { id: 'recycle-a7', question: 'We use the paper once, and then we ______ it away.', answer: 'throw' },
+          { id: 'recycle-a8', question: 'Making new paper from old paper is a cheap and easy ______.', answer: 'process' },
+          { id: 'recycle-a9', question: 'If we recycle, we will save money and protect the ______.', answer: 'environment' }
+        ]
+      }
+    ]
+  },
+
+  '5p-u5-mike-green': {
+    id: '5p-u5-mike-green',
+    titleAr: 'رسالة شكوى مايك غرين',
+    titleEn: 'Mike Green’s Letter of Complaint',
+    sourceTitle: 'كتاب الطالب والملزمة للصف الخامس الإعدادي',
+    sourcePages: 'كتاب الطالب ص 64؛ كتاب النشاط ص 102؛ الملزمة ص 123–124',
+    status: 'verified',
+    originalText: [
+      'Dear Sir/Madam,\n\nI am writing to complain about a recent stay I had at one of your flats. My brother and I stayed at one of your holiday flats last month, from the 15th to 22nd of July. It was Flat 25, Bay View Road, Penzance. We intended to stay there for two weeks, until the 29th of July, but we left after just one week. There were a number of reasons for our early departure.\n\nFirstly, we had booked a flat with a view of the sea. The flat which you gave us was at the back of the building and had a view of a car park.\n\nSecondly, the bathroom was unsatisfactory. The shower did not work and there was no hot water in the mornings. I complained to the caretaker, but nobody did anything about it.\n\nFinally, there were builders working the whole time that we were there. They were working above the flat from seven in the morning until ten at night. The noise and dust were terrible and we were unable to relax.\n\nAs you know, we paid £600 in advance for our two-week stay and left after just one week. I would not have booked a two-week stay at the flat if I had known about the building works and the terrible noise. I would therefore be grateful if you could refund £300 to me for the week that we were not there. I enclose photos which show the unattractive view from the flat and the building works. I look forward to hearing from you.\n\nYours faithfully,\nMike Green'
+    ],
+    translation: [
+      'السيد/السيدة المحترم/ة،\n\nأكتب إليكم لأقدم شكوى بشأن إقامة حديثة لي في إحدى شققكم. أقمت أنا وأخي في إحدى شقق العطلات التابعة لكم الشهر الماضي، من 15 إلى 22 تموز. وكانت الشقة رقم 25 في طريق Bay View Road بمدينة Penzance. كنا ننوي الإقامة هناك لمدة أسبوعين حتى 29 تموز، لكننا غادرنا بعد أسبوع واحد فقط. وكانت هناك عدة أسباب لمغادرتنا المبكرة.\n\nأولًا، كنا قد حجزنا شقة تطل على البحر. لكن الشقة التي منحتمونا إياها كانت في مؤخرة المبنى وتطل على موقف سيارات.\n\nثانيًا، كان الحمام غير مرضٍ. لم يكن الدش يعمل، ولم يكن هناك ماء ساخن في الصباح. وقد اشتكيت إلى المسؤول عن المبنى، لكن لم يفعل أحد شيئًا.\n\nأخيرًا، كان هناك عمال بناء يعملون طوال مدة إقامتنا. كانوا يعملون فوق الشقة من السابعة صباحًا حتى العاشرة ليلًا. وكان الضجيج والغبار فظيعين، ولم نتمكن من الاسترخاء.\n\nكما تعلمون، دفعنا 600 جنيه إسترليني مقدمًا مقابل إقامتنا لمدة أسبوعين، لكننا غادرنا بعد أسبوع واحد فقط. وما كنت لأحجز إقامة لمدة أسبوعين في الشقة لو كنت أعلم بأعمال البناء والضجيج الفظيع. لذلك سأكون ممتنًا لو أعدتم إليّ 300 جنيه إسترليني عن الأسبوع الذي لم نمكث فيه. أرفق صورًا تُظهر المنظر غير الجذاب من الشقة وأعمال البناء. وأتطلع إلى سماع ردكم.\n\nوتفضلوا بقبول فائق الاحترام،\nمايك غرين'
+    ],
+    exerciseSets: [
+      {
+        id: '5p-u5-mike-green-ab-b',
+        source: 'activity_book',
+        sourceTitle: 'Exercise B — Answer the questions',
+        sourcePages: 'كتاب النشاط ص 102',
+        instruction: 'Answer the questions.',
+        instructionTranslation: 'أجب عن الأسئلة.',
+        items: [
+          { id: 'mike-b1', question: 'Why does Mike Green start the email with Dear Sir/Madam?', answer: 'Because he does not know the name of the person who will read the email.' },
+          { id: 'mike-b2', question: 'How does Mike list the complaints he has?', answer: 'Firstly, Secondly and Finally.' },
+          { id: 'mike-b3', question: 'What phrase does Mike use to say what he wants?', answer: 'I would therefore be grateful if you could refund £300 to me…' },
+          { id: 'mike-b4', question: 'A formal email ends with Yours faithfully. Write one way to end an informal email.', answer: 'Best wishes. (Also acceptable: See you soon.)' }
+        ]
+      },
+      {
+        id: '5p-u5-mike-green-ab-c',
+        source: 'activity_book',
+        sourceTitle: 'Exercise C — Put the words in the correct order',
+        sourcePages: 'كتاب النشاط ص 102',
+        instruction: 'Put the words in brackets in the correct order to form useful sentences for emails. Then mark the F (formal) or I (informal).',
+        instructionTranslation: 'رتب الكلمات بين الأقواس لتكوين جمل مفيدة للبريد الإلكتروني، ثم حدد إن كانت رسمية أم غير رسمية.',
+        items: [
+          { id: 'mike-c1', question: 'I ______ well. (finds / hope / you / this)', answer: 'I hope you find this well. (F)' },
+          { id: 'mike-c2', question: 'I ______ some issues in the flat. (connection / writing / am / in / with)', answer: 'I am writing in connection with some issues in the flat. (F)' },
+          { id: 'mike-c3', question: 'Just ______ we’ve got some problems. (say / a quick / note / that / to)', answer: 'Just a quick note to say we’ve got some problems. (I)' },
+          { id: 'mike-c4', question: 'Would ______ the chair? (mind / replacing / you)', answer: 'Would you mind replacing the chair? (F)' },
+          { id: 'mike-c5', question: 'I ______ fix that. (could / appreciate it / would / you / if)', answer: 'I would appreciate it if you could fix that. (F)' },
+          { id: 'mike-c6', question: 'I ______ the problems. (some / of / pics / attaching / am)', answer: 'I am attaching some pics of the problems. (I)' },
+          { id: 'mike-c7', question: 'Please ______ the issues. (of / attached / find / photos)', answer: 'Please find attached photos of the issues. (F)' },
+          { id: 'mike-c8', question: 'I ______ with these matters promptly. (will / that / trust / deal / you)', answer: 'I trust that you will deal with these matters promptly. (F)' }
+        ]
+      }
+    ]
+  }
+
 };
