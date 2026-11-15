@@ -373,7 +373,7 @@ export const UNIT_5: Unit = {
       summary: "قطعة واستيعاب رحلة آنا جونسون الترويجية إلى جزر قرقنة الهادئة في تونس، جمال الشواطئ، الرحلة بالعبارة، والصفات السياحية المترادفة.",
       grammarRuleFormula: "Key Vocabulary:\npeace and quiet = calm atmosphere\nferry = boat that transports people and cars\nunspoiled = natural and not ruined by tourism\nfascinating = extremely interesting",
       detailedContent: [
-        "قطعة جزر قرقنة في تونس (ص 109 - 110 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة جزر قرقنة في تونس (ص 99 من ملزمة السادس 2027، PDF ص 101):",
         "- جزر قرقنة (Kerkennah Islands) مجموعة جزر هادئة قبالة الساحل الشرقي لتونس.",
         "- توفر مكاناً مثالياً للباحثين عن الراحة والهدوء (peace and quiet) بعيداً عن صخب المدن والمنتجعات السياحية المزدحمة.",
         "- الوصول إليها: ركوب عبارة (ferry) من مدينة صفاقس مرتين يومياً.",
@@ -411,7 +411,13 @@ export const UNIT_5: Unit = {
           type: "mcq",
           ministerialYear: "وزاري 2019 دور ثانٍ"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 99 من ملزمة السادس 2027 (PDF ص 101)",
+        verificationNote: "عُثر على نص رحلة جزر قرقنة في ص99 وتمارينها في ص100. النشر الرقمي للنص الكامل يحتاج إلى تأكيد الإذن."
+      }
     },
     {
       id: "u5-l7",
@@ -499,7 +505,7 @@ export const UNIT_5: Unit = {
       summary: "قطعة الكتاب المقررة حول أهمية أخذ العطل والإجازات، مخاطر الإجهاد وضغط الدم، ظاهرة مدمني العمل (workaholics)، والعلاقات الأسرية.",
       grammarRuleFormula: "Key Vocabulary:\nat least = no less than\nworkaholics = people who think their work is too important to leave to others\ndeadline = a time limit to finish work\non the verge of = about to happen\nsnatched = taken quickly",
       detailedContent: [
-        "قطعة الكتاب المقررة: لمَ العطل مهمة جداً؟ (ص 118 - 121 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: لمَ العطل مهمة جداً؟ (ص 104 من ملزمة السادس 2027، PDF ص 106):",
         "- في عالم اليوم السريع، يتعرض الدماغ والجسد لضغوط هائلة بسبب العمل؛ وإذا أهملنا الراحة فقد ينهار الجسد (let us down).",
         "- ضغط الحياة يسبب ارتفاع ضغط الدم (high blood pressure) الذي قد يؤدي إلى نوبات قلبية وسكتات دماغية (strokes and heart attacks).",
         "- مدمنو العمل (Workaholics): أشخاص يعتقدون أن أعمالهم بالغة الأهمية ولا يمكن تركها للآخرين، ولا يتحملون البقاء بعيداً عن مكاتبهم. يكتشفون بعد فوات الأوان أن الحياة فيها أمور أكثر أهمية من العمل.",
@@ -557,7 +563,13 @@ export const UNIT_5: Unit = {
           type: "mcq",
           ministerialYear: "وزاري 2020 دور أول"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 104 من ملزمة السادس 2027 (PDF ص 106)",
+        verificationNote: "عُثر على نص Why are Holidays so Important? في ص104 وتمارينه في الصفحات التالية. النشر الرقمي للنص الكامل يحتاج إلى تأكيد الإذن."
+      }
     }
   ]
 };
