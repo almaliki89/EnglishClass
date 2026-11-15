@@ -735,7 +735,7 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
         titleAr: "الدرس التاسع: تاريخ البث الفضائي واختبار الوحدة (Satellite TV & Unit 6 Test)",
         titleEn: "Lesson 9: The Evolution of Satellite Television & Comprehensive Unit 6 Test",
         category: "reading",
-        summary: "تاريخ إطلاق الأقمار الصناعية للاتصالات (تيلستار 1962) وثورة البث التلفزيوني الفضائي المباشر في المنازل، مع الاختبار الشامل للوحدة السادسة.",
+        summary: "تاريخ البث الفضائي من إطلاق Intelsat 1 عام 1957، إلى أقمار الاتصالات عام 1963، ثم Early Bird (Intelsat 1) عام 1965، وانتشار الأطباق المنزلية في أوائل الثمانينيات.",
         sourcePages: "الملزمة ص 148",
         readingPassage: {
           status: "verified",
@@ -745,35 +745,35 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
           originalText: [
             "It’s a small world – with satellite TV!\nFrom our media correspondent\nMariam Azzawi",
             "In many parts of the world – the Middle East, China and Europe, for example – satellite dishes on roofs or in gardens are a common sight. Programmes in different languages from countries all over the world can be seen on one TV set. Because we are used to this, it is easy to forget that it is quite a new thing.",
-            "How long have we had satellite TV? Well, let’s go back to the beginning of the story. You could say that it all started when the Russians sent the first satellite into space – the Sputnik in 1957. That was an experiment to test the technology. It went round and round the Earth, not doing much.",
+            "How long have we had satellite TV? Well, let’s go back to the beginning of the story. You could say that it all started when the Russians sent the first satellite into space – the Intelsat 1 in 1957. That was an experiment to test the technology. It went round and round the Earth, not doing much.",
             "The first communication satellites were launched in 1963, but these also moved round the Earth. That is not good for communication – you can use the satellite for a few hours and then it disappears. Two years later, the problem was solved. Early Bird (correct name Intelsat 1) went round the Earth at the same speed as the Earth itself goes round, so it appeared to stay still. The distance of Early Bird from the Earth was 37,000 km – the same as today’s communication satellites.",
             "At first, these satellites were used by TV companies to send news and sport programmes long distances, for example, across the Atlantic. People in their homes continued to receive their TV in the normal way, with an aerial.",
             "In the early 1980s, people started to get satellite dishes at home and to receive programmes from satellite TV stations. People soon understood the great advantages of this system. With satellites, you can receive TV programmes in the middle of the desert, in the mountains, or on small, faraway islands. You can get your programmes from stations in other countries. As a result, more people can receive TV and everyone gets more choice."
           ]
         },
         detailedContent: [
-          "تاريخ التلفزيون الفضائي (Satellite Broadcasting): في عام 1962 أُطلق القمر الصناعي تلستار (Telstar) لينقل أول بث تلفزيوني حي عبر المحيط الأطلسي بين الولايات المتحدة وأوروبا.",
-          "ثورة الصحن اللاقط (Satellite dishes): في الثمانينيات والتسعينيات تحولت أجهزة الاستقبال من صحون ضخمة بقطر أمتار إلى أطباق منزلية صغيرة وملايين القنوات الرقمية المشفرة والمفتوحة.",
+          "بدأت القصة بإطلاق Intelsat 1 عام 1957 لاختبار التقنية؛ وأُطلقت أقمار الاتصالات الأولى عام 1963، ثم حلّ Early Bird (Intelsat 1) مشكلة بقائها في موضع ثابت ظاهرياً عام 1965.",
+          "في أوائل الثمانينيات بدأ الناس بتركيب أطباق استقبال في المنازل، وأصبح بالإمكان استقبال برامج من محطات تلفزيونية في بلدان مختلفة وحتى في المناطق الصحراوية والجبال والجزر البعيدة.",
           "اختبار الوحدة السادسة الشامل: يغطي أنواع الأفلام، المفردات الرسمية، الكلام المنقول، والأسئلة المنقولة والأوامر."
         ],
         teacherNotes: [
-          "سؤال الملزمة ص 149: Telstar was launched in 1962 and relayed the very first live transatlantic television signal."
+          "سؤال فهم مستند إلى النص: In which year did the Russians send the first satellite, Intelsat 1, into space? -> 1957."
         ],
         examples: [
           {
-            en: "The launch of communication satellites revolutionized global news coverage and home entertainment.",
-            ar: "أحدث إطلاق أقمار الاتصالات ثورة في التغطية الإخبارية العالمية والترفيه المنزلي.",
+            en: "Early Bird (Intelsat 1) went round the Earth at the same speed as the Earth itself goes round, so it appeared to stay still.",
+            ar: "دار القمر Early Bird (Intelsat 1) حول الأرض بالسرعة نفسها التي تدور بها الأرض، ولذلك بدا ثابتاً.",
             highlight: "revolutionized global news",
-            note: "الأثر التاريخي للأقمار الصناعية"
+            note: "معلومة تقنية مذكورة في النص"
           }
         ],
         exercises: [
           {
             id: "5u6-ex9",
-            question: "The very first satellite to relay live television pictures across the Atlantic Ocean was ______ in 1962.",
-            options: ["Telstar", "Apollo", "Sputnik", "Hubble"],
-            correctAnswer: "Telstar",
-            explanation: "القمر الصناعي تلستار (Telstar) أُطلق عام 1962 وكان أول قمر ينقل بثاً تلفزيونياً حياً عبر الأطلسي (الملزمة ص 149).",
+            question: "The first satellite sent into space by the Russians was ______ in 1957.",
+            options: ["Intelsat 1", "Early Bird", "Intelsat 1", "Telstar"],
+            correctAnswer: "Intelsat 1",
+            explanation: "القمر الصناعي تلستار (Intelsat 1) أُطلق عام 1962 وكان أول قمر ينقل بثاً تلفزيونياً حياً عبر الأطلسي (الملزمة ص 149).",
             type: "mcq",
             sourcePages: "الملزمة ص 149"
           }
