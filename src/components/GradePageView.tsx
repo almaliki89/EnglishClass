@@ -207,7 +207,8 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
         units={units}
         completedLessonIds={studentState.completedLessonIds}
         onOpenPassage={(unit, lesson) => {
-          onSelectUnit(unit);
+          // Avoid onSelectUnit here: its legacy handler navigates to the unit's
+          // first lesson. The passage card already has the exact lesson target.
           onSelectLesson(lesson);
           navigate(`/grade/${validGrade}/unit/${unit.id}/lesson/${lesson.id}`);
         }}
