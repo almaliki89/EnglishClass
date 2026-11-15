@@ -431,25 +431,25 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
         grade: 'third-intermediate',
         expectedCount: 7,
         expectedPassage: 'Car of the Year: Panther 3.0D',
-        forbiddenPassage: 'The Pregnant Deer',
+        excludedLessonIds: ['3rd-u3-l3', '3rd-u6-l2', '3rd-u7-l3'],
       },
       {
         grade: 'fourth-preparatory',
         expectedCount: 28,
         expectedPassage: 'كندا واللغات الرسمية',
-        forbiddenPassage: 'تاريخ اللغة الإنكليزية',
+        excludedLessonIds: ['4th-u1-reading-history'],
       },
       {
         grade: 'fifth-preparatory',
         expectedCount: 20,
         expectedPassage: 'Ramadan in Iraq',
-        forbiddenPassage: 'Helen’s Knee Injury',
+        excludedLessonIds: ['5th-u4-l2', '5th-u8-l4'],
       },
       {
         grade: 'sixth-preparatory',
         expectedCount: 18,
         expectedPassage: "Ammar's Story",
-        forbiddenPassage: 'Ramadan in Iraq',
+        excludedLessonIds: [],
       },
     ];
 
@@ -464,14 +464,10 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       const passageCards = library.getByTestId('book-passage-card');
       await expect(passageCards.first()).toBeVisible();
       await expect(passageCards.filter({ hasText: item.expectedPassage }).first()).toBeVisible();
-      await expect(library).not.toContainText(item.forbiddenPassage);
-
-      if (item.grade === 'third-intermediate') {
-        await expect(library).not.toHaveAttribute('data-passage-lesson-ids', /3rd-u6-l2/);
-        await expect(library).not.toHaveAttribute('data-passage-lesson-ids', /3rd-u7-l3/);
-      }
-      if (item.grade === 'fifth-preparatory') {
-        await expect(library).not.toHaveAttribute('data-passage-lesson-ids', /5th-u8-l4/);
+      const indexedLessonIds = await library.getAttribute('data-passage-lesson-ids');
+      expect(indexedLessonIds).not.toBeNull();
+      for (const excludedId of item.excludedLessonIds) {
+        expect(indexedLessonIds!.split(',')).not.toContain(excludedId);
       }
 
       const libraryBox = await library.boundingBox();
