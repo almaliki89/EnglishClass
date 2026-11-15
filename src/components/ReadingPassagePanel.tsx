@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { AlertTriangle, BookOpen, CheckCircle2, FileText, Volume2, ClipboardList, Languages } from 'lucide-react';
-import { Lesson, ReadingPassageStatus } from '../types';
+import { Lesson, ReadingPassage, ReadingPassageStatus } from '../types';
 import { speakEnglish } from '../utils/speech';
 
 interface ReadingPassagePanelProps {
   lesson: Lesson;
+  passage?: ReadingPassage;
+  passageTitle?: string;
 }
 
 const STATUS_LABELS: Record<ReadingPassageStatus, string> = {
@@ -23,8 +25,9 @@ const STATUS_STYLES: Record<ReadingPassageStatus, string> = {
   source_required: 'bg-coral/20 border-ink text-ink',
 };
 
-export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson }) => {
-  const passage = lesson.readingPassage;
+export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson, passage: passageOverride, passageTitle }) => {
+  const passage = passageOverride || lesson.readingPassage;
+  const resolvedTitle = passageTitle || passage?.titleAr || lesson.titleAr;
   const status: ReadingPassageStatus = passage?.status || 'source_required';
   const originalText = passage?.originalText || [];
   const translations = passage?.translation || [];
@@ -49,7 +52,7 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
             <div>
               <p className="text-[10px] font-mono font-black tracking-wider text-cobalt">READING COMPREHENSION</p>
               <h2 id="reading-passage-heading" className="text-lg sm:text-xl font-black text-ink">القطعة وأسئلتها</h2>
-              <p className="text-xs text-ink/65 mt-1">{lesson.titleAr}</p>
+              <p className="text-xs text-ink/65 mt-1">{resolvedTitle}</p>
             </div>
           </div>
           <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 border-2 text-xs font-black ${STATUS_STYLES[status]}`}>
