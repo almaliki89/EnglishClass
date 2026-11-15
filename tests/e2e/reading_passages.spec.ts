@@ -75,4 +75,15 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByText('184–185')).toBeVisible();
   });
 
+  test('fifth preparatory shows Samira’s original Ramadan email and its phrase bank', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/51/lesson/5th-u1-l2');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('To: Claire');
+    await expect(page.locator('p[lang="en"]').first()).toContainText('It’s a 30-day religious fast from dawn to sunset');
+    await expect(page.locator('p[lang="en"]').first()).toContainText('all through the day');
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
 });
