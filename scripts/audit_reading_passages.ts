@@ -7,6 +7,7 @@ type AuditRow = {
   verified: number;
   reconstructed: number;
   pendingSource: number;
+  pendingIds: string[];
 };
 
 const rows: AuditRow[] = [];
@@ -22,11 +23,13 @@ for (const grade of ORDERED_GRADES) {
   let reconstructed = 0;
   let pendingSource = 0;
   let passagesAttached = 0;
+  const pendingIds: string[] = [];
 
   for (const lesson of readingLessons) {
     const passage = lesson.readingPassage;
     if (!passage) {
       pendingSource += 1;
+      pendingIds.push(lesson.id);
       continue;
     }
 
@@ -45,7 +48,10 @@ for (const grade of ORDERED_GRADES) {
 
     if (passage.status === 'verified') verified += 1;
     if (passage.status === 'reconstructed') reconstructed += 1;
-    if (passage.status === 'source_required' || passage.status === 'summary_only') pendingSource += 1;
+    if (passage.status === 'source_required' || passage.status === 'summary_only') {
+      pendingSource += 1;
+      pendingIds.push(lesson.id);
+    }
   }
 
   rows.push({
@@ -55,10 +61,16 @@ for (const grade of ORDERED_GRADES) {
     verified,
     reconstructed,
     pendingSource,
+    pendingIds,
   });
 }
 
-console.table(rows);
+console.table(rows.map(({ pendingIds, ...row }) => row));
+for (const row of rows) {
+  if (row.pendingIds.length > 0) {
+    console.log(`Pending original source for ${row.grade}: ${row.pendingIds.join(', ')}`);
+  }
+}
 
 if (errors.length > 0) {
   console.error('Reading-passage integrity failures:');
