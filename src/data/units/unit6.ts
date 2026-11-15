@@ -384,7 +384,7 @@ export const UNIT_6: Unit = {
       titleEn: "Lesson 9: Making Money & Investments (Reading Comprehension)",
       category: "reading",
       summary: "قطعة الكتاب المقررة حول طرق ادخار واستثمار الأموال: خطط التقاعد، حسابات التوفير، الأسهم والبورصة، والعقارات (Property).",
-      grammarRuleFormula: "Investment Options:\n- Savings accounts: pay interest over time, good for regular savers\n- Pension plans: save for old age and retirement\n- Stocks and shares: high risk, high potential profit or loss\n- Property: buying houses/land to rent or sell at higher value (safest long-term)",
+      grammarRuleFormula: "Investment Options:\n- Savings accounts: pay interest over time, good for regular savers\n- Pension plans: save for old age and retirement\n- Stocks and shares: high risk, high potential profit or loss\n- Property: potentially safe in the long term, but profit is not guaranteed; rent may pay loan or mortgage instalments",
       detailedContent: [
         "قطعة الكتاب المقررة: كسب المال (ص 121 - 122 من ملزمة السادس 2027، PDF ص 123 - 124):",
         "- ادخار المال للمستقبل ثقافة يتعلمها الناس منذ الطفولة لضمان حياة كريمة عند الكبر والتقاعد (retirement).",
@@ -392,7 +392,7 @@ export const UNIT_6: Unit = {
         "1) حسابات التوفير البنكية (Savings accounts): تفيد من لا يحتاج المال فوراً وتدفع فائدة بمرور الوقت.",
         "2) خطط التقاعد (Pension plans): استقطاع مالي شهري منتظم للإنفاق منه بعد التقاعد.",
         "3) الأسهم والسندات (Stocks and shares): استثمار مالي تجاري في الشركات، فيه مخاطرة (risk)؛ فقد يربح الشخص أموالاً طائلة أو يخسر كل شيء (no guarantees).",
-        "4) العقارات (Property): شراء أراضٍ ومنازل، وهو الاستثمار الأكثر أماناً وشعبية في بريطانيا والعالم؛ لأن العقارات ترتفع قيمتها بمرور الوقت (goes up in value) وتدر عائداً شهرياً عبر الإيجار (rent).",
+        "4) العقارات (Property): شراء أراضٍ ومنازل، قد يكون الاستثمار في العقارات آمناً على المدى البعيد عموماً، لكن لا يوجد ضمان لتحقيق ربح أو حتى التعادل. وقد تُستخدم الإيجارات لسداد أقساط القرض أو الرهن العقاري، وأصبح هذا النوع أكثر شعبية في المملكة المتحدة.",
         "أسئلة وزارية نموذجية:",
         "- When we start work, we are encouraged to put money into (pension plans to save for our retirement).",
         "- Investing in stocks and shares is a risky business because (there are no guarantees; you can make or lose money).",
