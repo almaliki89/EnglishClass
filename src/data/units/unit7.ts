@@ -163,7 +163,7 @@ export const UNIT_7: Unit = {
           en: "Spreadsheets are used in many businesses to show information in table form.",
           ar: "تُستخدم الجداول الإلكترونية في شركات كثيرة لعرض المعلومات في شكل جداول.",
           highlight: "show information in table form",
-          note: "ص 148"
+          note: "ص 130 من ملزمة السادس 2027"
         }
       ],
       exercises: [
