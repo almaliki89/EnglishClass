@@ -363,14 +363,16 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
           "يذكر النص ثلاثة أماكن رئيسية: Babylonian Theatre، وAl Arsh (Throne) Auditorium، وNinimach Temple Hall.",
           "المسرح البابلي هو أكبر مدرج في المدينة وقد احتفظ بأجوائه القديمة. أما قاعة العرش فهي أكبر قاعة في بابل التاريخية، وكانت مركزاً إدارياً لاستقبال الملوك والقادة العسكريين المنتصرين.",
           "كان Ninimach Temple Hall معبداً خاصاً للإلهة Ninimach، ويُستخدم في المهرجان للعروض الأصغر حجماً ولكن عالية الجودة."
-],        teacherNotes: [
+],
+        teacherNotes: [
           "أسئلة فهم من النص (ص 32–34):",
           "1. When was the first Babylon International Festival held? -> In 1987.",
           "2. How far is Babylon from Baghdad? -> About 85 kilometres south of Baghdad.",
           "3. How many main theatres are there? -> Three.",
           "4. Which venue is the biggest amphitheatre in the city? -> The Babylonian Theatre.",
           "5. Which venue is the largest hall in historical Babylon? -> Al Arsh (Throne) Auditorium."
-],        examples: [
+],
+        examples: [
           {
             en: "The Babylon International Festival brings together performers from all across the world.",
             ar: "يجمع مهرجان بابل الدولي فنانين ومؤدين من جميع أنحاء العالم.",
@@ -522,19 +524,22 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
           "مشكلة الفقر الرقمي: الأطفال الذين لا يملكون حواسيب في المنزل يواجهون صعوبة في أداء الواجبات والبحث عن المعلومات.",
           "أثناء الجائحة ازدادت المشكلة لأن الدروس أصبحت عبر الإنترنت؛ فالطلاب الذين لا يملكون اتصالاً بالإنترنت لا يستطيعون متابعة الدراسة بهذه الطريقة.",
           "يؤكد المقال أن هناك منظمات تعمل على سد الفجوة الرقمية، وأن الطلاب المحتاجين إلى الأجهزة والاتصال يحتاجون إلى المساعدة بصورة عاجلة."
-],        teacherNotes: [
+],
+        teacherNotes: [
           "أسئلة فهم مستندة إلى نص الصفحة 48:",
           "1. What does Justin Cartwright offer to do? -> He offers to repair computers received by the organization for free.",
           "2. Why do children without computers at home have difficulties? -> They have difficulties doing homework or searching for information.",
           "3. Why did the situation become worse during the pandemic? -> Lessons were online, so students without internet access could not study."
-],        examples: [
+],
+        examples: [
           {
                     "en": "I would be happy to fix any computers you receive that have any problems — completely for free.",
                     "ar": "يسعدني إصلاح أي حواسيب تتلقونها وتكون فيها مشكلات، مجاناً تماماً.",
                     "highlight": "fix any computers / for free",
                     "note": "عرض Justin Cartwright الوارد في الرسالة"
           }
-],        exercises: [
+],
+        exercises: [
           {
                     "id": "5u2-ex3",
                     "question": "What does Justin Cartwright offer to do for We Are Connected?",
@@ -659,13 +664,15 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
           "وفقاً للنص المقرر، يُسمّى الإنترنت أحياناً world wide web (www)، ويذكر أن النظام اخترعه عام 1990 عالما الحاسوب Tim Berners-Lee من بريطانيا وRobert Cailliau من بلجيكا أثناء عملهما في مختبر للفيزياء في سويسرا.",
           "يذكر النص أن الإنترنت أصبح متاحاً للعامة عام 1993، ثم انتشر بسرعة كبيرة.",
           "تتناول الفقرات اللاحقة استخدام المراهقين للإنترنت والألعاب والموسيقى ومنصات التواصل الاجتماعي، مع نسب الاستخدام الواردة في النص."
-],        teacherNotes: [
+],
+        teacherNotes: [
           "التزم بتاريخ النص المقرر في أسئلة الفهم:",
           "1. Who invented the system described in the passage? -> Tim Berners-Lee and Robert Cailliau.",
           "2. Where were they working? -> At a physics laboratory in Switzerland.",
           "3. According to the passage, when was it invented? -> In 1990.",
           "4. When did it become public? -> In 1993."
-],        examples: [
+],
+        examples: [
           {
             en: "According to the passage, Tim Berners-Lee and Robert Cailliau invented the system in 1990 while working at a physics laboratory in Switzerland.",
             ar: "بحسب نص الملزمة، اخترع تيم بيرنرز لي وروبرت كايو النظام عام 1990 أثناء عملهما في مختبر للفيزياء في سويسرا.",
@@ -758,20 +765,23 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
           "أول شبكة عامة للهواتف المحمولة في النص هي ARP (AutoRadioPuhelin)، وصُنعت في فنلندا عام 1978. وكانت المعدات ثقيلة وكبيرة وتشغل مساحة كبيرة في صندوق السيارة، كما كانت مكلفة.",
           "فوائد الهواتف: يذكر النص أن الهواتف ساعدت في العثور على أشخاص وإنقاذهم بعد زلزال أفغانستان في أكتوبر 2023، كما ساعدت العائلات على التواصل عندما تعطلت الخطوط الأرضية.",
           "المخاطر: قد تسبب الهواتف إزعاجاً في السينما أو الحفلات أو الامتحانات، كما أن التحدث بالهاتف أثناء القيادة قد يسبب حوادث حتى عند استخدام نظام hands-free، لأن المتحدث البعيد لا يرى ظروف الطريق."
-],        teacherNotes: [
+],
+        teacherNotes: [
           "أسئلة الفهم من النص (الصفحات 69–71):",
           "1. Where was the first mobile phone used and when? -> By the Swedish police in 1946.",
           "2. Why wasn’t it very useful? -> After six calls, the car battery was flat.",
           "3. Where was the ARP public mobile phone network made? -> In Finland, in 1978.",
           "4. Why can hands-free calls still be dangerous when driving? -> Because the person on the phone cannot see the driver’s situation or traffic problems."
-],        examples: [
+],
+        examples: [
           {
                     "en": "After six calls, the car battery was flat.",
                     "ar": "بعد ست مكالمات، فرغت بطارية السيارة.",
                     "highlight": "After six calls",
                     "note": "تفصيل من فقرة أول هاتف محمول"
           }
-],        exercises: [
+],
+        exercises: [
           {
                     "id": "5u2-ex8",
                     "question": "Why wasn’t the first mobile phone system used by the Swedish police very useful?",
