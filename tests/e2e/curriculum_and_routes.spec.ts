@@ -495,4 +495,22 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByRole('heading', { name: /Ammar's Story/ })).toBeVisible();
   });
 
+
+  test('book passages are removed from the unit lesson index and remain accessible from the grade library', async ({ page }) => {
+    await page.goto('/grade/sixth-preparatory/unit/1');
+    await page.waitForLoadState('networkidle');
+
+    await expect(page.getByRole('heading', { name: 'قطع هذه الوحدة في مكتبة الصف' })).toBeVisible();
+    await expect(page.getByText('الدرس الثالث: قطعة عمار', { exact: false })).toHaveCount(0);
+
+    await page.getByRole('button', { name: 'فتح مكتبة قطع الصف' }).click();
+    await expect(page).toHaveURL(/\/grade\/sixth-preparatory#grade-book-passage-library$/);
+    await expect(page.getByTestId('grade-book-passage-library')).toBeVisible();
+    await expect(
+      page.getByTestId('grade-book-passage-library')
+        .getByTestId('book-passage-card')
+        .filter({ hasText: "Ammar's Story" })
+    ).toBeVisible();
+  });
+
 });
