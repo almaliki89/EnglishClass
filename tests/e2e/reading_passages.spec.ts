@@ -59,10 +59,25 @@ test.describe('Source-aware reading passages', () => {
     const samiraCard = library.getByTestId('book-passage-card').filter({ hasText: 'Samira Al Mahmoud' });
     await expect(samiraCard).toBeVisible();
     await samiraCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
-    await expect(page.getByTestId('original-passage-section')).toContainText('The annual Arab Oil Industry Conference');
+    await expect(page.getByTestId('original-passage-section')).toContainText('the annual Arab Oil Industry Conference');
     await expect(page.getByTestId('passage-translation-section')).toContainText('المؤتمر السنوي لصناعة النفط العربية');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('What languages can Samira speak? How did she learn them?');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('Arabic and English; she was born in Britain');
+  });
+
+  test('sixth preparatory Euphrates River shows available source exercise while keeping missing full text explicit', async ({ page }) => {
+    await page.goto('/grade/sixth-preparatory');
+    await page.waitForLoadState('networkidle');
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitEight = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="8"]');
+    await unitEight.getByRole('button').click();
+    const euphratesCard = library.getByTestId('book-passage-card').filter({ hasText: 'The Euphrates River' });
+    await expect(euphratesCard).toBeVisible();
+    await euphratesCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByRole('heading', { name: 'النص الكامل غير متاح للنشر في هذه النسخة' })).toBeVisible();
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Exercise D — Find words in the text');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('deep valleys');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('gorges');
   });
 
   test('fifth preparatory shows the verified Harrods history and correct foundation year', async ({ page }) => {
