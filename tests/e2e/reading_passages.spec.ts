@@ -38,7 +38,10 @@ test.describe('Source-aware reading passages', () => {
 
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
     await expect(page.getByRole('heading', { name: 'لم يتم توثيق نص القطعة الأصلي بعد' })).toBeVisible();
-    await expect(page.getByText(/الدرس موجود في المنهج، لكن نص القراءة الإنجليزي الكامل لم يُطابق مع مصدره بعد/)).toBeVisible();
+    await expect(page.getByText('المصدر محدد — إذن النشر الرقمي مطلوب')).toBeVisible();
+    await expect(page.getByText(/تم تحديد نص القراءة وموضعه في الملزمة المرفوعة/)).toBeVisible();
+    await expect(page.getByText('ملزمة السادس 2027 — إعداد الأستاذ عمار غالب')).toBeVisible();
+    await expect(page.getByText(/ص 10 من ملزمة السادس 2027/)).toBeVisible();
 
     await page.getByRole('button', { name: 'ملف القصة والبطاقات القلابة' }).click().catch(() => {});
     await expect(page.getByText('زيد طارق (Zaid Tariq - 20 years old)')).toHaveCount(0);
