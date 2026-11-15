@@ -123,6 +123,16 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
         category: "grammar",
         summary: "جولة تاريخية في سوق الشورجة القديم في بغداد مع دراسة زمن الماضي البسيط وقواعد إضافة ed وتصريف الأفعال الشاذة الشائعة.",
         sourcePages: "الملزمة ص 12 - 16",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "كتاب الطالب ص 8؛ الملزمة ص 9",
+          verificationNote: "النص الكامل لقراءة Souq Al-Shorja موجود في صفحة المصدر 9، وهو مستقل عن شرح قاعدة الماضي البسيط أدناه.",
+          originalText: [
+            "Last week, I visited a very special place in Baghdad for the first time. It is Souq Al-Shorja. My guide on this amazing visit was my Iraqi friend Hassan. We found out that Souq Al-Shorja stands at the heart of Baghdad, Iraq, a place with a rich history that goes way back. As we stepped into the market, we were surrounded by a variety of shops, each offering something unique. The air was filled with the delightful aromas of spices, and the vibrant colours of clothes caught our eye at every turn. While wandering through the market, we noticed a mix of old and new buildings, telling stories of both the past and the present.",
+            "The friendly people selling their goods offered us handmade items and delicious Iraqi snacks to share. While we were walking through the lively crowds, we sensed the energy of daily-life conversations, laughter and the excitement of bargaining. Souq Al-Shorja isn’t just a simple market; it’s a vivid snapshot of Iraqi life and culture, and a place that everyone should visit."
+          ]
+        },
         grammarRuleFormula: "Past Simple Tense:\n- S + V-ed (Regular) / V2 (Irregular)\n- Negative: S + did not (didn't) + Base verb\n- Question: Did + S + Base verb...?\n- Time expressions: yesterday, ago, last (night/week/year), in 2010.",
         detailedContent: [
           "سوق الشورجة (Souq Al-Shorja): أقدم وأعرق أسواق بغداد؛ يشتهر بروائح التوابل والبهارات والأعشاب والمكسرات والأقمشة التراثية.",
