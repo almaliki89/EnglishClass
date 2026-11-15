@@ -19,7 +19,7 @@ import { CartoonMascot } from './CartoonMascot';
 import { playPopSound, playSuccessChime, playFanfare, playBoingSound } from '../utils/cartoonAudio';
 import { BreadcrumbsNav, CalloutBox, BrutalBadge, BrutalButton } from './common/BrutalUI';
 import { getGradeMeta } from '../data/gradeContentResolver';
-import { getBookPassageContent } from '../data/readingPassageContent';
+import { getBookPassageContent } from '../data/readingPassageContentRegistry';
 
 interface LessonViewerProps {
   unit: Unit;
