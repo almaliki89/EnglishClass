@@ -499,7 +499,7 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
           {
             en: "The three-metre boa constrictor was caught in a large bucket and taken back to its home in the zoo.",
             ar: "أُمسكت الأصلة العاصرة التي يبلغ طولها ثلاثة أمتار في دلو كبير وأُعيدت إلى موطنها في حديقة الحيوان.",
-            highlight: "captured safely",
+            highlight: "caught in a large bucket",
             note: "تفصيل صريح في الفقرة الأخيرة"
           }
         ],
@@ -511,7 +511,7 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
             correctAnswer: "3",
             explanation: "كان طول الثعبان حوالي 3 أمتار (three metres long) (الملزمة ص 182).",
             type: "mcq",
-            sourcePages: "الملزمة ص 184"
+            sourcePages: "الملزمة ص 182"
           }
         ]
       },
@@ -551,7 +551,7 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
             en: "The director asked Huda if she had any previous experience in sports management.",
             ar: "سأل المدير هدى إن كانت لديها خبرة سابقة في إدارة الرياضة.",
             highlight: "reported questions",
-            note: "الهدف التعليمي للامتحان النهائي"
+            note: "مثال على الكلام المنقول من المقابلة"
           }
         ],
         exercises: [
