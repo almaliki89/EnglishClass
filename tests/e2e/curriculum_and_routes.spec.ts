@@ -429,21 +429,25 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     const gradeCases = [
       {
         grade: 'third-intermediate',
+        expectedCount: 7,
         expectedPassage: 'Car of the Year: Panther 3.0D',
         forbiddenPassage: 'The Pregnant Deer',
       },
       {
         grade: 'fourth-preparatory',
+        expectedCount: 28,
         expectedPassage: 'كندا واللغات الرسمية',
         forbiddenPassage: 'تاريخ اللغة الإنكليزية',
       },
       {
         grade: 'fifth-preparatory',
+        expectedCount: 20,
         expectedPassage: 'Ramadan in Iraq',
         forbiddenPassage: 'Helen’s Knee Injury',
       },
       {
         grade: 'sixth-preparatory',
+        expectedCount: 18,
         expectedPassage: "Ammar's Story",
         forbiddenPassage: 'Ramadan in Iraq',
       },
@@ -457,6 +461,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       await expect(library.getByRole('heading', { name: 'قطع الكتاب' })).toBeVisible();
 
       const passageCards = library.getByTestId('book-passage-card');
+      await expect(passageCards).toHaveCount(item.expectedCount);
       await expect(passageCards.first()).toBeVisible();
       await expect(passageCards.filter({ hasText: item.expectedPassage }).first()).toBeVisible();
       await expect(library).not.toContainText(item.forbiddenPassage);
