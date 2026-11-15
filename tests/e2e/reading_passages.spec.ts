@@ -72,7 +72,7 @@ test.describe('Source-aware reading passages', () => {
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
     await expect(page.locator('p[lang="en"]').last()).toContainText('The director asked me if I had any previous experience in sports management');
     await expect(page.locator('p[lang="en"]').last()).toContainText('my __________');
-    await expect(page.getByText('الملزمة ص 184 - 185')).toBeVisible();
+    await expect(page.getByText('184–185')).toBeVisible();
   });
 
 });
