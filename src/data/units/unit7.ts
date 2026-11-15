@@ -144,7 +144,7 @@ export const UNIT_7: Unit = {
       summary: "قطعة استيعاب مهارات سوق العمل المعاصر: أهمية تعلم الحاسوب، الجداول الحسابية (spreadsheets)، التصميم الجرافيكي، والعمل عن بعد (telecommuting).",
       grammarRuleFormula: "Key Vocabulary:\nspreadsheets = programs that arrange financial and numerical data\nweb design = creating websites\ntelecommuting = working from home using computers and the internet\nself-disciplined = able to manage your own time and work without supervision",
       detailedContent: [
-        "قطعة العمل اليوم (ص 147 - 149 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة العمل اليوم (ص 130 من ملزمة السادس 2027، PDF ص 132):",
         "- تغيرت متطلبات سوق العمل؛ فلم تعد الشهادة الجامعية وحدها كافية، بل باتت مهارات الحاسوب والتقنية أساسية لأي وظيفة.",
         "- برامج الجداول الإلكترونية (Spreadsheets): تستخدمها الشركات في إدارة الحسابات المالية والموازنات والرسوم البيانية.",
         "- تصميم المواقع (Web design): مهارة رقمية مطلوبة تمكن الأشخاص من العمل لحسابهم الخاص وتطوير واجهات رقمية للشركات.",
@@ -174,7 +174,13 @@ export const UNIT_7: Unit = {
           type: "mcq",
           ministerialYear: "منهاج 2027"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 130 من ملزمة السادس 2027 (PDF ص 132)",
+        verificationNote: "عُثر على نص Work Today في ص130. النص يتناول دورات الحاسوب والجداول والتصميم الرسومي وتصميم المواقع والتعلم الحضوري والإلكتروني والتعلم الذاتي؛ لا يتناول telecommuting."
+      }
     },
     {
       id: "u7-l4",
@@ -341,7 +347,7 @@ export const UNIT_7: Unit = {
       summary: "قطعة الكتاب المقررة حول الاستفادة من المكتبة المركزية: البحث عن وظائف جديدة، كتب المهن وتطوير السيرة الذاتية، مهارات لغة الجسد في المقابلات، ومصادر تعلم اللغات.",
       grammarRuleFormula: "Library Resources:\n- Books about careers: describe job duties, skills and qualifications\n- Job vacancy newspapers & magazines: find current openings\n- Language learning section: audio CDs, language tests and practice books\n- Computers: search the internet for companies and online courses",
       detailedContent: [
-        "قطعة الكتاب المقررة: استخدام المكتبة (ص 154 - 157 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة الكتاب المقررة: استخدام المكتبة (ص 135 - 136 من ملزمة السادس 2027، PDF ص 137 - 138):",
         "- ذهب الكاتب إلى المكتبة المركزية للبحث عن مهنة جديدة تناسب شغفه بالسفر والتواصل مع الناس.",
         "- مصادر البحث في المكتبة:",
         "1) كتب المهن (Books about careers): تشرح طبيعة الوظائف والمهارات والمؤهلات المطلوبة لكل مهنة.",
@@ -394,7 +400,13 @@ export const UNIT_7: Unit = {
           type: "mcq",
           ministerialYear: "وزاري 2021 دور أول"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 135–136 من ملزمة السادس 2027 (PDF ص 137–138)",
+        verificationNote: "عُثر على نص Using the Library في ص135–136. النشر الرقمي للنص الكامل يحتاج إلى تأكيد الإذن."
+      }
     }
   ]
 };
