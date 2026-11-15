@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { 
   CheckCircle2, ArrowRight, ArrowLeft, Lightbulb, AlertTriangle, 
   HelpCircle, BookOpen, Sparkles, Check, X, RotateCcw, Volume2, 
@@ -42,12 +42,22 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   onAnswerExercise,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const navigationState = location.state as { openSection?: string } | null;
   const gradeMeta = grade ? getGradeMeta(grade) : null;
   // Local exercise answer tracking: exerciseId -> selected option
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [revealedExplanations, setRevealedExplanations] = useState<Record<string, boolean>>({});
   const [showQuickHints, setShowQuickHints] = useState(false);
-  const [activeSectionView, setActiveSectionView] = useState<'guided' | 'all' | 'interactive' | 'academic' | 'exercises' | 'passage'>('guided');
+  const [activeSectionView, setActiveSectionView] = useState<'guided' | 'all' | 'interactive' | 'academic' | 'exercises' | 'passage'>(() =>
+    navigationState?.openSection === 'passage' ? 'passage' : 'guided'
+  );
+
+  useEffect(() => {
+    if (navigationState?.openSection === 'passage') {
+      setActiveSectionView('passage');
+    }
+  }, [location.key, navigationState?.openSection]);
   const [speakingText, setSpeakingText] = useState<string | null>(null);
 
   const handleSpeak = (text: string) => {
