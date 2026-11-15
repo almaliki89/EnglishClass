@@ -434,7 +434,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       },
       {
         grade: 'fourth-preparatory',
-        expectedPassage: 'Canada & Official Languages',
+        expectedPassage: 'كندا واللغات الرسمية',
         forbiddenPassage: 'Ramadan in Iraq',
       },
       {
