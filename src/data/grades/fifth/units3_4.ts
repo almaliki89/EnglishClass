@@ -381,7 +381,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         titleAr: "الدرس التاسع: عودة المها العربي واختبار الوحدة (The Oryx is Back & Unit 3 Test)",
         titleEn: "Lesson 9: The Conservation Success of The Arabian Oryx & Comprehensive Unit 3 Test",
         category: "reading",
-        summary: "قصة النجاح البيئي المذهلة لإنقاذ المها العربي ذي القرنين الجميلين من الانقراض وإعادته إلى موطنه الطبيعي، مع الاختبار الشامل للوحدة الثالثة.",
+        summary: "قراءة The oryx is back عن تناقص أعداد المها العربي بسبب الصيد، وبرامج الإكثار في حدائق الحيوان وإعادته إلى البرية في عُمان والسعودية.",
         sourcePages: "الملزمة ص 90 - 91",
         readingPassage: {
           status: "verified",
@@ -395,33 +395,33 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           ]
         },
         detailedContent: [
-          "المها العربي (The Arabian Oryx): ظبي أبيض رشيق بقرون مستقيمة طويلة يعيش في صحاري شبه الجزيرة العربية والعراق، كاد أن ينقرض كلياً في ستينيات القرن العشرين بسبب الصيد بالسيارات الحديثة والبنادق الآلية.",
-          "عملية الإنقاذ (Operation Oryx): تم إطلاق برامج إكثار في المحميات الطبيعية وحدائق الحيوان ثم إعادة إطلاق القطعان في بيئتها الصحراوية المحمية بقوانين صارمة تمنع الصيد.",
+          "المها (Oryx): حيوان صحراوي ذو قرنين طويلين؛ يوضح النص أن أعداده في شبه الجزيرة العربية كانت قليلة في الستينيات وأن الصيد بالسيارات ذات الدفع الرباعي سهّل مطاردته.",
+          "استُخدمت حدائق الحيوان لزيادة أعداد المها، ثم أُعيد إطلاق بعض الحيوانات في البرية في عُمان سنة 1982، وتكرر البرنامج في السعودية سنة 1990؛ ويذكر النص أن صيده لم يعد مسموحاً.",
           "اختبار الوحدة الثالثة الشامل: يغطي القواعد والحيوانات المهددة بالانقراض وعروض المساعدة وحفظ البيئة."
         ],
         teacherNotes: [
-          "ملاحظة الملزمة ص 96: The story of the Arabian Oryx proves that human conservation efforts can save species from total extinction."
+          "سؤال فهم مستند إلى النص: When were oryx reintroduced into the wild in Oman? -> In 1982."
         ],
         examples: [
           {
-            en: "Thanks to protected wildlife reserves, the Arabian Oryx population has successfully recovered.",
-            ar: "بفضل المحميات الطبيعية المحمية، تعافت أعداد المها العربي بنجاح.",
+            en: "They got the animals to breed, to build up their numbers.",
+            ar: "عملت حدائق الحيوان على تكثير الحيوانات لزيادة أعدادها.",
             highlight: "wildlife reserves",
-            note: "قصة نجاح الحفاظ على الحياة البرية"
+            note: "عبارة من النص الأصلي"
           }
         ],
         exercises: [
           {
             id: "5u3-ex9",
-            question: "The Arabian Oryx was saved from extinction mainly through ______.",
+            question: "How did zoos in the Middle East help the oryx?",
             options: [
-              "breeding programs in protected nature reserves",
+              "They got the animals to breed, to build up their numbers",
               "encouraging more desert hunting",
               "moving them to polar regions",
               "selling them as domestic pets"
             ],
-            correctAnswer: "breeding programs in protected nature reserves",
-            explanation: "تم إنقاذ المها العربي من خلال برامج الإكثار داخل المحميات الطبيعية وتطبيق قوانين حظر الصيد (الملزمة ص 96).",
+            correctAnswer: "They got the animals to breed, to build up their numbers",
+            explanation: "ساعدت حدائق الحيوان على تكثير المها، ثم أعيد إطلاقه في البرية في عُمان والسعودية.",
             type: "mcq",
             sourcePages: "الملزمة ص 96"
           }
