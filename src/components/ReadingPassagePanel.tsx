@@ -206,6 +206,55 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
           </p>
         </div>
       )}
+
+      {!canShowSourceContent && exerciseSets.length > 0 && (
+        <section className="bg-surface border-3 border-ink shadow-brutal-modal p-5 sm:p-7 space-y-4" data-testid="passage-exercises-section">
+          <div className="flex items-center gap-2 border-b-2 border-ink/15 pb-3">
+            <ClipboardList className="w-5 h-5 text-cobalt" />
+            <div>
+              <p className="text-[10px] font-mono font-black tracking-wider text-cobalt">AVAILABLE SOURCE EXERCISES</p>
+              <h3 className="font-black text-ink text-lg">الأسئلة المتاحة من المصدر مع الإجابات</h3>
+              <p className="text-xs text-ink/65 mt-1">النص الكامل والترجمة غير متاحين بعد، لكن هذه التمارين متوفرة في المصدر المحدد.</p>
+            </div>
+          </div>
+          <div className="space-y-5">
+            {exerciseSets.map((set) => (
+              <article key={set.id} className="border-2 border-ink bg-paper p-4 sm:p-5 space-y-4">
+                <div className="flex flex-wrap items-start justify-between gap-2">
+                  <div>
+                    <h4 className="font-black text-ink">{set.source === 'activity_book' ? 'كتاب النشاط' : 'الملزمة'} · {set.sourceTitle}</h4>
+                    <p className="text-xs text-ink/65 mt-1">الصفحة: {set.sourcePages}</p>
+                  </div>
+                  <span className="text-[10px] font-mono font-black bg-yellow border border-ink px-2 py-1">{set.items.length} أسئلة / فقرات</span>
+                </div>
+                <div className="space-y-1">
+                  <p dir="ltr" lang="en" className="text-sm font-bold text-left leading-7">{set.instruction}</p>
+                  {set.instructionTranslation && <p dir="rtl" lang="ar" className="text-xs text-ink/70 leading-6">{set.instructionTranslation}</p>}
+                </div>
+                <div className="space-y-3">
+                  {set.items.map((item, index) => (
+                    <div key={item.id} className="border border-ink/30 bg-surface p-3 space-y-2">
+                      <p className="text-xs font-mono font-black text-cobalt">QUESTION {index + 1}</p>
+                      <p dir="ltr" lang="en" className="text-sm text-left leading-7 font-medium whitespace-pre-wrap">{item.question}</p>
+                      {item.questionTranslation && <p dir="rtl" lang="ar" className="text-xs text-ink/70 leading-6">{item.questionTranslation}</p>}
+                      {item.options && item.options.length > 0 && (
+                        <ul className="list-disc pl-6 text-sm leading-7" dir="ltr">
+                          {item.options.map((option, optionIndex) => <li key={optionIndex}>{option}</li>)}
+                        </ul>
+                      )}
+                      <div className="border-t border-ink/20 pt-2">
+                        <p className="text-[10px] font-black text-semantic-success mb-1">الإجابة النموذجية</p>
+                        <p dir="ltr" lang="en" className="text-sm text-left leading-7 font-bold whitespace-pre-wrap">{item.answer}</p>
+                        {item.answerTranslation && <p dir="rtl" lang="ar" className="text-xs text-ink/70 leading-6 mt-1">{item.answerTranslation}</p>}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )}
     </section>
   );
 };
