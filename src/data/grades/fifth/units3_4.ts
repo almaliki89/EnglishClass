@@ -505,7 +505,7 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         titleAr: "الدرس الثاني: مباراة التنس وإصابة الساق (Tennis Match & Leg Injury)",
         titleEn: "Lesson 2: The Tennis Match, Sports Injuries & Narrative Tenses Consolidation",
         category: "reading",
-        summary: "قصة مباراة التنس المشوقة والإصابة المفاجئة، مع دمج وتطبيق الأزمنة السردية (الماضي البسيط والماضي المستمر وأدوات الربط).",
+        summary: "حوار مصوّر بين Helen وZeina عن إصابة Helen في الركبة وطلبها المساعدة، مع تعبيرات العرض والتفضيل والتنبؤ بالقدرة.",
         sourcePages: "الملزمة ص 99 - 100",
         readingPassage: {
           status: "verified",
@@ -521,28 +521,28 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
           ]
         },
         detailedContent: [
-          "أحداث القصة (AB p. 60): أثناء مباراة التنس الحاسمة، كان حسام يلعب بمهارة ويسدد الكرة بقوة نحو الزاوية البعيدة، وفجأة وهو يركض لصد ضربة المنافس، التوت كاحل قدمه وسقط متألماً.",
-          "المصطلحات الطبية والرياضية: ankle sprain (التواء الكاحل)، court (ملعب التنس)، racket (المضرب)، referee (الحكم).",
-          "التطبيق النحوي: الربط بين الحدث المستمر الطويل (was serving the ball) والحدث العارض المفاجئ (twisted his ankle)."
+          "Helen تقول إنها آذت ركبتها ولا تستطيع الوقوف؛ وتساعدها Zeina على الوصول إلى مقعد، ثم تخشى Helen أن تكون قد كسرت ساقها وأن تفوّت مسابقة التنس يوم السبت.",
+          "تعبيرات الحوار: Shall I help you…? لعرض المساعدة، Would you like me to…? لتقديم عرض، I’d prefer you to… للتعبير عن التفضيل، وwon’t be able to للتعبير عن عدم القدرة مستقبلاً.",
+          "يربط الحوار بين if والنتيجة المستقبلية: If it is broken, I won’t be able to play in the tennis competition on Saturday."
         ],
         teacherNotes: [
-          "ملاحظة الملزمة ص 100: هذا الدرس يختبر قدرتك على الجمع بين مفردات الرياضة وقواعد أدوات الربط (While, When) في جملة واحدة متسقة."
+          "من عبارات الحوار: عرض المساعدة باستخدام Shall I…? وWould you like me to…?، والتفضيل باستخدام I’d prefer you to…، والنتيجة المستقبلية باستخدام if."
         ],
         examples: [
           {
-            en: "While he was running towards the net, he slipped and injured his knee.",
-            ar: "بينما كان يركض باتجاه الشبكة، انزلق وأصاب ركبته.",
-            highlight: "While was running / slipped and injured",
-            note: "تطبيق قواعد الوحدة الأولى داخل سياق سردي رياضي"
+            en: "If it is broken, I won’t be able to play in the tennis competition on Saturday.",
+            ar: "إذا كانت مكسورة، فلن أتمكن من اللعب في مسابقة التنس يوم السبت.",
+            highlight: "if + present simple / will not be able to",
+            note: "مثال حرفي من الحوار المصوّر"
           }
         ],
         exercises: [
           {
             id: "5u4-ex2",
-            question: "While Hussam ______ tennis, he twisted his ankle.",
-            options: ["was playing", "played", "is playing", "plays"],
-            correctAnswer: "was playing",
-            explanation: "بعد أداة الربط While يأتي ماضي مستمر (was playing) (الملزمة ص 100).",
+            question: "Why can’t Helen stand up?",
+            options: ["Because she has hurt her knee.", "played", "is playing", "plays"],
+            correctAnswer: "Because she has hurt her knee.",
+            explanation: "بعد أداة الربط While يأتي ماضي مستمر (Because she has hurt her knee.) (الملزمة ص 100).",
             type: "mcq",
             sourcePages: "الملزمة ص 100"
           }
