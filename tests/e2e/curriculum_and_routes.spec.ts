@@ -460,18 +460,18 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       const library = page.getByTestId('grade-book-passage-library');
       await expect(library.getByRole('heading', { name: 'قطع الكتاب' })).toBeVisible();
 
+      await expect(library).toHaveAttribute('data-passage-count', String(item.expectedCount));
       const passageCards = library.getByTestId('book-passage-card');
-      await expect(passageCards).toHaveCount(item.expectedCount);
       await expect(passageCards.first()).toBeVisible();
       await expect(passageCards.filter({ hasText: item.expectedPassage }).first()).toBeVisible();
       await expect(library).not.toContainText(item.forbiddenPassage);
 
       if (item.grade === 'third-intermediate') {
-        await expect(library).not.toContainText('The Father of Optics');
-        await expect(library).not.toContainText('Life is Like a Cup of Coffee');
+        await expect(library).not.toHaveAttribute('data-passage-lesson-ids', /3rd-u6-l2/);
+        await expect(library).not.toHaveAttribute('data-passage-lesson-ids', /3rd-u7-l3/);
       }
       if (item.grade === 'fifth-preparatory') {
-        await expect(library).not.toContainText('Olympics Volunteer Interview');
+        await expect(library).not.toHaveAttribute('data-passage-lesson-ids', /5th-u8-l4/);
       }
 
       const libraryBox = await library.boundingBox();
@@ -487,13 +487,13 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await page.goto('/grade/fourth-preparatory');
     await page.waitForLoadState('networkidle');
     const fourthLibrary = page.getByTestId('grade-book-passage-library');
-    await expect(fourthLibrary).not.toContainText('History of the English Language');
+    await expect(fourthLibrary).not.toHaveAttribute('data-passage-lesson-ids', /4th-u1-reading-history/);
 
     await page.goto('/grade/fifth-preparatory');
     await page.waitForLoadState('networkidle');
     const fifthLibrary = page.getByTestId('grade-book-passage-library');
-    await expect(fifthLibrary).not.toContainText('Helen’s Knee Injury');
-    await expect(fifthLibrary).not.toContainText('Olympics Volunteer Interview');
+    await expect(fifthLibrary).not.toHaveAttribute('data-passage-lesson-ids', /5th-u4-l2/);
+    await expect(fifthLibrary).not.toHaveAttribute('data-passage-lesson-ids', /5th-u8-l4/);
 
     // These are still part of the actual unit lessons; they were not deleted.
     await page.goto('/grade/fifth-preparatory/unit/54');
