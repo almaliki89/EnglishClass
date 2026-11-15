@@ -106,4 +106,48 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByText(/100 درجة كاملة/)).toHaveCount(0);
   });
 
+  test('fifth preparatory Babylon Festival reading avoids unsupported venue capacity claims', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/51/lesson/5th-u1-l8');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('the first Festival in 1987');
+    await expect(page.locator('p[lang="en"]').nth(1)).toContainText('There are three main theatres');
+    await expect(page.locator('p[lang="en"]').nth(2)).toContainText('The Babylonian Theatre is the biggest amphitheatre');
+    await expect(page.getByText('2,500 spectators')).toHaveCount(0);
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory digital poverty reading sticks to the Justin letter and source article', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/52/lesson/5th-u2-l3');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('I own a computer repair shop');
+    await expect(page.locator('p[lang="en"]').last()).toContainText('With only lessons online');
+    await expect(page.getByText('Repair computers the organization receives, free of charge')).toBeVisible();
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory internet reading follows the printed 1990 and 1993 dates', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/52/lesson/5th-u2-l6');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.locator('p[lang="en"]').nth(1)).toContainText('It was invented in 1990');
+    await expect(page.locator('p[lang="en"]').nth(1)).toContainText('In 1993, the internet became public');
+    await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
+  });
+
+  test('fifth preparatory mobile phone history is labeled reconstructed and has no invented archaeologist story', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/unit/52/lesson/5th-u2-l8');
+    await page.waitForLoadState('networkidle');
+
+    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
+    await expect(page.getByText('نص معاد بناؤه — يحتاج مراجعة')).toBeVisible();
+    await expect(page.locator('p[lang="en"]').first()).toContainText('The first mobile phone was used by the Swedish police in 1946');
+    await expect(page.locator('p[lang="en"]').first()).toContainText('After six calls, the car battery was flat');
+    await expect(page.getByText(/عالم الآثار|Aloalo|40 كيلوغراماً/)).toHaveCount(0);
+  });
+
 });
