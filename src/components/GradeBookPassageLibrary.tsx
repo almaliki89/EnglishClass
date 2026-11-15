@@ -68,7 +68,7 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
   const passages = useMemo(() => resolveBookPassages(grade, units), [grade, units]);
 
   const completePassageCount = passages.filter((item) => {
-    const passage = getBookPassageContent(item.id) || item.lesson.readingPassage;
+    const passage = { ...(item.lesson.readingPassage || {}), ...(getBookPassageContent(item.id) || {}) };
     const hasText = (passage?.status === 'verified' || passage?.status === 'reconstructed')
       && Boolean(passage.originalText?.some((paragraph) => paragraph.trim().length > 0));
     const hasTranslation = Boolean(passage?.translation?.some((paragraph) => paragraph.trim().length > 0));
@@ -210,7 +210,7 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                   {isExpanded && (
                     <div className="border-t-2 border-ink divide-y divide-ink/15">
                       {items.map((item, itemIndex) => {
-                        const passage = getBookPassageContent(item.id) || item.lesson.readingPassage;
+                        const passage = { ...(item.lesson.readingPassage || {}), ...(getBookPassageContent(item.id) || {}) };
                         const status = getSourceStatus(passage?.status, Boolean(item.sourcePages || passage?.sourcePages || item.lesson.sourcePages));
                         const pages = item.sourcePages || passage?.sourcePages || item.lesson.sourcePages;
                         const isCompleted = completedLessonIds.includes(item.lesson.id);
