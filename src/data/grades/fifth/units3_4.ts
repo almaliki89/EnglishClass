@@ -449,6 +449,19 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         category: "reading",
         summary: "القطعة التراثية المقررة حول أول مسلسل رسوم متحركة مصري ثلاثي الأبعاد 'بكار' والماعز 'رشيدة' وإبداع المخرجة الرائدة منى أبو النصر.",
         sourcePages: "الملزمة ص 97 - 98",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "97–98",
+          verificationNote: "النص Have you heard of Bakkar? في صفحة المصدر 97، وتتبعها تمارين الاستيعاب في صفحة 98.",
+          originalText: [
+            "HAVE YOU HEARD OF BAKKAR?\nBakkar is a young country boy in Upper Egypt. His father is dead and he lives with his mother. He loves art and drawing, and he cares for animals. He is not a hero, but he is a very kind and sociable child.",
+            "You might have watched Bakkar cartoons during Ramadan. In Egypt, 40 million Egyptians turn on their TVs to watch him every day of Ramadan. The series is also very popular in the United Arab Emirates, Oman and Tunisia. Mona Abu El Nasr, who invented and created Bakkar, explained why people of different ages and classes like watching the series during the month of Ramadan. She said it’s because people can recognize Bakkar’s Muslim values. She also said that he is a nice change from Western cartoon characters, and he speaks Arabic, even if he has got a funny Nubian accent.",
+            "The Bakkar shows often have serious topics. For example, one episode is about sympathy for less fortunate people. Habiba, a little blind girl, saves her school friends from danger. Another episode about education shows the importance of teaching everyone in society to read and write. In a more recent show, the main topic is environmental problems. Bakkar works with a Red Sea Ranger. They want to rescue endangered animals from a cruel zookeeper. The cartoon shows children that it’s a bad idea to go fishing or collect sea animals in protected areas.",
+            "Mona Abu El Nasr believed that it’s important for the Arab world to have its own cartoon characters. She opened Cairo Cartoon Studios in 1990, and she has been making Egyptian cartoons for TV since then. She started with Kani Wa Mani, then made Sinbad and finally Bakkar.",
+            "Perhaps the Bakkar character is so successful because it is the most similar to Mona Abu El Nasr herself. Bakkar loves art and Mona loved art. ‘Art is in my family,’ she said. Mona’s older sister was a painter, and her uncle was an art teacher. She herself always loved drawing funny characters in bright colours in her notebooks at school.\nIs there someone in your class who is good at drawing? Perhaps you have a future Mona Abu El Nasr in your class."
+          ]
+        },
         detailedContent: [
           "مسلسل بكار (Bakkar): مسلسل كرتوني تلفزيوني رمضاني أنتج عام 1998؛ يروي مغامرات طفل نوبي ذكي يدعى بكار ومعزته الأليفة (رشيدة) وصداقته وقيمه الأخلاقية في صعيد مصر.",
           "المخرجة الدكتورة منى أبو النصر (Mona Abu El Nasr): أستاذة جامعية ومخرجة مصرية رائدة أسست استوديو الرسوم المتحركة الخاص بها وكانت أول من أدخل صناعة الكارتون العربي عالي الجودة إلى شاشات التلفزيون في رمضان وحصلت على جوائز دولية قبل وفاتها عام 2003.",
