@@ -28,7 +28,7 @@ export interface Exercise {
   contentOrigin?: ContentOrigin;
 }
 
-export type ReadingPassageStatus = 'verified' | 'reconstructed' | 'summary_only' | 'source_required';
+export type ReadingPassageStatus = 'verified' | 'reconstructed' | 'permission_required' | 'summary_only' | 'source_required';
 
 /**
  * Source-aware reading passage data. Only verified/reconstructed entries may
