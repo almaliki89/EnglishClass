@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { AlertTriangle, ArrowLeft, BookOpen, CheckCircle2, ChevronDown, FileText, Search } from 'lucide-react';
 import { EducationalGrade, StudentState, Unit } from '../types';
 import { resolveBookPassages } from '../data/bookPassageCatalog';
+import { getBookPassageContent } from '../data/readingPassageContent';
 import { BrutalBadge, BrutalButton, BrutalCard } from './common/BrutalUI';
 
 interface GradeBookPassageLibraryProps {
@@ -9,7 +10,7 @@ interface GradeBookPassageLibraryProps {
   gradeName: string;
   units: Unit[];
   completedLessonIds: StudentState['completedLessonIds'];
-  onOpenPassage: (unit: Unit, lessonId: string) => void;
+  onOpenPassage: (unit: Unit, lessonId: string, passageId: string) => void;
 }
 
 const getSourceStatus = (status?: string, hasPage = false) => {
@@ -66,8 +67,8 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
 
   const passages = useMemo(() => resolveBookPassages(grade, units), [grade, units]);
 
-  const completePassageCount = passages.filter(({ lesson }) => {
-    const passage = lesson.readingPassage;
+  const completePassageCount = passages.filter((item) => {
+    const passage = getBookPassageContent(item.id) || item.lesson.readingPassage;
     const hasText = (passage?.status === 'verified' || passage?.status === 'reconstructed')
       && Boolean(passage.originalText?.some((paragraph) => paragraph.trim().length > 0));
     const hasTranslation = Boolean(passage?.translation?.some((paragraph) => paragraph.trim().length > 0));
@@ -209,10 +210,10 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                   {isExpanded && (
                     <div className="border-t-2 border-ink divide-y divide-ink/15">
                       {items.map((item, itemIndex) => {
-                        const status = getSourceStatus(item.lesson.readingPassage?.status, Boolean(item.sourcePages || item.lesson.readingPassage?.sourcePages || item.lesson.sourcePages));
-                        const pages = item.sourcePages || item.lesson.readingPassage?.sourcePages || item.lesson.sourcePages;
+                        const passage = getBookPassageContent(item.id) || item.lesson.readingPassage;
+                        const status = getSourceStatus(passage?.status, Boolean(item.sourcePages || passage?.sourcePages || item.lesson.sourcePages));
+                        const pages = item.sourcePages || passage?.sourcePages || item.lesson.sourcePages;
                         const isCompleted = completedLessonIds.includes(item.lesson.id);
-                        const passage = item.lesson.readingPassage;
                         const hasText = (passage?.status === 'verified' || passage?.status === 'reconstructed')
                           && Boolean(passage.originalText?.some((paragraph) => paragraph.trim().length > 0));
                         const hasTranslation = Boolean(passage?.translation?.some((paragraph) => paragraph.trim().length > 0));
@@ -252,7 +253,7 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                             <BrutalButton
                               variant="yellow"
                               size="sm"
-                              onClick={() => onOpenPassage(unit, item.lesson.id)}
+                              onClick={() => onOpenPassage(unit, item.lesson.id, item.id)}
                               className="shrink-0 self-start lg:self-center"
                             >
                               فتح القطعة كاملة
