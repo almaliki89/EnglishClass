@@ -19,6 +19,7 @@ import { CartoonMascot } from './CartoonMascot';
 import { playPopSound, playSuccessChime, playFanfare, playBoingSound } from '../utils/cartoonAudio';
 import { BreadcrumbsNav, CalloutBox, BrutalBadge, BrutalButton } from './common/BrutalUI';
 import { getGradeMeta } from '../data/gradeContentResolver';
+import { getBookPassageContent } from '../data/readingPassageContent';
 
 interface LessonViewerProps {
   unit: Unit;
@@ -43,7 +44,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 }) => {
   const navigate = useNavigate();
   const location = useLocation();
-  const navigationState = location.state as { openSection?: string } | null;
+  const navigationState = location.state as { openSection?: string; passageId?: string } | null;
   const gradeMeta = grade ? getGradeMeta(grade) : null;
   // Local exercise answer tracking: exerciseId -> selected option
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
@@ -59,6 +60,10 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     }
   }, [location.key, navigationState?.openSection]);
   const [speakingText, setSpeakingText] = useState<string | null>(null);
+
+  const selectedPassage = navigationState?.passageId
+    ? getBookPassageContent(navigationState.passageId) || lesson.readingPassage
+    : lesson.readingPassage;
 
   const handleSpeak = (text: string) => {
     setSpeakingText(text);
@@ -395,7 +400,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
       {(activeSectionView === 'passage' || activeSectionView === 'all') &&
         (lesson.category === 'reading' || lesson.readingPassage) && (
-          <ReadingPassagePanel lesson={lesson} />
+          <ReadingPassagePanel
+            lesson={lesson}
+            passage={selectedPassage}
+            passageTitle={selectedPassage?.titleAr || lesson.titleAr}
+          />
         )}
 
       {activeSectionView === 'guided' && (
