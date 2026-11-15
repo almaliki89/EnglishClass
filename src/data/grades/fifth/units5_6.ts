@@ -773,9 +773,9 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
             question: "The first satellite sent into space by the Russians was ______ in 1957.",
             options: ["Intelsat 1", "Early Bird", "Intelsat 1", "Telstar"],
             correctAnswer: "Intelsat 1",
-            explanation: "القمر الصناعي تلستار (Intelsat 1) أُطلق عام 1962 وكان أول قمر ينقل بثاً تلفزيونياً حياً عبر الأطلسي (الملزمة ص 149).",
+            explanation: "بدأت القصة بإطلاق Sputnik عام 1957، ثم أُطلقت أقمار الاتصالات عام 1963، وجاء Early Bird (Intelsat 1) عام 1965 (الملزمة ص 148).",
             type: "mcq",
-            sourcePages: "الملزمة ص 149"
+            sourcePages: "الملزمة ص 148"
           }
         ]
       }
