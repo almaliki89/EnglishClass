@@ -382,7 +382,18 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
         titleEn: "Lesson 9: The Conservation Success of The Arabian Oryx & Comprehensive Unit 3 Test",
         category: "reading",
         summary: "قصة النجاح البيئي المذهلة لإنقاذ المها العربي ذي القرنين الجميلين من الانقراض وإعادته إلى موطنه الطبيعي، مع الاختبار الشامل للوحدة الثالثة.",
-        sourcePages: "الملزمة ص 96",
+        sourcePages: "الملزمة ص 90 - 91",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "90–91",
+          verificationNote: "النص The oryx is back في صفحة المصدر 90، وتتبعه أسئلة الفهم والمفردات في صفحة 91.",
+          originalText: [
+            "The oryx is back\nThe oryx is a beautiful antelope with two long horns. It is one of the few big animals that can live in the desert. It gets most of its water from plants; it eats at night when there is some water on the leaves. It walks hundreds of kilometres to find food.",
+            "In the 1960s, the population of oryx in the Arabian Peninsula was very small. The animal was endangered because of hunting. It was hunted for two reasons: the local Bedouin people hunted it for meat, and city people hunted it for sport. In the past, when the hunters were on horses, the oryx survived. But hunters in big four-wheel-drive cars were able to follow the oryx everywhere – it could not get away from them. In 1972, the last wild oryx was shot.",
+            "But, happily, that was not the end of the story. Zoos around the Middle East had quite a good number of oryx. They got the animals to breed, to build up their numbers. Then, in 1982, they put some oryx back into the wild in Oman. The programme was a success, and in 1990 they did the same thing in Saudi Arabia. Of course, hunting the oryx is no longer allowed. Experts say that today the wild population of these wonderful animals is over 1,000, 6,000–7,000 more in zoos and private collections."
+          ]
+        },
         detailedContent: [
           "المها العربي (The Arabian Oryx): ظبي أبيض رشيق بقرون مستقيمة طويلة يعيش في صحاري شبه الجزيرة العربية والعراق، كاد أن ينقرض كلياً في ستينيات القرن العشرين بسبب الصيد بالسيارات الحديثة والبنادق الآلية.",
           "عملية الإنقاذ (Operation Oryx): تم إطلاق برامج إكثار في المحميات الطبيعية وحدائق الحيوان ثم إعادة إطلاق القطعان في بيئتها الصحراوية المحمية بقوانين صارمة تمنع الصيد.",
