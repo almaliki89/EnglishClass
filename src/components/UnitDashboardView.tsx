@@ -9,6 +9,7 @@ import { EducationalGrade, StudentState, Unit, Lesson } from '../types';
 import { 
   getGradeMeta, getUnitsForGrade, ORDERED_GRADES 
 } from '../data/gradeContentResolver';
+import { isBookPassageLesson } from '../data/bookPassageCatalog';
 import { 
   BrutalCard, BrutalButton, BrutalBadge, BreadcrumbsNav 
 } from './common/BrutalUI';
