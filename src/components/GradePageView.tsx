@@ -114,9 +114,9 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
         gradeName={gradeMeta.nameAr}
         units={units}
         completedLessonIds={studentState.completedLessonIds}
-        onOpenPassage={(unit, lessonId) => {
+        onOpenPassage={(unit, lessonId, passageId) => {
           navigate(`/grade/${validGrade}/unit/${unit.id}/lesson/${lessonId}`, {
-            state: { openSection: 'passage' },
+            state: { openSection: 'passage', passageId },
           });
         }}
       />
