@@ -54,6 +54,8 @@ test.describe('Source-aware reading passages', () => {
     await page.goto('/grade/sixth-preparatory');
     await page.waitForLoadState('networkidle');
     const library = page.getByTestId('grade-book-passage-library');
+    const unitThree = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="3"]');
+    await unitThree.getByRole('button').click();
     const samiraCard = library.getByTestId('book-passage-card').filter({ hasText: 'Samira Al Mahmoud' });
     await expect(samiraCard).toBeVisible();
     await samiraCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
