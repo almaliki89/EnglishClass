@@ -286,8 +286,8 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
     id: 42,
     number: 2,
     titleAr: "الوحدة الثانية: الشعوب والمجتمعات والماضي البسيط والمستمر (People & Cultures)",
-    titleEn: "Unit 2: People & Cultures, Past Simple vs Continuous, used to, UNICEF & Package Holidays",
-    description: "الماضي البسيط والماضي المستمر مع الربط بـ when/while، الاعتياد في الماضي بـ used to، منظمة يونيسيف (UNICEF) وحماية الأطفال، عادات الأعراس، ظروف الطريقة، ورحلة أربيل الجماعية.",
+    titleEn: "Unit 2: People & Cultures, Past Tenses, UNICEF, Schools for All, The Meade School & Sally’s Old Job",
+    description: "تضم الوحدة الأزمنة السردية والعادات الماضية، نصوص UNICEF وSchools for All حول تعليم الأطفال، وقراءتي The Meade School وSally’s Old Job، إلى جانب تدريبات القواعد والمفردات.",
     accentColor: "bg-cobalt text-surface",
     bgGradient: "bg-blue-mist border-ink",
     sourcePages: "الملزمة ص 25 - 52",
@@ -376,7 +376,18 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
         titleEn: "Lesson 3: UNICEF - United Nations International Children's Emergency Fund",
         category: "reading",
         summary: "القطعة الاستيعابية الخاصة بتمويل وحماية الأطفال حول العالم عبر منظمة اليونيسيف (UNICEF) ودورها في التعليم والرعاية الصحية والتغذية.",
-        sourcePages: "الملزمة ص 35 - 39",
+                sourcePages: "الملزمة ص 29 - 31",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الرابع الإعدادي",
+          sourcePages: "29–30",
+          verificationNote: "النصّان من وحدة UNICEF في صفحات المصدر: تعريف المنظمة، ثم أسباب عدم التحاق بعض الأطفال بالمدارس وكيف تساعدهم UNICEF.",
+          originalText: [
+            "What is a UNICEF?\nUNICEF was created in 1946, when many children were sick and hungry in Europe after World War II. UNICEF stands for United Nations International Children’s Emergency Fund because it was created when there was an emergency. In 1953, UNICEF saw the emergency in Europe was over. However, they realized that children in many countries still needed help. It decided to work with children and families all over the world. It changed its name to United Nations Children’s Fund, but people still call it UNICEF. UNICEF believes that all children should have a good education, health care (doctors and medicines) and good nutrition (healthy food).",
+            "Why do some children not go to school?\nToday, about 121 million children around the world don’t go to school. In countries such as Thailand, natural disasters like floods can destroy schools. Children in these countries can’t go to school because they don’t have a school building to go to. In other countries, parents don’t want to send their children to school because the schools aren’t clean or safe. In many parts of Asia, Africa and South America, children start working when they are less than 12 years old, and so they can’t go to school. This is called child labour. About 246 million children do child labour. In some places, like the Ivory Coast, children work in the fields. In the Philippines and other countries, children work in factories, where they make toys, clothes or sports equipment.",
+            "How does UNICEF help?\nUNICEF does different things to help. When schools have been destroyed by natural disasters, UNICEF organizes emergency classes in tents, so children don’t miss school. It also helps build new schools for these children. It tries to help schools get clean water and good food so that parents are not afraid to send their children there. UNICEF also works with governments to make sure that children go to school instead of going to work when they are very young."
+          ]
+        },
         detailedContent: [
           "منظمة اليونيسيف (UNICEF): ترمز إلى (United Nations International Children's Emergency Fund)؛ تأسست عام 1946 لمساعدة الأطفال المتأثرين بالحروب والأزمات.",
           "أهداف اليونيسيف: (1) توفير التعليم المجاني والإجباري، (2) تقديم الرعاية الصحية واللقاحات، (3) توفير المياه النظيفة والتغذية السليمة، (4) منع عمالة الأطفال القصري (child labour).",
@@ -412,39 +423,59 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
         id: "4th-u2-l4",
         unitId: 42,
         lessonNumber: 4,
-        titleAr: "الدرس الرابع: عادات الزفاف والتقاليد في العراق (Wedding Customs in Iraq)",
-        titleEn: "Lesson 4: Traditional Wedding Customs & Celebrations Across Cultures & Iraq",
+        titleAr: "الدرس الرابع: مدارس للجميع والتعليم حق لكل طفل",
+        titleEn: "Lesson 4: Schools for All — Education for Every Child",
         category: "reading",
-        summary: "عادات وتقاليد حفلات الأعراس والزفاف في العراق والبلدان العربية، نقش الحناء، ثوب العروس الأبيض، ودعوة الأقارب للأولائم.",
-        sourcePages: "الملزمة ص 40 - 44",
+        summary: "إعلان منظمة Schools for All التي تساعد الأطفال الأكثر فقراً على الالتحاق بالمدارس من خلال توفير الكتب والمدارس الآمنة والتبرعات.",
+        sourcePages: "الملزمة ص 31",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الرابع الإعدادي",
+          sourcePages: "31",
+          verificationNote: "النصّ الإعلاني الإنجليزي في الصفحة 31 من المصدر.",
+          originalText: [
+            "Unfortunately, not all children can go to school. Schools for All is an organization that helps the poorest children go to school. We give them money to pay for books. We make sure their schools are safe. Last year we built two schools in Kenya, and gave books to 500 children.\nBut Schools for All needs your help. Please donate to help us send more children to school this year."
+          ]
+        },
         detailedContent: [
-          "تقاليد الأعراس العراقي (Iraqi Wedding Customs): تجري حفل الزفاف عادة يوم الخميس؛ وقبل الزفاف بيوم تزين يدا العروس وقدميها بالحناء التراثية.",
-          "يوم الزفاف: يرتدي العريس بدلة رسمية وترتدي العروس فستاناً أبيض يرمز للنقاء والبراءة، وتدعى العوائل والأصدقاء لمأدبة عشاء فاخرة ويتبادلون التهاني والهدايا.",
-          "تمرين كتاب النشاط ص 38: توصيل مفردات الزفاف (bride, groom, henna, suit, wedding party) بالتعاريف."
+          "تساعد منظمة Schools for All الأطفال الأكثر فقراً على الذهاب إلى المدرسة.",
+          "توفّر المنظمة المال لشراء الكتب، وتعمل على جعل المدارس آمنة.",
+          "بنت المنظمة مدرستين في كينيا وقدمت كتباً إلى 500 طفل، وتطلب التبرعات لمساعدة عدد أكبر من الأطفال."
         ],
         teacherNotes: [
-          "ملاحظة الملزمة ص 42: العروس تسمى (bride) والعريس يسمى (groom)، وفستان الزفاف الأبيض يرمز للنقاء (purity)."
+          "أسئلة المصدر: What does Schools for All do? — It helps the poorest children go to school.",
+          "Where did it build two schools? — In Kenya.",
+          "What does the advertisement ask readers to do? — Donate to help more children go to school."
         ],
+        commonMistakes: [],
         examples: [
           {
-            en: "In Iraq, the bride traditionally decorates her hands with henna the day before the wedding.",
-            ar: "في العراق، تزين العروس يديها بالحناء عادة قبل يوم من حفل الزفاف.",
-            highlight: "decorates her hands with henna",
-            note: "عادة تراثية عراقية أصيلة"
+            en: "Schools for All helps the poorest children go to school.",
+            ar: "تساعد منظمة مدارس للجميع الأطفال الأكثر فقراً على الالتحاق بالمدرسة.",
+            highlight: "helps the poorest children",
+            note: "الفكرة الرئيسية للإعلان"
           }
         ],
         exercises: [
           {
             id: "4u2-ex4",
-            question: "The man who is getting married is called the ______.",
-            options: ["groom", "bride", "guest", "waiter"],
-            correctAnswer: "groom",
-            explanation: "الرجل الذي يتزوج يسمى العريس (groom) (الملزمة ص 42).",
+            question: "Where did Schools for All build two schools last year?",
+            options: ["Kenya", "Thailand", "The Philippines", "The Ivory Coast"],
+            correctAnswer: "Kenya",
+            explanation: "يذكر النص أنها بنت مدرستين في كينيا.",
             type: "mcq",
-            sourcePages: "الملزمة ص 42"
+            sourcePages: "الملزمة ص 31"
+          },
+          {
+            id: "4u2-ex4b",
+            question: "What does Schools for All ask readers to do?",
+            options: ["Donate money", "Build a hospital", "Teach music", "Travel abroad"],
+            correctAnswer: "Donate money",
+            explanation: "يطلب الإعلان التبرع لمساعدة المزيد من الأطفال على الدراسة.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 31"
           }
         ]
-      },
       {
         id: "4th-u2-l5",
         unitId: 42,
@@ -487,35 +518,142 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
         id: "4th-u2-l6",
         unitId: 42,
         lessonNumber: 6,
-        titleAr: "الدرس السادس: الرحلة الجماعية لأربيل واختبار الوحدة الثانية (Package Holiday to Erbil & Unit 2 Test)",
-        titleEn: "Lesson 6: Package Tour Experience to Erbil & Comprehensive Unit 2 Test",
+        titleAr: "الدرس السادس: مدرسة ميد (The Meade School)",
+        titleEn: "Lesson 6: The Meade School",
         category: "reading",
-        summary: "التقرير عن الرحلة السياحية الجماعية الشاملة إلى شمال العراق ومدن كردستان، واختبار الوحدة الثانية الشامل.",
-        sourcePages: "الملزمة ص 49 - 53",
+        summary: "تاريخ مدرسة متخصصة للأطفال الممثلين والموسيقيين والرياضيين، ورسالتها التعليمية، وكيف تطورت لتشمل مركز التعلم الذاتي وغرفة الحاسوب.",
+        sourcePages: "الملزمة ص 38 - 39",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الرابع الإعدادي",
+          sourcePages: "38–39",
+          verificationNote: "النص الكامل مقسّم في المصدر إلى Our Mission وOur History وChanges.",
+          originalText: [
+            "Our Mission\nChild actors, musicians and athletes have different needs from other students. They need to have time to rehearse and train, but they need a good education, too. Our mission is to give students both these things. At MSCA, students can take classes in the morning or at night. They study Art, Music and Sports, but they also study Biology, Physics and Chemistry so they can go to university when they leave school.",
+            "Our History\nIn 1910, John Meade was walking in the street when a boy stopped him. The boy wanted John to help him read a street sign. John was surprised that the boy couldn’t read. He asked the boy about his school, and the boy told him he was an actor. Child actors spent a lot of time rehearsing and didn’t have time to go to school. John decided to start a special school for these children. He decided classes should start later than in other schools, so children would have time to rehearse. When they were working in another city, they could post their lessons to their teachers.",
+            "Changes\nOur school has changed with the times. In the beginning, it was only for actors and musicians. Then one day, while John Meade was reading the newspaper, he saw an article about young athletes. He realized that children who did sports needed a special school, too. He brought more sports teachers to the school, and he built a swimming pool.\nOther things have changed at the school, too. We now have a modern self-access centre and a computer room. Students who are working in other cities don’t have to send their lessons by post because they can send them by email."
+          ]
+        },
         detailedContent: [
-          "رحلة أربيل (Package Holiday to Erbil): رحلة سياحية متكاملة شملت الإقامة في فندق 5 نجوم وشملت جولات لقلعة أربيل التاريخية والشلالات والأسواق والمولات.",
-          "اختبار الوحدة الثانية الشامل من الملزمة ص 52-53: يغطي القواعد واليونيسيف والإنشاء."
+          "رسالة المدرسة: تلبية احتياجات الأطفال الممثلين والموسيقيين والرياضيين مع الحفاظ على تعليمهم الأكاديمي.",
+          "تأسست الفكرة عندما قابل John Meade طفلاً ممثلاً لا يستطيع قراءة لافتة في الشارع عام 1910.",
+          "توسعت المدرسة لاحقاً لتشمل الرياضيين، ومسبحاً، ومركز تعلم ذاتي حديثاً، وغرفة حاسوب."
         ],
         teacherNotes: [
-          "ملاحظة الملزمة ص 50: مصطلح (package holiday) يعني رحلة سياحية شاملة تشتمل النقل والإقامة والإطعام والجولات بسعر موحد."
+          "The school offers classes in the morning or at night.",
+          "John Meade started the school because child actors did not have enough time to attend ordinary school.",
+          "Students who work in other cities can send lessons by email."
         ],
+        commonMistakes: [],
         examples: [
           {
-            en: "A package holiday includes accommodation, travel fare, and guided tours in one price.",
-            ar: "تتضمن الرحلة السياحية الشاملة السكن وتكلفة السفر والجولات الإرشادية بسعر واحد.",
-            highlight: "package holiday",
-            note: "تعريف الرحلة الشاملة"
+            en: "Students can take classes in the morning or at night.",
+            ar: "يمكن للطلاب حضور الدروس صباحاً أو ليلاً.",
+            highlight: "in the morning or at night",
+            note: "من رسالة المدرسة"
           }
         ],
         exercises: [
           {
             id: "4u2-ex6",
-            question: "A holiday where travel, hotel, and meals are arranged and paid together is called a ______ holiday.",
-            options: ["package", "private", "lonely", "cheap"],
-            correctAnswer: "package",
-            explanation: "الرحلة المنظمة الشاملة تسمى package holiday (الملزمة ص 50).",
+            question: "Why did John Meade decide to start a special school?",
+            options: [
+              "Child actors spent a lot of time rehearsing and could not attend ordinary school.",
+              "He wanted to teach only university students.",
+              "The school had no computer room.",
+              "Young athletes did not like sports."
+            ],
+            correctAnswer: "Child actors spent a lot of time rehearsing and could not attend ordinary school.",
+            explanation: "كانت حاجة الأطفال الممثلين إلى وقت للتدريب تمنعهم من الذهاب إلى المدرسة العادية.",
             type: "mcq",
-            sourcePages: "الملزمة ص 50"
+            sourcePages: "الملزمة ص 38"
+          },
+          {
+            id: "4u2-ex6b",
+            question: "What can students use to send their lessons from other cities?",
+            options: ["Email", "Fax only", "The post only", "Telephone calls"],
+            correctAnswer: "Email",
+            explanation: "يوضح النص أنهم يستطيعون إرسال الدروس بالبريد الإلكتروني.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 39"
+          }
+        ]
+      },
+      {
+        id: "4th-u2-l7",
+        unitId: 42,
+        lessonNumber: 7,
+        titleAr: "الدرس السابع: وظيفة سالي القديمة (Sally’s Old Job)",
+        titleEn: "Lesson 7: Sally’s Old Job",
+        category: "reading",
+        summary: "قصة سالي عن عملها السابق مع الأطفال الممثلين أثناء تصوير الأفلام، والسفر المتكرر، وموقف نسيان جواز السفر، ونوم الطالب بن أثناء الامتحان.",
+        sourcePages: "الملزمة ص 43 - 44",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الرابع الإعدادي",
+          sourcePages: "43",
+          verificationNote: "النص الإنجليزي الكامل لقطعة Sally’s Old Job في صفحة 43، وتتبعها أسئلة الفهم في صفحة 44.",
+          originalText: [
+            "I travelled a lot with my students because films are often made in other countries. I liked travelling and seeing new places, but I didn’t like being away from my family. And the job was tiring, too. I had to pack all the children’s school books and take them to the airport.",
+            "Once, I went to Italy with two actors. I had a lot of books to pack, and it took a long time. I didn’t want to be late, so I left the house as fast as possible. When I got to the airport, I couldn’t get on the plane because I had forgotten my passport. I had to catch a flight the next day.",
+            "It was tiring for the children, too. They had to act and study too, so they worked a lot.",
+            "Once, I had to give a student called Ben a Maths exam. He was tired because he had been working on the film set all morning. I gave him his exam paper and started reading a book. Suddenly I heard a snore. I looked up and realized Ben had fallen asleep."
+          ]
+        },
+        detailedContent: [
+          "كانت سالي تسافر كثيراً مع طلابها لأن الأفلام تُصوّر أحياناً في بلدان أخرى.",
+          "نسيت جواز سفرها في إحدى الرحلات إلى إيطاليا، فلم تتمكن من ركوب الطائرة واضطرت إلى الانتظار حتى اليوم التالي.",
+          "في امتحان الرياضيات، غلب النوم الطالب بن لأنه كان يعمل طوال الصباح في موقع التصوير."
+        ],
+        teacherNotes: [
+          "Why didn’t Sally like her job? — She didn’t like being away from her family.",
+          "Why couldn’t Sally get on the plane? — She had forgotten her passport.",
+          "What happened during the Maths exam? — Ben fell asleep."
+        ],
+        commonMistakes: [],
+        examples: [
+          {
+            en: "I couldn’t get on the plane because I had forgotten my passport.",
+            ar: "لم أتمكن من ركوب الطائرة لأنني كنت قد نسيت جواز سفري.",
+            highlight: "had forgotten",
+            note: "مثال من نص القراءة على الماضي التام"
+          }
+        ],
+        exercises: [
+          {
+            id: "4u2-ex7-1",
+            question: "What didn’t Sally like about her job?",
+            options: [
+              "Being away from her family",
+              "Seeing new places",
+              "Using a computer"
+            ],
+            correctAnswer: "Being away from her family",
+            explanation: "تذكر سالي أنها لم تكن تحب الابتعاد عن عائلتها.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 43"
+          },
+          {
+            id: "4u2-ex7-2",
+            question: "Why couldn’t Sally get on the plane to Italy?",
+            options: [
+              "She had forgotten her passport",
+              "She was carrying too many suitcases",
+              "She went to the airport on the wrong day"
+            ],
+            correctAnswer: "She had forgotten her passport",
+            explanation: "نسيت سالي جواز سفرها.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 43"
+          },
+          {
+            id: "4u2-ex7-3",
+            question: "What happened during Ben’s Maths exam?",
+            options: ["Ben fell asleep", "Sally fell asleep", "Ben left the room"],
+            correctAnswer: "Ben fell asleep",
+            explanation: "سمعت سالي شخيراً ثم أدركت أن بن قد نام.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 43"
           }
         ]
       }
