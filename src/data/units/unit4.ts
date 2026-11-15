@@ -73,7 +73,13 @@ export const UNIT_4: Unit = {
           type: "mcq",
           ministerialYear: "تمرين C ص 77"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "source_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "كتاب الطالب ص 42 (النص الكامل غير موجود في ملزمة السادس 2027 المرفوعة)؛ كتاب النشاط ص 76 للتمارين",
+        verificationNote: "لم يظهر نص Rashid & Rana Designs في الملف المرفوع؛ الموجود إحالة إلى كتاب الطالب ص42 وتمارين كتاب النشاط. نحتاج صفحة المصدر الأصلية."
+      }
     },
     {
       id: "u4-l2",
@@ -85,7 +91,7 @@ export const UNIT_4: Unit = {
       summary: "قطعة استيعاب أحدث التقنيات الرقمية في ممارسة الرياضة: الساعات الذكية، تتبع ضربات القلب، السعرات الحرارية، مرايا اللياقة التفاعلية، والذكاء الاصطناعي في التمرين.",
       grammarRuleFormula: "Fitness Tech Key Concepts:\n- Smart watches & trackers: monitor heart rate, sleep quality and burned calories\n- Smart fitness mirrors: interactive screens providing instant trainer feedback\n- AI workout apps: tailor personalized routines to personal fitness goals",
       detailedContent: [
-        "قطعة تقنيات اللياقة البدنية (ص 84 - 86 من ملزمة الأستاذ مصطفى تركي):",
+        "قطعة تقنيات اللياقة البدنية (ص 80 من ملزمة السادس 2027، PDF ص 82):",
         "- كيف غيرت التكنولوجيا الحديثة عالم اللياقة والتمارين البدنية في السنوات الأخيرة؟",
         "- أجهزة التتبع القابلة للارتداء (Wearable fitness trackers): تقيس نبضات القلب، عدد الخطوات، جودة النوم، وحرق السعرات الحرارية بدقة عالية.",
         "- المرايا الذكية (Smart mirrors): شاشات متطورة تعكس صورة المتدرب وتوفر له توجيهات فورية لتصحيح وضعية التمرين وحركات الجسد لمنع الإصابات.",
@@ -122,7 +128,13 @@ export const UNIT_4: Unit = {
           type: "mcq",
           ministerialYear: "منهاج 2027 الحديث"
         }
-      ]
+      ],
+      readingPassage: {
+        status: "permission_required",
+        sourceTitle: "ملزمة السادس 2027 — إعداد الأستاذ عمار غالب",
+        sourcePages: "ص 80 من ملزمة السادس 2027 (PDF ص 82)",
+        verificationNote: "عُثر على نص Fitness Tech في ص80. موضوعاته الفعلية: التمرين المنزلي، مجتمعات الرياضة عبر الإنترنت، التطبيقات، مرايا التمرين والذكاء الاصطناعي في الصالات. النشر الرقمي للنص الكامل يحتاج إذناً."
+      }
     },
     {
       id: "u4-l3",
