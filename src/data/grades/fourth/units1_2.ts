@@ -83,6 +83,18 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
         category: "grammar",
         summary: "التعبير عن الأنشطة الجارية والتغيرات المتصاعدة والمستمرة (rising, falling, going up, going down) باستخدام المضارع المستمر.",
         sourcePages: "الملزمة ص 5 - 8",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الرابع الإعدادي",
+          sourcePages: "5",
+          verificationNote: "أربعة تقارير قصيرة A–D في صفحة المصدر 5، وهي المادة القرائية التي تشرح تغير إحصائيات تعلم اللغات.",
+          originalText: [
+            "The number of American university students learning Spanish is falling. It is still the most studied language, but in 2006, 822,148 students were studying Spanish at universities in the USA and in 2016, that number was 712,240. Other languages are rising, including American Sign Language. In 2006, there were 79,744 students studying it, while 107,060 were studying it in 2016.",
+            "Many students travel abroad to get a degree, learn a language or learn about a new country. The UK is one of the most popular destinations. The number of international students in UK universities is rising. In 2014/2015, the number of international students was 442,255, but in 2020/2021 it was 605,130.",
+            "It is difficult to say exactly how many languages are spoken in the world today. Most experts think that there are around 6,800. But the number of languages in the world is going down. Linguists say there will only be 3,000 by 2100. This is because people prefer to learn the most common languages so they can communicate with others, read newspapers from other countries and use the internet.",
+            "The number of people learning Arabic in American universities is going up. It rose from 24,010 students to 31,554 students between 2006 and 2016. Most people who study Arabic learn it at university, then go to an Arabic-speaking country to practise speaking and listening."
+          ]
+        },
         grammarRuleFormula: "Present Continuous Formula:\n- Subject + am / is / are + V-ing\n- Negative: Subject + am not / isn't / aren't + V-ing\n- Question: Am / Is / Are + Subject + V-ing...?\n- Key adverbs: now, right now, at this moment, currently, today, at present\n- Dynamic change verbs: rise (يرتفع), fall (ينخفض), go up (يزداد), go down (يتراجع).",
         detailedContent: [
           "تقرير إحصائيات اللغات (Student's Book p. 5): عدد الطلاب الأمريكيين الذين يتعلمون اللغة الإسبانية في تراجع، بينما يرتفع عدد الطلاب الأجانب في جامعات المملكة المتحدة وفي الإقبال على اللغة العربية.",
@@ -121,6 +133,19 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
         category: "grammar",
         summary: "معايير اختيار الكورس الصيفي وقاعدة التمييز الحاسمة بين الصفات المنهية بـ (-ed) والصفات المنتهية بـ (-ing).",
         sourcePages: "الملزمة ص 9 - 14",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الرابع الإعدادي",
+          sourcePages: "9, 12–13",
+          verificationNote: "يتضمن المصدر مقال How to choose a summer programme وصفحات عروض المدارس الأربع التي تُستخدم في نشاط المطابقة.",
+          originalText: [
+            "How to choose a summer programme\nThe number of people taking part in summer study programmes is going up all the time. Choosing a programme can be confusing for both parents and children. That’s why you need to think carefully before you make your choice. Here are some questions you should ask yourself.\nWhat are your learning goals? Some summer programmes have classes in all subjects to help you prepare for school in the autumn. They can help you improve in all subjects. Others are especially for students who want to learn or practise a language. There are programmes that have classes all day, for people who need to make a lot of progress quickly. Other programmes offer classes only in the morning, so you can visit interesting places as well as studying.\nWhat do you like doing in your free time? You can do different activities in a city than in the country. If you like doing sport or enjoy being in a quiet place, you should choose a programme in the countryside. But if you like going to museums or the cinema, choose a programme in the city, or you might get bored.\nHow do you learn best? Some people like to be in small classes where they can get plenty of attention and help from their teachers. Others work better in larger groups where they can share their ideas with a lot of other people. Think about what type of class you like best, and find out about class size in the programmes you’re interested in.\nStudy programmes are an exciting way to meet new people, learn new things and have fun. If you choose the right programme, you will have a fantastic time.\nFor more information, email us at summerprogramme@summer.edu or visit our website.",
+            "At Worcester School, we offer an intensive English programme for students who really want to learn the language. You study 30 hours of English during the week, then go on trips to popular British destinations, including London, Cambridge and Oxford, at the weekends.",
+            "At LSE Bristol, we offer the perfect programme for active teenagers. Apart from studying English five hours a day, practising all skills, you also enjoy a number of physical activities, including football, swimming and tennis. We have students from lots of different nationalities, so you will speak English all the time!",
+            "At Bluebell School, you study English in the morning, and you can choose from Spanish, French or German to study in the afternoon. You also practise English with your host family, and at weekends, we take you to visit different parts of Oxford, where our school is located.",
+            "Come and study at Rushmore School! Our classes are very small, with a maximum of six students. With a focus on conversation, our lessons are dynamic and get all students talking. In the afternoon, we offer lots of activities, including painting, theatre and music."
+          ]
+        },
         grammarRuleFormula: "(-ed) vs (-ing) Adjectives Rules:\n1) -ed Adjectives: تصف شعور وإحساس الكائن الحي الداخلي (I felt embarrassed / He was excited).\n2) -ing Adjectives: تصف الشيء أو الموقف الذي يسبب ذلك الشعور (The lesson was interesting / It was an amazing summer).\n* قاعدة الاختبار السرية بالملزمة ص 11:\n- إذا جاء بعد الفراغ اسم (اسم موصوف) اختر صفة (-ing) حتماً!\n- إذا جاء بعد الفراغ (حرف جر مثل in, at, about, with أو كلمة when/that) أو انتهت الجملة، وكان الفاعل عاقلاً يشعر بالشيء فاختر (-ed).",
         detailedContent: [
           "نصائح اختيار البرنامج الصيفي (Student's Book p. 9): مراعاة حجم البرنامج، عدد ساعات اللغة، الجولات الثقافية، الأنشطة الرياضية، ونوع السكن.",
@@ -173,7 +198,19 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
         titleEn: "Lesson 4: Country Factfile: Canada's Geography, Population & Official Languages",
         category: "reading",
         summary: "القطعة الاستيعابية حول كندا، مساحتها الجغرافية الشاسعة، العاصمة أتاوا، واللغتين الرسميتين (الإقليميتين): الإنكليزية والفرنسية.",
-        sourcePages: "الملزمة ص 15 - 18",
+        sourcePages: "الملزمة ص 20",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الرابع الإعدادي",
+          sourcePages: "20",
+          verificationNote: "النص الأصلي Canada، بأجزائه الأربعة A–D، من صفحة المصدر 20.",
+          originalText: [
+            "A. Canada is the second largest country in the world, after Russia. It is 9,979,619 km2. It has a population of 38.01 million, and that number is growing. But Canada’s population is not large for its size. Most people live near the border with the USA.",
+            "B. Canada is a beautiful country. Because it is so big, there are many national parks and wilderness areas. If you travel to Canada, you can see rivers, lakes, forests, and even glaciers. One of Canada’s most famous natural features is Niagara Falls.",
+            "C. How do people live in a country with two official languages? The two official languages of Canada are English and French, because some Canadians are of British origin and some are of French origin. Most people don’t speak both languages. About 22% of the population speak French, and about 75% speak English. You will hear more French or English depending on where you are.",
+            "D. Canada has several large cities. The biggest of these is Toronto. The capital, Ottawa, is only the fourth largest city. In Ottawa, about half the people speak both French and English. Communication is easier there!"
+          ]
+        },
         detailedContent: [
           "حقائق عن كندا (Canada Factfile): ثاني أكبر دولة في العالم من حيث المساحة بعد روسيا؛ عاصمتها أتاوا (Ottawa) بينما أكبر مدنها تورونتو (Toronto).",
           "اللغات الرسمية: اللغة الإنكليزية واللغة الفرنسية هما اللغتان الرسميتان المعتمدتان في البلاد، ويتحدث بالفرنسية حوالي 20% من السكان خاصة في إقليم كيبك (Quebec).",
@@ -245,7 +282,67 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
         ]
       },
       {
-        id: "4th-u1-l6",
+              {
+        id: "4th-u1-reading-history",
+        unitId: 41,
+        lessonNumber: 7,
+        titleAr: "قراءة إضافية: تاريخ اللغة الإنكليزية",
+        titleEn: "Supplementary Reading: History of the English Language",
+        category: "reading",
+        summary: "قراءة توضيحية لتاريخ مفردات اللغة الإنكليزية وتأثرها بالأنجلوسكسونية واللغات الإسكندنافية والفرنسية، وتطور المرادفات.",
+        sourcePages: "الملزمة ص 18 - 19",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الرابع الإعدادي",
+          sourcePages: "18–19",
+          verificationNote: "عنوان القراءة وتدريباتها يظهران في الصفحتين 18 و19 من المصدر؛ لم تُذكر لها تسمية Lesson مرقّمة في رأس الصفحة، لذلك أُضيفت بوصفها قراءة تكميلية.",
+          originalText: [
+            "History of the English Language\nWhy are there so many words with similar meanings in English? Why do we have two words – sick and ill – that look very different but both mean not very well? Why is a reply also an answer? And why are there weddings and marriages in English? The answer lies in the history of Britain.",
+            "Old English was a very different language from the English we know today. It included words brought to England by Anglo-Saxons and Vikings. The Anglo-Saxons brought their language with them in the 5th century. The Vikings invaded in the 9th century and brought more words. This mixture of languages was first written down in the 10th century.",
+            "The same thing happened after 1066, when the Normans invaded England. They brought the French language and this added more words to the mixture (close for shut, desire for wish and liberty for freedom).",
+            "Over time, the pairs of words – or synonyms – started to have very small differences in meaning. In fact, it is almost impossible to find two words that mean exactly the same thing. One word in a pair of synonyms is usually more formal or more specific than the other. The example sentences in dictionaries will help you decide if you can use either word, or if you must choose one."
+          ]
+        },
+        detailedContent: [
+          "دخلت مفردات إلى الإنكليزية القديمة عبر الأنجلوسكسونيين والفايكنغ، ثم تأثرت بالفرنسية بعد الغزو النورماني سنة 1066.",
+          "تطورت بعض أزواج المرادفات بحيث أصبحت تحمل فروقاً صغيرة في المعنى أو مستوى الرسمية."
+        ],
+        teacherNotes: [
+          "The Anglo-Saxons brought their language in the 5th century.",
+          "The Vikings invaded in the 9th century.",
+          "The Normans invaded England in 1066 and brought French words."
+        ],
+        commonMistakes: [],
+        examples: [
+          {
+            en: "One word in a pair of synonyms is usually more formal or more specific than the other.",
+            ar: "تكون إحدى كلمتي المرادفات عادةً أكثر رسمية أو أكثر تحديداً من الأخرى.",
+            highlight: "synonyms",
+            note: "الفكرة الرئيسة في الفقرة الأخيرة"
+          }
+        ],
+        exercises: [
+          {
+            id: "4u1-history-ex1",
+            question: "When did the Normans invade England?",
+            options: ["1066", "1492", "1910", "1946"],
+            correctAnswer: "1066",
+            explanation: "يذكر النص أن النورمان غزوا إنكلترا بعد عام 1066.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 18"
+          },
+          {
+            id: "4u1-history-ex2",
+            question: "When was the mixture of Old English languages first written down?",
+            options: ["The 5th century", "The 9th century", "The 10th century", "The 21st century"],
+            correctAnswer: "The 10th century",
+            explanation: "يوضح النص أن هذا المزيج كُتب لأول مرة في القرن العاشر.",
+            type: "mcq",
+            sourcePages: "الملزمة ص 18"
+          }
+        ]
+      },
+id: "4th-u1-l6",
         unitId: 41,
         lessonNumber: 6,
         titleAr: "الدرس السادس: استمارة المعومات واختبار الوحدة الأولى (Information Form & Unit 1 Test)",
@@ -476,6 +573,7 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
             sourcePages: "الملزمة ص 31"
           }
         ]
+      },
       {
         id: "4th-u2-l5",
         unitId: 42,
