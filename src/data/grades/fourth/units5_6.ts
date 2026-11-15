@@ -154,6 +154,17 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
         category: 'reading',
         summary: 'قراءة عن التطريز والنقش على النحاس ونفخ الزجاج في لبنان، وتاريخ الزجاج ومهارات الحرفيين وانتقالها داخل العائلة.',
         sourcePages: 'الملزمة ص 87 - 90',
+        readingPassage: {
+          status: 'verified',
+          sourceTitle: 'ملزمة الرابع الإعدادي',
+          sourcePages: '87',
+          verificationNote: 'النص الإنجليزي الكامل لقراءة Glass-blowing – a family business في صفحة المصدر 87.',
+          originalText: [
+            'If you are travelling to Lebanon, try to see some of the gorgeous objects people make there. Some of the most popular crafts are embroidery, copper-engraving and glass-blowing. If you are lucky, you can visit a workshop and see how the objects are made.',
+            'Glass was known in the Middle East over 4,000 years ago. People used glass to make things like bowls, vases and jewelry, but the glass was thicker than the glass we know today. Then, over 2,100 years ago, Syrian craftsmen invented glass-blowing. They used this technique to make finer, more beautiful glass objects.',
+            'Glass-blowing has been a popular craft for centuries in Lebanon. Today it is used by some small family businesses. The skills used are passed down from father to son and the craftsmen are proud of their work. Unfortunately, it is difficult to make enough money just by blowing glass. Many craftsmen have to have other jobs, too.'
+          ]
+        },
         detailedContent: [
           'تذكر القراءة حرفاً لبنانية مثل embroidery وcopper-engraving وglass-blowing.',
           'تذكر أن الزجاج معروف في الشرق الأوسط منذ أكثر من 4,000 سنة، وأن حرفيين سوريين ابتكروا نفخ الزجاج قبل أكثر من 2,100 سنة.',
@@ -171,6 +182,20 @@ export const FOURTH_PREPARATORY_UNITS_5_6: Unit[] = [
         category: 'grammar',
         summary: 'مراجعة الأفعال التي يأتي بعدها to + المصدر، وقراءة رحلة مدرسية إلى المتحف الوطني العراقي وتاريخه ومقتنياته.',
         sourcePages: 'الملزمة ص 91 - 96',
+        readingPassage: {
+          status: 'verified',
+          sourceTitle: 'ملزمة الرابع الإعدادي',
+          sourcePages: '92',
+          verificationNote: 'النص الإنجليزي الكامل لقراءة A School Trip في صفحة المصدر 92؛ وهو قراءة مدمجة مع موضوع الأفعال التي تتبعها to-infinitive.',
+          originalText: [
+            'The history of Iraq is the history of all humanity.',
+            'Last week we went on a school trip to the National Museum of Iraq. It is a very nice building, and you feel calm there. A lot of artefacts and relics were first collected in a government building in Baghdad in 1922. In 1966, the Iraqi government moved the collection into the new two-storey museum building in Al-Salihiya, in Al-Karkh in Baghdad. This building is the National Museum of Iraq.',
+            'We arrived at the museum at ten o’clock. When we went inside, a museum guide gave us some worksheets with information about things in the museum and questions to answer. We divided into groups of four. I was with Mazin, Osama and Jalal.',
+            'We stayed first on the ground floor and went to the Assyrian and Babylonian galleries. We wanted to look at the Mesopotamian cuneiform texts, which date back to 1500 BC. We also looked at the Assyrian sculpture of the winged bull, Lamassu, with its five legs. Then we looked at the fine pieces of Assyrian jewelry that were found in the royal tombs at Namrud. My friend Mazin took brilliant photos in the Sumerian and Akkadian galleries. We also wandered in the ivory gallery, where we saw some furnishings decorated with ivory, gold and precious stones.',
+            'Once we had visited all the galleries and answered all the questions on our worksheets, we went to the cafeteria on the ground floor. Then we went to the gift shop. I bought a postcard and Jalal bought a beautiful cup with a golden pattern on it.',
+            'We had a fantastic time at the museum, and we learnt a lot about many civilizations in Iraq. I want to come again soon to study the beautiful jewelry because one day I want to be a jewellery designer.'
+          ]
+        },
         grammarRuleFormula: 'Verb + to + base form.\\nExample: decide to visit; refuse to say; offer to help.',
         detailedContent: [
           'تعرض الصفحات أفعالاً يتبعها المصدر مع to، مع أمثلة وتمارين لإكمال الجمل.',
