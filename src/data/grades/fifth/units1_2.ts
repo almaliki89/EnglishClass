@@ -513,6 +513,16 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
         category: "reading",
         summary: "قصة الشاب العراقي راشد زيد ومبادرته الخيرية لجمع وإصلاح الأجهزة اللوحية والهواتف القديمة وتوزيعها على الطلاب المتعففين للتغلب على الفقر الرقمي.",
         sourcePages: "الملزمة ص 48 - 51",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الخامس الإعدادي 2026",
+          sourcePages: "48",
+          verificationNote: "صفحة المصدر 48 تتضمن رسالة Justin Cartwright إلى Rashid ونص We need computers؛ أُدرجا كنصين أصليين منفصلين داخل هذا الدرس.",
+          originalText: [
+            "Dear Rashid,\nYou don’t know me, but I heard about your organization, We Are Connected, through my niece Amy, who is a friend of yours. I loved your idea and would very much like to help. I own a computer repair shop, and I would be happy to fix any computers you receive that have any problems (completely for free, of course).\nPlease let me know if you’re interested and we can arrange the details.\nBye for now,\nJustin Cartwright",
+            "We need computers …\nIn recent decades, access to computers and the internet has made a big difference in the education of millions of children. Those without computers at home had difficulties doing homework or searching information. However, an already difficult situation has become even worse during the pandemic. With only lessons online, those without access to the internet cannot study at all. There are many organizations working to close the digital gap, but these students need help urgently."
+          ]
+        },
         detailedContent: [
           "مفهوم الفقر الرقمي (Digital Poverty): عدم امتلاك الأسر المتعففة أجهزة ذكية أو اتصالاً بالإنترنت لمتابعة التعليم الإلكتروني والدروس.",
           "مبادرة راشد زيد (We Are Connected): بدأ راشد، وهو طالب عراقي مهتم بالتكنولوجيا، بجمع الهواتف والحواسيب المستعملة من المتبرعين، وإعادة برمجتها وصيانتها ثم توزيعها مجاناً على الطلبة في القرى والأحياء الفقيرة.",
