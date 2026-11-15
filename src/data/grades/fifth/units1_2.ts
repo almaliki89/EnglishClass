@@ -742,7 +742,7 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
         unitId: 52,
         lessonNumber: 8,
         titleAr: "الدرس الثامن: تاريخ الهواتف المحمولة واستخداماتها (The History of Mobile Phones)",
-        titleEn: "Lesson 8: The History and Uses of Mobile Phones",
+        titleEn: "Lesson 8: History of Mobile Phones",
         category: "reading",
         summary: "قراءة عن تطور الهواتف المحمولة من جهاز استخدمته الشرطة السويدية عام 1946 إلى الشبكات العامة والهواتف الحديثة، مع بيان فوائد الهواتف ومخاطر استخدامها أثناء القيادة.",
         sourcePages: "الملزمة ص 67 - 71",
