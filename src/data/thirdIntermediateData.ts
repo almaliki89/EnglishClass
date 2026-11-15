@@ -891,6 +891,20 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
         category: "reading",
         summary: "قصة إبراهيم الذي نشأ في قرية جنوب العراق، اهتم بالحيوانات، انتقل إلى بغداد عام 1990، تعلم الفرنسية من بيير، ودرس علم الحيوان في جامعة القاهرة.",
         sourcePages: "85-87",
+        readingPassage: {
+          status: "verified",
+          sourceTitle: "ملزمة الثالث المتوسط 2025",
+          sourcePages: "85–87",
+          verificationNote: "النص الإنجليزي مطابق للقطعة المعروضة في صفحات المصدر.",
+          originalText: [
+            "Ibrahim lived in a small village in the south of Iraq when he was a child. He loved the sea and he often went fishing with his father. From an early age, he was interested in animals. He was forever asking questions about animals, for example, 'Why do flies have wings?' and 'Why do fish live in the sea?'",
+            "His father had goats and chickens and Ibrahim liked to look after them. He talked to them as if they were friends. His brothers used to laugh at him.",
+            "When he went to school, Ibrahim learned to read quickly. He liked reading and he was always asking his father for books. He did not like television, so he spent a lot of time reading. He learnt that there were lots of different animals in other countries.",
+            "In 1990, Ibrahim's father got a new job with Iraq Petroleum and the family moved to Baghdad. Life was very different in the city. At first, Ibrahim did not like it, but after a few months, he found that there was a lot to do for a 16-year-old boy.",
+            "One day, at the mall, he met a French boy called Pierre. Ibrahim learned to speak some French with him. He also learned about France. The boys used to talk about what they wanted to do when they left school. One day, Ibrahim said 'I think I'll be a zoologist. Then I can study animals in different countries.'",
+            "When Ibrahim left school, he studied zoology at Cairo University. Now he is a well-known zoologist. He works in France and he is writing a book about animals in Africa."
+          ]
+        },
         detailedContent: [
           "Ibrahim lived in a small village in the south of Iraq when he was a child. He loved the sea and he often went fishing with his father. From an early age, he was interested in animals. He was forever asking questions about animals, for example, 'Why do flies have wings?' and 'Why do fish live in the sea?'",
           "His father had goats and chickens and Ibrahim liked to look after them. He talked to them as if they were friends. His brothers used to laugh at him.",
