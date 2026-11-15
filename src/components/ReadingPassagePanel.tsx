@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AlertTriangle, BookOpen, CheckCircle2, FileText, Volume2 } from 'lucide-react';
+import { AlertTriangle, BookOpen, CheckCircle2, FileText, Volume2, ClipboardList, Languages } from 'lucide-react';
 import { Lesson, ReadingPassageStatus } from '../types';
 import { speakEnglish } from '../utils/speech';
 
@@ -28,9 +28,9 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
   const status: ReadingPassageStatus = passage?.status || 'source_required';
   const originalText = passage?.originalText || [];
   const translations = passage?.translation || [];
+  const exerciseSets = passage?.exerciseSets || [];
   const hasOriginalText = originalText.some((paragraph) => paragraph.trim().length > 0);
-  const canShowSourceText = status === 'verified' || status === 'reconstructed';
-  const [showTranslation, setShowTranslation] = useState(false);
+  const canShowSourceContent = (status === 'verified' || status === 'reconstructed') && hasOriginalText;
   const [speakingIndex, setSpeakingIndex] = useState<number | null>(null);
 
   const handleSpeak = (index: number, paragraph: string) => {
@@ -39,7 +39,7 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
   };
 
   return (
-    <section className="space-y-5" aria-labelledby="reading-passage-heading">
+    <section className="space-y-5" aria-labelledby="reading-passage-heading" data-testid="reading-passage-dossier">
       <header className="bg-surface border-3 border-ink shadow-brutal-action p-5 sm:p-7 space-y-4">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-2">
@@ -48,7 +48,8 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
             </div>
             <div>
               <p className="text-[10px] font-mono font-black tracking-wider text-cobalt">READING COMPREHENSION</p>
-              <h2 id="reading-passage-heading" className="text-lg sm:text-xl font-black text-ink">نص القراءة الأصلي</h2>
+              <h2 id="reading-passage-heading" className="text-lg sm:text-xl font-black text-ink">القطعة وأسئلتها</h2>
+              <p className="text-xs text-ink/65 mt-1">{lesson.titleAr}</p>
             </div>
           </div>
           <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 border-2 text-xs font-black ${STATUS_STYLES[status]}`}>
@@ -61,15 +62,15 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
           <div className="flex items-start gap-2 bg-paper border border-ink p-3">
             <FileText className="w-4 h-4 shrink-0 text-cobalt mt-0.5" />
             <div>
-              <p className="font-black text-ink">المصدر</p>
+              <p className="font-black text-ink">مصدر القطعة</p>
               <p className="text-ink/75 mt-1">{passage?.sourceTitle || 'لم يُربط مصدر محدد بعد'}</p>
             </div>
           </div>
           <div className="flex items-start gap-2 bg-paper border border-ink p-3">
             <BookOpen className="w-4 h-4 shrink-0 text-cobalt mt-0.5" />
             <div>
-              <p className="font-black text-ink">الصفحة / الموضع</p>
-              <p className="text-ink/75 mt-1">{passage?.sourcePages || lesson.sourcePages || 'غير محدد'}</p>
+              <p className="font-black text-ink">صفحة القطعة</p>
+              <p className="text-ink/75 mt-1">{passage?.sourcePages || lesson.sourcePages || 'غير محددة'}</p>
             </div>
           </div>
         </div>
@@ -78,64 +79,127 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
         )}
       </header>
 
-      {canShowSourceText && hasOriginalText ? (
-        <div className="bg-surface border-3 border-ink shadow-brutal-modal p-5 sm:p-7 space-y-5">
-          <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink/15 pb-3">
-            <div>
-              <h3 className="font-black text-ink">Original English Passage</h3>
-              <p className="text-xs text-ink/65 mt-1">اقرأ الفقرات بالترتيب، واستمع إلى نطق كل فقرة عند الحاجة.</p>
+      {canShowSourceContent ? (
+        <>
+          <section className="bg-surface border-3 border-ink shadow-brutal-modal p-5 sm:p-7 space-y-5" data-testid="original-passage-section">
+            <div className="border-b-2 border-ink/15 pb-3">
+              <p className="text-[10px] font-mono font-black tracking-wider text-cobalt">PART 01 · ORIGINAL TEXT</p>
+              <h3 className="font-black text-ink text-lg">النص الإنجليزي الكامل</h3>
+              <p className="text-xs text-ink/65 mt-1">اقرأ النص كاملًا أولًا، ثم انتقل إلى ترجمته العربية في القسم التالي.</p>
             </div>
-            {translations.length > 0 && (
-              <button
-                type="button"
-                onClick={() => setShowTranslation((value) => !value)}
-                className="px-3 py-1.5 text-xs font-black bg-yellow border-2 border-ink shadow-brutal-sm"
-              >
-                {showTranslation ? 'إخفاء الترجمة' : 'إظهار الترجمة'}
-              </button>
-            )}
-          </div>
+            <div className="space-y-4">
+              {originalText.map((paragraph, index) => (
+                <article key={index} className="bg-paper border-2 border-ink p-4 sm:p-5 space-y-3">
+                  <div className="flex items-center justify-between gap-3">
+                    <span className="text-[10px] font-mono font-black text-cobalt">PARAGRAPH {index + 1}</span>
+                    <button
+                      type="button"
+                      onClick={() => handleSpeak(index, paragraph)}
+                      aria-label={`استمع إلى الفقرة ${index + 1}`}
+                      className={`inline-flex items-center gap-1.5 px-2.5 py-1 border-2 border-ink text-xs font-bold ${speakingIndex === index ? 'bg-yellow' : 'bg-surface hover:bg-yellow'}`}
+                    >
+                      <Volume2 className="w-3.5 h-3.5" />
+                      {speakingIndex === index ? 'يتم النطق' : 'استمع'}
+                    </button>
+                  </div>
+                  <p dir="ltr" lang="en" className="text-left font-medium text-sm sm:text-base leading-8 text-ink whitespace-pre-wrap">{paragraph}</p>
+                </article>
+              ))}
+            </div>
+          </section>
 
-          <div className="space-y-4">
-            {originalText.map((paragraph, index) => (
-              <article key={index} className="bg-paper border-2 border-ink p-4 sm:p-5 space-y-3">
-                <div className="flex items-center justify-between gap-3">
-                  <span className="text-[10px] font-mono font-black text-cobalt">PARAGRAPH {index + 1}</span>
-                  <button
-                    type="button"
-                    onClick={() => handleSpeak(index, paragraph)}
-                    aria-label={`استمع إلى الفقرة ${index + 1}`}
-                    className={`inline-flex items-center gap-1.5 px-2.5 py-1 border-2 border-ink text-xs font-bold ${speakingIndex === index ? 'bg-yellow' : 'bg-surface hover:bg-yellow'}`}
-                  >
-                    <Volume2 className="w-3.5 h-3.5" />
-                    {speakingIndex === index ? 'يتم النطق' : 'استمع'}
-                  </button>
-                </div>
-                <p dir="ltr" lang="en" className="text-left font-medium text-sm sm:text-base leading-8 text-ink whitespace-pre-wrap">{paragraph}</p>
-                {showTranslation && translations[index] && (
-                  <p dir="rtl" lang="ar" className="border-t border-ink/20 pt-3 text-sm leading-8 text-ink/80">{translations[index]}</p>
-                )}
-              </article>
-            ))}
-          </div>
-        </div>
+          <section className="bg-paper border-3 border-ink shadow-brutal-action p-5 sm:p-7 space-y-4" data-testid="passage-translation-section">
+            <div className="flex items-center gap-2 border-b-2 border-ink/15 pb-3">
+              <Languages className="w-5 h-5 text-cobalt" />
+              <div>
+                <p className="text-[10px] font-mono font-black tracking-wider text-cobalt">PART 02 · ARABIC TRANSLATION</p>
+                <h3 className="font-black text-ink text-lg">الترجمة العربية الكاملة</h3>
+              </div>
+            </div>
+            {translations.length > 0 ? (
+              <div className="space-y-3">
+                {translations.map((paragraph, index) => (
+                  <p key={index} dir="rtl" lang="ar" className="bg-surface border border-ink/40 p-4 text-sm sm:text-base leading-8 text-ink whitespace-pre-wrap">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            ) : (
+              <p className="bg-surface border border-dashed border-ink/40 p-4 text-sm leading-7 text-ink/70">
+                ترجمة هذه القطعة لم تُضف أو تُراجع بعد. لن نضع ترجمة مولّدة مكان الترجمة المعتمدة من المصدر دون تمييز.
+              </p>
+            )}
+          </section>
+
+          <section className="bg-surface border-3 border-ink shadow-brutal-modal p-5 sm:p-7 space-y-4" data-testid="passage-exercises-section">
+            <div className="flex items-center gap-2 border-b-2 border-ink/15 pb-3">
+              <ClipboardList className="w-5 h-5 text-cobalt" />
+              <div>
+                <p className="text-[10px] font-mono font-black tracking-wider text-cobalt">PART 03 · QUESTIONS & ANSWERS</p>
+                <h3 className="font-black text-ink text-lg">أسئلة كتاب النشاط / الملزمة مع الإجابات</h3>
+              </div>
+            </div>
+            {exerciseSets.length > 0 ? (
+              <div className="space-y-5">
+                {exerciseSets.map((set) => (
+                  <article key={set.id} className="border-2 border-ink bg-paper p-4 sm:p-5 space-y-4">
+                    <div className="flex flex-wrap items-start justify-between gap-2">
+                      <div>
+                        <h4 className="font-black text-ink">{set.source === 'activity_book' ? 'كتاب النشاط' : 'الملزمة'} · {set.sourceTitle}</h4>
+                        <p className="text-xs text-ink/65 mt-1">الصفحة: {set.sourcePages}</p>
+                      </div>
+                      <span className="text-[10px] font-mono font-black bg-yellow border border-ink px-2 py-1">{set.items.length} أسئلة / فقرات</span>
+                    </div>
+                    <div className="space-y-1">
+                      <p dir="ltr" lang="en" className="text-sm font-bold text-left leading-7">{set.instruction}</p>
+                      {set.instructionTranslation && <p dir="rtl" lang="ar" className="text-xs text-ink/70 leading-6">{set.instructionTranslation}</p>}
+                    </div>
+                    <div className="space-y-3">
+                      {set.items.map((item, index) => (
+                        <div key={item.id} className="border border-ink/30 bg-surface p-3 space-y-2">
+                          <p className="text-xs font-mono font-black text-cobalt">QUESTION {index + 1}</p>
+                          <p dir="ltr" lang="en" className="text-sm text-left leading-7 font-medium whitespace-pre-wrap">{item.question}</p>
+                          {item.questionTranslation && <p dir="rtl" lang="ar" className="text-xs text-ink/70 leading-6">{item.questionTranslation}</p>}
+                          {item.options && item.options.length > 0 && (
+                            <ul className="list-disc pl-6 text-sm leading-7" dir="ltr">
+                              {item.options.map((option, optionIndex) => <li key={optionIndex}>{option}</li>)}
+                            </ul>
+                          )}
+                          <div className="border-t border-ink/20 pt-2">
+                            <p className="text-[10px] font-black text-semantic-success mb-1">الإجابة النموذجية</p>
+                            <p dir="ltr" lang="en" className="text-sm text-left leading-7 font-bold whitespace-pre-wrap">{item.answer}</p>
+                            {item.answerTranslation && <p dir="rtl" lang="ar" className="text-xs text-ink/70 leading-6 mt-1">{item.answerTranslation}</p>}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                ))}
+              </div>
+            ) : (
+              <p className="bg-paper border border-dashed border-ink/40 p-4 text-sm leading-7 text-ink/70">
+                أسئلة كتاب النشاط أو الملزمة وإجاباتها لم تُربط بهذه القطعة بعد. لن نستبدلها بتمارين عامة من درس آخر.
+              </p>
+            )}
+          </section>
+        </>
       ) : (
         <div className="bg-paper border-3 border-ink shadow-brutal-action p-5 sm:p-7 space-y-3">
           <div className="flex items-center gap-2 text-ink">
             <AlertTriangle className="w-5 h-5 text-semantic-error" />
-            <h3 className="font-black">لم يتم توثيق نص القطعة الأصلي بعد</h3>
+            <h3 className="font-black">النص الكامل غير متاح للنشر في هذه النسخة</h3>
           </div>
           <p className="text-sm leading-7 text-ink/80">
             {status === 'permission_required'
-              ? 'تم تحديد نص القراءة وموضعه في الملزمة المرفوعة، لكن الملف لا يوضح إذناً بإعادة نشره رقمياً. لن نعرض النص الكامل قبل تأكيد الإذن من صاحب الحقوق. تبقى الشروحات والتمارين المتاحة منفصلة عن النص الأصلي.'
+              ? 'تم تحديد مصدر القطعة وموضعها، لكن لم يُثبت إذن إعادة نشرها رقميًا. لن نعرض النص الكامل أو أسئلة المصدر قبل توثيق الإذن.'
               : status === 'summary_only'
-                ? 'المحتوى المتاح لهذا الدرس شرح أو ملخص. لن نعرضه على أنه نص الكتاب الأصلي.'
-                : 'الدرس موجود في المنهج، لكن نص القراءة الإنجليزي الكامل لم يُطابق مع مصدره بعد. تبقى الأسئلة والشرح المتاحان منفصلين عن النص الأصلي.'}
+                ? 'المتاح لهذا الدرس شرح أو ملخص فقط، وليس نص الكتاب الأصلي.'
+                : 'لم تتم مطابقة نص القطعة الإنجليزي الكامل مع مصدره بعد. نحتاج صفحة المصدر المحددة قبل إدراجه.'}
           </p>
           <p className="text-xs leading-6 text-ink/65">
             {status === 'permission_required'
-              ? 'يمكن تفعيل النص الكامل بعد الحصول على موافقة واضحة للنشر الرقمي. أما الدروس التي يظهر لها أن المصدر مطلوب، فنحتاج إلى رفع صفحة الكتاب المحددة.'
-              : 'نحتاج نسخة كتاب الطالب أو الملزمة الخاصة بهذا الصف والصفحة المحددة حتى نضيف النص ونوثّق مطابقته. لا يتم توليد نص بديل أو اختراع فقرات لسد هذا النقص.'}
+              ? 'يمكن إدراج النص والترجمة وأسئلة النشاط مع الإجابات بعد توثيق موافقة النشر الرقمي.'
+              : 'لن نولّد فقرات بديلة أو ننسب نصًا غير موثّق إلى الكتاب أو الملزمة.'}
           </p>
         </div>
       )}
