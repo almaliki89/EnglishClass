@@ -152,7 +152,7 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
         ]
       }
     ]
-  },,
+  },
 
   '4p-u6-sleep': {
     id: '4p-u6-sleep',
