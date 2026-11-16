@@ -6,7 +6,7 @@ import {
   Layers, Compass, Cpu, PenTool, Award, Share2
 } from 'lucide-react';
 import { Unit, Lesson, Exercise, EducationalGrade } from '../types';
-import { GrammarLab } from './lesson-modes/GrammarLab';
+import { GrammarLearningJourney } from './GrammarLearningJourney';
 import { ReadingDossier } from './lesson-modes/ReadingDossier';
 import { ReadingPassagePanel } from './ReadingPassagePanel';
 import { VocabularyArena } from './lesson-modes/VocabularyArena';
@@ -55,10 +55,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   );
 
   useEffect(() => {
-    if (navigationState?.openSection === 'passage') {
-      setActiveSectionView('passage');
-    }
-  }, [location.key, navigationState?.openSection]);
+    setActiveSectionView(navigationState?.openSection === 'passage' ? 'passage' : 'guided');
+  }, [location.key, lesson.id, navigationState?.openSection]);
   const [speakingText, setSpeakingText] = useState<string | null>(null);
 
   const selectedPassage = navigationState?.passageId
@@ -114,11 +112,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
     switch (lesson.category) {
       case 'grammar':
         return {
-          title: 'قواعد وزارية وخوارزميات الحل',
+          title: 'شرح القواعد وتطبيقها',
           badgeClass: 'bg-blue-mist text-cobalt border-ink',
           accentColor: 'var(--token-cobalt)',
           icon: <Cpu className="w-4 h-4 text-cobalt" />,
-          modeName: 'معمل القواعد والتحويلات',
+          modeName: 'تطبيق القاعدة',
         };
       case 'reading':
         return {
@@ -149,11 +147,12 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   };
 
   const catConfig = getCategoryConfig();
+  const isGrammarLesson = lesson.category === 'grammar';
 
   // Render the tailored interactive mode for this specific lesson
   const renderTopicInteractiveMode = () => {
     if (lesson.category === 'grammar') {
-      return <GrammarLab lesson={lesson} />;
+      return null;
     }
     if (lesson.category === 'reading') {
       return <ReadingDossier lesson={lesson} />;
@@ -218,7 +217,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
             <span>{isCompleted ? 'مكتمل بنجاح! 🏆' : 'تحديد كمكتمل'}</span>
           </button>
 
-          <button
+          {!isGrammarLesson && <button
             type="button"
             id="toggle-quick-hints-btn"
             onClick={() => setShowQuickHints((prev) => !prev)}
@@ -227,12 +226,12 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           >
             <Sparkles className="w-3.5 h-3.5 text-cobalt" />
             <span>{showQuickHints ? 'إخفاء التلميحات' : 'تلميحات ذكية'}</span>
-          </button>
+          </button>}
         </div>
       </div>
 
       {/* 2. Quick Hints Panel */}
-      {showQuickHints && (
+      {!isGrammarLesson && showQuickHints && (
         <div className="p-5 bg-yellow/25 border-3 border-ink shadow-brutal-lg space-y-3 rounded-[6px]">
           <div className="flex items-center justify-between border-b-2 border-ink pb-2">
             <div className="flex items-center gap-2 text-ink font-black text-sm">
@@ -298,15 +297,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </p>
         </div>
 
-        <p className="text-sm sm:text-base text-ink/90 leading-relaxed pt-2 border-t border-ink/10 font-medium">
-          {lesson.summary}
-        </p>
+        {!isGrammarLesson && (
+          <p className="text-sm sm:text-base text-ink/90 leading-relaxed pt-2 border-t border-ink/10 font-medium">
+            {lesson.summary}
+          </p>
+        )}
 
         {/* Source Provenance Badge */}
         <div className="flex flex-wrap items-center gap-2 pt-2 text-xs font-mono font-bold">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-paper border-2 border-ink text-ink">
             <BookOpen className="w-3.5 h-3.5 text-cobalt shrink-0" />
-            <span>المصدر الدراسي: {lesson.sourcePages || `كتاب الطالب ص ${lesson.lessonNumber * 2} • كتاب النشاط`}</span>
+            <span>المصدر الدراسي: {lesson.sourcePages || lesson.provenance?.pageNumbers || (isGrammarLesson ? 'مرجع الصفحة غير مسجّل لهذا الدرس' : `كتاب الطالب ص ${lesson.lessonNumber * 2} • كتاب النشاط`)}</span>
           </span>
           <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-yellow text-ink border-2 border-ink">
             <CheckCircle2 className="w-3.5 h-3.5 text-ink shrink-0" />
@@ -314,87 +315,95 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </span>
         </div>
 
-        {/* View Mode Switcher Brutalist Tabs */}
+        {/* Grade-wide lesson navigation: grammar gets one clear learning path. */}
         <div className="pt-3 border-t-2 border-ink flex flex-wrap items-center gap-2">
           <span className="text-xs font-mono font-black text-ink ml-1">طريقة التعلم:</span>
-          <button
-            type="button"
-            onClick={() => setActiveSectionView('guided')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
-              activeSectionView === 'guided'
-                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm'
-                : 'bg-paper hover:bg-surface text-ink border-ink'
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5 text-yellow" />
-            <span>رحلة التعلم خطوة بخطوة</span>
-          </button>
-          
-          <button
-            type="button"
-            onClick={() => setActiveSectionView('all')}
-            className={`px-3 py-1.5 text-xs font-black transition-all cursor-pointer border-2 ${
-              activeSectionView === 'all'
-                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm'
-                : 'bg-paper hover:bg-surface text-ink border-ink'
-            }`}
-          >
-            كل أقسام الدرس
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveSectionView('interactive')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
-              activeSectionView === 'interactive'
-                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm'
-                : 'bg-paper hover:bg-surface text-ink border-ink'
-            }`}
-          >
-            <Sparkles className="w-3.5 h-3.5 text-yellow" />
-            <span>{catConfig.modeName}</span>
-          </button>
-
-          <button
-            type="button"
-            onClick={() => setActiveSectionView('academic')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
-              activeSectionView === 'academic'
-                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm'
-                : 'bg-paper hover:bg-surface text-ink border-ink'
-            }`}
-          >
-            <BookOpen className="w-3.5 h-3.5" />
-            <span>شرح الملزمة والملاحظات</span>
-          </button>
-
-          {(lesson.category === 'reading' || lesson.readingPassage) && (
-            <button
-              type="button"
-              onClick={() => setActiveSectionView('passage')}
-              className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
-                activeSectionView === 'passage'
-                  ? 'bg-cobalt text-surface border-ink shadow-brutal-sm'
-                  : 'bg-paper hover:bg-surface text-ink border-ink'
-              }`}
-            >
-              <BookOpen className="w-3.5 h-3.5" />
-              <span>نص القراءة الأصلي</span>
-            </button>
+          {isGrammarLesson ? (
+            <>
+              <button
+                type="button"
+                onClick={() => setActiveSectionView('guided')}
+                aria-pressed={activeSectionView === 'guided'}
+                className={`px-3.5 py-2 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 rounded-md ${activeSectionView === 'guided' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'}`}
+              >
+                <Lightbulb className="w-4 h-4 text-yellow" />
+                <span>شرح القاعدة خطوة بخطوة</span>
+              </button>
+              {(lesson.category === 'reading' || lesson.readingPassage) && (
+                <button
+                  type="button"
+                  onClick={() => setActiveSectionView('passage')}
+                  aria-pressed={activeSectionView === 'passage'}
+                  className={`px-3.5 py-2 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 rounded-md ${activeSectionView === 'passage' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'}`}
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>نص القراءة الأصلي</span>
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => setActiveSectionView('exercises')}
+                disabled={lesson.exercises.length === 0}
+                aria-pressed={activeSectionView === 'exercises'}
+                className={`px-3.5 py-2 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 rounded-md ${activeSectionView === 'exercises' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'} disabled:cursor-not-allowed disabled:opacity-40`}
+              >
+                <Award className="w-4 h-4" />
+                <span>حل التمارين ({lesson.exercises.length})</span>
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                type="button"
+                onClick={() => setActiveSectionView('guided')}
+                className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${activeSectionView === 'guided' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'}`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-yellow" />
+                <span>رحلة التعلم خطوة بخطوة</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveSectionView('all')}
+                className={`px-3 py-1.5 text-xs font-black transition-all cursor-pointer border-2 ${activeSectionView === 'all' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'}`}
+              >
+                كل أقسام الدرس
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveSectionView('interactive')}
+                className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${activeSectionView === 'interactive' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'}`}
+              >
+                <Sparkles className="w-3.5 h-3.5 text-yellow" />
+                <span>{catConfig.modeName}</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => setActiveSectionView('academic')}
+                className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${activeSectionView === 'academic' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'}`}
+              >
+                <BookOpen className="w-3.5 h-3.5" />
+                <span>شرح الملزمة والملاحظات</span>
+              </button>
+              {(lesson.category === 'reading' || lesson.readingPassage) && (
+                <button
+                  type="button"
+                  onClick={() => setActiveSectionView('passage')}
+                  className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${activeSectionView === 'passage' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'}`}
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  <span>نص القراءة الأصلي</span>
+                </button>
+              )}
+              <button
+                type="button"
+                onClick={() => setActiveSectionView('exercises')}
+                className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${activeSectionView === 'exercises' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'}`}
+              >
+                <Award className="w-3.5 h-3.5" />
+                <span>التمارين ({lesson.exercises.length})</span>
+              </button>
+            </>
           )}
-
-          <button
-            type="button"
-            onClick={() => setActiveSectionView('exercises')}
-            className={`px-3 py-1.5 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 ${
-              activeSectionView === 'exercises'
-                ? 'bg-cobalt text-surface border-ink shadow-brutal-sm'
-                : 'bg-paper hover:bg-surface text-ink border-ink'
-            }`}
-          >
-            <Award className="w-3.5 h-3.5" />
-            <span>التمارين ({lesson.exercises.length})</span>
-          </button>
         </div>
       </div>
 
@@ -408,26 +417,35 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         )}
 
       {activeSectionView === 'guided' && (
-        <GuidedLessonJourney
-          key={lesson.id}
-          lesson={lesson}
-          grade={grade}
-          isCompleted={isCompleted}
-          onComplete={handleToggleComplete}
-          onAnswerExercise={onAnswerExercise}
-          onOpenActivities={() => setActiveSectionView('interactive')}
-        />
+        isGrammarLesson ? (
+          <GrammarLearningJourney
+            key={lesson.id}
+            lesson={lesson}
+            grade={grade}
+            onOpenExercises={() => setActiveSectionView('exercises')}
+          />
+        ) : (
+          <GuidedLessonJourney
+            key={lesson.id}
+            lesson={lesson}
+            grade={grade}
+            isCompleted={isCompleted}
+            onComplete={handleToggleComplete}
+            onAnswerExercise={onAnswerExercise}
+            onOpenActivities={() => setActiveSectionView('interactive')}
+          />
+        )
       )}
 
       {/* 4. TOPIC-TAILORED INTERACTIVE ENGINE */}
-      {(activeSectionView === 'all' || activeSectionView === 'interactive') && (
+      {!isGrammarLesson && (activeSectionView === 'all' || activeSectionView === 'interactive') && (
         <div id="topic-tailored-interactive-section" className="space-y-4">
           {renderTopicInteractiveMode()}
         </div>
       )}
 
       {/* 5. ACADEMIC TEXTBOOK CONTENT & TEACHER NOTES */}
-      {(activeSectionView === 'all' || activeSectionView === 'academic') && (
+      {!isGrammarLesson && (activeSectionView === 'all' || activeSectionView === 'academic') && (
         <div className="space-y-6">
           <AcademicExplorationEngine lesson={lesson} />
 
@@ -484,9 +502,21 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       )}
 
       {/* 6. GROUNDED AI PEDAGOGICAL TUTOR */}
-      <GroundedLessonTutor unit={unit} lesson={lesson} />
+      {activeSectionView !== 'exercises' && (
+        <GroundedLessonTutor
+          unit={unit}
+          lesson={lesson}
+          gradeTitle={gradeMeta?.nameAr || 'الصف'}
+        />
+      )}
 
       {/* 7. EXERCISES & TESTS */}
+      {isGrammarLesson && activeSectionView === 'exercises' && lesson.exercises.length === 0 && (
+        <div className="rounded-xl border-2 border-dashed border-ink/40 bg-paper p-5 text-sm font-semibold leading-7 text-ink/70" dir="rtl">
+          لا توجد تمارين مسجّلة لهذا الدرس حتى الآن. راجع الأمثلة وملاحظات الدرس، ولا تُعرض أسئلة بديلة غير موجودة في المصدر.
+        </div>
+      )}
+
       {(activeSectionView === 'all' || activeSectionView === 'exercises') && lesson.exercises && lesson.exercises.length > 0 && (
         <div className="p-6 sm:p-8 bg-surface border-4 border-ink shadow-brutal-modal space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink pb-3">

@@ -330,16 +330,18 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
   });
 
 
-  test('11. Guided learning journey is the default lesson experience', async ({ page }) => {
+  test('11. Grammar lessons open the new source-driven explanation by default', async ({ page }) => {
     await page.goto('/grade/sixth-preparatory/unit/1/lesson/1-1');
     await page.waitForLoadState('networkidle');
 
-    await expect(page.getByRole('heading', { name: 'رحلة التعلم خطوة بخطوة' })).toBeVisible();
-    await expect(page.getByRole('button', { name: 'ابدأ الفهم' })).toBeVisible();
+    const journey = page.getByTestId('grammar-learning-journey');
+    await expect(journey).toBeVisible();
+    await expect(journey.getByRole('heading', { name: 'نتعلّمها بالفهم، لا بحفظ المعادلة' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'شرح القاعدة خطوة بخطوة' })).toBeVisible();
 
-    await page.getByRole('button', { name: 'ابدأ الفهم' }).click();
-    await expect(page.getByText('الفكرة الأساسية بلغة واضحة')).toBeVisible();
-    await expect(page.getByText('نفكك الدرس إلى أجزاء صغيرة')).toBeVisible();
+    await journey.getByRole('button', { name: /ابنِ القاعدة/ }).click();
+    await expect(journey.getByTestId('grammar-build-stage')).toBeVisible();
+    await expect(journey.getByText(/While \/ As \+ Past Continuous/)).toBeVisible();
   });
 
   test('12. Homepage presents an interactive learning hub and working destinations', async ({ page }) => {
