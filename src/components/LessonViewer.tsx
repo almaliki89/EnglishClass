@@ -297,9 +297,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           </p>
         </div>
 
-        <p className="text-sm sm:text-base text-ink/90 leading-relaxed pt-2 border-t border-ink/10 font-medium">
-          {lesson.summary}
-        </p>
+        {!isGrammarLesson && (
+          <p className="text-sm sm:text-base text-ink/90 leading-relaxed pt-2 border-t border-ink/10 font-medium">
+            {lesson.summary}
+          </p>
+        )}
 
         {/* Source Provenance Badge */}
         <div className="flex flex-wrap items-center gap-2 pt-2 text-xs font-mono font-bold">
