@@ -33,7 +33,7 @@ test.describe('Source-aware reading passages', () => {
   });
 
   test('sixth preparatory opens Ammar as a complete source-backed passage dossier', async ({ page }) => {
-    await page.goto('/grade/sixth-preparatory');
+    await page.goto('/grade/sixth-preparatory/passages');
     await page.waitForLoadState('networkidle');
 
     const library = page.getByTestId('grade-book-passage-library');
@@ -189,7 +189,7 @@ test.describe('Source-aware reading passages', () => {
 
 
   test('third intermediate Iraqi Morning News opens with the complete bilingual source text and Activity Book answers', async ({ page }) => {
-    await page.goto('/grade/third-intermediate');
+    await page.goto('/grade/third-intermediate/passages');
     await page.waitForLoadState('networkidle');
 
     const library = page.getByTestId('grade-book-passage-library');
@@ -209,7 +209,7 @@ test.describe('Source-aware reading passages', () => {
   });
 
   test('fourth preparatory Exercise and Fitness passage does not invent missing Activity Book questions', async ({ page }) => {
-    await page.goto('/grade/fourth-preparatory');
+    await page.goto('/grade/fourth-preparatory/passages');
     await page.waitForLoadState('networkidle');
 
     const library = page.getByTestId('grade-book-passage-library');
