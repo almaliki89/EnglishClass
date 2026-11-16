@@ -1326,7 +1326,6 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
       }
     ]
   },
-,
   '4p-u6-exercise': {
     id: '4p-u6-exercise',
     titleAr: 'التمارين واللياقة البدنية',
