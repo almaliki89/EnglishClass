@@ -30,7 +30,7 @@ export interface Exercise {
 
 export type ReadingPassageStatus = 'verified' | 'reconstructed' | 'permission_required' | 'summary_only' | 'source_required';
 
-export type ReadingPassageExerciseSource = 'activity_book' | 'malzama';
+export type ReadingPassageExerciseSource = 'activity_book' | 'malzama' | 'lingora_practice';
 
 export interface ReadingPassageExerciseItem {
   id: string;
