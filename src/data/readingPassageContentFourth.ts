@@ -1318,7 +1318,7 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     status: 'verified',
     sourceTitle: 'ملزمة الرابع الإعدادي',
     sourcePages: 'النص ص 108',
-    verificationNote: 'النص من الصفحة 108 كاملًا، بما فيه نصائح تجنب الإصابات الرياضية. يوجد مفتاح إجابة لتمرين كلمات في الصفحة 109، لكن صياغة السؤال الأصلية غير ظاهرة في المصدر المرفوع، لذلك لم نُنشئ أسئلة بديلة له.',
+    verificationNote: 'النص من الصفحة 108 كاملًا، بما فيه نصائح تجنب الإصابات الرياضية. يوجد مفتاح إجابة لتمرين كلمات في الصفحة 109، لكن صياغة السؤال الأصلية غير ظاهرة في المصدر المرفوع؛ لذلك لم ننسب أي سؤال إلى المصدر، وأضفنا تدريبات مستقلة موسومة من إعداد LINGORA.',
     originalText: [
       'If you want to be fit and healthy, you need to take regular exercise. There are many ways you can do this. For example, you can go to a gym and follow an exercise programme, you can go walking or cycling, or you can take up a sport.',
       'Before you begin, there are some things you should think about. First, you need to find something that you are fairly sure you will enjoy doing. If you don’t enjoy the activity, you’ll give it up in a few weeks. I also suggest that you exercise with a friend. There will be times when you don’t feel like exercising, but if you know your friend is waiting for you, you won’t let your friend down – you’ll go. Finally, if you do the same thing all the time, you may get bored. Try to find different ways of getting exercise. For example, go swimming one day and walking the next.',
@@ -1414,7 +1414,7 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     status: 'verified',
     sourceTitle: 'ملزمة الرابع الإعدادي',
     sourcePages: 'العرض التقديمي ص 137',
-    verificationNote: 'النص عرض تقديمي كامل في صفحة 137. لم يظهر تمرين نشاط أو ملزمة مرتبط بهذا العرض في النسخة المرفوعة؛ لذلك لم تُنشأ أسئلة بديلة أو من عندنا.',
+    verificationNote: 'النص عرض تقديمي كامل في صفحة 137. لم يظهر تمرين نشاط أو ملزمة مرتبط بهذا العرض في النسخة المرفوعة؛ لذلك أُضيفت تدريبات مستقلة موسومة من إعداد LINGORA وليست من المصدر المطبوع.',
     originalText: [
       'The topic of my presentation today is the International Space Station, or ISS. First of all, I’ll explain what the ISS is. Then I’ll talk a bit about the history of the station. Finally I’ll tell you why the station is important. You can ask any questions at the end.',
       'So, basically the ISS is a large spacecraft, going round our planet about 400 kilometers above us, where astronauts live, work and study. The whole space station is about the size of a football pitch, but the part where the astronauts live is like a big house really. It has five bedrooms, two bathrooms and a gym. There are also labs from the US, Russia, Japan and Europe.',
