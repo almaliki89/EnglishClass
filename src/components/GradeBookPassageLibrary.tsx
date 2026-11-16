@@ -244,7 +244,7 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                                   </span>
                                   <span className={`px-2 py-1 border ${hasText ? 'bg-soft-mint border-semantic-success' : 'bg-paper border-ink/40'}`}>{hasText ? '✓ النص' : '— النص'}</span>
                                   <span className={`px-2 py-1 border ${hasTranslation ? 'bg-soft-mint border-semantic-success' : 'bg-paper border-ink/40'}`}>{hasTranslation ? '✓ الترجمة' : '— الترجمة'}</span>
-                                  <span className={`px-2 py-1 border ${hasSourceQuestions ? 'bg-soft-mint border-semantic-success' : 'bg-paper border-ink/40'}`}>{hasSourceQuestions ? '✓ الأسئلة والتدريبات' : '— الأسئلة والإجابات'}</span>
+                                  <span className={`px-2 py-1 border ${hasSourceQuestions ? 'bg-soft-mint border-semantic-success' : 'bg-paper border-ink/40'}`}>{hasSourceQuestions ? '✓ الأسئلة والتدريبات' : '— الأسئلة والتدريبات'}</span>
                                   {isContentComplete && <span className="font-black text-semantic-success">القطعة مكتملة</span>}
                                   {isCompleted && <span className="text-semantic-success">✓ تمت دراسة الدرس المرتبط</span>}
                                 </div>
