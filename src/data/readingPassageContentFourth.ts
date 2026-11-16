@@ -1268,7 +1268,7 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     status: 'verified',
     sourceTitle: 'ملزمة الرابع الإعدادي',
     sourcePages: 'النص ص 147؛ التمارين ص 148؛ إجابات نموذجية مستخرجة من النص',
-    verificationNote: 'النص والترجمة والتمارين من الملزمة. الإجابات أدناه نموذجية ومبنية على النص لأن نسخة الملزمة المتاحة لا تعرض مفتاحًا مستقلًا لهذين التمرينين.',
+    verificationNote: 'النص والترجمة وتمرين الإكمال من الملزمة. الإجابات نموذجية ومستخرجة من النص؛ ولم أدرج مهمة «ضع علامة على الأفكار الرئيسية» لأن العبارات المطلوب الاختيار منها غير ظاهرة في النسخة المتاحة.',
     originalText: [
       'Do you know how astronauts keep fit in space? In space, there is no gravity, so astronauts float. They don’t have to use their muscles to move around. This means their muscles can become weak. So astronauts have to exercise every day to keep fit.',
       'What do astronauts eat? It’s important for astronauts to eat healthy food. They need a balanced diet, which includes proteins, carbohydrates, fats, vitamins and minerals. Their diet has to contain enough calcium to keep their bones strong. If they don’t get enough calcium, their bones can become weak.',
