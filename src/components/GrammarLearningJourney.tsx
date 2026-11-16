@@ -27,8 +27,8 @@ interface GrammarLearningJourneyProps {
 
 const STAGES = [
   { title: 'افهم الفكرة', subtitle: 'المعنى قبل الحفظ', icon: Lightbulb },
-  { title: 'ابنِ القاعدة', subtitle: 'كيف تتكوّن؟', icon: ListChecks },
-  { title: 'شاهد المثال', subtitle: 'القاعدة في جملة', icon: BookOpen },
+  { title: 'شاهد المثال', subtitle: 'لاحظها في جملة', icon: BookOpen },
+  { title: 'ابنِ القاعدة', subtitle: 'استنتج كيف تتكوّن', icon: ListChecks },
   { title: 'انتبه للأخطاء', subtitle: 'ما الذي يجب تجنّبه؟', icon: CircleAlert },
   { title: 'اختبر نفسك', subtitle: 'جرّب قبل رؤية الحل', icon: Trophy },
 ] as const;
@@ -55,6 +55,7 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
 }) => {
   const [activeStage, setActiveStage] = useState(0);
   const [activeExample, setActiveExample] = useState(0);
+  const [activeRulePoint, setActiveRulePoint] = useState(0);
   const [activeExercise, setActiveExercise] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [answerChecked, setAnswerChecked] = useState(false);
@@ -76,6 +77,7 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
   const nextStage = () => setActiveStage((current) => Math.min(STAGES.length - 1, current + 1));
 
   const currentExample = examples[activeExample];
+  const currentRulePoint = detailedPoints[activeRulePoint];
   const currentExercise = lesson.exercises[activeExercise];
   const answerIsCorrect = !!currentExercise && selectedAnswer.trim() === currentExercise.correctAnswer.trim();
 
@@ -130,68 +132,72 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
 
   const renderRule = () => (
     <div className="space-y-5" data-testid="grammar-build-stage">
-      {lesson.pedagogy?.arabicExplanation && (
-        <div className="rounded-xl border-2 border-ink bg-lavender/70 p-5">
-          <h3 className="text-base font-black text-ink">شرح الفكرة بلغة واضحة</h3>
-          <p className="mt-2 whitespace-pre-line text-sm sm:text-base font-semibold leading-8 text-ink">
+      <div className="rounded-xl border-2 border-ink bg-lavender/70 p-5">
+        <h3 className="text-base font-black text-ink">نفكّك القاعدة خطوة واحدة في كل مرة</h3>
+        <p className="mt-2 text-sm font-semibold leading-8 text-ink">
+          لا تحفظ كل شيء دفعة واحدة. اقرأ الفكرة، اربطها بالمثال الذي شاهدته، ثم انتقل إلى النقطة التالية.
+        </p>
+        {lesson.pedagogy?.arabicExplanation && (
+          <p className="mt-3 whitespace-pre-line border-t border-ink/20 pt-3 text-sm font-semibold leading-8 text-ink">
             {lesson.pedagogy.arabicExplanation}
           </p>
-        </div>
-      )}
+        )}
+      </div>
 
       <section className="space-y-3">
-        <div>
-          <h3 className="text-lg font-black text-ink">تركيب القاعدة</h3>
-          <p className="mt-1 text-xs font-semibold text-ink/65">
-            كل سطر أدناه مأخوذ من صيغة هذا الدرس المسجّلة في المنهج.
-          </p>
+        <div className="flex items-center justify-between gap-3">
+          <h3 className="text-lg font-black text-ink">خطوات فهم القاعدة</h3>
+          {detailedPoints.length > 0 && (
+            <span className="rounded-full border border-ink bg-yellow px-3 py-1 text-[10px] font-black text-ink">
+              {activeRulePoint + 1} / {detailedPoints.length}
+            </span>
+          )}
         </div>
-        {formulaLines.length ? (
-          <div className="space-y-2.5">
-            {formulaLines.map((line, index) => (
-              <div key={index} className="rounded-lg border-2 border-ink bg-surface p-4 shadow-brutal-sm">
-                <div className="mb-2 flex items-center gap-2">
-                  <span className="flex h-6 w-6 items-center justify-center rounded-full border border-ink bg-yellow text-[10px] font-black">
-                    {index + 1}
-                  </span>
-                  <span className="text-[10px] font-black text-cobalt">الصيغة {index + 1}</span>
-                </div>
-                <p dir="auto" className="whitespace-pre-wrap break-words text-sm sm:text-base font-bold leading-8 text-ink">
-                  {line}
-                </p>
-              </div>
-            ))}
-          </div>
+        {detailedPoints.length ? (
+          <article className="min-h-[180px] rounded-xl border-2 border-ink bg-surface p-5 shadow-brutal-callout">
+            <div className="mb-3 flex items-center gap-2">
+              <span className="flex h-8 w-8 items-center justify-center rounded-lg border-2 border-ink bg-cobalt text-sm font-black text-surface">
+                {activeRulePoint + 1}
+              </span>
+              <span className="text-xs font-black text-cobalt">الفكرة {activeRulePoint + 1}</span>
+            </div>
+            <p className="whitespace-pre-line text-base font-semibold leading-9 text-ink">{currentRulePoint}</p>
+            <div className="mt-5 h-2 overflow-hidden rounded-full border border-ink bg-paper">
+              <div className="h-full bg-cobalt transition-all" style={{ width: `${((activeRulePoint + 1) / detailedPoints.length) * 100}%` }} />
+            </div>
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <button type="button" disabled={activeRulePoint === 0}
+                onClick={() => setActiveRulePoint((n) => Math.max(0, n - 1))}
+                className="rounded-md border-2 border-ink bg-paper px-3 py-2 text-xs font-black text-ink disabled:opacity-35">
+                الفكرة السابقة
+              </button>
+              <button type="button" disabled={activeRulePoint >= detailedPoints.length - 1}
+                onClick={() => setActiveRulePoint((n) => Math.min(detailedPoints.length - 1, n + 1))}
+                className="rounded-md border-2 border-ink bg-cobalt px-4 py-2 text-xs font-black text-surface disabled:opacity-35">
+                الفكرة التالية
+              </button>
+            </div>
+          </article>
         ) : (
-          <div className="rounded-lg border-2 border-dashed border-ink/40 bg-paper p-4 text-sm font-semibold leading-7 text-ink/75">
-            لا توجد صيغة مستقلة مسجّلة لهذا الدرس. اعرض الشرح التفصيلي وأمثلة المصدر كما هي، ولا تستبدلها بمعادلة غير موثّقة.
-          </div>
+          <p className="rounded-lg border-2 border-dashed border-ink/40 bg-paper p-4 text-sm font-semibold text-ink/70">
+            لا يوجد شرح تفصيلي مسجّل لهذا الدرس.
+          </p>
         )}
       </section>
 
       <section className="space-y-3">
         <div>
-          <h3 className="text-lg font-black text-ink">تفصيل القاعدة جزءاً جزءاً</h3>
-          <p className="mt-1 text-xs font-semibold text-ink/65">
-            نعرض نقاط الشرح بالترتيب المسجّل في محتوى الدرس.
-          </p>
+          <h3 className="text-lg font-black text-ink">الصيغة بعد فهم الفكرة</h3>
+          <p className="mt-1 text-xs font-semibold text-ink/65">ارجع إلى هذه الصيغة بعد فهم النقاط، لا قبلها.</p>
         </div>
-        {detailedPoints.length ? (
-          <div className="space-y-2.5">
-            {detailedPoints.map((point, index) => (
-              <article key={index} className="flex items-start gap-3 rounded-lg border-2 border-ink bg-paper p-4">
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-md border border-ink bg-cobalt text-xs font-black text-surface">
-                  {index + 1}
-                </span>
-                <p className="whitespace-pre-line text-sm sm:text-base font-medium leading-8 text-ink">
-                  {point}
-                </p>
-              </article>
-            ))}
+        {formulaLines.length ? formulaLines.map((line, index) => (
+          <div key={index} className="rounded-lg border-2 border-ink bg-paper p-4">
+            <span className="mb-2 block text-[10px] font-black text-cobalt">الصيغة {index + 1}</span>
+            <p dir="auto" className="whitespace-pre-wrap break-words text-sm sm:text-base font-bold leading-8 text-ink">{line}</p>
           </div>
-        ) : (
-          <p className="rounded-lg border-2 border-dashed border-ink/40 bg-paper p-4 text-sm font-semibold text-ink/70">
-            لا يوجد شرح تفصيلي مسجّل لهذا الدرس حتى الآن.
+        )) : (
+          <p className="rounded-lg border-2 border-dashed border-ink/40 bg-paper p-4 text-sm font-semibold leading-7 text-ink/75">
+            لا توجد صيغة مستقلة مسجّلة لهذا الدرس. اعتمد على النقاط والأمثلة المسجلة فقط.
           </p>
         )}
       </section>
@@ -430,8 +436,8 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
   const renderActiveStage = () => {
     switch (activeStage) {
       case 0: return renderWarmup();
-      case 1: return renderRule();
-      case 2: return renderExamples();
+      case 1: return renderExamples();
+      case 2: return renderRule();
       case 3: return renderWarnings();
       default: return renderPractice();
     }
@@ -513,7 +519,7 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
             onClick={nextStage}
             className="inline-flex items-center gap-1.5 rounded-md border-2 border-ink bg-cobalt px-4 py-2.5 text-xs font-black text-surface shadow-brutal-sm"
           >
-            {activeStage === 0 ? 'اكتشف تركيب القاعدة' : activeStage === 1 ? 'جرّب مثالاً' : activeStage === 2 ? 'تجنّب هذه الأخطاء' : 'اختبر فهمك بنفسك'}
+            {activeStage === 0 ? 'شاهد مثالاً' : activeStage === 1 ? 'فكّك القاعدة خطوة خطوة' : activeStage === 2 ? 'تجنّب هذه الأخطاء' : 'اختبر فهمك بنفسك'}
             <ArrowLeft className="h-4 w-4" />
           </button>
         ) : (
