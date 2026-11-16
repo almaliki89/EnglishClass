@@ -269,8 +269,6 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
       }
     ]
   },
-,
-
   '4p-u7-body': {
     id: '4p-u7-body',
     titleAr: 'لماذا نمارس التمارين الرياضية؟',
