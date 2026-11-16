@@ -237,7 +237,7 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     id: '4p-u2-unicef', titleAr: 'منظمة اليونيسيف وحماية الأطفال', titleEn: 'UNICEF & Helping Disadvantaged Children',
     status: 'verified',
     sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'الملزمة ص 29–31؛ الأسئلة ص 30–31؛ مفاتيح الإجابة ص 183–184',
-    verificationNote: 'النص والترجمة وأسئلة الفهم ومفردات القطعة موثقة في الملزمة، والإجابات مطابقة لمفتاح الحل.',
+    verificationNote: 'النص والترجمة والأسئلة موثقة في الملزمة. تمت مطابقة أسئلة الفهم والمفردات مع مفتاح الحل؛ أما مطابقة الأرقام والحقائق فإجاباتها مستخرجة مباشرة من النص.',
     originalText: [
       "UNICEF was created in 1946, when many children were sick and hungry in Europe after World War II. UNICEF stands for United Nations International Children’s Emergency Fund because it was created when there was an emergency. In 1953, UNICEF saw the emergency in Europe was over. However, they realized that children in many countries still needed help. It decided to work with children and families all over the world. It changed its name to United Nations Children’s Fund, but people still call it UNICEF. UNICEF believes that all children should have a good education, health care (doctors and medicines) and good nutrition (healthy food).",
       "Why do some children not go to school? Today, about 121 million children around the world don’t go to school. In countries such as Thailand, natural disasters like floods can destroy schools. Children in these countries can’t go to school because they don’t have a school building to go to. In other countries, parents don’t want to send their children to school because the schools aren’t clean or safe. In many parts of Asia, Africa and South America, children start working when they are less than 12 years old, and so they can’t go to school. This is called child labour. About 246 million children do child labour. In some places, like the Ivory Coast, children work in the fields. In the Philippines and other countries, children work in factories, where they make toys, clothes or sports equipment.",
@@ -253,7 +253,7 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
             "id": "4p-u2-unicef-exercise-2",
             "source": "malzama",
             "sourceTitle": "ملزمة الرابع الإعدادي — Exercise 2",
-            "sourcePages": "الملزمة ص 30؛ مفتاح الإجابة ص 183",
+            "sourcePages": "الأسئلة ص 30؛ الإجابات مستخرجة مباشرة من النص",
             "instruction": "Skim the text and match the numbers and facts.",
             "instructionTranslation": "اقرأ النص بسرعة وصِل الأرقام بالحقائق المناسبة.",
             "items": [
