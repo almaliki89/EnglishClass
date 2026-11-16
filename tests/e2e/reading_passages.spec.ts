@@ -33,7 +33,7 @@ test.describe('Source-aware reading passages', () => {
   });
 
   test('sixth preparatory opens Ammar as a complete source-backed passage dossier', async ({ page }) => {
-    await page.goto('/grade/sixth-preparatory');
+    await page.goto('/grade/sixth-preparatory/passages');
     await page.waitForLoadState('networkidle');
 
     const library = page.getByTestId('grade-book-passage-library');
@@ -51,7 +51,7 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByTestId('passage-exercises-section')).toContainText('It was great because he was finally part of the school basketball team');
   });
   test('sixth preparatory Samira passage includes its full translation and Activity Book answers', async ({ page }) => {
-    await page.goto('/grade/sixth-preparatory');
+    await page.goto('/grade/sixth-preparatory/passages');
     await page.waitForLoadState('networkidle');
     const library = page.getByTestId('grade-book-passage-library');
     const unitThree = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="3"]');
@@ -66,7 +66,7 @@ test.describe('Source-aware reading passages', () => {
   });
 
   test('sixth preparatory Euphrates River shows available source exercise while keeping missing full text explicit', async ({ page }) => {
-    await page.goto('/grade/sixth-preparatory');
+    await page.goto('/grade/sixth-preparatory/passages');
     await page.waitForLoadState('networkidle');
     const library = page.getByTestId('grade-book-passage-library');
     const unitEight = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="8"]');
@@ -189,7 +189,7 @@ test.describe('Source-aware reading passages', () => {
 
 
   test('third intermediate Iraqi Morning News opens with the complete bilingual source text and Activity Book answers', async ({ page }) => {
-    await page.goto('/grade/third-intermediate');
+    await page.goto('/grade/third-intermediate/passages');
     await page.waitForLoadState('networkidle');
 
     const library = page.getByTestId('grade-book-passage-library');
@@ -209,7 +209,7 @@ test.describe('Source-aware reading passages', () => {
   });
 
   test('fourth preparatory Exercise and Fitness passage does not invent missing Activity Book questions', async ({ page }) => {
-    await page.goto('/grade/fourth-preparatory');
+    await page.goto('/grade/fourth-preparatory/passages');
     await page.waitForLoadState('networkidle');
 
     const library = page.getByTestId('grade-book-passage-library');
@@ -226,7 +226,7 @@ test.describe('Source-aware reading passages', () => {
   });
 
   test('fourth preparatory body exercise and refinery passages display source-matched questions', async ({ page }) => {
-    await page.goto('/grade/fourth-preparatory');
+    await page.goto('/grade/fourth-preparatory/passages');
     await page.waitForLoadState('networkidle');
 
     const library = page.getByTestId('grade-book-passage-library');
@@ -240,7 +240,7 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByTestId('passage-exercises-section')).toContainText('Why do you need strong muscles?');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('Heart disease kills many people in developed countries.');
 
-    await page.goto('/grade/fourth-preparatory');
+    await page.goto('/grade/fourth-preparatory/passages');
     await page.waitForLoadState('networkidle');
     const oilLibrary = page.getByTestId('grade-book-passage-library');
     const oilUnit = oilLibrary.locator('[data-testid="book-passage-unit-group"][data-unit-id="47"]');
@@ -254,7 +254,7 @@ test.describe('Source-aware reading passages', () => {
   });
 
   test('fourth preparatory space fitness dossier uses the verified interview and Activity Book answer key', async ({ page }) => {
-    await page.goto('/grade/fourth-preparatory');
+    await page.goto('/grade/fourth-preparatory/passages');
     await page.waitForLoadState('networkidle');
 
     const library = page.getByTestId('grade-book-passage-library');

@@ -16,7 +16,6 @@ import {
 } from './common/BrutalUI';
 import { ScopedGradeSearch } from './common/ScopedGradeSearch';
 import { VisualCurriculumGuide } from './VisualCurriculumGuide';
-import { GradeBookPassageLibrary } from './GradeBookPassageLibrary';
 import { NotFound } from './NotFound';
 import { isBookPassageLesson } from '../data/bookPassageCatalog';
 
@@ -107,19 +106,6 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
           </button>
         </div>
       </div>
-
-      {/* Passage library is the first study section inside the selected grade. */}
-      <GradeBookPassageLibrary
-        grade={validGrade}
-        gradeName={gradeMeta.nameAr}
-        units={units}
-        completedLessonIds={studentState.completedLessonIds}
-        onOpenPassage={(unit, lessonId, passageId) => {
-          navigate(`/grade/${validGrade}/unit/${unit.id}/lesson/${lessonId}`, {
-            state: { openSection: 'passage', passageId },
-          });
-        }}
-      />
 
       {/* 2. Hero Dossier for THIS Grade ONLY */}
       <BrutalCard variant="paper" borderSize="4" shadowSize="lg" className="p-6 sm:p-8 space-y-6">

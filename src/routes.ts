@@ -10,6 +10,7 @@ export const APP_ROUTES = {
   home: '/',
   grades: '/grades',
   grade: (gradeId: string) => `/grade/${gradeId}`,
+  gradePassages: (gradeId: string) => `/grade/${gradeId}/passages`,
   gradeSubject: (gradeId: string, subjectId: string) => `/grade/${gradeId}/subject/${subjectId}`,
   unit: (gradeId: string, unitId: string | number) => `/grade/${gradeId}/unit/${unitId}`,
   gradeLesson: (gradeId: string, unitId: string | number, lessonId: string) =>

@@ -221,17 +221,17 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
             <div>
               <h2 className="text-base font-black text-ink">قطع هذه الوحدة في مكتبة الصف</h2>
               <p className="text-xs leading-6 text-ink/70 font-bold mt-1">
-                {passageLessons.length} قطعة / نص أُخرجت من فهرس الدروس لتكون ضمن قسم مستقل أعلى صفحة {gradeMeta.nameAr}.
-                تظل مرتبطة بهذه الوحدة وتُفتح من مكتبة القطع.
+                {passageLessons.length} قطعة / نص مرتبطة بهذه الوحدة، لكنها تظهر في فهرس مستقل.
+                افتحها من زر «قطع الكتاب» في الشريط العلوي لصف {gradeMeta.nameAr}.
               </p>
             </div>
           </div>
           <BrutalButton
             variant="yellow"
             size="sm"
-            onClick={() => navigate(`/grade/${validGrade}#grade-book-passage-library`)}
+            onClick={() => navigate(`/grade/${validGrade}/passages`)}
           >
-            فتح مكتبة قطع الصف
+            فتح مكتبة قطع الكتاب
             <ArrowLeft className="w-3.5 h-3.5" />
           </BrutalButton>
         </BrutalCard>

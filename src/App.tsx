@@ -28,6 +28,7 @@ const VisualVocabAtlas = React.lazy(() => import('./components/VisualVocabAtlas'
 const SmartReviewSection = React.lazy(() => import('./components/SmartReviewSection').then((m) => ({ default: m.SmartReviewSection })));
 const SubjectDetailView = React.lazy(() => import('./components/SubjectDetailView').then((m) => ({ default: m.SubjectDetailView })));
 const GradePageView = React.lazy(() => import('./components/GradePageView').then((m) => ({ default: m.GradePageView })));
+const GradeBookPassagesPage = React.lazy(() => import('./components/GradeBookPassagesPage').then((m) => ({ default: m.GradeBookPassagesPage })));
 const GradesPortal = React.lazy(() => import('./components/GradesPortal').then((m) => ({ default: m.GradesPortal })));
 const UnitDashboardView = React.lazy(() => import('./components/UnitDashboardView').then((m) => ({ default: m.UnitDashboardView })));
 
@@ -660,6 +661,17 @@ function MainAppContent() {
                 onSelectUnit={handleSelectUnit}
                 onSelectLesson={handleSelectLesson}
                 onNavigateTab={(tab) => navigate(`/${tab}`)}
+              />
+            }
+          />
+
+          {/* Dedicated textbook passages library for the selected grade */}
+          <Route
+            path="/grade/:gradeId/passages"
+            element={
+              <GradeBookPassagesPage
+                studentState={studentState}
+                onSelectGrade={handleSelectGrade}
               />
             }
           />

@@ -69,6 +69,7 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   const navItems: NavItem[] = [
     { id: 'dashboard', path: homePath, label: 'الرئيسية', icon: Home },
+    { id: 'passages', path: APP_ROUTES.gradePassages(selectedGrade), label: 'قطع الكتاب', icon: BookOpen },
     { id: 'review', path: APP_ROUTES.gradeReview(selectedGrade), label: 'المراجعة المركزة', icon: Target },
     {
       id: 'mock',
