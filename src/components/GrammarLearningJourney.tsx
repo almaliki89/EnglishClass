@@ -83,7 +83,7 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
           ما الفكرة التي نريد التعبير عنها؟
         </h3>
         <p className="mt-3 whitespace-pre-line text-sm sm:text-base font-semibold leading-8 text-ink">
-          {lesson.pedagogy?.warmup || lesson.pedagogy?.arabicExplanation || lesson.summary}
+          {lesson.pedagogy?.warmup || lesson.summary}
         </p>
         {lesson.summary && lesson.pedagogy?.warmup && (
           <div className="mt-4 border-t border-ink/20 pt-4">
@@ -123,7 +123,7 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
 
   const renderRule = () => (
     <div className="space-y-5" data-testid="grammar-build-stage">
-      {lesson.pedagogy?.arabicExplanation && lesson.pedagogy.warmup && (
+      {lesson.pedagogy?.arabicExplanation && (
         <div className="rounded-xl border-2 border-ink bg-lavender/70 p-5">
           <h3 className="text-base font-black text-ink">شرح الفكرة بلغة واضحة</h3>
           <p className="mt-2 whitespace-pre-line text-sm sm:text-base font-semibold leading-8 text-ink">
