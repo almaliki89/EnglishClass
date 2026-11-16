@@ -496,7 +496,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByTestId('original-passage-section')).toContainText('Have you ever watched a falcon diving down from the sky?');
     await expect(page.getByTestId('passage-translation-section')).toContainText('هل سبق لك أن شاهدت صقرًا ينقض من السماء؟');
 
-    await page.goto('/grade/third-intermediate');
+    await page.goto('/grade/third-intermediate/passages');
     await page.waitForLoadState('networkidle');
     const marshLibrary = page.getByTestId('grade-book-passage-library');
     const marshUnit = marshLibrary.locator('[data-testid="book-passage-unit-group"][data-unit-id="103"]');
@@ -527,7 +527,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
   });
 
   test('the passage library filters by unit and opens the original lesson without duplicating it', async ({ page }) => {
-    await page.goto('/grade/sixth-preparatory');
+    await page.goto('/grade/sixth-preparatory/passages');
     await page.waitForLoadState('networkidle');
 
     const library = page.getByTestId('grade-book-passage-library');
@@ -561,7 +561,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByText('الدرس الثالث: قطعة عمار', { exact: false })).toHaveCount(0);
 
     await page.getByRole('button', { name: 'فتح مكتبة قطع الكتاب' }).click();
-    await expect(page).toHaveURL(/\/grade\/sixth-preparatory#grade-book-passage-library$/);
+    await expect(page).toHaveURL(/\/grade\/sixth-preparatory\/passages$/);
     await expect(page.getByTestId('grade-book-passage-library')).toBeVisible();
     await expect(
       page.getByTestId('grade-book-passage-library')
@@ -571,7 +571,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
   });
 
   test('verified fourth-grade passage opens as full English text, Arabic translation, then source Q&A', async ({ page }) => {
-    await page.goto('/grade/fourth-preparatory');
+    await page.goto('/grade/fourth-preparatory/passages');
     await page.waitForLoadState('networkidle');
 
     const library = page.getByTestId('grade-book-passage-library');
