@@ -84,7 +84,7 @@ test.describe('Iraqi English Curriculum Platform - Critical Architecture & Secur
 
   test('4. Independent resume state: changing lesson in one grade does not overwrite another', async ({ page }) => {
     // Navigate to 6th Preparatory
-    await page.goto('/grade/sixth-preparatory');
+    await page.goto('/grade/sixth-preparatory/passages');
     await page.waitForLoadState('networkidle');
 
     // Click on a specific lesson in 6th Preparatory
@@ -425,7 +425,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
   });
 
 
-  test('6. Each active grade has an independent book passage library above its unit list', async ({ page }) => {
+  test('6. Each active grade exposes a dedicated textbook passages button and isolated library route', async ({ page }) => {
     const gradeCases = [
       {
         grade: 'third-intermediate',
@@ -457,10 +457,20 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       await page.goto(`/grade/${item.grade}`);
       await page.waitForLoadState('networkidle');
 
+      // The dashboard itself must not embed a second copy of the passage library.
+      await expect(page.getByTestId('grade-book-passage-library')).toHaveCount(0);
+
+      const passagesButton = page.locator('#nav-passages-btn');
+      await expect(passagesButton).toBeVisible();
+      await expect(passagesButton).toContainText('قطع الكتاب');
+      await passagesButton.click();
+      await expect(page).toHaveURL(`/grade/${item.grade}/passages`);
+
       const library = page.getByTestId('grade-book-passage-library');
       await expect(library.getByRole('heading', { name: 'قطع الكتاب' })).toBeVisible();
-
+      await expect(library).toHaveAttribute('data-grade', item.grade);
       await expect(library).toHaveAttribute('data-passage-count', String(item.expectedCount));
+
       const passageCards = library.getByTestId('book-passage-card');
       await expect(passageCards.first()).toBeVisible();
       await expect(passageCards.filter({ hasText: item.expectedPassage }).first()).toBeVisible();
@@ -469,18 +479,11 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
       for (const excludedId of item.excludedLessonIds) {
         expect(indexedLessonIds!.split(',')).not.toContain(excludedId);
       }
-
-      const libraryBox = await library.boundingBox();
-      const unitsHeading = page.getByRole('heading', { name: /الوحدات الدراسية لـ/ });
-      const unitsBox = await unitsHeading.boundingBox();
-      expect(libraryBox).not.toBeNull();
-      expect(unitsBox).not.toBeNull();
-      expect(libraryBox!.y).toBeLessThan(unitsBox!.y);
     }
   });
 
   test('third intermediate lists falcons and Marsh Arabs as separate passages and opens each source text', async ({ page }) => {
-    await page.goto('/grade/third-intermediate');
+    await page.goto('/grade/third-intermediate/passages');
     await page.waitForLoadState('networkidle');
     const library = page.getByTestId('grade-book-passage-library');
     const unitThree = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="103"]');
@@ -506,12 +509,12 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
   });
 
   test('the fifth-grade dialogue/interview and fourth-grade supplementary reading stay outside the textbook-passage index', async ({ page }) => {
-    await page.goto('/grade/fourth-preparatory');
+    await page.goto('/grade/fourth-preparatory/passages');
     await page.waitForLoadState('networkidle');
     const fourthLibrary = page.getByTestId('grade-book-passage-library');
     await expect(fourthLibrary).not.toHaveAttribute('data-passage-lesson-ids', /4th-u1-reading-history/);
 
-    await page.goto('/grade/fifth-preparatory');
+    await page.goto('/grade/fifth-preparatory/passages');
     await page.waitForLoadState('networkidle');
     const fifthLibrary = page.getByTestId('grade-book-passage-library');
     await expect(fifthLibrary).not.toHaveAttribute('data-passage-lesson-ids', /5th-u4-l2/);
@@ -557,7 +560,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByRole('heading', { name: 'قطع هذه الوحدة في مكتبة الصف' })).toBeVisible();
     await expect(page.getByText('الدرس الثالث: قطعة عمار', { exact: false })).toHaveCount(0);
 
-    await page.getByRole('button', { name: 'فتح مكتبة قطع الصف' }).click();
+    await page.getByRole('button', { name: 'فتح مكتبة قطع الكتاب' }).click();
     await expect(page).toHaveURL(/\/grade\/sixth-preparatory#grade-book-passage-library$/);
     await expect(page.getByTestId('grade-book-passage-library')).toBeVisible();
     await expect(
