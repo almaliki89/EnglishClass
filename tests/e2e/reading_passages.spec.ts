@@ -207,4 +207,67 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByTestId('passage-exercises-section')).toContainText('What was Salma (do / doing) before the dog ran at her?');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('were waiting');
   });
+
+  test('fourth preparatory Exercise and Fitness passage does not invent missing Activity Book questions', async ({ page }) => {
+    await page.goto('/grade/fourth-preparatory');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitSix = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="46"]');
+    await unitSix.getByRole('button').click();
+    const exerciseCard = library.getByTestId('book-passage-card').filter({ hasText: 'Exercise & Fitness' });
+    await expect(exerciseCard).toBeVisible();
+    await exerciseCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+
+    await expect(page.getByTestId('original-passage-section')).toContainText('If you want to be fit and healthy, you need to take regular exercise.');
+    await expect(page.getByTestId('passage-translation-section')).toContainText('إذا أردت أن تكون لائقًا وبصحة جيدة');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('أسئلة كتاب النشاط أو الملزمة وإجاباتها لم تُربط بهذه القطعة بعد');
+    await expect(page.getByTestId('passage-exercises-section')).not.toContainText('Mahmoud is fearless');
+  });
+
+  test('fourth preparatory body exercise and refinery passages display source-matched questions', async ({ page }) => {
+    await page.goto('/grade/fourth-preparatory');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitSeven = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="47"]');
+    await unitSeven.getByRole('button').click();
+
+    const bodyCard = library.getByTestId('book-passage-card').filter({ hasText: 'Why Exercise Is Important for Your Body' });
+    await expect(bodyCard).toBeVisible();
+    await bodyCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByTestId('original-passage-section')).toContainText('Exercise is important for your body in many ways.');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Why do you need strong muscles?');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Heart disease kills many people in developed countries.');
+
+    await page.goto('/grade/fourth-preparatory');
+    await page.waitForLoadState('networkidle');
+    const oilLibrary = page.getByTestId('grade-book-passage-library');
+    const oilUnit = oilLibrary.locator('[data-testid="book-passage-unit-group"][data-unit-id="47"]');
+    await oilUnit.getByRole('button').click();
+    const oilCard = oilLibrary.getByTestId('book-passage-card').filter({ hasText: 'From the Earth to the Refinery' });
+    await expect(oilCard).toBeVisible();
+    await oilCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByTestId('original-passage-section')).toContainText('Petroleum was formed millions of years ago.');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Petroleum has (   )');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('been used since the 19th century.');
+  });
+
+  test('fourth preparatory space fitness dossier uses the verified interview and Activity Book answer key', async ({ page }) => {
+    await page.goto('/grade/fourth-preparatory');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitEight = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="48"]');
+    await unitEight.getByRole('button').click();
+    const card = library.getByTestId('book-passage-card').filter({ hasText: 'Keeping Fit in Space' });
+    await expect(card).toBeVisible();
+    await card.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+
+    await expect(page.getByTestId('original-passage-section')).toContainText('Our guest on today’s program is an astronaut.');
+    await expect(page.getByTestId('original-passage-section')).toContainText('two-and-a-half hours exercising every day');
+    await expect(page.getByTestId('passage-translation-section')).toContainText('ضيف برنامجنا اليوم رائد فضاء');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Read the interview on Student’s Book page 85.');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('1, 3 and 6.');
+  });
 });
