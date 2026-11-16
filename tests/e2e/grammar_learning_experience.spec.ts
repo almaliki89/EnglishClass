@@ -48,12 +48,19 @@ test.describe('Unified grammar learning experience', () => {
       await expect(page.getByText('ACADEMIC DISSECTION ENGINE')).toHaveCount(0);
       await expect(page.getByRole('button', { name: 'تلميحات ذكية' })).toHaveCount(0);
 
-      // The same stages and progression are available regardless of grade.
-      await journey.getByRole('button', { name: /ابنِ القاعدة/ }).click();
-      await expect(journey.getByTestId('grammar-build-stage')).toBeVisible();
-
+      // Observe a real lesson example before studying the rule formula.
       await journey.getByRole('button', { name: /شاهد المثال/ }).click();
       await expect(journey.getByTestId('grammar-examples-stage')).toBeVisible();
+
+      // The rule is then revealed progressively, one source point at a time.
+      await journey.getByRole('button', { name: /ابنِ القاعدة/ }).click();
+      await expect(journey.getByTestId('grammar-build-stage')).toBeVisible();
+      await expect(journey.getByText(/الفكرة 1/)).toBeVisible();
+      const nextRulePoint = journey.getByRole('button', { name: 'الفكرة التالية' });
+      if (await nextRulePoint.isEnabled()) {
+        await nextRulePoint.click();
+        await expect(journey.getByText(/الفكرة 2/)).toBeVisible();
+      }
 
       await journey.getByRole('button', { name: /انتبه للأخطاء/ }).click();
       await expect(journey.getByTestId('grammar-mistakes-stage')).toBeVisible();
