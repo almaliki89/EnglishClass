@@ -77,7 +77,23 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
       'حفلات الزفاف مناسبة سعيدة لجميع أفراد العائلة. تحتفل العائلات بالموسيقى والغناء والرقص. وفي مراسم الزواج البدوية، يؤدي الرجال رقصات تقليدية بالسيوف والسياط. ويُعد الطعام أيضًا جزءًا مهمًا من الاحتفال. إذ يدعو والدا العروس والعريس الأصدقاء والأقارب إلى وجبات كبيرة. وفي المغرب، ترحب والدة الزوج بالعروس في منزلها الجديد بالحليب والتمر.',
       'تتضمن كثير من العادات ملابس زفاف خاصة. ترتدي النساء البدويات ملابس مصنوعة من أقمشة ملونة. وفي العراق، ترتدي العروس اللون الأبيض رمزًا للنقاء.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+      {
+        id: '4p-u5-weddings-qna',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — أسئلة فهم المقروء',
+        sourcePages: 'ص 84؛ مفتاح الإجابة ص 192',
+        instruction: 'Answer these questions using information from the text.',
+        instructionTranslation: 'أجب عن الأسئلة الآتية باستخدام المعلومات الواردة في النص.',
+        items: [
+          { id: '4p-u5-weddings-q1', question: 'Why do fewer people have weddings over several days now?', questionTranslation: 'لماذا قلّت إقامة حفلات الزفاف على مدى عدة أيام في الوقت الحاضر؟', answer: 'Because people often don’t have the time or money for that.', answerTranslation: 'لأن الناس غالبًا لا يملكون الوقت أو المال لذلك.' },
+          { id: '4p-u5-weddings-q2', question: 'Why are the bride’s hands often decorated with henna?', questionTranslation: 'لماذا تُزيَّن يدا العروس غالبًا بالحناء؟', answer: 'To make her beautiful and also bring her luck.', answerTranslation: 'لتجميلها وجلب الحظ لها أيضًا.' },
+          { id: '4p-u5-weddings-q3', question: 'What do men do in a traditional Bedouin ceremony?', questionTranslation: 'ماذا يفعل الرجال في مراسم الزواج البدوية التقليدية؟', answer: 'They dance traditional dances with swords and whips.', answerTranslation: 'يؤدّي الرجال رقصات تقليدية بالسيوف والسياط.' },
+          { id: '4p-u5-weddings-q4', question: 'How does the bride’s mother-in-law welcome her to the family in Morocco?', questionTranslation: 'كيف ترحّب والدة الزوج بالعروس في العائلة في المغرب؟', answer: 'She gives her milk and dates.', answerTranslation: 'تقدّم لها الحليب والتمر.' },
+          { id: '4p-u5-weddings-q5', question: 'Why does the bride wear a white dress in Iraq?', questionTranslation: 'لماذا ترتدي العروس فستانًا أبيض في العراق؟', answer: 'To symbolize purity.', answerTranslation: 'رمزًا للنقاء.' }
+        ]
+      }
+    ]
   },
   '4p-u5-glass': {
     id: '4p-u5-glass', titleAr: 'الحرف اللبنانية ونفخ الزجاج', titleEn: 'Lebanese Crafts & Glass-Blowing',
@@ -87,7 +103,26 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
       'كان الزجاج معروفًا في الشرق الأوسط قبل أكثر من 4,000 عام. وكان الناس يستخدمونه لصنع أشياء مثل الأوعية والمزهريات والمجوهرات، لكن الزجاج كان أكثر سماكة من الزجاج الذي نعرفه اليوم. وبعد ذلك، قبل أكثر من 2,100 عام، اخترع حرفيون سوريون تقنية نفخ الزجاج. واستخدموا هذه التقنية لصنع قطع زجاجية أجمل وأرق.',
       'ظل نفخ الزجاج حرفة شعبية في لبنان لقرون. واليوم تمارسه بعض الشركات العائلية الصغيرة. وتنتقل المهارات المستخدمة في هذه الحرفة من الأب إلى الابن، ويفخر الحرفيون بعملهم. ولسوء الحظ، من الصعب كسب ما يكفي من المال من نفخ الزجاج وحده، لذلك يضطر كثير من الحرفيين إلى العمل في وظائف أخرى أيضًا.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+      {
+        id: '4p-u5-glass-qna',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — أسئلة فهم المقروء',
+        sourcePages: 'ص 87–88؛ مفتاح الإجابة ص 192–193',
+        instruction: 'Answer these questions about the text on Student’s Book page 54.',
+        instructionTranslation: 'أجب عن هذه الأسئلة حول النص الموجود في صفحة 54 من كتاب الطالب.',
+        items: [
+          { id: '4p-u5-glass-q1', question: 'What are some popular Lebanese crafts?', questionTranslation: 'ما بعض الحرف اللبنانية الشائعة؟', answer: 'Embroidery, copper-engraving and glass-blowing.', answerTranslation: 'التطريز والنقش على النحاس ونفخ الزجاج.' },
+          { id: '4p-u5-glass-q2', question: 'Where was glass-blowing invented and when?', questionTranslation: 'أين ومتى اختُرعت تقنية نفخ الزجاج؟', answer: 'In Syria, over 2,100 years ago.', answerTranslation: 'في سوريا قبل أكثر من 2,100 عام.' },
+          { id: '4p-u5-glass-q3', question: 'How was the glass that was used before then different?', questionTranslation: 'بماذا اختلف الزجاج الذي كان يُستخدم قبل ذلك؟', answer: 'It was thicker.', answerTranslation: 'كان أكثر سماكة.' },
+          { id: '4p-u5-glass-q4', question: 'How long has glass been known in the Middle East?', questionTranslation: 'منذ متى كان الزجاج معروفًا في الشرق الأوسط؟', answer: 'Over 4,000 years.', answerTranslation: 'منذ أكثر من 4,000 عام.' },
+          { id: '4p-u5-glass-q5', question: 'Why is this technique important?', questionTranslation: 'لماذا تُعد هذه التقنية مهمة؟', answer: 'Because craftsmen could make finer and more beautiful glass objects.', answerTranslation: 'لأنها مكّنت الحرفيين من صنع قطع زجاجية أدق وأكثر جمالًا.' },
+          { id: '4p-u5-glass-q6', question: 'How do the Lebanese glass-blowers learn the skill?', questionTranslation: 'كيف يتعلم نافخو الزجاج اللبنانيون هذه الحرفة؟', answer: 'From their fathers.', answerTranslation: 'من آبائهم.' },
+          { id: '4p-u5-glass-q7', question: 'Is glass-blowing done in large factories?', questionTranslation: 'هل تُمارس حرفة نفخ الزجاج في مصانع كبيرة؟', answer: 'No, in small family businesses.', answerTranslation: 'لا، بل في شركات عائلية صغيرة.' },
+          { id: '4p-u5-glass-q8', question: 'Why do many glass-blowers have to do other jobs?', questionTranslation: 'لماذا يضطر كثير من نافخي الزجاج إلى ممارسة أعمال أخرى؟', answer: 'Because it is difficult to make enough money from glass-blowing.', answerTranslation: 'لأن من الصعب كسب ما يكفي من المال من نفخ الزجاج وحده.' }
+        ]
+      }
+    ]
   },
   '4p-u5-museum': {
     id: '4p-u5-museum', titleAr: 'رحلة مدرسية إلى المتحف الوطني العراقي', titleEn: 'A School Trip to the National Museum of Iraq',
@@ -99,6 +134,23 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
       'بعد أن زرنا جميع القاعات وأجبنا عن كل الأسئلة الموجودة في أوراق العمل، ذهبنا إلى مقصف الطابق الأرضي. ثم ذهبنا إلى متجر الهدايا. اشتريت بطاقة بريدية، واشترى جلال كوبًا جميلًا عليه نقوش ذهبية.',
       'قضينا وقتًا رائعًا في المتحف وتعلمنا الكثير عن حضارات عديدة في العراق. أريد العودة قريبًا لدراسة المجوهرات الجميلة، لأنني أريد أن أصبح مصمم مجوهرات يومًا ما.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+      {
+        id: '4p-u5-museum-qna',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — أسئلة فهم المقروء',
+        sourcePages: 'ص 92؛ مفتاح الإجابة ص 193',
+        instruction: 'Answer the following questions.',
+        instructionTranslation: 'أجب عن الأسئلة الآتية.',
+        items: [
+          { id: '4p-u5-museum-q1', question: 'When did the museum get its first collection, and where was it stored?', questionTranslation: 'متى حصل المتحف على أول مجموعة من مقتنياته وأين حُفظت؟', answer: 'In 1922. It was stored in a government building in Baghdad.', answerTranslation: 'عام 1922، وحُفظت في مبنى حكومي في بغداد.' },
+          { id: '4p-u5-museum-q2', question: 'In which district is the National Museum of Iraq?', questionTranslation: 'في أي منطقة يقع المتحف الوطني العراقي؟', answer: 'Al-Salihiya, in Al-Karkh.', answerTranslation: 'في الصالحية في الكرخ.' },
+          { id: '4p-u5-museum-q3', question: 'What is the name of the winged bull?', questionTranslation: 'ما اسم الثور المجنح؟', answer: 'Lamassu.', answerTranslation: 'لاماسو.' },
+          { id: '4p-u5-museum-q4', question: 'Where was the Assyrian jewelry found?', questionTranslation: 'أين عُثر على المجوهرات الآشورية؟', answer: 'In the royal tombs at Namrud.', answerTranslation: 'في المقابر الملكية في نمرود.' },
+          { id: '4p-u5-museum-q5', question: 'Which floor is the cafeteria on?', questionTranslation: 'في أي طابق يقع المقصف؟', answer: 'The ground floor.', answerTranslation: 'في الطابق الأرضي.' },
+          { id: '4p-u5-museum-q6', question: 'What did Jalal buy from the gift shop?', questionTranslation: 'ماذا اشترى جلال من متجر الهدايا؟', answer: 'A beautiful cup with a golden pattern on it.', answerTranslation: 'كوبًا جميلًا عليه نقوش ذهبية.' }
+        ]
+      }
+    ]
   },
 };
