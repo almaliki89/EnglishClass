@@ -310,4 +310,80 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     ]
   },
 
+  '4p-u8-saturn': {
+    id: '4p-u8-saturn',
+    titleAr: 'كوكب زحل',
+    titleEn: 'Planet Saturn',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص ص 140؛ الأسئلة ص 141',
+    verificationNote: 'النص والأسئلة مطابقان للملزمة. الإجابات هنا نموذجية ومُستخرجة مباشرة من النص، وليست من مفتاح إجابة مستقل.',
+    originalText: [
+      'Saturn is a giant planet. Second only to Jupiter, the largest planet in our solar system, Saturn is ten times as wide as Earth. Unlike Earth, it is not a rocky planet but is made mainly of gases.',
+      'When people think of Saturn, they think of its rings. The rings were first seen in 1610. At the time, telescopes were not very strong and the rings were not very clear. Today, if you look through a modern telescope, you will see that Saturn has hundreds of rings. They are mostly made of ice, although some contain small rocks.',
+      'Several spacecraft have visited Saturn. The first three visits were by Pioneer II in 1979, Voyager 1 in 1980 and Voyager 2 in 1981. Today, the spacecraft Cassini is visiting Saturn. Cassini is sending back pictures of Saturn’s rings and moons. Saturn has over 40 moons, many of them very small. Most of them orbit Saturn at the edge of the rings, but pictures from Cassini have shown us that at least two small moons orbit inside Saturn’s rings. Cassini is also sending back a lot of pictures of Saturn’s largest moon, Titan. Scientists hope these pictures will help them understand how Titan was formed.'
+    ],
+    translation: [
+      'زحل كوكب عملاق. وهو يأتي في الحجم بعد المشتري، أكبر كواكب مجموعتنا الشمسية مباشرة، ويبلغ عرضه عشرة أضعاف عرض الأرض. وعلى خلاف الأرض، ليس زحل كوكبًا صخريًا، بل يتكوّن أساسًا من الغازات.',
+      'عندما يفكر الناس في زحل، فإنهم يفكرون في حلقاته. وقد شوهدت هذه الحلقات لأول مرة عام 1610. وفي ذلك الوقت لم تكن التلسكوبات قوية جدًا، لذلك لم تكن الحلقات واضحة. أما اليوم، فإذا نظرت من خلال تلسكوب حديث فسترى أن لزحل مئات الحلقات. وتتكوّن معظمها من الجليد، مع أن بعضها يحتوي على صخور صغيرة.',
+      'زارت عدة مركبات فضائية كوكب زحل. وكانت الزيارات الثلاث الأولى بواسطة المركبة بايونير 11 عام 1979، وفوياجر 1 عام 1980، وفوياجر 2 عام 1981. واليوم تزور المركبة الفضائية كاسيني زحل، وترسل صورًا لحلقاته وأقماره. ولزحل أكثر من أربعين قمرًا، كثير منها صغير جدًا. ويدور معظمها حول زحل عند أطراف الحلقات، لكن صور كاسيني أظهرت أن قمرين صغيرين على الأقل يدوران داخل حلقات زحل. كما ترسل كاسيني كثيرًا من الصور لأكبر أقمار زحل، تيتان. ويأمل العلماء أن تساعدهم هذه الصور على فهم كيفية تشكّل تيتان.'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u8-saturn-qna',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — أسئلة فهم المقروء',
+        sourcePages: 'الأسئلة ص 141',
+        instruction: 'Answer the questions.',
+        instructionTranslation: 'أجب عن الأسئلة الآتية.',
+        items: [
+          { id: '4p-u8-saturn-q1', question: 'What planet is larger than Saturn?', questionTranslation: 'أي كوكب أكبر من زحل؟', answer: 'Jupiter is larger than Saturn.', answerTranslation: 'كوكب المشتري أكبر من زحل.' },
+          { id: '4p-u8-saturn-q2', question: 'What is Saturn made of?', questionTranslation: 'ممّ يتكوّن كوكب زحل؟', answer: 'Saturn is made mainly of gases.', answerTranslation: 'يتكوّن زحل أساسًا من الغازات.' },
+          { id: '4p-u8-saturn-q3', question: 'How is Saturn different from Earth?', questionTranslation: 'بماذا يختلف زحل عن الأرض؟', answer: 'Unlike Earth, Saturn is not a rocky planet; it is made mainly of gases.', answerTranslation: 'على خلاف الأرض، زحل ليس كوكبًا صخريًا، بل يتكوّن أساسًا من الغازات.' },
+          { id: '4p-u8-saturn-q4', question: 'What are Saturn’s rings made of?', questionTranslation: 'ممّ تتكوّن حلقات زحل؟', answer: 'They are mostly made of ice, although some contain small rocks.', answerTranslation: 'تتكوّن معظمها من الجليد، مع أن بعضها يحتوي على صخور صغيرة.' },
+          { id: '4p-u8-saturn-q5', question: 'Where do Saturn’s moons orbit?', questionTranslation: 'أين تدور أقمار زحل؟', answer: 'Most of them orbit Saturn at the edge of the rings.', answerTranslation: 'يدور معظمها حول زحل عند أطراف الحلقات.' }
+        ]
+      }
+    ]
+  },
+  '4p-u8-gps': {
+    id: '4p-u8-gps',
+    titleAr: 'كيف يعمل جهاز استقبال تحديد المواقع؟',
+    titleEn: 'How a GPS Receiver Works',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص والأسئلة ص 142',
+    verificationNote: 'النص والأسئلة مطابقان للملزمة. الإجابات هنا نموذجية ومُستخرجة مباشرة من النص، وليست من مفتاح إجابة مستقل.',
+    originalText: [
+      'Most people know it is possible to buy a car with a Global Positioning System. What many people do not know is that you can also get a hand-held GPS receiver. Fishermen use them to find where they are in the ocean, and many people who do outdoor sports such as hiking use them to avoid getting lost.',
+      'How do GPS receivers work? They are connected to a network of satellites. When you turn your GPS receiver on, it looks for at least four of the GPS satellites. Radio signals are sent from the satellites to the receiver. The receiver measures the time it takes for the signals to reach it. With this information, the receiver is able to measure how far it is from the satellites.',
+      'Once the receiver knows its distance from the satellites, it is able to find its position on Earth. When its position has been calculated, it is matched to a map the receiver has in its memory. Then you can look at the map and see exactly where you are.',
+      'GPS receivers are expensive, but many people who are outdoors a lot think they are worth the money.'
+    ],
+    translation: [
+      'يعرف معظم الناس أنه من الممكن شراء سيارة مزوّدة بنظام تحديد المواقع العالمي. لكن ما لا يعرفه كثيرون هو أنه يمكنك أيضًا الحصول على جهاز استقبال GPS محمول باليد. ويستخدمه الصيادون لمعرفة مواقعهم في المحيط، كما يستخدمه كثير من الأشخاص الذين يمارسون أنشطة خارجية مثل المشي لمسافات طويلة لتجنب الضياع.',
+      'كيف تعمل أجهزة استقبال GPS؟ إنها متصلة بشبكة من الأقمار الصناعية. وعندما تشغّل جهاز GPS، فإنه يبحث عن أربعة أقمار صناعية على الأقل من أقمار النظام. وتُرسل إشارات لاسلكية من الأقمار الصناعية إلى جهاز الاستقبال. ويقيس الجهاز الوقت الذي تستغرقه الإشارات للوصول إليه. وباستخدام هذه المعلومات يستطيع الجهاز قياس بُعده عن الأقمار الصناعية.',
+      'بعد أن يعرف جهاز الاستقبال المسافة التي تفصله عن الأقمار الصناعية، يصبح قادرًا على تحديد موقعه على الأرض. وعندما يُحسب موقعه، تتم مطابقته مع خريطة مخزّنة في ذاكرة الجهاز. وبعد ذلك يمكنك النظر إلى الخريطة ومعرفة مكانك بدقة.',
+      'أجهزة استقبال GPS مرتفعة الثمن، لكن كثيرًا من الأشخاص الذين يقضون وقتًا طويلًا في الأماكن الخارجية يرون أنها تستحق هذا المال.'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u8-gps-qna',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — أسئلة فهم المقروء',
+        sourcePages: 'الأسئلة ص 142',
+        instruction: 'Answer these questions.',
+        instructionTranslation: 'أجب عن الأسئلة الآتية.',
+        items: [
+          { id: '4p-u8-gps-q1', question: 'What do many people not know, according to the text?', questionTranslation: 'ما الشيء الذي لا يعرفه كثير من الناس، وفقًا للنص؟', answer: 'They do not know that they can also get a hand-held GPS receiver.', answerTranslation: 'لا يعرفون أنه يمكنهم أيضًا الحصول على جهاز استقبال GPS محمول باليد.' },
+          { id: '4p-u8-gps-q2', question: 'Who uses hand-held GPS receivers?', questionTranslation: 'من يستخدم أجهزة استقبال GPS المحمولة باليد؟', answer: 'Fishermen and people who do outdoor sports such as hiking use them.', answerTranslation: 'يستخدمها الصيادون والأشخاص الذين يمارسون أنشطة خارجية مثل المشي لمسافات طويلة.' },
+          { id: '4p-u8-gps-q3', question: 'What sends radio signals to a GPS receiver?', questionTranslation: 'ما الذي يرسل الإشارات اللاسلكية إلى جهاز استقبال GPS؟', answer: 'The GPS satellites send radio signals to the receiver.', answerTranslation: 'ترسل الأقمار الصناعية الخاصة بنظام GPS إشارات لاسلكية إلى جهاز الاستقبال.' },
+          { id: '4p-u8-gps-q4', question: 'What does the receiver measure?', questionTranslation: 'ماذا يقيس جهاز الاستقبال؟', answer: 'It measures the time it takes for the signals to reach it.', answerTranslation: 'يقيس الوقت الذي تستغرقه الإشارات للوصول إليه.' },
+          { id: '4p-u8-gps-q5', question: 'What does a GPS receiver have in its memory?', questionTranslation: 'ماذا يوجد في ذاكرة جهاز استقبال GPS؟', answer: 'It has a map in its memory.', answerTranslation: 'توجد خريطة في ذاكرته.' },
+          { id: '4p-u8-gps-q6', question: 'What does the text say about the cost of GPS receivers?', questionTranslation: 'ماذا يقول النص عن تكلفة أجهزة استقبال GPS؟', answer: 'They are expensive, but many people think they are worth the money.', answerTranslation: 'هي مرتفعة الثمن، لكن كثيرًا من الناس يرون أنها تستحق هذا المال.' }
+        ]
+      }
+    ]
+  },
+
 };
