@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { 
   CheckCircle2, ArrowRight, ArrowLeft, Lightbulb, AlertTriangle, 
   HelpCircle, BookOpen, Sparkles, Check, X, RotateCcw, Volume2, 
@@ -19,6 +19,7 @@ import { CartoonMascot } from './CartoonMascot';
 import { playPopSound, playSuccessChime, playFanfare, playBoingSound } from '../utils/cartoonAudio';
 import { BreadcrumbsNav, CalloutBox, BrutalBadge, BrutalButton } from './common/BrutalUI';
 import { getGradeMeta } from '../data/gradeContentResolver';
+import { getBookPassageContent } from '../data/readingPassageContentRegistry';
 
 interface LessonViewerProps {
   unit: Unit;
@@ -42,13 +43,27 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   onAnswerExercise,
 }) => {
   const navigate = useNavigate();
+  const location = useLocation();
+  const navigationState = location.state as { openSection?: string; passageId?: string } | null;
   const gradeMeta = grade ? getGradeMeta(grade) : null;
   // Local exercise answer tracking: exerciseId -> selected option
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [revealedExplanations, setRevealedExplanations] = useState<Record<string, boolean>>({});
   const [showQuickHints, setShowQuickHints] = useState(false);
-  const [activeSectionView, setActiveSectionView] = useState<'guided' | 'all' | 'interactive' | 'academic' | 'exercises' | 'passage'>('guided');
+  const [activeSectionView, setActiveSectionView] = useState<'guided' | 'all' | 'interactive' | 'academic' | 'exercises' | 'passage'>(() =>
+    navigationState?.openSection === 'passage' ? 'passage' : 'guided'
+  );
+
+  useEffect(() => {
+    if (navigationState?.openSection === 'passage') {
+      setActiveSectionView('passage');
+    }
+  }, [location.key, navigationState?.openSection]);
   const [speakingText, setSpeakingText] = useState<string | null>(null);
+
+  const selectedPassage = navigationState?.passageId
+    ? { ...(lesson.readingPassage || {}), ...(getBookPassageContent(navigationState.passageId) || {}) } as Lesson['readingPassage']
+    : lesson.readingPassage;
 
   const handleSpeak = (text: string) => {
     setSpeakingText(text);
@@ -385,7 +400,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
       {(activeSectionView === 'passage' || activeSectionView === 'all') &&
         (lesson.category === 'reading' || lesson.readingPassage) && (
-          <ReadingPassagePanel lesson={lesson} />
+          <ReadingPassagePanel
+            lesson={lesson}
+            passage={selectedPassage}
+            passageTitle={selectedPassage?.titleAr || lesson.titleAr}
+          />
         )}
 
       {activeSectionView === 'guided' && (

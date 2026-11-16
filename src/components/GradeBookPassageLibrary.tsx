@@ -2,6 +2,7 @@ import React, { useMemo, useState } from 'react';
 import { AlertTriangle, ArrowLeft, BookOpen, CheckCircle2, ChevronDown, FileText, Search } from 'lucide-react';
 import { EducationalGrade, StudentState, Unit } from '../types';
 import { resolveBookPassages } from '../data/bookPassageCatalog';
+import { getBookPassageContent } from '../data/readingPassageContentRegistry';
 import { BrutalBadge, BrutalButton, BrutalCard } from './common/BrutalUI';
 
 interface GradeBookPassageLibraryProps {
@@ -9,7 +10,7 @@ interface GradeBookPassageLibraryProps {
   gradeName: string;
   units: Unit[];
   completedLessonIds: StudentState['completedLessonIds'];
-  onOpenPassage: (unit: Unit, lessonId: string) => void;
+  onOpenPassage: (unit: Unit, lessonId: string, passageId: string) => void;
 }
 
 const getSourceStatus = (status?: string, hasPage = false) => {
@@ -66,6 +67,15 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
 
   const passages = useMemo(() => resolveBookPassages(grade, units), [grade, units]);
 
+  const completePassageCount = passages.filter((item) => {
+    const passage = { ...(item.lesson.readingPassage || {}), ...(getBookPassageContent(item.id) || {}) };
+    const hasText = (passage?.status === 'verified' || passage?.status === 'reconstructed')
+      && Boolean(passage.originalText?.some((paragraph) => paragraph.trim().length > 0));
+    const hasTranslation = Boolean(passage?.translation?.some((paragraph) => paragraph.trim().length > 0));
+    const hasSourceQuestions = Boolean(passage?.exerciseSets?.some((set) => set.items.length > 0));
+    return hasText && hasTranslation && hasSourceQuestions;
+  }).length;
+
   const filteredPassages = useMemo(() => {
     const query = searchQuery.trim().toLocaleLowerCase();
     return passages.filter(({ unit, lesson, titleAr, titleEn, sourcePages }) => {
@@ -118,11 +128,12 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
             <BrutalBadge variant="yellow">مرتبة حسب الوحدات</BrutalBadge>
           </div>
           <p className="text-xs sm:text-sm font-bold text-ink/70">
-            فهرس القطع المقررة في {gradeName}، مع فصل القصص الإضافية والحوارات والأنشطة عن قطع الكتاب.
+            قطع المنهج مرتبة حسب الوحدات. افتح القطعة لقراءة النص كاملًا ثم الترجمة ثم أسئلة المصدر وإجاباتها.
           </p>
         </div>
         <div className="flex items-center gap-2 text-xs font-mono font-black shrink-0">
           <span className="bg-surface border-2 border-ink px-3 py-2">{passages.length} قطعة</span>
+          <span className="bg-soft-mint border-2 border-ink px-3 py-2">{completePassageCount} مكتملة المحتوى</span>
           <span className="bg-paper border-2 border-ink px-3 py-2">{unitsWithPassages.length} وحدات</span>
         </div>
       </div>
@@ -199,9 +210,15 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                   {isExpanded && (
                     <div className="border-t-2 border-ink divide-y divide-ink/15">
                       {items.map((item, itemIndex) => {
-                        const status = getSourceStatus(item.lesson.readingPassage?.status, Boolean(item.sourcePages || item.lesson.readingPassage?.sourcePages || item.lesson.sourcePages));
-                        const pages = item.sourcePages || item.lesson.readingPassage?.sourcePages || item.lesson.sourcePages;
+                        const passage = { ...(item.lesson.readingPassage || {}), ...(getBookPassageContent(item.id) || {}) };
+                        const status = getSourceStatus(passage?.status, Boolean(item.sourcePages || passage?.sourcePages || item.lesson.sourcePages));
+                        const pages = item.sourcePages || passage?.sourcePages || item.lesson.sourcePages;
                         const isCompleted = completedLessonIds.includes(item.lesson.id);
+                        const hasText = (passage?.status === 'verified' || passage?.status === 'reconstructed')
+                          && Boolean(passage.originalText?.some((paragraph) => paragraph.trim().length > 0));
+                        const hasTranslation = Boolean(passage?.translation?.some((paragraph) => paragraph.trim().length > 0));
+                        const hasSourceQuestions = Boolean(passage?.exerciseSets?.some((set) => set.items.length > 0));
+                        const isContentComplete = hasText && hasTranslation && hasSourceQuestions;
                         return (
                           <article
                             key={item.id}
@@ -209,6 +226,7 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                             data-passage-id={item.id}
                             data-lesson-id={item.lesson.id}
                             data-unit-id={unit.id}
+                            data-passage-complete={isContentComplete ? 'true' : 'false'}
                             className="p-3 sm:p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3"
                           >
                             <div className="flex items-start gap-3 min-w-0">
@@ -224,6 +242,10 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                                     {status.icon}
                                     {status.label}
                                   </span>
+                                  <span className={`px-2 py-1 border ${hasText ? 'bg-soft-mint border-semantic-success' : 'bg-paper border-ink/40'}`}>{hasText ? '✓ النص' : '— النص'}</span>
+                                  <span className={`px-2 py-1 border ${hasTranslation ? 'bg-soft-mint border-semantic-success' : 'bg-paper border-ink/40'}`}>{hasTranslation ? '✓ الترجمة' : '— الترجمة'}</span>
+                                  <span className={`px-2 py-1 border ${hasSourceQuestions ? 'bg-soft-mint border-semantic-success' : 'bg-paper border-ink/40'}`}>{hasSourceQuestions ? '✓ الأسئلة والإجابات' : '— الأسئلة والإجابات'}</span>
+                                  {isContentComplete && <span className="font-black text-semantic-success">القطعة مكتملة</span>}
                                   {isCompleted && <span className="text-semantic-success">✓ تمت دراسة الدرس المرتبط</span>}
                                 </div>
                               </div>
@@ -231,10 +253,10 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                             <BrutalButton
                               variant="yellow"
                               size="sm"
-                              onClick={() => onOpenPassage(unit, item.lesson.id)}
+                              onClick={() => onOpenPassage(unit, item.lesson.id, item.id)}
                               className="shrink-0 self-start lg:self-center"
                             >
-                              فتح شرح القطعة
+                              فتح القطعة كاملة
                               <ArrowLeft className="w-3.5 h-3.5" />
                             </BrutalButton>
                           </article>

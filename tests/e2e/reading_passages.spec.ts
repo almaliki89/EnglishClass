@@ -6,7 +6,7 @@ test.describe('Source-aware reading passages', () => {
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
-    await expect(page.getByRole('heading', { name: 'Original English Passage' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'النص الإنجليزي الكامل' })).toBeVisible();
     await expect(page.locator('p[lang="en"]').first()).toContainText('Ibrahim lived in a small village in the south of Iraq');
     await expect(page.getByText('ملزمة الثالث المتوسط 2025')).toBeVisible();
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
@@ -32,20 +32,54 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
   });
 
-  test('sixth preparatory does not present the Ammar summary as an original passage', async ({ page }) => {
-    await page.goto('/grade/sixth-preparatory/unit/1/lesson/u1-l3');
+  test('sixth preparatory opens Ammar as a complete source-backed passage dossier', async ({ page }) => {
+    await page.goto('/grade/sixth-preparatory');
     await page.waitForLoadState('networkidle');
 
-    await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
-    await expect(page.getByRole('heading', { name: 'لم يتم توثيق نص القطعة الأصلي بعد' })).toBeVisible();
-    await expect(page.getByText('المصدر محدد — إذن النشر الرقمي مطلوب')).toBeVisible();
-    await expect(page.getByText(/تم تحديد نص القراءة وموضعه في الملزمة المرفوعة/)).toBeVisible();
-    await expect(page.getByText('ملزمة السادس 2027 — إعداد الأستاذ عمار غالب')).toBeVisible();
-    await expect(page.getByText(/ص 10 من ملزمة السادس 2027/)).toBeVisible();
+    const library = page.getByTestId('grade-book-passage-library');
+    const ammarCard = library.getByTestId('book-passage-card').filter({ hasText: "Ammar's Story" });
+    await expect(ammarCard).toBeVisible();
+    await ammarCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
 
-    await page.getByRole('button', { name: 'ملف القصة والبطاقات القلابة' }).click().catch(() => {});
-    await expect(page.getByText('زيد طارق (Zaid Tariq - 20 years old)')).toHaveCount(0);
+    await expect(page.getByTestId('reading-passage-dossier')).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'النص الإنجليزي الكامل' })).toBeVisible();
+    await expect(page.locator('[data-testid="original-passage-section"] p[lang="en"]').first()).toContainText('When I was 16, life was great!');
+    await expect(page.getByRole('heading', { name: 'الترجمة العربية الكاملة' })).toBeVisible();
+    await expect(page.getByTestId('passage-translation-section')).toContainText('عندما كنتُ في السادسة عشرة من عمري');
+    await expect(page.getByRole('heading', { name: 'أسئلة كتاب النشاط / الملزمة مع الإجابات' })).toBeVisible();
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('What was Ammar’s life like when he was 16?');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('It was great because he was finally part of the school basketball team');
   });
+  test('sixth preparatory Samira passage includes its full translation and Activity Book answers', async ({ page }) => {
+    await page.goto('/grade/sixth-preparatory');
+    await page.waitForLoadState('networkidle');
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitThree = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="3"]');
+    await unitThree.getByRole('button').click();
+    const samiraCard = library.getByTestId('book-passage-card').filter({ hasText: 'Samira Al Mahmoud' });
+    await expect(samiraCard).toBeVisible();
+    await samiraCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByTestId('original-passage-section')).toContainText('the annual Arab Oil Industry Conference');
+    await expect(page.getByTestId('passage-translation-section')).toContainText('المؤتمر السنوي لصناعة النفط العربية');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('What languages can Samira speak? How did she learn them?');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Arabic and English; she was born in Britain');
+  });
+
+  test('sixth preparatory Euphrates River shows available source exercise while keeping missing full text explicit', async ({ page }) => {
+    await page.goto('/grade/sixth-preparatory');
+    await page.waitForLoadState('networkidle');
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitEight = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="8"]');
+    await unitEight.getByRole('button').click();
+    const euphratesCard = library.getByTestId('book-passage-card').filter({ hasText: 'The Euphrates River' });
+    await expect(euphratesCard).toBeVisible();
+    await euphratesCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByRole('heading', { name: 'النص الإنجليزي الكامل غير متاح في المصدر المرفوع' })).toBeVisible();
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Exercise D — Find words in the text');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('deep valleys');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('gorges');
+  });
+
   test('fifth preparatory shows the verified Harrods history and correct foundation year', async ({ page }) => {
     await page.goto('/grade/fifth-preparatory/unit/57/lesson/5th-u7-l8');
     await page.waitForLoadState('networkidle');
@@ -153,4 +187,87 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByText(/عالم الآثار|Aloalo|40 كيلوغراماً/)).toHaveCount(0);
   });
 
+
+  test('third intermediate Iraqi Morning News opens with the complete bilingual source text and Activity Book answers', async ({ page }) => {
+    await page.goto('/grade/third-intermediate');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitFive = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="105"]');
+    await unitFive.getByRole('button').click();
+
+    const newsCard = library.getByTestId('book-passage-card').filter({ hasText: 'Iraqi Morning News' });
+    await expect(newsCard).toBeVisible();
+    await newsCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+
+    await expect(page.getByTestId('reading-passage-dossier')).toBeVisible();
+    await expect(page.getByTestId('original-passage-section')).toContainText('Minister of Education in London');
+    await expect(page.getByTestId('original-passage-section')).toContainText('John Smith, 13');
+    await expect(page.getByTestId('passage-translation-section')).toContainText('افتتح وزير الرياضة مدينة رياضية جديدة في البصرة');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('What was Salma (do / doing) before the dog ran at her?');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('were waiting');
+  });
+
+  test('fourth preparatory Exercise and Fitness passage does not invent missing Activity Book questions', async ({ page }) => {
+    await page.goto('/grade/fourth-preparatory');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitSix = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="46"]');
+    await unitSix.getByRole('button').click();
+    const exerciseCard = library.getByTestId('book-passage-card').filter({ hasText: 'Exercise & Fitness' });
+    await expect(exerciseCard).toBeVisible();
+    await exerciseCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+
+    await expect(page.getByTestId('original-passage-section')).toContainText('If you want to be fit and healthy, you need to take regular exercise.');
+    await expect(page.getByTestId('passage-translation-section')).toContainText('إذا أردت أن تكون لائقًا وبصحة جيدة');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('أسئلة كتاب النشاط أو الملزمة وإجاباتها لم تُربط بهذه القطعة بعد');
+    await expect(page.getByTestId('passage-exercises-section')).not.toContainText('Mahmoud is fearless');
+  });
+
+  test('fourth preparatory body exercise and refinery passages display source-matched questions', async ({ page }) => {
+    await page.goto('/grade/fourth-preparatory');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitSeven = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="47"]');
+    await unitSeven.getByRole('button').click();
+
+    const bodyCard = library.getByTestId('book-passage-card').filter({ hasText: 'Why Exercise Is Important for Your Body' });
+    await expect(bodyCard).toBeVisible();
+    await bodyCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByTestId('original-passage-section')).toContainText('Exercise is important for your body in many ways.');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Why do you need strong muscles?');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Heart disease kills many people in developed countries.');
+
+    await page.goto('/grade/fourth-preparatory');
+    await page.waitForLoadState('networkidle');
+    const oilLibrary = page.getByTestId('grade-book-passage-library');
+    const oilUnit = oilLibrary.locator('[data-testid="book-passage-unit-group"][data-unit-id="47"]');
+    await oilUnit.getByRole('button').click();
+    const oilCard = oilLibrary.getByTestId('book-passage-card').filter({ hasText: 'From the Earth to the Refinery' });
+    await expect(oilCard).toBeVisible();
+    await oilCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByTestId('original-passage-section')).toContainText('Petroleum was formed millions of years ago.');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Petroleum has (   )');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('been used since the 19th century.');
+  });
+
+  test('fourth preparatory space fitness dossier uses the verified interview and Activity Book answer key', async ({ page }) => {
+    await page.goto('/grade/fourth-preparatory');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitEight = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="48"]');
+    await unitEight.getByRole('button').click();
+    const card = library.getByTestId('book-passage-card').filter({ hasText: 'Keeping Fit in Space' });
+    await expect(card).toBeVisible();
+    await card.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+
+    await expect(page.getByTestId('original-passage-section')).toContainText('Our guest on today’s program is an astronaut.');
+    await expect(page.getByTestId('original-passage-section')).toContainText('two-and-a-half hours exercising every day');
+    await expect(page.getByTestId('passage-translation-section')).toContainText('ضيف برنامجنا اليوم رائد فضاء');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Read the interview on Student’s Book page 85.');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('1, 3 and 6.');
+  });
 });

@@ -30,16 +30,46 @@ export interface Exercise {
 
 export type ReadingPassageStatus = 'verified' | 'reconstructed' | 'permission_required' | 'summary_only' | 'source_required';
 
+export type ReadingPassageExerciseSource = 'activity_book' | 'malzama';
+
+export interface ReadingPassageExerciseItem {
+  id: string;
+  /** Exact question or task text from the cited source. */
+  question: string;
+  questionTranslation?: string;
+  options?: string[];
+  /** Correct answer as printed or solved in the cited source. */
+  answer: string;
+  answerTranslation?: string;
+}
+
+export interface ReadingPassageExerciseSet {
+  id: string;
+  source: ReadingPassageExerciseSource;
+  sourceTitle: string;
+  sourcePages: string;
+  instruction: string;
+  instructionTranslation?: string;
+  items: ReadingPassageExerciseItem[];
+}
+
 /**
  * Source-aware reading passage data. Only verified/reconstructed entries may
  * contain originalText; summaries must never be presented as textbook text.
  */
 export interface ReadingPassage {
+  /** Stable passage ID from bookPassageCatalog, used when one lesson contains multiple passages. */
+  id?: string;
+  titleAr?: string;
+  titleEn?: string;
   status: ReadingPassageStatus;
   sourceTitle: string;
   sourcePages: string;
   originalText?: string[];
+  /** Arabic translation, shown after the complete English passage. */
   translation?: string[];
+  /** Source-backed Activity Book or Malzama questions with their answer keys. */
+  exerciseSets?: ReadingPassageExerciseSet[];
   verificationNote?: string;
 }
 

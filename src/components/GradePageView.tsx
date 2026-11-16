@@ -108,6 +108,19 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
         </div>
       </div>
 
+      {/* Passage library is the first study section inside the selected grade. */}
+      <GradeBookPassageLibrary
+        grade={validGrade}
+        gradeName={gradeMeta.nameAr}
+        units={units}
+        completedLessonIds={studentState.completedLessonIds}
+        onOpenPassage={(unit, lessonId, passageId) => {
+          navigate(`/grade/${validGrade}/unit/${unit.id}/lesson/${lessonId}`, {
+            state: { openSection: 'passage', passageId },
+          });
+        }}
+      />
+
       {/* 2. Hero Dossier for THIS Grade ONLY */}
       <BrutalCard variant="paper" borderSize="4" shadowSize="lg" className="p-6 sm:p-8 space-y-6">
         <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 border-b-3 border-ink pb-6">
@@ -200,18 +213,6 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
           </div>
         )}
       </BrutalCard>
-
-      {/* Independent, grade-scoped book passage library — separate from unit lesson lists */}
-      <GradeBookPassageLibrary
-        grade={validGrade}
-        gradeName={gradeMeta.nameAr}
-        units={units}
-        completedLessonIds={studentState.completedLessonIds}
-        onOpenPassage={(unit, lessonId) => {
-          // Open the exact lesson associated with the selected textbook passage.
-          navigate(`/grade/${validGrade}/unit/${unit.id}/lesson/${lessonId}`);
-        }}
-      />
 
       {/* 3. Scoped Search Bar within this Grade */}
       <ScopedGradeSearch
