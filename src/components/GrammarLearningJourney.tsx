@@ -4,6 +4,8 @@ import {
   ArrowRight,
   BookOpen,
   CheckCircle2,
+  Check,
+  X,
   ChevronLeft,
   ChevronRight,
   CircleAlert,
@@ -28,7 +30,7 @@ const STAGES = [
   { title: 'ابنِ القاعدة', subtitle: 'كيف تتكوّن؟', icon: ListChecks },
   { title: 'شاهد المثال', subtitle: 'القاعدة في جملة', icon: BookOpen },
   { title: 'انتبه للأخطاء', subtitle: 'ما الذي يجب تجنّبه؟', icon: CircleAlert },
-  { title: 'ثبّت فهمك', subtitle: 'راجع ثم طبّق', icon: Trophy },
+  { title: 'اختبر نفسك', subtitle: 'جرّب قبل رؤية الحل', icon: Trophy },
 ] as const;
 
 function HighlightedSentence({ text, highlight }: { text: string; highlight?: string }) {
@@ -53,6 +55,9 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
 }) => {
   const [activeStage, setActiveStage] = useState(0);
   const [activeExample, setActiveExample] = useState(0);
+  const [activeExercise, setActiveExercise] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState('');
+  const [answerChecked, setAnswerChecked] = useState(false);
 
   const gradeMeta = grade ? getGradeMeta(grade) : null;
   const formulaLines = (lesson.grammarRuleFormula || '')
@@ -71,6 +76,8 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
   const nextStage = () => setActiveStage((current) => Math.min(STAGES.length - 1, current + 1));
 
   const currentExample = examples[activeExample];
+  const currentExercise = lesson.exercises[activeExercise];
+  const answerIsCorrect = !!currentExercise && selectedAnswer.trim() === currentExercise.correctAnswer.trim();
 
   const renderWarmup = () => (
     <div className="space-y-5" data-testid="grammar-understand-stage">
@@ -339,46 +346,83 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
     );
   };
 
-  const renderRecap = () => (
+  const renderPractice = () => (
     <div className="space-y-5" data-testid="grammar-recap-stage">
       <div className="rounded-xl border-2 border-ink bg-soft-mint/55 p-5 sm:p-7">
         <div className="flex items-center gap-2 text-sm font-black text-ink">
-          <CheckCircle2 className="h-5 w-5" />
-          قبل أن تغادر الدرس
+          <Trophy className="h-5 w-5" />
+          دورك الآن — فكّر قبل أن ترى الإجابة
         </div>
-        <h3 className="mt-3 text-xl font-black leading-relaxed text-ink">هل تستطيع شرح الفكرة بكلماتك؟</h3>
+        <h3 className="mt-3 text-xl font-black leading-relaxed text-ink">هل تستطيع استخدام القاعدة بنفسك؟</h3>
         <p className="mt-2 text-sm sm:text-base font-semibold leading-8 text-ink">
           {lesson.pedagogy?.recapSummary || lesson.summary}
         </p>
       </div>
 
-      {lesson.pedagogy?.nextStepRecommendation && (
-        <div className="rounded-lg border-2 border-ink bg-lavender/60 p-4">
-          <p className="text-[10px] font-black text-cobalt">الخطوة التالية</p>
-          <p className="mt-1 text-sm font-semibold leading-7 text-ink">{lesson.pedagogy.nextStepRecommendation}</p>
+      {currentExercise ? (
+        <article className="overflow-hidden rounded-xl border-2 border-ink bg-surface shadow-brutal-callout">
+          <div className="flex items-center justify-between gap-3 border-b-2 border-ink bg-paper p-3">
+            <span className="text-xs font-black text-ink">تحدّي {activeExercise + 1} من {lesson.exercises.length}</span>
+            <span className="rounded-full border border-ink bg-yellow px-2.5 py-1 text-[10px] font-black text-ink">{currentExercise.type === 'mcq' ? 'اختر الإجابة' : currentExercise.type === 'fill' ? 'أكمل الفراغ' : 'صحّح الخطأ'}</span>
+          </div>
+          <div className="space-y-4 p-5">
+            <p dir="auto" className="text-base font-bold leading-8 text-ink">{currentExercise.question}</p>
+            {currentExercise.options?.length ? (
+              <div className="grid gap-2 sm:grid-cols-2">
+                {currentExercise.options.map((option, index) => (
+                  <button key={index} type="button" disabled={answerChecked}
+                    onClick={() => setSelectedAnswer(option)}
+                    className={`rounded-lg border-2 p-3 text-right text-sm font-bold transition-all ${selectedAnswer === option ? 'border-ink bg-yellow shadow-brutal-sm' : 'border-ink/30 bg-paper hover:border-ink'} disabled:cursor-default`}>
+                    <span dir="auto">{option}</span>
+                  </button>
+                ))}
+              </div>
+            ) : (
+              <input value={selectedAnswer} disabled={answerChecked}
+                onChange={(event) => setSelectedAnswer(event.target.value)}
+                placeholder="اكتب إجابتك هنا"
+                className="w-full rounded-lg border-2 border-ink bg-paper p-3 text-sm font-semibold text-ink"
+                dir="auto" />
+            )}
+            {!answerChecked ? (
+              <button type="button" disabled={!selectedAnswer.trim()} onClick={() => setAnswerChecked(true)}
+                className="rounded-md border-2 border-ink bg-cobalt px-5 py-3 text-sm font-black text-surface disabled:opacity-40">
+                تحقّق من إجابتي
+              </button>
+            ) : (
+              <div className={`rounded-lg border-2 border-ink p-4 ${answerIsCorrect ? 'bg-soft-mint' : 'bg-answer-review-bg'}`}>
+                <p className="flex items-center gap-2 text-sm font-black text-ink">
+                  {answerIsCorrect ? <Check className="h-5 w-5" /> : <X className="h-5 w-5" />}
+                  {answerIsCorrect ? 'أحسنت! إجابتك صحيحة.' : 'ليست الإجابة الصحيحة بعد. راجع السبب أدناه.'}
+                </p>
+                <p className="mt-2 text-sm font-bold leading-7 text-ink">الإجابة الصحيحة: <span dir="auto">{currentExercise.correctAnswer}</span></p>
+                {currentExercise.explanation && <p className="mt-2 border-t border-ink/20 pt-2 text-sm font-semibold leading-7 text-ink">{currentExercise.explanation}</p>}
+                <div className="mt-3 flex flex-wrap gap-2">
+                  <button type="button" onClick={() => { setSelectedAnswer(''); setAnswerChecked(false); }}
+                    className="rounded-md border-2 border-ink bg-surface px-3 py-2 text-xs font-black text-ink">حاول مرة أخرى</button>
+                  {activeExercise < lesson.exercises.length - 1 && (
+                    <button type="button" onClick={() => { setActiveExercise((n) => n + 1); setSelectedAnswer(''); setAnswerChecked(false); }}
+                      className="rounded-md border-2 border-ink bg-cobalt px-3 py-2 text-xs font-black text-surface">السؤال التالي</button>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </article>
+      ) : (
+        <div className="rounded-xl border-2 border-dashed border-ink/40 bg-paper p-5">
+          <h4 className="text-base font-black text-ink">التدريب غير متاح لهذا الدرس</h4>
+          <p className="mt-2 text-sm font-semibold leading-7 text-ink/70">لا توجد أسئلة وتمارين مرتبطة بهذا الدرس في المحتوى الحالي. لن نضع سؤالاً عاماً وننسبه إلى الكتاب.</p>
         </div>
       )}
 
-      <div className="rounded-xl border-2 border-ink bg-surface p-5 sm:p-6">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div>
-            <h4 className="text-base font-black text-ink">الآن اختبر فهمك</h4>
-            <p className="mt-1 text-xs font-semibold leading-6 text-ink/65">
-              {lesson.exercises.length > 0
-                ? `في هذا الدرس ${lesson.exercises.length} تمريناً مسجّلاً مع الإجابات والتفسير.`
-                : 'لا توجد تمارين مسجّلة لهذا الدرس حالياً.'}
-            </p>
-          </div>
-          <button
-            type="button"
-            onClick={onOpenExercises}
-            disabled={lesson.exercises.length === 0}
-            className="inline-flex items-center gap-2 rounded-md border-2 border-ink bg-cobalt px-4 py-3 text-xs font-black text-surface shadow-brutal-sm transition-transform hover:-translate-y-0.5 disabled:cursor-not-allowed disabled:opacity-40"
-          >
-            ابدأ حل التمارين
-            <ArrowLeft className="h-4 w-4" />
-          </button>
-        </div>
+      <div className="rounded-xl border-2 border-ink bg-surface p-5">
+        <h4 className="text-sm font-black text-ink">ماذا بعد؟</h4>
+        <p className="mt-1 text-xs font-semibold leading-6 text-ink/65">بعد تجربة السؤال هنا، يمكنك الانتقال إلى جميع تمارين الدرس المسجّلة.</p>
+        <button type="button" onClick={onOpenExercises} disabled={lesson.exercises.length === 0}
+          className="mt-3 inline-flex items-center gap-2 rounded-md border-2 border-ink bg-cobalt px-4 py-3 text-xs font-black text-surface disabled:cursor-not-allowed disabled:opacity-40">
+          افتح تمارين الدرس كاملة <ArrowLeft className="h-4 w-4" />
+        </button>
       </div>
     </div>
   );
@@ -389,7 +433,7 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
       case 1: return renderRule();
       case 2: return renderExamples();
       case 3: return renderWarnings();
-      default: return renderRecap();
+      default: return renderPractice();
     }
   };
 
@@ -469,7 +513,7 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
             onClick={nextStage}
             className="inline-flex items-center gap-1.5 rounded-md border-2 border-ink bg-cobalt px-4 py-2.5 text-xs font-black text-surface shadow-brutal-sm"
           >
-            {activeStage === 0 ? 'افهم القاعدة' : activeStage === 1 ? 'شاهد مثالاً' : activeStage === 2 ? 'راجع الأخطاء' : 'ثبّت ما تعلمت'}
+            {activeStage === 0 ? 'اكتشف تركيب القاعدة' : activeStage === 1 ? 'جرّب مثالاً' : activeStage === 2 ? 'تجنّب هذه الأخطاء' : 'اختبر فهمك بنفسك'}
             <ArrowLeft className="h-4 w-4" />
           </button>
         ) : (
