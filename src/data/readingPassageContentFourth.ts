@@ -1331,7 +1331,43 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
       'الأمر الثاني الذي أريد الحديث عنه هو الإصابات الرياضية. فقد تكون مؤلمة جدًا ويصعب علاجها. وبالطبع قد تقع الحوادث دائمًا وقد يتعرض الناس للإصابة في أي رياضة، لكن كثيرًا من الإصابات يمكن تجنبها. فهي تحدث لأن الناس يتصرفون بإهمال ولا يتبعون إجراءات السلامة الصحيحة. وإذا أردت تجنب الإصابات، فعليك اتباع نصائحي.',
       'لدي أربع نصائح. أولًا، من المهم جدًا أن تقوم بالإحماء قبل بدء التمارين أو اللعب. ويمكنك فعل ذلك بالجري في مكانك، ثم إطالة العضلات لتهيئتها. بعد ذلك ارتدِ الملابس ومعدات السلامة المناسبة؛ فمثلًا ارتدِ واقيات الركبتين والمرفقين إذا كنت تمارس التزلج بالعجلات. ثالثًا، يريد كثير من الناس القيام بأكثر مما ينبغي في البداية؛ فلا تتعجل، وانتقل تدريجيًا إلى تمارين جديدة وأكثر صعوبة. وأخيرًا، انتبه إلى ما يخبرك به جسمك. فمثلًا احمل الماء معك دائمًا لأنك ستشعر بالعطش، وقد تصاب بالجفاف بسرعة أثناء التمرين. أوه، كدت أنسى النصيحة الخامسة: كثيرًا ما تسمع الناس يقولون إن التمرين يجب أن يكون مؤلمًا، أي «لا ألم، لا مكسب». لكنهم مخطئون. فإذا كان التمرين الذي تمارسه مؤلمًا، فعليك التوقف فورًا ومنح جسمك وقتًا للراحة.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "4p-u6-exercise-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "4p-u6-exercise-lingora-1",
+                "question": "Why should people choose an activity they enjoy?",
+                "answer": "Because they may give it up after a few weeks if they do not enjoy it."
+            },
+            {
+                "id": "4p-u6-exercise-lingora-2",
+                "question": "Why can exercising with a friend help?",
+                "answer": "A friend can motivate you to exercise even when you do not feel like it."
+            },
+            {
+                "id": "4p-u6-exercise-lingora-3",
+                "question": "Name two ways to warm up before exercise.",
+                "answer": "Run on the spot and stretch to prepare the muscles."
+            },
+            {
+                "id": "4p-u6-exercise-lingora-4",
+                "question": "Why should people increase the difficulty of exercises slowly?",
+                "answer": "To avoid doing too much too soon."
+            },
+            {
+                "id": "4p-u6-exercise-lingora-5",
+                "question": "What should you do if exercise becomes painful?",
+                "answer": "Stop immediately and give your body time to rest."
+            }
+        ]
+    }
+]
   },
   '4p-u7-oil': {
     id: '4p-u7-oil',
@@ -1392,7 +1428,44 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
       'أما تاريخها، فقد استغرق تجميع محطة الفضاء الدولية عشر سنوات وأكثر من 30 مهمة. أُرسلت الوحدات الأولى إلى المدار عام 1998، وبعد عامين استقبلت أول رواد فضاء. وكما ترون في هذا الجدول، أصبحت المحطة موطنًا لأكثر من 250 رائد فضاء من 20 دولة مختلفة، معظمهم من الأمريكيين والروس.',
       'والآن، يتساءل كثير من الناس عن سبب حاجتنا إلى محطة فضائية. يدرس العلماء في المحطة أمورًا كثيرة، منها ما يحدث للإنسان في الفضاء. كما يتعلمون كيفية إبقاء المركبات الفضائية تعمل مدة طويلة. وتخطط وكالات الفضاء للتوغل أكثر في الفضاء مستقبلًا، وستكون الدروس المستفادة من المحطة خطوة مهمة نحو تحقيق ذلك.',
       'وخلاصة القول، ذكرت أن محطة الفضاء الدولية تشبه منزلًا كبيرًا لرواد فضاء من دول كثيرة. وقد استغرق بناؤها عشر سنوات، وهي تدور الآن حول كوكب الأرض. ويتعلم رواد الفضاء فيها أمورًا مهمة عن الحياة في الفضاء. شكرًا لحسن استماعكم. هل لديكم أي أسئلة؟'
-    ]
+    ],
+    exerciseSets: [
+    {
+        "id": "4p-u7-space-station-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "4p-u7-space-station-lingora-1",
+                "question": "What is the International Space Station?",
+                "answer": "A large spacecraft orbiting Earth where astronauts live, work and study."
+            },
+            {
+                "id": "4p-u7-space-station-lingora-2",
+                "question": "About how far above Earth does the ISS orbit?",
+                "answer": "About 400 kilometres."
+            },
+            {
+                "id": "4p-u7-space-station-lingora-3",
+                "question": "When were the first ISS modules sent into orbit?",
+                "answer": "In 1998."
+            },
+            {
+                "id": "4p-u7-space-station-lingora-4",
+                "question": "Why do scientists study people and equipment on the ISS?",
+                "answer": "To learn what happens to people in space and how to keep spacecraft working for a long time."
+            },
+            {
+                "id": "4p-u7-space-station-lingora-5",
+                "question": "How can lessons from the ISS help future space exploration?",
+                "answer": "They provide important knowledge for space agencies planning to travel farther into space."
+            }
+        ]
+    }
+]
   },
   '4p-u3-water': {
     id: '4p-u3-water',
