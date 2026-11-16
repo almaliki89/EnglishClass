@@ -208,7 +208,7 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByTestId('passage-exercises-section')).toContainText('were waiting');
   });
 
-  test('fourth preparatory Exercise and Fitness passage does not invent missing Activity Book questions', async ({ page }) => {
+  test('fourth preparatory Exercise and Fitness passage includes clearly labeled LINGORA practice', async ({ page }) => {
     await page.goto('/grade/fourth-preparatory/passages');
     await page.waitForLoadState('networkidle');
 
@@ -221,7 +221,8 @@ test.describe('Source-aware reading passages', () => {
 
     await expect(page.getByTestId('original-passage-section')).toContainText('If you want to be fit and healthy, you need to take regular exercise.');
     await expect(page.getByTestId('passage-translation-section')).toContainText('إذا أردت أن تكون لائقًا وبصحة جيدة');
-    await expect(page.getByTestId('passage-exercises-section')).toContainText('أسئلة كتاب النشاط أو الملزمة وإجاباتها لم تُربط بهذه القطعة بعد');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('تدريبات إضافية من LINGORA');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Why should people choose an activity they enjoy?');
     await expect(page.getByTestId('passage-exercises-section')).not.toContainText('Mahmoud is fearless');
   });
 
