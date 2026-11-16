@@ -187,4 +187,24 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByText(/عالم الآثار|Aloalo|40 كيلوغراماً/)).toHaveCount(0);
   });
 
+
+  test('third intermediate Iraqi Morning News opens with the complete bilingual source text and Activity Book answers', async ({ page }) => {
+    await page.goto('/grade/third-intermediate');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitFive = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="105"]');
+    await unitFive.getByRole('button').click();
+
+    const newsCard = library.getByTestId('book-passage-card').filter({ hasText: 'Iraqi Morning News' });
+    await expect(newsCard).toBeVisible();
+    await newsCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+
+    await expect(page.getByTestId('reading-passage-dossier')).toBeVisible();
+    await expect(page.getByTestId('original-passage-section')).toContainText('Minister of Education in London');
+    await expect(page.getByTestId('original-passage-section')).toContainText('John Smith, 13');
+    await expect(page.getByTestId('passage-translation-section')).toContainText('افتتح وزير الرياضة مدينة رياضية جديدة في البصرة');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('What was Salma (do / doing) before the dog ran at her?');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('were waiting');
+  });
 });
