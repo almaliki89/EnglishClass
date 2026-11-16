@@ -567,4 +567,39 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     ).toBeVisible();
   });
 
+  test('verified fourth-grade passage opens as full English text, Arabic translation, then source Q&A', async ({ page }) => {
+    await page.goto('/grade/fourth-preparatory');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    await library.getByLabel('ابحث في قطع الكتاب').fill('استعادة جنة عدن');
+    const passageCard = library.getByTestId('book-passage-card').filter({ hasText: 'استعادة جنة عدن' });
+    await expect(passageCard).toHaveCount(1);
+    await passageCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+
+    await expect(page).toHaveURL(/\/grade\/fourth-preparatory\/unit\//);
+    await expect(page.getByRole('heading', { name: 'القطعة وأسئلتها' })).toBeVisible();
+
+    const dossier = page.getByTestId('reading-passage-dossier');
+    const original = dossier.getByTestId('original-passage-section');
+    const translation = dossier.getByTestId('passage-translation-section');
+    const exercises = dossier.getByTestId('passage-exercises-section');
+
+    await expect(original.getByText(/The Al-Hammaar Marshes, known as the Garden of Eden/)).toBeVisible();
+    await expect(translation.getByText(/تُعد أهوار الحمار، المعروفة باسم جنة عدن/)).toBeVisible();
+    await expect(exercises.getByText('How many people live in the Al-Hammaar Marshes? Who are they?')).toBeVisible();
+    await expect(exercises.getByText(/More than half a million/)).toBeVisible();
+
+    const sectionOrder = await dossier.evaluate((element) =>
+      Array.from(element.querySelectorAll(
+        '[data-testid="original-passage-section"], [data-testid="passage-translation-section"], [data-testid="passage-exercises-section"]'
+      )).map((section) => section.getAttribute('data-testid'))
+    );
+    expect(sectionOrder).toEqual([
+      'original-passage-section',
+      'passage-translation-section',
+      'passage-exercises-section',
+    ]);
+  });
+
 });
