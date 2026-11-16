@@ -316,8 +316,8 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     titleEn: 'Planet Saturn',
     status: 'verified',
     sourceTitle: 'ملزمة الرابع الإعدادي',
-    sourcePages: 'النص ص 140؛ الأسئلة ص 141',
-    verificationNote: 'النص والأسئلة مطابقان للملزمة. الإجابات هنا نموذجية ومُستخرجة مباشرة من النص، وليست من مفتاح إجابة مستقل.',
+    sourcePages: 'النص ص 140؛ الأسئلة ص 141؛ مفتاح الإجابة ص 200',
+    verificationNote: 'النص والأسئلة والإجابات مطابقة للملزمة ومفتاح الحل.',
     originalText: [
       'Saturn is a giant planet. Second only to Jupiter, the largest planet in our solar system, Saturn is ten times as wide as Earth. Unlike Earth, it is not a rocky planet but is made mainly of gases.',
       'When people think of Saturn, they think of its rings. The rings were first seen in 1610. At the time, telescopes were not very strong and the rings were not very clear. Today, if you look through a modern telescope, you will see that Saturn has hundreds of rings. They are mostly made of ice, although some contain small rocks.',
@@ -338,10 +338,10 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
         instructionTranslation: 'أجب عن الأسئلة الآتية.',
         items: [
           { id: '4p-u8-saturn-q1', question: 'What planet is larger than Saturn?', questionTranslation: 'أي كوكب أكبر من زحل؟', answer: 'Jupiter is larger than Saturn.', answerTranslation: 'كوكب المشتري أكبر من زحل.' },
-          { id: '4p-u8-saturn-q2', question: 'What is Saturn made of?', questionTranslation: 'ممّ يتكوّن كوكب زحل؟', answer: 'Saturn is made mainly of gases.', answerTranslation: 'يتكوّن زحل أساسًا من الغازات.' },
-          { id: '4p-u8-saturn-q3', question: 'How is Saturn different from Earth?', questionTranslation: 'بماذا يختلف زحل عن الأرض؟', answer: 'Unlike Earth, Saturn is not a rocky planet; it is made mainly of gases.', answerTranslation: 'على خلاف الأرض، زحل ليس كوكبًا صخريًا، بل يتكوّن أساسًا من الغازات.' },
-          { id: '4p-u8-saturn-q4', question: 'What are Saturn’s rings made of?', questionTranslation: 'ممّ تتكوّن حلقات زحل؟', answer: 'They are mostly made of ice, although some contain small rocks.', answerTranslation: 'تتكوّن معظمها من الجليد، مع أن بعضها يحتوي على صخور صغيرة.' },
-          { id: '4p-u8-saturn-q5', question: 'Where do Saturn’s moons orbit?', questionTranslation: 'أين تدور أقمار زحل؟', answer: 'Most of them orbit Saturn at the edge of the rings.', answerTranslation: 'يدور معظمها حول زحل عند أطراف الحلقات.' }
+          { id: '4p-u8-saturn-q2', question: 'What is Saturn made of?', questionTranslation: 'ممّ يتكوّن كوكب زحل؟', answer: 'It is mostly made of gases.', answerTranslation: 'يتكوّن زحل أساسًا من الغازات.' },
+          { id: '4p-u8-saturn-q3', question: 'How is Saturn different from Earth?', questionTranslation: 'بماذا يختلف زحل عن الأرض؟', answer: 'Saturn is much wider than Earth and it is made of gases, not rocks.', answerTranslation: 'على خلاف الأرض، زحل ليس كوكبًا صخريًا، بل يتكوّن أساسًا من الغازات.' },
+          { id: '4p-u8-saturn-q4', question: 'What are Saturn’s rings made of?', questionTranslation: 'ممّ تتكوّن حلقات زحل؟', answer: 'Saturn’s rings are mostly ice, with some small rocks.', answerTranslation: 'تتكوّن معظمها من الجليد، مع أن بعضها يحتوي على صخور صغيرة.' },
+          { id: '4p-u8-saturn-q5', question: 'Where do Saturn’s moons orbit?', questionTranslation: 'أين تدور أقمار زحل؟', answer: 'Most of them orbit at the edge of the rings, but some orbit inside the rings.', answerTranslation: 'يدور معظمها حول زحل عند أطراف الحلقات.' }
         ]
       }
     ]
@@ -352,8 +352,8 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     titleEn: 'How a GPS Receiver Works',
     status: 'verified',
     sourceTitle: 'ملزمة الرابع الإعدادي',
-    sourcePages: 'النص والأسئلة ص 142',
-    verificationNote: 'النص والأسئلة مطابقان للملزمة. الإجابات هنا نموذجية ومُستخرجة مباشرة من النص، وليست من مفتاح إجابة مستقل.',
+    sourcePages: 'النص والأسئلة ص 142؛ مفتاح الإجابة ص 200',
+    verificationNote: 'النص والأسئلة والإجابات مطابقة للملزمة ومفتاح الحل.',
     originalText: [
       'Most people know it is possible to buy a car with a Global Positioning System. What many people do not know is that you can also get a hand-held GPS receiver. Fishermen use them to find where they are in the ocean, and many people who do outdoor sports such as hiking use them to avoid getting lost.',
       'How do GPS receivers work? They are connected to a network of satellites. When you turn your GPS receiver on, it looks for at least four of the GPS satellites. Radio signals are sent from the satellites to the receiver. The receiver measures the time it takes for the signals to reach it. With this information, the receiver is able to measure how far it is from the satellites.',
@@ -375,12 +375,90 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
         instruction: 'Answer these questions.',
         instructionTranslation: 'أجب عن الأسئلة الآتية.',
         items: [
-          { id: '4p-u8-gps-q1', question: 'What do many people not know, according to the text?', questionTranslation: 'ما الشيء الذي لا يعرفه كثير من الناس، وفقًا للنص؟', answer: 'They do not know that they can also get a hand-held GPS receiver.', answerTranslation: 'لا يعرفون أنه يمكنهم أيضًا الحصول على جهاز استقبال GPS محمول باليد.' },
-          { id: '4p-u8-gps-q2', question: 'Who uses hand-held GPS receivers?', questionTranslation: 'من يستخدم أجهزة استقبال GPS المحمولة باليد؟', answer: 'Fishermen and people who do outdoor sports such as hiking use them.', answerTranslation: 'يستخدمها الصيادون والأشخاص الذين يمارسون أنشطة خارجية مثل المشي لمسافات طويلة.' },
-          { id: '4p-u8-gps-q3', question: 'What sends radio signals to a GPS receiver?', questionTranslation: 'ما الذي يرسل الإشارات اللاسلكية إلى جهاز استقبال GPS؟', answer: 'The GPS satellites send radio signals to the receiver.', answerTranslation: 'ترسل الأقمار الصناعية الخاصة بنظام GPS إشارات لاسلكية إلى جهاز الاستقبال.' },
-          { id: '4p-u8-gps-q4', question: 'What does the receiver measure?', questionTranslation: 'ماذا يقيس جهاز الاستقبال؟', answer: 'It measures the time it takes for the signals to reach it.', answerTranslation: 'يقيس الوقت الذي تستغرقه الإشارات للوصول إليه.' },
-          { id: '4p-u8-gps-q5', question: 'What does a GPS receiver have in its memory?', questionTranslation: 'ماذا يوجد في ذاكرة جهاز استقبال GPS؟', answer: 'It has a map in its memory.', answerTranslation: 'توجد خريطة في ذاكرته.' },
-          { id: '4p-u8-gps-q6', question: 'What does the text say about the cost of GPS receivers?', questionTranslation: 'ماذا يقول النص عن تكلفة أجهزة استقبال GPS؟', answer: 'They are expensive, but many people think they are worth the money.', answerTranslation: 'هي مرتفعة الثمن، لكن كثيرًا من الناس يرون أنها تستحق هذا المال.' }
+          { id: '4p-u8-gps-q1', question: 'What do many people not know, according to the text?', questionTranslation: 'ما الشيء الذي لا يعرفه كثير من الناس، وفقًا للنص؟', answer: 'That you can get a hand-held GPS receiver.', answerTranslation: 'لا يعرفون أنه يمكنهم أيضًا الحصول على جهاز استقبال GPS محمول باليد.' },
+          { id: '4p-u8-gps-q2', question: 'Who uses hand-held GPS receivers?', questionTranslation: 'من يستخدم أجهزة استقبال GPS المحمولة باليد؟', answer: 'Fishermen and people who do outdoor sports.', answerTranslation: 'يستخدمها الصيادون والأشخاص الذين يمارسون أنشطة خارجية مثل المشي لمسافات طويلة.' },
+          { id: '4p-u8-gps-q3', question: 'What sends radio signals to a GPS receiver?', questionTranslation: 'ما الذي يرسل الإشارات اللاسلكية إلى جهاز استقبال GPS؟', answer: 'GPS satellites.', answerTranslation: 'ترسل الأقمار الصناعية الخاصة بنظام GPS إشارات لاسلكية إلى جهاز الاستقبال.' },
+          { id: '4p-u8-gps-q4', question: 'What does the receiver measure?', questionTranslation: 'ماذا يقيس جهاز الاستقبال؟', answer: 'The time it takes for the signals from the satellites to reach it.', answerTranslation: 'يقيس الوقت الذي تستغرقه الإشارات للوصول إليه.' },
+          { id: '4p-u8-gps-q5', question: 'What does a GPS receiver have in its memory?', questionTranslation: 'ماذا يوجد في ذاكرة جهاز استقبال GPS؟', answer: 'A map.', answerTranslation: 'توجد خريطة في ذاكرته.' },
+          { id: '4p-u8-gps-q6', question: 'What does the text say about the cost of GPS receivers?', questionTranslation: 'ماذا يقول النص عن تكلفة أجهزة استقبال GPS؟', answer: 'That they are expensive, but worth the money.', answerTranslation: 'هي مرتفعة الثمن، لكن كثيرًا من الناس يرون أنها تستحق هذا المال.' }
+        ]
+      }
+    ]
+  },
+
+  '4p-u7-shopping': {
+    id: '4p-u7-shopping',
+    titleAr: 'التسوق عبر الإنترنت',
+    titleEn: 'Online Shopping',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص ص 133–134؛ التمارين ص 134–135؛ مفتاح الإجابة ص 198',
+    verificationNote: 'النص والترجمة وثلاثة تمارين من الملزمة موثقة بالصفحات، والإجابات مطابقة لمفتاح الحل.',
+    originalText: [
+      'More and more families are getting computers and internet access, and many adults and teenagers are buying products online. Many people think online shopping is wonderful, but many others don’t like it, or are afraid to try it out. Let’s look at some of the reasons why.',
+      'Shopping online is easier than shopping in a shop. One reason for this is you don’t have to leave your home. Have you driven or walked from shop to shop looking for something very special and come home exhausted at the end of the day? With online shopping, you can visit hundreds of stores from your home. It is also easier because you don’t have to carry heavy shopping bags. When you go to the mall, you have to carry everything with you. You may try to do a lot of shopping at once to save time. Your bags get heavier, and you get tired. If you buy what you need online, it is delivered to your house, and you don’t need to carry it at all.',
+      'Another reason people like shopping online is that it can be less expensive. Shopkeepers spend money to take care of their shops. Because of this, they often charge more for their products. Products that you buy online often don’t come from a real shop, so they can cost less. It is also easier to compare prices on the internet to find the lowest one.',
+      'However, there are disadvantages to shopping online. One is that you can be disappointed when the product arrives. This can happen because you can’t see or touch the real product when you shop online. You can look at a picture. This is usually not a problem if you buy a book or a computer game, but imagine what can happen if you buy shoes online. They may be too big or too small. If you open your box and find your new toy is broken, you really feel bad.',
+      'Is it safe to buy online? Can people find out information about you and steal your money? Yes, they can if you are not careful. You should always make sure you are shopping on a safe site. If there is a little picture of a lock at the bottom of your screen, the site is safe.',
+      'Shopping online can have disadvantages. However, if you think carefully about what you buy and where you buy it, it can save you time and money.'
+    ],
+    translation: [
+      'تحصل أعداد متزايدة من العائلات على أجهزة الحاسوب وخدمة الإنترنت، كما يشتري كثير من البالغين والمراهقين المنتجات عبر الإنترنت. يعتقد كثير من الناس أن التسوق عبر الإنترنت أمر رائع، لكن آخرين لا يحبونه أو يخشون تجربته. دعونا نلقِ نظرة على بعض الأسباب.',
+      'التسوق عبر الإنترنت أسهل من التسوق في المتجر. وأحد أسباب ذلك أنك لست مضطرًا إلى مغادرة منزلك. هل سبق أن قدت سيارتك أو مشيت من متجر إلى آخر بحثًا عن شيء مميز جدًا، ثم عدت إلى المنزل مرهقًا في نهاية اليوم؟ بفضل التسوق عبر الإنترنت يمكنك زيارة مئات المتاجر من منزلك. وهو أسهل أيضًا لأنك لست مضطرًا إلى حمل أكياس تسوق ثقيلة. فعندما تذهب إلى مركز التسوق، عليك حمل كل ما تشتريه معك. وقد تحاول شراء أشياء كثيرة دفعة واحدة لتوفير الوقت، فتزداد أكياسك ثقلًا وتشعر بالتعب. أما إذا اشتريت ما تحتاج إليه عبر الإنترنت، فسيُوصَل إلى منزلك ولن تحتاج إلى حمله إطلاقًا.',
+      'ومن الأسباب الأخرى التي تجعل الناس يحبون التسوق عبر الإنترنت أنه قد يكون أقل تكلفة. ينفق أصحاب المتاجر المال على إدارة متاجرهم والعناية بها، ولذلك غالبًا ما يفرضون أسعارًا أعلى على منتجاتهم. أما المنتجات التي تشتريها عبر الإنترنت فكثيرًا ما لا تأتي من متجر تقليدي، لذا قد تكون أقل سعرًا. كما أن مقارنة الأسعار على الإنترنت أسهل للعثور على السعر الأقل.',
+      'لكن للتسوق عبر الإنترنت عيوبًا أيضًا. فمنها أنك قد تشعر بخيبة أمل عندما يصل المنتج؛ لأنك لا تستطيع رؤية المنتج الحقيقي أو لمسه عند التسوق عبر الإنترنت، بل تنظر إلى صورة له فقط. ولا تكون هذه مشكلة عادةً عند شراء كتاب أو لعبة حاسوب، لكن تخيّل ما قد يحدث إذا اشتريت حذاءً عبر الإنترنت؛ فقد يكون كبيرًا جدًا أو صغيرًا جدًا. وإذا فتحت الصندوق واكتشفت أن لعبتك الجديدة مكسورة، فستشعر بالانزعاج حقًا.',
+      'هل التسوق عبر الإنترنت آمن؟ هل يمكن للآخرين معرفة معلومات عنك وسرقة أموالك؟ نعم، يمكنهم ذلك إذا لم تكن حذرًا. ينبغي أن تتأكد دائمًا من أنك تتسوق عبر موقع آمن. فإذا ظهرت صورة قفل صغيرة أسفل الشاشة، فهذا يدل على أن الموقع آمن.',
+      'قد ينطوي التسوق عبر الإنترنت على عيوب، لكن إذا فكرت جيدًا فيما تشتريه والمكان الذي تشتري منه، فقد يوفر لك الوقت والمال.'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u7-shopping-exercise-a',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Exercise A',
+        sourcePages: 'الأسئلة ص 134؛ مفتاح الإجابة ص 198',
+        instruction: 'Complete the sentences with words from the text on page 77 of the Student’s Book.',
+        instructionTranslation: 'أكمل الجمل بكلمات من النص الموجود في صفحة 77 من كتاب الطالب.',
+        items: [
+          { id: '4p-u7-shopping-a1', question: 'While many people enjoy online shopping, others are ______ to buy anything on the internet.', questionTranslation: 'بينما يستمتع كثير من الناس بالتسوق عبر الإنترنت، يخشى آخرون شراء أي شيء عبره.', answer: 'afraid', answerTranslation: 'خائفون / مترددون.' },
+          { id: '4p-u7-shopping-a2', question: 'Online shopping is ______ than buying in shops because you don’t have to leave your house.', questionTranslation: 'التسوق عبر الإنترنت ______ من الشراء في المتاجر لأنك لست مضطرًا إلى مغادرة منزلك.', answer: 'easier', answerTranslation: 'أسهل.' },
+          { id: '4p-u7-shopping-a3', question: 'Products bought online are ______ to your house, so there’s no need to carry them.', questionTranslation: 'المنتجات التي تُشترى عبر الإنترنت يتم ______ إلى منزلك، لذلك لا حاجة إلى حملها.', answer: 'delivered', answerTranslation: 'توصيلها.' },
+          { id: '4p-u7-shopping-a4', question: 'Shops often ______ more for products because they have to spend more taking care of the shops.', questionTranslation: 'غالبًا ما ______ المتاجر أسعارًا أعلى للمنتجات لأنها تنفق أكثر على إدارة المتاجر.', answer: 'charge', answerTranslation: 'تفرض / تتقاضى.' },
+          { id: '4p-u7-shopping-a5', question: 'The author gives the example of ______ as something that might be a problem to buy online.', questionTranslation: 'يذكر الكاتب ______ مثالًا على شيء قد يكون شراؤه عبر الإنترنت مشكلة.', answer: 'shoes', answerTranslation: 'الأحذية.' },
+          { id: '4p-u7-shopping-a6', question: 'You should be ______ so that people don’t steal your money online.', questionTranslation: 'ينبغي أن تكون ______ حتى لا يسرق الآخرون أموالك عبر الإنترنت.', answer: 'careful', answerTranslation: 'حذرًا.' }
+        ]
+      },
+      {
+        id: '4p-u7-shopping-exercise-b',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Exercise B',
+        sourcePages: 'الأسئلة ص 135؛ مفتاح الإجابة ص 198',
+        instruction: 'Find a word in the text that means:',
+        instructionTranslation: 'اعثر في النص على كلمة تعني:',
+        items: [
+          { id: '4p-u7-shopping-b1', question: 'great', questionTranslation: 'رائع / عظيم', answer: 'wonderful', answerTranslation: 'رائع.' },
+          { id: '4p-u7-shopping-b2', question: 'very tired', questionTranslation: 'متعب جدًا', answer: 'exhausted', answerTranslation: 'منهك.' },
+          { id: '4p-u7-shopping-b3', question: 'lots', questionTranslation: 'كميات كثيرة / أعداد كبيرة', answer: 'hundreds', answerTranslation: 'مئات.' },
+          { id: '4p-u7-shopping-b4', question: 'people who own a shop', questionTranslation: 'الأشخاص الذين يمتلكون متجرًا', answer: 'shopkeepers', answerTranslation: 'أصحاب المتاجر.' },
+          { id: '4p-u7-shopping-b5', question: 'see how similar or different things are', questionTranslation: 'يرى مدى تشابه الأشياء أو اختلافها', answer: 'compare', answerTranslation: 'يقارن.' },
+          { id: '4p-u7-shopping-b6', question: 'upset because something didn’t happen as expected', questionTranslation: 'منزعج لأن شيئًا ما لم يحدث كما كان متوقعًا', answer: 'disappointed', answerTranslation: 'يشعر بخيبة أمل.' },
+          { id: '4p-u7-shopping-b7', question: 'a device that keeps a door or a window shut', questionTranslation: 'جهاز يُبقي الباب أو النافذة مغلقًا', answer: 'lock', answerTranslation: 'قفل.' },
+          { id: '4p-u7-shopping-b8', question: 'a photo', questionTranslation: 'صورة فوتوغرافية', answer: 'picture', answerTranslation: 'صورة.' }
+        ]
+      },
+      {
+        id: '4p-u7-shopping-exercise-c',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Exercise C',
+        sourcePages: 'الأسئلة ص 135؛ مفتاح الإجابة ص 198',
+        instruction: 'Complete the sentences with the words from Exercise B.',
+        instructionTranslation: 'أكمل الجمل باستخدام الكلمات الواردة في التمرين B.',
+        items: [
+          { id: '4p-u7-shopping-c1', question: 'My dad used to be a ______. When I was little, I would play inside the store.', questionTranslation: 'كان أبي ______ في السابق. عندما كنت صغيرًا، كنت ألعب داخل المتجر.', answer: 'shopkeeper', answerTranslation: 'صاحب متجر.' },
+          { id: '4p-u7-shopping-c2', question: 'He bought a ______ for his new bike, so it wouldn’t get stolen.', questionTranslation: 'اشترى ______ لدراجته الجديدة حتى لا تُسرق.', answer: 'lock', answerTranslation: 'قفلًا.' },
+          { id: '4p-u7-shopping-c3', question: 'I think she didn’t like my present. She looked a bit ______.', questionTranslation: 'أعتقد أنها لم تحب هديتي. بدت ______ بعض الشيء.', answer: 'disappointed', answerTranslation: 'محبطة / خائبة الأمل.' },
+          { id: '4p-u7-shopping-c4', question: 'I don’t know which coffee to pick. There are ______ of options!', questionTranslation: 'لا أعرف أي قهوة أختار. هناك ______ من الخيارات!', answer: 'hundreds', answerTranslation: 'مئات.' },
+          { id: '4p-u7-shopping-c5', question: 'Emir was ______ after being at school all day.', questionTranslation: 'كان أمير ______ بعد بقائه في المدرسة طوال اليوم.', answer: 'exhausted', answerTranslation: 'منهكًا.' },
+          { id: '4p-u7-shopping-c6', question: 'The teacher said we shouldn’t ______ our grades. We all did our best!', questionTranslation: 'قال المعلم إنه لا ينبغي لنا ______ درجاتنا. لقد بذلنا جميعًا أفضل ما لدينا!', answer: 'compare', answerTranslation: 'نقارن.' }
         ]
       }
     ]
