@@ -1072,4 +1072,142 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     ]
   },
 
+  '4p-u6-world-cup': {
+    id: '4p-u6-world-cup',
+    titleAr: 'بطولة كأس العالم لكرة القدم',
+    titleEn: 'The FIFA World Cup',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص ص 111–112؛ التمارين ص 113؛ مفاتيح الإجابة ص 196–197',
+    verificationNote: 'النص وأسئلة الصح والخطأ والإكمال والمفردات من الملزمة. الإجابات مطابقة لمفتاح الحل؛ الصح والخطأ حُسمت بمقارنة العبارات بالنص.',
+    originalText: [
+      'The FIFA World Cup is the most popular single sport event in the world: around 3.5 billion people (nearly half the world’s population) gather every four years to watch the games. Here’s why the competition is so famous.',
+      'The first World Cup took place in 1930 in Uruguay, and has happened every four years, except in 1942 and 1946 because of the Second World War. Uruguay was also the first World Cup champion, playing at home. They defeated Argentina 4-2 in front of 93,000 supporters in Montevideo.',
+      'Where is it played and who won it? The World Cup is played in a different country each time. Seventeen countries have hosted the World Cup so far, the last host being Qatar in 2022 – the first time a World Cup was in an Arab country. The World Cup in Qatar was also the first time the tournament took place in winter (to avoid the country’s high summer temperatures).',
+      'In 2026, the hosts will be the United States, Canada and Mexico. It’s the first time the tournament will be held in three countries at the same time. Mexico will also become the only country to have hosted games in three World Cups (it was the host in 1970 and 1986). The most successful countries are Germany, Italy, Argentina, France, Uruguay and Brazil (Brazil is also the only team that has played in all tournaments so far).',
+      'In the current format, 32 teams are divided into eight groups of four teams. The top two teams from each group go to the next stage. The last 16 countries then play each other in knock-out games. If the game ends in a draw, there is extra time and then a penalty shoot-out.',
+      'From the 2026 World Cup, however, there will be 48 teams in the competition, divided into 16 groups.',
+      'Interesting facts. The history of the World Cup is full of curious pieces of information. Did you know, for example, that the Al Janoub stadium was designed by Iraqi architect Zaha Hadid? That Russia had the longest distance between matches (2,414 kilometers) and Qatar had the shortest – all matches were played within an area of 74 kilometers? Or that the 2022 World Cup was the first to use a smart football which uses sensors to track the position of the ball on the pitch and help the referees make decisions?'
+    ],
+    translation: [
+      'تُعد بطولة كأس العالم لكرة القدم أكثر حدث رياضي فردي شعبية في العالم؛ إذ يجتمع نحو 3.5 مليارات شخص، أي ما يقارب نصف سكان العالم، كل أربع سنوات لمشاهدة المباريات. وإليك أسباب شهرة هذه البطولة.',
+      'أُقيمت أول بطولة لكأس العالم عام 1930 في أوروغواي، وأُقيمت بعد ذلك كل أربع سنوات، باستثناء عامي 1942 و1946 بسبب الحرب العالمية الثانية. وكانت أوروغواي أيضًا أول دولة تفوز بكأس العالم، إذ لعبت على أرضها. وقد هزمت الأرجنتين بنتيجة 4–2 أمام 93 ألف مشجع في مونتيفيديو.',
+      'أين تُقام البطولة ومن فاز بها؟ تُقام كأس العالم في دولة مختلفة في كل مرة. وقد استضافت البطولة حتى الآن 17 دولة، وكانت قطر آخر دولة مستضيفة عام 2022، وهي المرة الأولى التي تُقام فيها كأس العالم في دولة عربية. كما كانت بطولة قطر أول بطولة تُقام في فصل الشتاء لتجنب درجات الحرارة المرتفعة في فصل الصيف.',
+      'في عام 2026، ستستضيف البطولة الولايات المتحدة وكندا والمكسيك. وهذه أول مرة تُقام فيها البطولة في ثلاث دول في الوقت نفسه. وستصبح المكسيك أيضًا الدولة الوحيدة التي تستضيف مباريات كأس العالم ثلاث مرات، بعد استضافتها عامي 1970 و1986. ومن أنجح الدول في البطولة ألمانيا وإيطاليا والأرجنتين وفرنسا وأوروغواي والبرازيل، كما أن البرازيل هي الفريق الوحيد الذي شارك في جميع البطولات حتى الآن.',
+      'في النظام الحالي، تُقسَّم الفرق الـ32 إلى ثماني مجموعات، تضم كل مجموعة أربعة فرق. ويتأهل أول فريقين من كل مجموعة إلى المرحلة التالية. ثم تلعب الدول الـ16 المتبقية فيما بينها بنظام خروج المغلوب. وإذا انتهت المباراة بالتعادل، يُلعب وقت إضافي ثم تُجرى ركلات الترجيح.',
+      'أما ابتداءً من كأس العالم 2026، فسيشارك 48 فريقًا في البطولة، موزعين على 16 مجموعة.',
+      'حقائق مثيرة للاهتمام: يمتلئ تاريخ كأس العالم بمعلومات غريبة ومميزة. هل تعلم، على سبيل المثال، أن ملعب الجنوب صممته المهندسة المعمارية العراقية زها حديد؟ وأن روسيا شهدت أطول مسافة بين الملاعب، إذ بلغت 2,414 كيلومترًا، بينما كانت المسافة الأقصر في قطر، حيث أُقيمت جميع المباريات ضمن منطقة لا تتجاوز 74 كيلومترًا؟ وهل تعلم أن كأس العالم 2022 كانت أول بطولة تستخدم كرة ذكية مزودة بمستشعرات لتتبع موقع الكرة في الملعب ومساعدة الحكام على اتخاذ القرارات؟'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u6-world-cup-exercise-a',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — True or False',
+        sourcePages: 'التمرين ص 113؛ الإجابات مستخرجة من النص',
+        instruction: 'Mark the sentences true (T) or false (F).',
+        instructionTranslation: 'ضع علامة صح (T) أو خطأ (F) أمام الجمل.',
+        items: [
+          { id: '4p-u6-world-cup-a1', question: 'More than half the people in the world watch the World Cup.', questionTranslation: 'يشاهد أكثر من نصف سكان العالم كأس العالم.', answer: 'False (F). The text says nearly half.', answerTranslation: 'خطأ؛ يذكر النص أن العدد يقارب نصف سكان العالم.' },
+          { id: '4p-u6-world-cup-a2', question: 'There has always been a World Cup every four years.', questionTranslation: 'أُقيمت كأس العالم دائمًا كل أربع سنوات دون انقطاع.', answer: 'False (F). The tournaments in 1942 and 1946 were cancelled because of the Second World War.', answerTranslation: 'خطأ؛ أُلغيت بطولتا عامي 1942 و1946 بسبب الحرب العالمية الثانية.' },
+          { id: '4p-u6-world-cup-a3', question: 'World Cup matches have happened in 17 different countries.', questionTranslation: 'أُقيمت مباريات كأس العالم في 17 دولة مختلفة.', answer: 'True (T).', answerTranslation: 'صح.' },
+          { id: '4p-u6-world-cup-a4', question: 'All the World Cups have had the participation of Brazil.', questionTranslation: 'شاركت البرازيل في جميع بطولات كأس العالم.', answer: 'True (T).', answerTranslation: 'صح.' },
+          { id: '4p-u6-world-cup-a5', question: 'In 2022, 48 teams took part in the World Cup.', questionTranslation: 'شارك 48 فريقًا في كأس العالم 2022.', answer: 'False (F). The 48-team format starts in 2026.', answerTranslation: 'خطأ؛ يبدأ نظام الـ48 فريقًا في بطولة 2026.' }
+        ]
+      },
+      {
+        id: '4p-u6-world-cup-exercise-b',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Complete the sentences',
+        sourcePages: 'التمرين ص 113؛ مفتاح الإجابة ص 196–197',
+        instruction: 'Complete the sentences with a word or number from the text.',
+        instructionTranslation: 'أكمل الجمل بكلمة أو رقم من النص.',
+        items: [
+          { id: '4p-u6-world-cup-b1', question: '__________ was the first host and the first champion of the World Cup.', questionTranslation: 'كانت __________ أول دولة استضافت كأس العالم وأول دولة تفوز بها.', answer: 'Uruguay.', answerTranslation: 'أوروغواي.' },
+          { id: '4p-u6-world-cup-b2', question: '__________ people watched the first World Cup final at the stadium.', questionTranslation: 'شاهد __________ شخصًا نهائي أول بطولة لكأس العالم في الملعب.', answer: '93,000.', answerTranslation: '93,000 شخص.' },
+          { id: '4p-u6-world-cup-b3', question: 'An __________ country was the host for the first time in 2022.', questionTranslation: 'استضافت دولة __________ البطولة لأول مرة عام 2022.', answer: 'Arab.', answerTranslation: 'عربية.' },
+          { id: '4p-u6-world-cup-b4', question: '2022 was also the first World Cup to be played in __________ because of the weather.', questionTranslation: 'كانت بطولة 2022 أول كأس عالم تُقام في فصل __________ بسبب الطقس.', answer: 'Winter.', answerTranslation: 'الشتاء.' },
+          { id: '4p-u6-world-cup-b5', question: 'The knock-out stage has __________ countries taking part.', questionTranslation: 'تشارك __________ دولة في مرحلة خروج المغلوب.', answer: '16.', answerTranslation: '16 دولة.' },
+          { id: '4p-u6-world-cup-b6', question: 'Qatar had the __________ distances between matches (74 kilometers).', questionTranslation: 'كانت المسافات بين الملاعب في قطر هي __________ (74 كيلومترًا).', answer: 'Shortest.', answerTranslation: 'الأقصر.' }
+        ]
+      },
+      {
+        id: '4p-u6-world-cup-exercise-c',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Find a word',
+        sourcePages: 'التمرين ص 113؛ مفتاح الإجابة ص 197',
+        instruction: 'Find a word in the text that means:',
+        instructionTranslation: 'اعثر في النص على كلمة تعني:',
+        items: [
+          { id: '4p-u6-world-cup-c1', question: 'people who come together to watch an event', questionTranslation: 'أشخاص يجتمعون لمشاهدة حدث ما', answer: 'gather.', answerTranslation: 'يتجمعون.' },
+          { id: '4p-u6-world-cup-c2', question: 'won a victory over, beat', questionTranslation: 'حقق الفوز على / هزم', answer: 'defeated.', answerTranslation: 'هزم.' },
+          { id: '4p-u6-world-cup-c3', question: 'people who are fans of a sports team', questionTranslation: 'أشخاص يشجعون فريقًا رياضيًا', answer: 'supporters.', answerTranslation: 'مشجعون.' },
+          { id: '4p-u6-world-cup-c4', question: 'a city or country that holds an event', questionTranslation: 'مدينة أو دولة تستضيف حدثًا', answer: 'host.', answerTranslation: 'مضيف / مستضيف.' },
+          { id: '4p-u6-world-cup-c5', question: 'a part of an event or activity', questionTranslation: 'جزء من حدث أو نشاط', answer: 'stage.', answerTranslation: 'مرحلة.' },
+          { id: '4p-u6-world-cup-c6', question: 'when the score is equal, e.g. 0–0 or 1–1', questionTranslation: 'عندما تكون النتيجة متعادلة، مثل 0–0 أو 1–1', answer: 'draw.', answerTranslation: 'تعادل.' },
+          { id: '4p-u6-world-cup-c7', question: 'the football player who uses their hands to stop the other team from scoring', questionTranslation: 'لاعب كرة القدم الذي يستخدم يديه لمنع الفريق الآخر من التسجيل', answer: 'goalkeeper.', answerTranslation: 'حارس المرمى.' }
+        ]
+      }
+    ]
+  },
+  '4p-u6-mind': {
+    id: '4p-u6-mind',
+    titleAr: 'خمس فوائد للتمرين للعقل',
+    titleEn: '5 Benefits of Exercise for the Mind',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص ص 114؛ التمارين ص 115؛ مفتاح الإجابة ص 197',
+    verificationNote: 'النص والترجمة والتمارين من صفحات الملزمة. نُقلت نسبة 26% كما تظهر في الصفحة المصورة، والمفردات مطابقة لمفتاح الإجابة.',
+    originalText: [
+      'We all know that exercise is good for your body and general health, but did you know that it can also be great for your mind? Here are five more reasons to start working out today!',
+      '1. You feel less stress. Work and studies often take a lot of our time and make us feel stressed. Doing exercise helps us handle that stress and organize our thoughts, so we can work and study better. It also helps relax the muscles in your back and neck that become tense with stress.',
+      '2. You sleep better. When we do exercise, the temperature of our body increases. This calms our mind and prepares us for sleep. Exercise also helps to control our body clock, which tells our mind when we should go to bed. However, experts recommend not exercising right before bedtime.',
+      '3. You like yourself more. Regular exercise can help you lose weight and get stronger. In turn, this makes you feel better about yourself and more confident. You like yourself more when you’re happy about your appearance.',
+      '4. You feel less depressed and anxious. Physical exercise releases substances called endorphins, which make you feel good and help you to deal with depression and anxiety. For example, a study showed that running 15 minutes a day or walking for an hour reduces the risk of depression by 26%.',
+      '5. Your brain works better. Studies on mice and humans show that regular physical exercise can improve your memory and concentration. It can also make you more creative and give you more mental energy. So some form of exercise is ideal for students.'
+    ],
+    translation: [
+      'نعلم جميعًا أن التمارين الرياضية مفيدة لجسمك وصحتك العامة، لكن هل تعلم أنها قد تكون مفيدة لعقلك أيضًا؟ إليك خمسة أسباب إضافية تدفعك إلى البدء بممارسة التمارين اليوم!',
+      '1. تشعر بتوتر أقل. غالبًا ما يستغرق العمل والدراسة الكثير من وقتنا ويجعلاننا نشعر بالتوتر. تساعدنا ممارسة التمارين الرياضية على التعامل مع هذا التوتر وتنظيم أفكارنا، حتى نتمكن من العمل والدراسة بصورة أفضل. كما تساعد على إرخاء عضلات الظهر والرقبة التي تتوتر بسبب الضغط النفسي.',
+      '2. تنام بصورة أفضل. عندما نمارس الرياضة ترتفع درجة حرارة أجسامنا. وهذا يهدئ أذهاننا ويهيئنا للنوم. كما تساعد التمارين على تنظيم ساعة الجسم البيولوجية التي تخبر أذهاننا متى ينبغي أن نذهب إلى الفراش. ومع ذلك، ينصح الخبراء بعدم ممارسة الرياضة قبل موعد النوم مباشرة.',
+      '3. تحب نفسك أكثر. يمكن أن تساعدك ممارسة الرياضة بانتظام على فقدان الوزن واكتساب القوة. وهذا بدوره يجعلك تشعر بتحسن تجاه نفسك وبثقة أكبر. فأنت تحب نفسك أكثر عندما تكون راضيًا عن مظهرك.',
+      '4. تشعر باكتئاب وقلق أقل. تطلق التمارين البدنية مواد تُسمّى الإندورفينات، تجعلك تشعر بالراحة وتساعدك على التعامل مع الاكتئاب والقلق. فعلى سبيل المثال، أظهرت دراسة أن الجري لمدة 15 دقيقة يوميًا أو المشي لمدة ساعة يقلل خطر الإصابة بالاكتئاب بنسبة 26%.',
+      '5. يعمل دماغك بصورة أفضل. تُظهر الدراسات التي أُجريت على الفئران والبشر أن التمارين البدنية المنتظمة يمكن أن تحسن الذاكرة والتركيز. كما يمكن أن تجعلك أكثر إبداعًا وتمنحك مزيدًا من الطاقة الذهنية. لذلك فإن ممارسة بعض أشكال الرياضة أمر مثالي للطلاب.'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u6-mind-exercise-a',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Complete the sentences',
+        sourcePages: 'التمرين ص 115؛ إجابات مستخرجة من النص',
+        instruction: 'Complete the sentences below with one word or number.',
+        instructionTranslation: 'أكمل الجمل الآتية بكلمة واحدة أو رقم.',
+        items: [
+          { id: '4p-u6-mind-a1', question: 'The article gives five __________ to start doing exercise.', questionTranslation: 'يقدم المقال خمسة __________ للبدء بممارسة التمارين.', answer: 'Reasons.', answerTranslation: 'أسباب.' },
+          { id: '4p-u6-mind-a2', question: 'Exercise relaxes muscles that get tense with stress, especially in your back and __________.', questionTranslation: 'تساعد التمارين على إرخاء العضلات التي تتوتر بسبب الضغط، ولا سيما في ظهرك و__________.', answer: 'Neck.', answerTranslation: 'رقبتك.' },
+          { id: '4p-u6-mind-a3', question: 'Exercise also keeps our body __________ under control, helping with our sleep.', questionTranslation: 'تساعد التمارين أيضًا على ضبط __________ الجسم، مما يساعدنا على النوم.', answer: 'Clock.', answerTranslation: 'ساعة الجسم.' },
+          { id: '4p-u6-mind-a4', question: 'People feel more confident when they like their __________.', questionTranslation: 'يشعر الناس بثقة أكبر عندما يحبون __________.', answer: 'Appearance.', answerTranslation: 'مظهرهم.' },
+          { id: '4p-u6-mind-a5', question: 'Walking or running makes you less likely to feel depression by __________%.', questionTranslation: 'يقلل المشي أو الجري احتمال الإصابة بالاكتئاب بنسبة __________%.', answer: '26%.', answerTranslation: '26%.' },
+          { id: '4p-u6-mind-a6', question: 'Scientists did tests on people and __________ to prove that exercise improves memory.', questionTranslation: 'أجرى العلماء اختبارات على البشر و__________ لإثبات أن التمارين تحسن الذاكرة.', answer: 'Mice.', answerTranslation: 'الفئران.' }
+        ]
+      },
+      {
+        id: '4p-u6-mind-exercise-b',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Find a word or phrase',
+        sourcePages: 'التمرين ص 115؛ مفتاح الإجابة ص 197',
+        instruction: 'Find a word or phrase in the text that means:',
+        instructionTranslation: 'اعثر في النص على كلمة أو عبارة تعني:',
+        items: [
+          { id: '4p-u6-mind-b1', question: 'advantages', questionTranslation: 'مزايا / فوائد', answer: 'Benefits.', answerTranslation: 'فوائد.' },
+          { id: '4p-u6-mind-b2', question: 'doing exercise', questionTranslation: 'ممارسة التمارين', answer: 'Working out.', answerTranslation: 'ممارسة التمارين الرياضية.' },
+          { id: '4p-u6-mind-b3', question: 'deal with', questionTranslation: 'يتعامل مع', answer: 'Handle.', answerTranslation: 'يتعامل مع.' },
+          { id: '4p-u6-mind-b4', question: 'sure of your abilities', questionTranslation: 'واثق من قدراتك', answer: 'Confident.', answerTranslation: 'واثق.' },
+          { id: '4p-u6-mind-b5', question: 'a medical illness that makes you feel unhappy', questionTranslation: 'مرض طبي يجعلك تشعر بالحزن', answer: 'Depression.', answerTranslation: 'الاكتئاب.' },
+          { id: '4p-u6-mind-b6', question: 'brings down', questionTranslation: 'يخفض / يقلل', answer: 'Reduces.', answerTranslation: 'يقلل.' },
+          { id: '4p-u6-mind-b7', question: 'able to have original ideas', questionTranslation: 'قادر على ابتكار أفكار أصلية', answer: 'Creative.', answerTranslation: 'مبدع.' }
+        ]
+      }
+    ]
+  },
+
 };
