@@ -329,6 +329,17 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 <Lightbulb className="w-4 h-4 text-yellow" />
                 <span>شرح القاعدة خطوة بخطوة</span>
               </button>
+              {(lesson.category === 'reading' || lesson.readingPassage) && (
+                <button
+                  type="button"
+                  onClick={() => setActiveSectionView('passage')}
+                  aria-pressed={activeSectionView === 'passage'}
+                  className={`px-3.5 py-2 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 rounded-md ${activeSectionView === 'passage' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'}`}
+                >
+                  <BookOpen className="w-4 h-4" />
+                  <span>نص القراءة الأصلي</span>
+                </button>
+              )}
               <button
                 type="button"
                 onClick={() => setActiveSectionView('exercises')}
