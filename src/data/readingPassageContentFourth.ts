@@ -983,4 +983,42 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     ]
   },
 
+  '4p-u4-gap-year': {
+    id: '4p-u4-gap-year',
+    titleAr: 'هل سنة الفجوة مناسبة لك؟',
+    titleEn: 'Is a Gap Year for You?',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص والأسئلة ص 69–70؛ مفتاح الإجابة ص 187',
+    verificationNote: 'النص والترجمة والأسئلة الثلاثة الأولى مطابقة للملزمة ومفتاح الحل. السؤال الرابع شخصي، وأُدرجت له إجابة نموذجية توضيحية.',
+    originalText: [
+      'The number of people taking a gap year is rising. What is a gap year? It is time you take off from school or work to do something different. If you think this sounds like a good idea, you are not alone. In 2021, about one in five students took a gap year in the UK (compared to just 3% in 2018). If you want to take a gap year, you have to decide what to do. There are many possibilities.',
+      'More and more people are choosing to work with charity organizations, for example. They help build houses for people who have no money, or teach in countries where there aren’t enough local teachers. Many people decide to learn a new sport, like whitewater rafting. Others use the time to see the world. The number of British teenagers travelling far from home during their gap year is going up. The top five areas for British teenagers to go to now are Tibet, Indonesia, Taiwan, Eastern Europe and Canada.',
+      'It is important to plan your gap year well. Learning a new sport is not easy to do. Find an organization that can teach you, and help you get the right safety gear. If you decide to travel to another country, learn as much as you can about the country before you go. Find out if you need any vaccinations, and what type of clothing you should take. You can also get help with that: the number of organizations that organize gap years is growing year by year.',
+      'Taking a gap year has many advantages. You can decide what you like and what you are good at. You can also learn things that will help you find a good job when you get home. For example, a gap year is a good time to learn or practise a language. Having a second (or third) language is becoming more and more important in the job market. A gap year also gives you a chance to meet new people and see the world.'
+    ],
+    translation: [
+      'يتزايد عدد الأشخاص الذين يأخذون سنة فجوة. ما سنة الفجوة؟ هي فترة تنقطع فيها عن الدراسة أو العمل لتقوم بشيء مختلف. وإذا كنت تعتقد أن هذه فكرة جيدة، فأنت لست وحدك. ففي عام 2021، أخذ نحو طالب واحد من كل خمسة طلاب في المملكة المتحدة سنة فجوة، مقارنةً بـ3% فقط في عام 2018. وإذا أردت أخذ سنة فجوة، فعليك أن تقرر ما الذي ستفعله خلالها؛ فهناك احتمالات كثيرة.',
+      'يختار عدد متزايد من الناس العمل مع المؤسسات الخيرية، على سبيل المثال. فهم يساعدون على بناء منازل للأشخاص الذين لا يملكون المال، أو يدرّسون في بلدان لا يتوفر فيها عدد كافٍ من المعلمين المحليين. ويقرر كثير من الناس تعلم رياضة جديدة، مثل التجديف في المياه السريعة. ويستغل آخرون هذه الفترة للسفر ورؤية العالم. كما يتزايد عدد المراهقين البريطانيين الذين يسافرون إلى أماكن بعيدة عن منازلهم خلال سنة الفجوة. وأبرز خمس وجهات يقصدها المراهقون البريطانيون حاليًا هي التبت وإندونيسيا وتايوان وأوروبا الشرقية وكندا.',
+      'من المهم التخطيط لسنة الفجوة جيدًا. فتعلم رياضة جديدة ليس أمرًا سهلًا؛ لذا ابحث عن مؤسسة تستطيع تعليمك ومساعدتك في الحصول على معدات السلامة المناسبة. وإذا قررت السفر إلى بلد آخر، فتعرف إلى أكبر قدر ممكن من المعلومات عنه قبل الذهاب. واستفسر عمّا إذا كنت تحتاج إلى أي لقاحات، وعن نوع الملابس التي ينبغي أن تأخذها معك. ويمكنك الحصول على مساعدة في ذلك أيضًا؛ إذ يزداد عدد المؤسسات التي تنظم سنوات الفجوة عامًا بعد عام.',
+      'لسنة الفجوة مزايا كثيرة. يمكنك أن تكتشف ما تحبه وما تجيده. كما يمكنك تعلم أمور تساعدك على العثور على وظيفة جيدة عندما تعود إلى وطنك. فعلى سبيل المثال، تُعد سنة الفجوة وقتًا مناسبًا لتعلم لغة أو ممارستها. وأصبحت معرفة لغة ثانية (أو ثالثة) أكثر أهمية في سوق العمل. كما تمنحك سنة الفجوة فرصة للتعرف إلى أشخاص جدد ورؤية العالم.'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u4-gap-year-qna',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Answer the questions',
+        sourcePages: 'الأسئلة ص 70؛ مفتاح الإجابة ص 187',
+        instruction: 'Read the article again carefully and answer the questions.',
+        instructionTranslation: 'اقرأ المقال مرة أخرى بعناية ثم أجب عن الأسئلة.',
+        items: [
+          { id: '4p-u4-gap-year-q1', question: 'What kinds of things do young people do during a gap year?', questionTranslation: 'ما أنواع الأنشطة التي يقوم بها الشباب خلال سنة الفجوة؟', answer: 'They work with charity organizations, learn new sports and travel.', answerTranslation: 'يعملون مع المؤسسات الخيرية، ويتعلمون رياضات جديدة، ويسافرون.' },
+          { id: '4p-u4-gap-year-q2', question: 'What do you need to do before you take a gap year?', questionTranslation: 'ماذا ينبغي أن تفعل قبل أن تأخذ سنة فجوة؟', answer: 'You need to plan it well and prepare for the activities or travel, including getting the right safety gear and checking vaccinations and clothing.', answerTranslation: 'ينبغي التخطيط لها جيدًا والاستعداد للأنشطة أو السفر، بما في ذلك الحصول على معدات السلامة المناسبة والتحقق من اللقاحات والملابس المطلوبة.' },
+          { id: '4p-u4-gap-year-q3', question: 'What are the advantages of taking a gap year?', questionTranslation: 'ما مزايا أخذ سنة فجوة؟', answer: 'You can discover what you like and are good at, learn useful things, improve your job opportunities, practise a language, meet new people and see the world.', answerTranslation: 'يمكنك اكتشاف ما تحبه وما تجيده، وتعلم أشياء مفيدة، وتحسين فرص العمل، وممارسة لغة، والتعرف إلى أشخاص جدد ورؤية العالم.' },
+          { id: '4p-u4-gap-year-q4', question: 'Would you like to take a gap year? Why or why not?', questionTranslation: 'هل ترغب في أخذ سنة فجوة؟ لماذا أو لماذا لا؟', answer: 'Sample answer: Yes, because I would like to travel, learn a new language and meet new people.', answerTranslation: 'إجابة نموذجية: نعم، لأنني أود السفر وتعلم لغة جديدة والتعرف إلى أشخاص جدد.' }
+        ]
+      }
+    ]
+  },
+
 };
