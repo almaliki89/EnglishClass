@@ -13,24 +13,225 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
   },
   '4p-u1-summer-programme': {
     id: '4p-u1-summer-programme', titleAr: 'كيفية اختيار البرنامج الصيفي', titleEn: 'How to Choose a Summer Programme',
-    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'الملزمة ص 9، 12–13',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'النص ص 9–10؛ التمارين ص 10 و12–13؛ مفاتيح/إجابات ص 181',
+    verificationNote: 'أضيف النص الأصلي كاملًا مع ترجمة مصححة وتمارين المطابقة من الملزمة. الإجابات حُلّت من النص والإعلانات المرفقة، مع الإشارة إلى موضع الإجابة الموجودة في المفتاح.',
+    originalText: [
+      "The number of people taking part in summer study programmes is going up all the time. Choosing a programme can be confusing for both parents and children. That’s why you need to think carefully before you make your choice. Here are some questions you should ask yourself.",
+      "What are your learning goals? Some summer programmes have classes in all subjects to help you prepare for school in the autumn. They can help you improve in all subjects. Others are especially for students who want to learn or practise a language. There are programmes that have classes all day, for people who need to make a lot of progress quickly. Other programmes offer classes only in the morning, so you can visit interesting places as well.",
+      "What do you like doing in your free time? You can do different activities in a city than in the country. If you like doing sport or enjoy being in a quiet place, you should choose a programme in the countryside. But if you like going to museums or the cinema, choose a programme in the city, or you might get bored.",
+      "How do you learn best? Some people like to be in small classes where they can get plenty of attention and help from their teachers. Others work better in larger groups where they can share their ideas with a lot of other people. Think about what type of class you like best, and find out about class size in the programmes you’re interested in.",
+      "Study programmes are an exciting way to meet new people, learn new things and have fun. If you choose the right programme, you will have a fantastic time. For more information, email us at summerprogramme@summer.edu."
+],
     translation: [
-      'كيفية اختيار برنامج صيفي\nيتزايد عدد الأشخاص المشاركين في برامج الدراسة الصيفية باستمرار. وقد يكون اختيار البرنامج أمرًا محيرًا للوالدين والأطفال على حد سواء. لذلك عليك التفكير جيدًا قبل اتخاذ قرارك. إليك بعض الأسئلة التي ينبغي أن تطرحها على نفسك.\nما أهدافك التعليمية؟ تقدم بعض البرامج الصيفية دروسًا في جميع المواد لمساعدتك على الاستعداد للمدرسة في الخريف، ويمكنها مساعدتك على تحسين مستواك في كل المواد. وهناك برامج أخرى مخصصة خصوصًا لتعلم اللغة الإنجليزية أو لغات أخرى.',
-      'ما الأنشطة التي ترغب في ممارستها؟ إذا كنت تستمتع بالرياضة، فقد يكون من الأفضل اختيار برنامج يوفر أنشطة رياضية إلى جانب الدروس. أما إذا كنت تفضل زيارة الأماكن والتعرف إلى الثقافة، فاختر برنامجًا يتضمن رحلات وزيارات.',
-      'في مدرسة وورسستر، نقدم برنامجًا مكثفًا للغة الإنجليزية للطلاب الذين يرغبون فعلًا في تعلم اللغة. تدرس 30 ساعة من الإنجليزية خلال الأسبوع، ثم تذهب في عطلات نهاية الأسبوع إلى وجهات بريطانية شهيرة، منها لندن وكامبريدج وأكسفورد.',
-      'في مدرسة LSE Bristol، نقدم البرنامج المثالي للمراهقين النشطين. فإلى جانب دراسة الإنجليزية خمس ساعات يوميًا وممارسة جميع المهارات، يمكنك الاستمتاع بعدد من الأنشطة البدنية، ومنها كرة القدم والسباحة والتنس. لدينا طلاب من جنسيات كثيرة، لذلك ستتحدث الإنجليزية طوال الوقت!',
-      'وتقدم برامج أخرى فرصًا مختلفة بحسب اهتمامات الطلاب وأهدافهم، لذلك من المهم قراءة تفاصيل البرنامج ومقارنة ما يقدمه قبل التسجيل.'
-    ],
+      "يتزايد باستمرار عدد الأشخاص الذين يشاركون في برامج الدراسة الصيفية. وقد يكون اختيار البرنامج أمرًا محيرًا للوالدين والأطفال على حد سواء؛ لذلك عليك التفكير جيدًا قبل اتخاذ قرارك. إليك بعض الأسئلة التي ينبغي أن تطرحها على نفسك.",
+      "ما أهدافك التعليمية؟ تقدم بعض البرامج الصيفية دروسًا في جميع المواد لمساعدتك على الاستعداد للمدرسة في فصل الخريف، كما تساعدك على تحسين مستواك في جميع المواد. وهناك برامج أخرى مخصصة خصوصًا للطلاب الذين يرغبون في تعلم لغة أو ممارستها. وتقدم بعض البرامج دروسًا طوال اليوم للأشخاص الذين يحتاجون إلى إحراز تقدم كبير بسرعة. أما برامج أخرى فتقدم الدروس في الصباح فقط، حتى تتمكن من زيارة أماكن مثيرة للاهتمام أيضًا.",
+      "ماذا تحب أن تفعل في وقت فراغك؟ تختلف الأنشطة التي يمكنك ممارستها في المدينة عن الأنشطة المتاحة في الريف. فإذا كنت تحب الرياضة أو الاستمتاع بالهدوء، فعليك اختيار برنامج في الريف. أما إذا كنت تحب زيارة المتاحف أو الذهاب إلى السينما، فاختر برنامجًا في المدينة، وإلا فقد تشعر بالملل.",
+      "كيف تتعلم على نحو أفضل؟ يفضل بعض الأشخاص الدراسة في صفوف صغيرة يحصلون فيها على قدر كبير من الاهتمام والمساعدة من المعلمين. بينما يتعلم آخرون بصورة أفضل في مجموعات أكبر، حيث يستطيعون تبادل أفكارهم مع عدد كبير من الأشخاص. فكّر في نوع الصف الذي تفضله، واستفسر عن عدد الطلاب في البرامج التي تهمك.",
+      "تُعد البرامج الدراسية وسيلة ممتعة للتعرف إلى أشخاص جدد وتعلم أشياء جديدة والاستمتاع بالوقت. وإذا اخترت البرنامج المناسب، فستقضي وقتًا رائعًا. ولمزيد من المعلومات، راسلنا عبر البريد الإلكتروني: summerprogramme@summer.edu."
+],
+    exerciseSets: [
+      {
+            "id": "4p-u1-summer-match-endings",
+            "source": "malzama",
+            "sourceTitle": "ملزمة الرابع الإعدادي — Exercise B",
+            "sourcePages": "الأسئلة ص 10؛ إجابات نموذجية مستخرجة من النص",
+            "instruction": "Read the leaflet and match the beginnings and endings of the sentences.",
+            "instructionTranslation": "اقرأ المنشور ثم صِل بدايات الجمل بنهاياتها المناسبة.",
+            "items": [
+                  {
+                        "id": "4p-u1-summer-b1",
+                        "question": "If you study in a large class, ...",
+                        "questionTranslation": "إذا درست في صف كبير العدد، ...",
+                        "answer": "you can share your ideas with a lot of people.",
+                        "answerTranslation": "يمكنك مشاركة أفكارك مع عدد كبير من الأشخاص."
+                  },
+                  {
+                        "id": "4p-u1-summer-b2",
+                        "question": "You can get information ...",
+                        "questionTranslation": "يمكنك الحصول على المعلومات ...",
+                        "answer": "by emailing us at summerprogramme@summer.edu.",
+                        "answerTranslation": "عن طريق مراسلتنا عبر البريد الإلكتروني summerprogramme@summer.edu."
+                  },
+                  {
+                        "id": "4p-u1-summer-b3",
+                        "question": "If you choose a programme in the country, ...",
+                        "questionTranslation": "إذا اخترت برنامجًا في الريف، ...",
+                        "answer": "you will be able to do more sports.",
+                        "answerTranslation": "ستتمكن من ممارسة المزيد من الرياضة."
+                  },
+                  {
+                        "id": "4p-u1-summer-b4",
+                        "question": "Some study programmes ...",
+                        "questionTranslation": "بعض البرامج الدراسية ...",
+                        "answer": "are for people who want to practise speaking a language.",
+                        "answerTranslation": "مخصصة للأشخاص الذين يرغبون في ممارسة التحدث بلغة ما."
+                  },
+                  {
+                        "id": "4p-u1-summer-b5",
+                        "question": "You can improve your English ...",
+                        "questionTranslation": "يمكنك تحسين لغتك الإنجليزية ...",
+                        "answer": "if you do a specialist language study programme.",
+                        "answerTranslation": "إذا التحقت ببرنامج دراسي متخصص في اللغات."
+                  },
+                  {
+                        "id": "4p-u1-summer-b6",
+                        "question": "If you study in a small class, ...",
+                        "questionTranslation": "إذا درست في صف صغير العدد، ...",
+                        "answer": "you will get more help from the teacher.",
+                        "answerTranslation": "ستحصل على مساعدة أكبر من المعلم."
+                  }
+            ]
+      },
+      {
+            "id": "4p-u1-summer-match-programmes",
+            "source": "malzama",
+            "sourceTitle": "ملزمة الرابع الإعدادي — Match the teenagers with the best summer programme",
+            "sourcePages": "الأسئلة والإعلانات ص 12–13؛ إجابات نموذجية من الإعلانات",
+            "instruction": "Match each teenager with the best summer programme.",
+            "instructionTranslation": "صِل كل طالب بالبرنامج الصيفي الأنسب له.",
+            "items": [
+                  {
+                        "id": "4p-u1-summer-p1",
+                        "question": "I want to visit lots of famous UK cities during my course.",
+                        "questionTranslation": "أريد زيارة كثير من المدن البريطانية المشهورة خلال دورتي.",
+                        "answer": "Worcester School.",
+                        "answerTranslation": "مدرسة وورسستر."
+                  },
+                  {
+                        "id": "4p-u1-summer-p2",
+                        "question": "I’d like to do some sports while I study English.",
+                        "questionTranslation": "أود ممارسة بعض الرياضات أثناء دراسة اللغة الإنجليزية.",
+                        "answer": "LSE Bristol.",
+                        "answerTranslation": "مدرسة LSE Bristol."
+                  },
+                  {
+                        "id": "4p-u1-summer-p3",
+                        "question": "I want to improve my English, but I’d love to study another language, too.",
+                        "questionTranslation": "أريد تحسين لغتي الإنجليزية، لكنني أود أيضًا دراسة لغة أخرى.",
+                        "answer": "Bluebell School.",
+                        "answerTranslation": "مدرسة Bluebell."
+                  },
+                  {
+                        "id": "4p-u1-summer-p4",
+                        "question": "I think it’s really important to practise speaking and listening.",
+                        "questionTranslation": "أعتقد أن ممارسة التحدث والاستماع أمر مهم جدًا.",
+                        "answer": "Rushmore School.",
+                        "answerTranslation": "مدرسة Rushmore."
+                  }
+            ]
+      }
+]
   },
   '4p-u1-canada': {
     id: '4p-u1-canada', titleAr: 'كندا واللغات الرسمية', titleEn: 'Canada & Official Languages',
-    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'الملزمة ص 20',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'النص ص 20؛ الأسئلة والتمارين ص 21–23؛ مفتاح الإجابة ص 182',
+    verificationNote: 'النص والترجمة وأسئلة الفهم ومطابقة اللغات مثبتة في الملزمة ومفتاح الحل. صُححت ترجمة فقرة المدن وأوتاوا لتطابق النص الأصلي.',
+    originalText: [
+      "A. Canada is the second largest country in the world, after Russia. It is 9,979,619 km2. It has a population of 38.01 million, and that number is growing. But Canada’s population is not large for its size. Most people live near the border with the USA.",
+      "B. Canada is a beautiful country. Because it is so big, there are many national parks and wilderness areas. If you travel to Canada, you can see rivers, lakes, forests, and even glaciers. One of Canada’s most famous natural features is Niagara Falls.",
+      "C. How do people live in a country with two official languages? The two official languages of Canada are English and French, because some Canadians are of British origin and some are of French origin. Most people don’t speak both languages. About 22% of the population speak French, and about 75% speak English. You will hear more French or English depending on where you are.",
+      "D. Canada has several large cities. The biggest of these is Toronto. The capital, Ottawa, is only the fourth largest city. In Ottawa, about half the people speak both French and English. Communication is easier there!"
+],
     translation: [
-      'أ. كندا ثاني أكبر دولة في العالم بعد روسيا. تبلغ مساحتها 9,979,619 كيلومترًا مربعًا، ويبلغ عدد سكانها 38.01 مليون نسمة، وهذا العدد في تزايد. لكن عدد سكان كندا ليس كبيرًا مقارنة بمساحتها. ويعيش معظم الناس بالقرب من الحدود مع الولايات المتحدة.',
-      'ب. كندا بلد جميل. وبسبب مساحتها الكبيرة، توجد فيها حدائق وطنية كثيرة ومناطق برية واسعة. وإذا سافرت إلى كندا، فسترى الأنهار والبحيرات والغابات وحتى الأنهار الجليدية. ومن أشهر معالمها الطبيعية شلالات نياجارا.',
-      'ج. كيف يعيش الناس في بلد له لغتان رسميتان؟ اللغتان الرسميتان في كندا هما الإنجليزية والفرنسية، لأن بعض الكنديين من أصل بريطاني وبعضهم من أصل فرنسي. ولا يتحدث معظم الناس اللغتين معًا. يتحدث نحو 22% من السكان الفرنسية، بينما يتحدث نحو 75% الإنجليزية. وستسمع الفرنسية أو الإنجليزية أكثر بحسب المنطقة التي تزورها.',
-      'د. تتمتع كندا باقتصاد متنوع وموارد طبيعية كثيرة. ويعيش الناس في مدن حديثة، كما توجد مجتمعات صغيرة في المناطق الريفية الواسعة.'
-    ],
+      "أ. كندا ثاني أكبر دولة في العالم بعد روسيا. تبلغ مساحتها 9,979,619 كيلومترًا مربعًا، ويبلغ عدد سكانها 38.01 مليون نسمة، وهذا العدد في تزايد. لكن عدد سكان كندا ليس كبيرًا مقارنة بمساحتها. ويعيش معظم السكان بالقرب من الحدود مع الولايات المتحدة.",
+      "ب. كندا بلد جميل. وبسبب مساحتها الشاسعة، توجد فيها حدائق وطنية كثيرة ومناطق برية واسعة. وإذا سافرت إلى كندا، فسترى الأنهار والبحيرات والغابات وحتى الأنهار الجليدية. ومن أشهر معالمها الطبيعية شلالات نياجارا.",
+      "ج. كيف يعيش الناس في بلد له لغتان رسميتان؟ اللغتان الرسميتان في كندا هما الإنجليزية والفرنسية، لأن بعض الكنديين من أصول بريطانية وبعضهم من أصول فرنسية. ولا يتحدث معظم الناس اللغتين معًا. يتحدث نحو 22% من السكان الفرنسية، بينما يتحدث نحو 75% الإنجليزية. وستسمع الفرنسية أو الإنجليزية أكثر بحسب المنطقة التي توجد فيها.",
+      "د. تضم كندا عدة مدن كبيرة، أكبرها تورونتو. أما العاصمة أوتاوا فهي رابع أكبر مدينة فقط. ويتحدث نحو نصف السكان في أوتاوا اللغتين الفرنسية والإنجليزية. لذلك يكون التواصل أسهل هناك!"
+],
+    exerciseSets: [
+      {
+            "id": "4p-u1-canada-questions",
+            "source": "malzama",
+            "sourceTitle": "ملزمة الرابع الإعدادي — Answer the following questions",
+            "sourcePages": "الأسئلة ص 23؛ مفتاح الإجابة ص 182",
+            "instruction": "Answer the following questions.",
+            "instructionTranslation": "أجب عن الأسئلة الآتية.",
+            "items": [
+                  {
+                        "id": "4p-u1-canada-q1",
+                        "question": "What are the official languages of Canada?",
+                        "questionTranslation": "ما اللغتان الرسميتان في كندا؟",
+                        "answer": "English and French.",
+                        "answerTranslation": "الإنجليزية والفرنسية."
+                  },
+                  {
+                        "id": "4p-u1-canada-q2",
+                        "question": "What is the capital of Canada?",
+                        "questionTranslation": "ما عاصمة كندا؟",
+                        "answer": "Ottawa.",
+                        "answerTranslation": "أوتاوا."
+                  },
+                  {
+                        "id": "4p-u1-canada-q3",
+                        "question": "How big is Canada?",
+                        "questionTranslation": "ما مساحة كندا؟",
+                        "answer": "9,979,619 km2.",
+                        "answerTranslation": "9,979,619 كيلومترًا مربعًا."
+                  },
+                  {
+                        "id": "4p-u1-canada-q4",
+                        "question": "What natural features does Canada have?",
+                        "questionTranslation": "ما المعالم الطبيعية الموجودة في كندا؟",
+                        "answer": "Rivers, lakes, forests, glaciers and waterfalls.",
+                        "answerTranslation": "الأنهار والبحيرات والغابات والأنهار الجليدية والشلالات."
+                  },
+                  {
+                        "id": "4p-u1-canada-q5",
+                        "question": "What is the population of Canada?",
+                        "questionTranslation": "كم يبلغ عدد سكان كندا؟",
+                        "answer": "38.01 million.",
+                        "answerTranslation": "38.01 مليون نسمة."
+                  },
+                  {
+                        "id": "4p-u1-canada-q6",
+                        "question": "How many people speak English in Canada?",
+                        "questionTranslation": "ما نسبة السكان الذين يتحدثون الإنجليزية في كندا؟",
+                        "answer": "About 75% of the population.",
+                        "answerTranslation": "نحو 75% من السكان."
+                  }
+            ]
+      },
+      {
+            "id": "4p-u1-canada-languages",
+            "source": "malzama",
+            "sourceTitle": "ملزمة الرابع الإعدادي — Match the countries with their official languages",
+            "sourcePages": "التمرين ص 21؛ مفتاح الإجابة ص 182",
+            "instruction": "Match the countries with their official languages.",
+            "instructionTranslation": "صِل كل دولة بلغتها الرسمية.",
+            "items": [
+                  {
+                        "id": "4p-u1-canada-lang1",
+                        "question": "Greece",
+                        "questionTranslation": "اليونان",
+                        "answer": "Greek.",
+                        "answerTranslation": "اليونانية."
+                  },
+                  {
+                        "id": "4p-u1-canada-lang2",
+                        "question": "Jordan",
+                        "questionTranslation": "الأردن",
+                        "answer": "Arabic.",
+                        "answerTranslation": "العربية."
+                  },
+                  {
+                        "id": "4p-u1-canada-lang3",
+                        "question": "Kenya",
+                        "questionTranslation": "كينيا",
+                        "answer": "English.",
+                        "answerTranslation": "الإنجليزية."
+                  },
+                  {
+                        "id": "4p-u1-canada-lang4",
+                        "question": "Pakistan",
+                        "questionTranslation": "باكستان",
+                        "answer": "Urdu.",
+                        "answerTranslation": "الأردية."
+                  }
+            ]
+      }
+]
   },
   '4p-u2-unicef': {
     id: '4p-u2-unicef', titleAr: 'منظمة اليونيسيف وحماية الأطفال', titleEn: 'UNICEF & Helping Disadvantaged Children',
@@ -180,10 +381,50 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
   },
   '4p-u2-schools': {
     id: '4p-u2-schools', titleAr: 'مدارس للجميع', titleEn: 'Schools for All',
-    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'الملزمة ص 31',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'النص ص 31؛ التمرين ص 32؛ مفتاح الإجابة ص 184',
+    verificationNote: 'النص وأسئلة النشاط الثلاثة والإجابات مطابقة للملزمة ومفتاح الحل.',
+    originalText: [
+      "Nothing is more important than education. Unfortunately, not all children can go to school. Schools for All is an organization that helps the poorest children go to school. We give them money to pay for books. We make sure their schools are safe. Last year we built two schools in Kenya, and gave books to 500 children.",
+      "But Schools for All needs your help. Please donate to help us send more children to school this year."
+],
     translation: [
-      'للأسف، لا يستطيع جميع الأطفال الذهاب إلى المدرسة. إن منظمة «مدارس للجميع» تساعد الأطفال الأكثر فقرًا على الالتحاق بالمدرسة. نحن نقدم لهم المال لشراء الكتب، ونتأكد من أن مدارسهم آمنة. وفي العام الماضي بنينا مدرستين في كينيا، وقدمنا كتبًا إلى 500 طفل.\nلكن منظمة «مدارس للجميع» تحتاج إلى مساعدتكم. يرجى التبرع لمساعدتنا على إرسال المزيد من الأطفال إلى المدرسة هذا العام.'
-    ],
+      "لا شيء أهم من التعليم. وللأسف، لا يستطيع جميع الأطفال الذهاب إلى المدرسة. منظمة «مدارس للجميع» منظمة تساعد الأطفال الأكثر فقرًا على الالتحاق بالمدرسة. نقدم لهم المال لشراء الكتب، ونتأكد من أن مدارسهم آمنة. وفي العام الماضي بنينا مدرستين في كينيا، وقدمنا كتبًا إلى 500 طفل.",
+      "لكن منظمة «مدارس للجميع» تحتاج إلى مساعدتكم. يرجى التبرع لمساعدتنا على إرسال المزيد من الأطفال إلى المدرسة هذا العام."
+],
+    exerciseSets: [
+      {
+            "id": "4p-u2-schools-exercise-c",
+            "source": "malzama",
+            "sourceTitle": "ملزمة الرابع الإعدادي — Exercise C",
+            "sourcePages": "الأسئلة ص 32؛ مفتاح الإجابة ص 184",
+            "instruction": "Read the text and answer the questions.",
+            "instructionTranslation": "اقرأ النص ثم أجب عن الأسئلة.",
+            "items": [
+                  {
+                        "id": "4p-u2-schools-c1",
+                        "question": "How does Schools for All help children?",
+                        "questionTranslation": "كيف تساعد منظمة «مدارس للجميع» الأطفال؟",
+                        "answer": "It helps the poorest children to go to school.",
+                        "answerTranslation": "تساعد الأطفال الأكثر فقرًا على الذهاب إلى المدرسة."
+                  },
+                  {
+                        "id": "4p-u2-schools-c2",
+                        "question": "Where did they build two schools last year?",
+                        "questionTranslation": "أين بنوا مدرستين في العام الماضي؟",
+                        "answer": "In Kenya.",
+                        "answerTranslation": "في كينيا."
+                  },
+                  {
+                        "id": "4p-u2-schools-c3",
+                        "question": "How can you help Schools for All?",
+                        "questionTranslation": "كيف يمكنك مساعدة منظمة «مدارس للجميع»؟",
+                        "answer": "Donate money to help them send more children to school.",
+                        "answerTranslation": "التبرع بالمال لمساعدتهم على إرسال المزيد من الأطفال إلى المدرسة."
+                  }
+            ]
+      }
+]
   },
   '4p-u2-meade': {
     id: '4p-u2-meade', titleAr: 'مدرسة ميد', titleEn: 'The Meade School',
