@@ -165,7 +165,7 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
                 <div className="flex flex-wrap items-start justify-between gap-2">
                   <div>
                     <h4 className="font-black text-ink">{set.source === 'activity_book' ? 'كتاب النشاط' : set.source === 'malzama' ? 'الملزمة' : 'تدريبات إضافية من LINGORA'} · {set.sourceTitle}</h4>
-                    <p className="text-xs text-ink/65 mt-1">الصفحة: {set.sourcePages}</p>
+                    <p className="text-xs text-ink/65 mt-1">المصدر / الموضع: {set.sourcePages}</p>
                   </div>
                   <span className="text-[10px] font-mono font-black bg-yellow border border-ink px-2 py-1">{set.items.length} أسئلة / فقرات</span>
                 </div>
