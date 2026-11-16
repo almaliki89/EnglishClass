@@ -40,7 +40,7 @@ test.describe('Unified grammar learning experience', () => {
 
       // Grammar lessons now have one teaching path instead of competing generic modes.
       await expect(page.getByRole('button', { name: 'شرح القاعدة خطوة بخطوة' })).toBeVisible();
-      await expect(page.getByRole('button', { name: /حل التمارين/ })).toBeVisible();
+      await expect(page.getByRole('button', { name: /^حل التمارين/ })).toBeVisible();
       await expect(page.getByRole('button', { name: 'رحلة التعلم خطوة بخطوة' })).toHaveCount(0);
       await expect(page.getByRole('button', { name: 'كل أقسام الدرس' })).toHaveCount(0);
       await expect(page.getByRole('button', { name: 'شرح الملزمة والملاحظات' })).toHaveCount(0);
@@ -61,7 +61,7 @@ test.describe('Unified grammar learning experience', () => {
       await journey.getByRole('button', { name: /ثبّت فهمك/ }).click();
       await expect(journey.getByTestId('grammar-recap-stage')).toBeVisible();
 
-      await page.getByRole('button', { name: /حل التمارين/ }).click();
+      await page.getByRole('button', { name: /^حل التمارين/ }).click();
       await expect(page.getByRole('heading', { name: 'تمارين واختبارات فورية' })).toBeVisible();
     });
   }
