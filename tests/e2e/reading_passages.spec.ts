@@ -46,7 +46,7 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.locator('[data-testid="original-passage-section"] p[lang="en"]').first()).toContainText('When I was 16, life was great!');
     await expect(page.getByRole('heading', { name: 'الترجمة العربية الكاملة' })).toBeVisible();
     await expect(page.getByTestId('passage-translation-section')).toContainText('عندما كنتُ في السادسة عشرة من عمري');
-    await expect(page.getByRole('heading', { name: 'أسئلة كتاب النشاط / الملزمة مع الإجابات' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'أسئلة القطعة وتدريباتها مع الإجابات' })).toBeVisible();
     await expect(page.getByTestId('passage-exercises-section')).toContainText('What was Ammar’s life like when he was 16?');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('It was great because he was finally part of the school basketball team');
   });
