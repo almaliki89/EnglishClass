@@ -271,4 +271,22 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByTestId('passage-exercises-section')).toContainText('Read the interview on Student’s Book page 85.');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('1, 3 and 6.');
   });
+  test('fifth preparatory passage library distinguishes LINGORA practice from textbook exercises', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/passages');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitThree = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="53"]');
+    await unitThree.getByRole('button').click();
+    const pollutionCard = library.getByTestId('book-passage-card').filter({ hasText: 'Oil & Gas Pollution in Basra' });
+    await expect(pollutionCard).toBeVisible();
+    await pollutionCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+
+    const exercises = page.getByTestId('passage-exercises-section');
+    await expect(exercises).toContainText('تدريبات إضافية من LINGORA');
+    await expect(exercises).toContainText('What are Iraq’s two main industries mentioned in the letter?');
+    await expect(exercises).toContainText('Oil and gas.');
+    await expect(exercises).not.toContainText('كتاب النشاط · LINGORA');
+  });
+
 });
