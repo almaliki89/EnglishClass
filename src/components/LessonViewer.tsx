@@ -332,8 +332,9 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               <button
                 type="button"
                 onClick={() => setActiveSectionView('exercises')}
+                disabled={lesson.exercises.length === 0}
                 aria-pressed={activeSectionView === 'exercises'}
-                className={`px-3.5 py-2 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 rounded-md ${activeSectionView === 'exercises' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'}`}
+                className={`px-3.5 py-2 text-xs font-black transition-all flex items-center gap-1.5 cursor-pointer border-2 rounded-md ${activeSectionView === 'exercises' ? 'bg-cobalt text-surface border-ink shadow-brutal-sm' : 'bg-paper hover:bg-surface text-ink border-ink'} disabled:cursor-not-allowed disabled:opacity-40`}
               >
                 <Award className="w-4 h-4" />
                 <span>حل التمارين ({lesson.exercises.length})</span>
@@ -490,9 +491,21 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       )}
 
       {/* 6. GROUNDED AI PEDAGOGICAL TUTOR */}
-      <GroundedLessonTutor unit={unit} lesson={lesson} />
+      {activeSectionView !== 'exercises' && (
+        <GroundedLessonTutor
+          unit={unit}
+          lesson={lesson}
+          gradeTitle={gradeMeta?.nameAr || 'الصف'}
+        />
+      )}
 
       {/* 7. EXERCISES & TESTS */}
+      {isGrammarLesson && activeSectionView === 'exercises' && lesson.exercises.length === 0 && (
+        <div className="rounded-xl border-2 border-dashed border-ink/40 bg-paper p-5 text-sm font-semibold leading-7 text-ink/70" dir="rtl">
+          لا توجد تمارين مسجّلة لهذا الدرس حتى الآن. راجع الأمثلة وملاحظات الدرس، ولا تُعرض أسئلة بديلة غير موجودة في المصدر.
+        </div>
+      )}
+
       {(activeSectionView === 'all' || activeSectionView === 'exercises') && lesson.exercises && lesson.exercises.length > 0 && (
         <div className="p-6 sm:p-8 bg-surface border-4 border-ink shadow-brutal-modal space-y-6">
           <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-ink pb-3">
