@@ -790,40 +790,38 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
   },
   '4p-u7-body': {
     id: '4p-u7-body',
-    titleAr: 'لماذا نمارس التمارين الرياضية؟',
-    titleEn: 'Why Exercise?',
+    titleAr: 'أهمية التمارين للجسم',
+    titleEn: 'Why Exercise Is Important for Your Body',
     status: 'verified',
     sourceTitle: 'ملزمة الرابع الإعدادي',
-    sourcePages: 'النص ص 119؛ الأسئلة ص 119؛ مفتاح الإجابة ص 196',
-    verificationNote: 'تمت مطابقة النص وأسئلة الفهم الخمسة مع الملزمة ومفتاح الإجابة.',
+    sourcePages: 'النص ص 118؛ أسئلة الفهم ص 119؛ مفتاح الإجابات ص 196',
+    verificationNote: 'النص والأسئلة الخمسة من الصفحتين 118–119، والإجابات من مفتاح الحل في الصفحة 196.',
     originalText: [
       'Exercise is important for your body in many ways. First of all, exercise builds muscles. You need strong muscles to do all the things you want to do during the day, even if your favorite hobby is playing computer games. If your muscles aren’t strong, you can get tired easily.',
       'Did you know your heart is a muscle? That’s why exercise is good for your heart, too. A strong heart can help prevent heart disease. This illness kills many people in developed countries because they don’t have healthy habits. The best activities for your heart are activities like running that make you breathe hard.',
       'Exercise is good for you because it helps you use the calories you get from food. If you don’t exercise enough, the calories you don’t use can make you fat. And people who are overweight are generally not as healthy as those who are not.',
-      'The best reason to get exercise is that it’s fun. If you enjoy being with other people, try playing basketball or volleyball. Team sports are a good way to make friends and have fun while you get fit.',
-      'But you don’t have to do a sport to get exercise. Try walking or taking the stairs. These activities don’t take much time, but if you do them regularly, they can help you get fit.'
+      'The best reason to get exercise is that it’s fun. If you enjoy being with other people, try playing basketball or volleyball. Team sports are a good way to make friends and have fun while you get fit. But you don’t have to do a sport to get exercise. Try walking or taking the stairs. These activities don’t take much time, but if you do them regularly, they can help you get fit.'
     ],
     translation: [
-      'التمرين مهم لجسمك من نواحٍ كثيرة. أولًا، تساعد التمارين على بناء العضلات. فأنت تحتاج إلى عضلات قوية للقيام بكل الأمور التي ترغب في فعلها خلال اليوم، حتى لو كانت هوايتك المفضلة لعب ألعاب الحاسوب. وإذا لم تكن عضلاتك قوية، فقد تشعر بالتعب بسهولة.',
-      'هل تعلم أن قلبك عضلة؟ لهذا السبب تفيد التمارين قلبك أيضًا. فالقلب القوي يساعد على الوقاية من أمراض القلب. ويودي هذا المرض بحياة كثير من الناس في البلدان المتقدمة بسبب عدم اتباعهم عادات صحية. وأفضل الأنشطة لقلبك هي الأنشطة التي تجعلك تتنفس بقوة، مثل الجري.',
-      'التمرين مفيد لك لأنه يساعدك على استهلاك السعرات الحرارية التي تحصل عليها من الطعام. وإذا لم تمارس التمارين بما يكفي، فقد تتحول السعرات التي لا تستهلكها إلى زيادة في الدهون. وبوجه عام، لا يتمتع الأشخاص الذين يعانون زيادة الوزن بالصحة نفسها التي يتمتع بها غيرهم.',
-      'أفضل سبب لممارسة التمارين هو أنها ممتعة. وإذا كنت تستمتع بقضاء الوقت مع الآخرين، فجرّب لعب كرة السلة أو الكرة الطائرة. وتُعد الرياضات الجماعية طريقة جيدة لتكوين صداقات والاستمتاع أثناء تحسين لياقتك البدنية.',
-      'لكن ليس عليك ممارسة رياضة معينة حتى تحصل على التمرين. جرّب المشي أو استخدام الدرج. فهذه الأنشطة لا تستغرق وقتًا طويلًا، ولكن ممارستها بانتظام تساعدك على تحسين لياقتك البدنية.'
+      'للتمارين أهمية كبيرة لجسمك بطرائق عديدة. أولًا، تساعد التمارين على بناء العضلات. فأنت تحتاج إلى عضلات قوية للقيام بكل الأنشطة التي تريد أداءها خلال اليوم، حتى لو كانت هوايتك المفضلة لعب ألعاب الكمبيوتر. وإذا لم تكن عضلاتك قوية، فقد تشعر بالتعب بسهولة.',
+      'هل تعلم أن قلبك عضلة؟ لهذا السبب تفيد التمارين قلبك أيضًا. فالقلب القوي يساعد على الوقاية من أمراض القلب. وهذا المرض يقتل كثيرًا من الناس في الدول المتقدمة لأنهم لا يتبعون عادات صحية. وأفضل الأنشطة لقلبك هي الأنشطة التي تجعلك تتنفس بقوة، مثل الجري.',
+      'التمارين مفيدة لك لأنها تساعدك على استهلاك السعرات الحرارية التي تحصل عليها من الطعام. وإذا لم تمارس التمارين بما يكفي، فقد تتحول السعرات التي لا تستهلكها إلى زيادة في وزنك. وبوجه عام، لا يتمتع الأشخاص الذين يعانون من زيادة الوزن بصحة جيدة مثل الأشخاص غير المصابين بها.',
+      'أفضل سبب لممارسة التمارين هو أنها ممتعة. فإذا كنت تحب قضاء الوقت مع الآخرين، فجرب لعب كرة السلة أو الكرة الطائرة. فالرياضات الجماعية طريقة جيدة لتكوين الصداقات والاستمتاع بينما تحافظ على لياقتك. لكنك لست مضطرًا إلى ممارسة رياضة معينة كي تتمرن؛ حاول المشي أو استخدام السلالم. هذه الأنشطة لا تستغرق وقتًا طويلًا، لكن ممارستها بانتظام تساعدك على اكتساب اللياقة.'
     ],
     exerciseSets: [
       {
-        id: '4p-u7-body-qna',
+        id: '4p-u7-body-malzama-c',
         source: 'malzama',
-        sourceTitle: 'ملزمة الرابع الإعدادي — أسئلة فهم المقروء',
-        sourcePages: 'الأسئلة ص 119؛ مفتاح الإجابة ص 196',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Read the talk and answer the questions',
+        sourcePages: 'الأسئلة ص 119؛ مفتاح الإجابات ص 196',
         instruction: 'Read this talk by a fitness instructor and answer the questions.',
-        instructionTranslation: 'اقرأ حديث مدرّب اللياقة البدنية ثم أجب عن الأسئلة.',
+        instructionTranslation: 'اقرأ حديث مدرب اللياقة البدنية ثم أجب عن الأسئلة.',
         items: [
-          { id: '4p-u7-body-q1', question: 'Why do you need strong muscles?', questionTranslation: 'لماذا تحتاج إلى عضلات قوية؟', answer: 'You need strong muscles so that you don’t get tired when you do activities during the day.', answerTranslation: 'تحتاج إلى عضلات قوية حتى لا تشعر بالتعب عندما تمارس أنشطتك خلال اليوم.' },
-          { id: '4p-u7-body-q2', question: 'What kills many people in developed countries?', questionTranslation: 'ما الذي يودي بحياة كثير من الناس في البلدان المتقدمة؟', answer: 'Heart disease kills many people in developed countries.', answerTranslation: 'أمراض القلب تودي بحياة كثير من الناس في البلدان المتقدمة.' },
-          { id: '4p-u7-body-q3', question: 'How does exercise keep you slim?', questionTranslation: 'كيف تساعدك التمارين على المحافظة على رشاقتك؟', answer: 'Exercise uses up the calories you get from food, so it keeps you slim.', answerTranslation: 'تستهلك التمارين السعرات الحرارية التي تحصل عليها من الطعام، ولذلك تساعدك على المحافظة على رشاقتك.' },
-          { id: '4p-u7-body-q4', question: 'What sports are a good way to make friends?', questionTranslation: 'ما الرياضات التي تُعد وسيلة جيدة لتكوين الصداقات؟', answer: 'Team sports like volleyball and basketball are a good way to make friends.', answerTranslation: 'الرياضات الجماعية مثل الكرة الطائرة وكرة السلة وسيلة جيدة لتكوين الصداقات.' },
-          { id: '4p-u7-body-q5', question: 'How can you get exercise without doing a sport?', questionTranslation: 'كيف يمكنك ممارسة التمرين دون ممارسة رياضة معينة؟', answer: 'You can get exercise by walking or using the stairs.', answerTranslation: 'يمكنك ممارسة التمرين عن طريق المشي أو استخدام الدرج.' }
+          { id: '4p-u7-body-q1', question: 'Why do you need strong muscles?', questionTranslation: 'لماذا تحتاج إلى عضلات قوية؟', answer: 'You need strong muscles so that you don’t get tired when you do activities during the day.', answerTranslation: 'تحتاج إليها حتى لا تشعر بالتعب عندما تمارس أنشطة اليوم.' },
+          { id: '4p-u7-body-q2', question: 'What kills many people in developed countries?', questionTranslation: 'ما الذي يقتل كثيرًا من الناس في الدول المتقدمة؟', answer: 'Heart disease kills many people in developed countries.', answerTranslation: 'أمراض القلب تقتل كثيرًا من الناس في الدول المتقدمة.' },
+          { id: '4p-u7-body-q3', question: 'How does exercise keep you slim?', questionTranslation: 'كيف تساعدك التمارين على المحافظة على رشاقتك؟', answer: 'Exercise uses up the calories you get from food, so it keeps you slim.', answerTranslation: 'تستهلك التمارين السعرات الحرارية التي تحصل عليها من الطعام، ولذلك تحافظ على رشاقتك.' },
+          { id: '4p-u7-body-q4', question: 'What sports are a good way to make friends?', questionTranslation: 'ما الرياضات التي تُعد طريقة جيدة لتكوين الصداقات؟', answer: 'Team sports like volleyball and basketball are a good way to make friends.', answerTranslation: 'الرياضات الجماعية مثل الكرة الطائرة وكرة السلة طريقة جيدة لتكوين الصداقات.' },
+          { id: '4p-u7-body-q5', question: 'How can you get exercise without doing a sport?', questionTranslation: 'كيف يمكنك ممارسة التمارين دون ممارسة رياضة معينة؟', answer: 'You can get exercise by walking or using the stairs.', answerTranslation: 'يمكنك التمرن عن طريق المشي أو استخدام السلالم.' }
         ]
       }
     ]
@@ -1263,58 +1261,171 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
   },
   '4p-u8-space-fitness': {
     id: '4p-u8-space-fitness',
-    titleAr: 'كيف يحافظ رواد الفضاء على لياقتهم؟',
+    titleAr: 'الحفاظ على اللياقة البدنية في الفضاء',
     titleEn: 'Keeping Fit in Space',
     status: 'verified',
     sourceTitle: 'ملزمة الرابع الإعدادي',
-    sourcePages: 'النص ص 147؛ التمارين ص 148؛ إجابات نموذجية مستخرجة من النص',
-    verificationNote: 'النص والترجمة وتمرين الإكمال من الملزمة. الإجابات نموذجية ومستخرجة من النص؛ ولم أدرج مهمة «ضع علامة على الأفكار الرئيسية» لأن العبارات المطلوب الاختيار منها غير ظاهرة في النسخة المتاحة.',
+    sourcePages: 'النص ص 147؛ كتاب النشاط ص 143 و148؛ مفتاح الإجابات ص 201',
+    verificationNote: 'استُبدل النص السابق غير المطابق بالنص الحواري الموجود في الصفحة 147. تمرينا كتاب النشاط A وB أُدرجا بنصهما، وإجاباتهما من مفتاح الملزمة.',
     originalText: [
-      'Do you know how astronauts keep fit in space? In space, there is no gravity, so astronauts float. They don’t have to use their muscles to move around. This means their muscles can become weak. So astronauts have to exercise every day to keep fit.',
-      'What do astronauts eat? It’s important for astronauts to eat healthy food. They need a balanced diet, which includes proteins, carbohydrates, fats, vitamins and minerals. Their diet has to contain enough calcium to keep their bones strong. If they don’t get enough calcium, their bones can become weak.',
-      'What kinds of exercise do astronauts do? Astronauts do exercise to keep their muscles strong. They use special exercise machines, such as a treadmill and an exercise bike. They also use special equipment to strengthen their muscles. Astronauts must exercise for about two hours every day.',
-      'Why do astronauts need to sleep properly? In space, astronauts have to sleep in special sleeping bags. They are attached to the wall so that they don’t float around while they sleep. They have to wear earplugs to shut out the noise around them.'
+      "Our guest on today’s program is an astronaut. He’s going to tell us what astronauts do to keep fit. First of all, could you tell us why it’s important for an astronaut to keep fit?",
+      "Yes, of course. Actually, when we’re in space, we don’t need to be as strong and fit as when we’re on Earth.",
+      "Why is that?",
+      "Because in space, there’s no gravity, so moving takes very little effort. Although we don’t need to be strong in space, we need to stay healthy. When we don’t experience gravity, we don’t need to use many of the muscles we use every day on Earth just to stand up and walk. Astronauts can lose up to 20% of their strength on a mission in space. This becomes a problem when we return to Earth. Another problem is with our bones. On Earth, activities like walking, running and climbing stairs help keep our bones healthy. But because there’s no gravity in space, our bones can get weaker through lack of exercise. As a result, our arms or legs can be broken more easily, and it takes longer for us to get better.",
+      "Is there anything you can do to prevent that from happening?",
+      "Yes, we prevent this with exercise and a healthy diet. Astronauts on the International Space Station spend two-and-a-half hours exercising every day. Since there’s no gravity, we can’t do many of the exercises we do on Earth, like lifting weights. And there’s no place to walk or run. So we use special machines that use resistance to exercise our muscles.",
+      "What about your diet?",
+      "We need to eat foods that contain a lot of calcium to keep our bones healthy and strong. And we make sure we eat a balanced diet that gives us all the vitamins we need.",
+      "Do you have any other health or fitness problems in space?",
+      "Yes, a lot of astronauts have trouble sleeping. Most people sleep when it’s dark and wake up when it’s light. But days and nights in space are not the same as on Earth. We sometimes have to sleep close to other people, and they can be noisy. Some of them snore! That’s why many astronauts wear a mask over their eyes to protect them from the light, and earplugs to shut out the noise around them."
     ],
     translation: [
-      'هل تعرف كيف يحافظ رواد الفضاء على لياقتهم في الفضاء؟ لا توجد جاذبية في الفضاء، لذلك يطفو رواد الفضاء. ولا يحتاجون إلى استخدام عضلاتهم للتنقل، وهذا يعني أن عضلاتهم قد تصبح ضعيفة. لذلك يجب على رواد الفضاء ممارسة التمارين كل يوم للحفاظ على لياقتهم.',
-      'ماذا يأكل رواد الفضاء؟ من المهم أن يتناولوا طعامًا صحيًا. فهم يحتاجون إلى نظام غذائي متوازن يشمل البروتينات والكربوهيدرات والدهون والفيتامينات والمعادن. كما يجب أن يحتوي نظامهم الغذائي على كمية كافية من الكالسيوم للحفاظ على قوة عظامهم. وإذا لم يحصلوا على ما يكفي من الكالسيوم، فقد تصبح عظامهم ضعيفة.',
-      'ما أنواع التمارين التي يمارسها رواد الفضاء؟ يمارسون التمارين للحفاظ على قوة عضلاتهم. ويستخدمون أجهزة رياضية خاصة، مثل جهاز المشي والدراجة الثابتة. كما يستخدمون معدات خاصة لتقوية عضلاتهم. ويجب على رواد الفضاء ممارسة التمارين نحو ساعتين كل يوم.',
-      'لماذا يحتاج رواد الفضاء إلى النوم بصورة صحيحة؟ في الفضاء، ينام رواد الفضاء داخل أكياس نوم خاصة تُثبّت بالجدار حتى لا يطفوا ويتحركوا أثناء النوم. كما يجب عليهم ارتداء سدادات الأذن لحجب الضوضاء المحيطة بهم.'
+      'ضيف برنامجنا اليوم رائد فضاء. سيخبرنا عمّا يفعله رواد الفضاء للحفاظ على لياقتهم. أولًا، هل يمكنك أن تخبرنا لماذا من المهم أن يحافظ رائد الفضاء على لياقته؟',
+      'نعم، بالتأكيد. في الواقع، عندما نكون في الفضاء، لا نحتاج إلى أن نكون بالقوة واللياقة نفسيهما اللتين نحتاج إليهما على الأرض.',
+      'لماذا؟',
+      'لأنه لا توجد جاذبية في الفضاء، لذلك لا يتطلب التحرك جهدًا كبيرًا. وعلى الرغم من أننا لا نحتاج إلى القوة نفسها في الفضاء، فإننا نحتاج إلى المحافظة على صحتنا. فعندما لا نشعر بالجاذبية، لا نحتاج إلى استخدام كثير من العضلات التي نستخدمها يوميًا على الأرض لمجرد الوقوف والمشي. وقد يفقد رواد الفضاء ما يصل إلى 20% من قوتهم خلال مهمة فضائية. وتصبح هذه مشكلة عندما نعود إلى الأرض. وهناك مشكلة أخرى تتعلق بعظامنا. فالأنشطة التي نمارسها على الأرض، مثل المشي والجري وصعود السلالم، تساعد على المحافظة على صحة العظام. لكن بسبب انعدام الجاذبية في الفضاء، قد تضعف عظامنا نتيجة قلة التمارين. ونتيجة لذلك، قد تنكسر أذرعنا أو أرجلنا بسهولة أكبر، ويستغرق تعافينا وقتًا أطول.',
+      'هل هناك شيء يمكنكم فعله لمنع حدوث ذلك؟',
+      'نعم، نمنع ذلك بممارسة التمارين واتباع نظام غذائي صحي. يقضي رواد الفضاء في المحطة الفضائية الدولية ساعتين ونصف الساعة في ممارسة التمارين كل يوم. وبما أنه لا توجد جاذبية، لا نستطيع أداء كثير من التمارين التي نمارسها على الأرض، مثل رفع الأثقال. كما لا يوجد مكان للمشي أو الجري. لذلك نستخدم أجهزة خاصة تعتمد على المقاومة لتمرين عضلاتنا.',
+      'وماذا عن نظامكم الغذائي؟',
+      'نحتاج إلى تناول أطعمة تحتوي على كمية كبيرة من الكالسيوم للمحافظة على صحة عظامنا وقوتها. ونحرص على تناول غذاء متوازن يمدّنا بجميع الفيتامينات التي نحتاج إليها.',
+      'هل تواجهون مشكلات صحية أو مشكلات تتعلق باللياقة البدنية في الفضاء؟',
+      'نعم، يواجه كثير من رواد الفضاء صعوبة في النوم. ينام معظم الناس عندما يحل الظلام ويستيقظون عندما يطلع الضوء. لكن الليل والنهار في الفضاء ليسا كما هما على الأرض. نضطر أحيانًا إلى النوم بالقرب من أشخاص آخرين، وقد يكونون مزعجين؛ فبعضهم يشخر! لذلك يرتدي كثير من رواد الفضاء قناعًا على أعينهم لحجب الضوء، وسدادات للأذن لمنع الضوضاء المحيطة بهم.'
     ],
     exerciseSets: [
       {
-        id: '4p-u8-space-fitness-exercise-a',
-        source: 'malzama',
-        sourceTitle: 'ملزمة الرابع الإعدادي — Complete the sentences',
-        sourcePages: 'التمرين ص 148؛ إجابات نموذجية من النص',
-        instruction: 'Complete the sentences with words from the text.',
-        instructionTranslation: 'أكمل الجمل بكلمات من النص.',
+        id: '4p-u8-space-fitness-activity-a',
+        source: 'activity_book',
+        sourceTitle: 'كتاب النشاط — Exercise A',
+        sourcePages: 'كتاب النشاط ص 148؛ مفتاح الإجابات ص 201',
+        instruction: 'Complete the sentences with words from the box.',
+        instructionTranslation: 'أكمل الجمل باستخدام الكلمات الموجودة في الصندوق.',
         items: [
-          { id: '4p-u8-space-fitness-a1', question: 'Astronauts have to ______ every day to keep fit.', questionTranslation: 'يجب على رواد الفضاء أن ______ كل يوم للحفاظ على لياقتهم.', answer: 'Exercise.', answerTranslation: 'يمارسوا التمارين.' },
-          { id: '4p-u8-space-fitness-a2', question: 'Their ______ has to be healthy and balanced.', questionTranslation: 'يجب أن يكون ______ صحيًا ومتوازنًا.', answer: 'Diet.', answerTranslation: 'نظامهم الغذائي.' },
-          { id: '4p-u8-space-fitness-a3', question: 'Astronauts need enough ______ to keep their bones strong.', questionTranslation: 'يحتاج رواد الفضاء إلى كمية كافية من ______ للحفاظ على قوة عظامهم.', answer: 'Calcium.', answerTranslation: 'الكالسيوم.' },
-          { id: '4p-u8-space-fitness-a4', question: 'They use special ______ to strengthen their muscles.', questionTranslation: 'يستخدمون ______ خاصة لتقوية عضلاتهم.', answer: 'Equipment.', answerTranslation: 'معدات.' },
-          { id: '4p-u8-space-fitness-a5', question: 'They sleep in special ______ attached to the wall.', questionTranslation: 'ينامون في ______ خاصة مثبتة بالجدار.', answer: 'Sleeping bags.', answerTranslation: 'أكياس نوم.' },
-          { id: '4p-u8-space-fitness-a6', question: 'They wear ______ to shut out the noise around them.', questionTranslation: 'يرتدون ______ لحجب الضوضاء المحيطة بهم.', answer: 'Earplugs.', answerTranslation: 'سدادات الأذن.' }
+          { id: '4p-u8-space-fitness-a1', question: 'Exercise helps you ______ and stay healthy.', questionTranslation: 'تساعدك التمارين على ______ والمحافظة على صحتك.', answer: 'keep fit', answerTranslation: 'المحافظة على اللياقة البدنية.' },
+          { id: '4p-u8-space-fitness-a2', question: 'It is important to have a ______ that includes a lot of different foods.', questionTranslation: 'من المهم اتباع ______ يضم أنواعًا كثيرة ومختلفة من الطعام.', answer: 'diet', answerTranslation: 'نظام غذائي.' },
+          { id: '4p-u8-space-fitness-a3', question: 'There are a lot of ______ in your hands and feet.', questionTranslation: 'يوجد الكثير من ______ في يديك وقدميك.', answer: 'bones', answerTranslation: 'العظام.' },
+          { id: '4p-u8-space-fitness-a4', question: 'The ______ in your body are what make you able to move.', questionTranslation: 'إن ______ في جسمك هي التي تمكّنك من الحركة.', answer: 'muscles', answerTranslation: 'العضلات.' },
+          { id: '4p-u8-space-fitness-a5', question: 'Dairy foods contain a lot of ______.', questionTranslation: 'تحتوي منتجات الألبان على كمية كبيرة من ______.', answer: 'calcium', answerTranslation: 'الكالسيوم.' },
+          { id: '4p-u8-space-fitness-a6', question: 'Some people believe that ______ can help you get better faster when you are ill.', questionTranslation: 'يعتقد بعض الناس أن ______ قد تساعدك على التعافي بسرعة أكبر عندما تمرض.', answer: 'vitamin', answerTranslation: 'الفيتامينات.' }
         ]
       },
       {
-        id: '4p-u8-space-fitness-exercise-b',
-        source: 'malzama',
-        sourceTitle: 'ملزمة الرابع الإعدادي — Tick the main points',
-        sourcePages: 'التمرين ص 148؛ إجابات نموذجية من النص',
-        instruction: 'Tick the main points of the text.',
-        instructionTranslation: 'ضع علامة على الأفكار الرئيسية التي وردت في النص.',
+        id: '4p-u8-space-fitness-activity-b',
+        source: 'activity_book',
+        sourceTitle: 'كتاب النشاط — Exercise B',
+        sourcePages: 'كتاب النشاط ص 143؛ مفتاح الإجابات ص 201',
+        instruction: 'Read the interview on Student’s Book page 85. Tick (✓) the main points the astronaut makes.',
+        instructionTranslation: 'اقرأ المقابلة في صفحة 85 من كتاب الطالب، وضع علامة (✓) أمام الأفكار الرئيسية التي يذكرها رائد الفضاء.',
         items: [
-          { id: '4p-u8-space-fitness-b1', question: 'Astronauts need to exercise to keep their muscles strong.', questionTranslation: 'يحتاج رواد الفضاء إلى ممارسة التمارين للحفاظ على قوة عضلاتهم.', answer: 'True.', answerTranslation: 'صحيح.' },
-          { id: '4p-u8-space-fitness-b2', question: 'Astronauts use exercise machines for only 30 minutes every day.', questionTranslation: 'يستخدم رواد الفضاء الأجهزة الرياضية لمدة 30 دقيقة فقط كل يوم.', answer: 'False. They exercise for about two hours every day.', answerTranslation: 'خطأ؛ يمارسون التمارين نحو ساعتين كل يوم.' },
-          { id: '4p-u8-space-fitness-b3', question: 'Astronauts need a healthy, balanced diet.', questionTranslation: 'يحتاج رواد الفضاء إلى نظام غذائي صحي ومتوازن.', answer: 'True.', answerTranslation: 'صحيح.' },
-          { id: '4p-u8-space-fitness-b4', question: 'Astronauts don’t need calcium because there is no gravity.', questionTranslation: 'لا يحتاج رواد الفضاء إلى الكالسيوم بسبب انعدام الجاذبية.', answer: 'False. They need enough calcium to keep their bones strong.', answerTranslation: 'خطأ؛ يحتاجون إلى كمية كافية من الكالسيوم للحفاظ على قوة عظامهم.' },
-          { id: '4p-u8-space-fitness-b5', question: 'Astronauts sleep in normal beds with pillows.', questionTranslation: 'ينام رواد الفضاء في أسرّة عادية مع وسائد.', answer: 'False. They sleep in sleeping bags attached to the wall.', answerTranslation: 'خطأ؛ ينامون في أكياس نوم مثبتة بالجدار.' },
-          { id: '4p-u8-space-fitness-b6', question: 'Astronauts wear earplugs to avoid noise around them.', questionTranslation: 'يرتدي رواد الفضاء سدادات الأذن لتجنب الضوضاء المحيطة بهم.', answer: 'True.', answerTranslation: 'صحيح.' }
+          { id: '4p-u8-space-fitness-b1', question: 'Astronauts don’t need to be very strong in space, but they need to stay fit for when they get back to Earth.', questionTranslation: 'لا يحتاج رواد الفضاء إلى قوة كبيرة جدًا في الفضاء، لكن عليهم المحافظة على لياقتهم استعدادًا لعودتهم إلى الأرض.', answer: '✓ — Main point (1).', answerTranslation: '✓ — فكرة رئيسية (1).' },
+          { id: '4p-u8-space-fitness-b2', question: 'Astronauts never have emergencies.', questionTranslation: 'لا يتعرض رواد الفضاء لحالات طارئة مطلقًا.', answer: 'Not selected.', answerTranslation: 'لا توضع عليها علامة.' },
+          { id: '4p-u8-space-fitness-b3', question: 'Being in an environment without gravity can be bad for your muscles and bones. Exercise and diet can help astronauts stay healthy.', questionTranslation: 'قد يكون الوجود في بيئة من دون جاذبية ضارًا بالعضلات والعظام. ويمكن للتمارين والنظام الغذائي مساعدة رواد الفضاء على البقاء بصحة جيدة.', answer: '✓ — Main point (3).', answerTranslation: '✓ — فكرة رئيسية (3).' },
+          { id: '4p-u8-space-fitness-b4', question: 'Food tastes better in space than on Earth.', questionTranslation: 'يكون مذاق الطعام في الفضاء أفضل منه على الأرض.', answer: 'Not selected.', answerTranslation: 'لا توضع عليها علامة.' },
+          { id: '4p-u8-space-fitness-b5', question: 'Astronauts spend 20% of their time sleeping.', questionTranslation: 'يقضي رواد الفضاء 20% من وقتهم في النوم.', answer: 'Not selected.', answerTranslation: 'لا توضع عليها علامة.' },
+          { id: '4p-u8-space-fitness-b6', question: 'Sometimes it is hard to get enough sleep when you are in space.', questionTranslation: 'يصعب أحيانًا الحصول على قسط كافٍ من النوم في الفضاء.', answer: '✓ — Main point (6).', answerTranslation: '✓ — فكرة رئيسية (6).' }
         ]
       }
     ]
   },
-
+,
+  '4p-u6-exercise': {
+    id: '4p-u6-exercise',
+    titleAr: 'التمارين واللياقة البدنية',
+    titleEn: 'Exercise, Fitness and Sports Injuries',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص ص 108؛ تمرين الكلمات ص 109؛ مفتاح الإجابات ص 194',
+    verificationNote: 'النص من الصفحة 108 كاملًا، بما فيه نصائح تجنب الإصابات الرياضية. أُرفق تمرين الكلمات من الصفحة 109 كما هو، وإجاباته من مفتاح الحل.',
+    originalText: [
+      'If you want to be fit and healthy, you need to take regular exercise. There are many ways you can do this. For example, you can go to a gym and follow an exercise programme, you can go walking or cycling, or you can take up a sport.',
+      'Before you begin, there are some things you should think about. First, you need to find something that you are fairly sure you will enjoy doing. If you don’t enjoy the activity, you’ll give it up in a few weeks. I also suggest that you exercise with a friend. There will be times when you don’t feel like exercising, but if you know your friend is waiting for you, you won’t let your friend down – you’ll go. Finally, if you do the same thing all the time, you may get bored. Try to find different ways of getting exercise. For example, go swimming one day and walking the next.',
+      'The second thing I want to talk about is sports injuries. These can be extremely painful and difficult to cure. Of course, accidents can always happen and people will get injured in any sport, but lots of injuries need never happen. They happen because people are careless and don’t follow proper safety procedures. If you want to avoid injuries, you’ll take my advice.',
+      'I have four pieces of advice. First, it’s very important to warm up before you begin exercising or playing a game. You can do this by running on the spot, then stretching to prepare your muscles. Next, wear the right clothing and safety equipment. For example, wear knee and elbow pads if you rollerblade. Thirdly, many people want to do too much at first. Don’t be impatient. Move on to new and more difficult exercises slowly. Finally, pay attention to what your body tells you. For example, always have water with you because you will get thirsty. You can get dehydrated quickly when exercising. Oh, I nearly forgot a fifth piece of advice. You’ll often hear people say that exercise should be painful – “no pain, no gain”. They’re wrong. If the exercise you’re doing is painful, you ought to stop right away and give your body time to rest.'
+    ],
+    translation: [
+      'إذا أردت أن تكون لائقًا وبصحة جيدة، فعليك ممارسة التمارين بانتظام. وهناك طرق كثيرة للقيام بذلك؛ فمثلًا يمكنك الذهاب إلى النادي الرياضي واتباع برنامج للتمارين، أو المشي أو ركوب الدراجة، أو ممارسة إحدى الرياضات.',
+      'قبل أن تبدأ، هناك أمور ينبغي أن تفكر فيها. أولًا، اختر نشاطًا تعتقد إلى حد كبير أنك ستستمتع بممارسته. فإذا لم تستمتع بالنشاط، فسوف تتخلى عنه بعد بضعة أسابيع. وأقترح أيضًا أن تتمرن مع صديق. فقد تمر أوقات لا ترغب فيها بممارسة التمارين، لكن إذا كنت تعلم أن صديقك ينتظرك فلن تخذله، وستذهب للتمرين. وأخيرًا، إذا مارست النشاط نفسه طوال الوقت، فقد تشعر بالملل. حاول تنويع طرق ممارسة التمارين؛ فمثلًا اذهب للسباحة في يوم، وللمشي في اليوم التالي.',
+      'الأمر الثاني الذي أريد الحديث عنه هو الإصابات الرياضية. فقد تكون مؤلمة جدًا ويصعب علاجها. وبالطبع قد تقع الحوادث دائمًا وقد يتعرض الناس للإصابة في أي رياضة، لكن كثيرًا من الإصابات يمكن تجنبها. فهي تحدث لأن الناس يتصرفون بإهمال ولا يتبعون إجراءات السلامة الصحيحة. وإذا أردت تجنب الإصابات، فعليك اتباع نصائحي.',
+      'لدي أربع نصائح. أولًا، من المهم جدًا أن تقوم بالإحماء قبل بدء التمارين أو اللعب. ويمكنك فعل ذلك بالجري في مكانك، ثم إطالة العضلات لتهيئتها. بعد ذلك ارتدِ الملابس ومعدات السلامة المناسبة؛ فمثلًا ارتدِ واقيات الركبتين والمرفقين إذا كنت تمارس التزلج بالعجلات. ثالثًا، يريد كثير من الناس القيام بأكثر مما ينبغي في البداية؛ فلا تتعجل، وانتقل تدريجيًا إلى تمارين جديدة وأكثر صعوبة. وأخيرًا، انتبه إلى ما يخبرك به جسمك. فمثلًا احمل الماء معك دائمًا لأنك ستشعر بالعطش، وقد تصاب بالجفاف بسرعة أثناء التمرين. أوه، كدت أنسى النصيحة الخامسة: كثيرًا ما تسمع الناس يقولون إن التمرين يجب أن يكون مؤلمًا، أي «لا ألم، لا مكسب». لكنهم مخطئون. فإذا كان التمرين الذي تمارسه مؤلمًا، فعليك التوقف فورًا ومنح جسمك وقتًا للراحة.'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u6-exercise-activity-c',
+        source: 'activity_book',
+        sourceTitle: 'كتاب النشاط — Exercise C: Complete the sentences',
+        sourcePages: 'كتاب النشاط ص 109؛ مفتاح الإجابات ص 194',
+        instruction: 'Complete the sentences with words from the box.',
+        instructionTranslation: 'أكمل الجمل باستخدام الكلمات الموجودة في الصندوق.',
+        items: [
+          { id: '4p-u6-exercise-c1', question: 'Mahmoud is ______. He is not afraid of anything.', questionTranslation: 'محمود ______؛ فهو لا يخاف من أي شيء.', options: ['colorful', 'depopulated', 'fearless', 'friendless', 'impolite', 'impossible', 'useful'], answer: 'fearless', answerTranslation: 'لا يعرف الخوف.' },
+          { id: '4p-u6-exercise-c2', question: 'Parrots have very ______ feathers.', questionTranslation: 'لدى الببغاوات ريش ______ جدًا.', answer: 'colorful', answerTranslation: 'متعدد الألوان.' },
+          { id: '4p-u6-exercise-c3', question: 'This puzzle is ______ to finish.', questionTranslation: 'هذا اللغز ______ الحل.', answer: 'impossible', answerTranslation: 'مستحيل.' },
+          { id: '4p-u6-exercise-c4', question: 'He is alone and ______.', questionTranslation: 'إنه وحيد و______.', answer: 'friendless', answerTranslation: 'بلا أصدقاء.' },
+          { id: '4p-u6-exercise-c5', question: 'My bilingual dictionary is very ______.', questionTranslation: 'قاموسي ثنائي اللغة ______ جدًا.', answer: 'useful', answerTranslation: 'مفيد.' },
+          { id: '4p-u6-exercise-c6', question: 'Ten years ago, many people lived there, but it has become ______.', questionTranslation: 'قبل عشر سنوات كان كثير من الناس يعيشون هناك، لكنها أصبحت ______.', answer: 'depopulated', answerTranslation: 'قليلة السكان / مهجورة السكان.' },
+          { id: '4p-u6-exercise-c7', question: 'A man stepped on my foot and didn’t say sorry. He was very ______.', questionTranslation: 'داس رجل على قدمي ولم يعتذر. لقد كان ______ جدًا.', answer: 'impolite', answerTranslation: 'قليل الأدب.' }
+        ]
+      }
+    ]
+  },
+  '4p-u7-oil': {
+    id: '4p-u7-oil',
+    titleAr: 'من الأرض إلى المصفاة',
+    titleEn: 'From the Earth to the Refinery',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص ص 131؛ تمرين كتاب النشاط D ص 129؛ مفتاح الإجابات ص 198',
+    verificationNote: 'النص الكامل مأخوذ من الصفحة 131. أُرفق تمرين التوصيل المرتبط بمفردات النفط والحفر والمصفاة من كتاب النشاط، مع حل التوصيل الموافق لبنية الجمل.',
+    originalText: [
+      'Petroleum was formed millions of years ago. Animals and plants died and were covered by layers of mud and water. These layers put pressure on the remains of the animals and plants. The heat and pressure slowly changed them to petroleum.',
+      'Petroleum is not found everywhere. To find it, geologists examine rock samples from the Earth, or they use satellite images and radar maps. When petroleum has been found in an area, drilling takes place to find out if there is enough oil to make it worthwhile extracting. If there is enough, a well is drilled through the rock. It can be as deep as five kilometers. A derrick has to be built to hold the tools that are used by the workers and to hold the pipes that have to go into the well. When the oil is reached, it gushes up through the pipes.',
+      'When petroleum comes out of the ground, it is a thick, black liquid. It needs to be processed before it can be used. This takes place at a refinery. The oil is sent to the refinery by ship or through the pipes. At the refinery, it is separated into different petroleum products.',
+      'Many different products are made from petroleum. You probably know that the petrol people put in their cars comes from petroleum. Did you know that everyday items such as crayons and bubble gum are made from petroleum? It is even used in complex equipment like artificial hearts that can help save lives. Some people worry that petroleum products damage the environment, but cleaner products are being developed by petroleum companies.'
+    ],
+    translation: [
+      'تكوّن النفط قبل ملايين السنين. فقد ماتت الحيوانات والنباتات ودُفنت تحت طبقات من الطين والماء. وسببت هذه الطبقات ضغطًا على بقايا الحيوانات والنباتات، ثم غيّرت الحرارة والضغط تلك البقايا ببطء إلى نفط.',
+      'لا يوجد النفط في كل مكان. وللعثور عليه، يفحص الجيولوجيون عينات الصخور من الأرض، أو يستخدمون صور الأقمار الصناعية وخرائط الرادار. وعندما يُكتشف النفط في منطقة ما، تبدأ عمليات الحفر لمعرفة ما إذا كانت كمية النفط كافية لجعل استخراجه مجديًا. وإذا كانت الكمية كافية، تُحفر بئر في الصخور، وقد يصل عمقها إلى خمسة كيلومترات. ويجب إنشاء برج حفر لحمل الأدوات التي يستخدمها العمال والأنابيب التي ستدخل إلى البئر. وعندما يصل الحفر إلى النفط، يندفع صعودًا عبر الأنابيب.',
+      'عندما يخرج النفط من باطن الأرض يكون سائلًا أسود كثيفًا. ويجب معالجته قبل استخدامه، وتتم هذه العملية في مصفاة. ويُنقل النفط إلى المصفاة بالسفن أو عبر الأنابيب. وفي المصفاة يُفصل إلى منتجات نفطية مختلفة.',
+      'تُصنع منتجات كثيرة ومختلفة من النفط. وربما تعرف أن البنزين الذي يضعه الناس في سياراتهم مصدره النفط. وهل تعلم أن أشياء يومية مثل أقلام التلوين والعلكة تُصنع من النفط؟ بل إنه يُستخدم أيضًا في معدات معقدة مثل القلوب الاصطناعية التي يمكن أن تساعد على إنقاذ الأرواح. ويقلق بعض الناس من أن المنتجات النفطية تضر بالبيئة، لكن شركات النفط تطور منتجات أنظف.'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u7-oil-activity-d',
+        source: 'activity_book',
+        sourceTitle: 'كتاب النشاط — Exercise D: Match the beginnings and endings',
+        sourcePages: 'كتاب النشاط ص 129؛ إجابات التوصيل من عبارات السؤال',
+        instruction: 'Match the beginnings and endings of the sentences.',
+        instructionTranslation: 'صِل بدايات الجمل بنهاياتها المناسبة.',
+        items: [
+          { id: '4p-u7-oil-d1', question: 'Petroleum has (   )', questionTranslation: 'لقد استُخدم النفط (   )', answer: 'c — been used since the 19th century.', answerTranslation: 'منذ القرن التاسع عشر.' },
+          { id: '4p-u7-oil-d2', question: 'The radar maps are (   )', questionTranslation: 'خرائط الرادار (   )', answer: 'e — being studied by our geologists.', answerTranslation: 'يدرسها جيولوجيونا.' },
+          { id: '4p-u7-oil-d3', question: 'Another oil well will (   )', questionTranslation: 'سيتم (   ) بئر نفط أخرى', answer: 'd — be drilled in the spring.', answerTranslation: 'حفرها في الربيع.' },
+          { id: '4p-u7-oil-d4', question: 'The derrick will (   )', questionTranslation: 'سيتم (   ) برج الحفر', answer: 'a — be built.', answerTranslation: 'بناؤه.' },
+          { id: '4p-u7-oil-d5', question: 'A new refinery is (   )', questionTranslation: 'إن مصفاة جديدة (   )', answer: 'b — be completed soon.', answerTranslation: 'سيتم إكمالها قريبًا.' }
+        ]
+      }
+    ]
+  },
+  '4p-u7-space-station': {
+    id: '4p-u7-space-station',
+    titleAr: 'محطة الفضاء الدولية',
+    titleEn: 'The International Space Station',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'العرض التقديمي ص 137',
+    verificationNote: 'النص عرض تقديمي كامل في صفحة 137. لم يظهر تمرين نشاط أو ملزمة مرتبط بهذا العرض في النسخة المرفوعة؛ لذلك لم تُنشأ أسئلة بديلة أو من عندنا.',
+    originalText: [
+      'The topic of my presentation today is the International Space Station, or ISS. First of all, I’ll explain what the ISS is. Then I’ll talk a bit about the history of the station. Finally I’ll tell you why the station is important. You can ask any questions at the end.',
+      'So, basically the ISS is a large spacecraft, going round our planet about 400 kilometers above us, where astronauts live, work and study. The whole space station is about the size of a football pitch, but the part where the astronauts live is like a big house really. It has five bedrooms, two bathrooms and a gym. There are also labs from the US, Russia, Japan and Europe.',
+      'Moving on to its history, the International Space Station took ten years and more than 30 missions to put together. The first modules were sent to orbit in 1998, and two years later, it received its first astronauts. As you can see from this table, the ISS has been the home of more than 250 astronauts from 20 different countries, most of them American and Russian.',
+      'Now, many people ask why we need a space station. The scientists at the space station study many things, including what happens to people in space. They also learn about how to keep a spacecraft working for a long time. Space agencies are planning to go deeper in space in the future, and the lessons learnt at the ISS will be an important step for that.',
+      'To sum up, I said that the ISS is like a big house for astronauts from many countries. It took ten years to build, and now is going round the planet. The astronauts there are learning important things about living in space. Thank you for listening. Do you have any questions?'
+    ],
+    translation: [
+      'موضوع عرضي التقديمي اليوم هو محطة الفضاء الدولية، أو ISS. أولًا، سأشرح ماهية المحطة. ثم سأتحدث قليلًا عن تاريخها. وأخيرًا، سأوضح سبب أهمية المحطة. ويمكنكم طرح أي أسئلة في نهاية العرض.',
+      'ببساطة، محطة الفضاء الدولية مركبة فضائية كبيرة تدور حول كوكبنا على ارتفاع يقارب 400 كيلومتر، ويعيش فيها رواد الفضاء ويعملون ويدرسون. وتبلغ مساحة المحطة بأكملها تقريبًا مساحة ملعب كرة قدم، لكن الجزء الذي يعيش فيه رواد الفضاء يشبه منزلًا كبيرًا. فهي تضم خمس غرف نوم وحمّامين وصالة رياضية، كما تضم مختبرات من الولايات المتحدة وروسيا واليابان وأوروبا.',
+      'أما تاريخها، فقد استغرق تجميع محطة الفضاء الدولية عشر سنوات وأكثر من 30 مهمة. أُرسلت الوحدات الأولى إلى المدار عام 1998، وبعد عامين استقبلت أول رواد فضاء. وكما ترون في هذا الجدول، أصبحت المحطة موطنًا لأكثر من 250 رائد فضاء من 20 دولة مختلفة، معظمهم من الأمريكيين والروس.',
+      'والآن، يتساءل كثير من الناس عن سبب حاجتنا إلى محطة فضائية. يدرس العلماء في المحطة أمورًا كثيرة، منها ما يحدث للإنسان في الفضاء. كما يتعلمون كيفية إبقاء المركبات الفضائية تعمل مدة طويلة. وتخطط وكالات الفضاء للتوغل أكثر في الفضاء مستقبلًا، وستكون الدروس المستفادة من المحطة خطوة مهمة نحو تحقيق ذلك.',
+      'وخلاصة القول، ذكرت أن محطة الفضاء الدولية تشبه منزلًا كبيرًا لرواد فضاء من دول كثيرة. وقد استغرق بناؤها عشر سنوات، وهي تدور الآن حول كوكب الأرض. ويتعلم رواد الفضاء فيها أمورًا مهمة عن الحياة في الفضاء. شكرًا لحسن استماعكم. هل لديكم أي أسئلة؟'
+    ]
+  }
 };
