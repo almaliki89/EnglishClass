@@ -1021,4 +1021,55 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     ]
   },
 
+  '4p-u6-lunch': {
+    id: '4p-u6-lunch',
+    titleAr: 'غداء صحي',
+    titleEn: 'A Healthy Lunch',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص ص 98؛ التمارين ص 98؛ مفتاح الإجابة ص 195',
+    verificationNote: 'النص والترجمة وتمرينان من كتاب النشاط موثقة في الملزمة، والإجابات مطابقة لمفتاح الحل؛ أُكملت الإجابة السادسة في التمرين A من تعريف الكلمة في السؤال.',
+    originalText: [
+      'Which picture shows the healthier lunch? If you guessed picture 2, you’re right. Why is it better? Well, first of all, this lunch has food from more food groups than the other one. Secondly, the lunch in picture 1 includes food that can be bad for your health.',
+      'Let me talk first about why it is important to eat food from different food groups. Our bodies need different things to grow and be healthy, and they are not all in the same food groups. The yoghurt in picture 2 is from the dairy group – foods made from milk – and contains calcium. We need calcium to have healthy teeth and bones. The chicken in the sandwiches contain protein, which gives us strong muscles. The salad and apple are from the fruit and vegetable group. The foods in this group contain vitamins our body needs. For example, tomatoes have a lot of vitamin C, which some doctors think helps you get better when you are ill. Some teenagers don’t get enough fruit and vegetables in their diet. Try to eat more! Vegetables taste good if you don’t cook them too much. And fruit and vegetables have few calories, so they’re good for people who want to stay slim. Calories are the measurement of energy values in foods.'
+    ],
+    translation: [
+      'أي الصورتين تُظهر الوجبة الأكثر صحة؟ إذا خمنت الصورة رقم 2، فإجابتك صحيحة. لماذا هي أفضل؟ أولًا، تحتوي هذه الوجبة على أطعمة من مجموعات غذائية أكثر من الوجبة الأخرى. ثانيًا، تتضمن الوجبة الموجودة في الصورة رقم 1 أطعمة قد تكون ضارة بصحتك.',
+      'دعوني أتحدث أولًا عن أهمية تناول الأطعمة من مجموعات غذائية مختلفة. تحتاج أجسامنا إلى عناصر متنوعة كي تنمو وتبقى بصحة جيدة، وهذه العناصر لا تنتمي جميعها إلى المجموعة الغذائية نفسها. فاللبن الموجود في الصورة رقم 2 ينتمي إلى مجموعة منتجات الألبان، وهي الأطعمة المصنوعة من الحليب، ويحتوي على الكالسيوم. ونحتاج إلى الكالسيوم لنحافظ على صحة الأسنان والعظام. ويحتوي الدجاج الموجود في الشطائر على البروتين الذي يمنحنا عضلات قوية. أما السلطة والتفاح فينتميان إلى مجموعة الفواكه والخضراوات. وتحتوي أطعمة هذه المجموعة على الفيتامينات التي يحتاج إليها جسمنا. فعلى سبيل المثال، تحتوي الطماطم على كمية كبيرة من فيتامين C، الذي يعتقد بعض الأطباء أنه يساعدك على التعافي عندما تمرض. ولا يحصل بعض المراهقين على كمية كافية من الفواكه والخضراوات في نظامهم الغذائي؛ حاولوا تناول المزيد منها! فالخضراوات لذيذة إذا لم تطهها أكثر من اللازم. كما أن الفواكه والخضراوات تحتوي على سعرات حرارية قليلة، ولذلك فهي مفيدة للأشخاص الذين يرغبون في المحافظة على رشاقتهم. والسعرات الحرارية هي مقياس مقدار الطاقة في الأطعمة.'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u6-lunch-exercise-a',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Exercise A',
+        sourcePages: 'التمرين ص 98؛ مفتاح الإجابة ص 195',
+        instruction: 'Complete the sentences with the words in the box.',
+        instructionTranslation: 'أكمل الجمل باستخدام الكلمات الموجودة في الصندوق.',
+        items: [
+          { id: '4p-u6-lunch-a1', question: '__________ are things your body needs to be healthy. Many are named after a letter of the alphabet.', questionTranslation: '__________ أشياء يحتاج إليها جسمك ليكون بصحة جيدة، وكثير منها يُسمّى باسم أحد أحرف الأبجدية.', answer: 'Vitamins.', answerTranslation: 'الفيتامينات.' },
+          { id: '4p-u6-lunch-a2', question: '__________ is needed for healthy teeth and bones.', questionTranslation: 'نحتاج إلى __________ من أجل أسنان وعظام صحية.', answer: 'Calcium.', answerTranslation: 'الكالسيوم.' },
+          { id: '4p-u6-lunch-a3', question: '__________ are foods made from milk.', questionTranslation: '__________ هي أطعمة مصنوعة من الحليب.', answer: 'Dairy products.', answerTranslation: 'منتجات الألبان.' },
+          { id: '4p-u6-lunch-a4', question: 'Food with a lot of __________ can make people fat.', questionTranslation: 'الأطعمة التي تحتوي على كمية كبيرة من __________ قد تجعل الناس بدناء.', answer: 'Calories.', answerTranslation: 'السعرات الحرارية.' },
+          { id: '4p-u6-lunch-a5', question: '__________ is needed to build strong muscles.', questionTranslation: 'نحتاج إلى __________ لبناء عضلات قوية.', answer: 'Protein.', answerTranslation: 'البروتين.' },
+          { id: '4p-u6-lunch-a6', question: '__________ means the food people regularly eat.', questionTranslation: 'تعني كلمة __________ الطعام الذي يتناوله الناس بانتظام.', answer: 'Diet.', answerTranslation: 'النظام الغذائي.' }
+        ]
+      },
+      {
+        id: '4p-u6-lunch-exercise-c',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Exercise C',
+        sourcePages: 'التمرين ص 98؛ مفتاح الإجابة ص 195',
+        instruction: 'Complete the sentences with words or phrases from the box.',
+        instructionTranslation: 'أكمل الجمل بالكلمات أو العبارات الموجودة في الصندوق.',
+        items: [
+          { id: '4p-u6-lunch-c1', question: 'There are __________ calories in sweets, soft drinks and cakes.', questionTranslation: 'توجد __________ من السعرات الحرارية في الحلويات والمشروبات الغازية والكعك.', answer: 'Too many.', answerTranslation: 'كمية كبيرة جدًا.' },
+          { id: '4p-u6-lunch-c2', question: '__________ teenagers don’t eat __________ fruit and vegetables.', questionTranslation: 'لا يتناول __________ من المراهقين __________ من الفواكه والخضراوات.', answer: 'Many; enough.', answerTranslation: 'كثيرون؛ ما يكفي.' },
+          { id: '4p-u6-lunch-c3', question: 'Not __________ fats are bad, but crisps have __________ fat of the wrong kind.', questionTranslation: 'ليست __________ الدهون ضارة، لكن رقائق البطاطا تحتوي على __________ من الدهون غير الصحية.', answer: 'All; too much.', answerTranslation: 'كلّها؛ كمية كبيرة جدًا.' },
+          { id: '4p-u6-lunch-c4', question: 'If you want something sweet, choose something with __________ calories than chocolate.', questionTranslation: 'إذا أردت شيئًا حلوًا، فاختر شيئًا يحتوي على سعرات حرارية __________ من الشوكولاتة.', answer: 'Fewer.', answerTranslation: 'أقل.' },
+          { id: '4p-u6-lunch-c5', question: '__________ fruit and vegetables have __________ vitamins.', questionTranslation: 'تحتوي __________ الفواكه والخضراوات على __________ من الفيتامينات.', answer: 'Both; a lot of.', answerTranslation: 'كل من؛ الكثير من.' }
+        ]
+      }
+    ]
+  },
+
 };
