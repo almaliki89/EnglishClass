@@ -229,9 +229,9 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
           <BrutalButton
             variant="yellow"
             size="sm"
-            onClick={() => navigate(`/grade/${validGrade}#grade-book-passage-library`)}
+            onClick={() => navigate(`/grade/${validGrade}/passages`)}
           >
-            فتح مكتبة قطع الصف
+            فتح مكتبة قطع الكتاب
             <ArrowLeft className="w-3.5 h-3.5" />
           </BrutalButton>
         </BrutalCard>
