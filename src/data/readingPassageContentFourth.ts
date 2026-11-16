@@ -1268,7 +1268,7 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     status: 'verified',
     sourceTitle: 'ملزمة الرابع الإعدادي',
     sourcePages: 'النص ص 147؛ كتاب النشاط ص 143 و148؛ مفتاح الإجابات ص 201',
-    verificationNote: 'استُبدل النص السابق غير المطابق بالنص الحواري الموجود في الصفحة 147. تمرينا كتاب النشاط A وB أُدرجا بنصهما، وإجاباتهما من مفتاح الملزمة.',
+    verificationNote: 'استُبدل النص السابق غير المطابق بالنص الحواري الموجود في الصفحة 147. أُدرج تعليمات تمرين النشاط B ومفتاحه المتاح (1 و3 و6) من صفحة الإجابات 201. تمرين A لم تُرفق صياغة أسئلته كاملة في المصدر، لذلك لم نُنشئ له أسئلة بديلة.',
     originalText: [
       "Our guest on today’s program is an astronaut. He’s going to tell us what astronauts do to keep fit. First of all, could you tell us why it’s important for an astronaut to keep fit?",
       "Yes, of course. Actually, when we’re in space, we don’t need to be as strong and fit as when we’re on Earth.",
@@ -1293,40 +1293,23 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
       'هل تواجهون مشكلات صحية أو مشكلات تتعلق باللياقة البدنية في الفضاء؟',
       'نعم، يواجه كثير من رواد الفضاء صعوبة في النوم. ينام معظم الناس عندما يحل الظلام ويستيقظون عندما يطلع الضوء. لكن الليل والنهار في الفضاء ليسا كما هما على الأرض. نضطر أحيانًا إلى النوم بالقرب من أشخاص آخرين، وقد يكونون مزعجين؛ فبعضهم يشخر! لذلك يرتدي كثير من رواد الفضاء قناعًا على أعينهم لحجب الضوء، وسدادات للأذن لمنع الضوضاء المحيطة بهم.'
     ],
-    exerciseSets: [
-      {
-        id: '4p-u8-space-fitness-activity-a',
-        source: 'activity_book',
-        sourceTitle: 'كتاب النشاط — Exercise A',
-        sourcePages: 'كتاب النشاط ص 148؛ مفتاح الإجابات ص 201',
-        instruction: 'Complete the sentences with words from the box.',
-        instructionTranslation: 'أكمل الجمل باستخدام الكلمات الموجودة في الصندوق.',
-        items: [
-          { id: '4p-u8-space-fitness-a1', question: 'Exercise helps you ______ and stay healthy.', questionTranslation: 'تساعدك التمارين على ______ والمحافظة على صحتك.', answer: 'keep fit', answerTranslation: 'المحافظة على اللياقة البدنية.' },
-          { id: '4p-u8-space-fitness-a2', question: 'It is important to have a ______ that includes a lot of different foods.', questionTranslation: 'من المهم اتباع ______ يضم أنواعًا كثيرة ومختلفة من الطعام.', answer: 'diet', answerTranslation: 'نظام غذائي.' },
-          { id: '4p-u8-space-fitness-a3', question: 'There are a lot of ______ in your hands and feet.', questionTranslation: 'يوجد الكثير من ______ في يديك وقدميك.', answer: 'bones', answerTranslation: 'العظام.' },
-          { id: '4p-u8-space-fitness-a4', question: 'The ______ in your body are what make you able to move.', questionTranslation: 'إن ______ في جسمك هي التي تمكّنك من الحركة.', answer: 'muscles', answerTranslation: 'العضلات.' },
-          { id: '4p-u8-space-fitness-a5', question: 'Dairy foods contain a lot of ______.', questionTranslation: 'تحتوي منتجات الألبان على كمية كبيرة من ______.', answer: 'calcium', answerTranslation: 'الكالسيوم.' },
-          { id: '4p-u8-space-fitness-a6', question: 'Some people believe that ______ can help you get better faster when you are ill.', questionTranslation: 'يعتقد بعض الناس أن ______ قد تساعدك على التعافي بسرعة أكبر عندما تمرض.', answer: 'vitamin', answerTranslation: 'الفيتامينات.' }
-        ]
-      },
-      {
+    exerciseSets: [{
         id: '4p-u8-space-fitness-activity-b',
         source: 'activity_book',
-        sourceTitle: 'كتاب النشاط — Exercise B',
+        sourceTitle: 'كتاب النشاط — Exercise B: Tick the main points',
         sourcePages: 'كتاب النشاط ص 148؛ مفتاح الإجابات ص 201',
         instruction: 'Read the interview on Student’s Book page 85. Tick (✓) the main points the astronaut makes.',
         instructionTranslation: 'اقرأ المقابلة في صفحة 85 من كتاب الطالب، وضع علامة (✓) أمام الأفكار الرئيسية التي يذكرها رائد الفضاء.',
         items: [
-          { id: '4p-u8-space-fitness-b1', question: 'Astronauts don’t need to be very strong in space, but they need to stay fit for when they get back to Earth.', questionTranslation: 'لا يحتاج رواد الفضاء إلى قوة كبيرة جدًا في الفضاء، لكن عليهم المحافظة على لياقتهم استعدادًا لعودتهم إلى الأرض.', answer: '✓ — Main point (1).', answerTranslation: '✓ — فكرة رئيسية (1).' },
-          { id: '4p-u8-space-fitness-b2', question: 'Astronauts never have emergencies.', questionTranslation: 'لا يتعرض رواد الفضاء لحالات طارئة مطلقًا.', answer: 'Not selected.', answerTranslation: 'لا توضع عليها علامة.' },
-          { id: '4p-u8-space-fitness-b3', question: 'Being in an environment without gravity can be bad for your muscles and bones. Exercise and diet can help astronauts stay healthy.', questionTranslation: 'قد يكون الوجود في بيئة من دون جاذبية ضارًا بالعضلات والعظام. ويمكن للتمارين والنظام الغذائي مساعدة رواد الفضاء على البقاء بصحة جيدة.', answer: '✓ — Main point (3).', answerTranslation: '✓ — فكرة رئيسية (3).' },
-          { id: '4p-u8-space-fitness-b4', question: 'Food tastes better in space than on Earth.', questionTranslation: 'يكون مذاق الطعام في الفضاء أفضل منه على الأرض.', answer: 'Not selected.', answerTranslation: 'لا توضع عليها علامة.' },
-          { id: '4p-u8-space-fitness-b5', question: 'Astronauts spend 20% of their time sleeping.', questionTranslation: 'يقضي رواد الفضاء 20% من وقتهم في النوم.', answer: 'Not selected.', answerTranslation: 'لا توضع عليها علامة.' },
-          { id: '4p-u8-space-fitness-b6', question: 'Sometimes it is hard to get enough sleep when you are in space.', questionTranslation: 'يصعب أحيانًا الحصول على قسط كافٍ من النوم في الفضاء.', answer: '✓ — Main point (6).', answerTranslation: '✓ — فكرة رئيسية (6).' }
+          {
+            id: '4p-u8-space-fitness-b-answer-key',
+            question: 'Which numbered statements are the main points made by the astronaut?',
+            questionTranslation: 'ما أرقام العبارات التي تمثل الأفكار الرئيسية التي ذكرها رائد الفضاء؟',
+            answer: '1, 3 and 6.',
+            answerTranslation: 'العبارات 1 و3 و6.'
+          }
         ]
-      }
-    ]
+      }]
   },
   '4p-u6-exercise': {
     id: '4p-u6-exercise',
@@ -1334,8 +1317,8 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     titleEn: 'Exercise, Fitness and Sports Injuries',
     status: 'verified',
     sourceTitle: 'ملزمة الرابع الإعدادي',
-    sourcePages: 'النص ص 108؛ تمرين الكلمات ص 109؛ مفتاح الإجابات ص 194',
-    verificationNote: 'النص من الصفحة 108 كاملًا، بما فيه نصائح تجنب الإصابات الرياضية. أُرفق تمرين الكلمات من الصفحة 109 كما هو، وإجاباته من مفتاح الحل.',
+    sourcePages: 'النص ص 108',
+    verificationNote: 'النص من الصفحة 108 كاملًا، بما فيه نصائح تجنب الإصابات الرياضية. يوجد مفتاح إجابة لتمرين كلمات في الصفحة 109، لكن صياغة السؤال الأصلية غير ظاهرة في المصدر المرفوع، لذلك لم نُنشئ أسئلة بديلة له.',
     originalText: [
       'If you want to be fit and healthy, you need to take regular exercise. There are many ways you can do this. For example, you can go to a gym and follow an exercise programme, you can go walking or cycling, or you can take up a sport.',
       'Before you begin, there are some things you should think about. First, you need to find something that you are fairly sure you will enjoy doing. If you don’t enjoy the activity, you’ll give it up in a few weeks. I also suggest that you exercise with a friend. There will be times when you don’t feel like exercising, but if you know your friend is waiting for you, you won’t let your friend down – you’ll go. Finally, if you do the same thing all the time, you may get bored. Try to find different ways of getting exercise. For example, go swimming one day and walking the next.',
@@ -1348,25 +1331,7 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
       'الأمر الثاني الذي أريد الحديث عنه هو الإصابات الرياضية. فقد تكون مؤلمة جدًا ويصعب علاجها. وبالطبع قد تقع الحوادث دائمًا وقد يتعرض الناس للإصابة في أي رياضة، لكن كثيرًا من الإصابات يمكن تجنبها. فهي تحدث لأن الناس يتصرفون بإهمال ولا يتبعون إجراءات السلامة الصحيحة. وإذا أردت تجنب الإصابات، فعليك اتباع نصائحي.',
       'لدي أربع نصائح. أولًا، من المهم جدًا أن تقوم بالإحماء قبل بدء التمارين أو اللعب. ويمكنك فعل ذلك بالجري في مكانك، ثم إطالة العضلات لتهيئتها. بعد ذلك ارتدِ الملابس ومعدات السلامة المناسبة؛ فمثلًا ارتدِ واقيات الركبتين والمرفقين إذا كنت تمارس التزلج بالعجلات. ثالثًا، يريد كثير من الناس القيام بأكثر مما ينبغي في البداية؛ فلا تتعجل، وانتقل تدريجيًا إلى تمارين جديدة وأكثر صعوبة. وأخيرًا، انتبه إلى ما يخبرك به جسمك. فمثلًا احمل الماء معك دائمًا لأنك ستشعر بالعطش، وقد تصاب بالجفاف بسرعة أثناء التمرين. أوه، كدت أنسى النصيحة الخامسة: كثيرًا ما تسمع الناس يقولون إن التمرين يجب أن يكون مؤلمًا، أي «لا ألم، لا مكسب». لكنهم مخطئون. فإذا كان التمرين الذي تمارسه مؤلمًا، فعليك التوقف فورًا ومنح جسمك وقتًا للراحة.'
     ],
-    exerciseSets: [
-      {
-        id: '4p-u6-exercise-activity-c',
-        source: 'activity_book',
-        sourceTitle: 'كتاب النشاط — Exercise C: Complete the sentences',
-        sourcePages: 'كتاب النشاط ص 109؛ مفتاح الإجابات ص 194',
-        instruction: 'Complete the sentences with words from the box.',
-        instructionTranslation: 'أكمل الجمل باستخدام الكلمات الموجودة في الصندوق.',
-        items: [
-          { id: '4p-u6-exercise-c1', question: 'Mahmoud is ______. He is not afraid of anything.', questionTranslation: 'محمود ______؛ فهو لا يخاف من أي شيء.', options: ['colorful', 'depopulated', 'fearless', 'friendless', 'impolite', 'impossible', 'useful'], answer: 'fearless', answerTranslation: 'لا يعرف الخوف.' },
-          { id: '4p-u6-exercise-c2', question: 'Parrots have very ______ feathers.', questionTranslation: 'لدى الببغاوات ريش ______ جدًا.', answer: 'colorful', answerTranslation: 'متعدد الألوان.' },
-          { id: '4p-u6-exercise-c3', question: 'This puzzle is ______ to finish.', questionTranslation: 'هذا اللغز ______ الحل.', answer: 'impossible', answerTranslation: 'مستحيل.' },
-          { id: '4p-u6-exercise-c4', question: 'He is alone and ______.', questionTranslation: 'إنه وحيد و______.', answer: 'friendless', answerTranslation: 'بلا أصدقاء.' },
-          { id: '4p-u6-exercise-c5', question: 'My bilingual dictionary is very ______.', questionTranslation: 'قاموسي ثنائي اللغة ______ جدًا.', answer: 'useful', answerTranslation: 'مفيد.' },
-          { id: '4p-u6-exercise-c6', question: 'Ten years ago, many people lived there, but it has become ______.', questionTranslation: 'قبل عشر سنوات كان كثير من الناس يعيشون هناك، لكنها أصبحت ______.', answer: 'depopulated', answerTranslation: 'قليلة السكان / مهجورة السكان.' },
-          { id: '4p-u6-exercise-c7', question: 'A man stepped on my foot and didn’t say sorry. He was very ______.', questionTranslation: 'داس رجل على قدمي ولم يعتذر. لقد كان ______ جدًا.', answer: 'impolite', answerTranslation: 'قليل الأدب.' }
-        ]
-      }
-    ]
+    exerciseSets: []
   },
   '4p-u7-oil': {
     id: '4p-u7-oil',
