@@ -1210,4 +1210,111 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
     ]
   },
 
+  '4p-u7-turtle': {
+    id: '4p-u7-turtle',
+    titleAr: 'السلحفاة البحرية صقرية المنقار',
+    titleEn: 'The Hawksbill Sea Turtle',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص ص 138؛ التمارين ص 139–140؛ مفاتيح الإجابة ص 198–199',
+    verificationNote: 'النص والترجمة وتمرين المفردات ومطابقة الجمل موثقة في الملزمة، والإجابات مطابقة لمفتاح الحل.',
+    originalText: [
+      'The hawksbill is a medium-sized sea turtle with a very beautiful shell. Its shell is a mixture of dark and light colours, and its belly is white or yellow. Its colours help it hide from its enemies in the water. The turtle’s name comes from the shape of its mouth, which looks a bit like the beak of a hawk. The hawksbill weighs about 60 kilograms and is about one meter long. The hawksbill sea turtle lives in the Atlantic, Pacific and Indian Oceans.',
+      'These sea turtles find their food at the bottom of the ocean. They eat sponges, jellyfish and other small sea animals and plants. The shape of their mouth helps them get food from between rocks or branches of coral. Although the turtles spend most of their time in the water, females come out to lay their eggs on the beach. When the babies hatch, they run straight into the water.',
+      'Although hawksbill turtles have been protected for years, they are still endangered. Hunting them for their shells is now illegal. However, their habitat is being destroyed. When examining dead turtles, scientists have observed that some had rubbish in their stomachs. It appears that turtles think that pieces of plastic are food. They eat them and fall ill and die. These turtles are rare, and there are things we can do to help them survive. First of all, we must not pollute. We can also help scientists obtain information about these rare creatures by informing marine biologists if we see any sea turtles on the beach.'
+    ],
+    translation: [
+      'السلحفاة صقرية المنقار سلحفاة بحرية متوسطة الحجم لها صدفة جميلة جدًا. وتتكون صدفتها من مزيج من الألوان الداكنة والفاتحة، أما بطنها فأبيض أو أصفر. وتساعدها ألوانها على الاختباء من أعدائها في الماء. ويأتي اسمها من شكل فمها الذي يشبه إلى حد ما منقار الصقر. ويبلغ وزن هذه السلحفاة نحو 60 كيلوغرامًا، ويبلغ طولها قرابة متر واحد. وتعيش السلحفاة البحرية صقرية المنقار في المحيطات الأطلسي والهادئ والهندي.',
+      'تعثر هذه السلاحف البحرية على غذائها في قاع المحيط. فهي تأكل الإسفنج وقناديل البحر وغيرها من الحيوانات والنباتات البحرية الصغيرة. ويساعد شكل فمها على الحصول على الطعام من بين الصخور أو فروع المرجان. وعلى الرغم من أن السلاحف تقضي معظم وقتها في الماء، فإن الإناث تخرج إلى الشاطئ لتضع بيضها. وعندما تفقس الصغار، تركض مباشرة إلى الماء.',
+      'على الرغم من حماية السلاحف صقرية المنقار منذ سنوات، فإنها ما تزال مهددة بالانقراض. وقد أصبح صيدها من أجل أصدافها غير قانوني الآن. لكن موائلها الطبيعية تتعرض للتدمير. وعند فحص السلاحف النافقة، لاحظ العلماء أن بعضها كان يحتوي على نفايات في معدته. ويبدو أن السلاحف تظن أن قطع البلاستيك طعام؛ فتأكلها فتمرض وتموت. هذه السلاحف نادرة، وهناك أمور يمكننا القيام بها لمساعدتها على البقاء. أولًا، يجب ألا نلوث البيئة. ويمكننا أيضًا مساعدة العلماء على جمع المعلومات عن هذه المخلوقات النادرة من خلال إبلاغ علماء الأحياء البحرية إذا شاهدنا أي سلاحف بحرية على الشاطئ.'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u7-turtle-exercise-a',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Find words or phrases',
+        sourcePages: 'التمرين ص 139؛ مفتاح الإجابة ص 198',
+        instruction: 'Find words or phrases in the last paragraph of the report that mean the same as:',
+        instructionTranslation: 'اعثر في الفقرة الأخيرة من التقرير على كلمات أو عبارات لها المعاني نفسها:',
+        items: [
+          { id: '4p-u7-turtle-a1', question: 'look at carefully', questionTranslation: 'يفحص / ينظر إلى شيء بعناية', answer: 'examining.', answerTranslation: 'يفحص.' },
+          { id: '4p-u7-turtle-a2', question: 'seen', questionTranslation: 'شاهد / رأى', answer: 'observed.', answerTranslation: 'لاحظ.' },
+          { id: '4p-u7-turtle-a3', question: 'seems', questionTranslation: 'يبدو', answer: 'appears.', answerTranslation: 'يبدو.' },
+          { id: '4p-u7-turtle-a4', question: 'get', questionTranslation: 'يحصل على', answer: 'obtain.', answerTranslation: 'يحصل على.' },
+          { id: '4p-u7-turtle-a5', question: 'telling', questionTranslation: 'إخبار / إبلاغ', answer: 'informing.', answerTranslation: 'إبلاغ.' }
+        ]
+      },
+      {
+        id: '4p-u7-turtle-exercise-c',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Match the beginnings and endings',
+        sourcePages: 'التمرين ص 140؛ مفتاح الإجابة ص 199',
+        instruction: 'Match the beginnings and endings of the sentences.',
+        instructionTranslation: 'صِل بدايات الجمل بنهاياتها المناسبة.',
+        items: [
+          { id: '4p-u7-turtle-c1', question: 'Although we have been studying these animals for years, ...', questionTranslation: 'على الرغم من أننا ندرس هذه الحيوانات منذ سنوات، ...', answer: 'we still have very little information about them.', answerTranslation: 'ما زلنا نملك معلومات قليلة جدًا عنها.' },
+          { id: '4p-u7-turtle-c2', question: 'We went to the beach to look for turtle eggs, ...', questionTranslation: 'ذهبنا إلى الشاطئ للبحث عن بيض السلاحف، ...', answer: 'but we didn’t find any.', answerTranslation: 'لكننا لم نعثر على أي بيض.' },
+          { id: '4p-u7-turtle-c3', question: 'I know you like books about mammals, ...', questionTranslation: 'أعرف أنك تحب الكتب التي تتحدث عن الثدييات، ...', answer: 'however, I think you’ll really enjoy this book about sea turtles.', answerTranslation: 'ومع ذلك أعتقد أنك ستستمتع حقًا بهذا الكتاب عن السلاحف البحرية.' },
+          { id: '4p-u7-turtle-c4', question: 'Not many baby turtles survive, ...', questionTranslation: 'لا ينجو عدد كبير من صغار السلاحف، ...', answer: 'although thousands of them are born.', answerTranslation: 'على الرغم من أن آلافًا منها تولد.' },
+          { id: '4p-u7-turtle-c5', question: 'People used to make jewellery from turtle shells, ...', questionTranslation: 'اعتاد الناس صناعة الحلي من أصداف السلاحف، ...', answer: 'but it is now illegal.', answerTranslation: 'لكن ذلك أصبح غير قانوني الآن.' }
+        ]
+      }
+    ]
+  },
+  '4p-u8-space-fitness': {
+    id: '4p-u8-space-fitness',
+    titleAr: 'كيف يحافظ رواد الفضاء على لياقتهم؟',
+    titleEn: 'Keeping Fit in Space',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص ص 147؛ التمارين ص 148؛ إجابات نموذجية مستخرجة من النص',
+    verificationNote: 'النص والترجمة والتمارين من الملزمة. الإجابات أدناه نموذجية ومبنية على النص لأن نسخة الملزمة المتاحة لا تعرض مفتاحًا مستقلًا لهذين التمرينين.',
+    originalText: [
+      'Do you know how astronauts keep fit in space? In space, there is no gravity, so astronauts float. They don’t have to use their muscles to move around. This means their muscles can become weak. So astronauts have to exercise every day to keep fit.',
+      'What do astronauts eat? It’s important for astronauts to eat healthy food. They need a balanced diet, which includes proteins, carbohydrates, fats, vitamins and minerals. Their diet has to contain enough calcium to keep their bones strong. If they don’t get enough calcium, their bones can become weak.',
+      'What kinds of exercise do astronauts do? Astronauts do exercise to keep their muscles strong. They use special exercise machines, such as a treadmill and an exercise bike. They also use special equipment to strengthen their muscles. Astronauts must exercise for about two hours every day.',
+      'Why do astronauts need to sleep properly? In space, astronauts have to sleep in special sleeping bags. They are attached to the wall so that they don’t float around while they sleep. They have to wear earplugs to shut out the noise around them.'
+    ],
+    translation: [
+      'هل تعرف كيف يحافظ رواد الفضاء على لياقتهم في الفضاء؟ لا توجد جاذبية في الفضاء، لذلك يطفو رواد الفضاء. ولا يحتاجون إلى استخدام عضلاتهم للتنقل، وهذا يعني أن عضلاتهم قد تصبح ضعيفة. لذلك يجب على رواد الفضاء ممارسة التمارين كل يوم للحفاظ على لياقتهم.',
+      'ماذا يأكل رواد الفضاء؟ من المهم أن يتناولوا طعامًا صحيًا. فهم يحتاجون إلى نظام غذائي متوازن يشمل البروتينات والكربوهيدرات والدهون والفيتامينات والمعادن. كما يجب أن يحتوي نظامهم الغذائي على كمية كافية من الكالسيوم للحفاظ على قوة عظامهم. وإذا لم يحصلوا على ما يكفي من الكالسيوم، فقد تصبح عظامهم ضعيفة.',
+      'ما أنواع التمارين التي يمارسها رواد الفضاء؟ يمارسون التمارين للحفاظ على قوة عضلاتهم. ويستخدمون أجهزة رياضية خاصة، مثل جهاز المشي والدراجة الثابتة. كما يستخدمون معدات خاصة لتقوية عضلاتهم. ويجب على رواد الفضاء ممارسة التمارين نحو ساعتين كل يوم.',
+      'لماذا يحتاج رواد الفضاء إلى النوم بصورة صحيحة؟ في الفضاء، ينام رواد الفضاء داخل أكياس نوم خاصة تُثبّت بالجدار حتى لا يطفوا ويتحركوا أثناء النوم. كما يجب عليهم ارتداء سدادات الأذن لحجب الضوضاء المحيطة بهم.'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u8-space-fitness-exercise-a',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Complete the sentences',
+        sourcePages: 'التمرين ص 148؛ إجابات نموذجية من النص',
+        instruction: 'Complete the sentences with words from the text.',
+        instructionTranslation: 'أكمل الجمل بكلمات من النص.',
+        items: [
+          { id: '4p-u8-space-fitness-a1', question: 'Astronauts have to ______ every day to keep fit.', questionTranslation: 'يجب على رواد الفضاء أن ______ كل يوم للحفاظ على لياقتهم.', answer: 'Exercise.', answerTranslation: 'يمارسوا التمارين.' },
+          { id: '4p-u8-space-fitness-a2', question: 'Their ______ has to be healthy and balanced.', questionTranslation: 'يجب أن يكون ______ صحيًا ومتوازنًا.', answer: 'Diet.', answerTranslation: 'نظامهم الغذائي.' },
+          { id: '4p-u8-space-fitness-a3', question: 'Astronauts need enough ______ to keep their bones strong.', questionTranslation: 'يحتاج رواد الفضاء إلى كمية كافية من ______ للحفاظ على قوة عظامهم.', answer: 'Calcium.', answerTranslation: 'الكالسيوم.' },
+          { id: '4p-u8-space-fitness-a4', question: 'They use special ______ to strengthen their muscles.', questionTranslation: 'يستخدمون ______ خاصة لتقوية عضلاتهم.', answer: 'Equipment.', answerTranslation: 'معدات.' },
+          { id: '4p-u8-space-fitness-a5', question: 'They sleep in special ______ attached to the wall.', questionTranslation: 'ينامون في ______ خاصة مثبتة بالجدار.', answer: 'Sleeping bags.', answerTranslation: 'أكياس نوم.' },
+          { id: '4p-u8-space-fitness-a6', question: 'They wear ______ to shut out the noise around them.', questionTranslation: 'يرتدون ______ لحجب الضوضاء المحيطة بهم.', answer: 'Earplugs.', answerTranslation: 'سدادات الأذن.' }
+        ]
+      },
+      {
+        id: '4p-u8-space-fitness-exercise-b',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — Tick the main points',
+        sourcePages: 'التمرين ص 148؛ إجابات نموذجية من النص',
+        instruction: 'Tick the main points of the text.',
+        instructionTranslation: 'ضع علامة على الأفكار الرئيسية التي وردت في النص.',
+        items: [
+          { id: '4p-u8-space-fitness-b1', question: 'Astronauts need to exercise to keep their muscles strong.', questionTranslation: 'يحتاج رواد الفضاء إلى ممارسة التمارين للحفاظ على قوة عضلاتهم.', answer: 'True.', answerTranslation: 'صحيح.' },
+          { id: '4p-u8-space-fitness-b2', question: 'Astronauts use exercise machines for only 30 minutes every day.', questionTranslation: 'يستخدم رواد الفضاء الأجهزة الرياضية لمدة 30 دقيقة فقط كل يوم.', answer: 'False. They exercise for about two hours every day.', answerTranslation: 'خطأ؛ يمارسون التمارين نحو ساعتين كل يوم.' },
+          { id: '4p-u8-space-fitness-b3', question: 'Astronauts need a healthy, balanced diet.', questionTranslation: 'يحتاج رواد الفضاء إلى نظام غذائي صحي ومتوازن.', answer: 'True.', answerTranslation: 'صحيح.' },
+          { id: '4p-u8-space-fitness-b4', question: 'Astronauts don’t need calcium because there is no gravity.', questionTranslation: 'لا يحتاج رواد الفضاء إلى الكالسيوم بسبب انعدام الجاذبية.', answer: 'False. They need enough calcium to keep their bones strong.', answerTranslation: 'خطأ؛ يحتاجون إلى كمية كافية من الكالسيوم للحفاظ على قوة عظامهم.' },
+          { id: '4p-u8-space-fitness-b5', question: 'Astronauts sleep in normal beds with pillows.', questionTranslation: 'ينام رواد الفضاء في أسرّة عادية مع وسائد.', answer: 'False. They sleep in sleeping bags attached to the wall.', answerTranslation: 'خطأ؛ ينامون في أكياس نوم مثبتة بالجدار.' },
+          { id: '4p-u8-space-fitness-b6', question: 'Astronauts wear earplugs to avoid noise around them.', questionTranslation: 'يرتدي رواد الفضاء سدادات الأذن لتجنب الضوضاء المحيطة بهم.', answer: 'True.', answerTranslation: 'صحيح.' }
+        ]
+      }
+    ]
+  },
+
 };
