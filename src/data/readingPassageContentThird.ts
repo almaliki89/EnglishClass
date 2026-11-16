@@ -242,9 +242,16 @@ export const THIRD_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassag
     status: 'verified',
     sourceTitle: 'ملزمة الثالث المتوسط 2025',
     sourcePages: 'القطعة ص 85؛ كتاب النشاط ص 56 و59؛ الوزاريات ص 87',
+    verificationNote: 'أضيف النص الإنجليزي الكامل بعد مطابقة الصفحة 85، بما فيها خاتمة عمل إبراهيم في فرنسا وكتابته عن حيوانات أفريقيا. الترجمة والأسئلة موثقة في الصفحات 85–87.',
+    originalText: [
+      'Ibrahim lived in a small village in the south of Iraq when he was a child. He loved the sea and he often went fishing with his father. From an early age, he was interested in animals. He was forever asking questions about animals, for example, “Why do flies have wings?” and “Why do fish live in the sea?” His father had goats and chickens and Ibrahim liked to look after them. He talked to them as if they were friends. His brothers used to laugh at him.',
+      'When he went to school, Ibrahim learned to read quickly. He liked reading and he was always asking his father for books. He did not like television, so he spent a lot of time reading. He learnt that there were lots of different animals in other countries.',
+      'In 1990, Ibrahim’s father got a new job with Iraq Petroleum and the family moved to Baghdad. Life was very different in the city. At first, Ibrahim did not like it, but after a few months, he found that there was a lot to do for a 16-year-old boy.',
+      'One day, at the mall, he met a French boy called Pierre. Ibrahim learned to speak some French with him. He also learned about France. The boys used to talk about what they wanted to do when they left school. One day, Ibrahim said, “I think I’ll be a zoologist. Then I can study animals in different countries.”',
+      'When Ibrahim left school, he studied zoology at Cairo University. Now he is a well-known zoologist. He works in France and he is writing a book about animals in Africa.'
+    ],
     translation: [
-      'عاش إبراهيم في قرية صغيرة في جنوب العراق عندما كان طفلًا. كان يحب البحر، وكثيرًا ما كان يذهب للصيد مع والده. ومنذ سن مبكرة كان مهتمًا بالحيوانات، وكان يطرح باستمرار أسئلة عنها، مثل: «لماذا للذباب أجنحة؟» و«لماذا تعيش الأسماك في البحر؟».',
-      'كان والده يملك الماعز والدجاج، وكان إبراهيم يحب الاعتناء بها. وكان يتحدث إليها كما لو كانت أصدقاءه. وكان إخوته يضحكون عليه.',
+      'عاش إبراهيم في قرية صغيرة في جنوب العراق عندما كان طفلًا. كان يحب البحر، وكثيرًا ما كان يذهب للصيد مع والده. ومنذ سن مبكرة كان مهتمًا بالحيوانات، وكان يطرح باستمرار أسئلة عنها، مثل: «لماذا للذباب أجنحة؟» و«لماذا تعيش الأسماك في البحر؟». كان والده يملك الماعز والدجاج، وكان إبراهيم يحب الاعتناء بها. وكان يتحدث إليها كما لو كانت أصدقاءه. وكان إخوته يضحكون عليه.',
       'عندما ذهب إلى المدرسة، تعلم إبراهيم القراءة بسرعة. كان يحب القراءة ويطلب من والده الكتب دائمًا. ولم يكن يحب التلفزيون، لذلك كان يقضي وقتًا طويلًا في القراءة. وتعلم أن هناك أنواعًا كثيرة ومختلفة من الحيوانات في بلدان أخرى.',
       'في عام 1990، حصل والد إبراهيم على وظيفة جديدة في شركة نفط العراق، وانتقلت العائلة إلى بغداد. كانت الحياة مختلفة جدًا في المدينة. في البداية لم يحب إبراهيم ذلك، لكنه بعد بضعة أشهر وجد أن هناك الكثير مما يمكن أن يفعله فتى يبلغ من العمر 16 عامًا.',
       'في أحد الأيام، التقى في مركز التسوق فتى فرنسيًا يُدعى بيير. تعلم إبراهيم التحدث ببعض الفرنسية معه، كما تعلم عن فرنسا. وكان الفتيان يتحدثان عما يريدان فعله بعد ترك المدرسة. وفي أحد الأيام قال إبراهيم: «أعتقد أنني سأصبح عالمًا في علم الحيوان، وعندها أستطيع دراسة الحيوانات في بلدان مختلفة».',
@@ -279,7 +286,7 @@ export const THIRD_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassag
           { id: 'ibrahim-c3', question: 'Why did Ibrahim ask lots of questions?', answer: 'Because he was interested in animals.' },
           { id: 'ibrahim-c4', question: 'Why did Ibrahim ask his father for books?', answer: 'Because he liked reading.' },
           { id: 'ibrahim-c5', question: 'Why did Ibrahim move to Baghdad?', answer: 'Because his father got a new job there / with Iraq Petroleum.' },
-          { id: 'ibrahim-c6', question: 'What did he learn from Pierre?', answer: 'He learnt to speak some French and he learnt about France.' },
+          { id: 'ibrahim-c6', question: 'What did he learn from Pierre?', answer: 'He learnt to speak French and he learnt about France.' },
           { id: 'ibrahim-c7', question: 'Why did Ibrahim want to be a zoologist?', answer: 'So that he could study animals in different countries.' },
           { id: 'ibrahim-c8', question: 'Where is Ibrahim writing his book?', answer: 'He is writing his book in France.' }
         ]
@@ -346,10 +353,43 @@ export const THIRD_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassag
     id: '3i-u5-news',
     titleAr: 'أخبار الصباح العراقية',
     titleEn: 'Iraqi Morning News',
-    status: 'source_required',
+    status: 'verified',
     sourceTitle: 'ملزمة الثالث المتوسط 2025',
-    sourcePages: 'موضع النص الكامل غير محدد في النسخة المرفوعة',
-    verificationNote: 'تحتوي بيانات الدرس الحالية على أسئلة وأجوبة عن زيارة وزير التربية وافتتاح المدينة الرياضية في البصرة وقصة جون، لكن نص الخبر الإنجليزي الكامل وصفحة مصدره غير موجودين في الصفحات التي أمكن مطابقتها. نحتاج صفحة القطعة الأصلية قبل عرضها كنص كتاب.'
+    sourcePages: 'القطعة ص 91؛ كتاب النشاط ص 70؛ أسئلة وزارية ص 92',
+    verificationNote: 'النص الإنجليزي والترجمة العربية ظاهران في الصفحة 91. أُضيف تمرين كتاب النشاط رقم 2 من الصفحة 70 مع مفاتيح الاختيار المطابقة للنص، إضافة إلى الأسئلة الوزارية في بيانات الدرس.',
+    originalText: [
+      'Minister of Education in London',
+      'The Iraqi Minister of Education arrived in London yesterday for the International Education Conference which will take place at the Park Lane Hotel today. The focus of the meetings is to discuss educational development programmes between countries. The minister will suggest opening English schools in Iraq to develop English language learning. The British Minister of Education welcomed the Iraqi minister at the airport before escorting him to the conference venue.',
+      'Minister at opening ceremony',
+      'The Sports Minister opened a new sports city in Basra yesterday. The new city cost 1 billion IQD and took three years to build. Many people were waiting when the Minister arrived at 10 a.m. He spoke to youth and community representatives before opening the sports city at 11 a.m.',
+      'Boy saves child',
+      'A boy from the UK was a hero yesterday when he saved a child from a dangerous animal. The child’s mother, Esra’a Al-Bayati, 26, told our reporter, “I was going to the shops with my daughter, Salma. She’s just five years old. We were walking across the park, and Salma was playing with a ball. Suddenly, a big black dog ran up to us. It seemed very angry, and it barked at Salma. Then it jumped on her and knocked her down. It was horrible. A boy was playing football nearby. He kicked the ball at the dog. The ball hit the dog hard, and it ran away.”',
+      'The boy was John Smith, 13, who is in Iraq for one year with his family. John said afterwards, “I’m not a hero. I saw the little girl was in trouble, so I kicked the ball at the dog. It was a lucky shot.” John plays in the football team at Baghdad International School.'
+    ],
+    translation: [
+      'وصل وزير التربية العراقي إلى لندن يوم أمس للمشاركة في مؤتمر التعليم الدولي الذي سيُعقد في فندق بارك لين اليوم. وتركز الاجتماعات على مناقشة برامج تطوير التعليم بين الدول. وسيقترح الوزير افتتاح مدارس إنجليزية في العراق لتطوير تعلم اللغة الإنجليزية. ورحب وزير التربية البريطاني بالوزير العراقي في المطار قبل مرافقته إلى مكان المؤتمر.',
+      'افتتح وزير الرياضة مدينة رياضية جديدة في البصرة يوم أمس. كلفت المدينة الجديدة مليار دينار عراقي واستغرق بناؤها ثلاث سنوات. كان كثير من الناس ينتظرون عندما وصل الوزير في الساعة العاشرة صباحًا. وتحدث مع ممثلي الشباب والمجتمع المحلي قبل افتتاح المدينة الرياضية في الساعة الحادية عشرة صباحًا.',
+      'كان صبي من المملكة المتحدة بطلًا يوم أمس عندما أنقذ طفلة من حيوان خطير. قالت والدة الطفلة، إسراء البياتي، وعمرها 26 عامًا، لمراسلنا: «كنت ذاهبة إلى المتاجر مع ابنتي سلمى. عمرها خمس سنوات فقط. كنا نسير عبر الحديقة وكانت سلمى تلعب بالكرة. فجأة ركض كلب أسود كبير نحونا. بدا غاضبًا جدًا ونبح على سلمى. ثم قفز عليها وأسقطها. كان الأمر فظيعًا. كان هناك صبي يلعب كرة القدم بالقرب منا. ركل الكرة نحو الكلب. أصابت الكرة الكلب بقوة فهرب».',
+      'كان الصبي جون سميث، البالغ من العمر 13 عامًا، في العراق لمدة سنة مع عائلته. قال جون بعد ذلك: «لست بطلًا. رأيت الطفلة الصغيرة في ورطة، لذلك ركلت الكرة نحو الكلب. كانت ركلة حظ». يلعب جون في فريق كرة القدم بمدرسة بغداد الدولية.'
+    ],
+    exerciseSets: [
+      {
+        id: '3i-u5-news-activity-2',
+        source: 'activity_book',
+        sourceTitle: 'كتاب النشاط — Exercise 2: Choose the correct form of the verbs',
+        sourcePages: 'كتاب النشاط ص 70',
+        instruction: 'Choose the correct form of the verbs.',
+        instructionTranslation: 'اختر الصيغة الصحيحة للأفعال.',
+        items: [
+          { id: 'news-ab2-1', question: 'What was Salma (do / doing) before the dog ran at her?', questionTranslation: 'ماذا كانت سلمى (تفعل / تقوم به) قبل أن يركض الكلب نحوها؟', answer: 'doing', answerTranslation: 'تقوم به.' },
+          { id: 'news-ab2-2', question: 'She (played / was playing) in the park.', questionTranslation: 'كانت (تلعب / لعبت) في الحديقة.', answer: 'was playing', answerTranslation: 'كانت تلعب.' },
+          { id: 'news-ab2-3', question: 'John (saw / was seeing) the dog and Salma.', questionTranslation: 'جون (رأى / كان يرى) الكلب وسلمى.', answer: 'saw', answerTranslation: 'رأى.' },
+          { id: 'news-ab2-4', question: 'John (acted / was acting) quickly and saved Salma.', questionTranslation: 'جون (تصرف / كان يتصرف) بسرعة وأنقذ سلمى.', answer: 'acted', answerTranslation: 'تصرف.' },
+          { id: 'news-ab2-5', question: 'Many people (were waiting / waited) when the Minister arrived at 10 a.m.', questionTranslation: 'كان كثير من الناس (ينتظرون / انتظروا) عندما وصل الوزير الساعة العاشرة صباحًا.', answer: 'were waiting', answerTranslation: 'كانوا ينتظرون.' },
+          { id: 'news-ab2-6', question: 'He (spoke / was speaking) to the public before leaving at 2 p.m.', questionTranslation: 'هو (تحدث / كان يتحدث) إلى الجمهور قبل مغادرته الساعة الثانية ظهرًا.', answer: 'spoke', answerTranslation: 'تحدث.' }
+        ]
+      }
+    ]
   },
 
   '3i-u7-asian-games': {
