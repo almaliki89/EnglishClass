@@ -269,5 +269,47 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
       }
     ]
   },
+,
+
+  '4p-u7-body': {
+    id: '4p-u7-body',
+    titleAr: 'لماذا نمارس التمارين الرياضية؟',
+    titleEn: 'Why Exercise?',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي',
+    sourcePages: 'النص ص 119؛ الأسئلة ص 119؛ مفتاح الإجابة ص 196',
+    verificationNote: 'تمت مطابقة النص وأسئلة الفهم الخمسة مع الملزمة ومفتاح الإجابة.',
+    originalText: [
+      'Exercise is important for your body in many ways. First of all, exercise builds muscles. You need strong muscles to do all the things you want to do during the day, even if your favorite hobby is playing computer games. If your muscles aren’t strong, you can get tired easily.',
+      'Did you know your heart is a muscle? That’s why exercise is good for your heart, too. A strong heart can help prevent heart disease. This illness kills many people in developed countries because they don’t have healthy habits. The best activities for your heart are activities like running that make you breathe hard.',
+      'Exercise is good for you because it helps you use the calories you get from food. If you don’t exercise enough, the calories you don’t use can make you fat. And people who are overweight are generally not as healthy as those who are not.',
+      'The best reason to get exercise is that it’s fun. If you enjoy being with other people, try playing basketball or volleyball. Team sports are a good way to make friends and have fun while you get fit.',
+      'But you don’t have to do a sport to get exercise. Try walking or taking the stairs. These activities don’t take much time, but if you do them regularly, they can help you get fit.'
+    ],
+    translation: [
+      'التمرين مهم لجسمك من نواحٍ كثيرة. أولًا، تساعد التمارين على بناء العضلات. فأنت تحتاج إلى عضلات قوية للقيام بكل الأمور التي ترغب في فعلها خلال اليوم، حتى لو كانت هوايتك المفضلة لعب ألعاب الحاسوب. وإذا لم تكن عضلاتك قوية، فقد تشعر بالتعب بسهولة.',
+      'هل تعلم أن قلبك عضلة؟ لهذا السبب تفيد التمارين قلبك أيضًا. فالقلب القوي يساعد على الوقاية من أمراض القلب. ويودي هذا المرض بحياة كثير من الناس في البلدان المتقدمة بسبب عدم اتباعهم عادات صحية. وأفضل الأنشطة لقلبك هي الأنشطة التي تجعلك تتنفس بقوة، مثل الجري.',
+      'التمرين مفيد لك لأنه يساعدك على استهلاك السعرات الحرارية التي تحصل عليها من الطعام. وإذا لم تمارس التمارين بما يكفي، فقد تتحول السعرات التي لا تستهلكها إلى زيادة في الدهون. وبوجه عام، لا يتمتع الأشخاص الذين يعانون زيادة الوزن بالصحة نفسها التي يتمتع بها غيرهم.',
+      'أفضل سبب لممارسة التمارين هو أنها ممتعة. وإذا كنت تستمتع بقضاء الوقت مع الآخرين، فجرّب لعب كرة السلة أو الكرة الطائرة. وتُعد الرياضات الجماعية طريقة جيدة لتكوين صداقات والاستمتاع أثناء تحسين لياقتك البدنية.',
+      'لكن ليس عليك ممارسة رياضة معينة حتى تحصل على التمرين. جرّب المشي أو استخدام الدرج. فهذه الأنشطة لا تستغرق وقتًا طويلًا، ولكن ممارستها بانتظام تساعدك على تحسين لياقتك البدنية.'
+    ],
+    exerciseSets: [
+      {
+        id: '4p-u7-body-qna',
+        source: 'malzama',
+        sourceTitle: 'ملزمة الرابع الإعدادي — أسئلة فهم المقروء',
+        sourcePages: 'الأسئلة ص 119؛ مفتاح الإجابة ص 196',
+        instruction: 'Read this talk by a fitness instructor and answer the questions.',
+        instructionTranslation: 'اقرأ حديث مدرّب اللياقة البدنية ثم أجب عن الأسئلة.',
+        items: [
+          { id: '4p-u7-body-q1', question: 'Why do you need strong muscles?', questionTranslation: 'لماذا تحتاج إلى عضلات قوية؟', answer: 'You need strong muscles so that you don’t get tired when you do activities during the day.', answerTranslation: 'تحتاج إلى عضلات قوية حتى لا تشعر بالتعب عندما تمارس أنشطتك خلال اليوم.' },
+          { id: '4p-u7-body-q2', question: 'What kills many people in developed countries?', questionTranslation: 'ما الذي يودي بحياة كثير من الناس في البلدان المتقدمة؟', answer: 'Heart disease kills many people in developed countries.', answerTranslation: 'أمراض القلب تودي بحياة كثير من الناس في البلدان المتقدمة.' },
+          { id: '4p-u7-body-q3', question: 'How does exercise keep you slim?', questionTranslation: 'كيف تساعدك التمارين على المحافظة على رشاقتك؟', answer: 'Exercise uses up the calories you get from food, so it keeps you slim.', answerTranslation: 'تستهلك التمارين السعرات الحرارية التي تحصل عليها من الطعام، ولذلك تساعدك على المحافظة على رشاقتك.' },
+          { id: '4p-u7-body-q4', question: 'What sports are a good way to make friends?', questionTranslation: 'ما الرياضات التي تُعد وسيلة جيدة لتكوين الصداقات؟', answer: 'Team sports like volleyball and basketball are a good way to make friends.', answerTranslation: 'الرياضات الجماعية مثل الكرة الطائرة وكرة السلة وسيلة جيدة لتكوين الصداقات.' },
+          { id: '4p-u7-body-q5', question: 'How can you get exercise without doing a sport?', questionTranslation: 'كيف يمكنك ممارسة التمرين دون ممارسة رياضة معينة؟', answer: 'You can get exercise by walking or using the stairs.', answerTranslation: 'يمكنك ممارسة التمرين عن طريق المشي أو استخدام الدرج.' }
+        ]
+      }
+    ]
+  },
 
 };
