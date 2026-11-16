@@ -55,10 +55,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   );
 
   useEffect(() => {
-    if (navigationState?.openSection === 'passage') {
-      setActiveSectionView('passage');
-    }
-  }, [location.key, navigationState?.openSection]);
+    setActiveSectionView(navigationState?.openSection === 'passage' ? 'passage' : 'guided');
+  }, [location.key, lesson.id, navigationState?.openSection]);
   const [speakingText, setSpeakingText] = useState<string | null>(null);
 
   const selectedPassage = navigationState?.passageId
@@ -307,7 +305,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         <div className="flex flex-wrap items-center gap-2 pt-2 text-xs font-mono font-bold">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-paper border-2 border-ink text-ink">
             <BookOpen className="w-3.5 h-3.5 text-cobalt shrink-0" />
-            <span>المصدر الدراسي: {lesson.sourcePages || `كتاب الطالب ص ${lesson.lessonNumber * 2} • كتاب النشاط`}</span>
+            <span>المصدر الدراسي: {lesson.sourcePages || lesson.provenance?.pageNumbers || (isGrammarLesson ? 'مرجع الصفحة غير مسجّل لهذا الدرس' : `كتاب الطالب ص ${lesson.lessonNumber * 2} • كتاب النشاط`)}</span>
           </span>
           <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-yellow text-ink border-2 border-ink">
             <CheckCircle2 className="w-3.5 h-3.5 text-ink shrink-0" />
