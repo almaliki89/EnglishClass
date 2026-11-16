@@ -34,12 +34,149 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
   },
   '4p-u2-unicef': {
     id: '4p-u2-unicef', titleAr: 'منظمة اليونيسيف وحماية الأطفال', titleEn: 'UNICEF & Helping Disadvantaged Children',
-    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'الملزمة ص 29–30',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'الملزمة ص 29–31؛ الأسئلة ص 30–31؛ مفاتيح الإجابة ص 183–184',
+    verificationNote: 'النص والترجمة وأسئلة الفهم ومفردات القطعة موثقة في الملزمة، والإجابات مطابقة لمفتاح الحل.',
+    originalText: [
+      "UNICEF was created in 1946, when many children were sick and hungry in Europe after World War II. UNICEF stands for United Nations International Children’s Emergency Fund because it was created when there was an emergency. In 1953, UNICEF saw the emergency in Europe was over. However, they realized that children in many countries still needed help. It decided to work with children and families all over the world. It changed its name to United Nations Children’s Fund, but people still call it UNICEF. UNICEF believes that all children should have a good education, health care (doctors and medicines) and good nutrition (healthy food).",
+      "Why do some children not go to school? Today, about 121 million children around the world don’t go to school. In countries such as Thailand, natural disasters like floods can destroy schools. Children in these countries can’t go to school because they don’t have a school building to go to. In other countries, parents don’t want to send their children to school because the schools aren’t clean or safe. In many parts of Asia, Africa and South America, children start working when they are less than 12 years old, and so they can’t go to school. This is called child labour. About 246 million children do child labour. In some places, like the Ivory Coast, children work in the fields. In the Philippines and other countries, children work in factories, where they make toys, clothes or sports equipment.",
+      "How does UNICEF help? UNICEF does different things to help. When schools have been destroyed by natural disasters, UNICEF organizes emergency classes in tents, so children don’t miss school. It also helps build new schools for these children. It tries to help schools get clean water and good food so that parents are not afraid to send their children there. UNICEF also works with governments to make sure that children go to school instead of going to work when they are very young."
+],
     translation: [
-      'ما منظمة اليونيسيف؟\nتأسست اليونيسيف عام 1946، عندما كان كثير من الأطفال في أوروبا مرضى وجائعين بعد الحرب العالمية الثانية. ويرمز اسم UNICEF إلى صندوق الأمم المتحدة الدولي لطوارئ الأطفال، لأنها أُنشئت في وقت كانت فيه هناك حالة طوارئ. وفي عام 1953، رأت اليونيسيف أن حالة الطوارئ في أوروبا قد انتهت. لكنها أدركت أن الأطفال في بلدان كثيرة لا يزالون بحاجة إلى المساعدة. فقررت العمل مع الأطفال والعائلات في جميع أنحاء العالم. وغيّرت اسمها إلى صندوق الأمم المتحدة للطفولة، لكن الناس ما زالوا يستخدمون الاختصار UNICEF.',
-      'لماذا لا يذهب بعض الأطفال إلى المدرسة؟\nاليوم، لا يذهب نحو 121 مليون طفل حول العالم إلى المدرسة. ففي بلدان مثل تايلاند، قد تؤدي الكوارث الطبيعية كالفيضانات إلى تدمير المدارس. ولا يستطيع الأطفال في هذه البلدان الذهاب إلى المدرسة لأنهم لا يملكون مبنى مدرسيًا يذهبون إليه. وفي بلدان أخرى، لا يرغب الوالدان في إرسال أطفالهما إلى المدرسة لأن المدارس ليست نظيفة أو آمنة. وفي مناطق كثيرة من آسيا وأفريقيا وأمريكا الجنوبية، يبدأ الأطفال العمل عندما يكونون أصغر من أن يعملوا.',
-      'كيف تساعد اليونيسيف؟\nتقوم اليونيسيف بأعمال مختلفة للمساعدة. فعندما تتدمر المدارس بسبب الكوارث الطبيعية، تنظم اليونيسيف دروسًا طارئة في الخيام حتى لا يفوّت الأطفال الدراسة. كما تساعد في بناء مدارس جديدة لهم. وتحاول مساعدة المدارس في الحصول على مياه نظيفة وطعام جيد حتى لا يخاف الوالدان من إرسال أطفالهم إليها. وتعمل اليونيسيف أيضًا مع الحكومات لضمان ذهاب الأطفال إلى المدرسة بدلًا من العمل وهم صغار جدًا.'
-    ],
+      "ما منظمة اليونيسيف؟\nتأسست اليونيسيف عام 1946، عندما كان كثير من الأطفال في أوروبا مرضى وجائعين بعد الحرب العالمية الثانية. ويرمز اسم UNICEF إلى صندوق الأمم المتحدة الدولي لطوارئ الأطفال، لأنها أُنشئت في وقت كانت فيه حالة طوارئ. وفي عام 1953، رأت اليونيسيف أن حالة الطوارئ في أوروبا قد انتهت. لكنها أدركت أن أطفالًا في بلدان كثيرة ما زالوا بحاجة إلى المساعدة؛ لذلك قررت العمل مع الأطفال والعائلات في جميع أنحاء العالم. وغيّرت اسمها إلى صندوق الأمم المتحدة للطفولة، لكن الناس ما زالوا يسمونها UNICEF. وتؤمن اليونيسيف بأن جميع الأطفال ينبغي أن يحصلوا على تعليم جيد ورعاية صحية (الأطباء والأدوية) وتغذية جيدة (طعام صحي).",
+      "لماذا لا يذهب بعض الأطفال إلى المدرسة؟\nاليوم، لا يذهب نحو 121 مليون طفل في أنحاء العالم إلى المدرسة. ففي بلدان مثل تايلاند، قد تؤدي الكوارث الطبيعية كالفيضانات إلى تدمير المدارس، ولا يستطيع الأطفال الذهاب إلى المدرسة إذا لم يكن لديهم مبنى مدرسي. وفي بلدان أخرى، لا يرغب الوالدان في إرسال أطفالهما إلى المدرسة لأن المدارس ليست نظيفة أو آمنة. وفي مناطق كثيرة من آسيا وأفريقيا وأمريكا الجنوبية، يبدأ الأطفال العمل قبل بلوغ الثانية عشرة، ولذلك لا يستطيعون الذهاب إلى المدرسة. ويُسمّى ذلك عمل الأطفال. ويعمل نحو 246 مليون طفل ضمن عمالة الأطفال. ففي بعض الأماكن، مثل ساحل العاج، يعمل الأطفال في الحقول. وفي الفلبين وبلدان أخرى يعملون في المصانع، حيث يصنعون الألعاب والملابس والمعدات الرياضية.",
+      "كيف تساعد اليونيسيف؟\nتقوم اليونيسيف بأعمال مختلفة للمساعدة. فعندما تتدمر المدارس بسبب الكوارث الطبيعية، تنظم اليونيسيف دروسًا طارئة في الخيام حتى لا يفوّت الأطفال الدراسة. كما تساعد في بناء مدارس جديدة لهم. وتحاول مساعدة المدارس في الحصول على مياه نظيفة وطعام جيد حتى لا يخاف الوالدان من إرسال أطفالهما إليها. وتعمل اليونيسيف أيضًا مع الحكومات لضمان ذهاب الأطفال إلى المدرسة بدلًا من اضطرارهم إلى العمل وهم صغار جدًا."
+],
+    exerciseSets: [
+      {
+            "id": "4p-u2-unicef-exercise-2",
+            "source": "malzama",
+            "sourceTitle": "ملزمة الرابع الإعدادي — Exercise 2",
+            "sourcePages": "الملزمة ص 30؛ مفتاح الإجابة ص 183",
+            "instruction": "Skim the text and match the numbers and facts.",
+            "instructionTranslation": "اقرأ النص بسرعة وصِل الأرقام بالحقائق المناسبة.",
+            "items": [
+                  {
+                        "id": "4p-u2-unicef-e2-1",
+                        "question": "The number of children who don’t go to school in the world.",
+                        "questionTranslation": "عدد الأطفال الذين لا يذهبون إلى المدرسة في العالم.",
+                        "answer": "121 million.",
+                        "answerTranslation": "121 مليون طفل."
+                  },
+                  {
+                        "id": "4p-u2-unicef-e2-2",
+                        "question": "The year UNICEF was founded.",
+                        "questionTranslation": "السنة التي تأسست فيها اليونيسيف.",
+                        "answer": "1946.",
+                        "answerTranslation": "عام 1946."
+                  },
+                  {
+                        "id": "4p-u2-unicef-e2-3",
+                        "question": "The number of children who work.",
+                        "questionTranslation": "عدد الأطفال الذين يعملون.",
+                        "answer": "246 million.",
+                        "answerTranslation": "246 مليون طفل."
+                  },
+                  {
+                        "id": "4p-u2-unicef-e2-4",
+                        "question": "The year the emergency in Europe was over.",
+                        "questionTranslation": "السنة التي انتهت فيها حالة الطوارئ في أوروبا.",
+                        "answer": "1953.",
+                        "answerTranslation": "عام 1953."
+                  }
+            ]
+      },
+      {
+            "id": "4p-u2-unicef-exercise-a",
+            "source": "malzama",
+            "sourceTitle": "ملزمة الرابع الإعدادي — Exercise A",
+            "sourcePages": "الأسئلة ص 31؛ مفتاح الإجابة ص 183–184",
+            "instruction": "Read the text again and answer the questions below.",
+            "instructionTranslation": "اقرأ النص مرة أخرى ثم أجب عن الأسئلة الآتية.",
+            "items": [
+                  {
+                        "id": "4p-u2-unicef-a1",
+                        "question": "What does the F in UNICEF stand for?",
+                        "questionTranslation": "إلى ماذا يرمز الحرف F في كلمة UNICEF؟",
+                        "answer": "Fund.",
+                        "answerTranslation": "صندوق."
+                  },
+                  {
+                        "id": "4p-u2-unicef-a2",
+                        "question": "Where does UNICEF work with children now?",
+                        "questionTranslation": "أين تعمل اليونيسيف مع الأطفال الآن؟",
+                        "answer": "All over the world.",
+                        "answerTranslation": "في جميع أنحاء العالم."
+                  },
+                  {
+                        "id": "4p-u2-unicef-a3",
+                        "question": "How many children don’t study at school today?",
+                        "questionTranslation": "كم عدد الأطفال الذين لا يدرسون في المدارس اليوم؟",
+                        "answer": "121 million.",
+                        "answerTranslation": "121 مليون طفل."
+                  },
+                  {
+                        "id": "4p-u2-unicef-a4",
+                        "question": "Where do some children in the Philippines work?",
+                        "questionTranslation": "أين يعمل بعض الأطفال في الفلبين؟",
+                        "answer": "In factories.",
+                        "answerTranslation": "في المصانع."
+                  },
+                  {
+                        "id": "4p-u2-unicef-a5",
+                        "question": "Where does UNICEF organize emergency classes?",
+                        "questionTranslation": "أين تنظم اليونيسيف الدروس الطارئة؟",
+                        "answer": "In tents.",
+                        "answerTranslation": "في الخيام."
+                  },
+                  {
+                        "id": "4p-u2-unicef-a6",
+                        "question": "Who does UNICEF work with to make sure there’s no child labor?",
+                        "questionTranslation": "مع من تعمل اليونيسيف لضمان عدم تشغيل الأطفال؟",
+                        "answer": "Governments.",
+                        "answerTranslation": "الحكومات."
+                  }
+            ]
+      },
+      {
+            "id": "4p-u2-unicef-exercise-b",
+            "source": "malzama",
+            "sourceTitle": "ملزمة الرابع الإعدادي — Exercise B",
+            "sourcePages": "الأسئلة ص 31؛ مفتاح الإجابة ص 184",
+            "instruction": "Find the words on Student’s Book page 21 and write them in the spaces.",
+            "instructionTranslation": "اعثر على الكلمات في صفحة 21 من كتاب الطالب واكتبها في الفراغات.",
+            "items": [
+                  {
+                        "id": "4p-u2-unicef-b1",
+                        "question": "When people are sick, they need good ______ ______.",
+                        "questionTranslation": "عندما يمرض الناس، فإنهم يحتاجون إلى ______ ______ جيدة.",
+                        "answer": "health care",
+                        "answerTranslation": "رعاية صحية."
+                  },
+                  {
+                        "id": "4p-u2-unicef-b2",
+                        "question": "Children need ______ ______ to grow strong.",
+                        "questionTranslation": "يحتاج الأطفال إلى ______ ______ كي ينموا أقوياء.",
+                        "answer": "good nutrition",
+                        "answerTranslation": "تغذية جيدة."
+                  },
+                  {
+                        "id": "4p-u2-unicef-b3",
+                        "question": "______ ______ like storms can destroy buildings.",
+                        "questionTranslation": "يمكن أن تدمر ______ ______ مثل العواصف المباني.",
+                        "answer": "natural disasters",
+                        "answerTranslation": "الكوارث الطبيعية."
+                  },
+                  {
+                        "id": "4p-u2-unicef-b4",
+                        "question": "______ ______ is when children work and don’t have time to go to school.",
+                        "questionTranslation": "______ ______ هو عندما يعمل الأطفال ولا يتوفر لهم وقت للذهاب إلى المدرسة.",
+                        "answer": "child labor",
+                        "answerTranslation": "عمالة الأطفال."
+                  }
+            ]
+      }
+]
   },
   '4p-u2-schools': {
     id: '4p-u2-schools', titleAr: 'مدارس للجميع', titleEn: 'Schools for All',
@@ -50,22 +187,163 @@ export const FOURTH_READING_PASSAGE_CONTENT: Record<string, Partial<ReadingPassa
   },
   '4p-u2-meade': {
     id: '4p-u2-meade', titleAr: 'مدرسة ميد', titleEn: 'The Meade School',
-    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'الملزمة ص 38–39',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'النص ص 38–39؛ التمرين ص 39؛ مفتاح الإجابة ص 184',
+    verificationNote: 'تمت مطابقة النص وأسئلة إكمال الجمل الستة مع الملزمة ومفتاح الحل.',
+    originalText: [
+      "Child actors, musicians and athletes have different needs from other students. They need to have time to rehearse and train, but they need a good education, too. Our mission is to give students both these things. At MSCA, students can take classes in the morning or at night. They study Art, Music and Sports, but they also study Biology, Physics and Chemistry so they can go to university when they leave school.",
+      "Our History. In 1910, John Meade was walking in the street when a boy stopped him. The boy wanted John to help him read a street sign. John was surprised that the boy couldn’t read. He asked the boy about his school, and the boy told him he was an actor. Child actors spent a lot of time rehearsing and didn’t have time to go to school. John decided to start a special school for these children. He decided classes should start later than in other schools, so children would have time to rehearse. When they were working in another city, they could post their lessons to their teachers.",
+      "Changes. Our school has changed with the times. In the beginning, it was only for actors and musicians. Then one day, while John Meade was reading the newspaper, he saw an article about young athletes. He realized that children who did sports needed a special school, too. He brought more sports teachers to the school, and he built a swimming pool. Other things have changed at the school, too. We now have a modern self-access centre and a computer room. Students who are working in other cities don’t have to send their lessons by post because they can send them by email."
+],
     translation: [
-      'مهمتنا\nلدى الأطفال الممثلين والموسيقيين والرياضيين احتياجات مختلفة عن احتياجات الطلاب الآخرين. فهم يحتاجون إلى وقت للتدرب والتمرين، لكنهم يحتاجون أيضًا إلى تعليم جيد. مهمتنا هي توفير الأمرين للطلاب. في أكاديمية ميد للفنون، يستطيع الطلاب حضور الدروس صباحًا أو ليلًا. يدرسون الفن والموسيقى والرياضة، كما يدرسون الأحياء والفيزياء والكيمياء حتى يتمكنوا من الالتحاق بالجامعة بعد تخرجهم.',
-      'تاريخنا\nفي عام 1910، كان جون ميد يسير في الشارع عندما أوقفه صبي. أراد الصبي من جون مساعدته على قراءة لافتة في الشارع. فوجئ جون بأن الصبي لا يستطيع القراءة. فسأله عن مدرسته، وأخبره الصبي أنه ممثل. كان الأطفال الممثلون يقضون وقتًا طويلًا في التدريبات ولم يكن لديهم وقت للذهاب إلى المدرسة. لذلك قرر جون إنشاء مدرسة خاصة لهؤلاء الأطفال، وقرر أن تبدأ الدروس في وقت متأخر عن المدارس الأخرى حتى يتوفر للأطفال وقت للتدرب.',
-      'التغييرات\nتغيرت مدرستنا مع مرور الزمن. ففي البداية كانت مخصصة للممثلين والموسيقيين فقط. ثم قرأ جون ميد ذات يوم مقالًا في الصحيفة عن الرياضيين الشباب، وأدرك أن الأطفال الذين يمارسون الرياضة يحتاجون أيضًا إلى مدرسة خاصة. فأحضر المزيد من معلمي الرياضة وبنى حوض سباحة. وتغيرت أمور أخرى في المدرسة أيضًا؛ فأصبح لدينا الآن مركز حديث للتعلم الذاتي وغرفة حاسوب.'
-    ],
+      "مهمتنا\nلدى الأطفال الممثلين والموسيقيين والرياضيين احتياجات تختلف عن احتياجات الطلاب الآخرين. فهم يحتاجون إلى وقت للتدرب والتمرين، لكنهم يحتاجون أيضًا إلى تعليم جيد. مهمتنا هي توفير الأمرين للطلاب. في أكاديمية MSCA يستطيع الطلاب حضور الدروس صباحًا أو ليلًا. يدرسون الفن والموسيقى والرياضة، كما يدرسون الأحياء والفيزياء والكيمياء حتى يتمكنوا من الالتحاق بالجامعة بعد تخرجهم.",
+      "تاريخنا\nفي عام 1910، كان جون ميد يسير في الشارع عندما أوقفه صبي. أراد الصبي أن يساعده جون على قراءة لافتة في الشارع. فوجئ جون بأن الصبي لا يستطيع القراءة. فسأله عن مدرسته، وأخبره الصبي أنه ممثل. كان الأطفال الممثلون يقضون وقتًا طويلًا في التدريبات ولم يكن لديهم وقت للذهاب إلى المدرسة. لذلك قرر جون إنشاء مدرسة خاصة لهؤلاء الأطفال، وقرر أن تبدأ الدروس في وقت متأخر عن المدارس الأخرى حتى يتوفر للأطفال وقت للتدرب. وعندما كانوا يعملون في مدينة أخرى، كان بإمكانهم إرسال دروسهم إلى معلميهم بالبريد.",
+      "التغييرات\nتغيرت مدرستنا مع مرور الزمن. ففي البداية كانت مخصصة للممثلين والموسيقيين فقط. ثم قرأ جون ميد ذات يوم مقالًا في الصحيفة عن الرياضيين الشباب، وأدرك أن الأطفال الذين يمارسون الرياضة يحتاجون أيضًا إلى مدرسة خاصة. فأحضر المزيد من معلمي الرياضة وبنى حوض سباحة. وتغيرت أمور أخرى في المدرسة أيضًا؛ فأصبح لدينا الآن مركز حديث للتعلم الذاتي وغرفة حاسوب. ولم يعد الطلاب الذين يعملون في مدن أخرى بحاجة إلى إرسال دروسهم بالبريد، لأنهم يستطيعون إرسالها عبر البريد الإلكتروني."
+],
+    exerciseSets: [
+      {
+            "id": "4p-u2-meade-exercise-a",
+            "source": "malzama",
+            "sourceTitle": "ملزمة الرابع الإعدادي — Exercise A",
+            "sourcePages": "الأسئلة ص 39؛ مفتاح الإجابة ص 184",
+            "instruction": "Read the text on Student’s Book page 24 and complete the sentences below with a word or short phrase.",
+            "instructionTranslation": "اقرأ النص في صفحة 24 من كتاب الطالب وأكمل الجمل بكلمة أو عبارة قصيرة.",
+            "items": [
+                  {
+                        "id": "4p-u2-meade-a1",
+                        "question": "MSCA is a special school for young actors, musicians and ______.",
+                        "questionTranslation": "أكاديمية MSCA مدرسة خاصة للممثلين والموسيقيين الشباب و______.",
+                        "answer": "athletes",
+                        "answerTranslation": "الرياضيين."
+                  },
+                  {
+                        "id": "4p-u2-meade-a2",
+                        "question": "Students study in the morning or at night so they have time to ______ and practise.",
+                        "questionTranslation": "يدرس الطلاب صباحًا أو ليلًا حتى يتوفر لديهم وقت لـ______ والتدرب.",
+                        "answer": "rehearse",
+                        "answerTranslation": "التدرب على الأداء."
+                  },
+                  {
+                        "id": "4p-u2-meade-a3",
+                        "question": "John Meade decided to open the school after a child asked him for help to read a ______.",
+                        "questionTranslation": "قرر جون ميد افتتاح المدرسة بعدما طلب منه طفل المساعدة في قراءة ______.",
+                        "answer": "street sign",
+                        "answerTranslation": "لافتة شارع."
+                  },
+                  {
+                        "id": "4p-u2-meade-a4",
+                        "question": "If they were away, students could post their ______ to the teachers.",
+                        "questionTranslation": "إذا كانوا بعيدين، كان بإمكان الطلاب إرسال ______ إلى المعلمين بالبريد.",
+                        "answer": "lessons",
+                        "answerTranslation": "دروسهم."
+                  },
+                  {
+                        "id": "4p-u2-meade-a5",
+                        "question": "John Meade decided to bring young athletes to the school after reading an ______ in the newspaper.",
+                        "questionTranslation": "قرر جون ميد إحضار رياضيين شباب إلى المدرسة بعد قراءة ______ في الصحيفة.",
+                        "answer": "article",
+                        "answerTranslation": "مقال."
+                  },
+                  {
+                        "id": "4p-u2-meade-a6",
+                        "question": "MSCA now has a computer room and a ______.",
+                        "questionTranslation": "تضم أكاديمية MSCA الآن غرفة حاسوب و______.",
+                        "answer": "self-access centre",
+                        "answerTranslation": "مركزًا للتعلم الذاتي."
+                  }
+            ]
+      }
+]
   },
   '4p-u2-sally': {
     id: '4p-u2-sally', titleAr: 'وظيفة سالي القديمة', titleEn: "Sally's Old Job",
-    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'الملزمة ص 43–44',
+    status: 'verified',
+    sourceTitle: 'ملزمة الرابع الإعدادي', sourcePages: 'النص ص 43–44؛ الأسئلة ص 43–44؛ مفتاح الحل النموذجي مستخرج من النص',
+    verificationNote: 'تم استبدال الترجمة المختصرة بترجمة كاملة تطابق نص القصة. الأسئلة من الملزمة، والإجابات المحددة مستخرجة من القصة لأن الملف لا يعرض مفتاحًا منفصلًا لهذا التمرين.',
+    originalText: [
+      "I travelled a lot with my students because films are often made in other countries. I liked travelling and seeing new places, but I didn’t like being away from my family. And the job was tiring, too. I had to pack all the children’s school books and take them to the airport.",
+      "Once, I went to Italy with two actors. I had a lot of books to pack, and it took a long time. I didn’t want to be late, so I left the house as fast as possible. When I got to the airport, I couldn’t get on the plane because I had forgotten my passport. I had to catch a flight the next day.",
+      "It was tiring for the children, too. They had to act and study too, so they worked a lot.",
+      "Once, I had to give a student called Ben a Maths exam. He was tired because he had been working on the film set all morning. I gave him his exam paper and started reading a book. Suddenly I heard a snore. I looked up and realized Ben had fallen asleep."
+],
     translation: [
-      'سافرت كثيرًا مع طلابي لأن الأفلام غالبًا ما تُصنع في بلدان أخرى. كنت أحب السفر ورؤية أماكن جديدة، لكنني لم أكن أحب الابتعاد عن عائلتي. وكان العمل متعبًا أيضًا؛ إذ كان عليّ حزم جميع كتب الأطفال المدرسية وأخذها إلى المطار.',
-      'ذات مرة ذهبت إلى إيطاليا مع ممثلين اثنين. كان لدي الكثير من الكتب لحزمها، واستغرق ذلك وقتًا طويلًا. لم أرد التأخر، لذلك غادرت المنزل بأسرع ما يمكن. وعندما وصلت إلى المطار، لم أستطع ركوب الطائرة لأنني نسيت جواز سفري. واضطررت إلى اللحاق برحلة في اليوم التالي.',
-      'كان الأمر متعبًا للأطفال أيضًا. فقد كان عليهم التمثيل والدراسة معًا، لذلك كانوا يعملون كثيرًا.',
-      'في النهاية، قررت أن أترك عملي القديم وأبحث عن وظيفة تناسب حياتي العائلية بصورة أفضل.'
-    ],
+      "سافرت كثيرًا مع طلابي لأن الأفلام غالبًا ما تُصوَّر في بلدان أخرى. كنت أحب السفر ورؤية أماكن جديدة، لكنني لم أكن أحب الابتعاد عن عائلتي. وكان العمل متعبًا أيضًا؛ إذ كان عليّ حزم جميع الكتب المدرسية الخاصة بالأطفال وأخذها إلى المطار.",
+      "ذات مرة ذهبت إلى إيطاليا مع ممثلين اثنين. كان لدي الكثير من الكتب لحزمها، واستغرق ذلك وقتًا طويلًا. لم أرد أن أتأخر، لذلك غادرت المنزل بأقصى سرعة ممكنة. وعندما وصلت إلى المطار، لم أستطع ركوب الطائرة لأنني نسيت جواز سفري. واضطررت إلى اللحاق برحلة في اليوم التالي.",
+      "كان الأمر متعبًا للأطفال أيضًا. فقد كان عليهم التمثيل والدراسة معًا، ولذلك عملوا كثيرًا.",
+      "في إحدى المرات، كان عليّ أن أقدّم امتحان رياضيات لطالب يُدعى بن. كان متعبًا لأنه كان يعمل في موقع تصوير الفيلم طوال الصباح. أعطيته ورقة الامتحان وبدأت أقرأ كتابًا. وفجأة سمعت شخيرًا. رفعت رأسي وأدركت أن بن قد غلبه النوم."
+],
+    exerciseSets: [
+      {
+            "id": "4p-u2-sally-exercise-a",
+            "source": "malzama",
+            "sourceTitle": "ملزمة الرابع الإعدادي — Exercise A",
+            "sourcePages": "الأسئلة ص 43–44؛ إجابات نموذجية من النص",
+            "instruction": "Read the story on Student’s Book page 25 and choose the best answer.",
+            "instructionTranslation": "اقرأ القصة في صفحة 25 من كتاب الطالب واختر الإجابة الأفضل.",
+            "items": [
+                  {
+                        "id": "4p-u2-sally-a1",
+                        "question": "What didn’t Sally like about her job?",
+                        "questionTranslation": "ما الشيء الذي لم تكن سالي تحبه في عملها؟",
+                        "options": [
+                              "She didn’t like being away from her family.",
+                              "She didn’t like seeing new places.",
+                              "She didn’t like using a computer."
+                        ],
+                        "answer": "She didn’t like being away from her family.",
+                        "answerTranslation": "لم تكن تحب الابتعاد عن عائلتها."
+                  },
+                  {
+                        "id": "4p-u2-sally-a2",
+                        "question": "What did Sally have to do when she travelled?",
+                        "questionTranslation": "ماذا كان على سالي أن تفعل عندما تسافر؟",
+                        "options": [
+                              "She had to pack the children’s clothes.",
+                              "She had to pack the children’s books.",
+                              "She had to pack the children’s passports."
+                        ],
+                        "answer": "She had to pack the children’s books.",
+                        "answerTranslation": "كان عليها حزم كتب الأطفال."
+                  },
+                  {
+                        "id": "4p-u2-sally-a3",
+                        "question": "Why couldn’t Sally get on the plane to Italy?",
+                        "questionTranslation": "لماذا لم تستطع سالي ركوب الطائرة إلى إيطاليا؟",
+                        "options": [
+                              "She had forgotten her passport.",
+                              "She was carrying too many suitcases.",
+                              "She had gone to the airport on the wrong day."
+                        ],
+                        "answer": "She had forgotten her passport.",
+                        "answerTranslation": "لأنها نسيت جواز سفرها."
+                  },
+                  {
+                        "id": "4p-u2-sally-a4",
+                        "question": "Why was Ben tired on the day of his Maths exam?",
+                        "questionTranslation": "لماذا كان بن متعبًا يوم امتحان الرياضيات؟",
+                        "options": [
+                              "He had gone to bed late the night before.",
+                              "He had been playing football.",
+                              "He had been acting all day."
+                        ],
+                        "answer": "He had been acting all day.",
+                        "answerTranslation": "لأنه كان يمثل طوال اليوم."
+                  },
+                  {
+                        "id": "4p-u2-sally-a5",
+                        "question": "What happened during the Maths exam?",
+                        "questionTranslation": "ماذا حدث أثناء امتحان الرياضيات؟",
+                        "options": [
+                              "Ben read a book.",
+                              "Ben fell asleep.",
+                              "Sally fell asleep."
+                        ],
+                        "answer": "Ben fell asleep.",
+                        "answerTranslation": "غلب النعاس بن ونام."
+                  }
+            ]
+      }
+]
   },
 
   '4p-u5-weddings': {
