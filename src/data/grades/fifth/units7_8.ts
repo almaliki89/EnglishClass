@@ -119,6 +119,28 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
       },
       {
         id: "5th-u7-l3",
+        pedagogy: {
+          "warmup": "عندما ترتب لإصلاح سيارتك، لا تصلحها بنفسك بالضرورة؛ بل تجعل شخصاً آخر يقوم بالخدمة.",
+          "learningObjectives": [
+            "أستخدم have/get + object + V3.",
+            "أحدد الشيء الذي تلقى الخدمة.",
+            "أفرق بين تنفيذ الفعل وترتيب تنفيذه بواسطة شخص آخر."
+          ],
+          "arabicExplanation": "Causative structure يصف ترتيب خدمة يقوم بها شخص آخر: I had my car repaired. الصيغة have/get + object + past participle. يتغير have أو get بحسب الزمن والفاعل، لكن الفعل الذي يصف الخدمة يأتي بالتصريف الثالث.",
+          "solvingClues": [
+            "اسأل هل الفاعل ينفذ العمل أم يرتب الخدمة.",
+            "حدد object الذي تقع عليه الخدمة.",
+            "ضع V3 بعد object.",
+            "صرّف have/get وفق الزمن."
+          ],
+          "commonTraps": [
+            "لا تستخدم المصدر بعد object.",
+            "لا تخلط I repaired مع I had it repaired.",
+            "لا تنسَ تصريف have/get."
+          ],
+          "recapSummary": "have/get + object + past participle = ترتيب خدمة ينفذها شخص آخر.",
+          "nextStepRecommendation": "حوّل أمثلة الخدمات إلى causative وحدد object وV3."
+        },
         unitId: 57,
         lessonNumber: 3,
         titleAr: "الدرس الثالث: الأفعال السببية (Causative Verbs: have / get something done)",
@@ -157,6 +179,29 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
       },
       {
         id: "5th-u7-l4",
+        pedagogy: {
+          "warmup": "ضمير الوصل يتيح ربط معلومة عن سوق أو شخص أو مكان بجملة واحدة دون تكرار الاسم.",
+          "learningObjectives": [
+            "أستخدم who للأشخاص.",
+            "أستخدم which/that للأشياء.",
+            "أستخدم where للمكان وwhose للملكية.",
+            "أدمج الجمل دون تكرار."
+          ],
+          "arabicExplanation": "تربط relative clause اسماً بالمعلومة التي تحدده. who للأشخاص، which/that للأشياء والحيوانات، where للمكان الذي يقع فيه الحدث، وwhose للملكية. افحص وظيفة الجملة بعد الفراغ لتحديد الأداة المناسبة، ولا تختَر where لمجرد أن الاسم السابق مكان.",
+          "solvingClues": [
+            "شخص: who.",
+            "شيء أو حيوان: which/that.",
+            "مكان + حدث يقع فيه: where.",
+            "ملكية + اسم مملوك: whose."
+          ],
+          "commonTraps": [
+            "لا تستخدم who لغير العاقل.",
+            "لا تختَر where لمجرد وجود اسم مكان.",
+            "لا تخلط whose مع who's."
+          ],
+          "recapSummary": "who / which / that / where / whose بحسب نوع الاسم والعلاقة.",
+          "nextStepRecommendation": "ادمج أزواج الجمل في أمثلة الدرس بضمير الوصل المناسب."
+        },
         unitId: 57,
         lessonNumber: 4,
         titleAr: "الدرس الرابع: أسواق بغداد التراثية وضمائر الوصل (Baghdad Souqs & Relative Clauses)",
@@ -389,6 +434,28 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
     lessons: [
       {
         id: "5th-u8-l1",
+        pedagogy: {
+          "warmup": "التعريف الجيد يحدد الشيء أو المهنة بعبارة دقيقة، وقد يحتاج إلى ضمير وصل لشرح الوظيفة أو المكان.",
+          "learningObjectives": [
+            "أصوغ تعريفاً يبدأ بالفئة المناسبة.",
+            "أستخدم who/which/where بحسب المرجع.",
+            "أراجع توافق الفعل مع الاسم."
+          ],
+          "arabicExplanation": "عند تعريف شخص يمكن استخدام someone who، وللشيء something which/that، وللمكان a place where. أضف خاصية أو وظيفة تميز المصطلح عن غيره، ثم راجع توافق الفعل مع الاسم. الهدف تعريف محدد لا وصف عام.",
+          "solvingClues": [
+            "شخص: someone who.",
+            "شيء: something which/that.",
+            "مكان: a place where.",
+            "أضف وظيفة أو خاصية مميزة."
+          ],
+          "commonTraps": [
+            "لا تستخدم who لتعريف شيء.",
+            "لا تجعل التعريف عاماً وغير مميز.",
+            "لا تنسَ أداة التنكير مع الاسم المفرد المعدود."
+          ],
+          "recapSummary": "Person → someone who؛ thing → something which/that؛ place → a place where.",
+          "nextStepRecommendation": "اكتب تعريفين لمفردات الوحدة واختبر دقتهما."
+        },
         unitId: 58,
         lessonNumber: 1,
         titleAr: "الدرس الأول: مراجعة ضمائر الوصل والتعاريف (Relative Pronouns & Definitions Revision)",
@@ -427,6 +494,28 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
       },
       {
         id: "5th-u8-l2",
+        pedagogy: {
+          "warmup": "سؤال What would you do if you won…? يضعك في موقف خيالي لتشرح ما ستفعله.",
+          "learningObjectives": [
+            "أستخدم Second Conditional للمواقف الافتراضية.",
+            "أضع past simple بعد if.",
+            "أستخدم would + base في النتيجة."
+          ],
+          "arabicExplanation": "Second Conditional: If + past simple, would + base verb. يستخدم للمواقف الخيالية أو غير المرجحة في الحاضر أو المستقبل. الماضي بعد if لا يعني أن الحدث وقع فعلاً. عند الإجابة اذكر النتيجة باستخدام I would…",
+          "solvingClues": [
+            "الموقف خيالي أو غير مرجح.",
+            "بعد if استخدم past simple.",
+            "بعد would استخدم المصدر.",
+            "حافظ على معنى السؤال الافتراضي."
+          ],
+          "commonTraps": [
+            "لا تضع would بعد if في الصيغة القياسية.",
+            "لا تستخدم V2 بعد would.",
+            "لا تخلط الشرط الثاني بالأول."
+          ],
+          "recapSummary": "If + past simple, would + base verb.",
+          "nextStepRecommendation": "أجب عن ثلاثة أسئلة افتراضية باستخدام I would."
+        },
         unitId: 58,
         lessonNumber: 2,
         titleAr: "الدرس الثاني: حوار المواقف الخيالية والشرطية الثانية (Hypothetical Situations Dialogue)",
