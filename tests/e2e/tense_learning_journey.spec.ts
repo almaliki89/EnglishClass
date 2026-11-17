@@ -14,11 +14,13 @@ const gradeGroups = [
       { unitId: 41, lessonId: '4th-u1-l1' },
       { unitId: 41, lessonId: '4th-u1-l2' },
       { unitId: 42, lessonId: '4th-u2-l1' },
+      { unitId: 42, lessonId: '4th-u2-l2' },
       { unitId: 43, lessonId: '4th-u3-l1' },
       { unitId: 43, lessonId: '4th-u3-l2' },
       { unitId: 43, lessonId: '4th-u3-l3' },
       { unitId: 45, lessonId: '4th-u5-l2' },
       { unitId: 45, lessonId: '4th-u5-l5' },
+      { unitId: 46, lessonId: '4th-u6-l3' },
     ],
   },
   {
