@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { AlertTriangle, BookOpen, CheckCircle2, FileText, Volume2, ClipboardList, Languages } from 'lucide-react';
 import { Lesson, ReadingPassage, ReadingPassageStatus } from '../types';
+import { BookPassageCatalogItem } from '../data/bookPassageCatalog';
 import { speakEnglish } from '../utils/speech';
+import { PassageImageFigure } from './common/PassageImageFigure';
 
 interface ReadingPassagePanelProps {
   lesson: Lesson;
   passage?: ReadingPassage;
   passageTitle?: string;
+  catalogPassages?: BookPassageCatalogItem[];
+  activePassageId?: string;
+  onSelectPassage?: (passageId: string) => void;
 }
 
 const STATUS_LABELS: Record<ReadingPassageStatus, string> = {
@@ -25,9 +30,20 @@ const STATUS_STYLES: Record<ReadingPassageStatus, string> = {
   source_required: 'bg-coral/20 border-ink text-ink',
 };
 
-export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson, passage: passageOverride, passageTitle }) => {
+export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({
+  lesson,
+  passage: passageOverride,
+  passageTitle,
+  catalogPassages = [],
+  activePassageId,
+  onSelectPassage,
+}) => {
   const passage = passageOverride || lesson.readingPassage;
-  const resolvedTitle = passageTitle || passage?.titleAr || lesson.titleAr;
+  const matchedCatalog = catalogPassages.find((item) => item.id === (activePassageId || passage?.id)) || catalogPassages[0];
+  const resolvedTitle = passageTitle || passage?.titleAr || matchedCatalog?.titleAr || lesson.titleAr;
+  const resolvedTitleEn = passage?.titleEn || matchedCatalog?.titleEn || lesson.titleEn;
+  const resolvedImageSrc = passage?.imageSrc || matchedCatalog?.imageSrc;
+  const resolvedImageAlt = passage?.imageAlt || matchedCatalog?.imageAlt || `صورة تعليمية لقطعة: ${resolvedTitle}`;
   const status: ReadingPassageStatus = passage?.status || 'source_required';
   const originalText = passage?.originalText || [];
   const translations = passage?.translation || [];
@@ -43,46 +59,106 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
   };
 
   return (
-    <section className="space-y-5" aria-labelledby="reading-passage-heading" data-testid="reading-passage-dossier">
-      <header className="bg-surface border-3 border-ink shadow-brutal-action p-5 sm:p-7 space-y-4">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-yellow border-2 border-ink flex items-center justify-center">
+    <section
+      className="space-y-5"
+      aria-labelledby="reading-passage-heading"
+      data-testid="reading-passage-dossier"
+      data-passage-id={activePassageId || passage?.id || matchedCatalog?.id || lesson.id}
+    >
+      {catalogPassages.length > 1 && onSelectPassage && (
+        <div
+          className="bg-paper border-2 border-ink p-3 sm:p-4 flex flex-wrap items-center justify-between gap-2 rounded-[6px]"
+          data-testid="multi-passage-switcher"
+        >
+          <span className="text-xs font-black text-ink">
+            يحتوي هذا الدرس على {catalogPassages.length} قطع مستقلة:
+          </span>
+          <div className="flex flex-wrap items-center gap-2">
+            {catalogPassages.map((item) => {
+              const isSelected = item.id === (activePassageId || matchedCatalog?.id);
+              return (
+                <button
+                  key={item.id}
+                  type="button"
+                  onClick={() => onSelectPassage(item.id)}
+                  aria-pressed={isSelected}
+                  data-testid={`switch-passage-${item.id}`}
+                  className={`px-3 py-1.5 border-2 border-ink text-xs font-black transition-all cursor-pointer rounded-[4px] ${
+                    isSelected
+                      ? 'bg-cobalt text-surface shadow-brutal-xs'
+                      : 'bg-surface text-ink hover:bg-yellow'
+                  }`}
+                >
+                  {item.titleAr}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      <header className="bg-surface border-3 border-ink shadow-brutal-action p-5 sm:p-7 space-y-5 rounded-[6px]">
+        {/* 1. Passage Image */}
+        {resolvedImageSrc && (
+          <PassageImageFigure
+            src={resolvedImageSrc}
+            alt={resolvedImageAlt}
+            titleAr={resolvedTitle}
+            titleEn={resolvedTitleEn}
+            priority
+            testId="passage-hero-figure"
+            className="rounded-[4px] max-h-[420px]"
+          />
+        )}
+
+        {/* 2. Arabic Title & 3. English Title */}
+        <div className="flex flex-wrap items-start justify-between gap-3 border-b-2 border-ink/15 pb-4">
+          <div className="flex items-start gap-3 min-w-0">
+            <div className="w-10 h-10 shrink-0 bg-yellow border-2 border-ink flex items-center justify-center mt-0.5">
               <BookOpen className="w-5 h-5 text-ink" />
             </div>
-            <div>
+            <div className="min-w-0 space-y-1">
               <p className="text-[10px] font-mono font-black tracking-wider text-cobalt">READING COMPREHENSION</p>
-              <h2 id="reading-passage-heading" className="text-lg sm:text-xl font-black text-ink">القطعة وأسئلتها</h2>
-              <p className="text-xs text-ink/65 mt-1">{resolvedTitle}</p>
+              <h2 id="reading-passage-heading" data-testid="passage-title-ar" className="text-xl sm:text-2xl font-black text-ink leading-snug">
+                {resolvedTitle}
+              </h2>
+              <p dir="ltr" data-testid="passage-title-en" className="text-sm sm:text-base font-mono font-bold text-cobalt text-left break-words">
+                {resolvedTitleEn}
+              </p>
             </div>
           </div>
-          <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 border-2 text-xs font-black ${STATUS_STYLES[status]}`}>
+
+          <span className={`inline-flex items-center gap-1.5 px-3 py-1.5 border-2 text-xs font-black shrink-0 ${STATUS_STYLES[status]}`}>
             {status === 'verified' ? <CheckCircle2 className="w-4 h-4" /> : <AlertTriangle className="w-4 h-4" />}
             {STATUS_LABELS[status]}
           </span>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-          <div className="flex items-start gap-2 bg-paper border border-ink p-3">
-            <FileText className="w-4 h-4 shrink-0 text-cobalt mt-0.5" />
-            <div>
-              <p className="font-black text-ink">مصدر القطعة</p>
-              <p className="text-ink/75 mt-1">{passage?.sourceTitle || 'لم يُربط مصدر محدد بعد'}</p>
+        {/* 4. Source Information */}
+        <div className="space-y-3" data-testid="passage-source-info">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+            <div className="flex items-start gap-2 bg-paper border border-ink p-3">
+              <FileText className="w-4 h-4 shrink-0 text-cobalt mt-0.5" />
+              <div>
+                <p className="font-black text-ink">مصدر القطعة</p>
+                <p className="text-ink/75 mt-1">{passage?.sourceTitle || 'لم يُربط مصدر محدد بعد'}</p>
+              </div>
+            </div>
+            <div className="flex items-start gap-2 bg-paper border border-ink p-3">
+              <BookOpen className="w-4 h-4 shrink-0 text-cobalt mt-0.5" />
+              <div>
+                <p className="font-black text-ink">صفحة القطعة</p>
+                <p className="text-ink/75 mt-1">{passage?.sourcePages || matchedCatalog?.sourcePages || lesson.sourcePages || 'غير محددة'}</p>
+              </div>
             </div>
           </div>
-          <div className="flex items-start gap-2 bg-paper border border-ink p-3">
-            <BookOpen className="w-4 h-4 shrink-0 text-cobalt mt-0.5" />
-            <div>
-              <p className="font-black text-ink">صفحة القطعة</p>
-              <p className="text-ink/75 mt-1">{passage?.sourcePages || lesson.sourcePages || 'غير محددة'}</p>
-            </div>
-          </div>
+          {passage?.verificationNote && (
+            <p className="text-xs leading-relaxed text-ink/75 border-r-4 border-cobalt pr-3">{passage.verificationNote}</p>
+          )}
         </div>
-        {passage?.verificationNote && (
-          <p className="text-xs leading-relaxed text-ink/75 border-r-4 border-cobalt pr-3">{passage.verificationNote}</p>
-        )}
       </header>
 
+      {/* 5. Original English Text */}
       {canShowSourceText ? (
         <section className="bg-surface border-3 border-ink shadow-brutal-modal p-5 sm:p-7 space-y-5" data-testid="original-passage-section">
           <div className="border-b-2 border-ink/15 pb-3">
@@ -127,6 +203,7 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
         </div>
       )}
 
+      {/* 6. Arabic Translation */}
       <section className="bg-paper border-3 border-ink shadow-brutal-action p-5 sm:p-7 space-y-4" data-testid="passage-translation-section">
         <div className="flex items-center gap-2 border-b-2 border-ink/15 pb-3">
           <Languages className="w-5 h-5 text-cobalt" />
@@ -150,6 +227,7 @@ export const ReadingPassagePanel: React.FC<ReadingPassagePanelProps> = ({ lesson
         )}
       </section>
 
+      {/* 7. Source-based Exercises and Answers */}
       <section className="bg-surface border-3 border-ink shadow-brutal-modal p-5 sm:p-7 space-y-4" data-testid="passage-exercises-section">
         <div className="flex items-center gap-2 border-b-2 border-ink/15 pb-3">
           <ClipboardList className="w-5 h-5 text-cobalt" />

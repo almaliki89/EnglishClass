@@ -117,9 +117,9 @@ test.describe('Source-aware reading passages', () => {
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
-    await expect(page.locator('p[lang="en"]').first()).toContainText('To: Claire');
-    await expect(page.locator('p[lang="en"]').first()).toContainText('It’s a 30-day religious fast from dawn to sunset');
-    await expect(page.locator('p[lang="en"]').last()).toContainText('all through the day');
+    await expect(page.locator('[data-testid="original-passage-section"] p[lang="en"]').first()).toContainText('To: Claire');
+    await expect(page.locator('[data-testid="original-passage-section"] p[lang="en"]').first()).toContainText('It’s a 30-day religious fast from dawn to sunset');
+    await expect(page.locator('[data-testid="original-passage-section"] p[lang="en"]').last()).toContainText('all through the day');
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
   });
 
@@ -160,9 +160,9 @@ test.describe('Source-aware reading passages', () => {
     await page.waitForLoadState('networkidle');
 
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
-    await expect(page.locator('p[lang="en"]').first()).toContainText('I own a computer repair shop');
-    await expect(page.locator('p[lang="en"]').last()).toContainText('With only lessons online');
-    await expect(page.locator('p[lang="en"]').last()).toContainText('these students need help urgently');
+    await expect(page.locator('[data-testid="original-passage-section"] p[lang="en"]').first()).toContainText('I own a computer repair shop');
+    await expect(page.locator('[data-testid="original-passage-section"] p[lang="en"]').last()).toContainText('With only lessons online');
+    await expect(page.locator('[data-testid="original-passage-section"] p[lang="en"]').last()).toContainText('these students need help urgently');
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
   });
 
@@ -269,5 +269,95 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByTestId('passage-translation-section')).toContainText('ضيف برنامجنا اليوم رائد فضاء');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('Read the interview on Student’s Book page 85.');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('1, 3 and 6.');
+  });
+
+  test('passage library cards and dossiers render unique loaded WebP images in exact reading order and switch multi-passage images properly', async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 900 });
+
+    // 1. Third intermediate library & multi-passage lesson 3rd-u3-l5 (Falcons vs Marsh Arabs)
+    await page.goto('/grade/third-intermediate/passages');
+    await page.waitForLoadState('networkidle');
+    const tiLibrary = page.getByTestId('grade-book-passage-library');
+    const unitThreeGroup = tiLibrary.locator('[data-testid="book-passage-unit-group"][data-unit-id="103"]');
+    await unitThreeGroup.getByRole('button').click();
+
+    const falconsCard = tiLibrary.locator('[data-testid="book-passage-card"][data-passage-id="3i-u3-falcons"]');
+    const marshCard = tiLibrary.locator('[data-testid="book-passage-card"][data-passage-id="3i-u3-marsh-arabs"]');
+    await expect(falconsCard).toBeVisible();
+    await expect(marshCard).toBeVisible();
+
+    const falconsImg = falconsCard.locator('img');
+    const marshImg = marshCard.locator('img');
+    await expect(falconsImg).toHaveAttribute('src', '/images/passages/3i-u3-falcons.webp');
+    await expect(marshImg).toHaveAttribute('src', '/images/passages/3i-u3-marsh-arabs.webp');
+    await expect(falconsImg).toHaveAttribute('alt', /[\u0600-\u06FF]/);
+    await expect(marshImg).toHaveAttribute('alt', /[\u0600-\u06FF]/);
+    await expect.poll(() => falconsImg.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0)).toBeTruthy();
+    await expect.poll(() => marshImg.evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0)).toBeTruthy();
+
+    // Open Falcons first and verify hero image + Section 5.B vertical element order + switcher to Marsh Arabs
+    await falconsCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByTestId('reading-passage-dossier')).toBeVisible();
+    await expect(page.getByTestId('passage-hero-figure').locator('img')).toHaveAttribute('src', '/images/passages/3i-u3-falcons.webp');
+
+    const orderOk = await page.evaluate(() => {
+      const hero = document.querySelector('[data-testid="passage-hero-figure"]')?.getBoundingClientRect();
+      const titleAr = document.querySelector('[data-testid="passage-title-ar"]')?.getBoundingClientRect();
+      const titleEn = document.querySelector('[data-testid="passage-title-en"]')?.getBoundingClientRect();
+      const sourceInfo = document.querySelector('[data-testid="passage-source-info"]')?.getBoundingClientRect();
+      const original = document.querySelector('[data-testid="original-passage-section"]')?.getBoundingClientRect();
+      const translation = document.querySelector('[data-testid="passage-translation-section"]')?.getBoundingClientRect();
+      const exercises = document.querySelector('[data-testid="passage-exercises-section"]')?.getBoundingClientRect();
+      if (!hero || !titleAr || !titleEn || !sourceInfo || !original || !translation || !exercises) return false;
+      return hero.top < titleAr.top &&
+        titleAr.top < titleEn.top &&
+        titleEn.top < sourceInfo.top &&
+        sourceInfo.top < original.top &&
+        original.top < translation.top &&
+        translation.top < exercises.top;
+    });
+    expect(orderOk).toBeTruthy();
+
+    await expect(page.getByTestId('multi-passage-switcher')).toBeVisible();
+    await page.getByTestId('switch-passage-3i-u3-marsh-arabs').click();
+    await expect(page.getByTestId('passage-hero-figure').locator('img')).toHaveAttribute('src', '/images/passages/3i-u3-marsh-arabs.webp');
+    await expect.poll(() =>
+      page.getByTestId('passage-hero-figure').locator('img').evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0)
+    ).toBeTruthy();
+
+    // 2. Sixth preparatory multi-passage lesson u8-l3 (Wind Power vs Angry Reader) + Desktop/Mobile screenshots
+    await page.goto('/grade/sixth-preparatory/passages');
+    await page.waitForLoadState('networkidle');
+    const sixLib = page.getByTestId('grade-book-passage-library');
+    await page.screenshot({ path: 'test-results/passage-qa/desktop-sixth-library.png', fullPage: false });
+
+    const unitEightGroup = sixLib.locator('[data-testid="book-passage-unit-group"][data-unit-id="8"]');
+    await unitEightGroup.getByRole('button').click();
+    const windCard = sixLib.locator('[data-testid="book-passage-card"][data-passage-id="6p-u8-wind-power"]');
+    const angryCard = sixLib.locator('[data-testid="book-passage-card"][data-passage-id="6p-u8-angry-reader"]');
+    await expect(windCard.locator('img')).toHaveAttribute('src', '/images/passages/6p-u8-wind-power.webp');
+    await expect(angryCard.locator('img')).toHaveAttribute('src', '/images/passages/6p-u8-angry-reader.webp');
+
+    await angryCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+    await expect(page.getByTestId('passage-hero-figure').locator('img')).toHaveAttribute('src', '/images/passages/6p-u8-angry-reader.webp');
+    await expect.poll(() =>
+      page.getByTestId('passage-hero-figure').locator('img').evaluate((el: HTMLImageElement) => el.complete && el.naturalWidth > 0)
+    ).toBeTruthy();
+    await page.getByTestId('reading-passage-dossier').scrollIntoViewIfNeeded();
+    await page.screenshot({ path: 'test-results/passage-qa/desktop-angry-reader.png', fullPage: false });
+
+    await page.getByTestId('switch-passage-6p-u8-wind-power').click();
+    await expect(page.getByTestId('passage-hero-figure').locator('img')).toHaveAttribute('src', '/images/passages/6p-u8-wind-power.webp');
+
+    // Mobile responsive layout screenshots
+    await page.setViewportSize({ width: 390, height: 844 });
+    await page.getByTestId('reading-passage-dossier').scrollIntoViewIfNeeded();
+    await page.screenshot({ path: 'test-results/passage-qa/mobile-wind-power.png', fullPage: false });
+    await page.goto('/grade/sixth-preparatory/passages');
+    await page.waitForLoadState('networkidle');
+    const firstSixCard = page.getByTestId('grade-book-passage-library').getByTestId('book-passage-card').first();
+    await firstSixCard.scrollIntoViewIfNeeded();
+    await expect(firstSixCard.locator('img')).toBeVisible();
+    await page.screenshot({ path: 'test-results/passage-qa/mobile-sixth-library.png', fullPage: false });
   });
 });
