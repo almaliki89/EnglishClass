@@ -54,7 +54,7 @@ function normalizeGrammarAnswer(value: string): string {
   return value
     .toLocaleLowerCase()
     .replace(/[.,!?;:،؛]/g, ' ')
-    .replace(/\\s+/g, ' ')
+    .replace(/\s+/g, ' ')
     .trim();
 }
 
