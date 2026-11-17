@@ -175,8 +175,8 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               items={[
                 { label: 'الصفوف', onClick: () => navigate('/grades') },
                 { label: gradeMeta?.nameAr || 'الصف', onClick: () => navigate(`/grade/${grade}`) },
-                { label: `الوحدة 0${unit.id}`, onClick: () => navigate(`/grade/${grade}/unit/${unit.id}`) },
-                { label: `درس ${lesson.lessonNumber}: ${lesson.titleAr}` },
+                { label: `الوحدة 0${unit.number}`, onClick: () => navigate(`/grade/${grade}/unit/${unit.id}`) },
+                { label: lesson.lessonNumber != null ? `الدرس ${lesson.lessonNumber}: ${lesson.titleAr}` : `${lesson.curriculumLabel || 'محتوى إضافي'}: ${lesson.titleAr}` },
               ]}
             />
           ) : (
@@ -194,11 +194,11 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
 
         <div className="flex items-center gap-2 font-mono">
           <span className="text-xs font-black px-2.5 py-1 bg-yellow text-ink border-2 border-ink shadow-brutal-sm">
-            UNIT 0{unit.id}
+            UNIT {String(unit.number).padStart(2, '0')}
           </span>
           <span className="text-xs font-black text-ink font-mono">/</span>
           <span className="text-xs font-black px-2.5 py-1 bg-surface text-ink border-2 border-ink shadow-brutal-sm">
-            LESSON {lesson.lessonNumber}
+            {lesson.lessonNumber != null ? `LESSON ${lesson.lessonNumber}` : lesson.curriculumLabel || 'SUPPLEMENT'}
           </span>
         </div>
 
@@ -267,7 +267,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
               <span>{catConfig.title}</span>
             </span>
             <span className="text-xs font-mono font-bold text-muted-gray">
-              UNIT 0{unit.id} • L{lesson.lessonNumber}
+              UNIT {String(unit.number).padStart(2, '0')} • {lesson.lessonNumber != null ? `L${lesson.lessonNumber}` : lesson.curriculumLabel || 'SUPPLEMENT'}
             </span>
           </div>
 
@@ -307,7 +307,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
         <div className="flex flex-wrap items-center gap-2 pt-2 text-xs font-mono font-bold">
           <span className="inline-flex items-center gap-1.5 px-2.5 py-1 bg-paper border-2 border-ink text-ink">
             <BookOpen className="w-3.5 h-3.5 text-cobalt shrink-0" />
-            <span>المصدر الدراسي: {lesson.sourcePages || lesson.provenance?.pageNumbers || (isGrammarLesson ? 'مرجع الصفحة غير مسجّل لهذا الدرس' : `كتاب الطالب ص ${lesson.lessonNumber * 2} • كتاب النشاط`)}</span>
+            <span>المصدر الدراسي: {lesson.sourcePages || lesson.provenance?.pageNumbers || (lesson.lessonNumber == null ? 'مرجع الصفحة غير مسجّل لهذا المحتوى' : isGrammarLesson ? 'مرجع الصفحة غير مسجّل لهذا الدرس' : `كتاب الطالب ص ${lesson.lessonNumber * 2} • كتاب النشاط`)}</span>
           </span>
           <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-yellow text-ink border-2 border-ink">
             <CheckCircle2 className="w-3.5 h-3.5 text-ink shrink-0" />
@@ -654,7 +654,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
           onClick={() => (grade ? navigate(`/grade/${grade}/unit/${unit.id}`) : onBackToDashboard())}
           className="inline-flex items-center gap-1.5 px-4 py-2 bg-paper hover:bg-surface text-ink border-2 border-ink shadow-brutal-sm text-xs font-black transition-all cursor-pointer"
         >
-          <span>فهرس الوحدة 0{unit.id} 📂</span>
+          <span>فهرس الوحدة 0{unit.number} 📂</span>
         </button>
 
         {nextLesson ? (
