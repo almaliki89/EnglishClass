@@ -50,6 +50,14 @@ function HighlightedSentence({ text, highlight }: { text: string; highlight?: st
   );
 }
 
+function normalizeGrammarAnswer(value: string): string {
+  return value
+    .toLocaleLowerCase()
+    .replace(/[.,!?;:،؛]/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
 export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
   lesson,
   grade,
@@ -57,10 +65,13 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
 }) => {
   const [activeStage, setActiveStage] = useState(0);
   const [activeExample, setActiveExample] = useState(0);
+  const [exampleDetailsRevealed, setExampleDetailsRevealed] = useState(false);
   const [activeRulePoint, setActiveRulePoint] = useState(0);
   const [activeExercise, setActiveExercise] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [answerChecked, setAnswerChecked] = useState(false);
+  const [activeRecallAnswer, setActiveRecallAnswer] = useState('');
+  const [activeRecallChecked, setActiveRecallChecked] = useState(false);
 
   const tenseGuide = getTenseTeachingGuide(lesson.id);
   if (tenseGuide) {
@@ -93,7 +104,12 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
   const currentExample = examples[activeExample];
   const currentRulePoint = detailedPoints[activeRulePoint];
   const currentExercise = lesson.exercises[activeExercise];
+  const activeRecallExample = examples.find((example) => Boolean(example.highlight?.trim()));
   const answerIsCorrect = !!currentExercise && selectedAnswer.trim() === currentExercise.correctAnswer.trim();
+  const activeRecallIsCorrect = Boolean(
+    activeRecallExample?.highlight &&
+    normalizeGrammarAnswer(activeRecallAnswer) === normalizeGrammarAnswer(activeRecallExample.highlight)
+  );
 
   const renderWarmup = () => (
     <div className="space-y-5" data-testid="grammar-understand-stage">
@@ -244,27 +260,54 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
             <p dir="ltr" className="text-left text-lg sm:text-2xl font-bold leading-relaxed text-ink">
               <HighlightedSentence text={currentExample.en} highlight={currentExample.highlight} />
             </p>
-            {currentExample.highlight && (
-              <div className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-md border border-ink bg-yellow/35 px-3 py-2">
-                <span className="text-[10px] font-black text-ink/65">موضع التركيز</span>
-                <span dir="ltr" className="break-words text-sm font-black text-ink">{currentExample.highlight}</span>
+            <div
+              data-testid="grammar-example-reflection"
+              data-details-revealed={exampleDetailsRevealed ? 'true' : 'false'}
+              className="rounded-lg border-2 border-ink bg-yellow/20 p-4 space-y-3"
+            >
+              <div>
+                <p className="text-xs font-black text-ink">توقّف وفكّر قبل كشف الشرح</p>
+                <p className="mt-1 text-xs font-semibold leading-6 text-ink/75">
+                  ما الجزء الذي يحمل القاعدة في هذه الجملة؟ حاول تحديده، ثم اكشف التلميح والمعنى.
+                </p>
               </div>
-            )}
-            <div className="rounded-lg border-2 border-ink bg-blue-mist/60 p-4">
-              <p className="text-[10px] font-black text-cobalt">المعنى بالعربية</p>
-              <p className="mt-1 text-sm sm:text-base font-bold leading-8 text-ink">{currentExample.ar}</p>
+              <button
+                type="button"
+                aria-expanded={exampleDetailsRevealed}
+                onClick={() => setExampleDetailsRevealed((revealed) => !revealed)}
+                className="inline-flex items-center gap-2 rounded-md border-2 border-ink bg-cobalt px-3 py-2 text-xs font-black text-surface"
+              >
+                {exampleDetailsRevealed ? 'أخفِ التلميح' : 'اكشف موضع القاعدة والمعنى'}
+              </button>
+              {exampleDetailsRevealed && (
+                <div data-testid="grammar-example-revealed-details" className="space-y-3">
+                  {currentExample.highlight && (
+                    <div className="inline-flex max-w-full flex-wrap items-center gap-2 rounded-md border border-ink bg-yellow/35 px-3 py-2">
+                      <span className="text-[10px] font-black text-ink/65">موضع التركيز</span>
+                      <span dir="ltr" className="break-words text-sm font-black text-ink">{currentExample.highlight}</span>
+                    </div>
+                  )}
+                  <div className="rounded-lg border-2 border-ink bg-blue-mist/60 p-4">
+                    <p className="text-[10px] font-black text-cobalt">المعنى بالعربية</p>
+                    <p className="mt-1 text-sm sm:text-base font-bold leading-8 text-ink">{currentExample.ar}</p>
+                  </div>
+                  {currentExample.note && (
+                    <p className="border-r-4 border-cobalt bg-paper px-3 py-2 text-xs font-semibold leading-7 text-ink">
+                      {currentExample.note}
+                    </p>
+                  )}
+                </div>
+              )}
             </div>
-            {currentExample.note && (
-              <p className="border-r-4 border-cobalt bg-paper px-3 py-2 text-xs font-semibold leading-7 text-ink">
-                {currentExample.note}
-              </p>
-            )}
           </div>
           <div className="flex items-center justify-between gap-3 border-t-2 border-ink bg-paper p-3">
             <button
               type="button"
               disabled={activeExample === 0}
-              onClick={() => setActiveExample((value) => Math.max(0, value - 1))}
+              onClick={() => {
+                setActiveExample((value) => Math.max(0, value - 1));
+                setExampleDetailsRevealed(false);
+              }}
               className="inline-flex items-center gap-1 rounded-md border-2 border-ink bg-surface px-3 py-2 text-xs font-black text-ink disabled:opacity-35"
             >
               <ChevronRight className="h-4 w-4" /> السابق
@@ -276,7 +319,10 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
                   type="button"
                   aria-label={`الانتقال إلى المثال ${index + 1}`}
                   aria-current={activeExample === index ? 'step' : undefined}
-                  onClick={() => setActiveExample(index)}
+                  onClick={() => {
+                    setActiveExample(index);
+                    setExampleDetailsRevealed(false);
+                  }}
                   className={`h-2.5 rounded-full border border-ink transition-all ${activeExample === index ? 'w-7 bg-cobalt' : 'w-2.5 bg-surface'}`}
                 />
               ))}
@@ -284,7 +330,10 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
             <button
               type="button"
               disabled={activeExample >= examples.length - 1}
-              onClick={() => setActiveExample((value) => Math.min(examples.length - 1, value + 1))}
+              onClick={() => {
+                setActiveExample((value) => Math.min(examples.length - 1, value + 1));
+                setExampleDetailsRevealed(false);
+              }}
               className="inline-flex items-center gap-1 rounded-md border-2 border-ink bg-cobalt px-3 py-2 text-xs font-black text-surface disabled:opacity-35"
             >
               التالي <ChevronLeft className="h-4 w-4" />
@@ -429,10 +478,83 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
             )}
           </div>
         </article>
+      ) : activeRecallExample ? (
+        <article
+          data-testid="grammar-example-practice"
+          data-practice-source="lesson-example"
+          className="overflow-hidden rounded-xl border-2 border-ink bg-surface shadow-brutal-callout"
+        >
+          <div className="border-b-2 border-ink bg-paper p-4">
+            <span className="inline-flex rounded-full border border-ink bg-yellow px-2.5 py-1 text-[10px] font-black text-ink">
+              تدريب ملاحظة من أمثلة الدرس
+            </span>
+            <h4 className="mt-3 text-base font-black text-ink">اكتشف الجزء الذي يطبّق القاعدة</h4>
+            <p className="mt-1 text-xs font-semibold leading-6 text-ink/70">
+              هذا تدريب تعلّم مبني على مثال مسجّل في الدرس، وليس سؤالاً من الكتاب أو سؤالاً وزارياً.
+            </p>
+          </div>
+          <div className="space-y-4 p-5">
+            <p dir="ltr" className="text-left text-base sm:text-xl font-bold leading-relaxed text-ink">
+              {activeRecallExample.en}
+            </p>
+            <label className="block space-y-2">
+              <span className="text-xs font-black text-ink">اكتب العبارة التي ركّز عليها شرح المثال</span>
+              <input
+                value={activeRecallAnswer}
+                disabled={activeRecallChecked}
+                onChange={(event) => setActiveRecallAnswer(event.target.value)}
+                onKeyDown={(event) => {
+                  if (event.key === 'Enter' && activeRecallAnswer.trim()) setActiveRecallChecked(true);
+                }}
+                placeholder="اكتب العبارة باللغة الإنكليزية"
+                dir="auto"
+                className="w-full rounded-lg border-2 border-ink bg-paper p-3 text-sm font-semibold text-ink disabled:opacity-70"
+              />
+            </label>
+            {!activeRecallChecked ? (
+              <button
+                type="button"
+                disabled={!activeRecallAnswer.trim()}
+                onClick={() => setActiveRecallChecked(true)}
+                className="rounded-md border-2 border-ink bg-cobalt px-5 py-3 text-sm font-black text-surface disabled:opacity-40"
+              >
+                تحقّق من ملاحظتي
+              </button>
+            ) : (
+              <div className={`rounded-lg border-2 border-ink p-4 ${activeRecallIsCorrect ? 'bg-soft-mint' : 'bg-answer-review-bg'}`}>
+                <p className="flex items-center gap-2 text-sm font-black text-ink">
+                  {activeRecallIsCorrect ? <Check className="h-5 w-5" /> : <X className="h-5 w-5" />}
+                  {activeRecallIsCorrect ? 'أحسنت، لاحظت موضع القاعدة.' : 'راجع موضع التركيز في المثال.'}
+                </p>
+                <p className="mt-2 text-sm font-bold leading-7 text-ink">
+                  موضع التركيز: <span dir="ltr">{activeRecallExample.highlight}</span>
+                </p>
+                {activeRecallExample.ar && (
+                  <p className="mt-2 border-t border-ink/20 pt-2 text-sm font-semibold leading-7 text-ink">
+                    المعنى: {activeRecallExample.ar}
+                  </p>
+                )}
+                {activeRecallExample.note && (
+                  <p className="mt-2 text-sm font-semibold leading-7 text-ink">{activeRecallExample.note}</p>
+                )}
+                <button
+                  type="button"
+                  onClick={() => {
+                    setActiveRecallAnswer('');
+                    setActiveRecallChecked(false);
+                  }}
+                  className="mt-3 rounded-md border-2 border-ink bg-surface px-3 py-2 text-xs font-black text-ink"
+                >
+                  حاول مرة أخرى
+                </button>
+              </div>
+            )}
+          </div>
+        </article>
       ) : (
         <div className="rounded-xl border-2 border-dashed border-ink/40 bg-paper p-5">
           <h4 className="text-base font-black text-ink">التدريب غير متاح لهذا الدرس</h4>
-          <p className="mt-2 text-sm font-semibold leading-7 text-ink/70">لا توجد أسئلة وتمارين مرتبطة بهذا الدرس في المحتوى الحالي. لن نضع سؤالاً عاماً وننسبه إلى الكتاب.</p>
+          <p className="mt-2 text-sm font-semibold leading-7 text-ink/70">لا توجد تمارين أصلية أو أمثلة تحتوي على موضع تركيز مسجّل لهذا الدرس. لن نخترع سؤالاً وننسبه إلى المنهج.</p>
         </div>
       )}
 
