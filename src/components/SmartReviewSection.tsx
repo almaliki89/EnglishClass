@@ -70,7 +70,7 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
 
   // 3. Dynamic Weak Topics calculation from real student performance
   const weakTopicsList = useMemo(() => {
-    const topicStats: Record<string, { topic: string; category: string; mistakes: number; total: number; unitNumber?: number }> = {};
+    const topicStats: Record<string, { topic: string; category: string; mistakes: number; total: number; unitNumber?: number; lessonNumber?: number; curriculumLabel?: string }> = {};
 
     // Check wrong answered exercises in lessons
     Object.entries(studentState.answeredExercises || {}).forEach(([exId, isCorrect]) => {
@@ -81,7 +81,7 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
           if (ex) {
             const topicKey = lesson.titleAr;
             if (!topicStats[topicKey]) {
-              topicStats[topicKey] = { topic: lesson.titleAr, category: lesson.category, mistakes: 0, total: 0, unitNumber: unit.number };
+              topicStats[topicKey] = { topic: lesson.titleAr, category: lesson.category, mistakes: 0, total: 0, unitNumber: unit.number, lessonNumber: lesson.lessonNumber, curriculumLabel: lesson.curriculumLabel };
             }
             topicStats[topicKey].total += 1;
             if (!isCorrect) {
