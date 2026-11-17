@@ -55,6 +55,23 @@ test.describe('Unified grammar learning experience', () => {
       // Tense lessons use a dedicated meaning → examples → forms → contrast → practice path.
       // Other grammar lessons retain the progressive source-point explanation.
       const usesTenseJourney = (await journey.getAttribute('data-tense-journey')) === 'true';
+      if (!usesTenseJourney) {
+        const reflection = journey.getByTestId('grammar-example-reflection');
+        await expect(reflection).toBeVisible();
+        await expect(reflection).toHaveAttribute('data-details-revealed', 'false');
+        const revealDetails = reflection.getByRole('button', { name: 'اكشف موضع القاعدة والمعنى' });
+        await revealDetails.click();
+        await expect(reflection).toHaveAttribute('data-details-revealed', 'true');
+        await expect(journey.getByTestId('grammar-example-revealed-details')).toBeVisible();
+
+        const nextExample = journey.getByRole('button', { name: 'التالي' });
+        if (await nextExample.isEnabled()) {
+          await nextExample.click();
+          await expect(reflection).toHaveAttribute('data-details-revealed', 'false');
+          await expect(journey.getByTestId('grammar-example-revealed-details')).toHaveCount(0);
+        }
+      }
+
       await journey.getByRole('button', { name: /ابنِ القاعدة/ }).click();
       await expect(journey.getByTestId('grammar-build-stage')).toBeVisible();
       if (usesTenseJourney) {
