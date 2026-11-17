@@ -811,7 +811,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
       {
         id: "3rd-u4-l1",
         unitId: 104,
-        lessonNumber: 1,
+        curriculumLabel: "مراجعة",
         titleAr: "مراجعة المفردات والتراكيب",
         titleEn: "Vocabulary, Word Order & Verb Forms",
         category: "vocabulary",
@@ -852,7 +852,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
       {
         id: "3rd-u4-l2",
         unitId: 104,
-        lessonNumber: 2,
+        curriculumLabel: "تدريبات",
         titleAr: "إعادة الصياغة والشرطية والمبني للمجهول",
         titleEn: "First Conditional & Sentence Transformation",
         category: "grammar",
@@ -885,7 +885,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
       {
         id: "3rd-u4-l3",
         unitId: 104,
-        lessonNumber: 3,
+        curriculumLabel: "قصة",
         titleAr: "قصة حياة إبراهيم",
         titleEn: "Ibrahim's Life Story",
         category: "reading",
@@ -949,7 +949,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
       {
         id: "3rd-u4-l4",
         unitId: 104,
-        lessonNumber: 4,
+        curriculumLabel: "قراءة",
         titleAr: "النمور الفارسية: أعداد قليلة",
         titleEn: "Too Few Leopards",
         category: "reading",
@@ -1522,7 +1522,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
       {
         id: "3rd-u7-app-vocabulary",
         unitId: 107,
-        lessonNumber: 5,
+        curriculumLabel: "ملحق",
         titleAr: "ملحق نهاية الملزمة: بنك المفردات والتعاريف",
         titleEn: "Booklet Appendix: Vocabulary & Definitions Bank",
         category: "vocabulary",
@@ -1579,7 +1579,7 @@ export const THIRD_INTERMEDIATE_UNITS: Unit[] = [
       {
         id: "3rd-u7-app-spelling",
         unitId: 107,
-        lessonNumber: 6,
+        curriculumLabel: "ملحق",
         titleAr: "ملحق نهاية الملزمة: الإملاء والحروف الكبيرة وعلامات الترقيم",
         titleEn: "Booklet Appendix: Spelling, Capital Letters & Punctuation",
         category: "spelling",
