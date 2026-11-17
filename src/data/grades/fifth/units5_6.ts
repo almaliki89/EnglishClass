@@ -57,6 +57,28 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
       },
       {
         id: "5th-u5-l2",
+        pedagogy: {
+          "warmup": "في نظام غذائي صحي، هناك أشياء يمكن فعلها وأخرى ينبغي فعلها وأفعال ممنوعة.",
+          "learningObjectives": [
+            "أميز can للقدرة وmust للضرورة.",
+            "أستخدم should للنصيحة.",
+            "أفرق mustn't عن don't have to."
+          ],
+          "arabicExplanation": "can للقدرة أو الإمكان، must للضرورة، should للنصيحة، mustn't للمنع، وdon't have to لعدم الضرورة. يأتي المصدر المجرد بعد كل modal.",
+          "solvingClues": [
+            "قدرة: can.",
+            "ضرورة: must.",
+            "نصيحة: should.",
+            "منع: mustn't؛ عدم ضرورة: don't have to."
+          ],
+          "commonTraps": [
+            "لا تخلط mustn't مع don't have to.",
+            "لا تضف to بعد modal.",
+            "لا تضف s للفعل بعد modal."
+          ],
+          "recapSummary": "can قدرة؛ must ضرورة؛ should نصيحة؛ mustn't منع؛ don't have to عدم ضرورة.",
+          "nextStepRecommendation": "اختر modal مناسباً لكل موقف غذائي مع توضيح المعنى."
+        },
         unitId: 55,
         lessonNumber: 2,
         titleAr: "الدرس الثاني: النظام الغذائي الصحي وأفعال الإلزام (Healthy Diet & Modals of Necessity)",
@@ -95,6 +117,29 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
       },
       {
         id: "5th-u5-l3",
+        pedagogy: {
+          "warmup": "في العمل توجد مهام إلزامية، وأفعال ممنوعة، وأمور اختيارية.",
+          "learningObjectives": [
+            "أستخدم have to للضرورة.",
+            "أستخدم don't/doesn't have to لعدم الضرورة.",
+            "أستخدم mustn't للمنع.",
+            "أكوّن السؤال والنفي بصورة صحيحة."
+          ],
+          "arabicExplanation": "have to تعبر عن الضرورة، ومع he/she/it تصبح has to. في النفي نستخدم don't/doesn't have to ومعناها ليس ضرورياً. mustn't تعني ممنوع. في السؤال: Do/Does + subject + have to…? وبعد does نستخدم have.",
+          "solvingClues": [
+            "إلزام: have to/has to.",
+            "عدم ضرورة: don't/doesn't have to.",
+            "منع: mustn't.",
+            "بعد does استخدم have to."
+          ],
+          "commonTraps": [
+            "لا تقل doesn't has to.",
+            "لا تترجم don't have to بمعنى ممنوع.",
+            "لا تستخدم المصدر مع to بعد modal mustn't."
+          ],
+          "recapSummary": "have to = ضرورة؛ don't have to = عدم ضرورة؛ mustn't = منع.",
+          "nextStepRecommendation": "حوّل جملة have to إلى سؤال ونفي، ثم قارن معناها بجملة mustn't."
+        },
         unitId: 55,
         lessonNumber: 3,
         titleAr: "الدرس الثالث: المهن والالتزامات الوظيفية (Jobs & Obligation: have to / mustn't)",
@@ -134,6 +179,28 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
       },
       {
         id: "5th-u5-l4",
+        pedagogy: {
+          "warmup": "قد تنصح صديقاً بنصيحة عامة أو تحذره من نتيجة سيئة إن لم يتصرف بسرعة.",
+          "learningObjectives": [
+            "أستخدم should للنصيحة العامة.",
+            "أستخدم had better للنصيحة الأقوى.",
+            "أكوّن النفي الصحيح للصيغتين."
+          ],
+          "arabicExplanation": "should + base تقدم نصيحة عامة. had better + base تقدم نصيحة قوية أو تحذيراً. النفي: shouldn't + base، وhad better not + base. تبقى had ثابتة مع جميع الضمائر.",
+          "solvingClues": [
+            "نصيحة عامة: should.",
+            "تحذير قوي: had better.",
+            "النفي: shouldn't أو had better not.",
+            "بعد الصيغتين يأتي المصدر المجرد."
+          ],
+          "commonTraps": [
+            "لا تضع to بعد had better.",
+            "لا تغيّر had إلى has.",
+            "ضع not بعد better في النفي."
+          ],
+          "recapSummary": "should للنصيحة؛ had better للتحذير؛ had better not للنهي القوي.",
+          "nextStepRecommendation": "اختر الصيغة المناسبة لمواقف مختلفة، وعلل درجة النصيحة."
+        },
         unitId: 55,
         lessonNumber: 4,
         titleAr: "الدرس الرابع: النصيحة القوية وأفعال المطبخ (had better vs should & Kitchen Verbs)",
@@ -172,6 +239,29 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
       },
       {
         id: "5th-u5-l5",
+        pedagogy: {
+          "warmup": "لو كنت مكان صديقك، ماذا ستفعل؟ هذا موقف افتراضي لا يصف حقيقة قائمة.",
+          "learningObjectives": [
+            "أستخدم Second Conditional للافتراض.",
+            "أضع past simple بعد if.",
+            "أستخدم would + base في النتيجة.",
+            "أستخدم If I were you للنصيحة."
+          ],
+          "arabicExplanation": "Second Conditional: If + past simple, would + base verb. يعبّر عن موقف غير واقعي أو غير مرجح في الحاضر أو المستقبل. في النصيحة نقول If I were you, I would… ويمكن تقديم النتيجة أولاً.",
+          "solvingClues": [
+            "موقف افتراضي: Second Conditional.",
+            "بعد if: past simple.",
+            "في النتيجة: would + base.",
+            "عبارة النصيحة: If I were you."
+          ],
+          "commonTraps": [
+            "لا تضع would بعد if في الصيغة المعتادة.",
+            "لا تستخدم V2 بعد would.",
+            "لا تخلط الافتراضي بالمحتمل في الشرط الأول."
+          ],
+          "recapSummary": "If + past simple, would + base؛ If I were you, I would…",
+          "nextStepRecommendation": "أجب عن سؤال What would you do if…؟ بجملة شرطية كاملة."
+        },
         unitId: 55,
         lessonNumber: 5,
         titleAr: "الدرس الخامس: الحالة الشرطية الثانية ولو كنت مكانك (Second Conditional & If I were you)",
@@ -217,6 +307,28 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
       },
       {
         id: "5th-u5-l6",
+        pedagogy: {
+          "warmup": "عندما تواجه مشكلة، قد تسأل شخصاً: What should I do? ثم يقدم لك نصيحة.",
+          "learningObjectives": [
+            "أطلب النصيحة بعبارة مناسبة.",
+            "أقدم النصيحة باستخدام should أو If I were you.",
+            "أميز وظيفة المتحدث في الحوار."
+          ],
+          "arabicExplanation": "لطلب النصيحة يمكن أن تقول What should I do? أو Can you give me some advice? ولتقديمها استخدم You should… أو If I were you, I would… ويمكن استخدام had better لنصيحة أقوى. اقرأ الحوار وحدد من يطلب النصيحة ومن يقدمها.",
+          "solvingClues": [
+            "سؤال عن التصرف يشير إلى طلب النصيحة.",
+            "You should تعني تقديم نصيحة.",
+            "If I were you, I would صيغة نصيحة افتراضية.",
+            "حدّد وظيفة العبارة في الحوار."
+          ],
+          "commonTraps": [
+            "لا تستخدم عبارة تقديم النصيحة في موضع طلبها.",
+            "لا تضع to بعد should.",
+            "لا تخلط would في If I were you مع should."
+          ],
+          "recapSummary": "طلب: What should I do? تقديم: You should… / If I were you, I would…",
+          "nextStepRecommendation": "أكمل حواراً يتضمن مشكلة وطلب نصيحة ورداً مناسباً."
+        },
         unitId: 55,
         lessonNumber: 6,
         titleAr: "الدرس السادس: طلب وتقديم النصيحة في المواقف الاجتماعية (Giving & Asking for Advice)",
@@ -254,6 +366,27 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
       },
       {
         id: "5th-u5-l7",
+        pedagogy: {
+          "warmup": "قد تتمنى امتلاك وقت أكثر الآن أو تتمنى أن يتوقف المطر لاحقاً. صيغة wish تتغير بحسب نوع الأمنية.",
+          "learningObjectives": [
+            "أستخدم wish/if only للحالة الحالية غير الواقعية.",
+            "أستخدم الماضي البسيط بعد wish للحاضر.",
+            "أستخدم would لتمني تغير مستقبلي."
+          ],
+          "arabicExplanation": "للتمني بشأن حالة حالية مخالفة للواقع نستخدم wish/if only + past simple: I wish I had more time. ولتمني تغير أو سلوك مستقبلي نستخدم wish + would + base: I wish it would stop raining. الماضي هنا لا يدل على زمن الحدث بل على عدم واقعية الحالة.",
+          "solvingClues": [
+            "حالة حالية غير متحققة: wish + past simple.",
+            "تمني تغيير سلوك أو وضع: wish + would + base.",
+            "If only تحمل معنى wish مع تأكيد أقوى."
+          ],
+          "commonTraps": [
+            "لا تستخدم would لكل أمنية عن حالة حالية.",
+            "لا تفسر الماضي بعد wish على أنه حدث ماضٍ بالضرورة.",
+            "ميّز الحالة الحالية عن التغيير المستقبلي."
+          ],
+          "recapSummary": "wish + past simple للحاضر غير الواقعي؛ wish + would + base لتمني التغيير.",
+          "nextStepRecommendation": "اكتب أمنية عن حالة حالية وأخرى عن تغير مستقبلي."
+        },
         unitId: 55,
         lessonNumber: 7,
         titleAr: "الدرس السابع: التمني في الحاضر والمستقبل (Wishes for Present & Future)",
@@ -292,6 +425,27 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
       },
       {
         id: "5th-u5-l8",
+        pedagogy: {
+          "warmup": "عندما تندم على قرار سابق، تتمنى لو أنك تصرفت بطريقة مختلفة. هذا ندم على الماضي.",
+          "learningObjectives": [
+            "أعبّر عن الندم باستخدام wish/if only.",
+            "أستخدم past perfect بعدهما.",
+            "أختار الإثبات أو النفي بحسب معنى الندم."
+          ],
+          "arabicExplanation": "للندم على حدث وقع في الماضي نستخدم wish/if only + had + V3: I wish I had checked. وإذا كان الندم على فعل تم ونرغب لو لم نفعله، نستخدم had not + V3. هذه الصيغة تختلف عن wish + past simple التي تعبر غالباً عن حالة غير واقعية الآن.",
+          "solvingClues": [
+            "الحدث وقع وانتهى: past perfect.",
+            "بعد wish/if only استخدم had + V3.",
+            "حدد هل تتمنى حدوث الفعل أم عدم حدوثه."
+          ],
+          "commonTraps": [
+            "لا تستخدم V2 فقط بعد wish للندم الماضي.",
+            "لا تخلط had + V3 مع had better.",
+            "تحقق من التصريف الثالث."
+          ],
+          "recapSummary": "Past regret = wish/if only + had (not) + V3.",
+          "nextStepRecommendation": "حوّل مواقف ندم إلى جمل wish وحدد معنى الإثبات والنفي."
+        },
         unitId: 55,
         lessonNumber: 8,
         titleAr: "الدرس الثامن: الندم على الماضي وقصة دانة (Regret with wish/if only & Dana's Story)",
@@ -507,6 +661,27 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
       },
       {
         id: "5th-u6-l4",
+        pedagogy: {
+          "warmup": "إذا نقلت سؤال صديقك إلى شخص آخر، لا تحتفظ بترتيب السؤال المباشر داخل الجملة المنقولة.",
+          "learningObjectives": [
+            "أنقل أسئلة Wh باستخدام asked.",
+            "أنقل أسئلة نعم/لا باستخدام if أو whether.",
+            "أحوّل ترتيب السؤال إلى ترتيب خبري."
+          ],
+          "arabicExplanation": "نستخدم asked عند نقل السؤال. في أسئلة Wh نحتفظ بأداة السؤال ثم نضع الفاعل والفعل: He asked where I lived. في أسئلة نعم/لا نستخدم if أو whether: She asked if I was ready. لا نستخدم do/does/did داخل الجزء المنقول.",
+          "solvingClues": [
+            "Wh-question: asked + Wh-word + subject + verb.",
+            "Yes/No: asked + if/whether + subject + verb.",
+            "راجع الضمائر والزمن وفق السياق."
+          ],
+          "commonTraps": [
+            "لا تقل asked where did I live.",
+            "لا تنس if/whether في سؤال نعم/لا.",
+            "لا تضع علامة استفهام إذا أصبحت الجملة خبراً."
+          ],
+          "recapSummary": "asked + Wh/if/whether + subject + verb.",
+          "nextStepRecommendation": "حوّل سؤالين مباشرين إلى سؤالين منقولين وراجع ترتيب الفاعل والفعل."
+        },
         unitId: 56,
         lessonNumber: 4,
         titleAr: "الدرس الرابع: مقابلة الفنانة وداد الأورفلي والأسئلة المنقولة (Widad Al-Orfali & Reported Questions)",
@@ -601,6 +776,27 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
       },
       {
         id: "5th-u6-l6",
+        pedagogy: {
+          "warmup": "الفاصلة تنظّم القراءة وتوضح حدود العبارات، لكنها لا توضع بين أجزاء الجملة الأساسية.",
+          "learningObjectives": [
+            "أستخدم الفاصلة في القوائم.",
+            "أضع الفاصلة بعد الجملة التابعة المقدمة عند الحاجة.",
+            "أتجنب فصل الفاعل عن الفعل."
+          ],
+          "arabicExplanation": "تُستخدم الفاصلة للفصل بين عناصر القائمة، وبعد بعض العبارات التمهيدية أو الجملة التابعة التي تأتي أولاً: When the lesson ended, the students left. لا تفصل الفاعل عن فعله ولا الفعل عن مفعوله. اتبع نمط الأمثلة المقررة في الجمل المركبة.",
+          "solvingClues": [
+            "قائمة عناصر: افصل بينها بفواصل.",
+            "جملة تابعة في البداية: راجع وضع فاصلة قبل الرئيسية.",
+            "لا تضع فاصلة بين subject وverb أو verb وobject."
+          ],
+          "commonTraps": [
+            "لا تفصل الفاعل عن الفعل.",
+            "لا تضع فاصلة قبل كل and بلا سبب.",
+            "لا تعتمد على الوقفة الصوتية وحدها."
+          ],
+          "recapSummary": "الفاصلة تنظّم القوائم والعبارات التمهيدية ولا تفصل أجزاء الجملة الأساسية.",
+          "nextStepRecommendation": "صحح الفواصل في جمل الدرس واذكر وظيفة كل فاصلة."
+        },
         unitId: 56,
         lessonNumber: 6,
         titleAr: "الدرس السادس: قواعد علامات الترقيم واستخدام الفواصل (Punctuation & Comma Rules)",
@@ -694,6 +890,27 @@ export const FIFTH_PREPARATORY_UNITS_5_6: Unit[] = [
       },
       {
         id: "5th-u6-l8",
+        pedagogy: {
+          "warmup": "إذا قال المعلم Open your books، ثم نقلت الأمر، يصبح الكلام أمراً منقولاً لا سؤالاً.",
+          "learningObjectives": [
+            "أنقل الأمر باستخدام told + object + to.",
+            "أنقل النهي باستخدام told/asked + object + not to.",
+            "أحدد المفعول الذي وُجه إليه الأمر."
+          ],
+          "arabicExplanation": "للأمر نستخدم told + object + to + base verb: The teacher told us to open our books. للنهي نستخدم told/asked + object + not to + base: She told him not to run. يجب ذكر الشخص الذي تلقى الأمر، ثم صيغة المصدر بعد to.",
+          "solvingClues": [
+            "أمر مثبت: told + object + to + base.",
+            "نهي: told/asked + object + not to + base.",
+            "حدد الشخص المخاطب وضعه بعد told/asked."
+          ],
+          "commonTraps": [
+            "لا تحذف المفعول بعد told.",
+            "لا تجمع don't مع not to.",
+            "لا تستخدم V-ing بعد to."
+          ],
+          "recapSummary": "Reported command: told + object + to؛ reported negative command: told/asked + object + not to.",
+          "nextStepRecommendation": "حوّل أمراً ونهيًا إلى كلام منقول وتحقق من المفعول وto/not to."
+        },
         unitId: 56,
         lessonNumber: 8,
         titleAr: "الدرس الثامن: نقل الأوامر والطلبات (Reported Commands & Requests)",
