@@ -59,7 +59,7 @@ test.describe('Unified grammar learning experience', () => {
       await expect(journey.getByTestId('grammar-build-stage')).toBeVisible();
       if (usesTenseJourney) {
         await expect(journey.getByRole('heading', { name: 'ابنِ الجملة خطوة خطوة' })).toBeVisible();
-        await expect(journey.getByRole('button', { name: 'الإثبات' })).toBeVisible();
+        await expect(journey.getByTestId('grammar-build-stage').getByRole('button', { name: 'الإثبات' }).first()).toBeVisible();
       } else {
         await expect(journey.getByText(/الفكرة 1/)).toBeVisible();
         const nextRulePoint = journey.getByRole('button', { name: 'الفكرة التالية' });
