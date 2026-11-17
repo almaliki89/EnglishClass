@@ -123,6 +123,9 @@ test.describe('Unified grammar learning experience', () => {
       await journey.getByRole('button', { name: /اختبر نفسك/ }).click();
       await expect(journey.getByTestId('grammar-recap-stage')).toBeVisible();
       await expect(journey.getByText('دورك الآن — فكّر قبل أن ترى الإجابة')).toBeVisible();
+      if (!usesTenseJourney) {
+        await expect(journey.getByTestId('grammar-next-step')).toBeVisible();
+      }
 
       await page.getByRole('button', { name: /^حل التمارين/ }).click();
       await expect(page.getByRole('heading', { name: 'تمارين واختبارات فورية' })).toBeVisible();
