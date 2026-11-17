@@ -177,9 +177,9 @@ export const ScopedGradeSearch: React.FC<ScopedGradeSearchProps> = ({
                   >
                     <div className="space-y-1 min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <BrutalBadge variant="yellow">درس</BrutalBadge>
+                        <BrutalBadge variant="yellow">{lesson.lessonNumber != null ? `الدرس ${lesson.lessonNumber}` : lesson.curriculumLabel || 'محتوى إضافي'}</BrutalBadge>
                         <span className="text-xs font-mono font-bold text-cobalt">
-                          الوحدة 0{unit.id} • درس {lesson.lessonNumber}
+                          الوحدة 0{unit.number}
                         </span>
                       </div>
                       <h4 className="text-sm sm:text-base font-black text-ink group-hover:text-cobalt">

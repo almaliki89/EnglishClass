@@ -105,7 +105,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
     { label: 'الرئيسية', onClick: () => navigate('/') },
     { label: gradeMeta.nameAr, onClick: () => navigate(`/grade/${validGrade}`) },
     { label: 'اللغة الإنكليزية', onClick: () => navigate(`/grade/${validGrade}`) },
-    { label: `الوحدة 0${currentUnit.id}: ${currentUnit.titleAr}` },
+    { label: `الوحدة 0${currentUnit.number}: ${currentUnit.titleAr}` },
   ];
 
   return (
@@ -132,7 +132,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
           <div className="space-y-2 min-w-0">
             <div className="flex flex-wrap items-center gap-2">
               <BrutalBadge variant="cobalt" className="text-xs">
-                الوحدة 0{currentUnit.id} · منهاج العراق
+                الوحدة 0{currentUnit.number} · منهاج العراق
               </BrutalBadge>
               <BrutalBadge variant="yellow" className="text-xs">
                 {gradeMeta.nameAr}
@@ -246,7 +246,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
             </div>
             <div>
               <h2 className="text-xl sm:text-2xl font-black text-ink">
-                فهرس دروس الوحدة 0{currentUnit.id} ({lessons.length} دروس منظمة)
+                فهرس محتوى الوحدة 0{currentUnit.number} ({lessons.length} عناصر)
               </h2>
               <p className="text-xs font-mono font-bold text-ink/70">
                 دروس مرتبة تسلسلياً حسب تسلسل المنهج والملزمة
@@ -267,7 +267,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
 
         {/* Lessons Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {filteredLessons.map((lesson, idx) => {
+          {filteredLessons.map((lesson) => {
             const isCompleted = studentState.completedLessonIds.includes(lesson.id);
             const cat = getCategoryBadge(lesson.category);
 
@@ -285,7 +285,7 @@ export const UnitDashboardView: React.FC<UnitDashboardViewProps> = ({
                   <div className="flex flex-wrap items-center justify-between gap-2">
                     <div className="flex flex-wrap items-center gap-1.5">
                       <span className="font-mono text-xs font-black px-2 py-0.5 bg-ink text-yellow">
-                        L0{lesson.lessonNumber || idx + 1}
+                        {lesson.lessonNumber != null ? `Lesson ${lesson.lessonNumber}` : lesson.curriculumLabel || 'محتوى إضافي'}
                       </span>
                       <BrutalBadge variant={cat.variant} className="flex items-center gap-1">
                         {cat.icon}

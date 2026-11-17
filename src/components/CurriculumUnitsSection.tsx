@@ -566,7 +566,7 @@ export const CurriculumUnitsSection: React.FC<CurriculumUnitsSectionProps> = ({
                           >
                             <div className="flex items-center gap-2.5 min-w-0">
                               <span className="w-5 h-5 rounded-[4px] bg-surface border border-ink flex items-center justify-center font-bold text-[10px] text-ink shrink-0 tabular-nums">
-                                {lesson.lessonNumber}
+                                {lesson.lessonNumber ?? lesson.curriculumLabel ?? '—'}
                               </span>
                               <div className="min-w-0">
                                 <span className="font-bold block truncate">{lesson.titleAr}</span>

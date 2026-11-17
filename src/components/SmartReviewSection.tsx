@@ -65,12 +65,12 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
   );
 
   // 2. Incomplete Lessons
-  const allLessons = currentUnits.flatMap(u => u.lessons);
+  const allLessons = currentUnits.flatMap(unit => unit.lessons.map(lesson => ({ ...lesson, curriculumUnitNumber: unit.number })));
   const incompleteLessons = allLessons.filter(l => !studentState.completedLessonIds.includes(l.id));
 
   // 3. Dynamic Weak Topics calculation from real student performance
   const weakTopicsList = useMemo(() => {
-    const topicStats: Record<string, { topic: string; category: string; mistakes: number; total: number; unitId?: number }> = {};
+    const topicStats: Record<string, { topic: string; category: string; mistakes: number; total: number; unitNumber?: number }> = {};
 
     // Check wrong answered exercises in lessons
     Object.entries(studentState.answeredExercises || {}).forEach(([exId, isCorrect]) => {
@@ -81,7 +81,7 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
           if (ex) {
             const topicKey = lesson.titleAr;
             if (!topicStats[topicKey]) {
-              topicStats[topicKey] = { topic: lesson.titleAr, category: lesson.category, mistakes: 0, total: 0, unitId: unit.id };
+              topicStats[topicKey] = { topic: lesson.titleAr, category: lesson.category, mistakes: 0, total: 0, unitNumber: unit.number };
             }
             topicStats[topicKey].total += 1;
             if (!isCorrect) {
@@ -478,7 +478,7 @@ export const SmartReviewSection: React.FC<SmartReviewSectionProps> = ({
             >
               <div className="min-w-0">
                 <span className="px-2 py-0.5 rounded-xs text-[10px] font-mono font-bold bg-yellow text-ink border border-ink mb-1 inline-block">
-                  الوحدة {lesson.unitId} • درس {lesson.lessonNumber}
+                  الوحدة {lesson.curriculumUnitNumber} • {lesson.lessonNumber != null ? `الدرس ${lesson.lessonNumber}` : lesson.curriculumLabel || 'محتوى إضافي'}
                 </span>
                 <h4 className="text-sm font-bold text-ink group-hover:text-cobalt transition-colors">
                   {lesson.titleAr}

@@ -87,7 +87,68 @@ ORDERED_GRADES.forEach(g => {
       assert(!!l.titleAr && !!l.titleEn && !!l.summary, `Lesson ${l.id} must have complete titles and summary`);
     });
   });
+
 });
+
+// 4b. Official curriculum numbering: displayed unit numbers must be independent
+// from internal IDs; lesson numbers must match source numbering and may contain gaps.
+ORDERED_GRADES.forEach(g => {
+  const units = getUnitsForGrade(g);
+  const unitNumbers = units.map(unit => unit.number).sort((a, b) => a - b);
+  assert(
+    unitNumbers.every((number, index) => number === index + 1),
+    `Grade ${g} unit.number values must follow the official 1..N order`
+  );
+
+  units.forEach(unit => {
+    const officialLessonNumbers = unit.lessons
+      .map(lesson => lesson.lessonNumber)
+      .filter((number): number is number => number !== undefined);
+    assert(
+      officialLessonNumbers.every(number => Number.isInteger(number) && number > 0),
+      `Unit ${unit.number} in ${g} contains an invalid official lesson number`
+    );
+    assert(
+      new Set(officialLessonNumbers).size === officialLessonNumbers.length,
+      `Unit ${unit.number} in ${g} contains duplicate official lesson numbers`
+    );
+  });
+});
+
+const thirdUnitFour = THIRD_INTERMEDIATE_UNITS.find(unit => unit.number === 4);
+assert(
+  !!thirdUnitFour && thirdUnitFour.lessons.every(lesson => lesson.lessonNumber === undefined),
+  'Third Intermediate Unit Four review materials must not be presented as numbered lessons'
+);
+assert(
+  !!thirdUnitFour && thirdUnitFour.lessons.every(lesson => !!lesson.curriculumLabel),
+  'Third Intermediate Unit Four non-numbered materials must have source-appropriate labels'
+);
+
+const thirdAppendices = THIRD_INTERMEDIATE_UNITS
+  .flatMap(unit => unit.lessons)
+  .filter(lesson => lesson.id === '3rd-u7-app-vocabulary' || lesson.id === '3rd-u7-app-spelling');
+assert(
+  thirdAppendices.length === 2 && thirdAppendices.every(lesson =>
+    lesson.lessonNumber === undefined && lesson.curriculumLabel === 'ملحق'
+  ),
+  'Third Intermediate booklet appendices must not be numbered as Unit Seven lessons'
+);
+
+const fourthHistory = FOURTH_PREPARATORY_UNITS
+  .flatMap(unit => unit.lessons)
+  .find(lesson => lesson.id === '4th-u1-reading-history');
+assert(
+  !!fourthHistory && fourthHistory.lessonNumber === undefined && fourthHistory.curriculumLabel === 'قراءة إضافية',
+  'Fourth Preparatory supplementary English history reading must remain unnumbered'
+);
+
+const sixthUnitOne = CURRICULUM_UNITS.find(unit => unit.number === 1);
+assert(
+  !!sixthUnitOne && sixthUnitOne.lessons.some(lesson => lesson.lessonNumber === 9) &&
+    !sixthUnitOne.lessons.some(lesson => lesson.lessonNumber === 8),
+  'Sixth Preparatory Unit One source numbering gap (Lesson 7 to Lesson 9) must be preserved'
+);
 
 // 5. 6th Preparatory 2024-2026 Textbook Content Authenticity
 const u1Content = fs.readFileSync(path.resolve('src/data/units/unit1.ts'), 'utf8');

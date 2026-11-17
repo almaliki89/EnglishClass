@@ -22,6 +22,24 @@ test.describe('Iraqi English Curriculum Platform - Critical Architecture & Secur
   });
 
 
+  test('Curriculum unit and lesson labels use the official source numbers', async ({ page }) => {
+    // Fourth Preparatory has internal unit id 41, but its official unit number is 1.
+    await page.goto('/grade/fourth-preparatory/unit/41');
+    await page.waitForLoadState('networkidle');
+    await expect(page.getByText('الوحدة 01 · منهاج العراق', { exact: true })).toBeVisible();
+    const fourthUnitText = await page.locator('body').innerText();
+    expect(fourthUnitText).not.toContain('الوحدة 041');
+
+    // Third Intermediate Unit Four contains source review sections, not Lesson 1..4.
+    await page.goto('/grade/third-intermediate/unit/104/lesson/3rd-u4-l1');
+    await page.waitForLoadState('networkidle');
+    await expect(page.locator('body')).toContainText('مراجعة المفردات والتراكيب');
+    await expect(page.locator('body')).toContainText('مراجعة');
+    const unnumberedLessonText = await page.locator('body').innerText();
+    expect(unnumberedLessonText).not.toContain('LESSON undefined');
+    expect(unnumberedLessonText).not.toContain('LESSON 1');
+  });
+
   test('10. Grade portal controls work with real clicks', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');

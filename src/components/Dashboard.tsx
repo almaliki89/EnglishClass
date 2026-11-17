@@ -128,7 +128,7 @@ export const Dashboard: React.FC<DashboardProps> = ({
                 {nextLearningEntry.lesson.titleEn}
               </p>
               <p className="text-xs sm:text-sm text-[var(--ds-ink-muted)]">
-                {nextLearningEntry.unit.titleAr} · الدرس {nextLearningEntry.lesson.lessonNumber}
+                {nextLearningEntry.unit.titleAr} · {nextLearningEntry.lesson.lessonNumber != null ? `الدرس ${nextLearningEntry.lesson.lessonNumber}` : nextLearningEntry.lesson.curriculumLabel || 'محتوى إضافي'}
               </p>
             </div>
             <button

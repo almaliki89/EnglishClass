@@ -284,7 +284,7 @@ export const FOURTH_PREPARATORY_UNITS_1_2: Unit[] = [
       {
         id: "4th-u1-reading-history",
         unitId: 41,
-        lessonNumber: 7,
+        curriculumLabel: "قراءة إضافية",
         titleAr: "قراءة إضافية: تاريخ اللغة الإنكليزية",
         titleEn: "Supplementary Reading: History of the English Language",
         category: "reading",
