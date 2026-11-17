@@ -145,7 +145,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
         IRAQI • ARCHIVE
       </div>
 
-      <div className="w-full max-w-5xl grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch relative z-10 my-auto">
+      <div className="mx-auto w-full max-w-[1080px] grid grid-cols-1 lg:grid-cols-12 gap-6 xl:gap-8 items-stretch justify-items-stretch relative z-10 my-auto">
         
         {/* Left / Top Hero Info Column */}
         <div className="lg:col-span-6 bg-surface border-4 border-ink p-6 sm:p-8 shadow-brutal-hero flex flex-col justify-between space-y-6">
