@@ -64,14 +64,14 @@ expectedGrades.forEach(g => {
 const allActiveLessonIds = new Set(
   ORDERED_GRADES.flatMap(grade => getUnitsForGrade(grade).flatMap(unit => unit.lessons.map(lesson => lesson.id)))
 );
-assert(TENSE_TEACHING_GUIDE_IDS.length === 26, `Expected 26 tense teaching guides, found ${TENSE_TEACHING_GUIDE_IDS.length}`);
+assert(TENSE_TEACHING_GUIDE_IDS.length === 28, `Expected 28 tense teaching guides, found ${TENSE_TEACHING_GUIDE_IDS.length}`);
 assert(new Set(TENSE_TEACHING_GUIDE_IDS).size === TENSE_TEACHING_GUIDE_IDS.length, 'Tense teaching guide IDs must be unique');
 TENSE_TEACHING_GUIDE_IDS.forEach(lessonId => {
   assert(allActiveLessonIds.has(lessonId), `Tense guide must map to an active curriculum lesson: ${lessonId}`);
 });
 const tenseGuideCounts = {
   'third-intermediate': 2,
-  'fourth-preparatory': 8,
+  'fourth-preparatory': 10,
   'fifth-preparatory': 8,
   'sixth-preparatory': 8,
 };
