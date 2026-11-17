@@ -77,6 +77,29 @@ export const UNIT_2: Unit = {
     },
     {
       id: "u2-l2",
+      pedagogy: {
+        "warmup": "في واجبات الشرطة والسلامة، توجد أفعال ضرورية وأخرى ممنوعة، وأفعال لا يلزم القيام بها. اختيار modal يغيّر معنى التعليمات.",
+        "learningObjectives": [
+          "أستخدم must/have to/need to للضرورة.",
+          "أستخدم mustn't للمنع.",
+          "أميز don't have to عن mustn't.",
+          "أختار modal المناسب للسياق."
+        ],
+        "arabicExplanation": "must وhave to وneed to تعبر عن الضرورة أو الالتزام بدرجات وسياقات مختلفة. mustn't تعني ممنوع، بينما don't have to تعني ليس من الضروري. بعد must وmustn't يأتي المصدر المجرد، وبعد have to وneed to يأتي المصدر مع to. في النفي والسؤال مع have to نستخدم do/does ثم have to.",
+        "solvingClues": [
+          "إلزام أو ضرورة: must/have to/need to.",
+          "منع قانوني أو تحذير: mustn't.",
+          "عدم ضرورة: don't/doesn't have to.",
+          "بعد does استخدم have to لا has to."
+        ],
+        "commonTraps": [
+          "لا تخلط mustn't مع don't have to.",
+          "لا تستخدم to بعد must أو mustn't.",
+          "لا تقل doesn't has to."
+        ],
+        "recapSummary": "must/have to/need to = ضرورة؛ mustn't = منع؛ don't have to = عدم ضرورة.",
+        "nextStepRecommendation": "صنّف مواقف السلامة إلى إلزام ومنع وعدم ضرورة ثم أعد صياغتها."
+      },
       unitId: 2,
       lessonNumber: 2,
       titleAr: "الدرس الثاني: واجبات ضابط الشرطة وقواعد الإلزام والمنع",
