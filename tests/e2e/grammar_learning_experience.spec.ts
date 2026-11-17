@@ -1,6 +1,33 @@
 import { test, expect } from '@playwright/test';
 
 const grammarLessons = [
+  // Non-tense grammar lessons verify that the lesson-specific Arabic pedagogy
+  // is actually rendered through the shared learning journey.
+  {
+    grade: 'third-intermediate',
+    unitId: 103,
+    lessonId: '3rd-u3-l1',
+    lessonName: 'درجات المقارنة والتفضيل',
+  },
+  {
+    grade: 'fourth-preparatory',
+    unitId: 41,
+    lessonId: '4th-u1-l5',
+    lessonName: 'الأسئلة غير المباشرة',
+  },
+  {
+    grade: 'fifth-preparatory',
+    unitId: 53,
+    lessonId: '5th-u3-l1',
+    lessonName: 'ترتيب الصفات',
+  },
+  {
+    grade: 'sixth-preparatory',
+    unitId: 3,
+    lessonId: 'u3-l1',
+    lessonName: 'تعريف المهن',
+  },
+
   {
     grade: 'third-intermediate',
     unitId: 103,
@@ -36,6 +63,10 @@ test.describe('Unified grammar learning experience', () => {
       const journey = page.getByTestId('grammar-learning-journey');
       await expect(journey).toBeVisible();
       await expect(journey).toHaveAttribute('data-lesson-id', item.lessonId);
+      if (['3rd-u3-l1', '4th-u1-l5', '5th-u3-l1', 'u3-l1'].includes(item.lessonId)) {
+        await expect(journey.getByRole('heading', { name: 'ما الفكرة التي نريد التعبير عنها؟' })).toBeVisible();
+        await expect(journey.getByRole('heading', { name: 'ماذا ستستطيع أن تفعل بعد الدرس؟' })).toBeVisible();
+      }
       await expect(journey.getByRole('heading', { name: 'نتعلّمها بالفهم، لا بحفظ المعادلة' })).toBeVisible();
 
       // Grammar lessons now have one teaching path instead of competing generic modes.
