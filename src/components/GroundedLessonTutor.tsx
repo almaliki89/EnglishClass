@@ -84,7 +84,7 @@ ${lesson.examples?.map(ex => `- ${ex.en} => ${ex.ar} (${ex.note || ''})`).join('
           {
             role: 'assistant',
             text: data.answer || 'لم يتم استرجاع إجابة.',
-            citation: data.citation || `${unit.titleAr} • الدرس ${lesson.lessonNumber}`,
+            citation: data.citation || `${unit.titleAr} • ${lesson.lessonNumber != null ? `الدرس ${lesson.lessonNumber}` : lesson.curriculumLabel || lesson.titleAr}`,
             timestamp: new Date().toLocaleTimeString('ar-IQ', { hour: '2-digit', minute: '2-digit' })
           }
         ]);
