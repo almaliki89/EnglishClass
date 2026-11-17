@@ -45,22 +45,26 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const navigate = useNavigate();
   const location = useLocation();
   const navigationState = location.state as { openSection?: string; passageId?: string } | null;
+  const queryPassageId = new URLSearchParams(location.search).get('passage');
+  const requestedPassageId = navigationState?.passageId || queryPassageId || undefined;
+  const shouldOpenPassage =
+    navigationState?.openSection === 'passage' || Boolean(requestedPassageId);
   const gradeMeta = grade ? getGradeMeta(grade) : null;
   // Local exercise answer tracking: exerciseId -> selected option
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [revealedExplanations, setRevealedExplanations] = useState<Record<string, boolean>>({});
   const [showQuickHints, setShowQuickHints] = useState(false);
   const [activeSectionView, setActiveSectionView] = useState<'guided' | 'all' | 'interactive' | 'academic' | 'exercises' | 'passage'>(() =>
-    navigationState?.openSection === 'passage' ? 'passage' : 'guided'
+    shouldOpenPassage ? 'passage' : 'guided'
   );
 
   useEffect(() => {
-    setActiveSectionView(navigationState?.openSection === 'passage' ? 'passage' : 'guided');
-  }, [location.key, lesson.id, navigationState?.openSection]);
+    setActiveSectionView(shouldOpenPassage ? 'passage' : 'guided');
+  }, [location.key, location.search, lesson.id, shouldOpenPassage]);
   const [speakingText, setSpeakingText] = useState<string | null>(null);
 
-  const selectedPassage = navigationState?.passageId
-    ? { ...(lesson.readingPassage || {}), ...(getBookPassageContent(navigationState.passageId) || {}) } as Lesson['readingPassage']
+  const selectedPassage = requestedPassageId
+    ? { ...(lesson.readingPassage || {}), ...(getBookPassageContent(requestedPassageId) || {}) } as Lesson['readingPassage']
     : lesson.readingPassage;
 
   const handleSpeak = (text: string) => {
