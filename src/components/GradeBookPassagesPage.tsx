@@ -66,7 +66,7 @@ export const GradeBookPassagesPage: React.FC<GradeBookPassagesPageProps> = ({
         units={units}
         completedLessonIds={studentState.completedLessonIds}
         onOpenPassage={(unit, lessonId, passageId) => {
-          navigate(`/grade/${validGrade}/unit/${unit.id}/lesson/${lessonId}`, {
+          navigate(`/grade/${validGrade}/unit/${unit.id}/lesson/${lessonId}?passage=${encodeURIComponent(passageId)}`, {
             state: { openSection: 'passage', passageId },
           });
           window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -62,6 +62,8 @@ export interface ReadingPassage {
   id?: string;
   titleAr?: string;
   titleEn?: string;
+  imageSrc?: string;
+  imageAlt?: string;
   status: ReadingPassageStatus;
   sourceTitle: string;
   sourcePages: string;

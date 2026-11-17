@@ -19,6 +19,7 @@ import { CartoonMascot } from './CartoonMascot';
 import { playPopSound, playSuccessChime, playFanfare, playBoingSound } from '../utils/cartoonAudio';
 import { BreadcrumbsNav, CalloutBox, BrutalBadge, BrutalButton } from './common/BrutalUI';
 import { getGradeMeta } from '../data/gradeContentResolver';
+import { getBookPassageById, getBookPassagesForLesson } from '../data/bookPassageCatalog';
 import { getBookPassageContent } from '../data/readingPassageContentRegistry';
 
 interface LessonViewerProps {
@@ -50,18 +51,45 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [revealedExplanations, setRevealedExplanations] = useState<Record<string, boolean>>({});
   const [showQuickHints, setShowQuickHints] = useState(false);
+  const searchPassageId = new URLSearchParams(location.search).get('passage') || undefined;
+  const lessonCatalogPassages = grade ? getBookPassagesForLesson(grade, lesson.id) : [];
+  const requestedPassageId = navigationState?.passageId || searchPassageId || lesson.readingPassage?.id;
+  const initialPassageId = (requestedPassageId && lessonCatalogPassages.some((item) => item.id === requestedPassageId))
+    ? requestedPassageId
+    : requestedPassageId || lessonCatalogPassages[0]?.id;
+
+  const [activePassageId, setActivePassageId] = useState<string | undefined>(initialPassageId);
   const [activeSectionView, setActiveSectionView] = useState<'guided' | 'all' | 'interactive' | 'academic' | 'exercises' | 'passage'>(() =>
-    navigationState?.openSection === 'passage' ? 'passage' : 'guided'
+    navigationState?.openSection === 'passage' || Boolean(searchPassageId) ? 'passage' : 'guided'
   );
 
   useEffect(() => {
-    setActiveSectionView(navigationState?.openSection === 'passage' ? 'passage' : 'guided');
-  }, [location.key, lesson.id, navigationState?.openSection]);
+    setActiveSectionView(navigationState?.openSection === 'passage' || Boolean(searchPassageId) ? 'passage' : 'guided');
+  }, [location.key, lesson.id, navigationState?.openSection, searchPassageId]);
+
+  useEffect(() => {
+    setActivePassageId(initialPassageId);
+  }, [lesson.id, initialPassageId]);
+
   const [speakingText, setSpeakingText] = useState<string | null>(null);
 
-  const selectedPassage = navigationState?.passageId
-    ? { ...(lesson.readingPassage || {}), ...(getBookPassageContent(navigationState.passageId) || {}) } as Lesson['readingPassage']
-    : lesson.readingPassage;
+  const activeCatalogItem = (activePassageId && getBookPassageById(activePassageId)) || lessonCatalogPassages[0];
+  const registryPassage = activePassageId ? getBookPassageContent(activePassageId) : undefined;
+  const hasReadingPassage = lesson.category === 'reading' || Boolean(lesson.readingPassage) || lessonCatalogPassages.length > 0;
+  const selectedPassage: Lesson['readingPassage'] = (activePassageId || activeCatalogItem || registryPassage || lesson.readingPassage)
+    ? {
+        ...(lesson.readingPassage || {}),
+        ...(registryPassage || {}),
+        id: activeCatalogItem?.id || registryPassage?.id || lesson.readingPassage?.id,
+        titleAr: registryPassage?.titleAr || activeCatalogItem?.titleAr || lesson.readingPassage?.titleAr,
+        titleEn: registryPassage?.titleEn || activeCatalogItem?.titleEn || lesson.readingPassage?.titleEn,
+        imageSrc: registryPassage?.imageSrc || activeCatalogItem?.imageSrc || lesson.readingPassage?.imageSrc,
+        imageAlt: registryPassage?.imageAlt || activeCatalogItem?.imageAlt || lesson.readingPassage?.imageAlt,
+        sourcePages: registryPassage?.sourcePages || activeCatalogItem?.sourcePages || lesson.readingPassage?.sourcePages || lesson.sourcePages || '',
+        sourceTitle: registryPassage?.sourceTitle || lesson.readingPassage?.sourceTitle || '',
+        status: registryPassage?.status || lesson.readingPassage?.status || 'source_required',
+      }
+    : undefined;
 
   const handleSpeak = (text: string) => {
     setSpeakingText(text);
@@ -329,7 +357,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 <Lightbulb className="w-4 h-4 text-yellow" />
                 <span>شرح القاعدة خطوة بخطوة</span>
               </button>
-              {(lesson.category === 'reading' || lesson.readingPassage) && (
+              {hasReadingPassage && (
                 <button
                   type="button"
                   onClick={() => setActiveSectionView('passage')}
@@ -384,7 +412,7 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
                 <BookOpen className="w-3.5 h-3.5" />
                 <span>شرح الملزمة والملاحظات</span>
               </button>
-              {(lesson.category === 'reading' || lesson.readingPassage) && (
+              {hasReadingPassage && (
                 <button
                   type="button"
                   onClick={() => setActiveSectionView('passage')}
@@ -408,11 +436,22 @@ export const LessonViewer: React.FC<LessonViewerProps> = ({
       </div>
 
       {(activeSectionView === 'passage' || activeSectionView === 'all') &&
-        (lesson.category === 'reading' || lesson.readingPassage) && (
+        hasReadingPassage && (
           <ReadingPassagePanel
             lesson={lesson}
             passage={selectedPassage}
             passageTitle={selectedPassage?.titleAr || lesson.titleAr}
+            catalogPassages={lessonCatalogPassages}
+            activePassageId={activeCatalogItem?.id || activePassageId}
+            onSelectPassage={(nextPassageId) => {
+              setActivePassageId(nextPassageId);
+              if (grade) {
+                navigate(`/grade/${grade}/unit/${unit.id}/lesson/${lesson.id}?passage=${encodeURIComponent(nextPassageId)}`, {
+                  replace: true,
+                  state: { openSection: activeSectionView, passageId: nextPassageId },
+                });
+              }
+            }}
           />
         )}
 

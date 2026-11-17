@@ -1,4 +1,7 @@
+import fs from 'node:fs';
+import path from 'node:path';
 import { ORDERED_GRADES, getUnitsForGrade } from '../src/data/gradeContentResolver';
+import { BOOK_PASSAGES_BY_GRADE, resolveBookPassages } from '../src/data/bookPassageCatalog';
 
 type AuditRow = {
   grade: string;
@@ -16,7 +19,8 @@ const rows: AuditRow[] = [];
 const errors: string[] = [];
 
 for (const grade of ORDERED_GRADES) {
-  const lessons = getUnitsForGrade(grade).flatMap((unit) => unit.lessons);
+  const units = getUnitsForGrade(grade);
+  const lessons = units.flatMap((unit) => unit.lessons);
   const readingLessons = lessons.filter(
     (lesson) => lesson.category === 'reading' || Boolean(lesson.readingPassage)
   );
@@ -77,6 +81,43 @@ for (const grade of ORDERED_GRADES) {
   });
 }
 
+// Verify all catalog reading passage illustrations and uniqueness
+const publicDir = path.resolve(process.cwd(), 'public');
+const seenImageSrc = new Map<string, string>();
+let totalCatalogPassages = 0;
+
+for (const grade of ORDERED_GRADES) {
+  const catalogItems = BOOK_PASSAGES_BY_GRADE[grade] || [];
+  const resolved = resolveBookPassages(grade, getUnitsForGrade(grade));
+  if (resolved.length !== catalogItems.length) {
+    errors.push(`${grade}: only ${resolved.length}/${catalogItems.length} catalog passages resolved to curriculum lessons.`);
+  }
+
+  for (const item of catalogItems) {
+    totalCatalogPassages += 1;
+    const expectedSrc = `/images/passages/${item.id}.webp`;
+    if (item.imageSrc !== expectedSrc) {
+      errors.push(`${grade}/${item.id}: imageSrc "${item.imageSrc}" must equal "${expectedSrc}".`);
+    }
+    if (!item.imageAlt || !/[\u0600-\u06FF]/.test(item.imageAlt)) {
+      errors.push(`${grade}/${item.id}: imageAlt must contain descriptive Arabic text.`);
+    }
+    const existingOwner = seenImageSrc.get(item.imageSrc);
+    if (existingOwner) {
+      errors.push(`${grade}/${item.id}: duplicate imageSrc "${item.imageSrc}" already used by ${existingOwner}.`);
+    } else {
+      seenImageSrc.set(item.imageSrc, item.id);
+    }
+
+    const diskPath = path.join(publicDir, item.imageSrc.replace(/^\//, ''));
+    if (!fs.existsSync(diskPath)) {
+      errors.push(`${grade}/${item.id}: missing image asset on disk at ${diskPath}.`);
+    } else if (fs.statSync(diskPath).size < 10240) {
+      errors.push(`${grade}/${item.id}: image asset at ${diskPath} appears unexpectedly small (<10KB).`);
+    }
+  }
+}
+
 const sixthLessons = getUnitsForGrade('sixth-preparatory').flatMap((unit) => unit.lessons);
 const fitnessLesson = sixthLessons.find((lesson) => lesson.id === 'u4-l2');
 const workTodayLesson = sixthLessons.find((lesson) => lesson.id === 'u7-l3');
@@ -99,6 +140,7 @@ if (moneyLesson?.detailedContent.some((line) => /الأكثر أماناً|ال�
 }
 
 console.table(rows.map(({ pendingIds, ...row }) => row));
+console.log(`Catalog passage image checks: ${seenImageSrc.size}/${totalCatalogPassages} unique local WebP assets verified.`);
 for (const row of rows) {
   if (row.pendingIds.length > 0) {
     console.log(`Pending original source for ${row.grade}: ${row.pendingIds.join(', ')}`);

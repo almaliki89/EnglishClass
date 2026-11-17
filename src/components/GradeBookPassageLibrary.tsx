@@ -4,6 +4,7 @@ import { EducationalGrade, StudentState, Unit } from '../types';
 import { resolveBookPassages } from '../data/bookPassageCatalog';
 import { getBookPassageContent } from '../data/readingPassageContentRegistry';
 import { BrutalBadge, BrutalButton, BrutalCard } from './common/BrutalUI';
+import { PassageImageFigure } from './common/PassageImageFigure';
 
 interface GradeBookPassageLibraryProps {
   grade: EducationalGrade;
@@ -131,7 +132,7 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
             قطع المنهج مرتبة حسب الوحدات. افتح القطعة لقراءة النص كاملًا ثم الترجمة ثم أسئلة المصدر وإجاباتها.
           </p>
         </div>
-        <div className="flex items-center gap-2 text-xs font-mono font-black shrink-0">
+        <div className="flex flex-wrap items-center gap-2 text-xs font-mono font-black shrink-0">
           <span className="bg-surface border-2 border-ink px-3 py-2">{passages.length} قطعة</span>
           <span className="bg-soft-mint border-2 border-ink px-3 py-2">{completePassageCount} مكتملة المحتوى</span>
           <span className="bg-paper border-2 border-ink px-3 py-2">{unitsWithPassages.length} وحدات</span>
@@ -181,7 +182,7 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
         </div>
 
         {groupedPassages.length > 0 ? (
-          <div className="space-y-3">
+          <div className="space-y-4">
             {groupedPassages.map(({ unit, items }, index) => {
               const isExpanded = selectedUnitId === String(unit.id) || Boolean(expandedUnitIds[unit.id]) || (index === 0 && Object.keys(expandedUnitIds).length === 0);
               return (
@@ -190,7 +191,7 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                     type="button"
                     onClick={() => setExpandedUnitIds((previous) => ({ ...previous, [unit.id]: !isExpanded }))}
                     aria-expanded={isExpanded}
-                    className="w-full flex items-center justify-between gap-3 p-3 sm:p-4 text-right hover:bg-yellow/25 transition-colors"
+                    className="w-full flex items-center justify-between gap-3 p-3 sm:p-4 text-right hover:bg-yellow/25 transition-colors cursor-pointer"
                   >
                     <span className="flex items-center gap-3 min-w-0">
                       <span className="w-8 h-8 shrink-0 bg-yellow border-2 border-ink flex items-center justify-center font-black text-xs">
@@ -208,7 +209,7 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                   </button>
 
                   {isExpanded && (
-                    <div className="border-t-2 border-ink divide-y divide-ink/15">
+                    <div className="border-t-2 border-ink bg-paper/40 p-3 sm:p-4 grid grid-cols-1 md:grid-cols-2 gap-4">
                       {items.map((item, itemIndex) => {
                         const passage = { ...(item.lesson.readingPassage || {}), ...(getBookPassageContent(item.id) || {}) };
                         const status = getSourceStatus(passage?.status, Boolean(item.sourcePages || passage?.sourcePages || item.lesson.sourcePages));
@@ -219,6 +220,8 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                         const hasTranslation = Boolean(passage?.translation?.some((paragraph) => paragraph.trim().length > 0));
                         const hasSourceQuestions = Boolean(passage?.exerciseSets?.some((set) => set.items.length > 0));
                         const isContentComplete = hasText && hasTranslation && hasSourceQuestions;
+                        const shortDescription = item.lesson.summary || passage?.verificationNote || '';
+
                         return (
                           <article
                             key={item.id}
@@ -227,38 +230,88 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                             data-lesson-id={item.lesson.id}
                             data-unit-id={unit.id}
                             data-passage-complete={isContentComplete ? 'true' : 'false'}
-                            className="p-3 sm:p-4 flex flex-col lg:flex-row lg:items-center justify-between gap-3"
+                            className="group border-2 border-ink bg-surface shadow-brutal-sm flex flex-col justify-between overflow-hidden rounded-[6px]"
                           >
-                            <div className="flex items-start gap-3 min-w-0">
-                              <span className="w-7 h-7 shrink-0 bg-paper border border-ink flex items-center justify-center text-[10px] font-mono font-black text-ink">
-                                {itemIndex + 1}
-                              </span>
-                              <div className="min-w-0 space-y-1">
-                                <h3 className="text-sm font-black text-ink leading-6">{item.titleAr}</h3>
-                                <p className="text-[11px] font-mono font-bold text-cobalt leading-5 break-words" dir="ltr">{item.titleEn}</p>
-                                <div className="flex flex-wrap items-center gap-2 pt-1 text-[10px] font-bold">
-                                  {pages && <span className="text-ink/65">الصفحة: {pages}</span>}
-                                  <span className={`inline-flex items-center gap-1 px-2 py-1 border ${status.className}`}>
+                            <div>
+                              <div className="relative">
+                                <PassageImageFigure
+                                  src={item.imageSrc}
+                                  alt={item.imageAlt}
+                                  titleAr={item.titleAr}
+                                  titleEn={item.titleEn}
+                                  priority={index === 0 && itemIndex < 2}
+                                  className="border-x-0 border-t-0 border-b-2 rounded-none"
+                                />
+                                <span className="absolute top-2.5 right-2.5 px-2 py-0.5 bg-yellow text-ink border-2 border-ink text-[10px] font-mono font-black shadow-brutal-xs">
+                                  #{String(itemIndex + 1).padStart(2, '0')}
+                                </span>
+                              </div>
+
+                              <div className="p-4 space-y-2.5">
+                                <div className="flex flex-wrap items-center justify-between gap-2 text-[11px] font-bold">
+                                  <span className="text-cobalt font-black">
+                                    {gradeName} · الوحدة {unit.number}
+                                  </span>
+                                  <span className={`inline-flex items-center gap-1 px-2 py-0.5 border text-[10px] font-black ${status.className}`}>
                                     {status.icon}
                                     {status.label}
                                   </span>
-                                  <span className={`px-2 py-1 border ${hasText ? 'bg-soft-mint border-semantic-success' : 'bg-paper border-ink/40'}`}>{hasText ? '✓ النص' : '— النص'}</span>
-                                  <span className={`px-2 py-1 border ${hasTranslation ? 'bg-soft-mint border-semantic-success' : 'bg-paper border-ink/40'}`}>{hasTranslation ? '✓ الترجمة' : '— الترجمة'}</span>
-                                  <span className={`px-2 py-1 border ${hasSourceQuestions ? 'bg-soft-mint border-semantic-success' : 'bg-paper border-ink/40'}`}>{hasSourceQuestions ? '✓ الأسئلة والإجابات' : '— الأسئلة والإجابات'}</span>
-                                  {isContentComplete && <span className="font-black text-semantic-success">القطعة مكتملة</span>}
-                                  {isCompleted && <span className="text-semantic-success">✓ تمت دراسة الدرس المرتبط</span>}
+                                </div>
+
+                                <div>
+                                  <h3 className="text-base font-black text-ink leading-snug">{item.titleAr}</h3>
+                                  <p className="text-xs font-mono font-bold text-cobalt leading-5 break-words mt-0.5" dir="ltr">
+                                    {item.titleEn}
+                                  </p>
+                                </div>
+
+                                {shortDescription && (
+                                  <p className="text-xs leading-6 text-ink/75 font-medium line-clamp-2">
+                                    {shortDescription}
+                                  </p>
+                                )}
+
+                                <div className="pt-1 border-t border-ink/15 space-y-1.5 text-[11px]">
+                                  {(passage?.sourceTitle || pages) && (
+                                    <p className="text-ink/70 font-bold leading-5">
+                                      <span className="text-ink font-black">المصدر: </span>
+                                      {passage?.sourceTitle || 'المنهج المقرر'}
+                                      {pages ? ` · الصفحة: ${pages}` : ''}
+                                    </p>
+                                  )}
+                                  <div className="flex flex-wrap items-center gap-2 text-[10px] font-mono font-bold text-ink/75">
+                                    <span className={hasText ? 'text-semantic-success font-black' : ''}>{hasText ? '✓ النص' : '— النص'}</span>
+                                    <span>·</span>
+                                    <span className={hasTranslation ? 'text-semantic-success font-black' : ''}>{hasTranslation ? '✓ الترجمة' : '— الترجمة'}</span>
+                                    <span>·</span>
+                                    <span className={hasSourceQuestions ? 'text-semantic-success font-black' : ''}>{hasSourceQuestions ? '✓ الأسئلة' : '— الأسئلة'}</span>
+                                    {isCompleted && (
+                                      <>
+                                        <span>·</span>
+                                        <span className="text-cobalt font-black">✓ مدروسة</span>
+                                      </>
+                                    )}
+                                  </div>
                                 </div>
                               </div>
                             </div>
-                            <BrutalButton
-                              variant="yellow"
-                              size="sm"
-                              onClick={() => onOpenPassage(unit, item.lesson.id, item.id)}
-                              className="shrink-0 self-start lg:self-center"
-                            >
-                              فتح القطعة كاملة
-                              <ArrowLeft className="w-3.5 h-3.5" />
-                            </BrutalButton>
+
+                            <div className="px-4 pb-4 pt-2 flex items-center justify-between gap-2">
+                              {isContentComplete ? (
+                                <span className="text-[11px] font-black text-semantic-success">القطعة مكتملة</span>
+                              ) : (
+                                <span className="text-[11px] font-bold text-ink/55">بانتظار إكمال المصدر</span>
+                              )}
+                              <BrutalButton
+                                variant="yellow"
+                                size="sm"
+                                onClick={() => onOpenPassage(unit, item.lesson.id, item.id)}
+                                className="shrink-0"
+                              >
+                                فتح القطعة كاملة
+                                <ArrowLeft className="w-3.5 h-3.5" />
+                              </BrutalButton>
+                            </div>
                           </article>
                         );
                       })}
