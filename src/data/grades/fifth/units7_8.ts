@@ -72,6 +72,29 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
       },
       {
         id: "5th-u7-l2",
+        pedagogy: {
+          "warmup": "يمكن تغيير معنى الكلمة بإضافة بادئة في بدايتها أو لاحقة في نهايتها؛ وهذا يساعد على فهم كلمات جديدة وبناء مفردات مترابطة.",
+          "learningObjectives": [
+            "أميز prefix عن suffix.",
+            "أتعرف على البادئات المعاكسة الواردة في الدرس.",
+            "أتعرف على اللواحق التي تكوّن كلمات أو تغير نوعها.",
+            "أحافظ على تهجئة الكلمة بعد الاشتقاق."
+          ],
+          "arabicExplanation": "الـ prefix يضاف في بداية الكلمة وقد يغيّر معناها مثل un- أو dis- للدلالة على العكس أو النفي. أما suffix فيضاف في نهاية الكلمة وقد يغيّر نوعها أو وظيفتها، مثل -ful و-less و-ment بحسب أمثلة المنهج. لا توجد قاعدة واحدة تصلح لكل الكلمات؛ اربط كل كلمة مشتقة بأصلها ومعناها واستخدامها.",
+          "solvingClues": [
+            "إذا جاءت الإضافة في بداية الكلمة فهي prefix.",
+            "إذا جاءت في نهاية الكلمة فهي suffix.",
+            "قارن معنى الكلمة الأصلية بالمشتقة.",
+            "حدد هل تغير المعنى فقط أم نوع الكلمة أيضاً."
+          ],
+          "commonTraps": [
+            "لا تخلط بين prefix وsuffix.",
+            "لا تضف لاحقة دون مراعاة التهجئة.",
+            "لا تفترض أن كل كلمة تقبل جميع البادئات واللواحق."
+          ],
+          "recapSummary": "Prefix قبل الكلمة؛ suffix بعدها. احفظ كل اشتقاق مع المعنى ونوع الكلمة.",
+          "nextStepRecommendation": "أنشئ جدولاً من عمودين: الأصل والمشتق، وحدد البادئة أو اللاحقة ومعناها."
+        },
         unitId: 57,
         lessonNumber: 2,
         titleAr: "الدرس الثاني: انتخابات رئيس الصف والبادئات المعاكسة واللواحق (Prefixes & Suffixes)",
@@ -119,6 +142,28 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
       },
       {
         id: "5th-u7-l3",
+        pedagogy: {
+          "warmup": "عندما ترتب لإصلاح سيارتك، لا تصلحها بنفسك بالضرورة؛ بل تجعل شخصاً آخر يقوم بالخدمة.",
+          "learningObjectives": [
+            "أستخدم have/get + object + V3.",
+            "أحدد الشيء الذي تلقى الخدمة.",
+            "أفرق بين تنفيذ الفعل وترتيب تنفيذه بواسطة شخص آخر."
+          ],
+          "arabicExplanation": "Causative structure يصف ترتيب خدمة يقوم بها شخص آخر: I had my car repaired. الصيغة have/get + object + past participle. يتغير have أو get بحسب الزمن والفاعل، لكن الفعل الذي يصف الخدمة يأتي بالتصريف الثالث.",
+          "solvingClues": [
+            "اسأل هل الفاعل ينفذ العمل أم يرتب الخدمة.",
+            "حدد object الذي تقع عليه الخدمة.",
+            "ضع V3 بعد object.",
+            "صرّف have/get وفق الزمن."
+          ],
+          "commonTraps": [
+            "لا تستخدم المصدر بعد object.",
+            "لا تخلط I repaired مع I had it repaired.",
+            "لا تنسَ تصريف have/get."
+          ],
+          "recapSummary": "have/get + object + past participle = ترتيب خدمة ينفذها شخص آخر.",
+          "nextStepRecommendation": "حوّل أمثلة الخدمات إلى causative وحدد object وV3."
+        },
         unitId: 57,
         lessonNumber: 3,
         titleAr: "الدرس الثالث: الأفعال السببية (Causative Verbs: have / get something done)",
@@ -157,6 +202,29 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
       },
       {
         id: "5th-u7-l4",
+        pedagogy: {
+          "warmup": "ضمير الوصل يتيح ربط معلومة عن سوق أو شخص أو مكان بجملة واحدة دون تكرار الاسم.",
+          "learningObjectives": [
+            "أستخدم who للأشخاص.",
+            "أستخدم which/that للأشياء.",
+            "أستخدم where للمكان وwhose للملكية.",
+            "أدمج الجمل دون تكرار."
+          ],
+          "arabicExplanation": "تربط relative clause اسماً بالمعلومة التي تحدده. who للأشخاص، which/that للأشياء والحيوانات، where للمكان الذي يقع فيه الحدث، وwhose للملكية. افحص وظيفة الجملة بعد الفراغ لتحديد الأداة المناسبة، ولا تختَر where لمجرد أن الاسم السابق مكان.",
+          "solvingClues": [
+            "شخص: who.",
+            "شيء أو حيوان: which/that.",
+            "مكان + حدث يقع فيه: where.",
+            "ملكية + اسم مملوك: whose."
+          ],
+          "commonTraps": [
+            "لا تستخدم who لغير العاقل.",
+            "لا تختَر where لمجرد وجود اسم مكان.",
+            "لا تخلط whose مع who's."
+          ],
+          "recapSummary": "who / which / that / where / whose بحسب نوع الاسم والعلاقة.",
+          "nextStepRecommendation": "ادمج أزواج الجمل في أمثلة الدرس بضمير الوصل المناسب."
+        },
         unitId: 57,
         lessonNumber: 4,
         titleAr: "الدرس الرابع: أسواق بغداد التراثية وضمائر الوصل (Baghdad Souqs & Relative Clauses)",
@@ -241,6 +309,28 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
       },
       {
         id: "5th-u7-l6",
+        pedagogy: {
+          "warmup": "قد نصف موقفاً بأنه surprising، ونقول إن الشخص كان surprised. وقد نستخدم extreme adjectives للتعبير عن درجة قوية جداً بدلاً من very + صفة عادية.",
+          "learningObjectives": [
+            "أميز بين الصفة التي تصف سبب الشعور والصفة التي تصف من يشعر به.",
+            "أتعرف على extreme adjectives الواردة في الدرس.",
+            "أختار intensifier مناسباً مع الصفة.",
+            "أستخدم الصفة في جملة صحيحة."
+          ],
+          "arabicExplanation": "بعض الصفات تصف الشيء الذي يسبب الشعور، مثل surprising، وأخرى تصف الشخص الذي يشعر به، مثل surprised. أما extreme adjectives فهي صفات تحمل معنى قوياً بذاتها مثل exhausted أو boiling، وغالباً لا نستخدم معها very في الاستعمال القياسي؛ بل نستخدم intensifiers مناسبة مثل absolutely أو really بحسب الصفة وقاعدة الدرس. احفظ كل صفة مع درجة قوتها والكلمات التي تلائمها.",
+          "solvingClues": [
+            "حدّد هل تصف الشيء أم الشخص المتأثر بالشعور.",
+            "ميّز الصفة العادية من الصفة الشديدة.",
+            "راجع intensifier المناسب لكل صفة شديدة في قائمة الدرس."
+          ],
+          "commonTraps": [
+            "لا تستخدم very آلياً مع كل extreme adjective.",
+            "لا تخلط surprised مع surprising.",
+            "لا تفترض أن absolutely وvery يتبادلان المواقع مع جميع الصفات."
+          ],
+          "recapSummary": "-ing غالباً لسبب الشعور و-ed لصاحبه؛ extreme adjectives قوية وتحتاج intensifier مناسباً.",
+          "nextStepRecommendation": "صنّف صفات المشاعر إلى -ed/-ing ثم اربط الصفات الشديدة بالمقوي المناسب."
+        },
         unitId: 57,
         lessonNumber: 6,
         titleAr: "الدرس السادس: المحادثات الرقمية وصفات المشاعر القوية (Online Chat & Extreme Adjectives)",
@@ -389,6 +479,28 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
     lessons: [
       {
         id: "5th-u8-l1",
+        pedagogy: {
+          "warmup": "التعريف الجيد يحدد الشيء أو المهنة بعبارة دقيقة، وقد يحتاج إلى ضمير وصل لشرح الوظيفة أو المكان.",
+          "learningObjectives": [
+            "أصوغ تعريفاً يبدأ بالفئة المناسبة.",
+            "أستخدم who/which/where بحسب المرجع.",
+            "أراجع توافق الفعل مع الاسم."
+          ],
+          "arabicExplanation": "عند تعريف شخص يمكن استخدام someone who، وللشيء something which/that، وللمكان a place where. أضف خاصية أو وظيفة تميز المصطلح عن غيره، ثم راجع توافق الفعل مع الاسم. الهدف تعريف محدد لا وصف عام.",
+          "solvingClues": [
+            "شخص: someone who.",
+            "شيء: something which/that.",
+            "مكان: a place where.",
+            "أضف وظيفة أو خاصية مميزة."
+          ],
+          "commonTraps": [
+            "لا تستخدم who لتعريف شيء.",
+            "لا تجعل التعريف عاماً وغير مميز.",
+            "لا تنسَ أداة التنكير مع الاسم المفرد المعدود."
+          ],
+          "recapSummary": "Person → someone who؛ thing → something which/that؛ place → a place where.",
+          "nextStepRecommendation": "اكتب تعريفين لمفردات الوحدة واختبر دقتهما."
+        },
         unitId: 58,
         lessonNumber: 1,
         titleAr: "الدرس الأول: مراجعة ضمائر الوصل والتعاريف (Relative Pronouns & Definitions Revision)",
@@ -427,6 +539,28 @@ export const FIFTH_PREPARATORY_UNITS_7_8: Unit[] = [
       },
       {
         id: "5th-u8-l2",
+        pedagogy: {
+          "warmup": "سؤال What would you do if you won…? يضعك في موقف خيالي لتشرح ما ستفعله.",
+          "learningObjectives": [
+            "أستخدم Second Conditional للمواقف الافتراضية.",
+            "أضع past simple بعد if.",
+            "أستخدم would + base في النتيجة."
+          ],
+          "arabicExplanation": "Second Conditional: If + past simple, would + base verb. يستخدم للمواقف الخيالية أو غير المرجحة في الحاضر أو المستقبل. الماضي بعد if لا يعني أن الحدث وقع فعلاً. عند الإجابة اذكر النتيجة باستخدام I would…",
+          "solvingClues": [
+            "الموقف خيالي أو غير مرجح.",
+            "بعد if استخدم past simple.",
+            "بعد would استخدم المصدر.",
+            "حافظ على معنى السؤال الافتراضي."
+          ],
+          "commonTraps": [
+            "لا تضع would بعد if في الصيغة القياسية.",
+            "لا تستخدم V2 بعد would.",
+            "لا تخلط الشرط الثاني بالأول."
+          ],
+          "recapSummary": "If + past simple, would + base verb.",
+          "nextStepRecommendation": "أجب عن ثلاثة أسئلة افتراضية باستخدام I would."
+        },
         unitId: 58,
         lessonNumber: 2,
         titleAr: "الدرس الثاني: حوار المواقف الخيالية والشرطية الثانية (Hypothetical Situations Dialogue)",

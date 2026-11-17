@@ -203,6 +203,29 @@ export const UNIT_4: Unit = {
     },
     {
       id: "u4-l4",
+      pedagogy: {
+        "warmup": "قد تتمنى لو أن قراراً ماضياً كان مختلفاً، أو تتخيل نتيجة أخرى لشرط لم يتحقق. في هذا الدرس نراجع التعبير عن الندم والشرط الثالث.",
+        "learningObjectives": [
+          "أستخدم If only/I wish للندم على الماضي.",
+          "أكوّن Third Conditional.",
+          "أميز صيغة wish عن صيغة if الشرطية.",
+          "أراجع التصريف الثالث في كلا التركيبين."
+        ],
+        "arabicExplanation": "للندم على الماضي نستخدم If only/I wish + past perfect: I wish I had studied. ولتخيل نتيجة مختلفة لشرط ماضٍ نستخدم If + past perfect, would have + V3. الأولى تعبر مباشرة عن شعور المتكلم بالندم، والثانية تربط شرطاً ماضياً بنتيجة افتراضية. انتبه إلى أن had يتبعها التصريف الثالث، وكذلك have بعد would.",
+        "solvingClues": [
+          "تعبير رغبة أو ندم مباشر: wish/if only + had + V3.",
+          "شرط ونتيجة ماضيان: if + had + V3, would have + V3.",
+          "حدّد هل السؤال يطلب إعادة صياغة أو إكمال شرط.",
+          "تحقق من التصريف الثالث في الجزأين."
+        ],
+        "commonTraps": [
+          "لا تضع would have بعد if في الشرط الثالث.",
+          "لا تخلط had + V3 مع had better.",
+          "لا تستخدم V2 بدلاً من V3."
+        ],
+        "recapSummary": "Past regret: wish/if only + had + V3. Third Conditional: if + had + V3, would have + V3.",
+        "nextStepRecommendation": "حوّل مثالاً إلى wish وآخر إلى Third Conditional، ثم اشرح الفرق في المعنى."
+      },
       unitId: 4,
       lessonNumber: 4,
       titleAr: "الدرس الرابع: لو فقط... التعبير عن الندم والشرطية الثالثة (If only ...)",

@@ -428,6 +428,18 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
         </p>
       </div>
 
+      {lesson.pedagogy?.nextStepRecommendation ? (
+        <div className="rounded-xl border-2 border-ink bg-blue-mist p-5" data-testid="grammar-next-step">
+          <div className="flex items-center gap-2 text-sm font-black text-ink">
+            <Target className="h-4 w-4 text-cobalt" />
+            خطوتك التالية
+          </div>
+          <p className="mt-2 text-sm font-semibold leading-8 text-ink">
+            {lesson.pedagogy.nextStepRecommendation}
+          </p>
+        </div>
+      ) : null}
+
       {currentExercise ? (
         <article className="overflow-hidden rounded-xl border-2 border-ink bg-surface shadow-brutal-callout">
           <div className="flex items-center justify-between gap-3 border-b-2 border-ink bg-paper p-3">

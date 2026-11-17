@@ -77,6 +77,29 @@ export const UNIT_2: Unit = {
     },
     {
       id: "u2-l2",
+      pedagogy: {
+        "warmup": "في واجبات الشرطة والسلامة، توجد أفعال ضرورية وأخرى ممنوعة، وأفعال لا يلزم القيام بها. اختيار modal يغيّر معنى التعليمات.",
+        "learningObjectives": [
+          "أستخدم must/have to/need to للضرورة.",
+          "أستخدم mustn't للمنع.",
+          "أميز don't have to عن mustn't.",
+          "أختار modal المناسب للسياق."
+        ],
+        "arabicExplanation": "must وhave to وneed to تعبر عن الضرورة أو الالتزام بدرجات وسياقات مختلفة. mustn't تعني ممنوع، بينما don't have to تعني ليس من الضروري. بعد must وmustn't يأتي المصدر المجرد، وبعد have to وneed to يأتي المصدر مع to. في النفي والسؤال مع have to نستخدم do/does ثم have to.",
+        "solvingClues": [
+          "إلزام أو ضرورة: must/have to/need to.",
+          "منع قانوني أو تحذير: mustn't.",
+          "عدم ضرورة: don't/doesn't have to.",
+          "بعد does استخدم have to لا has to."
+        ],
+        "commonTraps": [
+          "لا تخلط mustn't مع don't have to.",
+          "لا تستخدم to بعد must أو mustn't.",
+          "لا تقل doesn't has to."
+        ],
+        "recapSummary": "must/have to/need to = ضرورة؛ mustn't = منع؛ don't have to = عدم ضرورة.",
+        "nextStepRecommendation": "صنّف مواقف السلامة إلى إلزام ومنع وعدم ضرورة ثم أعد صياغتها."
+      },
       unitId: 2,
       lessonNumber: 2,
       titleAr: "الدرس الثاني: واجبات ضابط الشرطة وقواعد الإلزام والمنع",
@@ -155,6 +178,29 @@ export const UNIT_2: Unit = {
     },
     {
       id: "u2-l3",
+      pedagogy: {
+        "warmup": "في المطار نحتاج إلى التعبير عن النصيحة والطلب المهذب والاقتراح والعرض والتوقع. كل وظيفة لغوية لها عبارة مناسبة.",
+        "learningObjectives": [
+          "أميز وظائف النصيحة والطلب والاقتراح والعرض والتوقع.",
+          "أختار العبارة الملائمة للموقف.",
+          "أستخدم الصيغة الصحيحة للفعل بعد العبارة."
+        ],
+        "arabicExplanation": "اقرأ الموقف وحدد ما يريده المتحدث: هل ينصح، يطلب شيئاً بأدب، يقترح، يعرض المساعدة، أم يتوقع؟ عبارات النصيحة مثل You should…، والطلب المهذب مثل Could you…?، والاقتراح مثل Let's… أو Why don't we…?، والعرض مثل Shall I…?، والتوقع بحسب صيغة الدرس. بعد تحديد الوظيفة، افحص شكل الفعل الذي يلي العبارة: مصدر مجرد أو to + مصدر أو V-ing.",
+        "solvingClues": [
+          "حدّد وظيفة المتحدث قبل اختيار العبارة.",
+          "الطلب المهذب غالباً يبدأ بـ Could you…?",
+          "الاقتراح قد يبدأ بـ Let's أو Why don't we…?",
+          "العرض قد يبدأ بـ Shall I…?",
+          "راجع شكل الفعل بعد التعبير."
+        ],
+        "commonTraps": [
+          "لا تخلط الاقتراح بعرض القيام بالفعل نيابة عن الآخر.",
+          "لا تضف to بعد Let's أو Shall I.",
+          "لا تختَر العبارة من كلمة منفردة دون فهم الموقف."
+        ],
+        "recapSummary": "حدّد الوظيفة التواصلية أولاً، ثم اختر العبارة وشكل الفعل المناسب.",
+        "nextStepRecommendation": "صنّف خمسة مواقف إلى نصيحة أو طلب أو اقتراح أو عرض أو توقع."
+      },
       unitId: 2,
       lessonNumber: 3,
       titleAr: "الدرس الثالث: الوظائف اللغوية الخمسة وتعاريف المطار",
@@ -385,6 +431,27 @@ export const UNIT_2: Unit = {
     },
     {
       id: "u2-l6",
+      pedagogy: {
+        "warmup": "عندما تطلب من ورشة إصلاح سيارتك، فأنت لا تقوم بالإصلاح بنفسك بل ترتب أن يقوم به شخص آخر. هذا معنى causative.",
+        "learningObjectives": [
+          "أستخدم have/get + object + V3.",
+          "أميز causative عن الفعل المباشر.",
+          "أستخدم make في معنى الإلزام أو التسبب بحسب التركيب."
+        ],
+        "arabicExplanation": "have/get something done تعني ترتيب أن يقوم شخص آخر بالخدمة: I had my car repaired. تأتي have/get ثم المفعول ثم التصريف الثالث. أما make في تركيب make + object + base verb فيعني إجبار أو جعل شخص يقوم بفعل، مثل The teacher made us rewrite the answer. افحص هل المقصود خدمة على شيء أم جعل شخص يؤدي فعلاً.",
+        "solvingClues": [
+          "خدمة ينفذها شخص آخر: have/get + object + V3.",
+          "جعل شخص يفعل شيئاً: make + person + base verb.",
+          "حدد المفعول ونوع الفعل قبل اختيار التركيب."
+        ],
+        "commonTraps": [
+          "لا تستخدم V3 بعد make في هذا التركيب؛ يأتي المصدر المجرد.",
+          "لا تستخدم المصدر بعد object في have/get something done.",
+          "لا تخلط الخدمة بالإجبار."
+        ],
+        "recapSummary": "have/get + object + V3 للخدمات؛ make + person + base لإجبار أو جعل شخص يفعل.",
+        "nextStepRecommendation": "صنّف أمثلة الدرس إلى خدمة مرتبة أو فعل يفرضه شخص على آخر."
+      },
       unitId: 2,
       lessonNumber: 6,
       titleAr: "الدرس السادس: قصة السرقة والأفعال السببية (have, get, make)",

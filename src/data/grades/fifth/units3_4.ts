@@ -19,6 +19,27 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
     lessons: [
       {
         id: "5th-u3-l1",
+        pedagogy: {
+          "warmup": "عند وصف حيوان، قد نستخدم عدة صفات قبل الاسم؛ ترتيبها يجعل الوصف طبيعياً.",
+          "learningObjectives": [
+            "أصنّف الصفات بحسب نوعها.",
+            "أرتب الصفات قبل الاسم.",
+            "أميز الرأي والحجم والعمر واللون والأصل والمادة."
+          ],
+          "arabicExplanation": "الترتيب الشائع للصفات قبل الاسم: الرأي، الحجم، العمر، الشكل، اللون، الأصل، المادة، الغرض، ثم الاسم. لا يلزم وجود كل الأنواع في كل عبارة. صنّف الصفات أولاً ثم رتّبها.",
+          "solvingClues": [
+            "صنّف كل صفة.",
+            "رتب من الرأي إلى الغرض.",
+            "ضع الاسم أخيراً."
+          ],
+          "commonTraps": [
+            "لا تبدّل اللون والحجم عشوائياً.",
+            "لا تخلط الأصل بالمادة.",
+            "لا تجمع more مع صيغ المقارنة."
+          ],
+          "recapSummary": "Opinion → Size → Age → Shape → Colour → Origin → Material → Purpose → Noun.",
+          "nextStepRecommendation": "رتّب أوصافاً متعددة ثم علّل ترتيب كل صفة."
+        },
         unitId: 53,
         lessonNumber: 1,
         titleAr: "الدرس الأول: الحيوانات المهددة بالانقراض وترتيب الصفات (Endangered Species & Order of Adjectives)",
@@ -62,6 +83,27 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
       },
       {
         id: "5th-u3-l2",
+        pedagogy: {
+          "warmup": "في حماية الحيوانات توجد أفعال واجبة وأخرى ممنوعة؛ must وmustn't لا يحملان المعنى نفسه.",
+          "learningObjectives": [
+            "أستخدم must للإلزام.",
+            "أستخدم mustn't للمنع.",
+            "أميز mustn't عن عدم الضرورة."
+          ],
+          "arabicExplanation": "must تعني يجب أو يلزم، أما mustn't فتعني ممنوع. لا تخلطها مع don't have to التي تعني ليس من الضروري. يأتي المصدر المجرد بعد الأفعال المساعدة.",
+          "solvingClues": [
+            "قاعدة واجبة: must.",
+            "حظر أو تحذير: mustn't.",
+            "عدم وجود ضرورة: don't have to."
+          ],
+          "commonTraps": [
+            "mustn't ليست بمعنى ليس ضرورياً.",
+            "لا تضف to بعد must.",
+            "لا تضف s للفعل بعد must."
+          ],
+          "recapSummary": "must = إلزام؛ mustn't = منع؛ don't have to = عدم ضرورة.",
+          "nextStepRecommendation": "صنّف مواقف حماية البيئة إلى إلزام ومنع وعدم ضرورة."
+        },
         unitId: 53,
         lessonNumber: 2,
         titleAr: "الدرس الثاني: ملفات حقائق الكائنات وأفعال الإلزام (Animal Factfiles & must/mustn't)",
@@ -154,6 +196,27 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
       },
       {
         id: "5th-u3-l4",
+        pedagogy: {
+          "warmup": "إذا لم نعد تدوير البطاريات فقد تزداد الأضرار. هذا شرط ممكن ونتيجة مستقبلية.",
+          "learningObjectives": [
+            "أكوّن الشرط الأول.",
+            "أستخدم المضارع البسيط بعد if.",
+            "أستخدم will + المصدر في النتيجة."
+          ],
+          "arabicExplanation": "First Conditional: If + present simple, will + base verb. نستخدمه لشرط ممكن في المستقبل ونتيجته المتوقعة. يمكن تقديم النتيجة أولاً، ولا نستخدم will عادةً داخل جملة if.",
+          "solvingClues": [
+            "حدّد جملة if.",
+            "بعد if استخدم المضارع البسيط.",
+            "في النتيجة استخدم will + المصدر."
+          ],
+          "commonTraps": [
+            "لا تضع will بعد if.",
+            "لا تستخدم التصريف الثاني بعد will.",
+            "لا تخلط الشرط الأول بالصفري."
+          ],
+          "recapSummary": "If + present simple, will + base verb.",
+          "nextStepRecommendation": "اكتب مثالاً بيئياً بالشرط الأول ثم اعكس ترتيب الجملتين."
+        },
         unitId: 53,
         lessonNumber: 4,
         titleAr: "الدرس الرابع: الحالة الشرطية الأولى والمخلفات الإلكترونية (First Conditional & Toxic E-Waste)",
@@ -192,6 +255,28 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
       },
       {
         id: "5th-u3-l5",
+        pedagogy: {
+          "warmup": "عندما تعيد استخدام شيء ما، تضيف إلى الفعل أو الاسم السابقة re- التي تدل غالباً على التكرار أو الإعادة.",
+          "learningObjectives": [
+            "أتعرف على معنى السابقة re-.",
+            "أكوّن كلمات تدل على إعادة الفعل.",
+            "أميز الكلمة الأصلية من الكلمة المشتقة.",
+            "أستخدم الكلمات الجديدة في سياقها."
+          ],
+          "arabicExplanation": "تأتي السابقة re- قبل بعض الأفعال أو الأسماء لتضيف معنى again أو back، مثل recycle وإعادة التدوير، reuse وإعادة الاستخدام، rebuild وإعادة البناء. ليست كل كلمة تبدأ بالحرفين re مشتقة بهذه الطريقة؛ لذلك تعلّم الكلمات الواردة في الدرس بوصفها مفردات مشتقة، ولا تفصل السابقة عن الكلمة عند التهجئة.",
+          "solvingClues": [
+            "ابحث عن معنى الإعادة أو التكرار في السياق.",
+            "حدّد الكلمة الأصلية ثم لاحظ معنى re-.",
+            "تحقق من أن الكلمة المشتقة واردة في مفردات الدرس."
+          ],
+          "commonTraps": [
+            "لا تضف re- إلى أي كلمة عشوائياً.",
+            "لا تحذف حرفاً من الكلمة الأصلية دون قاعدة.",
+            "لا تخلط re- مع بادئات النفي مثل un- أو dis-."
+          ],
+          "recapSummary": "re- تضيف غالباً معنى again/back، مثل reuse وrecycle وrebuild.",
+          "nextStepRecommendation": "كوّن قائمة من كلمات re- في الوحدة، واكتب معنى كل كلمة وجملة قصيرة."
+        },
         unitId: 53,
         lessonNumber: 5,
         titleAr: "الدرس الخامس: إعادة التدوير والبادئة re- (Recycling & The Prefix re-)",
@@ -282,6 +367,28 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
       },
       {
         id: "5th-u3-l7",
+        pedagogy: {
+          "warmup": "عندما ترى شخصاً يحتاج مساعدة، يمكنك عرض القيام بالمهمة بدلاً منه.",
+          "learningObjectives": [
+            "أستخدم Shall I لعرض المساعدة.",
+            "أستخدم Would you like me to للعرض المهذب.",
+            "أستخدم I'll للتعبير عن قرار فوري."
+          ],
+          "arabicExplanation": "Shall I + base verb؟ لعرض القيام بشيء. Would you like me to + base verb؟ لعرض أكثر تهذيباً. I'll + base verb قد تعبّر عن قرار فوري. بعد هذه التراكيب يأتي المصدر المجرد.",
+          "solvingClues": [
+            "عرض بصيغة سؤال: Shall I…?",
+            "عرض مهذب: Would you like me to…?",
+            "قرار فوري: I'll…",
+            "تحقق من وجود المصدر بعد الصيغة."
+          ],
+          "commonTraps": [
+            "لا تضع to بعد Shall I.",
+            "لا تحذف me من Would you like me to.",
+            "لا تستخدم V-ing بعد I'll."
+          ],
+          "recapSummary": "Shall I + base؛ Would you like me to + base؛ I'll + base.",
+          "nextStepRecommendation": "اكتب عرضين لمساعدة شخص في سياقين مختلفين."
+        },
         unitId: 53,
         lessonNumber: 7,
         titleAr: "الدرس السابع: أساليب تقديم العروض والمساعدة (Making Offers)",
@@ -583,6 +690,29 @@ export const FIFTH_PREPARATORY_UNITS_3_4: Unit[] = [
       },
       {
         id: "5th-u4-l4",
+        pedagogy: {
+          "warmup": "اختبار الوحدة يجمع أكثر من قاعدة؛ النجاح يبدأ بتشخيص القاعدة قبل اختيار الإجابة.",
+          "learningObjectives": [
+            "أحدد موضوع السؤال من تركيبه وسياقه.",
+            "أختار القاعدة المناسبة قبل النظر إلى الخيارات.",
+            "أراجع المساعد وشكل الفعل.",
+            "أفسر سبب الاختيار."
+          ],
+          "arabicExplanation": "اقرأ الجملة كاملة وحدد هل المطلوب زمن أو شرط أو استنتاج أو صيغة أخرى من مراجعة الوحدة. لا تعتمد على كلمة مفتاحية وحدها؛ افحص تركيب الجملة وشكل الفعل المطلوب. بعد اختيار الإجابة، أعد قراءة الجملة للتأكد من سلامة المعنى.",
+          "solvingClues": [
+            "اقرأ الجملة كاملة.",
+            "سمّ القاعدة أولاً.",
+            "افحص الفعل المساعد وشكل الفعل الذي يليه.",
+            "تحقق من المعنى بعد إدخال الإجابة."
+          ],
+          "commonTraps": [
+            "لا تعتمد على كلمة زمنية واحدة.",
+            "لا تخلط بين أنواع الشرط.",
+            "تذكر أن modal يتبعه مصدر وأن perfect يتطلب V3."
+          ],
+          "recapSummary": "شخّص القاعدة، افحص المساعد وشكل الفعل، ثم راجع المعنى.",
+          "nextStepRecommendation": "صنّف أخطاء الاختبار بحسب القاعدة وراجع أكثر موضوع أخطأت فيه."
+        },
         unitId: 54,
         lessonNumber: 4,
         titleAr: "الدرس الرابع: اختبار الوحدة الرابعة (Unit Four Test)",

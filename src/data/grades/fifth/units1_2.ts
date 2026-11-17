@@ -259,6 +259,27 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
       },
       {
         id: "5th-u1-l6",
+        pedagogy: {
+          "warmup": "عندما تقول You are ready، يمكنك إضافة سؤال قصير للتأكد: aren't you? هذا هو السؤال الذيلي.",
+          "learningObjectives": [
+            "أعكس قطبية الجملة في tag.",
+            "أكرر الفعل المساعد المناسب.",
+            "أختار الضمير المطابق للفاعل."
+          ],
+          "arabicExplanation": "الجملة المثبتة تأخذ tag منفيّاً، والمنفية تأخذ tag مثبتاً. نكرر الفعل المساعد الموجود، وإذا لم يوجد نستخدم do/does/did بحسب الزمن والفاعل. نحول الفاعل إلى ضمير مناسب.",
+          "solvingClues": [
+            "حدّد الإثبات أو النفي.",
+            "استخدم المساعد نفسه مع عكس القطبية.",
+            "حوّل الفاعل إلى ضمير."
+          ],
+          "commonTraps": [
+            "لا تكرر قطبية الجملة.",
+            "لا تستخدم do إذا كان المساعد is/can/has موجوداً.",
+            "لا تنسَ مطابقة الضمير."
+          ],
+          "recapSummary": "Positive + negative tag؛ Negative + positive tag. نفس المساعد، ضمير مناسب، قطبية معكوسة.",
+          "nextStepRecommendation": "حل أمثلة مع be وcan وفعل عادي، وتحقق من المساعد والضمير."
+        },
         unitId: 51,
         lessonNumber: 6,
         titleAr: "الدرس السادس: الأسئلة الذيلية (Question Tags)",
@@ -426,6 +447,28 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
     lessons: [
       {
         id: "5th-u2-l1",
+        pedagogy: {
+          "warmup": "في الإنجليزية قد تتكون كلمة أو تسمية من كلمتين تعملان معاً كوحدة واحدة، مثل mobile phone أو text message. فهم العلاقة بين الكلمتين يساعدك على تذكر المصطلح واستخدامه.",
+          "learningObjectives": [
+            "أتعرف على compound nouns الواردة في الوحدة.",
+            "أميز العلاقة بين الكلمتين في الاسم المركب.",
+            "أستخدم المصطلح في جملة قصيرة صحيحة.",
+            "أحافظ على ترتيب الكلمات وتهجئتها."
+          ],
+          "arabicExplanation": "الاسم المركب يتكون من كلمتين أو أكثر تؤديان معنى واحداً: mobile phone، text message، phone call. قد تكون العلاقة بين الكلمتين أن الأولى تحدد نوع الثانية أو وظيفتها. احفظ المركب كوحدة مع معناه وسياقه، وانتبه إلى أن بعض المركبات تكتب كلمتين وبعضها كلمة واحدة أو بشرطة بحسب المصطلح المعتمد في الدرس.",
+          "solvingClues": [
+            "ابحث عن الكلمة التي تحدد نوع الشيء أو وظيفته.",
+            "احفظ ترتيب المركب كما ورد في قائمة الوحدة.",
+            "استخدم المعنى العام للمركب لا ترجمة كل كلمة منفردة."
+          ],
+          "commonTraps": [
+            "لا تعكس ترتيب الكلمتين.",
+            "لا تترجم كل كلمة حرفياً إذا كان المركب مصطلحاً ثابتاً.",
+            "لا تغيّر طريقة كتابة المصطلح بين كلمتين وكلمة واحدة دون الرجوع للمصدر."
+          ],
+          "recapSummary": "Compound noun = كلمتان أو أكثر تعملان اسماً واحداً؛ احفظ التركيب والترتيب والمعنى كوحدة.",
+          "nextStepRecommendation": "أنشئ بطاقات للمركبات الهاتفية: المصطلح، معناه، وجملة تستخدمه."
+        },
         unitId: 52,
         lessonNumber: 1,
         titleAr: "الدرس الأول: أجهزة الهاتف والأسماء المركبة ومصطلحات الرسائل (Mobile Devices & Compound Nouns)",
@@ -464,6 +507,27 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
       },
       {
         id: "5th-u2-l2",
+        pedagogy: {
+          "warmup": "في تعليمات الطبخ نقول Add water، وفي النهي نقول Don't touch. أما الحقائق العامة فتحتاج الشرط الصفري.",
+          "learningObjectives": [
+            "أكوّن الأمر بالمصدر المجرد.",
+            "أكوّن النهي بـ Don't + base.",
+            "أستخدم الشرط الصفري للحقائق العامة."
+          ],
+          "arabicExplanation": "الأمر يبدأ بالمصدر دون فاعل ظاهر: Open the door. النهي: Don't + base verb. الشرط الصفري يصف حقيقة عامة: If + present simple, present simple. ويمكن استعمال when بدلاً من if إذا كان المعنى عاماً.",
+          "solvingClues": [
+            "تعليمات مباشرة: base verb.",
+            "منع: Don't + base.",
+            "حقيقة عامة: present simple في جزأي الشرط والنتيجة."
+          ],
+          "commonTraps": [
+            "لا تضف to بعد Don't.",
+            "لا تستخدم will في الشرط الصفري المعتاد.",
+            "لا تستخدم doesn't لصياغة الأمر."
+          ],
+          "recapSummary": "Imperative = base؛ Don't + base للنهي؛ Zero Conditional = If + present, present.",
+          "nextStepRecommendation": "حوّل تعليمات إلى أمر ونهي، ثم اكتب حقيقة علمية بالشرط الصفري."
+        },
         unitId: 52,
         lessonNumber: 2,
         titleAr: "الدرس الثاني: صيغة الأمر والحالة الشرطية الصفرية (Imperatives & Zero Conditional)",
@@ -596,6 +660,29 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
       },
       {
         id: "5th-u2-l5",
+        pedagogy: {
+          "warmup": "قارن so cold مع such a cold day؛ المعنى متقارب لكن التركيب يختلف بوجود الاسم.",
+          "learningObjectives": [
+            "أستخدم so قبل الصفة أو الظرف.",
+            "أستخدم such قبل مجموعة اسمية.",
+            "أميّز so…that وsuch…that.",
+            "أختار ظرف الطريقة عند وصف الفعل."
+          ],
+          "arabicExplanation": "so + adjective/adverb: so cold, so quickly. such + (a/an) + adjective + noun: such a cold day. نستخدم that لبيان النتيجة. ظرف الطريقة يصف الفعل ويجيب عن كيف؟ وغالباً ينتهي بـ -ly، مع صيغ مثل well وfast.",
+          "solvingClues": [
+            "صفة أو ظرف وحده بعد الفراغ: so.",
+            "اسم بعد الفراغ: such مع أداة مناسبة.",
+            "مفرد معدود بعد such يحتاج a/an.",
+            "إذا وصفت الكلمة فعلاً فاختر الظرف."
+          ],
+          "commonTraps": [
+            "لا تقل so a cold day.",
+            "لا تنسَ a/an مع المفرد المعدود.",
+            "لا تستخدم الصفة لوصف طريقة الفعل."
+          ],
+          "recapSummary": "so + adjective/adverb؛ such + (a/an) + adjective + noun؛ so/such…that للنتيجة.",
+          "nextStepRecommendation": "أكمل أمثلة so/such ثم حوّل صفات إلى ظروف طريقة."
+        },
         unitId: 52,
         lessonNumber: 5,
         titleAr: "الدرس الخامس: so / such... that وظروف الطريقة (so / such... that & Adverbs of Manner)",
@@ -694,6 +781,29 @@ export const FIFTH_PREPARATORY_UNITS_1_2: Unit[] = [
       },
       {
         id: "5th-u2-l7",
+        pedagogy: {
+          "warmup": "وجود دليل مثل آثار أقدام قد يدفعك إلى استنتاج ما حدث. في الإنجليزية نعبّر عن الاستنتاج الماضي بتركيب modal + have + V3.",
+          "learningObjectives": [
+            "أستخدم must have للاستنتاج القوي.",
+            "أستخدم can't have للاستحالة أو النفي القوي.",
+            "أستخدم might have للاحتمال.",
+            "أكوّن التركيب باستخدام V3."
+          ],
+          "arabicExplanation": "must have + V3 لاستنتاج قوي عن الماضي، can't have + V3 لشيء نعتقد أنه لم يحدث أو يستحيل، وmight have + V3 للاحتمال. بعد modal تبقى have ثابتة ويتبعها التصريف الثالث.",
+          "solvingClues": [
+            "دليل قوي: must have.",
+            "استحالة: can't have.",
+            "احتمال: might have.",
+            "بعد have اختر V3."
+          ],
+          "commonTraps": [
+            "لا تستخدم has أو had بعد modal.",
+            "لا تضع V2 بعد have.",
+            "ميّز استنتاج الماضي من معنى الضرورة."
+          ],
+          "recapSummary": "must/can't/might + have + past participle.",
+          "nextStepRecommendation": "صنّف المواقف بحسب قوة الدليل ثم اختر modal."
+        },
         unitId: 52,
         lessonNumber: 7,
         titleAr: "الدرس السابع: الاستنتاج في الماضي (Deduction in the Past: must have / can't have / might have)",

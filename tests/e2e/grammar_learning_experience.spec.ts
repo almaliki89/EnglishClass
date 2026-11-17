@@ -1,12 +1,34 @@
 import { test, expect } from '@playwright/test';
 
 const grammarLessons = [
+  // Non-tense grammar lessons verify that the lesson-specific Arabic pedagogy
+  // is actually rendered through the shared learning journey.
   {
     grade: 'third-intermediate',
     unitId: 103,
     lessonId: '3rd-u3-l1',
     lessonName: 'درجات المقارنة والتفضيل',
   },
+  {
+    grade: 'fourth-preparatory',
+    unitId: 41,
+    lessonId: '4th-u1-l5',
+    lessonName: 'الأسئلة غير المباشرة',
+  },
+  {
+    grade: 'fifth-preparatory',
+    unitId: 53,
+    lessonId: '5th-u3-l1',
+    lessonName: 'ترتيب الصفات',
+  },
+  {
+    grade: 'sixth-preparatory',
+    unitId: 3,
+    lessonId: 'u3-l1',
+    lessonName: 'تعريف المهن',
+  },
+
+
   {
     grade: 'fourth-preparatory',
     unitId: 41,
@@ -29,13 +51,17 @@ const grammarLessons = [
 
 test.describe('Unified grammar learning experience', () => {
   for (const item of grammarLessons) {
-    test(`${item.grade} renders the same guided grammar teaching journey`, async ({ page }) => {
+    test(`${item.grade} ${item.lessonId} renders the same guided grammar teaching journey`, async ({ page }) => {
       await page.goto(`/grade/${item.grade}/unit/${item.unitId}/lesson/${item.lessonId}`);
       await page.waitForLoadState('networkidle');
 
       const journey = page.getByTestId('grammar-learning-journey');
       await expect(journey).toBeVisible();
       await expect(journey).toHaveAttribute('data-lesson-id', item.lessonId);
+      if (['3rd-u3-l1', '4th-u1-l5', '5th-u3-l1', 'u3-l1'].includes(item.lessonId)) {
+        await expect(journey.getByRole('heading', { name: 'ما الفكرة التي نريد التعبير عنها؟' })).toBeVisible();
+        await expect(journey.getByRole('heading', { name: 'ماذا ستستطيع أن تفعل بعد الدرس؟' })).toBeVisible();
+      }
       await expect(journey.getByRole('heading', { name: 'نتعلّمها بالفهم، لا بحفظ المعادلة' })).toBeVisible();
 
       // Grammar lessons now have one teaching path instead of competing generic modes.
@@ -92,6 +118,9 @@ test.describe('Unified grammar learning experience', () => {
       await journey.getByRole('button', { name: /اختبر نفسك/ }).click();
       await expect(journey.getByTestId('grammar-recap-stage')).toBeVisible();
       await expect(journey.getByText('دورك الآن — فكّر قبل أن ترى الإجابة')).toBeVisible();
+      if (!usesTenseJourney) {
+        await expect(journey.getByTestId('grammar-next-step')).toBeVisible();
+      }
 
       await page.getByRole('button', { name: /^حل التمارين/ }).click();
       await expect(page.getByRole('heading', { name: 'تمارين واختبارات فورية' })).toBeVisible();
