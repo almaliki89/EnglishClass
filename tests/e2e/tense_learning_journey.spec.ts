@@ -80,8 +80,11 @@ test.describe('Dedicated tense teaching for every active grade', () => {
         await journey.getByRole('button', { name: 'اختبر نفسك' }).click();
         await expect(journey.getByTestId('grammar-recap-stage')).toBeVisible();
         await expect(journey.getByText('تدريب متدرج على فهم الزمن')).toBeVisible();
-        const firstOption = journey.locator('[data-testid="grammar-recap-stage"] button').filter({ hasText: /.+/ }).first();
+        const firstOption = journey.getByTestId('tense-practice-option').first();
         await expect(firstOption).toBeVisible();
+        await firstOption.click();
+        await journey.getByRole('button', { name: 'تحقق من إجابتي' }).click();
+        await expect(journey.getByText(/الإجابة الصحيحة:/)).toBeVisible();
       }
     });
   }
