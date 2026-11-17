@@ -76,7 +76,10 @@ export interface ReadingPassage {
 export interface Lesson {
   id: string;
   unitId: number;
-  lessonNumber: number;
+  /** Official source lesson number; omitted for non-numbered source material. */
+  lessonNumber?: number;
+  /** Label for supplementary sections that the source does not number as lessons. */
+  curriculumLabel?: string;
   titleAr: string;
   titleEn: string;
   category: LessonCategory;
