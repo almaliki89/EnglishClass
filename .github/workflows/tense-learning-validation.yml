@@ -1,6 +1,8 @@
 name: Tense Teaching Functional Validation
 
 on:
+  push:
+    branches: [ feat/tense-teaching-rebuild ]
   pull_request:
     branches: [ main, master ]
     paths:
