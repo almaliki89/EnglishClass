@@ -52,14 +52,21 @@ test.describe('Unified grammar learning experience', () => {
       await journey.getByRole('button', { name: /شاهد المثال/ }).click();
       await expect(journey.getByTestId('grammar-examples-stage')).toBeVisible();
 
-      // The rule is then revealed progressively, one source point at a time.
+      // Tense lessons use a dedicated meaning → examples → forms → contrast → practice path.
+      // Other grammar lessons retain the progressive source-point explanation.
+      const usesTenseJourney = (await journey.getAttribute('data-tense-journey')) === 'true';
       await journey.getByRole('button', { name: /ابنِ القاعدة/ }).click();
       await expect(journey.getByTestId('grammar-build-stage')).toBeVisible();
-      await expect(journey.getByText(/الفكرة 1/)).toBeVisible();
-      const nextRulePoint = journey.getByRole('button', { name: 'الفكرة التالية' });
-      if (await nextRulePoint.isEnabled()) {
-        await nextRulePoint.click();
-        await expect(journey.getByText(/الفكرة 2/)).toBeVisible();
+      if (usesTenseJourney) {
+        await expect(journey.getByRole('heading', { name: 'ابنِ الجملة خطوة خطوة' })).toBeVisible();
+        await expect(journey.getByRole('button', { name: 'الإثبات' })).toBeVisible();
+      } else {
+        await expect(journey.getByText(/الفكرة 1/)).toBeVisible();
+        const nextRulePoint = journey.getByRole('button', { name: 'الفكرة التالية' });
+        if (await nextRulePoint.isEnabled()) {
+          await nextRulePoint.click();
+          await expect(journey.getByText(/الفكرة 2/)).toBeVisible();
+        }
       }
 
       await journey.getByRole('button', { name: /انتبه للأخطاء/ }).click();
