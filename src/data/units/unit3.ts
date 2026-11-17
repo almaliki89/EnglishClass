@@ -11,6 +11,29 @@ export const UNIT_3: Unit = {
   lessons: [
     {
       id: "u3-l1",
+      pedagogy: {
+        "warmup": "عندما تعرّف مهنة، لا تذكر اسمها فقط؛ اشرح من يقوم بها وما واجبه.",
+        "learningObjectives": [
+          "أصوغ تعريف المهنة بتركيب واضح.",
+          "أستخدم someone who مع الشخص.",
+          "أطابق الفعل مع الفاعل المفرد.",
+          "أميز التعريف عن قائمة الواجبات."
+        ],
+        "arabicExplanation": "يمكن تعريف المهنة بذكر A/An + job title + is someone who + فعل مناسب، ثم ذكر الواجب. لأن someone مفرد، يأتي الفعل غالباً مع s في المضارع البسيط: A hotel manager is someone who manages a hotel. وإذا كان التعريف يتحدث عن مسؤولية، يمكن استخدام is responsible for ثم اسم أو V-ing.",
+        "solvingClues": [
+          "ابدأ بأداة A/An المناسبة واسم المهنة.",
+          "استخدم is someone who ثم الفعل.",
+          "مع responsible for يأتي اسم أو V-ing.",
+          "راجع s مع الفعل بعد who عندما يعود إلى someone."
+        ],
+        "commonTraps": [
+          "لا تكتب who manage إذا كان المرجع someone المفرد في المضارع البسيط.",
+          "لا تضع المصدر بعد responsible for.",
+          "لا تخلط اسم المهنة بالواجب الذي يعرّفها."
+        ],
+        "recapSummary": "A/An + job + is someone who + verb(s)؛ is responsible for + noun/V-ing.",
+        "nextStepRecommendation": "عرّف ثلاث مهن باستخدام who، ثم اكتب واجباً واحداً لكل مهنة."
+      },
       unitId: 3,
       lessonNumber: 1,
       titleAr: "الدرس الأول: أسلوب التعاريف والمهن والواجبات",
@@ -93,6 +116,29 @@ export const UNIT_3: Unit = {
     },
     {
       id: "u3-l2",
+      pedagogy: {
+        "warmup": "بعض النتائج تحدث دائماً عند تحقق الشرط، وبعضها متوقع في المستقبل. لذلك نميز الشرط الصفري من الشرط الأول.",
+        "learningObjectives": [
+          "أستخدم Zero Conditional للحقائق العامة.",
+          "أستخدم First Conditional للنتائج المستقبلية المحتملة.",
+          "أختار الزمن المناسب بعد if.",
+          "أميز حقيقة عامة من احتمال مستقبلي."
+        ],
+        "arabicExplanation": "الشرط الصفري: If + present simple, present simple، ويصف حقيقة عامة أو نتيجة ثابتة. الشرط الأول: If + present simple, will + base verb، ويصف احتمالاً مستقبلياً ممكناً. لا نضع will عادةً بعد if في الشرط الأول. اسأل نفسك: هل الجملة قانون عام أم توقع لحدث محتمل؟",
+        "solvingClues": [
+          "حقيقة عامة تتكرر: Zero Conditional.",
+          "احتمال مستقبلي: First Conditional.",
+          "بعد if في كليهما استخدم present simple.",
+          "النتيجة في الأول أيضاً present simple، وفي الأول المستقبلية will + base."
+        ],
+        "commonTraps": [
+          "لا تضع will بعد if.",
+          "لا تستخدم will في نتيجة الشرط الصفري المعتادة.",
+          "لا تخلط الحقيقة الثابتة بالاحتمال."
+        ],
+        "recapSummary": "Zero: If + present, present. First: If + present, will + base.",
+        "nextStepRecommendation": "صنّف خمس جمل إلى حقيقة عامة أو احتمال مستقبلي قبل اختيار صيغة الفعل."
+      },
       unitId: 3,
       lessonNumber: 2,
       titleAr: "الدرس الثاني: الجمل الشرطية الصفرية والأولى (Zero & First Conditionals)",
@@ -161,6 +207,28 @@ export const UNIT_3: Unit = {
     },
     {
       id: "u3-l3",
+      pedagogy: {
+        "warmup": "إذا كنت مليونيراً، ماذا ستفعل؟ هذا سؤال افتراضي يطلب منك تخيل وضع غير حقيقي الآن.",
+        "learningObjectives": [
+          "أستخدم Second Conditional للمواقف الافتراضية.",
+          "أضع past simple بعد if.",
+          "أستخدم would + المصدر في النتيجة.",
+          "أميز الحالة الثانية عن الأولى."
+        ],
+        "arabicExplanation": "Second Conditional: If + past simple, would + base verb. يستخدم لافتراض غير حقيقي أو غير مرجح في الحاضر أو المستقبل. الماضي بعد if لا يعني أن الحدث وقع في الماضي؛ إنه يبيّن البعد عن الواقع. يمكن استخدام were مع جميع الضمائر في الصيغة الافتراضية الرسمية.",
+        "solvingClues": [
+          "موقف خيالي: past simple بعد if.",
+          "النتيجة: would + base.",
+          "إذا كان الشرط ممكناً فعلاً في المستقبل ففكر في First Conditional بدلاً من ذلك."
+        ],
+        "commonTraps": [
+          "لا تضع would بعد if في الصيغة القياسية.",
+          "لا تضع V2 بعد would.",
+          "لا تخلط بين الحالة الأولى والثانية."
+        ],
+        "recapSummary": "If + past simple, would + base verb للافتراض غير الحقيقي أو غير المرجح.",
+        "nextStepRecommendation": "أجب عن سؤالين افتراضيين باستخدام would في النتيجة."
+      },
       unitId: 3,
       lessonNumber: 3,
       titleAr: "الدرس الثالث: الحالة الشرطية الثانية (Second Conditional)",
@@ -226,6 +294,29 @@ export const UNIT_3: Unit = {
     },
     {
       id: "u3-l4",
+      pedagogy: {
+        "warmup": "عندما تنقل كلام شخص أو سؤاله، فأنت لا تكرر عبارته حرفياً؛ بل تروي ما قاله مع تعديل الترتيب والضمائر والزمن عند الحاجة.",
+        "learningObjectives": [
+          "أنقل الجمل الخبرية باستخدام said/told.",
+          "أنقل الأسئلة باستخدام asked.",
+          "أستخدم أفعال الإبلاغ الملائمة.",
+          "أحوّل ترتيب السؤال إلى ترتيب خبري."
+        ],
+        "arabicExplanation": "للجملة الخبرية نستخدم said (that) أو told + object + that. وللسؤال نستخدم asked، ونحتفظ بأداة Wh أو نستخدم if/whether لسؤال نعم/لا. في السؤال المنقول نرتب الكلمات كجملة خبرية: subject + verb، ونراجع الضمائر والأزمنة بحسب سياق النقل. يمكن استخدام reporting verbs مثل advised أو promised عندما يقتضي المعنى ذلك.",
+        "solvingClues": [
+          "خبر أم سؤال؟ حدّد النوع أولاً.",
+          "said لا يحتاج مفعولاً مباشراً في هذا البناء؛ told يتبعه مفعول.",
+          "السؤال: asked + Wh/if + subject + verb.",
+          "راجع الضمائر والزمن."
+        ],
+        "commonTraps": [
+          "لا تقل told that دون مفعول إذا كان التركيب يتطلبه.",
+          "لا تحتفظ بترتيب السؤال المباشر.",
+          "لا تستخدم do/does/did داخل السؤال المنقول."
+        ],
+        "recapSummary": "Statements: said/told + that؛ questions: asked + Wh/if + subject + verb.",
+        "nextStepRecommendation": "حوّل خبراً وسؤال Wh وسؤال نعم/لا، مع تمييز الفعل الذي يبدأ النقل."
+      },
       unitId: 3,
       lessonNumber: 4,
       titleAr: "الدرس الرابع: الكلام المنقول والأسئلة المنقولة وأفعال الإبلاغ",
@@ -320,6 +411,27 @@ export const UNIT_3: Unit = {
     },
     {
       id: "u3-l5",
+      pedagogy: {
+        "warmup": "عندما تتمنى لو أن شيئاً مختلفاً يحدث الآن، أو تندم على قرار سابق، تختلف صيغة wish بحسب زمن الحالة.",
+        "learningObjectives": [
+          "أستخدم wish/if only للحالة غير الواقعية في الحاضر.",
+          "أستخدم past perfect للندم على الماضي.",
+          "أميز بين wish + past simple وwish + past perfect."
+        ],
+        "arabicExplanation": "للتمني عن حالة مخالفة للواقع الآن نستخدم wish/if only + past simple: I wish I had more time. للندم على الماضي نستخدم wish/if only + past perfect: I wish I had studied harder. وإذا كان التمني عن تغيير سلوك مستقبلي، قد نستخدم would + base. حدّد زمن المشكلة قبل اختيار التركيب.",
+        "solvingClues": [
+          "حالة حالية غير متحققة: past simple بعد wish.",
+          "ندم على حدث ماضٍ: had + V3.",
+          "تمني تغيير سلوك أو وضع لاحق: would + base."
+        ],
+        "commonTraps": [
+          "لا تستخدم past simple للندم على حدث ماضٍ منتهٍ.",
+          "لا تخلط had + V3 مع had better.",
+          "لا تستخدم would في كل أنواع التمني."
+        ],
+        "recapSummary": "wish + past simple للحاضر غير الواقعي؛ wish + past perfect للندم؛ wish + would للتغيير.",
+        "nextStepRecommendation": "صنّف كل موقف إلى أمنية حالية أو ندم ماضٍ أو تمني تغيير، ثم كوّن الجملة."
+      },
       unitId: 3,
       lessonNumber: 5,
       titleAr: "الدرس الخامس: أسلوب الندم (Regret with If only & I wish)",
@@ -401,6 +513,29 @@ export const UNIT_3: Unit = {
     },
     {
       id: "u3-l6",
+      pedagogy: {
+        "warmup": "إذا لم تكن قد درست، فربما كنت قد رسبت. هذه جملة تتخيل نتيجة مختلفة لشرط لم يحدث في الماضي.",
+        "learningObjectives": [
+          "أستخدم Third Conditional لافتراض ماضٍ مخالف للواقع.",
+          "أكوّن if + past perfect.",
+          "أستخدم would have + V3 في النتيجة.",
+          "أميز الشرط الثالث عن الندم بصيغة wish."
+        ],
+        "arabicExplanation": "Third Conditional: If + past perfect (had + V3), would have + V3. نستخدمه لتخيل نتيجة مختلفة لحدث ماضٍ لم يقع كما نتمناه. يمكن تقديم النتيجة أولاً أو الشرط أولاً. إذا بدأنا بـ If نضع فاصلة قبل جملة النتيجة. قد تتغير would إلى could أو might بحسب معنى الإمكانية أو الاحتمال.",
+        "solvingClues": [
+          "الحدث والنتيجة كلاهما في ماضٍ غير حقيقي.",
+          "بعد if استخدم had + V3.",
+          "في النتيجة استخدم would have + V3.",
+          "اختر could/might have إذا دل السياق على إمكانية أو احتمال."
+        ],
+        "commonTraps": [
+          "لا تضع would have داخل جملة if.",
+          "لا تستخدم V2 بعد had أو have.",
+          "لا تخلط بين Third Conditional وSecond Conditional."
+        ],
+        "recapSummary": "If + had + V3, would have + V3 لافتراض ماضٍ لم يتحقق.",
+        "nextStepRecommendation": "اكتب جملة عن نتيجة ندم ماضٍ باستخدام الشرط الثالث، ثم بدّل ترتيب الجزأين."
+      },
       unitId: 3,
       lessonNumber: 6,
       titleAr: "الدرس السادس: الحالة الشرطية الثالثة (Third Conditional)",
