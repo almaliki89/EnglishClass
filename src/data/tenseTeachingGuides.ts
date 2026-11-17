@@ -928,7 +928,7 @@ const GUIDES: TenseTeachingGuide[] = [
       { prompt: 'I thought it ___ rain later.', options: ['will', 'would', 'is'], answer: 'would', explanation: 'كان التوقع مستقبلاً من نقطة ماضية.', skill: 'المنظور الزمني' },
     ],
     takeaway: 'اسأل: ما النقطة الماضية التي ننظر منها إلى المستقبل؟ بعد ذلك حوّل will إلى would أو going to إلى was/were going to بحسب السياق.',
-  },,
+  },
   {
     lessonId: '4th-u2-l2', grade: 'fourth-preparatory', gradeLabel: 'الرابع الإعدادي',
     topic: 'العادات والحالات الماضية مع used to',
