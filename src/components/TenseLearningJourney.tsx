@@ -276,7 +276,7 @@ export const TenseLearningJourney: React.FC<TenseLearningJourneyProps> = ({
   const renderPractice = () => (
     <div className="space-y-5" data-testid="grammar-recap-stage">
       <div className="rounded-xl border-2 border-ink bg-soft-mint/55 p-5">
-        <div className="flex items-center gap-2 text-sm font-black text-ink"><Trophy className="h-5 w-5" /> دورك الآن — فكّر قبل أن ترى السبب</div>
+        <div className="flex items-center gap-2 text-sm font-black text-ink"><Trophy className="h-5 w-5" /> دورك الآن — فكّر قبل أن ترى الإجابة</div>
         <h3 className="mt-3 text-xl font-black text-ink">تدريب متدرج على فهم الزمن</h3>
         <p className="mt-2 text-sm font-semibold leading-7 text-ink">{guide.takeaway}</p>
         <p className="mt-3 text-xs font-bold text-ink/65">أنجزت {correctCount} من {guide.practice.length} إجابات صحيحة حتى الآن.</p>
