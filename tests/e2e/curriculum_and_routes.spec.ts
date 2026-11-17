@@ -567,11 +567,14 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(ammarCard).toHaveCount(1);
     await ammarCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
 
-    await expect(page).toHaveURL((url) =>
-      new URL(url).pathname === '/grade/sixth-preparatory/unit/1/lesson/u1-l3'
-    );
-    await expect(page.getByRole('heading', { name: 'القطعة وأسئلتها' })).toBeVisible();
-    await expect(page.getByTestId('reading-passage-dossier')).toBeVisible();
+    await expect(page).toHaveURL((url) => {
+      const current = new URL(url);
+      return current.pathname === '/grade/sixth-preparatory/unit/1/lesson/u1-l3'
+        && current.searchParams.get('passage') === '6p-u1-ammar';
+    });
+    const ammarDossier = page.getByTestId('reading-passage-dossier');
+    await expect(ammarDossier).toBeVisible();
+    await expect(ammarDossier.getByTestId('passage-title-ar')).toContainText('عمار وتقنية الهيكل الخارجي');
   });
 
 
@@ -602,10 +605,15 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(passageCard).toHaveCount(1);
     await passageCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
 
-    await expect(page).toHaveURL(/\/grade\/fourth-preparatory\/unit\//);
-    await expect(page.getByRole('heading', { name: 'القطعة وأسئلتها' })).toBeVisible();
+    await expect(page).toHaveURL((url) => {
+      const current = new URL(url);
+      return current.pathname.startsWith('/grade/fourth-preparatory/unit/')
+        && current.searchParams.get('passage') === '4p-u7-marshes';
+    });
 
     const dossier = page.getByTestId('reading-passage-dossier');
+    await expect(dossier).toBeVisible();
+    await expect(dossier.getByTestId('passage-title-ar')).toContainText('أهوار الحمار: استعادة جنة عدن');
     const original = dossier.getByTestId('original-passage-section');
     const translation = dossier.getByTestId('passage-translation-section');
     const exercises = dossier.getByTestId('passage-exercises-section');
