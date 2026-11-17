@@ -179,7 +179,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
                   تابع من حيث توقفت
                 </span>
                 <h4 className="text-sm font-black text-ink truncate">
-                  الوحدة 0{lastLessonUnit.id}: {lastLessonInGrade.titleAr}
+                  الوحدة 0{lastLessonUnit.number}: {lastLessonInGrade.titleAr}
                 </h4>
               </div>
             </div>
@@ -305,7 +305,7 @@ export const GradePageView: React.FC<GradePageViewProps> = ({
               >
                 <div className="space-y-3 min-w-0">
                   <div className="flex items-center justify-between gap-2">
-                    <BrutalBadge variant="cobalt">الوحدة 0{unit.id}</BrutalBadge>
+                    <BrutalBadge variant="cobalt">الوحدة 0{unit.number}</BrutalBadge>
                     <div className="flex items-center gap-1.5 flex-wrap justify-end">
                       <span className="font-mono text-xs font-bold text-ink/70 bg-paper px-2 py-0.5 border border-ink">
                         {unitCourseLessons.length} دروس
