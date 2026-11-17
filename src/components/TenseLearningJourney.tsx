@@ -291,7 +291,7 @@ export const TenseLearningJourney: React.FC<TenseLearningJourneyProps> = ({
             <p dir="auto" className="text-base sm:text-lg font-bold leading-8 text-ink">{currentPractice.prompt}</p>
             <div className="grid gap-2 sm:grid-cols-2">
               {currentPractice.options.map((option, index) => (
-                <button key={index} type="button" disabled={answerChecked} onClick={() => setSelectedAnswer(option)}
+                <button key={index} type="button" data-testid="tense-practice-option" disabled={answerChecked} onClick={() => setSelectedAnswer(option)}
                   className={`rounded-lg border-2 p-3 text-right text-sm font-bold transition-all ${selectedAnswer === option ? 'border-ink bg-yellow shadow-brutal-sm' : 'border-ink/30 bg-paper hover:border-ink'} disabled:cursor-default`}>
                   <span dir="auto">{option}</span>
                 </button>
