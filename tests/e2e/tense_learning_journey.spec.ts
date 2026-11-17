@@ -62,7 +62,7 @@ test.describe('Dedicated tense teaching for every active grade', () => {
         await expect(journey).toHaveAttribute('data-tense-journey', 'true');
 
         await expect(journey.getByTestId('grammar-understand-stage')).toBeVisible();
-        await expect(journey.getByText('ضع الحدث على خط الزمن')).toBeVisible();
+        await expect(journey.getByRole('heading', { name: 'ضع الحدث على خط الزمن' })).toBeVisible();
 
         await journey.getByRole('button', { name: 'شاهد المثال' }).click();
         await expect(journey.getByTestId('grammar-examples-stage')).toBeVisible();
