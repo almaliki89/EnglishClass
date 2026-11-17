@@ -701,7 +701,7 @@ const GUIDES: TenseTeachingGuide[] = [
     takeaway: 'في المجهول لا تختر زمناً جديداً. احتفظ بزمن الجملة الأصلية، واستخدم be في ذلك الزمن + V3.',
   },
   {
-    lessonId: '6th-u1-l2', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
+    lessonId: 'u1-l2', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
     topic: 'الماضي البسيط والماضي المستمر وأدوات الربط',
     timeFocus: 'past',
     context: 'تقرأ عن حادثة أو تجربة وقعت في الماضي: كان شخص يؤدي عملاً عندما وقع حدث آخر. المطلوب أن ترى تسلسل المشهد لا أن تحفظ قائمة while/when.',
@@ -726,7 +726,7 @@ const GUIDES: TenseTeachingGuide[] = [
     takeaway: 'حلّل علاقة الفعلين: خلفية مستمرة أم حدث مكتمل؟ ثم ابنِ الصيغة، وبعدها اختر أداة الربط.',
   },
   {
-    lessonId: '6th-u5-l2', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
+    lessonId: 'u5-l2', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
     topic: 'المضارع التام البسيط وأدواته',
     timeFocus: 'past-to-present',
     context: 'تسأل شخصاً عمّا أنجزه حتى الآن: هل أنهى العمل؟ هل سبق أن زار مكاناً؟ الزمن يربط تجربة أو نتيجة ماضية بالحاضر.',
@@ -751,7 +751,7 @@ const GUIDES: TenseTeachingGuide[] = [
     takeaway: 'اسأل: هل أتكلم عن وقت ماضٍ منتهٍ محدد، أم تجربة/نتيجة حتى الآن؟ إذا كانت الثانية، فكر في have/has + V3.',
   },
   {
-    lessonId: '6th-u5-l3', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
+    lessonId: 'u5-l3', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
     topic: 'المضارع التام المستمر و for / since / How long',
     timeFocus: 'past-to-present',
     context: 'تسأل زميلاً عن مدة مذاكرته للامتحان: بدأ قبل ساعتين وما زال يدرس. أنت تركز على استمرار النشاط والمدة التي استغرقها.',
@@ -776,7 +776,7 @@ const GUIDES: TenseTeachingGuide[] = [
     takeaway: 'استخدم خطاً من الماضي إلى الآن. إذا كان التركيز على نشاط وامتداده فـ have/has been + ing؛ وإذا كان فعلاً ثابتاً فراجع البسيط التام.',
   },
   {
-    lessonId: '6th-u5-l4', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
+    lessonId: 'u5-l4', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
     topic: 'المضارع التام مقابل الماضي البسيط و been / gone',
     timeFocus: 'past-to-present',
     context: 'تحدث عن رحلة: ربما تقول متى سافرت بالضبط، أو تقول إنك زرت المكان من قبل. وقد تصف شخصاً ذهب إلى مدينة وما زال هناك.',
@@ -801,7 +801,7 @@ const GUIDES: TenseTeachingGuide[] = [
     takeaway: 'وقت محدد منتهٍ = Past Simple. تجربة أو نتيجة حتى الآن = Present Perfect. gone ما زال هناك، been عاد.',
   },
   {
-    lessonId: '6th-u5-l5', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
+    lessonId: 'u5-l5', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
     topic: 'الماضي التام البسيط',
     timeFocus: 'past-sequence',
     context: 'وصلت إلى السينما ووجدت الفيلم قد بدأ. هناك حدثان في الماضي: وصولك، وبداية الفيلم. بداية الفيلم وقعت قبل وصولك.',
@@ -830,7 +830,7 @@ const GUIDES: TenseTeachingGuide[] = [
     takeaway: 'الماضي التام = had + V3 للحدث الأسبق من نقطة ماضية أخرى. رتّب الأحداث أولاً ثم اكتب.',
   },
   {
-    lessonId: '6th-u6-l2', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
+    lessonId: 'u6-l2', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
     topic: 'الأزمنة في المبني للمجهول',
     timeFocus: 'mixed',
     context: 'في وصف الخدمات البنكية، قد يكون المهم هو الحساب أو الأموال أو الإجراء، لا الموظف الذي قام به. هنا نحافظ على زمن الفعل ونغيّر بناء الجملة.',
@@ -861,7 +861,7 @@ const GUIDES: TenseTeachingGuide[] = [
     takeaway: 'في المبني للمجهول، لا تفقد الزمن: احتفظ بزمن الجملة الأصلية، غيّر be، ثم ضع التصريف الثالث.',
   },
   {
-    lessonId: '6th-u7-l2', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
+    lessonId: 'u7-l2', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
     topic: 'صيغ المستقبل الخمس',
     timeFocus: 'future',
     context: 'كل الجمل تتحدث عن المستقبل، لكن بعضها مواعيد ثابتة، وبعضها ترتيبات مؤكدة، وبعضها نوايا أو توقعات، وبعضها نشاط سيكون جارياً في ساعة محددة.',
@@ -901,7 +901,7 @@ const GUIDES: TenseTeachingGuide[] = [
     takeaway: 'قبل اختيار صيغة المستقبل، سمِّ نوعها: جدول، ترتيب، نية، توقع/وعد، أم نشاط جارٍ في وقت مستقبلي.',
   },
   {
-    lessonId: '6th-u7-l4', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
+    lessonId: 'u7-l4', grade: 'sixth-preparatory', gradeLabel: 'السادس الإعدادي',
     topic: 'المستقبل في الماضي',
     timeFocus: 'future-in-past',
     context: 'قال شخص أمس: سأزورك غداً. عندما تنقل كلامه اليوم، أصبح الغد الذي قصده جزءاً من ماضٍ نتحدث عنه.',
