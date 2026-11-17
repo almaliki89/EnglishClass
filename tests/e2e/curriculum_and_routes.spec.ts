@@ -613,7 +613,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
 
     const dossier = page.getByTestId('reading-passage-dossier');
     await expect(dossier).toBeVisible();
-    await expect(dossier.getByTestId('passage-title-ar')).toContainText('أهوار الحمار: استعادة جنة عدن');
+    await expect(dossier.getByTestId('passage-title-ar')).toContainText('استعادة جنة عدن: أهوار الحمار');
     const original = dossier.getByTestId('original-passage-section');
     const translation = dossier.getByTestId('passage-translation-section');
     const exercises = dossier.getByTestId('passage-exercises-section');
