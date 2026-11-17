@@ -56,7 +56,7 @@ const grammarLessons = [
 
 test.describe('Unified grammar learning experience', () => {
   for (const item of grammarLessons) {
-    test(`${item.grade} renders the same guided grammar teaching journey`, async ({ page }) => {
+    test(`${item.grade} ${item.lessonId} renders the same guided grammar teaching journey`, async ({ page }) => {
       await page.goto(`/grade/${item.grade}/unit/${item.unitId}/lesson/${item.lessonId}`);
       await page.waitForLoadState('networkidle');
 
