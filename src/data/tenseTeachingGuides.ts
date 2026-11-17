@@ -928,7 +928,95 @@ const GUIDES: TenseTeachingGuide[] = [
       { prompt: 'I thought it ___ rain later.', options: ['will', 'would', 'is'], answer: 'would', explanation: 'كان التوقع مستقبلاً من نقطة ماضية.', skill: 'المنظور الزمني' },
     ],
     takeaway: 'اسأل: ما النقطة الماضية التي ننظر منها إلى المستقبل؟ بعد ذلك حوّل will إلى would أو going to إلى was/were going to بحسب السياق.',
+  },,
+  {
+    lessonId: '4th-u2-l2', grade: 'fourth-preparatory', gradeLabel: 'الرابع الإعدادي',
+    topic: 'العادات والحالات الماضية مع used to',
+    timeFocus: 'past',
+    context: 'تأمل صورتين لمدينة: في الماضي كان الناس يرسلون الرسائل الورقية ويستخدمون وسائل نقل مختلفة، أما الآن فقد تغيرت حياتهم. نحتاج إلى وصف عادة أو حالة كانت مألوفة ثم لم تعد كذلك.',
+    meaning: 'نستخدم used to + المصدر لوصف عادة متكررة أو حالة كانت صحيحة في الماضي ولم تعد صحيحة الآن. لا نستخدمها لحدث واحد وقع مرة واحدة فقط.',
+    timeline: 'عادة أو حالة في الماضي ───────── ثم تغيرت قبل الآن. الصيغة تقارن الماضي بالحاضر وتبرز أن الوضع السابق لم يعد قائماً.',
+    outcomes: ['أميز العادة الماضية عن الحدث المنفرد.', 'أكوّن الإثبات والنفي والسؤال باستخدام used to.', 'أنتبه إلى عودة use إلى صورتها الأساسية بعد did وdidn’t.'],
+    uses: [
+      { title: 'عادة كانت تتكرر', explanation: 'نشاط اعتاد الشخص القيام به في الماضي ثم تركه.', pattern: 'used to + base verb', example: 'People used to send letters.', translation: 'اعتاد الناس إرسال الرسائل.' },
+      { title: 'حالة كانت موجودة', explanation: 'وصف حالة أو حقيقة قديمة تغيرت الآن، وليس فعلاً حركياً فقط.', pattern: 'used to be / have / live ...', example: 'There used to be a small market here.', translation: 'كان يوجد سوق صغير هنا.' },
+      { title: 'مقارنة الماضي بالحاضر', explanation: 'نربط الحالة القديمة بما هو موجود الآن.', pattern: 'used to ..., but now ...', example: 'I used to walk to school, but now I take the bus.', translation: 'كنت أمشي إلى المدرسة، لكنني الآن أستقل الحافلة.' },
+    ],
+    forms: [
+      { title: 'الإثبات', pattern: 'Subject + used to + base verb', explanation: 'بعد used to يأتي الفعل بالمصدر، سواء كان الفاعل مفرداً أو جمعاً.', example: 'She used to play tennis.', translation: 'اعتادت لعب التنس.' },
+      { title: 'النفي', pattern: 'Subject + didn’t use to + base verb', explanation: 'didn’t تحمل علامة الماضي؛ لذلك نحذف d من used ونكتب use، ثم المصدر.', example: 'She didn’t use to drink coffee.', translation: 'لم تكن معتادة على شرب القهوة.' },
+      { title: 'السؤال', pattern: 'Did + subject + use to + base verb?', explanation: 'نبدأ بـ Did، ثم الفاعل، ثم use to بالمصدر من دون d، ثم الفعل الأساسي.', example: 'Did she use to live here?', translation: 'هل كانت تسكن هنا؟' },
+    ],
+    contrast: [
+      { title: 'used to أم Past Simple؟', explanation: 'used to تصف عادة أو حالة سابقة. الماضي البسيط يروي حدثاً وقع وانتهى، وقد يكون حدثاً واحداً.', example: 'I used to visit my grandfather every Friday. / I visited him last Friday.', translation: 'كنت أزور جدي كل جمعة. / زرته الجمعة الماضية.', pattern: 'عادة ماضية / زيارة واحدة مكتملة' },
+      { title: 'used to أم Present Simple؟', explanation: 'الأولى للماضي الذي تغير، والثانية لوصف العادة أو الحقيقة الحالية.', example: 'I used to live in Basra, but now I live in Baghdad.', translation: 'كنت أسكن البصرة، لكنني الآن أسكن بغداد.' },
+    ],
+    clues: [
+      { title: 'but now', explanation: 'تقدم غالباً مقارنة بين الوضع السابق والوضع الحالي.' },
+      { title: 'when I was young', explanation: 'قد تشير إلى عادة أو حالة قديمة، لكن اقرأ المعنى لتقرر إن كانت متكررة.' },
+      { title: 'every day / every Friday في سياق الماضي', explanation: 'التكرار في الماضي قد يناسب used to إذا كانت العادة قد توقفت.' },
+    ],
+    verbTips: ['الإثبات: used to + مصدر.', 'النفي: didn’t use to، وليس didn’t used to.', 'السؤال: Did you use to ...? وليس Did you used to ...?', 'لا تستخدم used to لحدث مفرد وقع مرة واحدة فقط.'],
+    examples: [
+      { en: 'There used to be a small traditional souq here, but now there is a shopping mall.', ar: 'كان يوجد سوق تراثي صغير هنا، لكن يوجد الآن مركز تسوق.', focus: 'used to be / now there is', why: 'الجملة تقارن حالة مكان في الماضي بحالته الحالية.' },
+      { en: 'Did families use to travel by train?', ar: 'هل كانت العائلات تسافر بالقطار في الماضي؟', focus: 'Did ... use to travel', why: 'سؤال عن عادة سابقة؛ بعد Did نستخدم use دون d.' },
+    ],
+    commonErrors: [
+      { title: 'خطأ', pattern: 'I didn’t used to like tea.', explanation: 'بعد didn’t نستخدم use دون d؛ لأن did تحمل الزمن الماضي.', example: 'I didn’t use to like tea.' },
+      { title: 'خطأ', pattern: 'Did you used to play?', explanation: 'بعد Did نستخدم use لا used.', example: 'Did you use to play?' },
+    ],
+    practice: [
+      { prompt: 'People ___ send letters, but now they send emails.', options: ['used to', 'use to', 'are used to'], answer: 'used to', explanation: 'نتحدث عن عادة ماضية تغيرت في الحاضر.', skill: 'المعنى' },
+      { prompt: 'She didn’t ___ to live here.', options: ['used', 'use', 'uses'], answer: 'use', explanation: 'بعد didn’t نكتب use ثم to والمصدر.', skill: 'النفي' },
+      { prompt: '___ you use to play football at school?', options: ['Did', 'Do', 'Were'], answer: 'Did', explanation: 'السؤال عن عادة ماضية يبدأ بـ Did.', skill: 'السؤال' },
+    ],
+    takeaway: 'used to = عادة أو حالة في الماضي تغيرت الآن. في الإثبات used to، وبعد did/didn’t تتحول إلى use to.',
   },
+  {
+    lessonId: '4th-u6-l3', grade: 'fourth-preparatory', gradeLabel: 'الرابع الإعدادي',
+    topic: 'تغيّر الأزمنة عند نقل الكلام (Reported Speech)',
+    timeFocus: 'past-sequence',
+    context: 'صديقك قال لك أمس: “I can swim.” واليوم تخبر شخصاً آخر بما قاله. أنت لا تكرر كلامه كما هو؛ بل تنقله من وجهة نظر المتحدث الجديد، وتراعي الضمير وزمن فعل القول.',
+    meaning: 'الكلام المنقول يعرض معنى كلام شخص آخر من دون نقل كلماته حرفياً. عندما يكون فعل النقل في الماضي مثل said أو told، قد نرجع الفعل خطوة زمنية إلى الماضي، ونغيّر الضمائر وكلمات الوقت بحسب السياق.',
+    timeline: 'وقت الكلام الأصلي → وقت نقل الكلام. انظر إلى الزمن الذي قيلت فيه الجملة، ثم إلى زمن فعل النقل؛ إذا كان النقل ماضياً نحتاج غالباً إلى backshift.',
+    outcomes: ['أفرق بين الكلام المباشر والمنقول.', 'أحدد فعل النقل وزمنه قبل تغيير الفعل.', 'أغيّر الضمير وبعض كلمات الوقت مع الحفاظ على المعنى.', 'أنقل أسئلة نعم/لا باستخدام if أو whether وبترتيب خبري.'],
+    uses: [
+      { title: 'نقل جملة خبرية', explanation: 'نستخدم said that أو told + الشخص + that، ويمكن حذف that في الجملة الخبرية.', pattern: 'said (that) + reported clause\ntold + object + (that) + reported clause', example: 'He said that he was tired.', translation: 'قال إنه كان متعباً.' },
+      { title: 'نقل سؤال نعم/لا', explanation: 'نستخدم asked + if/whether ثم الفاعل والفعل بترتيب الجملة الخبرية، لا ترتيب السؤال.', pattern: 'asked + if / whether + subject + verb', example: '“Can you swim?” → He asked if I could swim.', translation: 'سألني إن كنت أستطيع السباحة.' },
+      { title: 'نقل سؤال يبدأ بأداة استفهام', explanation: 'نبقي أداة السؤال، ثم نستخدم ترتيب الفاعل والفعل.', pattern: 'asked + question word + subject + verb', example: '“Where do you live?” → He asked where I lived.', translation: 'سألني أين أسكن.' },
+    ],
+    forms: [
+      { title: 'Present Simple → Past Simple', pattern: 'am / is / are → was / were\nV / V-s → V2', explanation: 'عندما يكون فعل النقل في الماضي، يرجع المضارع البسيط عادة خطوة إلى الماضي البسيط.', example: '“I live in Basra.” → She said she lived in Basra.', translation: 'قالت إنها تسكن في البصرة.' },
+      { title: 'Present Continuous → Past Continuous', pattern: 'am / is / are + V-ing → was / were + V-ing', explanation: 'نغيّر be إلى الماضي ونحافظ على ing.', example: '“I am studying.” → He said he was studying.', translation: 'قال إنه كان يدرس.' },
+      { title: 'Past Simple → Past Perfect', pattern: 'V2 → had + V3', explanation: 'في نمط التحويل المدرسي، يرجع الماضي البسيط إلى الماضي التام عند النقل بفعل قول ماضٍ.', example: '“I saw Ali.” → She said she had seen Ali.', translation: 'قالت إنها رأت علياً.' },
+      { title: 'الأفعال المساعدة', pattern: 'will → would\ncan → could\nmay → might', explanation: 'تتغير بعض الأفعال المساعدة عند نقل الكلام من نقطة ماضية.', example: '“I can swim.” → He said he could swim.', translation: 'قال إنه يستطيع السباحة.' },
+    ],
+    contrast: [
+      { title: 'said أم told؟', explanation: 'said لا تحتاج الشخص بعدها مباشرة، أما told فيأتي بعدها الشخص الذي وُجّه إليه الكلام.', example: 'He said that he was tired. / He told me that he was tired.', translation: 'قال إنه متعب. / أخبرني أنه متعب.' },
+      { title: 'السؤال المباشر أم المنقول؟', explanation: 'في السؤال المنقول لا نضع do/does/did ولا نعكس ترتيب الفاعل والفعل كما في السؤال المباشر.', example: '“Where do you live?” → He asked where I lived.', translation: 'سألني أين أسكن.', pattern: 'question word + subject + verb' },
+      { title: 'هل يتغير الزمن دائماً؟', explanation: 'إذا بقيت الحقيقة صحيحة أو كان فعل النقل في الحاضر، فقد يبقى الزمن كما هو. اتبع زمن فعل النقل والسياق.', example: 'The teacher says that water boils at 100°C.', translation: 'يقول المعلم إن الماء يغلي عند 100 درجة.' },
+    ],
+    clues: [
+      { title: 'said / told / asked', explanation: 'ابدأ بتحديد فعل النقل وزمنه.' },
+      { title: 'yesterday / the day before / tomorrow / the following day', explanation: 'قد تتغير كلمات الوقت بحسب زمن الكلام الأصلي وزمن نقله.' },
+      { title: 'if / whether', explanation: 'تستخدمان عند نقل سؤال نعم/لا.' },
+    ],
+    verbTips: ['غيّر الضمائر بحسب الشخص الذي قال الكلام، لا بصورة آلية.', 'في التمارين التي تتطلب backshift، راقب التغيّر من present إلى past ومن past إلى past perfect.', 'في السؤال المنقول استخدم ترتيباً خبرياً: subject ثم verb.', 'told يحتاج مفعولاً به مثل me أو him؛ said لا يستخدم بالطريقة نفسها.'],
+    examples: [
+      { en: 'My friend asked if I could swim.', ar: 'سألني صديقي إن كنت أستطيع السباحة.', focus: 'asked if I could', why: 'سؤال نعم/لا نُقل باستخدام if، وتغير can إلى could.' },
+      { en: '“I am busy today.” → She said she was busy that day.', ar: 'قالت إنها كانت مشغولة في ذلك اليوم.', focus: 'am → was / today → that day', why: 'فعل النقل ماضٍ، لذلك تغيّر الفعل وكلمة الوقت.' },
+    ],
+    commonErrors: [
+      { title: 'خطأ', pattern: 'He asked me where did I live.', explanation: 'السؤال المنقول يستخدم ترتيب الجملة الخبرية ولا يحتفظ بـ did.', example: 'He asked me where I lived.' },
+      { title: 'خطأ', pattern: 'She told that she was tired.', explanation: 'told تحتاج الشخص الذي أخبرته.', example: 'She told me that she was tired.' },
+    ],
+    practice: [
+      { prompt: '“I am tired.” → He said he ___ tired.', options: ['is', 'was', 'has been'], answer: 'was', explanation: 'فعل النقل said في الماضي؛ am ترجع إلى was.', skill: 'تحويل الزمن' },
+      { prompt: '“Can you swim?” → He asked if I ___ swim.', options: ['can', 'could', 'do'], answer: 'could', explanation: 'في هذا النمط can تتحول إلى could عند النقل من الماضي.', skill: 'الأفعال المساعدة' },
+      { prompt: 'She asked me where I ___.', options: ['live', 'did live', 'lived'], answer: 'lived', explanation: 'السؤال المنقول يأخذ ترتيباً خبرياً، ومع asked في الماضي نستخدم lived.', skill: 'ترتيب السؤال المنقول' },
+    ],
+    takeaway: 'في Reported Speech: حدّد said/told/asked، ثم اضبط الضمير والوقت والفعل. وفي الأسئلة المنقولة استخدم ترتيباً خبرياً وif/whether لأسئلة نعم/لا.',
+  }
 ];
 
 export const TENSE_TEACHING_GUIDES: Record<string, TenseTeachingGuide> = Object.fromEntries(
