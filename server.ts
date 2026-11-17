@@ -2,7 +2,6 @@ import express, { Request, Response, NextFunction } from "express";
 import path from "path";
 import crypto from "crypto";
 import fs from "fs";
-import { createServer as createViteServer } from "vite";
 import dotenv from "dotenv";
 import { GoogleGenAI, Type } from "@google/genai";
 import { PDFParse } from "pdf-parse";
@@ -3699,6 +3698,9 @@ async function startServer() {
   app.use("/assets", express.static(path.join(publicPath, "assets")));
 
   if (process.env.NODE_ENV !== "production") {
+    // Vite is a development/build tool. Load it only in development so it
+    // is not required by the production server runtime.
+    const { createServer: createViteServer } = await import("vite");
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: "spa",

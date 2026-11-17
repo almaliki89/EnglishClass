@@ -18,6 +18,8 @@ import {
 import { EducationalGrade, Lesson } from '../types';
 import { getGradeMeta } from '../data/gradeContentResolver';
 import { speakEnglish } from '../utils/speech';
+import { getTenseTeachingGuide } from '../data/tenseTeachingGuides';
+import { TenseLearningJourney } from './TenseLearningJourney';
 
 interface GrammarLearningJourneyProps {
   lesson: Lesson;
@@ -59,6 +61,18 @@ export const GrammarLearningJourney: React.FC<GrammarLearningJourneyProps> = ({
   const [activeExercise, setActiveExercise] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState('');
   const [answerChecked, setAnswerChecked] = useState(false);
+
+  const tenseGuide = getTenseTeachingGuide(lesson.id);
+  if (tenseGuide) {
+    return (
+      <TenseLearningJourney
+        lesson={lesson}
+        guide={tenseGuide}
+        grade={grade}
+        onOpenExercises={onOpenExercises}
+      />
+    );
+  }
 
   const gradeMeta = grade ? getGradeMeta(grade) : null;
   const formulaLines = (lesson.grammarRuleFormula || '')

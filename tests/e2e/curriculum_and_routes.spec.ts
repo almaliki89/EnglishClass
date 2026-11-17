@@ -349,7 +349,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
 
 
   test('11. Grammar lessons open the new source-driven explanation by default', async ({ page }) => {
-    await page.goto('/grade/sixth-preparatory/unit/1/lesson/1-1');
+    await page.goto('/grade/sixth-preparatory/unit/1/lesson/u1-l2');
     await page.waitForLoadState('networkidle');
 
     const journey = page.getByTestId('grammar-learning-journey');
@@ -359,7 +359,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
 
     await journey.getByRole('button', { name: /ابنِ القاعدة/ }).click();
     await expect(journey.getByTestId('grammar-build-stage')).toBeVisible();
-    await expect(journey.getByText(/While \/ As \+ Past Continuous/)).toBeVisible();
+    await expect(journey.getByTestId('grammar-build-stage').getByRole('heading', { name: 'ابنِ الجملة خطوة خطوة' })).toBeVisible();
   });
 
   test('12. Homepage presents an interactive learning hub and working destinations', async ({ page }) => {
@@ -567,9 +567,14 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(ammarCard).toHaveCount(1);
     await ammarCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
 
-    await expect(page).toHaveURL(/\/grade\/sixth-preparatory\/unit\/1\/lesson\/u1-l3$/);
-    await expect(page.getByRole('heading', { name: 'القطعة وأسئلتها' })).toBeVisible();
-    await expect(page.getByTestId('reading-passage-dossier')).toBeVisible();
+    await expect(page).toHaveURL((url) => {
+      const current = new URL(url);
+      return current.pathname === '/grade/sixth-preparatory/unit/1/lesson/u1-l3'
+        && current.searchParams.get('passage') === '6p-u1-ammar';
+    });
+    const ammarDossier = page.getByTestId('reading-passage-dossier');
+    await expect(ammarDossier).toBeVisible();
+    await expect(ammarDossier.getByTestId('passage-title-ar')).toContainText('عمار وتقنية الهيكل الخارجي');
   });
 
 
@@ -600,10 +605,15 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(passageCard).toHaveCount(1);
     await passageCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
 
-    await expect(page).toHaveURL(/\/grade\/fourth-preparatory\/unit\//);
-    await expect(page.getByRole('heading', { name: 'القطعة وأسئلتها' })).toBeVisible();
+    await expect(page).toHaveURL((url) => {
+      const current = new URL(url);
+      return current.pathname.startsWith('/grade/fourth-preparatory/unit/')
+        && current.searchParams.get('passage') === '4p-u7-marshes';
+    });
 
     const dossier = page.getByTestId('reading-passage-dossier');
+    await expect(dossier).toBeVisible();
+    await expect(dossier.getByTestId('passage-title-ar')).toContainText('استعادة جنة عدن: أهوار الحمار');
     const original = dossier.getByTestId('original-passage-section');
     const translation = dossier.getByTestId('passage-translation-section');
     const exercises = dossier.getByTestId('passage-exercises-section');

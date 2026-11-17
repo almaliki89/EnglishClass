@@ -23,6 +23,7 @@ import { MOCK_EXAM_PAPERS } from '../src/data/mockExamPapers';
 import { THIRD_INTERMEDIATE_MOCK_PAPER } from '../src/data/thirdMockExamPaper';
 import { SUBJECTS } from '../src/data/subjectsData';
 import { ALL_GRADES_META, ORDERED_GRADES, getUnitsForGrade, getQuestionsForGrade, getGradeMeta } from '../src/data/gradeContentResolver';
+import { TENSE_TEACHING_GUIDE_IDS, TENSE_TEACHING_GUIDES } from '../src/data/tenseTeachingGuides';
 
 let passed = 0;
 let failed = 0;
@@ -57,6 +58,26 @@ expectedGrades.forEach(g => {
   const gradeKey = g as any;
   assert(ORDERED_GRADES.includes(gradeKey), `Must include grade ${g}`);
   assert(!!(ALL_GRADES_META as Record<string, any>)[g], `Grade metadata must exist for ${g}`);
+});
+
+// Dedicated tense teaching coverage: all 26 authored guides must map to active curriculum lessons.
+const allActiveLessonIds = new Set(
+  ORDERED_GRADES.flatMap(grade => getUnitsForGrade(grade).flatMap(unit => unit.lessons.map(lesson => lesson.id)))
+);
+assert(TENSE_TEACHING_GUIDE_IDS.length === 28, `Expected 28 tense teaching guides, found ${TENSE_TEACHING_GUIDE_IDS.length}`);
+assert(new Set(TENSE_TEACHING_GUIDE_IDS).size === TENSE_TEACHING_GUIDE_IDS.length, 'Tense teaching guide IDs must be unique');
+TENSE_TEACHING_GUIDE_IDS.forEach(lessonId => {
+  assert(allActiveLessonIds.has(lessonId), `Tense guide must map to an active curriculum lesson: ${lessonId}`);
+});
+const tenseGuideCounts = {
+  'third-intermediate': 2,
+  'fourth-preparatory': 10,
+  'fifth-preparatory': 8,
+  'sixth-preparatory': 8,
+};
+ORDERED_GRADES.forEach(grade => {
+  const actual = Object.values(TENSE_TEACHING_GUIDES).filter(guide => guide.grade === grade).length;
+  assert(actual === tenseGuideCounts[grade], `Tense guide coverage for ${grade}: expected ${tenseGuideCounts[grade]}, got ${actual}`);
 });
 
 // 3. Strict Ministerial vs School Final Exam Designation
