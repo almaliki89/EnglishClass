@@ -200,6 +200,29 @@ export const UNIT_6: Unit = {
     },
     {
       id: "u6-l4",
+      pedagogy: {
+        "warmup": "إذا رأيت دليلاً في الحاضر، قد تستنتج أن شيئاً ما صحيح الآن؛ وإذا رأيت آثاراً على حدث سابق، فقد تستنتج ما حدث في الماضي.",
+        "learningObjectives": [
+          "أستخدم must/might/can't للاستنتاج في الحاضر.",
+          "أستخدم must have/might have/can't have للاستنتاج عن الماضي.",
+          "أميز قوة الاحتمال من الاستحالة.",
+          "أختار شكل الفعل بعد modal."
+        ],
+        "arabicExplanation": "للاستنتاج عن الحاضر نستخدم modal + base verb أو be بحسب التركيب: must be للاستنتاج القوي، might be للاحتمال، can't be للاستحالة. للاستنتاج عن الماضي نستخدم modal + have + V3: must have، might have، can't have. اختر الصيغة بحسب الزمن الذي تتحدث عنه وقوة الدليل، لا بحسب الفاعل؛ فالفعل بعد modal لا يأخذ s.",
+        "solvingClues": [
+          "الاستنتاج عن الآن: modal + base/be.",
+          "الاستنتاج عن الماضي: modal + have + V3.",
+          "دليل قوي: must؛ احتمال: might؛ استحالة أو نفي قوي: can't.",
+          "حدد الزمن من سياق الموقف."
+        ],
+        "commonTraps": [
+          "لا تستخدم V2 بعد have في الاستنتاج الماضي؛ استخدم V3.",
+          "لا تضف s بعد modal.",
+          "لا تخلط بين must للاستنتاج وmust للإلزام."
+        ],
+        "recapSummary": "Present deduction: must/might/can't + base. Past deduction: must/might/can't + have + V3.",
+        "nextStepRecommendation": "اقرأ المواقف وحدد أولاً هل الاستنتاج عن الحاضر أم الماضي، ثم اختر modal."
+      },
       unitId: 6,
       lessonNumber: 4,
       titleAr: "الدرس الرابع: استنتاجات المضارع والماضي (Deductions)",
