@@ -407,7 +407,7 @@ export const TenseLearningJourney: React.FC<TenseLearningJourneyProps> = ({
         {activeStage < STAGES.length - 1 ? (
           <button type="button" onClick={() => setActiveStage((value) => Math.min(STAGES.length - 1, value + 1))}
             className="inline-flex items-center gap-1.5 rounded-md border-2 border-ink bg-cobalt px-4 py-2.5 text-xs font-black text-surface shadow-brutal-sm">
-            {activeStage === 0 ? 'شاهد مثالاً' : activeStage === 1 ? 'ابنِ القاعدة خطوة خطوة' : activeStage === 2 ? 'انتبه للأخطاء' : 'اختبر فهمك بنفسك'}
+            {activeStage === 0 ? 'شاهد مثالاً' : activeStage === 1 ? 'انتقل إلى الصيغ' : activeStage === 2 ? 'قارن بين الأزمنة' : 'اختبر فهمك بنفسك'}
             <ArrowLeft className="h-4 w-4" />
           </button>
         ) : (
