@@ -28,12 +28,7 @@ const grammarLessons = [
     lessonName: 'تعريف المهن',
   },
 
-  {
-    grade: 'third-intermediate',
-    unitId: 103,
-    lessonId: '3rd-u3-l1',
-    lessonName: 'درجات المقارنة والتفضيل',
-  },
+
   {
     grade: 'fourth-preparatory',
     unitId: 41,
