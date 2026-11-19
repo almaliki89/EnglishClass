@@ -8,6 +8,7 @@ import {
   useParams,
   Navigate,
 } from 'react-router-dom';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import { AuthProvider, useAuth } from './context/AuthContext';
 import { Navbar } from './components/Navbar';
 import { Dashboard } from './components/Dashboard';
@@ -941,6 +942,7 @@ export default function App() {
       <AuthProvider>
         <MainAppContent />
       </AuthProvider>
+      <SpeedInsights />
     </BrowserRouter>
   );
 }

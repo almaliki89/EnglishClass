@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@google/genai": "^2.24.0",
+    "@vercel/speed-insights": "^2.1.0",
     "canvas-confetti": "^1.9.4",
     "dotenv": "^17.2.3",
     "express": "^4.21.2",
