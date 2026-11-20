@@ -151,6 +151,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             authProvider = 'phone';
           }
 
+          let profileInitialized = false;
           if (studentSnap && studentSnap.exists()) {
             const data = studentSnap.data();
             if (data.name) displayName = data.name;
@@ -178,6 +179,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 updatedAt: new Date().toISOString()
               }, { merge: true });
               displayName = firebaseUser.displayName || 'طالب متميز';
+              profileInitialized = true;
             } catch (profileError) {
               console.warn('Google profile initialization failed:', getErrorMessage(profileError));
               setSyncStatus('offline');
@@ -193,7 +195,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           };
 
           setUser(appUser);
-          setSyncStatus(studentSnap && studentSnap.exists() ? 'synced' : 'offline');
+          setSyncStatus((studentSnap && studentSnap.exists()) || profileInitialized ? 'synced' : 'offline');
         } else {
           setUser(null);
           setSyncStatus('offline');
