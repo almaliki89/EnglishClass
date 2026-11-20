@@ -15,7 +15,7 @@
  *   ADMIN_BOOTSTRAP_SECRET=your_high_entropy_secret npx tsx scripts/bootstrap_admin.ts --email=alnukhbazubair@gmail.com --secret=your_high_entropy_secret
  */
 
-import { initializeApp, getApps } from 'firebase-admin/app';
+import { initializeApp, getApps, cert, applicationDefault } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 import crypto from 'node:crypto';
@@ -23,11 +23,22 @@ import dotenv from 'dotenv';
 
 dotenv.config();
 
-const PROJECT_ID = "gen-lang-client-0324348726";
-const DATABASE_ID = "ai-studio-platform-5fee63ca-a212-45ad-b11d-7d4568447c02";
+const PROJECT_ID = process.env.FIREBASE_PROJECT_ID || "gen-lang-client-0324348726-3";
+const DATABASE_ID = process.env.FIRESTORE_DATABASE_ID || "lingora-db";
 
 if (!getApps().length) {
-  initializeApp({ projectId: PROJECT_ID });
+  const serviceAccountJson = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
+  let credential;
+  if (serviceAccountJson) {
+    const serviceAccount = JSON.parse(serviceAccountJson);
+    if (serviceAccount.project_id !== PROJECT_ID) {
+      throw new Error("FIREBASE_SERVICE_ACCOUNT_JSON project_id does not match FIREBASE_PROJECT_ID.");
+    }
+    credential = cert(serviceAccount);
+  } else {
+    credential = applicationDefault();
+  }
+  initializeApp({ credential, projectId: PROJECT_ID });
 }
 
 const auth = getAuth();

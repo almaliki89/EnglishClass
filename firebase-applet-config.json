@@ -1,12 +1,11 @@
 {
-  "projectId": "gen-lang-client-0324348726",
-  "appId": "1:952230727207:web:2d842451a094d5213d8802",
-  "apiKey": "AIzaSyCf43eCaek-u-PexSnnrMS5G7CTBNCO7ag",
-  "authDomain": "gen-lang-client-0324348726.firebaseapp.com",
-  "firestoreDatabaseId": "ai-studio-platform-5fee63ca-a212-45ad-b11d-7d4568447c02",
-  "storageBucket": "gen-lang-client-0324348726.firebasestorage.app",
-  "messagingSenderId": "952230727207",
-  "measurementId": "",
-  "oAuthClientId": "952230727207-rgv94m78pbphabf8r8k4m1j1o1svas4l.apps.googleusercontent.com",
+  "projectId": "gen-lang-client-0324348726-3",
+  "appId": "1:248530902908:web:e4af3da0584d15a0d60ef9",
+  "apiKey": "AIzaSyC4tmO3aixpGXuIJsg2tm4sBgJsz40eKjM",
+  "authDomain": "gen-lang-client-0324348726-3.firebaseapp.com",
+  "firestoreDatabaseId": "lingora-db",
+  "storageBucket": "gen-lang-client-0324348726-3.firebasestorage.app",
+  "messagingSenderId": "248530902908",
+  "measurementId": "G-66TXNV0TZ4",
   "recaptchaSiteKey": ""
 }

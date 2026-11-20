@@ -235,8 +235,7 @@ assert(firestoreRules.includes('allow read, write: if isTeacherOrAdmin()'), 'fir
 assert(firestoreRules.includes('isOwner(studentId)'), 'firestore.rules must enforce student data privacy');
 assert(firestoreRules.includes('match /curriculum_drafts/{draftId}'), 'firestore.rules must isolate curriculum_drafts');
 assert(firestoreRules.includes('function isTeacherOrAdmin()'), 'firestore.rules must define isTeacherOrAdmin function');
-assert(firestoreRules.includes('request.resource.data.xp == resource.data.xp'), 'firestore.rules must lock client XP modification');
-assert(firestoreRules.includes('request.resource.data.streakDays == resource.data.streakDays'), 'firestore.rules must lock streakDays modification');
+assert(firestoreRules.includes("'xp', 'streakDays', 'totalQuestionsAttempted', 'totalQuestionsCorrect'") && firestoreRules.includes('affectedKeys().hasAny(['), 'firestore.rules must lock client XP and streakDays modification using affected-key protection');
 assert(!firestoreRules.includes('alnukhbazubair@gmail.com'), 'firestore.rules must eliminate hardcoded email admin checks');
 
 // 12. No Obsolete Grade References in Active Routes

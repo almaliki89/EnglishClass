@@ -5,7 +5,7 @@ import fs from "fs";
 import dotenv from "dotenv";
 import { GoogleGenAI, Type } from "@google/genai";
 import { PDFParse } from "pdf-parse";
-import { initializeApp, getApps } from "firebase-admin/app";
+import { initializeApp, getApps, cert, applicationDefault } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
@@ -25,11 +25,14 @@ if (process.env.NODE_ENV === "production") {
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 const app = express();
-const FIRESTORE_DB_ID = "ai-studio-platform-5fee63ca-a212-45ad-b11d-7d4568447c02";
-const FIREBASE_STORAGE_BUCKET = "gen-lang-client-0324348726.firebasestorage.app";
+const FIREBASE_PROJECT_ID = process.env.FIREBASE_PROJECT_ID || "gen-lang-client-0324348726-3";
+const FIRESTORE_DB_ID = process.env.FIRESTORE_DATABASE_ID || "lingora-db";
+const FIREBASE_STORAGE_BUCKET = process.env.FIREBASE_STORAGE_BUCKET || "gen-lang-client-0324348726-3.firebasestorage.app";
 
 // Ensure local persistent directories exist for resilient caching & offline testing
-const LOCAL_STORAGE_DIR = path.join(process.cwd(), "storage_curriculum_pdfs");
+const LOCAL_STORAGE_DIR = process.env.VERCEL
+  ? path.join("/tmp", "lingora", "storage_curriculum_pdfs")
+  : path.join(process.cwd(), "storage_curriculum_pdfs");
 if (!fs.existsSync(LOCAL_STORAGE_DIR)) {
   fs.mkdirSync(LOCAL_STORAGE_DIR, { recursive: true });
 }
@@ -38,21 +41,45 @@ if (!fs.existsSync(LOCAL_STORAGE_DIR)) {
 let activeIngestions = 0;
 const MAX_CONCURRENT_INGESTIONS = 3;
 
-// Initialize Firebase Admin SDK for cryptographic token verification, durable Firestore & Storage
+// Initialize Firebase Admin SDK with an explicit service account on Vercel.
+// The private key is supplied only through the server-side FIREBASE_SERVICE_ACCOUNT_JSON
+// environment variable and must never be committed to this repository.
 let adminFirestore: any = null;
 let adminStorage: any = null;
 if (process.env.NODE_ENV !== "test") {
   try {
     const currentApps = getApps();
-    const adminApp = currentApps.length ? currentApps[0] : initializeApp({
-      projectId: "gen-lang-client-0324348726",
-      storageBucket: FIREBASE_STORAGE_BUCKET,
-    });
+    let adminApp = currentApps.find((candidate) => candidate.name === "[DEFAULT]");
+    if (!adminApp) {
+      const serviceAccountJson = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
+      let credential;
+      if (serviceAccountJson) {
+        const serviceAccount = JSON.parse(serviceAccountJson);
+        if (serviceAccount.project_id !== FIREBASE_PROJECT_ID) {
+          throw new Error("FIREBASE_SERVICE_ACCOUNT_JSON project_id does not match FIREBASE_PROJECT_ID.");
+        }
+        credential = cert(serviceAccount);
+      } else if (process.env.VERCEL) {
+        throw new Error("Missing FIREBASE_SERVICE_ACCOUNT_JSON on Vercel. Configure the Firebase Admin service-account JSON as a server-only environment variable.");
+      } else {
+        credential = applicationDefault();
+      }
+      adminApp = initializeApp({
+        credential,
+        projectId: FIREBASE_PROJECT_ID,
+        storageBucket: FIREBASE_STORAGE_BUCKET,
+      });
+    }
     adminFirestore = getFirestore(adminApp, FIRESTORE_DB_ID);
-    adminStorage = getStorage(adminApp);
-    console.log("Firebase Admin SDK, Firestore & Storage initialized successfully.");
+    // Cloud Storage is deliberately opt-in. LINGORA student registration and study
+    // do not require Firebase Storage or a paid Blaze upgrade.
+    if (process.env.FIREBASE_STORAGE_ENABLED === "true") {
+      adminStorage = getStorage(adminApp);
+    }
+    console.log(`Firebase Admin SDK and Firestore initialized for ${FIREBASE_PROJECT_ID}/${FIRESTORE_DB_ID}.`);
   } catch (adminErr) {
-    console.warn("Firebase Admin SDK initialization note:", adminErr);
+    console.error("Firebase Admin SDK initialization failed:", adminErr);
+    if (process.env.VERCEL) throw adminErr;
   }
 } else {
   console.log("E2E test mode: Firebase Admin SDK disabled; external credentials are not required.");
@@ -103,7 +130,9 @@ const e2eExamFirestore = {
 
 // Maximum allowed PDF payload: 25 MB decoded buffer limit
 const MAX_PDF_BYTES = 25 * 1024 * 1024; // 25 MB
-const CURRICULUM_PERSISTENCE_FILE = path.join(process.cwd(), "curriculum_sources_db.json");
+const CURRICULUM_PERSISTENCE_FILE = process.env.VERCEL
+  ? path.join("/tmp", "lingora", "curriculum_sources_db.json")
+  : path.join(process.cwd(), "curriculum_sources_db.json");
 
 // Helper to store curriculum PDF into Firebase Storage & local mirrored storage
 async function uploadCurriculumPdf(
@@ -3687,7 +3716,7 @@ async function startServer() {
   } catch (err: any) {
     if (process.env.NODE_ENV === "production") {
       console.error("FATAL: Curriculum persistence initialization failed in production mode:", err.message);
-      process.exit(1);
+      throw err;
     } else {
       console.warn("Curriculum persistence initialization notice (development fallback active):", err.message);
     }
@@ -3714,9 +3743,29 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`OMEGA V3.2 Server running on http://localhost:${PORT}`);
-  });
+  // Vercel invokes this Express app as a serverless function; it must not bind
+  // a TCP port. Local development/standalone deployments still use app.listen.
+  if (!process.env.VERCEL) {
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`OMEGA V3.2 Server running on http://localhost:${PORT}`);
+    });
+  }
 }
 
-startServer();
+let serverInitialization: Promise<void> | null = null;
+
+export function initializeServer(): Promise<void> {
+  if (!serverInitialization) {
+    serverInitialization = startServer();
+  }
+  return serverInitialization;
+}
+
+export { app };
+
+// Keep the existing standalone development and Node-server behavior.
+// Vercel initializes lazily from api/[...path].ts so concurrent requests share
+// one startup promise and the function never attempts to listen on a port.
+if (!process.env.VERCEL) {
+  void initializeServer();
+}
