@@ -128,9 +128,9 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
       const errCode = err?.code || '';
       const errMessage = err?.message || '';
       if (errCode === 'auth/unauthorized-domain' || errMessage.includes('unauthorized-domain')) {
-        setError('نطاق المعاينة الحالي غير مضاف في قائمة النطاقات المصرح بها لـ Firebase Auth. يمكنك الدخول المباشر برقم الهاتف/البريد الإلكتروني أو الدخول كزائر.');
+        setError('نطاق المعاينة الحالي غير مضاف في قائمة النطاقات المصرح بها لـ Firebase Auth. يمكنك استخدام البريد الإلكتروني أو الدخول كزائر.');
       } else if (errCode !== 'auth/popup-closed-by-user') {
-        setError('تعذر تسجيل الدخول بحساب Google. يمكنك استخدام رقم الهاتف، البريد الإلكتروني، أو الدخول كزائر.');
+        setError('تعذر تسجيل الدخول بحساب Google. يمكنك استخدام البريد الإلكتروني أو الدخول كزائر.');
       }
     } finally {
       setGoogleLoading(false);
@@ -200,7 +200,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
           <div className="p-3.5 bg-yellow/30 border-2 border-ink flex items-start gap-2.5">
             <ShieldCheck className="w-5 h-5 text-cobalt shrink-0 mt-0.5" />
             <p className="text-xs text-ink font-bold leading-relaxed">
-              سجل مجاناً برقم هاتفك أو بريدك لمزامنة تقدمك الدراسي وحفظ نتائج الاختبارات وشهادات التقدير سحابياً.
+              ادخل كزائر للتجربة، أو استخدم Google أو البريد الإلكتروني لحفظ تقدمك الدراسي ونتائجك سحابياً.
             </p>
           </div>
 
@@ -298,15 +298,13 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
 
               <button
                 type="button"
-                onClick={() => { setMethod('phone'); setError(null); }}
-                className={`py-2 px-3 text-xs font-black flex items-center justify-center gap-2 border-2 transition-all cursor-pointer ${
-                  method === 'phone'
-                    ? 'bg-yellow border-ink text-ink shadow-brutal-sm'
-                    : 'bg-paper border-ink/40 text-ink/70 hover:border-ink'
-                }`}
+                disabled
+                aria-disabled="true"
+                title="سيتم تفعيل التحقق عبر SMS لاحقاً"
+                className="py-2 px-3 text-xs font-black flex items-center justify-center gap-2 border-2 border-ink/20 bg-paper text-ink/40 cursor-not-allowed"
               >
-                <Phone className="w-4 h-4 text-cobalt" />
-                <span>رقم الهاتف (SMS)</span>
+                <Phone className="w-4 h-4" />
+                <span>رقم الهاتف (قريباً)</span>
               </button>
             </div>
 
