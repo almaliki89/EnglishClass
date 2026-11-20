@@ -293,7 +293,7 @@ function RouteLoadingFallback() {
 }
 
 function MainAppContent() {
-  const { user, saveStudentToCloud, loadStudentFromCloud, submitExamResultToServer } = useAuth();
+  const { user, loading: authLoading, saveStudentToCloud, loadStudentFromCloud, submitExamResultToServer } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -581,6 +581,24 @@ function MainAppContent() {
     setStudentState(INITIAL_STUDENT_STATE);
     saveStudentState(INITIAL_STUDENT_STATE);
   };
+
+  // Explicit entry choice: visitors may continue as guests, or authenticate with Google/email.
+  // No curriculum route is rendered until the visitor chooses one of these options.
+  if (authLoading) {
+    return <RouteLoadingFallback />;
+  }
+
+  if (!user) {
+    return (
+      <AuthGate
+        onSuccessfulAuth={(name, grade) => {
+          if (name) handleUpdateStudentName(name);
+          if (grade) handleSelectGrade(grade);
+          navigate('/', { replace: true });
+        }}
+      />
+    );
+  }
 
   return (
     <div
