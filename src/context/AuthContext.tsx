@@ -166,15 +166,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
                 email: firebaseUser.email || '',
                 authProvider: 'google',
                 selectedGrade: 'sixth-preparatory',
-                xp: 100,
+                xp: 0,
                 completedLessonIds: [],
                 bookmarkedQuestionIds: [],
                 totalQuestionsAttempted: 0,
                 totalQuestionsCorrect: 0,
-                streakDays: 1,
+                streakDays: 0,
                 lastActiveDate: new Date().toISOString().split('T')[0],
                 lastVisitedLessonId: 'u1-l1',
-                unlockedBadges: ['first-step'],
+                unlockedBadges: [],
                 createdAt: new Date().toISOString(),
                 updatedAt: new Date().toISOString()
               }, { merge: true });
