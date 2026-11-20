@@ -1,7 +1,7 @@
 {
   "firestore": [
     {
-      "database": "lingora-db",
+      "database": "(default)",
       "rules": "firestore.rules"
     }
   ],
