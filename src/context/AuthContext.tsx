@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { 
   onAuthStateChanged, 
+  getRedirectResult,
   signInWithRedirect, 
   signOut as firebaseSignOut,
   createUserWithEmailAndPassword,
@@ -41,6 +42,7 @@ interface AuthContextType {
   loading: boolean;
   syncStatus: 'synced' | 'saving' | 'offline' | 'error';
   signInWithGoogle: () => Promise<void>;
+  googleRedirectError: string | null;
   signUpWithEmail: (name: string, email: string, pass: string, grade?: EducationalGrade) => Promise<void>;
   signInWithEmail: (email: string, pass: string) => Promise<void>;
   signUpWithPhone: (name: string, phone: string, pass: string, grade?: EducationalGrade) => Promise<void>;
@@ -110,6 +112,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return null;
   });
   const [loading, setLoading] = useState<boolean>(!isE2EMode);
+  const [googleRedirectError, setGoogleRedirectError] = useState<string | null>(null);
   const [syncStatus, setSyncStatus] = useState<'synced' | 'saving' | 'offline' | 'error'>(
     isE2EMode ? 'synced' : 'offline'
   );
@@ -120,6 +123,21 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setLoading(false);
       return;
     }
+
+    // Resolve the redirect result explicitly so Firebase OAuth failures are not silently
+    // reduced to an unauthenticated state. onAuthStateChanged remains authoritative for session state.
+    getRedirectResult(auth).catch((error: unknown) => {
+      const code = (error as { code?: string })?.code || '';
+      console.error('Google redirect result error:', getErrorMessage(error));
+      if (code === 'auth/unauthorized-domain') {
+        setGoogleRedirectError('نطاق الموقع غير مصرح به في Firebase Authentication. أضف نطاق الموقع المنشور إلى Authorized domains.');
+      } else if (code === 'auth/operation-not-allowed') {
+        setGoogleRedirectError('تسجيل الدخول عبر Google غير مفعّل في إعدادات Firebase Authentication.');
+      } else {
+        setGoogleRedirectError('لم تكتمل العودة من Google. تحقق من إعدادات Firebase Authorized domains ومزوّد Google، ثم أعد المحاولة.');
+      }
+      setSyncStatus('error');
+    });
 
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser: FirebaseUser | null) => {
       try {
@@ -206,6 +224,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Sign in with Google using a full-page redirect to avoid popup blockers
   const signInWithGoogle = async () => {
+    setGoogleRedirectError(null);
     try {
       setSyncStatus('saving');
       await signInWithRedirect(auth, googleProvider);
@@ -503,6 +522,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         loading,
         syncStatus,
         signInWithGoogle,
+        googleRedirectError,
         signUpWithEmail,
         signInWithEmail,
         signUpWithPhone,
