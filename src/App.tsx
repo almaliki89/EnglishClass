@@ -343,7 +343,7 @@ function MainAppContent() {
     let isCancelled = false;
 
     async function syncOnLogin() {
-      if (user && user.uid !== prevUserIdRef.current) {
+      if (user && user.authProvider !== 'guest' && user.uid !== prevUserIdRef.current) {
         prevUserIdRef.current = user.uid;
         const cloudData = await loadStudentFromCloud(user.uid);
         if (isCancelled) return;
@@ -406,7 +406,7 @@ function MainAppContent() {
       isInitialMount.current = false;
       return;
     }
-    if (user) {
+    if (user && user.authProvider !== 'guest') {
       saveStudentToCloud(studentState);
     }
   }, [studentState, user]);
