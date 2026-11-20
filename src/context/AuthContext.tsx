@@ -156,6 +156,32 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             if (data.name) displayName = data.name;
             if (data.phoneNumber) phone = data.phoneNumber;
             if (data.authProvider) authProvider = data.authProvider;
+          } else if (authProvider === 'google') {
+            // Create the cloud student profile after redirect-based first-time Google sign-in.
+            try {
+              await setDoc(doc(db, 'students', firebaseUser.uid), {
+                uid: firebaseUser.uid,
+                name: firebaseUser.displayName || 'طالب متميز',
+                email: firebaseUser.email || '',
+                authProvider: 'google',
+                selectedGrade: 'sixth-preparatory',
+                xp: 100,
+                completedLessonIds: [],
+                bookmarkedQuestionIds: [],
+                totalQuestionsAttempted: 0,
+                totalQuestionsCorrect: 0,
+                streakDays: 1,
+                lastActiveDate: new Date().toISOString().split('T')[0],
+                lastVisitedLessonId: 'u1-l1',
+                unlockedBadges: ['first-step'],
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+              }, { merge: true });
+              displayName = firebaseUser.displayName || 'طالب متميز';
+            } catch (profileError) {
+              console.warn('Google profile initialization failed:', getErrorMessage(profileError));
+              setSyncStatus('offline');
+            }
           }
 
           const appUser: AppUser = {
@@ -183,48 +209,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => unsubscribe();
   }, []);
 
-  // Sign in with Google
+  // Sign in with Google using a full-page redirect to avoid popup blockers
   const signInWithGoogle = async () => {
     try {
       setSyncStatus('saving');
       await signInWithRedirect(auth, googleProvider);
-      return;
-      /* The browser returns to the app after Google authentication; onAuthStateChanged
-         above handles the authenticated user and profile synchronization. */
-      /* if (result.user) {
-        try {
-          const studentDocRef = doc(db, 'students', result.user.uid);
-          const snapshot = await getDoc(studentDocRef);
-
-          if (!snapshot.exists()) {
-            // Initialize clean profile without any password field
-            await setDoc(studentDocRef, {
-              uid: result.user.uid,
-              name: result.user.displayName || 'طالب متميز',
-              email: result.user.email || '',
-              authProvider: 'google',
-              selectedGrade: 'sixth-preparatory',
-              xp: 100,
-              completedLessonIds: [],
-              bookmarkedQuestionIds: [],
-              totalQuestionsAttempted: 0,
-              totalQuestionsCorrect: 0,
-              streakDays: 1,
-              lastActiveDate: new Date().toISOString().split('T')[0],
-              lastVisitedLessonId: 'u1-l1',
-              unlockedBadges: ['first-step'],
-              createdAt: new Date().toISOString(),
-              updatedAt: new Date().toISOString()
-            }, { merge: true });
-          }
-        } catch (dbErr) {
-          console.warn('Firestore write/read skipped due to offline mode:', getErrorMessage(dbErr));
-        }
-        setSyncStatus('synced');
-      }
     } catch (error: unknown) {
-      const msg = getErrorMessage(error);
-      console.warn('Google Sign-in error:', msg);
+      console.warn('Google Sign-in redirect error:', getErrorMessage(error));
       setSyncStatus('offline');
       throw error;
     }
