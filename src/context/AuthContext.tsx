@@ -33,7 +33,7 @@ export interface AppUser {
   displayName: string;
   email?: string;
   phoneNumber?: string;
-  authProvider: 'phone' | 'email' | 'google';
+  authProvider: 'phone' | 'email' | 'google' | 'guest';
 }
 
 interface AuthContextType {
@@ -94,16 +94,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     import.meta.env.VITE_E2E_MODE === 'true' &&
     new URLSearchParams(window.location.search).get('forceSignedOut') === 'true';
 
-  const isE2EMode =
-    !forceSignedOutPreview &&
-    (import.meta.env.VITE_E2E_MODE === 'true' ||
-      (typeof window !== 'undefined' &&
-        Boolean(
-          window.navigator.webdriver ||
-          window.location.search.includes('e2e=true') ||
-          window.location.search.includes('e2e_mode=true') ||
-          localStorage.getItem('e2e_mode') === 'true'
-        )));
+  // Test identities are enabled only by an explicit build-time flag in isolated CI builds.
+  // Never infer privileged test sessions from URL parameters, localStorage, or webdriver.
+  const isE2EMode = !forceSignedOutPreview && import.meta.env.VITE_E2E_MODE === 'true';
 
   const [user, setUser] = useState<AppUser | null>(() => {
     if (isE2EMode) {
@@ -322,7 +315,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Save student progress to Firestore Cloud (Owner only)
   const saveStudentToCloud = async (state: StudentState) => {
-    if (!user || isE2EMode) return;
+    if (!user || user.authProvider === 'guest' || isE2EMode) return;
     try {
       setTimeout(() => setSyncStatus('saving'), 0);
       const studentDocRef = doc(db, 'students', user.uid);
@@ -454,7 +447,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Notes operations in subcollection (Owner only)
   const saveNoteToCloud = async (note: StudentNote) => {
-    if (!user) return;
+    if (!user || user.authProvider === 'guest') return;
     try {
       const noteDocRef = doc(db, 'students', user.uid, 'notes', note.id);
       await setDoc(noteDocRef, note, { merge: true });
@@ -475,7 +468,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   // Bookmarks operations in subcollection (Owner only)
   const saveBookmarkToCloud = async (bookmark: BookmarkItem) => {
-    if (!user) return;
+    if (!user || user.authProvider === 'guest') return;
     try {
       const bookmarkDocRef = doc(db, 'students', user.uid, 'bookmarks', bookmark.id);
       await setDoc(bookmarkDocRef, bookmark, { merge: true });
@@ -498,7 +491,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setUser({
       uid: 'guest-' + Date.now(),
       displayName: 'طالب زائر (معاينة)',
-      authProvider: 'email',
+      authProvider: 'guest',
     });
     setSyncStatus('offline');
   };
