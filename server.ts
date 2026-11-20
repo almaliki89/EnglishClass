@@ -3711,7 +3711,7 @@ async function startServer() {
   } catch (err: any) {
     if (process.env.NODE_ENV === "production") {
       console.error("FATAL: Curriculum persistence initialization failed in production mode:", err.message);
-      process.exit(1);
+      throw err;
     } else {
       console.warn("Curriculum persistence initialization notice (development fallback active):", err.message);
     }
@@ -3738,9 +3738,29 @@ async function startServer() {
     });
   }
 
-  app.listen(PORT, "0.0.0.0", () => {
-    console.log(`OMEGA V3.2 Server running on http://localhost:${PORT}`);
-  });
+  // Vercel invokes this Express app as a serverless function; it must not bind
+  // a TCP port. Local development/standalone deployments still use app.listen.
+  if (!process.env.VERCEL) {
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`OMEGA V3.2 Server running on http://localhost:${PORT}`);
+    });
+  }
 }
 
-startServer();
+let serverInitialization: Promise<void> | null = null;
+
+export function initializeServer(): Promise<void> {
+  if (!serverInitialization) {
+    serverInitialization = startServer();
+  }
+  return serverInitialization;
+}
+
+export { app };
+
+// Keep the existing standalone development and Node-server behavior.
+// Vercel initializes lazily from api/[...path].ts so concurrent requests share
+// one startup promise and the function never attempts to listen on a port.
+if (!process.env.VERCEL) {
+  void initializeServer();
+}
