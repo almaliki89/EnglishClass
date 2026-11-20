@@ -29,7 +29,9 @@ const FIRESTORE_DB_ID = "ai-studio-platform-5fee63ca-a212-45ad-b11d-7d4568447c02
 const FIREBASE_STORAGE_BUCKET = "gen-lang-client-0324348726.firebasestorage.app";
 
 // Ensure local persistent directories exist for resilient caching & offline testing
-const LOCAL_STORAGE_DIR = path.join(process.cwd(), "storage_curriculum_pdfs");
+const LOCAL_STORAGE_DIR = process.env.VERCEL
+  ? path.join("/tmp", "lingora", "storage_curriculum_pdfs")
+  : path.join(process.cwd(), "storage_curriculum_pdfs");
 if (!fs.existsSync(LOCAL_STORAGE_DIR)) {
   fs.mkdirSync(LOCAL_STORAGE_DIR, { recursive: true });
 }
@@ -127,7 +129,9 @@ const e2eExamFirestore = {
 
 // Maximum allowed PDF payload: 25 MB decoded buffer limit
 const MAX_PDF_BYTES = 25 * 1024 * 1024; // 25 MB
-const CURRICULUM_PERSISTENCE_FILE = path.join(process.cwd(), "curriculum_sources_db.json");
+const CURRICULUM_PERSISTENCE_FILE = process.env.VERCEL
+  ? path.join("/tmp", "lingora", "curriculum_sources_db.json")
+  : path.join(process.cwd(), "curriculum_sources_db.json");
 
 // Helper to store curriculum PDF into Firebase Storage & local mirrored storage
 async function uploadCurriculumPdf(
