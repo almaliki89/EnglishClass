@@ -3,7 +3,7 @@
   "appId": "1:248530902908:web:e4af3da0584d15a0d60ef9",
   "apiKey": "AIzaSyC4tmO3aixpGXuIJsg2tm4sBgJsz40eKjM",
   "authDomain": "gen-lang-client-0324348726-3.firebaseapp.com",
-  "firestoreDatabaseId": "lingora-db",
+  "firestoreDatabaseId": "(default)",
   "storageBucket": "gen-lang-client-0324348726-3.firebasestorage.app",
   "messagingSenderId": "248530902908",
   "measurementId": "G-66TXNV0TZ4",
