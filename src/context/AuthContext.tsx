@@ -422,7 +422,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     timeSpentSeconds: number;
     idempotencyKey: string;
   }) => {
-    if (!user) throw new Error("يجب تسجيل الدخول قبل حفظ نتيجة الامتحان.");
+    if (!user || user.authProvider === 'guest') throw new Error("يمكن للزائر تجربة الدروس والتمارين، لكن حفظ نتائج الامتحانات يتطلب الدخول بحساب.");
     const firebaseUser = auth.currentUser;
     if (!firebaseUser || firebaseUser.uid !== user.uid) {
       throw new Error("جلسة المصادقة غير متاحة؛ لم يتم حفظ نتيجة الامتحان.");
@@ -457,7 +457,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const deleteNoteFromCloud = async (noteId: string) => {
-    if (!user) return;
+    if (!user || user.authProvider === 'guest') return;
     try {
       const noteDocRef = doc(db, 'students', user.uid, 'notes', noteId);
       await setDoc(noteDocRef, { deleted: true }, { merge: true });
@@ -478,7 +478,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   };
 
   const removeBookmarkFromCloud = async (bookmarkId: string) => {
-    if (!user) return;
+    if (!user || user.authProvider === 'guest') return;
     try {
       const bookmarkDocRef = doc(db, 'students', user.uid, 'bookmarks', bookmarkId);
       await setDoc(bookmarkDocRef, { removed: true }, { merge: true });
