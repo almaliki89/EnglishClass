@@ -25,8 +25,9 @@ if (process.env.NODE_ENV === "production") {
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3000;
 const app = express();
-const FIRESTORE_DB_ID = "ai-studio-platform-5fee63ca-a212-45ad-b11d-7d4568447c02";
-const FIREBASE_STORAGE_BUCKET = "gen-lang-client-0324348726.firebasestorage.app";
+const FIREBASE_PROJECT_ID = process.env.FIREBASE_PROJECT_ID || "gen-lang-client-0324348726-3";
+const FIRESTORE_DB_ID = process.env.FIRESTORE_DATABASE_ID || "lingora-db";
+const FIREBASE_STORAGE_BUCKET = process.env.FIREBASE_STORAGE_BUCKET || "gen-lang-client-0324348726-3.firebasestorage.app";
 
 // Ensure local persistent directories exist for resilient caching & offline testing
 const LOCAL_STORAGE_DIR = process.env.VERCEL
