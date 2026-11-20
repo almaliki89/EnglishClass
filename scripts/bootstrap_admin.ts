@@ -15,7 +15,7 @@
  *   ADMIN_BOOTSTRAP_SECRET=your_high_entropy_secret npx tsx scripts/bootstrap_admin.ts --email=alnukhbazubair@gmail.com --secret=your_high_entropy_secret
  */
 
-import { initializeApp, getApps } from 'firebase-admin/app';
+import { initializeApp, getApps, cert, applicationDefault } from 'firebase-admin/app';
 import { getAuth } from 'firebase-admin/auth';
 import { getFirestore } from 'firebase-admin/firestore';
 import crypto from 'node:crypto';
