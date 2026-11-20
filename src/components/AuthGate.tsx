@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   GraduationCap, 
@@ -29,6 +29,7 @@ interface AuthGateProps {
 export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
   const { 
     signInWithGoogle, 
+    googleRedirectError,
     signInWithEmail, 
     signUpWithEmail, 
     signUpWithPhone, 
@@ -53,6 +54,10 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (googleRedirectError) setError(googleRedirectError);
+  }, [googleRedirectError]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -122,8 +127,9 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
     setError(null);
     setGoogleLoading(true);
     try {
+      // signInWithRedirect navigates away; successful access is granted only after
+      // Firebase restores the authenticated session in AuthProvider.
       await signInWithGoogle();
-      if (onSuccessfulAuth) onSuccessfulAuth('', selectedGrade);
     } catch (err: any) {
       const errCode = err?.code || '';
       const errMessage = err?.message || '';
