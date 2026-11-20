@@ -382,19 +382,22 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByRole('heading', { name: 'رحلة التعلم خطوة بخطوة' })).toBeVisible();
   });
 
-  test('13. Students can browse and enter grades without signing in', async ({ page }) => {
+  test('13. Unauthenticated visitors must explicitly choose guest or account access', async ({ page }) => {
     await page.goto('/?forceSignedOut=true');
     await page.waitForLoadState('networkidle');
 
-    await expect(page.getByRole('heading', { name: /تعلّم، العب، وتقدّم/ })).toBeVisible();
+    // A direct visit must present the access choices instead of silently opening the curriculum.
+    await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /الدخول المباشر بحساب Google/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /تسجيل الدخول/ })).toBeVisible();
+
+    // Choosing guest access opens the platform without creating a Firebase account.
+    await page.getByRole('button', { name: /دخول سريع كزائر/ }).click();
+    await expect(page).toHaveURL('/');
     await expect(page.getByRole('heading', { name: 'أيّ عالم ستكتشف اليوم؟' })).toBeVisible();
 
-    await page.getByRole('button', { name: /دخول منصة الثالث/ }).click();
-    await expect(page).toHaveURL(/\/grade\/third-intermediate$/);
-    await expect(page.getByRole('heading', { name: /منصة الثالث المتوسط/ })).toBeVisible();
-
-    // Account creation remains optional and is available only when the student requests it.
-    await page.goto('/login?forceSignedOut=true');
+    // A direct deep link while signed out must show the same access gate.
+    await page.goto('/grade/third-intermediate?forceSignedOut=true');
     await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toBeVisible();
   });
 
@@ -440,8 +443,11 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(logoutBtn).toContainText('تسجيل الخروج');
 
     await logoutBtn.click();
-    await expect(page.locator('#auth-gate-btn')).toBeVisible();
-    await expect(page.locator('#auth-gate-btn')).toContainText('دخول');
+
+    // Logout returns the application to the full access gate, not the legacy Navbar sign-in button.
+    await expect(page.getByRole('button', { name: /دخول سريع كزائر \(معاينة المنهاج\)/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /الدخول المباشر بحساب Google/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /تسجيل الدخول/ })).toBeVisible();
   });
 
 
