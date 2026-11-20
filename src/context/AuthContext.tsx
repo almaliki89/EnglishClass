@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { 
   onAuthStateChanged, 
-  signInWithPopup, 
+  signInWithRedirect, 
   signOut as firebaseSignOut,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -151,11 +151,39 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             authProvider = 'phone';
           }
 
+          let profileInitialized = false;
           if (studentSnap && studentSnap.exists()) {
             const data = studentSnap.data();
             if (data.name) displayName = data.name;
             if (data.phoneNumber) phone = data.phoneNumber;
             if (data.authProvider) authProvider = data.authProvider;
+          } else if (authProvider === 'google') {
+            // Create the cloud student profile after redirect-based first-time Google sign-in.
+            try {
+              await setDoc(doc(db, 'students', firebaseUser.uid), {
+                uid: firebaseUser.uid,
+                name: firebaseUser.displayName || 'طالب متميز',
+                email: firebaseUser.email || '',
+                authProvider: 'google',
+                selectedGrade: 'sixth-preparatory',
+                xp: 100,
+                completedLessonIds: [],
+                bookmarkedQuestionIds: [],
+                totalQuestionsAttempted: 0,
+                totalQuestionsCorrect: 0,
+                streakDays: 1,
+                lastActiveDate: new Date().toISOString().split('T')[0],
+                lastVisitedLessonId: 'u1-l1',
+                unlockedBadges: ['first-step'],
+                createdAt: new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+              }, { merge: true });
+              displayName = firebaseUser.displayName || 'طالب متميز';
+              profileInitialized = true;
+            } catch (profileError) {
+              console.warn('Google profile initialization failed:', getErrorMessage(profileError));
+              setSyncStatus('offline');
+            }
           }
 
           const appUser: AppUser = {
@@ -167,7 +195,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           };
 
           setUser(appUser);
-          setSyncStatus(studentSnap && studentSnap.exists() ? 'synced' : 'offline');
+          setSyncStatus((studentSnap && studentSnap.exists()) || profileInitialized ? 'synced' : 'offline');
         } else {
           setUser(null);
           setSyncStatus('offline');
@@ -183,45 +211,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => unsubscribe();
   }, []);
 
-  // Sign in with Google
+  // Sign in with Google using a full-page redirect to avoid popup blockers
   const signInWithGoogle = async () => {
     try {
       setSyncStatus('saving');
-      const result = await signInWithPopup(auth, googleProvider);
-      if (result.user) {
-        try {
-          const studentDocRef = doc(db, 'students', result.user.uid);
-          const snapshot = await getDoc(studentDocRef);
-
-          if (!snapshot.exists()) {
-            // Initialize clean profile without any password field
-            await setDoc(studentDocRef, {
-              uid: result.user.uid,
-              name: result.user.displayName || 'طالب متميز',
-              email: result.user.email || '',
-              authProvider: 'google',
-              selectedGrade: 'sixth-preparatory',
-              xp: 100,
-              completedLessonIds: [],
-              bookmarkedQuestionIds: [],
-              totalQuestionsAttempted: 0,
-              totalQuestionsCorrect: 0,
-              streakDays: 1,
-              lastActiveDate: new Date().toISOString().split('T')[0],
-              lastVisitedLessonId: 'u1-l1',
-              unlockedBadges: ['first-step'],
-              createdAt: new Date().toISOString(),
-              updatedAt: new Date().toISOString()
-            }, { merge: true });
-          }
-        } catch (dbErr) {
-          console.warn('Firestore write/read skipped due to offline mode:', getErrorMessage(dbErr));
-        }
-        setSyncStatus('synced');
-      }
+      await signInWithRedirect(auth, googleProvider);
     } catch (error: unknown) {
-      const msg = getErrorMessage(error);
-      console.warn('Google Sign-in error:', msg);
+      console.warn('Google Sign-in redirect error:', getErrorMessage(error));
       setSyncStatus('offline');
       throw error;
     }
