@@ -443,8 +443,11 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(logoutBtn).toContainText('تسجيل الخروج');
 
     await logoutBtn.click();
-    await expect(page.locator('#auth-gate-btn')).toBeVisible();
-    await expect(page.locator('#auth-gate-btn')).toContainText('دخول');
+
+    // Logout returns the application to the full access gate, not the legacy Navbar sign-in button.
+    await expect(page.getByRole('button', { name: /دخول سريع كزائر \(معاينة المنهاج\)/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /الدخول المباشر بحساب Google/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /تسجيل الدخول/ })).toBeVisible();
   });
 
 
