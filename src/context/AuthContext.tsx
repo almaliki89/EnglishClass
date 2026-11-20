@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { 
   onAuthStateChanged, 
-  signInWithPopup, 
+  signInWithRedirect, 
   signOut as firebaseSignOut,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
@@ -187,8 +187,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const signInWithGoogle = async () => {
     try {
       setSyncStatus('saving');
-      const result = await signInWithPopup(auth, googleProvider);
-      if (result.user) {
+      await signInWithRedirect(auth, googleProvider);
+      return;
+      /* The browser returns to the app after Google authentication; onAuthStateChanged
+         above handles the authenticated user and profile synchronization. */
+      /* if (result.user) {
         try {
           const studentDocRef = doc(db, 'students', result.user.uid);
           const snapshot = await getDoc(studentDocRef);
