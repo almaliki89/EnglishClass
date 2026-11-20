@@ -5,7 +5,7 @@ import fs from "fs";
 import dotenv from "dotenv";
 import { GoogleGenAI, Type } from "@google/genai";
 import { PDFParse } from "pdf-parse";
-import { initializeApp, getApps } from "firebase-admin/app";
+import { initializeApp, getApps, cert, applicationDefault } from "firebase-admin/app";
 import { getAuth } from "firebase-admin/auth";
 import { getFirestore } from "firebase-admin/firestore";
 import { getStorage } from "firebase-admin/storage";
@@ -38,21 +38,45 @@ if (!fs.existsSync(LOCAL_STORAGE_DIR)) {
 let activeIngestions = 0;
 const MAX_CONCURRENT_INGESTIONS = 3;
 
-// Initialize Firebase Admin SDK for cryptographic token verification, durable Firestore & Storage
+// Initialize Firebase Admin SDK with an explicit service account on Vercel.
+// The private key is supplied only through the server-side FIREBASE_SERVICE_ACCOUNT_JSON
+// environment variable and must never be committed to this repository.
 let adminFirestore: any = null;
 let adminStorage: any = null;
 if (process.env.NODE_ENV !== "test") {
   try {
     const currentApps = getApps();
-    const adminApp = currentApps.length ? currentApps[0] : initializeApp({
-      projectId: "gen-lang-client-0324348726",
-      storageBucket: FIREBASE_STORAGE_BUCKET,
-    });
+    let adminApp = currentApps.find((candidate) => candidate.name === "[DEFAULT]");
+    if (!adminApp) {
+      const serviceAccountJson = process.env.FIREBASE_SERVICE_ACCOUNT_JSON;
+      let credential;
+      if (serviceAccountJson) {
+        const serviceAccount = JSON.parse(serviceAccountJson);
+        if (serviceAccount.project_id !== FIREBASE_PROJECT_ID) {
+          throw new Error("FIREBASE_SERVICE_ACCOUNT_JSON project_id does not match FIREBASE_PROJECT_ID.");
+        }
+        credential = cert(serviceAccount);
+      } else if (process.env.VERCEL) {
+        throw new Error("Missing FIREBASE_SERVICE_ACCOUNT_JSON on Vercel. Configure the Firebase Admin service-account JSON as a server-only environment variable.");
+      } else {
+        credential = applicationDefault();
+      }
+      adminApp = initializeApp({
+        credential,
+        projectId: FIREBASE_PROJECT_ID,
+        storageBucket: FIREBASE_STORAGE_BUCKET,
+      });
+    }
     adminFirestore = getFirestore(adminApp, FIRESTORE_DB_ID);
-    adminStorage = getStorage(adminApp);
-    console.log("Firebase Admin SDK, Firestore & Storage initialized successfully.");
+    // Cloud Storage is deliberately opt-in. LINGORA student registration and study
+    // do not require Firebase Storage or a paid Blaze upgrade.
+    if (process.env.FIREBASE_STORAGE_ENABLED === "true") {
+      adminStorage = getStorage(adminApp);
+    }
+    console.log(`Firebase Admin SDK and Firestore initialized for ${FIREBASE_PROJECT_ID}/${FIRESTORE_DB_ID}.`);
   } catch (adminErr) {
-    console.warn("Firebase Admin SDK initialization note:", adminErr);
+    console.error("Firebase Admin SDK initialization failed:", adminErr);
+    if (process.env.VERCEL) throw adminErr;
   }
 } else {
   console.log("E2E test mode: Firebase Admin SDK disabled; external credentials are not required.");
