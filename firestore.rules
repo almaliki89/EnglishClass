@@ -38,8 +38,8 @@ service cloud.firestore {
     }
 
     // Student profile field-level validator for create & update
-    function isValidStudent(data) {
-      return data.uid is string && data.uid == request.auth.uid &&
+    function isValidStudent(data, expectedUid) {
+      return data.uid is string && data.uid == expectedUid &&
              data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
              (!('email' in data) || data.email is string) &&
              (!('xp' in data) || (data.xp is number && data.xp >= 0 && data.xp <= 1000000)) &&
@@ -56,8 +56,8 @@ service cloud.firestore {
     }
 
     // New student profile validator preventing self-awarded initial progression
-    function isValidNewStudent(data) {
-      return isValidStudent(data) &&
+    function isValidNewStudent(data, expectedUid) {
+      return isValidStudent(data, expectedUid) &&
              (!('xp' in data) || data.xp == 0) &&
              (!('totalQuestionsAttempted' in data) || data.totalQuestionsAttempted == 0) &&
              (!('totalQuestionsCorrect' in data) || data.totalQuestionsCorrect == 0) &&
@@ -70,19 +70,15 @@ service cloud.firestore {
     // Student profile, settings and overall progress (strict owner-only privacy & validation)
     match /students/{studentId} {
       allow read: if isOwner(studentId) || isAdmin();
-      allow create: if isOwner(studentId) && (isAdmin() || isValidNewStudent(request.resource.data));
-      allow update: if (isAdmin() && isValidStudent(request.resource.data)) ||
-                      (isOwner(studentId) && isValidStudent(request.resource.data) &&
+      allow create: if isOwner(studentId) && (isAdmin() || isValidNewStudent(request.resource.data, studentId));
+      allow update: if (isAdmin() && isValidStudent(request.resource.data, studentId)) ||
+                      (isOwner(studentId) && isValidStudent(request.resource.data, studentId) &&
                        request.resource.data.uid == resource.data.uid &&
-                       // Prevent unauthorized client manipulation of protected progress & achievements
-                       (!('xp' in request.resource.data) || request.resource.data.xp == resource.data.xp) &&
-                       (!('streakDays' in request.resource.data) || request.resource.data.streakDays == resource.data.streakDays) &&
-                       (!('totalQuestionsAttempted' in request.resource.data) || request.resource.data.totalQuestionsAttempted == resource.data.totalQuestionsAttempted) &&
-                       (!('totalQuestionsCorrect' in request.resource.data) || request.resource.data.totalQuestionsCorrect == resource.data.totalQuestionsCorrect) &&
-                       (!('unlockedBadges' in request.resource.data) || request.resource.data.unlockedBadges == resource.data.unlockedBadges) &&
-                       (!('role' in request.resource.data) || ('role' in resource.data && request.resource.data.role == resource.data.role)) &&
-                       (!('isAdmin' in request.resource.data) || ('isAdmin' in resource.data && request.resource.data.isAdmin == resource.data.isAdmin)) &&
-                       (!('verificationStatus' in request.resource.data) || ('verificationStatus' in resource.data && request.resource.data.verificationStatus == resource.data.verificationStatus)));
+                       // Block any modification or deletion of server-controlled progress and privilege fields.
+                       !request.resource.data.diff(resource.data).affectedKeys().hasAny([
+                         'xp', 'streakDays', 'totalQuestionsAttempted', 'totalQuestionsCorrect',
+                         'unlockedBadges', 'role', 'isAdmin', 'verificationStatus'
+                       ]));
       allow delete: if isAdmin();
 
       // Student sub-collections: exam results (read by owner/admin; writes strictly secured to server-side admin)
