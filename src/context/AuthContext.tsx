@@ -177,7 +177,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           // must never hold the user at the sign-in gate after Firebase Auth succeeds.
           const initialProvider: 'phone' | 'email' | 'google' | 'student-password' =
             firebaseUser.providerData.some(p => p.providerId === 'google.com') ? 'google' :
-            firebaseUser.providerData.some(p => p.providerId === 'phone') ? 'phone' :\n            firebaseUser.email?.endsWith('@students.orbit.invalid') ? 'student-password' : 'email';
+            firebaseUser.providerData.some(p => p.providerId === 'phone') ? 'phone' :
+            firebaseUser.email?.endsWith('@students.orbit.invalid') ? 'student-password' : 'email';
 
           // Only Google and verified phone accounts are accepted by the platform.
           // Legacy email/password-only sessions are signed out instead of bypassing the two approved methods.
@@ -334,9 +335,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     password: string;
   }): Promise<EducationalGrade> => {
     const normalizeIdentity = (value: unknown) =>
-      String(value || '').normalize('NFKC').trim().replace(/\\s+/g, ' ').toLocaleLowerCase('ar');
-    const phoneDigits = profile.phoneNumber.replace(/\\D/g, '');
-    if (!/^9647\\d{9}$/.test(phoneDigits)) throw new Error('رقم الهاتف العراقي غير صحيح.');
+      String(value || '').normalize('NFKC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('ar');
+    const phoneDigits = profile.phoneNumber.replace(/\D/g, '');
+    if (!/^9647\d{9}$/.test(phoneDigits)) throw new Error('رقم الهاتف العراقي غير صحيح.');
     if (profile.password.length < 8) throw new Error('يجب أن تتكون كلمة المرور من 8 أحرف أو أرقام على الأقل.');
     if (profile.password.length > 128) throw new Error('كلمة المرور طويلة جداً.');
     const internalEmail = phoneDigits + '@students.orbit.invalid';
@@ -606,8 +607,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         syncStatus,
         signInWithGoogle,
         googleRedirectError,
-        requestStudentPhoneCode,
-        completeStudentPhoneSignIn,
+        signInWithStudentPassword,
         logout,
         saveStudentToCloud,
         loadStudentFromCloud,
