@@ -15,9 +15,10 @@ import { RecaptchaVerifier, type ConfirmationResult } from 'firebase/auth';
 import { useAuth } from '../context/AuthContext';
 import { auth } from '../lib/firebase';
 import { MentorPortrait } from './common/MentorPortrait';
+import { EducationalGrade } from '../types';
 
 interface AuthGateProps {
-  onSuccessfulAuth?: (name: string, grade: 'sixth-preparatory') => void;
+  onSuccessfulAuth?: (name: string, grade: EducationalGrade) => void;
 }
 
 const IRAQI_GOVERNORATES = [
@@ -146,14 +147,14 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
         if (!/^\d{6}$/.test(verificationCode.trim())) {
           throw new Error('أدخل رمز التحقق المكوّن من 6 أرقام.');
         }
-        await completeStudentPhoneSignIn(confirmation, verificationCode.trim(), {
+        const resolvedGrade = await completeStudentPhoneSignIn(confirmation, verificationCode.trim(), {
           name: fullName.trim().replace(/\s+/g, ' '),
           governorate,
           schoolName: schoolName.trim().replace(/\s+/g, ' '),
           phoneNumber: phone,
           selectedGrade: 'sixth-preparatory',
         });
-        onSuccessfulAuth?.(fullName.trim(), 'sixth-preparatory');
+        onSuccessfulAuth?.(fullName.trim(), resolvedGrade);
       }
     } catch (caughtError) {
       setError(getPhoneErrorMessage(caughtError));
