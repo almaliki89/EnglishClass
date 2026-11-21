@@ -382,23 +382,25 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByRole('heading', { name: 'رحلة التعلم خطوة بخطوة' })).toBeVisible();
   });
 
-  test('13. Unauthenticated visitors must explicitly choose guest or account access', async ({ page }) => {
+  test('13. Unauthenticated students can use only Google or verified student-phone access', async ({ page }) => {
     await page.goto('/?forceSignedOut=true');
     await page.waitForLoadState('networkidle');
 
-    // A direct visit must present the access choices instead of silently opening the curriculum.
-    await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toBeVisible();
-    await expect(page.getByRole('button', { name: /الدخول المباشر بحساب Google/ })).toBeVisible();
-    await expect(page.getByRole('button', { name: /تسجيل الدخول/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /المتابعة مباشرة بحساب Google/ })).toBeVisible();
+    await expect(page.getByLabel('اسم الطالب الثلاثي')).toBeVisible();
+    await expect(page.getByLabel('المحافظة')).toBeVisible();
+    await expect(page.getByLabel('اسم المدرسة')).toBeVisible();
+    await expect(page.getByLabel('رقم الهاتف العراقي')).toBeVisible();
+    await expect(page.getByRole('button', { name: /إرسال رمز التحقق إلى الهاتف/ })).toBeVisible();
 
-    // Choosing guest access opens the platform without creating a Firebase account.
-    await page.getByRole('button', { name: /دخول سريع كزائر/ }).click();
-    await expect(page).toHaveURL('/');
-    await expect(page.getByRole('heading', { name: 'أيّ عالم ستكتشف اليوم؟' })).toBeVisible();
+    await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toHaveCount(0);
+    await expect(page.getByLabel('البريد الإلكتروني')).toHaveCount(0);
+    await expect(page.getByLabel('كلمة المرور')).toHaveCount(0);
 
-    // A direct deep link while signed out must show the same access gate.
+    // Direct deep links must still be guarded by the same two approved access methods.
     await page.goto('/grade/third-intermediate?forceSignedOut=true');
-    await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /المتابعة مباشرة بحساب Google/ })).toBeVisible();
+    await expect(page.getByLabel('اسم الطالب الثلاثي')).toBeVisible();
   });
 
   test('14. Mentor portrait renders cleanly across portal and interactive principles switch', async ({ page, request }) => {
@@ -444,10 +446,11 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
 
     await logoutBtn.click();
 
-    // Logout returns the application to the full access gate, not the legacy Navbar sign-in button.
-    await expect(page.getByRole('button', { name: /دخول سريع كزائر \(معاينة المنهاج\)/ })).toBeVisible();
-    await expect(page.getByRole('button', { name: /الدخول المباشر بحساب Google/ })).toBeVisible();
-    await expect(page.getByRole('button', { name: /تسجيل الدخول/ })).toBeVisible();
+    // Logout returns to the same two-method access gate.
+    await expect(page.getByRole('button', { name: /المتابعة مباشرة بحساب Google/ })).toBeVisible();
+    await expect(page.getByLabel('اسم الطالب الثلاثي')).toBeVisible();
+    await expect(page.getByLabel('رقم الهاتف العراقي')).toBeVisible();
+    await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toHaveCount(0);
   });
 
 
