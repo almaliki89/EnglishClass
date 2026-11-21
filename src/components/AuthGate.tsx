@@ -139,7 +139,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
         'auth/invalid-api-key': 'مفتاح Firebase API غير صالح أو إعدادات Firebase غير صحيحة.',
         'auth/invalid-oauth-client': 'إعداد OAuth الخاص بـ Google غير صحيح. تحقق من OAuth Client داخل Google Cloud/Firebase.',
         'auth/network-request-failed': 'فشل الاتصال بخدمات Firebase/Google. تحقق من الاتصال أو قيود المتصفح.',
-        'auth/popup-blocked': 'المتصفح منع نافذة Google. اسمح بالنوافذ المنبثقة لهذا الموقع ثم أعد المحاولة.',
+        'auth/popup-blocked': 'متصفح الهاتف منع نافذة Google. افتح LINGORA مباشرة في Chrome أو Safari (وليس من داخل تطبيق آخر)، واسمح بالنوافذ المنبثقة ثم أعد المحاولة.',
         'auth/popup-closed-by-user': 'أغلقت نافذة تسجيل Google قبل إكمال العملية.',
         'auth/cancelled-popup-request': 'تم إلغاء نافذة تسجيل Google بسبب طلب آخر. أعد المحاولة.',
         'auth/credential-already-in-use': 'حساب Google مرتبط بحساب آخر. استخدم طريقة تسجيل الدخول المرتبطة به.',
