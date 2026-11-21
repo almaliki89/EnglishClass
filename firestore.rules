@@ -42,6 +42,9 @@ service cloud.firestore {
       return data.uid is string && data.uid == expectedUid &&
              data.name is string && data.name.size() > 0 && data.name.size() <= 100 &&
              (!('email' in data) || data.email is string) &&
+             (!('phoneNumber' in data) || (data.phoneNumber is string && data.phoneNumber.size() <= 20)) &&
+             (!('governorate' in data) || (data.governorate is string && data.governorate.size() > 0 && data.governorate.size() <= 60)) &&
+             (!('schoolName' in data) || (data.schoolName is string && data.schoolName.size() > 0 && data.schoolName.size() <= 160)) &&
              (!('xp' in data) || (data.xp is number && data.xp >= 0 && data.xp <= 1000000)) &&
              (!('selectedGrade' in data) || (data.selectedGrade in ['third-intermediate', 'fourth-preparatory', 'fifth-preparatory', 'sixth-preparatory'])) &&
              (!('completedLessonIds' in data) || (data.completedLessonIds is list && data.completedLessonIds.size() <= 500)) &&
