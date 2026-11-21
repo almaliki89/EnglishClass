@@ -2,6 +2,9 @@ import React, { createContext, useContext, useEffect, useState, ReactNode } from
 import { 
   onAuthStateChanged, 
   getRedirectResult,
+  browserLocalPersistence,
+  browserSessionPersistence,
+  setPersistence,
   signInWithPopup,
   signInWithRedirect, 
   signOut as firebaseSignOut,
@@ -87,6 +90,30 @@ export function cleanPhoneNumber(phone: string): string {
 export function getErrorMessage(error: unknown): string {
   if (error instanceof Error) return error.message;
   return String(error);
+}
+
+async function ensureAuthPersistence(): Promise<void> {
+  try {
+    await setPersistence(auth, browserLocalPersistence);
+  } catch (localPersistenceError) {
+    console.warn('Local auth persistence is unavailable; falling back to session persistence:', getErrorMessage(localPersistenceError));
+    // Preserve the signed-in session for this browser tab when persistent browser storage is restricted.
+    await setPersistence(auth, browserSessionPersistence);
+  }
+}
+
+function toAppUser(firebaseUser: FirebaseUser): AppUser {
+  const authProvider: AppUser['authProvider'] =
+    firebaseUser.providerData.some(provider => provider.providerId === 'google.com') ? 'google' :
+    firebaseUser.providerData.some(provider => provider.providerId === 'phone') ? 'phone' : 'email';
+
+  return {
+    uid: firebaseUser.uid,
+    displayName: firebaseUser.displayName || 'طالب متميز',
+    email: firebaseUser.email || undefined,
+    phoneNumber: firebaseUser.phoneNumber || undefined,
+    authProvider,
+  };
 }
 
 export function AuthProvider({ children }: { children: ReactNode }) {
@@ -212,6 +239,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             }
           }
 
+          // A slow profile read must not restore a user after logout or account switching.
+          if (auth.currentUser?.uid !== firebaseUser.uid) return;
+
           const appUser: AppUser = {
             uid: firebaseUser.uid,
             displayName,
@@ -223,7 +253,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           setUser(appUser);
           setSyncStatus((studentSnap && studentSnap.exists()) || profileInitialized ? 'synced' : 'offline');
         } else {
-          setUser(null);
+          // Ignore a stale null notification if Firebase has already restored a current user.
+          const restoredUser = auth.currentUser;
+          setUser(restoredUser ? toAppUser(restoredUser) : null);
           setSyncStatus('offline');
         }
       } catch (err: unknown) {
@@ -243,8 +275,11 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setGoogleRedirectError(null);
     setSyncStatus('saving');
     try {
-      await signInWithPopup(auth, googleProvider);
-      // Auth state observer is authoritative; it will set the user.
+      await ensureAuthPersistence();
+      const credential = await signInWithPopup(auth, googleProvider);
+      // Promote the verified Firebase credential immediately; the observer remains the source of truth on refresh/logout.
+      setUser(toAppUser(credential.user));
+      setLoading(false);
     } catch (error: unknown) {
       const code = (error as { code?: string })?.code || '';
       if (code === 'auth/popup-blocked') {
@@ -269,9 +304,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       setSyncStatus('saving');
       const normalizedEmail = email.trim().toLowerCase();
 
+      // Set durable Firebase Auth persistence before creating the account.
+      await ensureAuthPersistence();
       // Real Firebase Auth
       const userCredential = await createUserWithEmailAndPassword(auth, normalizedEmail, pass);
       const firebaseUser = userCredential.user;
+      setUser(toAppUser(firebaseUser));
+      setLoading(false);
 
       // Update profile
       await updateProfile(firebaseUser, { displayName: name.trim() });
@@ -320,7 +359,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     try {
       setSyncStatus('saving');
       const normalizedEmail = email.trim().toLowerCase();
-      await signInWithEmailAndPassword(auth, normalizedEmail, pass);
+      await ensureAuthPersistence();
+      const credential = await signInWithEmailAndPassword(auth, normalizedEmail, pass);
+      setUser(toAppUser(credential.user));
+      setLoading(false);
       setSyncStatus('synced');
     } catch (error: unknown) {
       console.error('Email sign in error:', getErrorMessage(error));
