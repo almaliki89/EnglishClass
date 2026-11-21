@@ -7,7 +7,7 @@ import {
   MapPin,
   School,
   ShieldCheck,
-  LockKeyRound,
+  KeyRound,
   AlertCircle,
   Loader2,
   Sparkles,
@@ -305,7 +305,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               <select
                 id="student-grade"
                 required
-                disabled={Boolean(confirmation) || loading}
+                disabled={loading}
                 value={selectedGrade}
                 onChange={(event) => setSelectedGrade(event.target.value as EducationalGrade)}
                 className="w-full px-3 py-2.5 bg-paper border-2 border-ink text-sm font-bold disabled:opacity-60"
