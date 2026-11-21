@@ -84,7 +84,6 @@ interface AuthContextType {
   deleteNoteFromCloud: (noteId: string) => Promise<void>;
   saveBookmarkToCloud: (bookmark: BookmarkItem) => Promise<void>;
   removeBookmarkFromCloud: (bookmarkId: string) => Promise<void>;
-  signInAsGuest: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -363,7 +362,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     setSyncStatus('saving');
 
     const normalizeIdentity = (value: unknown) =>
-      String(value || '').normalize('NFKC').trim().replace(/\\s+/g, ' ').toLocaleLowerCase('ar');
+      String(value || '').normalize('NFKC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('ar');
 
     try {
       const credential = await confirmation.confirm(verificationCode);
@@ -436,95 +435,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       pendingPhoneSignInRef.current = false;
       setLoading(false);
     }
-  };
-
-  // Logout
-  const logout = async () => {
-    try {
-      setSyncStatus('saving');
-      const normalizedEmail = email.trim().toLowerCase();
-
-      // Set durable Firebase Auth persistence before creating the account.
-      await ensureAuthPersistence();
-      // Real Firebase Auth
-      const userCredential = await createUserWithEmailAndPassword(auth, normalizedEmail, pass);
-      const firebaseUser = userCredential.user;
-      setUser(toAppUser(firebaseUser));
-      setLoading(false);
-
-      // Update profile
-      await updateProfile(firebaseUser, { displayName: name.trim() });
-
-      // Save student document to Firestore (NO PASSWORD STORED)
-      try {
-        const studentDocRef = doc(db, 'students', firebaseUser.uid);
-        await setDoc(studentDocRef, {
-          uid: firebaseUser.uid,
-          email: normalizedEmail,
-          name: name.trim(),
-          authProvider: 'email',
-          selectedGrade: grade,
-          xp: 100,
-          completedLessonIds: [],
-          bookmarkedQuestionIds: [],
-          totalQuestionsAttempted: 0,
-          totalQuestionsCorrect: 0,
-          streakDays: 1,
-          lastActiveDate: new Date().toISOString().split('T')[0],
-          lastVisitedLessonId: grade === 'third-intermediate' ? 't-u1-l1' : 'u1-l1',
-          unlockedBadges: ['first-step'],
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString()
-        });
-      } catch (dbErr) {
-        console.warn('Firestore student doc creation skipped due to offline mode:', getErrorMessage(dbErr));
-      }
-
-      setSyncStatus('synced');
-    } catch (error: unknown) {
-      console.error('Email sign up error:', getErrorMessage(error));
-      setSyncStatus('error');
-      const firebaseErrorCode = (error as { code?: string })?.code;
-      if (firebaseErrorCode === 'auth/email-already-in-use') {
-        throw new Error('هذا البريد الإلكتروني مسجل مسبقاً، يمكنك تسجيل الدخول به');
-      } else if (firebaseErrorCode === 'auth/weak-password') {
-        throw new Error('كلمة المرور ضعيفة، يرجى اختيار كلمة مرور أطول');
-      }
-      throw error;
-    }
-  };
-
-  // Sign in with Email & Password (Real Firebase Auth)
-  const signInWithEmail = async (email: string, pass: string) => {
-    try {
-      setSyncStatus('saving');
-      const normalizedEmail = email.trim().toLowerCase();
-      await ensureAuthPersistence();
-      const credential = await signInWithEmailAndPassword(auth, normalizedEmail, pass);
-      setUser(toAppUser(credential.user));
-      setLoading(false);
-      setSyncStatus('synced');
-    } catch (error: unknown) {
-      console.error('Email sign in error:', getErrorMessage(error));
-      setSyncStatus('error');
-      const firebaseErrorCode = (error as { code?: string })?.code;
-      if (firebaseErrorCode === 'auth/user-not-found' || firebaseErrorCode === 'auth/invalid-credential') {
-        throw new Error('البريد الإلكتروني أو كلمة المرور غير صحيحة');
-      } else if (firebaseErrorCode === 'auth/wrong-password') {
-        throw new Error('كلمة المرور غير صحيحة');
-      }
-      throw error;
-    }
-  };
-
-  // Sign in with Phone — Policy Option B (Strictly No Custom Password Storage / No Pseudo Sessions)
-  const signUpWithPhone = async (_name: string, _phone: string, _pass: string, _grade: EducationalGrade = 'sixth-preparatory') => {
-    throw new Error('تسجيل الدخول برقم الهاتف قيد التفعيل حالياً. يرجى استخدام البريد الإلكتروني أو Google.');
-  };
-
-  // Sign in with Phone — Policy Option B (Strictly No Custom Password Storage / No Pseudo Sessions)
-  const signInWithPhone = async (_phone: string, _pass: string) => {
-    throw new Error('تسجيل الدخول برقم الهاتف قيد التفعيل حالياً. يرجى استخدام البريد الإلكتروني أو Google.');
   };
 
   // Logout
