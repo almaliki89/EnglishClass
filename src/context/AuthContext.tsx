@@ -94,16 +94,6 @@ export function getErrorMessage(error: unknown): string {
   return String(error);
 }
 
-async function ensureAuthPersistence(): Promise<void> {
-  try {
-    await setPersistence(auth, browserLocalPersistence);
-  } catch (localPersistenceError) {
-    console.warn('Local auth persistence is unavailable; falling back to session persistence:', getErrorMessage(localPersistenceError));
-    // Preserve the signed-in session for this browser tab when persistent browser storage is restricted.
-    await setPersistence(auth, browserSessionPersistence);
-  }
-}
-
 function toAppUser(firebaseUser: FirebaseUser): AppUser {
   const authProvider: AppUser['authProvider'] =
     firebaseUser.providerData.some(provider => provider.providerId === 'google.com') ? 'google' :
@@ -131,7 +121,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Never infer privileged test sessions from URL parameters, localStorage, or webdriver.
   const isE2EMode = !forceSignedOutPreview && import.meta.env.VITE_E2E_MODE === 'true';
 
-  const pendingPhoneSignInRef = useRef(false);
   const [user, setUser] = useState<AppUser | null>(() => {
     if (isE2EMode) {
       return {
