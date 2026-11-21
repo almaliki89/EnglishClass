@@ -6,14 +6,13 @@ import {
   UserRound,
   MapPin,
   School,
-  ShieldCheck,\n  LockKeyRound,
+  ShieldCheck,
+  LockKeyRound,
   AlertCircle,
   Loader2,
   Sparkles,
 } from 'lucide-react';
-import { RecaptchaVerifier, type ConfirmationResult } from 'firebase/auth';
 import { useAuth } from '../context/AuthContext';
-import { auth } from '../lib/firebase';
 import { MentorPortrait } from './common/MentorPortrait';
 import { EducationalGrade } from '../types';
 import { ALL_GRADES_META, ORDERED_GRADES } from '../data/gradeContentResolver';
@@ -78,8 +77,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
   const {
     signInWithGoogle,
     googleRedirectError,
-    requestStudentPhoneCode,
-    completeStudentPhoneSignIn,
+    signInWithStudentPassword,
   } = useAuth();
 
   const [fullName, setFullName] = useState('');
@@ -87,14 +85,11 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
   const [schoolName, setSchoolName] = useState('');
   const [selectedGrade, setSelectedGrade] = useState<EducationalGrade>('sixth-preparatory');
   const [phone, setPhone] = useState('');
-  const [verificationCode, setVerificationCode] = useState('');
-  const [confirmation, setConfirmation] = useState<ConfirmationResult | null>(null);
+  const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [googleLoading, setGoogleLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
-  const recaptchaVerifierRef = useRef<RecaptchaVerifier | null>(null);
-  const phoneSubmitButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (googleRedirectError) setError(googleRedirectError);
@@ -295,7 +290,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                     type="text"
                     autoComplete="organization"
                     required
-                    disabled={Boolean(confirmation) || loading}
+                    disabled={loading}
                     value={schoolName}
                     onChange={(event) => setSchoolName(event.target.value)}
                     placeholder="اسم المدرسة"
@@ -371,7 +366,6 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
             )}
 
             <button
-              ref={phoneSubmitButtonRef}
               type="submit"
               disabled={loading || googleLoading}
               className="w-full py-3.5 bg-cobalt hover:bg-cobalt-hover text-surface font-black text-sm border-2 border-ink shadow-brutal-action flex items-center justify-center gap-2 disabled:opacity-50"
