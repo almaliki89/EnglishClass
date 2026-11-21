@@ -171,7 +171,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
             firebaseUser.providerData.some(p => p.providerId === 'phone') ? 'phone' :
             firebaseUser.email?.endsWith('@students.orbit.invalid') ? 'student-password' : 'email';
 
-          // Only Google and verified phone accounts are accepted by the platform.
+          // Only Google and the approved student-password flow are accepted by the platform.
           // Legacy email/password-only sessions are signed out instead of bypassing the two approved methods.
           if (initialProvider === 'email') {
             setUser(null);
@@ -360,7 +360,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           normalizeIdentity(stored.name) === normalizeIdentity(profile.name) &&
           normalizeIdentity(stored.governorate) === normalizeIdentity(profile.governorate) &&
           normalizeIdentity(stored.schoolName) === normalizeIdentity(profile.schoolName) &&
-          String(stored.phoneNumber || '').replace(/\\D/g, '') === phoneDigits;
+          String(stored.phoneNumber || '').replace(/\D/g, '') === phoneDigits;
         if (!matches) {
           await firebaseSignOut(auth);
           throw new Error('بيانات الطالب لا تطابق الحساب المسجل بهذا الرقم. راجع الاسم والمحافظة والمدرسة.');
