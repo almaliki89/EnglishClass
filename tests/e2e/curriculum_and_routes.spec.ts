@@ -382,7 +382,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByRole('heading', { name: 'رحلة التعلم خطوة بخطوة' })).toBeVisible();
   });
 
-  test('13. Unauthenticated students can use only Google or verified student-phone access', async ({ page }) => {
+  test('13. Unauthenticated students can use only Google or student-password access', async ({ page }) => {
     await page.goto('/?forceSignedOut=true');
     await page.waitForLoadState('networkidle');
 
@@ -393,11 +393,13 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByLabel('الصف الدراسي')).toBeVisible();
     await expect(page.getByLabel('الصف الدراسي')).toHaveValue('sixth-preparatory');
     await expect(page.getByLabel('رقم الهاتف العراقي')).toBeVisible();
-    await expect(page.getByRole('button', { name: /إرسال رمز التحقق إلى الهاتف/ })).toBeVisible();
+    await expect(page.getByLabel('كلمة المرور')).toBeVisible();
+    await expect(page.getByLabel('كلمة المرور')).toHaveAttribute('minLength', '8');
+    await expect(page.getByRole('button', { name: /إنشاء الحساب \/ تسجيل الدخول/ })).toBeVisible();
 
     await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toHaveCount(0);
     await expect(page.getByLabel('البريد الإلكتروني')).toHaveCount(0);
-    await expect(page.getByLabel('كلمة المرور')).toHaveCount(0);
+    await expect(page.getByLabel('كلمة المرور')).toHaveCount(1);
 
     // Direct deep links must still be guarded by the same two approved access methods.
     await page.goto('/grade/third-intermediate?forceSignedOut=true');

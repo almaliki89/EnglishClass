@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useRef, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { 
   onAuthStateChanged, 
   getRedirectResult,
@@ -6,12 +6,12 @@ import {
   browserSessionPersistence,
   setPersistence,
   signInWithPopup,
-  signInWithPhoneNumber,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
   signOut as firebaseSignOut,
   updateProfile,
   User as FirebaseUser,
-  type ApplicationVerifier,
-  type ConfirmationResult
+  UserCredential,
 } from 'firebase/auth';
 import { 
   doc, 
@@ -38,7 +38,7 @@ export interface AppUser {
   displayName: string;
   email?: string;
   phoneNumber?: string;
-  authProvider: 'phone' | 'email' | 'google' | 'guest';
+  authProvider: 'phone' | 'email' | 'google' | 'guest' | 'student-password';
 }
 
 interface AuthContextType {
@@ -47,18 +47,14 @@ interface AuthContextType {
   syncStatus: 'synced' | 'saving' | 'offline' | 'error';
   signInWithGoogle: () => Promise<void>;
   googleRedirectError: string | null;
-  requestStudentPhoneCode: (phoneNumber: string, verifier: ApplicationVerifier) => Promise<ConfirmationResult>;
-  completeStudentPhoneSignIn: (
-    confirmation: ConfirmationResult,
-    verificationCode: string,
-    profile: {
-      name: string;
-      governorate: string;
-      schoolName: string;
-      phoneNumber: string;
-      selectedGrade: EducationalGrade;
-    }
-  ) => Promise<EducationalGrade>;
+  signInWithStudentPassword: (profile: {
+    name: string;
+    governorate: string;
+    schoolName: string;
+    phoneNumber: string;
+    selectedGrade: EducationalGrade;
+    password: string;
+  }) => Promise<EducationalGrade>;
   logout: () => Promise<void>;
   saveStudentToCloud: (state: StudentState) => Promise<void>;
   loadStudentFromCloud: (uid: string) => Promise<StudentState | null>;
@@ -99,20 +95,11 @@ export function getErrorMessage(error: unknown): string {
   return String(error);
 }
 
-async function ensureAuthPersistence(): Promise<void> {
-  try {
-    await setPersistence(auth, browserLocalPersistence);
-  } catch (localPersistenceError) {
-    console.warn('Local auth persistence is unavailable; falling back to session persistence:', getErrorMessage(localPersistenceError));
-    // Preserve the signed-in session for this browser tab when persistent browser storage is restricted.
-    await setPersistence(auth, browserSessionPersistence);
-  }
-}
-
 function toAppUser(firebaseUser: FirebaseUser): AppUser {
   const authProvider: AppUser['authProvider'] =
     firebaseUser.providerData.some(provider => provider.providerId === 'google.com') ? 'google' :
-    firebaseUser.providerData.some(provider => provider.providerId === 'phone') ? 'phone' : 'email';
+    firebaseUser.providerData.some(provider => provider.providerId === 'phone') ? 'phone' :
+    firebaseUser.email?.endsWith('@students.orbit.invalid') ? 'student-password' : 'email';
 
   return {
     uid: firebaseUser.uid,
@@ -135,7 +122,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Never infer privileged test sessions from URL parameters, localStorage, or webdriver.
   const isE2EMode = !forceSignedOutPreview && import.meta.env.VITE_E2E_MODE === 'true';
 
-  const pendingPhoneSignInRef = useRef(false);
   const [user, setUser] = useState<AppUser | null>(() => {
     if (isE2EMode) {
       return {
@@ -180,11 +166,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         if (firebaseUser) {
           // Establish the authenticated app session immediately. Profile/Firestore work
           // must never hold the user at the sign-in gate after Firebase Auth succeeds.
-          const initialProvider: 'phone' | 'email' | 'google' =
+          const initialProvider: 'phone' | 'email' | 'google' | 'student-password' =
             firebaseUser.providerData.some(p => p.providerId === 'google.com') ? 'google' :
-            firebaseUser.providerData.some(p => p.providerId === 'phone') ? 'phone' : 'email';
+            firebaseUser.providerData.some(p => p.providerId === 'phone') ? 'phone' :
+            firebaseUser.email?.endsWith('@students.orbit.invalid') ? 'student-password' : 'email';
 
-          // Only Google and verified phone accounts are accepted by the platform.
+          // Only Google and the approved student-password flow are accepted by the platform.
           // Legacy email/password-only sessions are signed out instead of bypassing the two approved methods.
           if (initialProvider === 'email') {
             setUser(null);
@@ -220,7 +207,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
           let displayName = firebaseUser.displayName || 'طالب متميز';
           let phone: string | undefined = firebaseUser.phoneNumber || undefined;
-          let authProvider: 'phone' | 'email' | 'google' = 'email';
+          let authProvider: 'phone' | 'email' | 'google' | 'student-password' = 'email';
 
           if (firebaseUser.providerData.some(p => p.providerId === 'google.com')) {
             authProvider = 'google';
@@ -266,7 +253,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           // Do not expose a phone-authenticated session until its student profile has
           // been matched during the SMS flow or restored from an existing profile.
           if (initialProvider === 'phone' && (
-            pendingPhoneSignInRef.current || !studentSnap || !studentSnap.exists()
+            !studentSnap || !studentSnap.exists()
           )) {
             setUser(null);
             setSyncStatus('offline');
@@ -328,124 +315,89 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  // Send an SMS verification code. The caller supplies Firebase's reCAPTCHA verifier.
-  const requestStudentPhoneCode = async (
-    phoneNumber: string,
-    verifier: ApplicationVerifier
-  ): Promise<ConfirmationResult> => {
-    try {
-      setSyncStatus('saving');
-      await ensureAuthPersistence();
-      return await signInWithPhoneNumber(auth, phoneNumber, verifier);
-    } catch (error: unknown) {
-      console.error('Student phone verification request failed:', getErrorMessage(error));
-      setSyncStatus('error');
-      throw error;
-    }
-  };
-
-  // Confirm the SMS code and either restore the matching student profile or create it
-  // for the first verified phone sign-in. Identity fields are never used as a password.
-  const completeStudentPhoneSignIn = async (
-    confirmation: ConfirmationResult,
-    verificationCode: string,
-    profile: {
-      name: string;
-      governorate: string;
-      schoolName: string;
-      phoneNumber: string;
-      selectedGrade: EducationalGrade;
-    }
-  ): Promise<EducationalGrade> => {
-    let verifiedUser: FirebaseUser | null = null;
-    let resolvedGrade: EducationalGrade = profile.selectedGrade;
-    pendingPhoneSignInRef.current = true;
-    setSyncStatus('saving');
-
+  // Student accounts use Firebase Email/Password Auth with a deterministic internal alias.
+  // The alias is never shown to students; the Iraqi phone number is their login identifier.
+  const signInWithStudentPassword = async (profile: {
+    name: string;
+    governorate: string;
+    schoolName: string;
+    phoneNumber: string;
+    selectedGrade: EducationalGrade;
+    password: string;
+  }): Promise<EducationalGrade> => {
     const normalizeIdentity = (value: unknown) =>
       String(value || '').normalize('NFKC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('ar');
-
+    const phoneDigits = profile.phoneNumber.replace(/\D/g, '');
+    if (!/^9647\d{9}$/.test(phoneDigits)) throw new Error('رقم الهاتف العراقي غير صحيح.');
+    if (profile.password.length < 8) throw new Error('يجب أن تتكون كلمة المرور من 8 أحرف أو أرقام على الأقل.');
+    if (profile.password.length > 128) throw new Error('كلمة المرور طويلة جداً.');
+    const internalEmail = phoneDigits + '@students.orbit.invalid';
+    setSyncStatus('saving');
+    let credential: UserCredential;
     try {
-      const credential = await confirmation.confirm(verificationCode);
-      verifiedUser = credential.user;
-      if (!verifiedUser.phoneNumber || verifiedUser.phoneNumber !== profile.phoneNumber) {
-        throw new Error('رقم الهاتف الذي تم التحقق منه لا يطابق الرقم المدخل.');
+      try {
+        credential = await signInWithEmailAndPassword(auth, internalEmail, profile.password);
+      } catch (signInError) {
+        const code = (signInError as { code?: string })?.code || '';
+        if (code !== 'auth/user-not-found' && code !== 'auth/invalid-credential') throw signInError;
+        try {
+          credential = await createUserWithEmailAndPassword(auth, internalEmail, profile.password);
+        } catch (createError) {
+          const createCode = (createError as { code?: string })?.code || '';
+          if (createCode === 'auth/email-already-in-use' || createCode === 'auth/weak-password') {
+            throw new Error('تعذر إنشاء الحساب. إذا كان الرقم مسجلاً سابقاً، تحقق من كلمة المرور أو تواصل مع الدعم.');
+          }
+          throw createError;
+        }
       }
 
-      const studentRef = doc(db, 'students', verifiedUser.uid);
-      const studentSnapshot = await getDoc(studentRef);
-      let displayName = profile.name;
-
-      if (studentSnapshot.exists()) {
-        const stored = studentSnapshot.data();
-        const profileMatches =
+      const studentRef = doc(db, 'students', credential.user.uid);
+      const snapshot = await getDoc(studentRef);
+      let resolvedGrade = profile.selectedGrade;
+      if (snapshot.exists()) {
+        const stored = snapshot.data();
+        const matches =
           normalizeIdentity(stored.name) === normalizeIdentity(profile.name) &&
           normalizeIdentity(stored.governorate) === normalizeIdentity(profile.governorate) &&
           normalizeIdentity(stored.schoolName) === normalizeIdentity(profile.schoolName) &&
-          stored.phoneNumber === profile.phoneNumber &&
-          (stored.selectedGrade || 'sixth-preparatory') === profile.selectedGrade;
-
-        if (!profileMatches) {
-          throw new Error('تم التحقق من رقم الهاتف، لكن بيانات الطالب لا تطابق الملف المسجل. راجع الاسم والمحافظة والمدرسة.');
+          String(stored.phoneNumber || '').replace(/\D/g, '') === phoneDigits;
+        if (!matches) {
+          await firebaseSignOut(auth);
+          throw new Error('بيانات الطالب لا تطابق الحساب المسجل بهذا الرقم. راجع الاسم والمحافظة والمدرسة.');
         }
-        displayName = String(stored.name || profile.name);
-        const storedGrade = stored.selectedGrade as EducationalGrade | undefined;
-        if (storedGrade && [
-          'third-intermediate',
-          'fourth-preparatory',
-          'fifth-preparatory',
-          'sixth-preparatory',
-        ].includes(storedGrade)) {
-          resolvedGrade = storedGrade;
-        }
+        const validGrades: EducationalGrade[] = ['third-intermediate','fourth-preparatory','fifth-preparatory','sixth-preparatory'];
+        if (validGrades.includes(stored.selectedGrade)) resolvedGrade = stored.selectedGrade;
       } else {
-        await updateProfile(verifiedUser, { displayName: profile.name });
+        await updateProfile(credential.user, { displayName: profile.name });
         const today = new Date().toISOString().split('T')[0];
         await setDoc(studentRef, {
-          uid: verifiedUser.uid,
+          uid: credential.user.uid,
           name: profile.name,
           phoneNumber: profile.phoneNumber,
           governorate: profile.governorate,
           schoolName: profile.schoolName,
-          authProvider: 'phone',
+          authProvider: 'student-password',
           selectedGrade: profile.selectedGrade,
-          xp: 0,
-          completedLessonIds: [],
-          bookmarkedQuestionIds: [],
-          totalQuestionsAttempted: 0,
-          totalQuestionsCorrect: 0,
-          streakDays: 0,
+          xp: 0, completedLessonIds: [], bookmarkedQuestionIds: [],
+          totalQuestionsAttempted: 0, totalQuestionsCorrect: 0, streakDays: 0,
           lastActiveDate: today,
           lastVisitedLessonId: profile.selectedGrade === 'third-intermediate' ? 't-u1-l1' : 'u1-l1',
-          unlockedBadges: [],
-          createdAt: new Date().toISOString(),
-          updatedAt: new Date().toISOString()
+          unlockedBadges: [], createdAt: new Date().toISOString(), updatedAt: new Date().toISOString()
         });
       }
-
-      if (auth.currentUser?.uid !== verifiedUser.uid) {
-        throw new Error('انتهت جلسة التحقق قبل اكتمال الدخول. أعد المحاولة.');
-      }
-
-      setUser({
-        uid: verifiedUser.uid,
-        displayName,
-        phoneNumber: verifiedUser.phoneNumber || profile.phoneNumber,
-        authProvider: 'phone',
-      });
+      const appUser: AppUser = {
+        uid: credential.user.uid,
+        displayName: profile.name,
+        phoneNumber: profile.phoneNumber,
+        authProvider: 'student-password'
+      };
+      setUser(appUser);
       setLoading(false);
       setSyncStatus('synced');
       return resolvedGrade;
-    } catch (error: unknown) {
-      if (verifiedUser && auth.currentUser?.uid === verifiedUser.uid) {
-        await firebaseSignOut(auth).catch(() => undefined);
-      }
-      setUser(null);
+    } catch (error) {
       setSyncStatus('error');
       throw error;
-    } finally {
-      pendingPhoneSignInRef.current = false;
-      setLoading(false);
     }
   };
 
@@ -646,8 +598,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         syncStatus,
         signInWithGoogle,
         googleRedirectError,
-        requestStudentPhoneCode,
-        completeStudentPhoneSignIn,
+        signInWithStudentPassword,
         logout,
         saveStudentToCloud,
         loadStudentFromCloud,
