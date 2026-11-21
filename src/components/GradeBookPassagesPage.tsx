@@ -43,7 +43,7 @@ export const GradeBookPassagesPage: React.FC<GradeBookPassagesPageProps> = ({
             <BookOpen className="w-5 h-5 text-ink" />
           </div>
           <div className="min-w-0">
-            <p className="text-[11px] font-mono font-black text-cobalt">LINGORA · {gradeMeta.shortName}</p>
+            <p className="text-[11px] font-mono font-black text-cobalt">ORBIT · {gradeMeta.shortName}</p>
             <h1 className="text-2xl sm:text-3xl font-black text-ink">قطع الكتاب</h1>
             <p className="text-xs sm:text-sm text-ink/70 font-bold mt-1">
               فهرس مستقل لقطع كتاب {gradeMeta.nameAr}، مرتّب حسب الوحدات.
