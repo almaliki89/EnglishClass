@@ -30,15 +30,15 @@ export interface Exercise {
 
 export type ReadingPassageStatus = 'verified' | 'reconstructed' | 'permission_required' | 'summary_only' | 'source_required';
 
-export type ReadingPassageExerciseSource = 'activity_book' | 'malzama';
+export type ReadingPassageExerciseSource = 'activity_book' | 'malzama' | 'lingora_practice';
 
 export interface ReadingPassageExerciseItem {
   id: string;
-  /** Exact question or task text from the cited source. */
+  /** Question or task text, kept under its declared source category. */
   question: string;
   questionTranslation?: string;
   options?: string[];
-  /** Correct answer as printed or solved in the cited source. */
+  /** Model answer for the declared exercise source. */
   answer: string;
   answerTranslation?: string;
 }
@@ -70,7 +70,7 @@ export interface ReadingPassage {
   originalText?: string[];
   /** Arabic translation, shown after the complete English passage. */
   translation?: string[];
-  /** Source-backed Activity Book or Malzama questions with their answer keys. */
+  /** Activity Book/Malzama source questions or separately labeled LINGORA-authored practice. */
   exerciseSets?: ReadingPassageExerciseSet[];
   verificationNote?: string;
 }
