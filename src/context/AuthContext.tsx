@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useRef, useState, ReactNode } from 'react';
 import { 
   onAuthStateChanged, 
   getRedirectResult,
@@ -6,11 +6,12 @@ import {
   browserSessionPersistence,
   setPersistence,
   signInWithPopup,
+  signInWithPhoneNumber,
   signOut as firebaseSignOut,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
   updateProfile,
-  User as FirebaseUser
+  User as FirebaseUser,
+  type ApplicationVerifier,
+  type ConfirmationResult
 } from 'firebase/auth';
 import { 
   doc, 
@@ -46,10 +47,18 @@ interface AuthContextType {
   syncStatus: 'synced' | 'saving' | 'offline' | 'error';
   signInWithGoogle: () => Promise<void>;
   googleRedirectError: string | null;
-  signUpWithEmail: (name: string, email: string, pass: string, grade?: EducationalGrade) => Promise<void>;
-  signInWithEmail: (email: string, pass: string) => Promise<void>;
-  signUpWithPhone: (name: string, phone: string, pass: string, grade?: EducationalGrade) => Promise<void>;
-  signInWithPhone: (phone: string, pass: string) => Promise<void>;
+  requestStudentPhoneCode: (phoneNumber: string, verifier: ApplicationVerifier) => Promise<ConfirmationResult>;
+  completeStudentPhoneSignIn: (
+    confirmation: ConfirmationResult,
+    verificationCode: string,
+    profile: {
+      name: string;
+      governorate: string;
+      schoolName: string;
+      phoneNumber: string;
+      selectedGrade: EducationalGrade;
+    }
+  ) => Promise<EducationalGrade>;
   logout: () => Promise<void>;
   saveStudentToCloud: (state: StudentState) => Promise<void>;
   loadStudentFromCloud: (uid: string) => Promise<StudentState | null>;
@@ -75,7 +84,6 @@ interface AuthContextType {
   deleteNoteFromCloud: (noteId: string) => Promise<void>;
   saveBookmarkToCloud: (bookmark: BookmarkItem) => Promise<void>;
   removeBookmarkFromCloud: (bookmarkId: string) => Promise<void>;
-  signInAsGuest: () => Promise<void>;
 }
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -127,6 +135,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Never infer privileged test sessions from URL parameters, localStorage, or webdriver.
   const isE2EMode = !forceSignedOutPreview && import.meta.env.VITE_E2E_MODE === 'true';
 
+  const pendingPhoneSignInRef = useRef(false);
   const [user, setUser] = useState<AppUser | null>(() => {
     if (isE2EMode) {
       return {
@@ -174,14 +183,30 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           const initialProvider: 'phone' | 'email' | 'google' =
             firebaseUser.providerData.some(p => p.providerId === 'google.com') ? 'google' :
             firebaseUser.providerData.some(p => p.providerId === 'phone') ? 'phone' : 'email';
-          setUser({
-            uid: firebaseUser.uid,
-            displayName: firebaseUser.displayName || 'طالب متميز',
-            email: firebaseUser.email || undefined,
-            phoneNumber: firebaseUser.phoneNumber || undefined,
-            authProvider: initialProvider,
-          });
-          setLoading(false);
+
+          // Only Google and verified phone accounts are accepted by the platform.
+          // Legacy email/password-only sessions are signed out instead of bypassing the two approved methods.
+          if (initialProvider === 'email') {
+            setUser(null);
+            setSyncStatus('offline');
+            await firebaseSignOut(auth).catch(() => undefined);
+            return;
+          }
+
+          // Keep phone-auth sessions behind the gate until the student profile has been
+          // loaded (or the SMS-confirmed first-time profile has been created).
+          if (initialProvider === 'phone') {
+            setUser(null);
+          } else {
+            setUser({
+              uid: firebaseUser.uid,
+              displayName: firebaseUser.displayName || 'طالب متميز',
+              email: firebaseUser.email || undefined,
+              phoneNumber: firebaseUser.phoneNumber || undefined,
+              authProvider: initialProvider,
+            });
+            setLoading(false);
+          }
 
           // Attempt to fetch custom profile from Firestore for the authenticated user
           let studentSnap = null;
@@ -236,6 +261,16 @@ export function AuthProvider({ children }: { children: ReactNode }) {
               console.warn('Google profile initialization failed:', getErrorMessage(profileError));
               setSyncStatus('offline');
             }
+          }
+
+          // Do not expose a phone-authenticated session until its student profile has
+          // been matched during the SMS flow or restored from an existing profile.
+          if (initialProvider === 'phone' && (
+            pendingPhoneSignInRef.current || !studentSnap || !studentSnap.exists()
+          )) {
+            setUser(null);
+            setSyncStatus('offline');
+            return;
           }
 
           // A slow profile read must not restore a user after logout or account switching.
@@ -293,93 +328,124 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  // Sign up with Email & Password (Real Firebase Auth)
-  const signUpWithEmail = async (name: string, email: string, pass: string, grade: EducationalGrade = 'sixth-preparatory') => {
+  // Send an SMS verification code. The caller supplies Firebase's reCAPTCHA verifier.
+  const requestStudentPhoneCode = async (
+    phoneNumber: string,
+    verifier: ApplicationVerifier
+  ): Promise<ConfirmationResult> => {
     try {
       setSyncStatus('saving');
-      const normalizedEmail = email.trim().toLowerCase();
-
-      // Set durable Firebase Auth persistence before creating the account.
       await ensureAuthPersistence();
-      // Real Firebase Auth
-      const userCredential = await createUserWithEmailAndPassword(auth, normalizedEmail, pass);
-      const firebaseUser = userCredential.user;
-      setUser(toAppUser(firebaseUser));
-      setLoading(false);
+      return await signInWithPhoneNumber(auth, phoneNumber, verifier);
+    } catch (error: unknown) {
+      console.error('Student phone verification request failed:', getErrorMessage(error));
+      setSyncStatus('error');
+      throw error;
+    }
+  };
 
-      // Update profile
-      await updateProfile(firebaseUser, { displayName: name.trim() });
+  // Confirm the SMS code and either restore the matching student profile or create it
+  // for the first verified phone sign-in. Identity fields are never used as a password.
+  const completeStudentPhoneSignIn = async (
+    confirmation: ConfirmationResult,
+    verificationCode: string,
+    profile: {
+      name: string;
+      governorate: string;
+      schoolName: string;
+      phoneNumber: string;
+      selectedGrade: EducationalGrade;
+    }
+  ): Promise<EducationalGrade> => {
+    let verifiedUser: FirebaseUser | null = null;
+    let resolvedGrade: EducationalGrade = profile.selectedGrade;
+    pendingPhoneSignInRef.current = true;
+    setSyncStatus('saving');
 
-      // Save student document to Firestore (NO PASSWORD STORED)
-      try {
-        const studentDocRef = doc(db, 'students', firebaseUser.uid);
-        await setDoc(studentDocRef, {
-          uid: firebaseUser.uid,
-          email: normalizedEmail,
-          name: name.trim(),
-          authProvider: 'email',
-          selectedGrade: grade,
-          xp: 100,
+    const normalizeIdentity = (value: unknown) =>
+      String(value || '').normalize('NFKC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('ar');
+
+    try {
+      const credential = await confirmation.confirm(verificationCode);
+      verifiedUser = credential.user;
+      if (!verifiedUser.phoneNumber || verifiedUser.phoneNumber !== profile.phoneNumber) {
+        throw new Error('رقم الهاتف الذي تم التحقق منه لا يطابق الرقم المدخل.');
+      }
+
+      const studentRef = doc(db, 'students', verifiedUser.uid);
+      const studentSnapshot = await getDoc(studentRef);
+      let displayName = profile.name;
+
+      if (studentSnapshot.exists()) {
+        const stored = studentSnapshot.data();
+        const profileMatches =
+          normalizeIdentity(stored.name) === normalizeIdentity(profile.name) &&
+          normalizeIdentity(stored.governorate) === normalizeIdentity(profile.governorate) &&
+          normalizeIdentity(stored.schoolName) === normalizeIdentity(profile.schoolName) &&
+          stored.phoneNumber === profile.phoneNumber;
+
+        if (!profileMatches) {
+          throw new Error('تم التحقق من رقم الهاتف، لكن بيانات الطالب لا تطابق الملف المسجل. راجع الاسم والمحافظة والمدرسة.');
+        }
+        displayName = String(stored.name || profile.name);
+        const storedGrade = stored.selectedGrade as EducationalGrade | undefined;
+        if (storedGrade && [
+          'third-intermediate',
+          'fourth-preparatory',
+          'fifth-preparatory',
+          'sixth-preparatory',
+        ].includes(storedGrade)) {
+          resolvedGrade = storedGrade;
+        }
+      } else {
+        await updateProfile(verifiedUser, { displayName: profile.name });
+        const today = new Date().toISOString().split('T')[0];
+        await setDoc(studentRef, {
+          uid: verifiedUser.uid,
+          name: profile.name,
+          phoneNumber: profile.phoneNumber,
+          governorate: profile.governorate,
+          schoolName: profile.schoolName,
+          authProvider: 'phone',
+          selectedGrade: profile.selectedGrade,
+          xp: 0,
           completedLessonIds: [],
           bookmarkedQuestionIds: [],
           totalQuestionsAttempted: 0,
           totalQuestionsCorrect: 0,
-          streakDays: 1,
-          lastActiveDate: new Date().toISOString().split('T')[0],
-          lastVisitedLessonId: grade === 'third-intermediate' ? 't-u1-l1' : 'u1-l1',
-          unlockedBadges: ['first-step'],
+          streakDays: 0,
+          lastActiveDate: today,
+          lastVisitedLessonId: profile.selectedGrade === 'third-intermediate' ? 't-u1-l1' : 'u1-l1',
+          unlockedBadges: [],
           createdAt: new Date().toISOString(),
           updatedAt: new Date().toISOString()
         });
-      } catch (dbErr) {
-        console.warn('Firestore student doc creation skipped due to offline mode:', getErrorMessage(dbErr));
       }
 
-      setSyncStatus('synced');
-    } catch (error: unknown) {
-      console.error('Email sign up error:', getErrorMessage(error));
-      setSyncStatus('error');
-      const firebaseErrorCode = (error as { code?: string })?.code;
-      if (firebaseErrorCode === 'auth/email-already-in-use') {
-        throw new Error('هذا البريد الإلكتروني مسجل مسبقاً، يمكنك تسجيل الدخول به');
-      } else if (firebaseErrorCode === 'auth/weak-password') {
-        throw new Error('كلمة المرور ضعيفة، يرجى اختيار كلمة مرور أطول');
+      if (auth.currentUser?.uid !== verifiedUser.uid) {
+        throw new Error('انتهت جلسة التحقق قبل اكتمال الدخول. أعد المحاولة.');
       }
-      throw error;
-    }
-  };
 
-  // Sign in with Email & Password (Real Firebase Auth)
-  const signInWithEmail = async (email: string, pass: string) => {
-    try {
-      setSyncStatus('saving');
-      const normalizedEmail = email.trim().toLowerCase();
-      await ensureAuthPersistence();
-      const credential = await signInWithEmailAndPassword(auth, normalizedEmail, pass);
-      setUser(toAppUser(credential.user));
+      setUser({
+        uid: verifiedUser.uid,
+        displayName,
+        phoneNumber: verifiedUser.phoneNumber || profile.phoneNumber,
+        authProvider: 'phone',
+      });
       setLoading(false);
       setSyncStatus('synced');
+      return resolvedGrade;
     } catch (error: unknown) {
-      console.error('Email sign in error:', getErrorMessage(error));
-      setSyncStatus('error');
-      const firebaseErrorCode = (error as { code?: string })?.code;
-      if (firebaseErrorCode === 'auth/user-not-found' || firebaseErrorCode === 'auth/invalid-credential') {
-        throw new Error('البريد الإلكتروني أو كلمة المرور غير صحيحة');
-      } else if (firebaseErrorCode === 'auth/wrong-password') {
-        throw new Error('كلمة المرور غير صحيحة');
+      if (verifiedUser && auth.currentUser?.uid === verifiedUser.uid) {
+        await firebaseSignOut(auth).catch(() => undefined);
       }
+      setUser(null);
+      setSyncStatus('error');
       throw error;
+    } finally {
+      pendingPhoneSignInRef.current = false;
+      setLoading(false);
     }
-  };
-
-  // Sign in with Phone — Policy Option B (Strictly No Custom Password Storage / No Pseudo Sessions)
-  const signUpWithPhone = async (_name: string, _phone: string, _pass: string, _grade: EducationalGrade = 'sixth-preparatory') => {
-    throw new Error('تسجيل الدخول برقم الهاتف قيد التفعيل حالياً. يرجى استخدام البريد الإلكتروني أو Google.');
-  };
-
-  // Sign in with Phone — Policy Option B (Strictly No Custom Password Storage / No Pseudo Sessions)
-  const signInWithPhone = async (_phone: string, _pass: string) => {
-    throw new Error('تسجيل الدخول برقم الهاتف قيد التفعيل حالياً. يرجى استخدام البريد الإلكتروني أو Google.');
   };
 
   // Logout
@@ -571,15 +637,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   };
 
-  const signInAsGuest = async () => {
-    setUser({
-      uid: 'guest-' + Date.now(),
-      displayName: 'طالب زائر (معاينة)',
-      authProvider: 'guest',
-    });
-    setSyncStatus('offline');
-  };
-
   return (
     <AuthContext.Provider
       value={{
@@ -588,10 +645,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         syncStatus,
         signInWithGoogle,
         googleRedirectError,
-        signUpWithEmail,
-        signInWithEmail,
-        signUpWithPhone,
-        signInWithPhone,
+        requestStudentPhoneCode,
+        completeStudentPhoneSignIn,
         logout,
         saveStudentToCloud,
         loadStudentFromCloud,
@@ -600,7 +655,6 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         deleteNoteFromCloud,
         saveBookmarkToCloud,
         removeBookmarkFromCloud,
-        signInAsGuest,
       }}
     >
       {children}
