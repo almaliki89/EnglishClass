@@ -6,7 +6,6 @@ import {
   browserSessionPersistence,
   setPersistence,
   signInWithPopup,
-  signInWithRedirect, 
   signOut as firebaseSignOut,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
