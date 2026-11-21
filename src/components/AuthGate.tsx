@@ -120,7 +120,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
       const resolvedGrade = await signInWithStudentPassword({
         name: fullName.trim().replace(/\s+/g, ' '),
         governorate,
-        schoolName: schoolName.trim().replace(/\\s+/g, ' '),
+        schoolName: schoolName.trim().replace(/\s+/g, ' '),
         phoneNumber: normalizedPhone,
         selectedGrade,
         password,
