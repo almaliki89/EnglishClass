@@ -11,6 +11,7 @@ import {
   signOut as firebaseSignOut,
   updateProfile,
   User as FirebaseUser,
+  UserCredential,
 } from 'firebase/auth';
 import { 
   doc, 
@@ -332,7 +333,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     if (profile.password.length > 128) throw new Error('كلمة المرور طويلة جداً.');
     const internalEmail = phoneDigits + '@students.orbit.invalid';
     setSyncStatus('saving');
-    let credential;
+    let credential: UserCredential;
     try {
       try {
         credential = await signInWithEmailAndPassword(auth, internalEmail, profile.password);
