@@ -86,7 +86,7 @@ test.describe('Source-aware reading passages', () => {
 
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
     await expect(page.locator('p[lang="en"]').nth(1)).toContainText('Harrods, which was founded in 1834');
-    await expect(page.locator('p[lang="en"]').last()).toContainText('Everything for Everybody Rich Everywhere');
+    await expect(page.getByTestId('original-passage-section').locator('p[lang="en"]').last()).toContainText('Everything for Everybody Rich Everywhere');
     await expect(page.getByText('ملزمة الخامس الإعدادي 2026')).toBeVisible();
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
   });
@@ -98,7 +98,7 @@ test.describe('Source-aware reading passages', () => {
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
     await expect(page.locator('p[lang="en"]').first()).toContainText('The terrified residents of a block of flats in London');
     await expect(page.locator('p[lang="en"]').nth(2)).toContainText('James Andrews');
-    await expect(page.locator('p[lang="en"]').last()).toContainText('the eighth floor of the building');
+    await expect(page.getByTestId('original-passage-section').locator('p[lang="en"]').last()).toContainText('the eighth floor of the building');
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
   });
 
