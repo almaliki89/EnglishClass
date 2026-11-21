@@ -80,6 +80,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
     signInWithStudentPassword,
   } = useAuth();
 
+  const [isRegistering, setIsRegistering] = useState(false);
   const [fullName, setFullName] = useState('');
   const [governorate, setGovernorate] = useState('');
   const [schoolName, setSchoolName] = useState('');
@@ -115,15 +116,13 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
     setNotice(null);
     setLoading(true);
     try {
-      const normalizedPhone = validateStudentDetails();
+      const normalizedPhone = isRegistering ? validateStudentDetails() : toIraqiE164(phone);
       if (password.length < 8) throw new Error('يجب أن تتكون كلمة المرور من 8 أحرف أو أرقام على الأقل.');
       const resolvedGrade = await signInWithStudentPassword({
-        name: fullName.trim().replace(/\s+/g, ' '),
-        governorate,
+        mode: isRegistering ? 'register' : 'login',
+        name: fullName.trim().replace(/\s+/g, ' '), governorate,
         schoolName: schoolName.trim().replace(/\s+/g, ' '),
-        phoneNumber: normalizedPhone,
-        selectedGrade,
-        password,
+        phoneNumber: normalizedPhone, selectedGrade, password,
       });
       onSuccessfulAuth?.(fullName.trim(), resolvedGrade);
     } catch (caughtError) {
@@ -214,7 +213,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
 
         <section className="lg:col-span-7 bg-surface border-4 border-ink p-6 sm:p-8 shadow-brutal-hero">
           <div className="mb-5">
-            <h2 className="text-xl sm:text-2xl font-black">تسجيل الدخول إلى ORBIT</h2>
+            <h2 className="text-xl sm:text-2xl font-black">{isRegistering ? "إنشاء حساب طالب جديد" : "تسجيل الدخول إلى ORBIT"}</h2>
             <p className="text-xs sm:text-sm font-bold text-ink/65 mt-1">اختر إحدى الطريقتين التاليتين للدخول إلى حسابك.</p>
           </div>
 
@@ -243,7 +242,10 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
             <div className="h-px bg-ink flex-1" />
           </div>
 
+          <div className="grid grid-cols-2 gap-2 mb-4"><button type="button" onClick={() => { setIsRegistering(false); setError(null); }} className={`py-2 border-2 border-ink text-xs font-black ${!isRegistering ? "bg-cobalt text-white" : "bg-paper"}`}>تسجيل الدخول</button><button type="button" onClick={() => { setIsRegistering(true); setError(null); }} className={`py-2 border-2 border-ink text-xs font-black ${isRegistering ? "bg-cobalt text-white" : "bg-paper"}`}>إنشاء حساب جديد</button></div>
           <form onSubmit={handleStudentSubmit} className="space-y-3.5">
+            {isRegistering && (
+              <>
             <div>
               <label htmlFor="student-full-name" className="block text-xs font-black mb-1">اسم الطالب الثلاثي</label>
               <div className="relative">
@@ -316,6 +318,9 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               </select>
             </div>
 
+              </>
+            )}
+
             <div>
               <label htmlFor="student-phone" className="block text-xs font-black mb-1">رقم الهاتف العراقي</label>
               <div className="relative">
@@ -352,7 +357,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                   placeholder="8 أحرف أو أرقام على الأقل"
                   className="w-full pr-10 pl-3 py-2.5 bg-paper border-2 border-ink text-sm font-bold"
                 />
-                <p className="mt-1 text-[10px] text-ink/60">عند أول تسجيل بهذا الرقم تُنشأ عضويتك، وبعدها تستخدم كلمة المرور نفسها للدخول.</p>
+                <p className="mt-1 text-[10px] text-ink/60">{isRegistering ? "اختر كلمة مرور لا تقل عن 8 أحرف." : "أدخل رقم الهاتف وكلمة المرور اللذين استخدمتهما عند إنشاء الحساب."}</p>
               </div>
             </div>
 
@@ -373,7 +378,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (
                 <>
                   <Sparkles className="w-4 h-4 text-yellow" />
-                  <span>إنشاء الحساب / تسجيل الدخول</span>
+                  <span>{isRegistering ? "إنشاء حساب الطالب" : "تسجيل الدخول"}</span>
                 </>
               )}
             </button>

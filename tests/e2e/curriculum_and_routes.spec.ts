@@ -387,24 +387,32 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await page.waitForLoadState('networkidle');
 
     await expect(page.getByRole('button', { name: /المتابعة مباشرة بحساب Google/ })).toBeVisible();
+    // Returning-student login is the default and asks for phone + password only.
+    await expect(page.getByLabel('رقم الهاتف العراقي')).toBeVisible();
+    await expect(page.getByLabel('كلمة المرور')).toBeVisible();
+    await expect(page.getByLabel('اسم الطالب الثلاثي')).toHaveCount(0);
+    await expect(page.getByLabel('المحافظة')).toHaveCount(0);
+    await expect(page.getByLabel('اسم المدرسة')).toHaveCount(0);
+    await expect(page.getByLabel('الصف الدراسي')).toHaveCount(0);
+
+    // Registration explicitly reveals the profile fields and grade selector.
+    await page.getByRole('button', { name: 'إنشاء حساب جديد' }).click();
     await expect(page.getByLabel('اسم الطالب الثلاثي')).toBeVisible();
     await expect(page.getByLabel('المحافظة')).toBeVisible();
     await expect(page.getByLabel('اسم المدرسة')).toBeVisible();
     await expect(page.getByLabel('الصف الدراسي')).toBeVisible();
     await expect(page.getByLabel('الصف الدراسي')).toHaveValue('sixth-preparatory');
-    await expect(page.getByLabel('رقم الهاتف العراقي')).toBeVisible();
-    await expect(page.getByLabel('كلمة المرور')).toBeVisible();
     await expect(page.getByLabel('كلمة المرور')).toHaveAttribute('minLength', '8');
-    await expect(page.getByRole('button', { name: /إنشاء الحساب \/ تسجيل الدخول/ })).toBeVisible();
+    await expect(page.getByRole('button', { name: /إنشاء حساب الطالب/ })).toBeVisible();
 
     await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toHaveCount(0);
     await expect(page.getByLabel('البريد الإلكتروني')).toHaveCount(0);
-    await expect(page.getByLabel('كلمة المرور')).toHaveCount(1);
 
     // Direct deep links must still be guarded by the same two approved access methods.
     await page.goto('/grade/third-intermediate?forceSignedOut=true');
     await expect(page.getByRole('button', { name: /المتابعة مباشرة بحساب Google/ })).toBeVisible();
-    await expect(page.getByLabel('اسم الطالب الثلاثي')).toBeVisible();
+    await expect(page.getByLabel('رقم الهاتف العراقي')).toBeVisible();
+    await expect(page.getByLabel('اسم الطالب الثلاثي')).toHaveCount(0);
   });
 
   test('14. Mentor portrait renders cleanly across portal and interactive principles switch', async ({ page, request }) => {
@@ -452,9 +460,10 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
 
     // Logout returns to the same two-method access gate.
     await expect(page.getByRole('button', { name: /المتابعة مباشرة بحساب Google/ })).toBeVisible();
-    await expect(page.getByLabel('اسم الطالب الثلاثي')).toBeVisible();
-    await expect(page.getByLabel('الصف الدراسي')).toBeVisible();
     await expect(page.getByLabel('رقم الهاتف العراقي')).toBeVisible();
+    await expect(page.getByLabel('كلمة المرور')).toBeVisible();
+    await expect(page.getByLabel('اسم الطالب الثلاثي')).toHaveCount(0);
+    await expect(page.getByLabel('الصف الدراسي')).toHaveCount(0);
     await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toHaveCount(0);
   });
 
