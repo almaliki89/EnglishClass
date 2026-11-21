@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'motion/react';
 import {
   GraduationCap,
@@ -275,7 +275,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                   <select
                     id="student-governorate"
                     required
-                    disabled={Boolean(confirmation) || loading}
+                    disabled={loading}
                     value={governorate}
                     onChange={(event) => setGovernorate(event.target.value)}
                     className="w-full pr-10 pl-3 py-2.5 bg-paper border-2 border-ink text-sm font-bold disabled:opacity-60"
@@ -379,7 +379,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (
                 <>
                   <Sparkles className="w-4 h-4 text-yellow" />
-                  <span>'إنشاء الحساب / تسجيل الدخول'</span>
+                  <span>إنشاء الحساب / تسجيل الدخول</span>
                 </>
               )}
             </button>
