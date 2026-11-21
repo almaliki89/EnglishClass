@@ -47,14 +47,7 @@ interface AuthContextType {
   syncStatus: 'synced' | 'saving' | 'offline' | 'error';
   signInWithGoogle: () => Promise<void>;
   googleRedirectError: string | null;
-  signInWithStudentPassword: (profile: {
-    name: string;
-    governorate: string;
-    schoolName: string;
-    phoneNumber: string;
-    selectedGrade: EducationalGrade;
-    password: string;
-  }) => Promise<EducationalGrade>;
+  signInWithStudentPassword: (profile: { mode: 'register' | 'login'; name?: string; governorate?: string; schoolName?: string; phoneNumber: string; selectedGrade?: EducationalGrade; password: string; }) => Promise<EducationalGrade>;
   logout: () => Promise<void>;
   saveStudentToCloud: (state: StudentState) => Promise<void>;
   loadStudentFromCloud: (uid: string) => Promise<StudentState | null>;
@@ -318,89 +311,44 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   // Student accounts use Firebase Email/Password Auth with a deterministic internal alias.
   // The alias is never shown to students; the Iraqi phone number is their login identifier.
   const signInWithStudentPassword = async (profile: {
-    name: string;
-    governorate: string;
-    schoolName: string;
-    phoneNumber: string;
-    selectedGrade: EducationalGrade;
-    password: string;
+    mode: 'register' | 'login'; name?: string; governorate?: string; schoolName?: string;
+    phoneNumber: string; selectedGrade?: EducationalGrade; password: string;
   }): Promise<EducationalGrade> => {
-    const normalizeIdentity = (value: unknown) =>
-      String(value || '').normalize('NFKC').trim().replace(/\s+/g, ' ').toLocaleLowerCase('ar');
     const phoneDigits = profile.phoneNumber.replace(/\D/g, '');
     if (!/^9647\d{9}$/.test(phoneDigits)) throw new Error('رقم الهاتف العراقي غير صحيح.');
-    if (profile.password.length < 8) throw new Error('يجب أن تتكون كلمة المرور من 8 أحرف أو أرقام على الأقل.');
-    if (profile.password.length > 128) throw new Error('كلمة المرور طويلة جداً.');
+    if (profile.password.length < 8 || profile.password.length > 128) throw new Error('كلمة المرور يجب أن تكون بين 8 و128 حرفاً.');
     const internalEmail = phoneDigits + '@students.orbit.invalid';
     setSyncStatus('saving');
-    let credential: UserCredential;
     try {
-      try {
-        credential = await signInWithEmailAndPassword(auth, internalEmail, profile.password);
-      } catch (signInError) {
-        const code = (signInError as { code?: string })?.code || '';
-        if (code !== 'auth/user-not-found' && code !== 'auth/invalid-credential') throw signInError;
-        try {
-          credential = await createUserWithEmailAndPassword(auth, internalEmail, profile.password);
-        } catch (createError) {
-          const createCode = (createError as { code?: string })?.code || '';
-          if (createCode === 'auth/email-already-in-use' || createCode === 'auth/weak-password') {
-            throw new Error('تعذر إنشاء الحساب. إذا كان الرقم مسجلاً سابقاً، تحقق من كلمة المرور أو تواصل مع الدعم.');
-          }
-          throw createError;
-        }
+      let credential: UserCredential;
+      if (profile.mode === 'login') {
+        try { credential = await signInWithEmailAndPassword(auth, internalEmail, profile.password); }
+        catch (error) { const code = (error as { code?: string })?.code || ''; if (code === 'auth/user-not-found' || code === 'auth/invalid-credential') throw new Error('رقم الهاتف أو كلمة المرور غير صحيحة.'); throw error; }
+      } else {
+        if (!profile.name || !profile.governorate || !profile.schoolName || !profile.selectedGrade) throw new Error('أكمل بيانات الطالب لإنشاء الحساب.');
+        if (profile.name.trim().split(/\s+/).filter(Boolean).length < 3 || profile.schoolName.trim().length < 3) throw new Error('يرجى إدخال الاسم الثلاثي واسم المدرسة بصورة صحيحة.');
+        try { credential = await createUserWithEmailAndPassword(auth, internalEmail, profile.password); }
+        catch (error) { const code = (error as { code?: string })?.code || ''; if (code === 'auth/email-already-in-use') throw new Error('هذا الرقم مسجل مسبقاً. اختر تسجيل الدخول واستخدم كلمة المرور.'); throw error; }
       }
-
       const studentRef = doc(db, 'students', credential.user.uid);
       const snapshot = await getDoc(studentRef);
-      let resolvedGrade = profile.selectedGrade;
-      if (snapshot.exists()) {
-        const stored = snapshot.data();
-        const matches =
-          normalizeIdentity(stored.name) === normalizeIdentity(profile.name) &&
-          normalizeIdentity(stored.governorate) === normalizeIdentity(profile.governorate) &&
-          normalizeIdentity(stored.schoolName) === normalizeIdentity(profile.schoolName) &&
-          String(stored.phoneNumber || '').replace(/\D/g, '') === phoneDigits;
-        if (!matches) {
-          await firebaseSignOut(auth);
-          throw new Error('بيانات الطالب لا تطابق الحساب المسجل بهذا الرقم. راجع الاسم والمحافظة والمدرسة.');
-        }
-        const validGrades: EducationalGrade[] = ['third-intermediate','fourth-preparatory','fifth-preparatory','sixth-preparatory'];
-        if (validGrades.includes(stored.selectedGrade)) resolvedGrade = stored.selectedGrade;
+      let resolvedGrade: EducationalGrade;
+      let displayName: string;
+      if (profile.mode === 'login') {
+        if (!snapshot.exists()) { await firebaseSignOut(auth); throw new Error('لم نعثر على ملف الطالب لهذا الحساب. تواصل مع الدعم.'); }
+        const stored = snapshot.data(); displayName = String(stored.name || credential.user.displayName || 'طالب أوربت');
+        const valid: EducationalGrade[] = ['third-intermediate','fourth-preparatory','fifth-preparatory','sixth-preparatory'];
+        resolvedGrade = valid.includes(stored.selectedGrade) ? stored.selectedGrade : 'sixth-preparatory';
       } else {
-        await updateProfile(credential.user, { displayName: profile.name });
+        displayName = profile.name!.trim().replace(/\s+/g, ' '); resolvedGrade = profile.selectedGrade!;
+        await updateProfile(credential.user, { displayName });
         const today = new Date().toISOString().split('T')[0];
-        await setDoc(studentRef, {
-          uid: credential.user.uid,
-          name: profile.name,
-          phoneNumber: profile.phoneNumber,
-          governorate: profile.governorate,
-          schoolName: profile.schoolName,
-          authProvider: 'student-password',
-          selectedGrade: profile.selectedGrade,
-          xp: 0, completedLessonIds: [], bookmarkedQuestionIds: [],
-          totalQuestionsAttempted: 0, totalQuestionsCorrect: 0, streakDays: 0,
-          lastActiveDate: today,
-          lastVisitedLessonId: profile.selectedGrade === 'third-intermediate' ? 't-u1-l1' : 'u1-l1',
-          unlockedBadges: [], createdAt: new Date().toISOString(), updatedAt: new Date().toISOString()
-        });
+        await setDoc(studentRef, { uid: credential.user.uid, name: displayName, phoneNumber: profile.phoneNumber, governorate: profile.governorate, schoolName: profile.schoolName, authProvider: 'student-password', selectedGrade: resolvedGrade, xp: 0, completedLessonIds: [], bookmarkedQuestionIds: [], totalQuestionsAttempted: 0, totalQuestionsCorrect: 0, streakDays: 0, lastActiveDate: today, lastVisitedLessonId: resolvedGrade === 'third-intermediate' ? 't-u1-l1' : 'u1-l1', unlockedBadges: [], createdAt: new Date().toISOString(), updatedAt: new Date().toISOString() });
       }
-      const appUser: AppUser = {
-        uid: credential.user.uid,
-        displayName: profile.name,
-        phoneNumber: profile.phoneNumber,
-        authProvider: 'student-password'
-      };
-      setUser(appUser);
-      setLoading(false);
-      setSyncStatus('synced');
-      return resolvedGrade;
-    } catch (error) {
-      setSyncStatus('error');
-      throw error;
-    }
+      setUser({ uid: credential.user.uid, displayName, phoneNumber: profile.phoneNumber, authProvider: 'student-password' });
+      setLoading(false); setSyncStatus('synced'); return resolvedGrade;
+    } catch (error) { setSyncStatus('error'); throw error; }
   };
-
   // Logout
   const logout = async () => {
     try {
