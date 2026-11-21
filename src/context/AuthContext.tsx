@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState, ReactNode } from
 import { 
   onAuthStateChanged, 
   getRedirectResult,
+  signInWithPopup,
   signInWithRedirect, 
   signOut as firebaseSignOut,
   createUserWithEmailAndPassword,
@@ -222,14 +223,27 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => unsubscribe();
   }, []);
 
-  // Sign in with Google using a full-page redirect to avoid popup blockers
+  // Prefer popup authentication to avoid redirect/session restoration loops.
+  // If the browser blocks the popup, fall back to the redirect flow.
   const signInWithGoogle = async () => {
     setGoogleRedirectError(null);
+    setSyncStatus('saving');
     try {
-      setSyncStatus('saving');
-      await signInWithRedirect(auth, googleProvider);
+      await signInWithPopup(auth, googleProvider);
+      // Auth state observer is authoritative; it will set the user.
     } catch (error: unknown) {
-      console.warn('Google Sign-in redirect error:', getErrorMessage(error));
+      const code = (error as { code?: string })?.code || '';
+      if (code === 'auth/popup-blocked') {
+        try {
+          await signInWithRedirect(auth, googleProvider);
+          return;
+        } catch (redirectError: unknown) {
+          console.warn('Google redirect sign-in error:', getErrorMessage(redirectError));
+          setSyncStatus('offline');
+          throw redirectError;
+        }
+      }
+      console.warn('Google popup sign-in error:', getErrorMessage(error));
       setSyncStatus('offline');
       throw error;
     }
