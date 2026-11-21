@@ -115,18 +115,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="flex items-center gap-2 sm:gap-2.5 group shrink-0 rounded-[4px]"
             >
               <img
-                src="/lingora-mark.svg"
-                alt="LINGORA — لينغورا"
+                src="/orbit-mark.svg"
+                alt="ORBIT — أوربت"
                 className="w-9 h-9 sm:w-10 sm:h-10 shrink-0 rounded-[4px] border-2 border-ink shadow-brutal-sm group-hover:-translate-y-0.5 group-hover:-translate-x-0.5 transition-all"
                 width="40"
                 height="40"
               />
-              <div className="shrink-0 text-right" aria-label="LINGORA — لينغورا">
+              <div className="shrink-0 text-right" aria-label="ORBIT — أوربت">
                 <div className="flex items-center gap-1.5">
                   <span className="font-mono font-black text-sm sm:text-lg text-ink tracking-[0.06em] whitespace-nowrap">
-                    LINGORA
+                    ORBIT
                   </span>
-                  <span className="text-[10px] font-bold text-cobalt hidden sm:inline">لينغورا</span>
+                  <span className="text-[10px] font-bold text-cobalt hidden sm:inline">أوربت</span>
                   {isInsideGrade && (
                     <>
                       <span className="text-xs text-muted-gray font-mono hidden sm:inline">/</span>
@@ -138,7 +138,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                 </div>
                 <div className="hidden xs:flex items-center gap-1.5">
                   <span className="text-[10px] font-mono uppercase bg-yellow text-ink border border-ink rounded-[3px] px-1 py-0.2 font-bold">
-                    YOUR LANGUAGE • YOUR WORLD
+                    EXPLORE • LEARN • ACHIEVE
                   </span>
                   <span className="text-[11px] text-muted-gray font-medium whitespace-nowrap hidden md:inline">
                     إشراف الأستاذ مصطفى تركي
