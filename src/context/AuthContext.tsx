@@ -107,7 +107,8 @@ async function ensureAuthPersistence(): Promise<void> {
 function toAppUser(firebaseUser: FirebaseUser): AppUser {
   const authProvider: AppUser['authProvider'] =
     firebaseUser.providerData.some(provider => provider.providerId === 'google.com') ? 'google' :
-    firebaseUser.providerData.some(provider => provider.providerId === 'phone') ? 'phone' :\n    firebaseUser.email?.endsWith('@students.orbit.invalid') ? 'student-password' : 'email';
+    firebaseUser.providerData.some(provider => provider.providerId === 'phone') ? 'phone' :
+    firebaseUser.email?.endsWith('@students.orbit.invalid') ? 'student-password' : 'email';
 
   return {
     uid: firebaseUser.uid,
