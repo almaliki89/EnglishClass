@@ -6,7 +6,7 @@ import {
   UserRound,
   MapPin,
   School,
-  ShieldCheck,
+  ShieldCheck,\n  LockKeyRound,
   AlertCircle,
   Loader2,
   Sparkles,
@@ -100,13 +100,6 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
     if (googleRedirectError) setError(googleRedirectError);
   }, [googleRedirectError]);
 
-  useEffect(() => {
-    return () => {
-      recaptchaVerifierRef.current?.clear();
-      recaptchaVerifierRef.current = null;
-    };
-  }, []);
-
   const validateStudentDetails = () => {
     const nameParts = fullName.trim().split(/\s+/).filter(Boolean);
     if (nameParts.length < 3) {
@@ -121,50 +114,25 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
     return toIraqiE164(phone);
   };
 
-  const handlePhoneSubmit = async (event: React.FormEvent) => {
+  const handleStudentSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     setError(null);
     setNotice(null);
     setLoading(true);
-
     try {
-      if (!confirmation) {
-        const normalizedPhone = validateStudentDetails();
-        if (!recaptchaVerifierRef.current) {
-          if (!phoneSubmitButtonRef.current) {
-            throw new Error('تعذر تهيئة التحقق الآمن. حدّث الصفحة وحاول مجدداً.');
-          }
-          // Firebase's invisible verifier must be attached to the button that
-          // initiates the SMS request, as recommended in the Web Auth guide.
-          recaptchaVerifierRef.current = new RecaptchaVerifier(auth, phoneSubmitButtonRef.current, {
-            size: 'invisible',
-          });
-        }
-
-        const verifier = recaptchaVerifierRef.current;
-        const result = await requestStudentPhoneCode(normalizedPhone, verifier);
-        setPhone(normalizedPhone);
-        setConfirmation(result);
-        setNotice('أرسلنا رمز تحقق إلى رقم هاتفك. أدخل الرمز لإكمال الدخول.');
-      } else {
-        if (!/^\d{6}$/.test(verificationCode.trim())) {
-          throw new Error('أدخل رمز التحقق المكوّن من 6 أرقام.');
-        }
-        const resolvedGrade = await completeStudentPhoneSignIn(confirmation, verificationCode.trim(), {
-          name: fullName.trim().replace(/\s+/g, ' '),
-          governorate,
-          schoolName: schoolName.trim().replace(/\s+/g, ' '),
-          phoneNumber: phone,
-          selectedGrade,
-        });
-        onSuccessfulAuth?.(fullName.trim(), resolvedGrade);
-      }
+      const normalizedPhone = validateStudentDetails();
+      if (password.length < 8) throw new Error('يجب أن تتكون كلمة المرور من 8 أحرف أو أرقام على الأقل.');
+      const resolvedGrade = await signInWithStudentPassword({
+        name: fullName.trim().replace(/\\s+/g, ' '),
+        governorate,
+        schoolName: schoolName.trim().replace(/\\s+/g, ' '),
+        phoneNumber: normalizedPhone,
+        selectedGrade,
+        password,
+      });
+      onSuccessfulAuth?.(fullName.trim(), resolvedGrade);
     } catch (caughtError) {
-      setError(getPhoneErrorMessage(caughtError));
-      if (!confirmation) {
-        recaptchaVerifierRef.current?.clear();
-        recaptchaVerifierRef.current = null;
-      }
+      setError(caughtError instanceof Error ? caughtError.message : 'تعذر تسجيل الدخول. تحقق من البيانات وكلمة المرور.');
     } finally {
       setLoading(false);
     }
@@ -191,15 +159,6 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
     } finally {
       setGoogleLoading(false);
     }
-  };
-
-  const resetPhoneFlow = () => {
-    setConfirmation(null);
-    setVerificationCode('');
-    setNotice(null);
-    setError(null);
-    recaptchaVerifierRef.current?.clear();
-    recaptchaVerifierRef.current = null;
   };
 
   return (
@@ -248,7 +207,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
           <div className="p-3.5 bg-yellow/30 border-2 border-ink flex items-start gap-2.5">
             <ShieldCheck className="w-5 h-5 text-cobalt shrink-0 mt-0.5" />
             <p className="text-xs font-bold leading-relaxed">
-              خيارات الدخول المعتمدة اثنان فقط: حساب Google، أو بيانات الطالب مع تأكيد ملكية رقم الهاتف برسالة SMS.
+              خيارات الدخول: حساب Google، أو بيانات الطالب مع كلمة مرور خاصة.
             </p>
           </div>
 
@@ -289,7 +248,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
             <div className="h-px bg-ink flex-1" />
           </div>
 
-          <form onSubmit={handlePhoneSubmit} className="space-y-3.5">
+          <form onSubmit={handleStudentSubmit} className="space-y-3.5">
             <div>
               <label htmlFor="student-full-name" className="block text-xs font-black mb-1">اسم الطالب الثلاثي</label>
               <div className="relative">
@@ -299,7 +258,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                   type="text"
                   autoComplete="name"
                   required
-                  disabled={Boolean(confirmation) || loading}
+                  disabled={loading}
                   value={fullName}
                   onChange={(event) => setFullName(event.target.value)}
                   placeholder="مثال: علي حيدر جاسم"
@@ -382,28 +341,25 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               </div>
             </div>
 
-            {confirmation && (
-              <motion.div initial={{ opacity: 0, y: -5 }} animate={{ opacity: 1, y: 0 }} className="space-y-2">
-                <label htmlFor="student-otp" className="block text-xs font-black">رمز التحقق المرسل برسالة SMS</label>
+            <div>
+              <label htmlFor="student-password" className="block text-xs font-black mb-1">كلمة المرور</label>
+              <div className="relative">
+                <LockKeyRound className="absolute right-3 top-3.5 w-4 h-4 text-ink/45" />
                 <input
-                  id="student-otp"
-                  type="text"
-                  inputMode="numeric"
-                  autoComplete="one-time-code"
-                  pattern="[0-9]{6}"
-                  maxLength={6}
+                  id="student-password"
+                  type="password"
+                  autoComplete="current-password"
+                  minLength={8}
+                  maxLength={128}
                   required
-                  value={verificationCode}
-                  onChange={(event) => setVerificationCode(event.target.value.replace(/\D/g, '').slice(0, 6))}
-                  placeholder="000000"
-                  dir="ltr"
-                  className="w-full py-3 px-4 bg-yellow/20 border-2 border-ink text-center text-xl font-mono font-black tracking-[0.5em]"
+                  value={password}
+                  onChange={(event) => setPassword(event.target.value)}
+                  placeholder="8 أحرف أو أرقام على الأقل"
+                  className="w-full pr-10 pl-3 py-2.5 bg-paper border-2 border-ink text-sm font-bold"
                 />
-                <button type="button" onClick={resetPhoneFlow} className="text-xs font-black text-cobalt underline">
-                  تغيير رقم الهاتف أو البيانات
-                </button>
-              </motion.div>
-            )}
+                <p className="mt-1 text-[10px] text-ink/60">عند أول تسجيل بهذا الرقم تُنشأ عضويتك، وبعدها تستخدم كلمة المرور نفسها للدخول.</p>
+              </div>
+            </div>
 
             {notice && <p role="status" className="p-3 bg-yellow/30 border border-ink text-xs font-bold">{notice}</p>}
 
@@ -423,7 +379,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
               {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : (
                 <>
                   <Sparkles className="w-4 h-4 text-yellow" />
-                  <span>{confirmation ? 'تأكيد الرمز والدخول إلى المنصة' : 'إرسال رمز التحقق إلى الهاتف'}</span>
+                  <span>'إنشاء الحساب / تسجيل الدخول'</span>
                 </>
               )}
             </button>
