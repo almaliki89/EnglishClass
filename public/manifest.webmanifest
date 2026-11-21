@@ -1,8 +1,8 @@
 {
   "id": "/",
-  "name": "LINGORA — لينغورا",
-  "short_name": "LINGORA",
-  "description": "Your Language. Your World. منصة ذكية لتعلّم اللغة الإنكليزية.",
+  "name": "ORBIT — أوربت",
+  "short_name": "ORBIT",
+  "description": "Explore. Learn. Achieve. منصة تعليمية ذكية.",
   "lang": "ar",
   "dir": "rtl",
   "start_url": "/",
@@ -11,6 +11,6 @@
   "background_color": "#F7F5EF",
   "theme_color": "#202124",
   "icons": [
-    {"src": "/lingora-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
+    {"src": "/orbit-mark.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable"}
   ]
 }

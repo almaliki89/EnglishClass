@@ -1,6 +1,6 @@
 {
-  "name": "LINGORA — لينغورا | Iraqi English Learning Platform",
-  "description": "LINGORA (لينغورا) منصة ذكية لتعلّم اللغة الإنكليزية وفق المنهج العراقي، تجمع الشرح التفاعلي والتدريب والمراجعة والامتحانات للصفوف المتاحة. Your Language. Your World.",
+  "name": "ORBIT — أوربت | Iraqi Learning Platform",
+  "description": "ORBIT (أوربت) منصة تعليمية ذكية للمنهج العراقي، تجمع الشرح التفاعلي والتدريب والمراجعة والامتحانات للصفوف المتاحة. Explore. Learn. Achieve.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

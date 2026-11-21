@@ -923,11 +923,11 @@ function MainAppContent() {
               <div className="min-w-0 space-y-0.5">
                 <div className="flex flex-wrap items-baseline gap-2">
                   <span dir="ltr" className="font-display text-lg font-black tracking-[0.05em] text-ink">
-                    LINGORA
+                    ORBIT
                   </span>
-                  <span className="text-sm font-black text-cobalt">لينغورا</span>
+                  <span className="text-sm font-black text-cobalt">أوربت</span>
                   <span dir="ltr" className="text-[11px] font-mono text-muted-gray">
-                    Your Language. Your World.
+                    Explore. Learn. Achieve.
                   </span>
                 </div>
                 <p className="text-xs font-bold text-muted-gray">
@@ -944,7 +944,7 @@ function MainAppContent() {
               جمهورية العراق - البصرة - الزبير
             </p>
             <p className="font-bold text-muted-gray text-center sm:text-left">
-              © 2026 جميع الحقوق محفوظة للأستاذ مصطفى تركي — منصة LINGORA (لينغورا)
+              © 2026 جميع الحقوق محفوظة للأستاذ مصطفى تركي — منصة ORBIT (أوربت)
             </p>
           </div>
         </div>
