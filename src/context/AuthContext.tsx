@@ -269,29 +269,25 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     return () => unsubscribe();
   }, []);
 
-  // Prefer popup authentication to avoid redirect/session restoration loops.
-  // If the browser blocks the popup, fall back to the redirect flow.
+  // Open the Google popup synchronously from the user's click. Do not await
+  // setPersistence first: mobile browsers can revoke the click's transient
+  // activation while an async task is pending, causing the popup to be blocked.
+  // Firebase Auth already defaults to browserLocalPersistence in browsers.
+  //
+  // Do not silently fall back to signInWithRedirect here. This app is served
+  // from Vercel while authDomain is firebaseapp.com; redirect sign-in needs a
+  // same-origin auth helper proxy/custom auth domain on browsers that partition
+  // third-party storage. A blocked popup must be surfaced so the user can open
+  // the site in the device's regular browser rather than returning unauthenticated.
   const signInWithGoogle = async () => {
     setGoogleRedirectError(null);
     setSyncStatus('saving');
     try {
-      await ensureAuthPersistence();
       const credential = await signInWithPopup(auth, googleProvider);
       // Promote the verified Firebase credential immediately; the observer remains the source of truth on refresh/logout.
       setUser(toAppUser(credential.user));
       setLoading(false);
     } catch (error: unknown) {
-      const code = (error as { code?: string })?.code || '';
-      if (code === 'auth/popup-blocked') {
-        try {
-          await signInWithRedirect(auth, googleProvider);
-          return;
-        } catch (redirectError: unknown) {
-          console.warn('Google redirect sign-in error:', getErrorMessage(redirectError));
-          setSyncStatus('offline');
-          throw redirectError;
-        }
-      }
       console.warn('Google popup sign-in error:', getErrorMessage(error));
       setSyncStatus('offline');
       throw error;
