@@ -383,7 +383,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           normalizeIdentity(stored.governorate) === normalizeIdentity(profile.governorate) &&
           normalizeIdentity(stored.schoolName) === normalizeIdentity(profile.schoolName) &&
           stored.phoneNumber === profile.phoneNumber &&
-          stored.selectedGrade === profile.selectedGrade;
+          (stored.selectedGrade || 'sixth-preparatory') === profile.selectedGrade;
 
         if (!profileMatches) {
           throw new Error('تم التحقق من رقم الهاتف، لكن بيانات الطالب لا تطابق الملف المسجل. راجع الاسم والمحافظة والمدرسة.');
