@@ -58,7 +58,7 @@ interface AuthContextType {
       phoneNumber: string;
       selectedGrade: EducationalGrade;
     }
-  ) => Promise<void>;
+  ) => Promise<EducationalGrade>;
   logout: () => Promise<void>;
   saveStudentToCloud: (state: StudentState) => Promise<void>;
   loadStudentFromCloud: (uid: string) => Promise<StudentState | null>;
@@ -358,6 +358,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     }
   ): Promise<void> => {
     let verifiedUser: FirebaseUser | null = null;
+    let resolvedGrade: EducationalGrade = profile.selectedGrade;
     pendingPhoneSignInRef.current = true;
     setSyncStatus('saving');
 
@@ -387,6 +388,15 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           throw new Error('تم التحقق من رقم الهاتف، لكن بيانات الطالب لا تطابق الملف المسجل. راجع الاسم والمحافظة والمدرسة.');
         }
         displayName = String(stored.name || profile.name);
+        const storedGrade = stored.selectedGrade as EducationalGrade | undefined;
+        if (storedGrade && [
+          'third-intermediate',
+          'fourth-preparatory',
+          'fifth-preparatory',
+          'sixth-preparatory',
+        ].includes(storedGrade)) {
+          resolvedGrade = storedGrade;
+        }
       } else {
         await updateProfile(verifiedUser, { displayName: profile.name });
         const today = new Date().toISOString().split('T')[0];
@@ -424,6 +434,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       });
       setLoading(false);
       setSyncStatus('synced');
+      return resolvedGrade;
     } catch (error: unknown) {
       if (verifiedUser && auth.currentUser?.uid === verifiedUser.uid) {
         await firebaseSignOut(auth).catch(() => undefined);
