@@ -78,7 +78,48 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
       'جرين ماني\nتأخذ منظمة GreenMoney أموالك وتستثمرها في مشاريع بيئية حول العالم. ويمكنك الاختيار من بين عدد من المشاريع المختلفة، وعندما ينتهي المشروع تستعيد أموالك، أو يمكنك إعادة استثمارها في مشروع آخر. وإذا قررت إعادة الاستثمار، فسنقترح عليك المشروع المثالي لك.\nابدأ الاستثمار في كوكبنا اليوم! ما المشروع الذي ترغب في مساعدته؟ وكم تستطيع استثماره؟ ومتى تحتاج إلى استرداد أموالك؟',
       'اعمل من أجل الطبيعة\nنحن في منظمة «اعمل من أجل الطبيعة» لا نريد أموالك، بل نحتاج إلى وقتك لصنع عالم أفضل. يمكنك التطوع بالوقت الذي تستطيع تقديمه، بدءًا من ساعتين فقط في الأسبوع (وكلما زاد الوقت كان ذلك أفضل بالطبع!). ماذا ستفعل في ذلك الوقت؟ لدينا مجموعة من «المهام الخضراء» للاختيار منها وفقًا لمهاراتك. يمكنك العمل في مجتمعك، مثل زراعة الأشجار أو زيارة المدارس. وإذا كانت لديك مهارات أو تدريب، فسنجد لك عملًا مناسبًا. ويمكنك أيضًا المساعدة في الترويج لمنظمتنا عبر الإنترنت، أي يمكنك مساعدتنا دون مغادرة منزلك!\nوفي عطلتك، يمكنك الانضمام إلى أحد مشاريعنا الكثيرة للحفاظ على البيئة حول العالم. وفي برامجنا التي تستمر من شهر إلى ثلاثة أشهر، ستساعد على حماية الحيوانات من خلال الحفاظ على مواطنها الطبيعية.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "5p-u3-ngos-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "5p-u3-ngos-lingora-1",
+                "question": "What are the two main threats to the dugong?",
+                "answer": "Lack of food and hunting."
+            },
+            {
+                "id": "5p-u3-ngos-lingora-2",
+                "question": "Why is seagrass disappearing?",
+                "answer": "Because of pesticides in the water."
+            },
+            {
+                "id": "5p-u3-ngos-lingora-3",
+                "question": "How can someone adopt a dugong?",
+                "answer": "By choosing a dugong from the gallery and paying a monthly fee."
+            },
+            {
+                "id": "5p-u3-ngos-lingora-4",
+                "question": "What does We Need Water use donations for?",
+                "answer": "To build wells in small villages and take drinking water to people who need it."
+            },
+            {
+                "id": "5p-u3-ngos-lingora-5",
+                "question": "How does GreenMoney work?",
+                "answer": "It invests money in environmental projects; when a project ends, the investor can get the money back or reinvest it."
+            },
+            {
+                "id": "5p-u3-ngos-lingora-6",
+                "question": "Give two examples of how volunteers can help Work for Nature.",
+                "answer": "They can plant trees, visit schools, promote the organization online, or help protect animals and habitats."
+            }
+        ]
+    }
+]
   },
 
   '5p-u3-basra-pollution': {
@@ -95,7 +136,43 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
       'الفقرة D — يحدث الاحتباس الحراري بسبب CO2، أي ثاني أكسيد الكربون. والخبر الجيد بشأن الغاز الطبيعي المسال (LNG) هو أنه يحتوي على هيدروجين أكثر وكربون أقل من النفط، ولذلك ينتج كمية أقل بكثير من ثاني أكسيد الكربون عند استخدامه.',
       'الفقرة E — تُعد البحيرات المحيطة بالرميلة بيئة خاصة. وتوجد فيها حياة كثيرة ومثيرة للاهتمام، لكنها قد تتضرر بسهولة بسبب النفط أو أنواع التلوث الأخرى. لذلك لدى شركة GOGC فريق يراقب جودة مياه البحيرة في 15 موقعًا حول الرميلة. وتعد حماية البيئة في هذه المنطقة الخاصة أمرًا مهمًا جدًا للشركة.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "5p-u3-basra-pollution-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "5p-u3-basra-pollution-lingora-1",
+                "question": "What are Iraq’s two main industries mentioned in the letter?",
+                "answer": "Oil and gas."
+            },
+            {
+                "id": "5p-u3-basra-pollution-lingora-2",
+                "question": "Which greenhouse gases are named in the letter?",
+                "answer": "Carbon dioxide and ozone."
+            },
+            {
+                "id": "5p-u3-basra-pollution-lingora-3",
+                "question": "Name two places in Basra mentioned by Salman Ahmad.",
+                "answer": "Any two of Shu’ayba, Zubair, Rumaila and Burjussia."
+            },
+            {
+                "id": "5p-u3-basra-pollution-lingora-4",
+                "question": "How can burning oil and gas affect birds?",
+                "answer": "Smoke and flares can disturb breeding patterns, and pollution can damage nesting and breeding habitats."
+            },
+            {
+                "id": "5p-u3-basra-pollution-lingora-5",
+                "question": "How does GOGC monitor the lakewater around Rumaila?",
+                "answer": "Its team monitors lakewater quality at 15 places around Rumaila."
+            }
+        ]
+    }
+]
   },
 
   '5p-u3-hybrid-cars': {
@@ -108,7 +185,43 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
       'مبيعات السيارات الهجينة في لوس أنجلوس\nهل تريد كل مزايا محرك البنزين بالإضافة إلى كل مزايا المحرك الكهربائي؟\nاستمتع واحمِ البيئة. اشترِ سيارة هجينة!\nنبيع سيارات هجينة من هوندا وتويوتا وفورد وجنرال موتورز.\nمبيعات السيارات الهجينة، 9466 شارع بيفرلي، لوس أنجلوس.',
       'سيارة هجينة لتيري؟\nنجري كل شهر مقابلة مع أحد أفراد الجمهور ونسأله: «أي سيارة ستشتري؟ ولماذا؟»\nالمحاور: تيري، لقد كنت تطّلع على السيارات الجديدة في السوق. ما رأيك؟\nتيري: حسنًا، تعجبني جميع السيارات الهجينة الجديدة.\nالمحاور: إنها باهظة الثمن، أليس كذلك؟\nتيري: ليست رخيصة، لكنني أتوقع أن أشتري واحدة على أي حال. أعيش في لوس أنجلوس، ولدينا مشكلة تلوث كبيرة هناك.\nالمحاور: الضباب الدخاني؟\nتيري: ليس الضباب الدخاني فقط. يوجد في لوس أنجلوس نحو أربعة ملايين شخص، وكل شخص يقود سيارة.\nالمحاور: هل تعتقد أن السيارات الهجينة ستساعد؟\nتيري: نعم بالتأكيد. ستجعل الأمور أفضل. ففي المدينة تستخدم المحرك الكهربائي، لذلك لا يوجد تلوث إطلاقًا.\nالمحاور: لماذا لا تشتري سيارة كهربائية بالكامل إذن؟\nتيري: البطاريات ليست جيدة بما يكفي للرحلات الطويلة، وهذه هي المشكلة. فأنا أقود غالبًا إلى منزل أختي في سان فرانسيسكو، وتبلغ المسافة نحو 650 كيلومترًا.\nالمحاور: والسيارة الهجينة تستخدم محرك البنزين على الطرق المفتوحة؟\nتيري: بالضبط. ستحصل على أفضل ما في العالمين.\nالمحاور: وهل تستطيع تحمل السعر الأعلى؟\nتيري: في الوقت الحالي نعم. وما لم أفقد عملي أو يحدث شيء من هذا القبيل، فسأشتري سيارة هجينة بالتأكيد.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "5p-u3-hybrid-cars-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "5p-u3-hybrid-cars-lingora-1",
+                "question": "Why does Terry prefer a hybrid car to a fully electric car?",
+                "answer": "Because the batteries in fully electric cars are not good enough for long journeys."
+            },
+            {
+                "id": "5p-u3-hybrid-cars-lingora-2",
+                "question": "How far is the journey to Terry’s sister in San Francisco?",
+                "answer": "Nearly 650 kilometres."
+            },
+            {
+                "id": "5p-u3-hybrid-cars-lingora-3",
+                "question": "Which engine does a hybrid use in the city according to Terry?",
+                "answer": "The electric motor."
+            },
+            {
+                "id": "5p-u3-hybrid-cars-lingora-4",
+                "question": "When does the hybrid use its petrol engine?",
+                "answer": "On the open road."
+            },
+            {
+                "id": "5p-u3-hybrid-cars-lingora-5",
+                "question": "What environmental problem worries Terry in Los Angeles?",
+                "answer": "Air pollution, including smog, made worse by the large number of people driving cars."
+            }
+        ]
+    }
+]
   },
 
   '5p-u3-oryx': {
@@ -122,7 +235,43 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
       'في ستينيات القرن الماضي، كان عدد المها العربي في شبه الجزيرة العربية قليلًا جدًا. وكان الحيوان مهددًا بالانقراض بسبب الصيد. وكان يُصاد لسببين: فالسكان البدو المحليون كانوا يصطادونه من أجل لحمه، وسكان المدن كانوا يصطادونه للرياضة. في الماضي، عندما كان الصيادون يستخدمون الخيول، كان المها ينجو. لكن الصيادين الذين يستخدمون سيارات الدفع الرباعي الكبيرة أصبحوا قادرين على ملاحقة المها في كل مكان، فلم يعد يستطيع الإفلات منهم. وفي عام 1972، قُتل آخر مها عربي بري.',
       'لكن لحسن الحظ، لم تكن تلك نهاية القصة. فقد كانت حدائق الحيوان في أنحاء الشرق الأوسط تضم عددًا جيدًا من المها العربي. وجعلت هذه الحيوانات تتكاثر لزيادة أعدادها. ثم في عام 1982، أعادت بعض المها إلى البرية في عُمان. ونجح البرنامج، وفي عام 1990 فعلوا الأمر نفسه في المملكة العربية السعودية. وبالطبع، لم يعد صيد المها مسموحًا. ويقول الخبراء إن عدد هذه الحيوانات الرائعة في البرية اليوم يزيد على 1,000، وهناك ما بين 6,000 و7,000 أخرى في حدائق الحيوان والمجموعات الخاصة.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "5p-u3-oryx-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "5p-u3-oryx-lingora-1",
+                "question": "What kind of animal is the oryx?",
+                "answer": "A beautiful antelope with two long horns."
+            },
+            {
+                "id": "5p-u3-oryx-lingora-2",
+                "question": "Why did the oryx become endangered?",
+                "answer": "It was hunted for meat by local Bedouin people and for sport by people from cities."
+            },
+            {
+                "id": "5p-u3-oryx-lingora-3",
+                "question": "When was the last wild oryx shot?",
+                "answer": "In 1972."
+            },
+            {
+                "id": "5p-u3-oryx-lingora-4",
+                "question": "How did zoos help save the oryx?",
+                "answer": "They bred the animals to increase their numbers before some were returned to the wild."
+            },
+            {
+                "id": "5p-u3-oryx-lingora-5",
+                "question": "In which two countries were oryx reintroduced, and when?",
+                "answer": "Oman in 1982 and Saudi Arabia in 1990."
+            }
+        ]
+    }
+]
   },
 
   '5p-u4-bakkar': {
@@ -138,7 +287,43 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
       'كانت منى أبو النصر تؤمن بأهمية أن يكون للعالم العربي شخصيات رسوم متحركة خاصة به. افتتحت استوديو القاهرة للرسوم المتحركة عام 1990، ومنذ ذلك الحين وهي تصنع رسومًا متحركة مصرية للتلفزيون. بدأت بشخصية كأني وماني، ثم صنعت سندباد، وأخيرًا بكار.',
       'ربما نجحت شخصية بكار إلى هذا الحد لأنها تشبه منى أبو النصر نفسها أكثر من غيرها. فبكار يحب الفن، ومنى كانت تحب الفن أيضًا. قالت: «الفن في عائلتي». كانت أخت منى الكبرى رسامة، وكان عمها معلمًا للفنون. وكانت هي نفسها تحب دائمًا رسم شخصيات مضحكة بألوان زاهية في دفاترها المدرسية.\nهل يوجد في صفك شخص يجيد الرسم؟ ربما يكون في صفك منى أبو النصر المستقبلية.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "5p-u4-bakkar-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "5p-u4-bakkar-lingora-1",
+                "question": "Where does Bakkar live?",
+                "answer": "In Upper Egypt."
+            },
+            {
+                "id": "5p-u4-bakkar-lingora-2",
+                "question": "Who created the Bakkar cartoon series?",
+                "answer": "Mona Abu El Nasr."
+            },
+            {
+                "id": "5p-u4-bakkar-lingora-3",
+                "question": "Why do viewers from different ages and classes like Bakkar?",
+                "answer": "They recognize Bakkar’s Muslim values, and he is a positive change from Western cartoon characters."
+            },
+            {
+                "id": "5p-u4-bakkar-lingora-4",
+                "question": "Name two serious topics addressed by the Bakkar shows.",
+                "answer": "Helping disadvantaged people, education and literacy, and environmental protection are examples."
+            },
+            {
+                "id": "5p-u4-bakkar-lingora-5",
+                "question": "When did Mona Abu El Nasr open Cairo Cartoon Studios?",
+                "answer": "In 1990."
+            }
+        ]
+    }
+]
   },
 
   '5p-u6-manchester-fire': {
@@ -152,7 +337,43 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
       'وبعد ثلاث دقائق، وقع انفجار قوي. وطلبت الشرطة من الحشد الموجود في الشارع الابتعاد عن المبنى. ووضعت مركبات الشرطة عند نهاية شارع كوين ومنعت أفراد الجمهور من دخول الشارع.',
       'تمت السيطرة على الحريق قرابة الساعة الحادية عشرة، لكن الجزء الداخلي من المبنى كان قد دُمّر بالكامل بحلول ذلك الوقت. ونقلت سيارات الإسعاف خمسة أشخاص إلى المستشفى، لكن حالتهم لم تكن خطيرة.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "5p-u6-manchester-fire-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "5p-u6-manchester-fire-lingora-1",
+                "question": "Where did the fire start?",
+                "answer": "On the ground floor of number 218 Queen Street."
+            },
+            {
+                "id": "5p-u6-manchester-fire-lingora-2",
+                "question": "At what time did the fire start?",
+                "answer": "At 10:10 a.m."
+            },
+            {
+                "id": "5p-u6-manchester-fire-lingora-3",
+                "question": "When did the police and fire brigade arrive?",
+                "answer": "At 10:19 a.m."
+            },
+            {
+                "id": "5p-u6-manchester-fire-lingora-4",
+                "question": "What happened three minutes after the emergency services arrived?",
+                "answer": "There was a loud explosion."
+            },
+            {
+                "id": "5p-u6-manchester-fire-lingora-5",
+                "question": "How many people were taken to hospital, and how serious were their conditions?",
+                "answer": "Five people were taken to hospital, but their conditions were not serious."
+            }
+        ]
+    }
+]
   },
 
   '5p-u6-spanish-captain': {
@@ -168,7 +389,43 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
       'كنت أعتقد أن جو ماكغريغور ممثل رائع، لكنني لم أعد متأكدة الآن. يبدو جيدًا كعادته، لكن من الصعب تصديق أنه قبطان إسباني. أما إيما نايتلي فليست سيئة، لكننا لا نراها إلا خمس دقائق. كان هناك شيء واحد أحببته فعلًا في الفيلم، وهو موسيقى ديفيد ويليامز الرائعة. وقد استمعت بالفعل إلى الألبوم عبر الإنترنت.',
       'قد يستمتع المراهقون من الأولاد بهذا الفيلم، لكنه ليس مناسبًا لي.\nبقلم: سارة أوزبورن.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "5p-u6-spanish-captain-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "5p-u6-spanish-captain-lingora-1",
+                "question": "Who directed The Spanish Captain?",
+                "answer": "Pedro Garcia."
+            },
+            {
+                "id": "5p-u6-spanish-captain-lingora-2",
+                "question": "Why is Captain Santos worried about going to war against the English?",
+                "answer": "Because his new wife, Mary, is English."
+            },
+            {
+                "id": "5p-u6-spanish-captain-lingora-3",
+                "question": "What did the reviewer think of the special effects?",
+                "answer": "They were extremely good, and the storm at sea looked realistic."
+            },
+            {
+                "id": "5p-u6-spanish-captain-lingora-4",
+                "question": "What did the reviewer dislike about the sea-battle scenes?",
+                "answer": "They were too long."
+            },
+            {
+                "id": "5p-u6-spanish-captain-lingora-5",
+                "question": "Which part of the film did Sarah Osborne especially like?",
+                "answer": "David Williams’ music."
+            }
+        ]
+    }
+]
   },
 
   '5p-u6-news': {
@@ -183,7 +440,48 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
       'خمسة آلاف لتر من البنزين في النهر: نفوق الأسماك\nنفقت آلاف الأسماك في نهر التايمز بالقرب من لندن بعد حادث مروري على أحد الجسور. فقد اصطدمت شاحنة صهريج تحمل 10,000 لتر من البنزين بشاحنة أخرى أثناء عبورهما الجسر الضيق في ريتشموند. وحدث ثقب في جانب الصهريج، فانسكب ما لا يقل عن 50% من البنزين على الطريق ثم إلى النهر. وهذه أسوأ حالة تلوث في نهر التايمز منذ عام 1992.',
       'سعر قياسي لجمل مميز\nبيع جمل بمبلغ 150,000 دولار في الإمارات العربية المتحدة. وبالطبع، ليس هذا جملًا عاديًا! إنه جمل سباق عالي الجودة، وقد فاز بالفعل بأكثر من 50 سباقًا. ويحظى سباق الهجن بشعبية كبيرة في الإمارات، وغالبًا ما تُدفع أسعار مرتفعة مقابل أفضل الحيوانات. والمالك الجديد رجل أعمال من دبي يُدعى عمر عبد الحميد. وقال: «نعم، هذا جمل باهظ الثمن، لكنني متأكد من أنني سأجني منه الكثير من المال».'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "5p-u6-news-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "5p-u6-news-lingora-1",
+                "question": "What was Max doing when his mother saw him by the river?",
+                "answer": "He was holding a snake and biting it."
+            },
+            {
+                "id": "5p-u6-news-lingora-2",
+                "question": "What was the purpose of the golf professionals’ tour in the Gulf States?",
+                "answer": "To promote golf among local young people."
+            },
+            {
+                "id": "5p-u6-news-lingora-3",
+                "question": "How much petrol was carried by the tanker involved in the River Thames accident?",
+                "answer": "10,000 litres."
+            },
+            {
+                "id": "5p-u6-news-lingora-4",
+                "question": "What happened to the fish after the petrol spill?",
+                "answer": "Thousands of fish died."
+            },
+            {
+                "id": "5p-u6-news-lingora-5",
+                "question": "How much was the racing camel sold for?",
+                "answer": "$150,000."
+            },
+            {
+                "id": "5p-u6-news-lingora-6",
+                "question": "Why did the camel’s new owner think the purchase was worthwhile?",
+                "answer": "He believed he would make a lot of money with it."
+            }
+        ]
+    }
+]
   },
 
   '5p-u6-satellite-tv': {
@@ -200,7 +498,43 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
       'في البداية، استخدمت شركات التلفزيون هذه الأقمار الصناعية لإرسال الأخبار والبرامج الرياضية لمسافات طويلة، مثل الإرسال عبر المحيط الأطلسي. أما الناس في منازلهم فاستمروا في استقبال التلفزيون بالطريقة العادية باستخدام الهوائي.',
       'في أوائل الثمانينيات، بدأ الناس تركيب أطباق الأقمار الصناعية في منازلهم واستقبال البرامج من محطات التلفزيون الفضائي. وسرعان ما فهم الناس المزايا الكبيرة لهذا النظام. فباستخدام الأقمار الصناعية، يمكنك استقبال البرامج التلفزيونية في وسط الصحراء أو في الجبال أو على الجزر الصغيرة البعيدة. كما يمكنك استقبال برامج من محطات في بلدان أخرى. ونتيجة لذلك، أصبح بإمكان عدد أكبر من الناس مشاهدة التلفزيون، وأصبح لدى الجميع خيارات أكثر.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "5p-u6-satellite-tv-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "5p-u6-satellite-tv-lingora-1",
+                "question": "What was the name of the first satellite sent into space by the Russians, and when was it launched?",
+                "answer": "Sputnik, in 1957."
+            },
+            {
+                "id": "5p-u6-satellite-tv-lingora-2",
+                "question": "When were the first communication satellites launched?",
+                "answer": "In 1963."
+            },
+            {
+                "id": "5p-u6-satellite-tv-lingora-3",
+                "question": "Why were the early communication satellites unsuitable for continuous communication?",
+                "answer": "They moved around the Earth and disappeared from view after a few hours."
+            },
+            {
+                "id": "5p-u6-satellite-tv-lingora-4",
+                "question": "What was the important feature of Early Bird (Intelsat 1)?",
+                "answer": "It travelled at the same speed as the Earth’s rotation, so it appeared to stay still."
+            },
+            {
+                "id": "5p-u6-satellite-tv-lingora-5",
+                "question": "Give two advantages of satellite television mentioned in the passage.",
+                "answer": "It can bring programmes to remote places and give viewers access to stations from other countries."
+            }
+        ]
+    }
+]
   },
 
   '5p-u7-harrods': {
@@ -216,7 +550,43 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
       'شعار هارودز هو «كل شيء للجميع في كل مكان». وإذا كنت ثريًا بما يكفي، يمكنك شراء أحذية مرصعة بالألماس يبلغ ثمنها مليون جنيه إسترليني! وهناك قصص حقيقية كثيرة أخرى عن أشياء غير عادية بيعت لزبائن مهمين. ففي أوائل القرن العشرين، كان بإمكان الزبائن الأثرياء شراء الطائرات والقوارب الشراعية من هارودز. وبالطبع، كان عليهم طلبها أولًا ثم دفع ثمنها وبعد ذلك تُسلّم إليهم. وفي ثلاثينيات القرن العشرين، عرض هارودز أحد أوائل أجهزة التلفزيون في العالم. كما أُهدي الكاتب البريطاني الشهير نويل كوارد تمساحًا كان قد طُلب واشتُري من هارودز كهدية لعيد الميلاد. وأُهدي الرئيس الأمريكي رونالد ريغان فيلًا صغيرًا اشتُري من هارودز. وكان المخرج السينمائي البريطاني ألفريد هيتشكوك يطلب إرسال السمك الطازج المفضل لديه جوًا إلى أمريكا بواسطة هارودز.',
       'صحيح أن هارودز يبيع تقريبًا كل ما قد ترغب فيه، لكنه أحد أغلى المتاجر في بريطانيا. لذلك ربما ينبغي لهارودز تغيير شعاره إلى «كل شيء للأغنياء في كل مكان»!'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "5p-u7-harrods-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "5p-u7-harrods-lingora-1",
+                "question": "Who founded Harrods, and in what year?",
+                "answer": "Charles Henry Harrod founded it in 1834."
+            },
+            {
+                "id": "5p-u7-harrods-lingora-2",
+                "question": "Where is Harrods located today?",
+                "answer": "In Knightsbridge, central London."
+            },
+            {
+                "id": "5p-u7-harrods-lingora-3",
+                "question": "What happened to the store in 1883?",
+                "answer": "A fire destroyed it, and a new building was constructed."
+            },
+            {
+                "id": "5p-u7-harrods-lingora-4",
+                "question": "How many customers visit Harrods on an ordinary day, according to the passage?",
+                "answer": "About 35,000 customers."
+            },
+            {
+                "id": "5p-u7-harrods-lingora-5",
+                "question": "What is Harrods’ motto in the passage?",
+                "answer": "Everything for Everybody Everywhere."
+            }
+        ]
+    }
+]
   },
 
   '5p-u8-boa': {
@@ -232,7 +602,48 @@ export const FIFTH_READING_PASSAGE_CONTENT_ADDITIONAL: Record<string, Partial<Re
       'رأى سكان ست شقق أخرى في المبنى الأفعى أيضًا، لكنهم كانوا جميعًا خائفين أكثر من أن يحاولوا الإمساك بها. وفي مناسبتين، استُدعيت فرقة الإطفاء، لكن الأفعى كانت قد اختفت بالفعل عندما وصلوا.',
       'وأخيرًا، عُثر على الأفعى الليلة الماضية على أرضية حمام السيد والسيدة ميلر في الطابق الثامن من المبنى. وأُمسكت داخل دلو كبير، ثم استُدعيت الشرطة. وأُعيدت الأفعى إلى موطنها في حديقة الحيوان، وسط ارتياح الجميع.'
     ],
-    exerciseSets: []
+    exerciseSets: [
+    {
+        "id": "5p-u8-boa-lingora-practice",
+        "source": "lingora_practice",
+        "sourceTitle": "LINGORA — تدريبات إضافية من إعداد المنصة",
+        "sourcePages": "تدريب إضافي داخل المنصة؛ ليس في صفحة مطبوعة من كتاب النشاط أو الملزمة",
+        "instruction": "Answer the questions using information from the passage.",
+        "instructionTranslation": "أجب عن الأسئلة اعتمادًا على معلومات القطعة. هذه تدريبات إضافية من LINGORA وليست أسئلة من الكتاب.",
+        "items": [
+            {
+                "id": "5p-u8-boa-lingora-1",
+                "question": "How long was the boa constrictor?",
+                "answer": "Three metres long."
+            },
+            {
+                "id": "5p-u8-boa-lingora-2",
+                "question": "Where had the snake been seen during the previous three months?",
+                "answer": "In different toilets in the block of flats."
+            },
+            {
+                "id": "5p-u8-boa-lingora-3",
+                "question": "Who first saw the snake?",
+                "answer": "James Andrews."
+            },
+            {
+                "id": "5p-u8-boa-lingora-4",
+                "question": "What did Mr Andrews and his wife put on the toilet seat?",
+                "answer": "Some heavy books."
+            },
+            {
+                "id": "5p-u8-boa-lingora-5",
+                "question": "Where was the snake finally found?",
+                "answer": "On the Mailers’ bathroom floor on the eighth floor of the building."
+            },
+            {
+                "id": "5p-u8-boa-lingora-6",
+                "question": "Where was the snake taken after it was caught?",
+                "answer": "Back to its home in the zoo."
+            }
+        ]
+    }
+]
   }
 ,
 

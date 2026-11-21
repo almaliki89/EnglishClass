@@ -284,7 +284,7 @@ export const GradeBookPassageLibrary: React.FC<GradeBookPassageLibraryProps> = (
                                     <span>·</span>
                                     <span className={hasTranslation ? 'text-semantic-success font-black' : ''}>{hasTranslation ? '✓ الترجمة' : '— الترجمة'}</span>
                                     <span>·</span>
-                                    <span className={hasSourceQuestions ? 'text-semantic-success font-black' : ''}>{hasSourceQuestions ? '✓ الأسئلة' : '— الأسئلة'}</span>
+                                    <span className={hasSourceQuestions ? 'text-semantic-success font-black' : ''}>{hasSourceQuestions ? '✓ الأسئلة والتدريبات' : '— الأسئلة والتدريبات'}</span>
                                     {isCompleted && (
                                       <>
                                         <span>·</span>

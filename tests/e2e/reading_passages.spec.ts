@@ -46,7 +46,7 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.locator('[data-testid="original-passage-section"] p[lang="en"]').first()).toContainText('When I was 16, life was great!');
     await expect(page.getByRole('heading', { name: 'الترجمة العربية الكاملة' })).toBeVisible();
     await expect(page.getByTestId('passage-translation-section')).toContainText('عندما كنتُ في السادسة عشرة من عمري');
-    await expect(page.getByRole('heading', { name: 'أسئلة كتاب النشاط / الملزمة مع الإجابات' })).toBeVisible();
+    await expect(page.getByRole('heading', { name: 'أسئلة القطعة وتدريباتها مع الإجابات' })).toBeVisible();
     await expect(page.getByTestId('passage-exercises-section')).toContainText('What was Ammar’s life like when he was 16?');
     await expect(page.getByTestId('passage-exercises-section')).toContainText('It was great because he was finally part of the school basketball team');
   });
@@ -86,7 +86,7 @@ test.describe('Source-aware reading passages', () => {
 
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
     await expect(page.locator('p[lang="en"]').nth(1)).toContainText('Harrods, which was founded in 1834');
-    await expect(page.locator('p[lang="en"]').last()).toContainText('Everything for Everybody Rich Everywhere');
+    await expect(page.getByTestId('original-passage-section').locator('p[lang="en"]').last()).toContainText('Everything for Everybody Rich Everywhere');
     await expect(page.getByText('ملزمة الخامس الإعدادي 2026')).toBeVisible();
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
   });
@@ -98,7 +98,7 @@ test.describe('Source-aware reading passages', () => {
     await page.getByRole('button', { name: 'نص القراءة الأصلي' }).click();
     await expect(page.locator('p[lang="en"]').first()).toContainText('The terrified residents of a block of flats in London');
     await expect(page.locator('p[lang="en"]').nth(2)).toContainText('James Andrews');
-    await expect(page.locator('p[lang="en"]').last()).toContainText('the eighth floor of the building');
+    await expect(page.getByTestId('original-passage-section').locator('p[lang="en"]').last()).toContainText('the eighth floor of the building');
     await expect(page.getByText('نص مطابق للمصدر المرفق')).toBeVisible();
   });
 
@@ -208,7 +208,7 @@ test.describe('Source-aware reading passages', () => {
     await expect(page.getByTestId('passage-exercises-section')).toContainText('were waiting');
   });
 
-  test('fourth preparatory Exercise and Fitness passage does not invent missing Activity Book questions', async ({ page }) => {
+  test('fourth preparatory Exercise and Fitness passage includes clearly labeled LINGORA practice', async ({ page }) => {
     await page.goto('/grade/fourth-preparatory/passages');
     await page.waitForLoadState('networkidle');
 
@@ -221,7 +221,8 @@ test.describe('Source-aware reading passages', () => {
 
     await expect(page.getByTestId('original-passage-section')).toContainText('If you want to be fit and healthy, you need to take regular exercise.');
     await expect(page.getByTestId('passage-translation-section')).toContainText('إذا أردت أن تكون لائقًا وبصحة جيدة');
-    await expect(page.getByTestId('passage-exercises-section')).toContainText('أسئلة كتاب النشاط أو الملزمة وإجاباتها لم تُربط بهذه القطعة بعد');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('تدريبات إضافية من LINGORA');
+    await expect(page.getByTestId('passage-exercises-section')).toContainText('Why should people choose an activity they enjoy?');
     await expect(page.getByTestId('passage-exercises-section')).not.toContainText('Mahmoud is fearless');
   });
 
@@ -360,4 +361,22 @@ test.describe('Source-aware reading passages', () => {
     await expect(firstSixCard.locator('img')).toBeVisible();
     await page.screenshot({ path: 'test-results/passage-qa/mobile-sixth-library.png', fullPage: false });
   });
+  test('fifth preparatory passage library distinguishes LINGORA practice from textbook exercises', async ({ page }) => {
+    await page.goto('/grade/fifth-preparatory/passages');
+    await page.waitForLoadState('networkidle');
+
+    const library = page.getByTestId('grade-book-passage-library');
+    const unitThree = library.locator('[data-testid="book-passage-unit-group"][data-unit-id="53"]');
+    await unitThree.getByRole('button').click();
+    const pollutionCard = library.getByTestId('book-passage-card').filter({ hasText: 'Oil & Gas Pollution in Basra' });
+    await expect(pollutionCard).toBeVisible();
+    await pollutionCard.getByRole('button', { name: 'فتح القطعة كاملة' }).click();
+
+    const exercises = page.getByTestId('passage-exercises-section');
+    await expect(exercises).toContainText('تدريبات إضافية من LINGORA');
+    await expect(exercises).toContainText('What are Iraq’s two main industries mentioned in the letter?');
+    await expect(exercises).toContainText('Oil and gas.');
+    await expect(exercises).not.toContainText('كتاب النشاط · LINGORA');
+  });
+
 });
