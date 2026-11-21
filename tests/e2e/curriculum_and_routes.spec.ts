@@ -390,6 +390,8 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     await expect(page.getByLabel('اسم الطالب الثلاثي')).toBeVisible();
     await expect(page.getByLabel('المحافظة')).toBeVisible();
     await expect(page.getByLabel('اسم المدرسة')).toBeVisible();
+    await expect(page.getByLabel('الصف الدراسي')).toBeVisible();
+    await expect(page.getByLabel('الصف الدراسي')).toHaveValue('sixth-preparatory');
     await expect(page.getByLabel('رقم الهاتف العراقي')).toBeVisible();
     await expect(page.getByRole('button', { name: /إرسال رمز التحقق إلى الهاتف/ })).toBeVisible();
 
@@ -449,6 +451,7 @@ What did archaeologists discover in Babylon in 1980? Answer: Ancient cuneiform t
     // Logout returns to the same two-method access gate.
     await expect(page.getByRole('button', { name: /المتابعة مباشرة بحساب Google/ })).toBeVisible();
     await expect(page.getByLabel('اسم الطالب الثلاثي')).toBeVisible();
+    await expect(page.getByLabel('الصف الدراسي')).toBeVisible();
     await expect(page.getByLabel('رقم الهاتف العراقي')).toBeVisible();
     await expect(page.getByRole('button', { name: /دخول سريع كزائر/ })).toHaveCount(0);
   });
