@@ -326,7 +326,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                   inputMode="tel"
                   autoComplete="tel"
                   required
-                  disabled={Boolean(confirmation) || loading}
+                  disabled={loading}
                   value={phone}
                   onChange={(event) => setPhone(event.target.value)}
                   placeholder="07701234567"
@@ -339,7 +339,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
             <div>
               <label htmlFor="student-password" className="block text-xs font-black mb-1">كلمة المرور</label>
               <div className="relative">
-                <LockKeyRound className="absolute right-3 top-3.5 w-4 h-4 text-ink/45" />
+                <KeyRound className="absolute right-3 top-3.5 w-4 h-4 text-ink/45" />
                 <input
                   id="student-password"
                   type="password"
