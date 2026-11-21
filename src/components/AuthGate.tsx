@@ -16,6 +16,7 @@ import { useAuth } from '../context/AuthContext';
 import { auth } from '../lib/firebase';
 import { MentorPortrait } from './common/MentorPortrait';
 import { EducationalGrade } from '../types';
+import { ALL_GRADES_META, ORDERED_GRADES } from '../data/gradeContentResolver';
 
 interface AuthGateProps {
   onSuccessfulAuth?: (name: string, grade: EducationalGrade) => void;
@@ -84,6 +85,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
   const [fullName, setFullName] = useState('');
   const [governorate, setGovernorate] = useState('');
   const [schoolName, setSchoolName] = useState('');
+  const [selectedGrade, setSelectedGrade] = useState<EducationalGrade>('sixth-preparatory');
   const [phone, setPhone] = useState('');
   const [verificationCode, setVerificationCode] = useState('');
   const [confirmation, setConfirmation] = useState<ConfirmationResult | null>(null);
@@ -153,7 +155,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
           governorate,
           schoolName: schoolName.trim().replace(/\s+/g, ' '),
           phoneNumber: phone,
-          selectedGrade: 'sixth-preparatory',
+          selectedGrade,
         });
         onSuccessfulAuth?.(fullName.trim(), resolvedGrade);
       }
@@ -342,6 +344,22 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
                   />
                 </div>
               </div>
+            </div>
+
+            <div>
+              <label htmlFor="student-grade" className="block text-xs font-black mb-1">الصف الدراسي</label>
+              <select
+                id="student-grade"
+                required
+                disabled={Boolean(confirmation) || loading}
+                value={selectedGrade}
+                onChange={(event) => setSelectedGrade(event.target.value as EducationalGrade)}
+                className="w-full px-3 py-2.5 bg-paper border-2 border-ink text-sm font-bold disabled:opacity-60"
+              >
+                {ORDERED_GRADES.map((gradeId) => (
+                  <option key={gradeId} value={gradeId}>{ALL_GRADES_META[gradeId].nameAr}</option>
+                ))}
+              </select>
             </div>
 
             <div>
