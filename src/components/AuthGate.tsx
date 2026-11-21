@@ -90,7 +90,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
   const [error, setError] = useState<string | null>(null);
   const [notice, setNotice] = useState<string | null>(null);
   const recaptchaVerifierRef = useRef<RecaptchaVerifier | null>(null);
-  const recaptchaContainerRef = useRef<HTMLDivElement | null>(null);
+  const phoneSubmitButtonRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     if (googleRedirectError) setError(googleRedirectError);
@@ -127,15 +127,18 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
       if (!confirmation) {
         const normalizedPhone = validateStudentDetails();
         if (!recaptchaVerifierRef.current) {
-          if (!recaptchaContainerRef.current) {
+          if (!phoneSubmitButtonRef.current) {
             throw new Error('تعذر تهيئة التحقق الآمن. حدّث الصفحة وحاول مجدداً.');
           }
-          recaptchaVerifierRef.current = new RecaptchaVerifier(auth, recaptchaContainerRef.current, {
+          // Firebase's invisible verifier must be attached to the button that
+          // initiates the SMS request, as recommended in the Web Auth guide.
+          recaptchaVerifierRef.current = new RecaptchaVerifier(auth, phoneSubmitButtonRef.current, {
             size: 'invisible',
           });
         }
 
-        const result = await requestStudentPhoneCode(normalizedPhone, recaptchaVerifierRef.current);
+        const verifier = recaptchaVerifierRef.current;
+        const result = await requestStudentPhoneCode(normalizedPhone, verifier);
         setPhone(normalizedPhone);
         setConfirmation(result);
         setNotice('أرسلنا رمز تحقق إلى رقم هاتفك. أدخل الرمز لإكمال الدخول.');
@@ -392,6 +395,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
             )}
 
             <button
+              ref={phoneSubmitButtonRef}
               type="submit"
               disabled={loading || googleLoading}
               className="w-full py-3.5 bg-cobalt hover:bg-cobalt-hover text-surface font-black text-sm border-2 border-ink shadow-brutal-action flex items-center justify-center gap-2 disabled:opacity-50"
@@ -405,7 +409,6 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
             </button>
           </form>
 
-          <div ref={recaptchaContainerRef} aria-hidden="true" className="h-0 overflow-hidden" />
           <div className="mt-5 pt-3 border-t-2 border-ink text-center">
             <p className="text-[11px] font-mono text-ink/65">ORBIT — أوربت • بوابة الطلبة 2026/2027</p>
           </div>
