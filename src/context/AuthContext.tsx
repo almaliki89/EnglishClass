@@ -143,6 +143,20 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     const unsubscribe = onAuthStateChanged(auth, async (firebaseUser: FirebaseUser | null) => {
       try {
         if (firebaseUser) {
+          // Establish the authenticated app session immediately. Profile/Firestore work
+          // must never hold the user at the sign-in gate after Firebase Auth succeeds.
+          const initialProvider: 'phone' | 'email' | 'google' =
+            firebaseUser.providerData.some(p => p.providerId === 'google.com') ? 'google' :
+            firebaseUser.providerData.some(p => p.providerId === 'phone') ? 'phone' : 'email';
+          setUser({
+            uid: firebaseUser.uid,
+            displayName: firebaseUser.displayName || 'طالب متميز',
+            email: firebaseUser.email || undefined,
+            phoneNumber: firebaseUser.phoneNumber || undefined,
+            authProvider: initialProvider,
+          });
+          setLoading(false);
+
           // Attempt to fetch custom profile from Firestore for the authenticated user
           let studentSnap = null;
           try {
