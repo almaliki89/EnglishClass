@@ -60,7 +60,7 @@ function toIraqiE164(input: string): string {
   return '+' + digits;
 }
 
-function getPhoneErrorMessage(error: unknown): string {
+function getAuthErrorMessage(error: unknown): string {
   const code = (error as { code?: string } | null)?.code || '';
   if (code === 'auth/invalid-phone-number') return 'رقم الهاتف غير صحيح. استخدم رقماً عراقياً يبدأ بـ 07.';
   if (code === 'auth/too-many-requests') return 'تم تجاوز عدد محاولات إرسال الرسائل. انتظر قليلاً ثم أعد المحاولة.';
@@ -118,7 +118,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
       const normalizedPhone = validateStudentDetails();
       if (password.length < 8) throw new Error('يجب أن تتكون كلمة المرور من 8 أحرف أو أرقام على الأقل.');
       const resolvedGrade = await signInWithStudentPassword({
-        name: fullName.trim().replace(/\\s+/g, ' '),
+        name: fullName.trim().replace(/\s+/g, ' '),
         governorate,
         schoolName: schoolName.trim().replace(/\\s+/g, ' '),
         phoneNumber: normalizedPhone,
@@ -149,7 +149,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ onSuccessfulAuth }) => {
             ? 'المتصفح منع نافذة Google. افتح ORBIT في Chrome أو Safari مباشرة ثم أعد المحاولة.'
             : code === 'auth/popup-closed-by-user'
               ? ''
-              : getPhoneErrorMessage(caughtError);
+              : getAuthErrorMessage(caughtError);
       if (message) setError(message);
     } finally {
       setGoogleLoading(false);
