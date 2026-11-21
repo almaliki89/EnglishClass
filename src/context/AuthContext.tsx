@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useRef, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 import { 
   onAuthStateChanged, 
   getRedirectResult,
@@ -253,7 +253,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
           // Do not expose a phone-authenticated session until its student profile has
           // been matched during the SMS flow or restored from an existing profile.
           if (initialProvider === 'phone' && (
-            pendingPhoneSignInRef.current || !studentSnap || !studentSnap.exists()
+            !studentSnap || !studentSnap.exists()
           )) {
             setUser(null);
             setSyncStatus('offline');
