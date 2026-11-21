@@ -356,7 +356,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       phoneNumber: string;
       selectedGrade: EducationalGrade;
     }
-  ): Promise<void> => {
+  ): Promise<EducationalGrade> => {
     let verifiedUser: FirebaseUser | null = null;
     let resolvedGrade: EducationalGrade = profile.selectedGrade;
     pendingPhoneSignInRef.current = true;
