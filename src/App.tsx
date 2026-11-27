@@ -1,3 +1,4 @@
+import { Analytics } from '@vercel/analytics/react';
 import React, { useState, useEffect, useRef } from 'react';
 import {
   BrowserRouter,
@@ -959,6 +960,7 @@ export default function App() {
       <AuthProvider>
         <MainAppContent />
       </AuthProvider>
+      <Analytics />
     </BrowserRouter>
   );
 }
